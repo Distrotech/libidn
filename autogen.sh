@@ -7,9 +7,9 @@ AUTOHEADER=${AUTOHEADER:-autoheader}; export AUTOHEADER
 
 rm -vf config.cache &&
 rm -rvf autom4te.cache &&
-$ACLOCAL
+$ACLOCAL -I .
 $LIBTOOLIZE --force --automake
-$ACLOCAL
+$ACLOCAL -I .
 $AUTOCONF
 $AUTOMAKE --gnits --add-missing
 $AUTOHEADER

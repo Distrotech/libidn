@@ -1,1 +1,2 @@
-Some functions has been borrowed from GLib (see www.gtk.org).
+Some functions (see nfkc.c and toutf8.c) has been borrowed from GLib
+downloaded from www.gtk.org.

@@ -29,8 +29,9 @@ lib_LTLIBRARIES = libstringprep.la
 include_HEADERS = stringprep.h stringprep_generic.h stringprep_nameprep.h \
 	stringprep_kerberos5.h
 
-libstringprep_la_SOURCES = gunicomp.h gunidecomp.h stringprep.c nfkc.c \
-	stringprep_generic.c version.c 
+libstringprep_la_SOURCES = gunicomp.h gunidecomp.h \
+	stringprep.c nfkc.c version.c toutf8.c \
+	stringprep_generic.c profiles.c
 libstringprep_la_LDFLAGS = -version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE)
 
 gunicomp.h gunidecomp.h: gen-unicode-tables.pl UnicodeData-3.2.0.txt LineBreak-3.2.0.txt SpecialCasing-3.2.0.txt CaseFolding-3.2.0.txt CompositionExclusions-3.2.0.txt
@@ -46,7 +47,9 @@ TESTS = $(check_PROGRAMS)
 INCLUDES = -I$(top_srcdir)
 LDADD = libstringprep.la
 
-noinst_PROGRAMS = $(check_PROGRAMS)
+noinst_PROGRAMS = $(check_PROGRAMS) example
+
+ACLOCAL_AMFLAGS = -I .
 
 ChangeLog:
 	cvs2cl --fsf --usermap .cvsusers --separate-header -I \

@@ -32,36 +32,10 @@ extern "C"
 
 #include <stringprep.h>
 
-extern struct stringprep_table_element stringprep_generic_B_1[];
-extern struct stringprep_table_element stringprep_generic_B_2[];
-extern struct stringprep_table_element stringprep_generic_C_1_2[];
-extern struct stringprep_table_element stringprep_generic_C_2_2[];
-extern struct stringprep_table_element stringprep_generic_C_3[];
-extern struct stringprep_table_element stringprep_generic_C_4[];
-extern struct stringprep_table_element stringprep_generic_C_5[];
-extern struct stringprep_table_element stringprep_generic_C_6[];
-extern struct stringprep_table_element stringprep_generic_C_7[];
-extern struct stringprep_table_element stringprep_generic_C_8[];
-extern struct stringprep_table_element stringprep_generic_C_9[];
-extern struct stringprep_table_element stringprep_generic_D_1[];
-extern struct stringprep_table_element stringprep_generic_D_2[];
+extern struct stringprep_table stringprep_kerberos5[];
 
-struct stringprep_table stringprep_kerberos5[] = {
-  { 0, stringprep_generic_B_1 },
-  { ~STRINGPREP_NO_NFKC, stringprep_generic_B_2 },
-  { ~STRINGPREP_NO_NFKC },
-  { 0, stringprep_generic_C_1_2 },
-  { 0, stringprep_generic_C_2_2 },
-  { 0, stringprep_generic_C_3 },
-  { 0, stringprep_generic_C_4 },
-  { 0, stringprep_generic_C_5 },
-  { 0, stringprep_generic_C_6 },
-  { 0, stringprep_generic_C_7 },
-  { 0, stringprep_generic_C_9 },
-  { 0 }
-};
-
-#define stringprep_kerberos5(in, maxlen) stringprep(in, maxlen, 0, stringprep_kerberos5)
+#define stringprep_kerberos5(in, maxlen) \
+	stringprep(in, maxlen, 0, stringprep_kerberos5)
 
 #ifdef __cplusplus
 }

@@ -6,5 +6,5 @@ includedir=@includedir@
 Name: Libstringprep
 Description: Library for IETF stringprep text processing.
 Version: @VERSION@
-Libs: -L${libdir} -lstringprep
+Libs: -L${libdir} -R${libdir} -lstringprep
 Cflags: -I${includedir}

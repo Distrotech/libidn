@@ -4,6 +4,18 @@ See the end for copying conditions.
 
 Please send libstringprep bug reports to bug-libstringprep@josefsson.org.
 
+* Version 0.0.1
+
+** Add utility functions stringprep_locale_charset(), stringprep_convert() 
+** and stringprep_locale_to_utf8 () that can be used to convert text from
+** system's locale into UTF-8, which should be done before invoking
+** stringprep().  The functions requires iconv() in the operating system.
+
+** An example program (example.c) that illustrates how libstringprep can be
+** used is included.
+
+** The pkg-config --libs output should now include necessary -R options.
+
 * Version 0.0.0
 
 ** Initial release

@@ -32,6 +32,7 @@ extern "C"
 
 #include <stringprep.h>
 
+extern struct stringprep_table_element stringprep_generic_A_1[];
 extern struct stringprep_table_element stringprep_generic_B_1[];
 extern struct stringprep_table_element stringprep_generic_B_2[];
 extern struct stringprep_table_element stringprep_generic_B_3[];
@@ -49,26 +50,10 @@ extern struct stringprep_table_element stringprep_generic_C_9[];
 extern struct stringprep_table_element stringprep_generic_D_1[];
 extern struct stringprep_table_element stringprep_generic_D_2[];
 
-struct stringprep_table stringprep_generic[] = {
-  { 0, stringprep_generic_B_1 },
-  { ~STRINGPREP_NO_NFKC, stringprep_generic_B_2 },
-  { STRINGPREP_NO_NFKC, stringprep_generic_B_3 },
-  { ~STRINGPREP_NO_NFKC },
-  { 0, stringprep_generic_C_1_1 },
-  { 0, stringprep_generic_C_1_2 },
-  { 0, stringprep_generic_C_2_1 },
-  { 0, stringprep_generic_C_2_2 },
-  { 0, stringprep_generic_C_3 },
-  { 0, stringprep_generic_C_4 },
-  { 0, stringprep_generic_C_5 },
-  { 0, stringprep_generic_C_6 },
-  { 0, stringprep_generic_C_7 },
-  { STRINGPREP_BIDI_PROHIBITED_MASK, stringprep_generic_C_8 },
-  { 0, stringprep_generic_C_9 },
-  { STRINGPREP_BIDI_RAL_MASK, stringprep_generic_D_1 },
-  { STRINGPREP_BIDI_L_MASK, stringprep_generic_D_2 },
-  { 0 }
-};
+extern struct stringprep_table stringprep_generic[];
+
+#define stringprep_generic(in, maxlen) \
+	stringprep(in, maxlen, 0, stringprep_generic)
 
 #ifdef __cplusplus
 }
