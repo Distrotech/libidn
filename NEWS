@@ -2,6 +2,8 @@ Libidn NEWS -- History of user-visible changes.                 -*- outline -*-
 Copyright (C) 2002, 2003, 2004 Simon Josefsson
 See the end for copying conditions.
 
+* Version 0.4.6 (unreleased)
+
 * Version 0.4.5 (released 2004-05-21)
 
 ** In IDNA ToUnicode, a `free' on a stale pointer fixed by Ulrich Drepper.
