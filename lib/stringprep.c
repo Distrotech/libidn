@@ -366,11 +366,15 @@ stringprep (char *in,
 
   do
     {
+      uint32_t *newp;
+
       if (ucs4)
 	free (ucs4);
+
       ucs4 = stringprep_utf8_to_ucs4 (in, -1, &ucs4len);
       maxucs4len = ucs4len + adducs4len;
-      uint32_t *newp = realloc (ucs4, maxucs4len * sizeof (uint32_t));
+
+      newp = realloc (ucs4, maxucs4len * sizeof (uint32_t));
       if (!newp)
 	{
 	  free (ucs4);
