@@ -147,35 +147,35 @@ adapt (punycode_uint delta, punycode_uint numpoints, int firsttime)
 
 /**
  * punycode_encode:
- * @input_length: The input_length is the number of code points in the input.
- * @input: The input is represented as an array of Unicode code points
+ * @input_length: The @input_length is the number of code points in the @input.
+ * @input: The @input is represented as an array of Unicode code points
  *         (not code units; surrogate pairs are not allowed).
- * @case_flags: The case_flags array holds input_length boolean
+ * @case_flags: The @case_flags array holds @input_length boolean
  *              values, where nonzero suggests that the corresponding
  *              Unicode character be forced to uppercase after being
  *              decoded (if possible), and zero suggests that it be
  *              forced to lowercase (if possible).  ASCII code points
  *              are encoded literally, except that ASCII letters are
  *              forced to uppercase or lowercase according to the
- *              corresponding uppercase flags.  If case_flags is a
- *              null pointer then ASCII letters are left as they are,
+ *              corresponding uppercase flags.  If @case_flags is a
+ *              %NULL pointer then ASCII letters are left as they are,
  *              and other code points are treated as if their
  *              uppercase flags were zero.
- * @output_length: The output_length is an in/out argument: the caller
+ * @output_length: The @output_length is an in/out argument: the caller
  *                 passes in the maximum number of code points that it
  *                 can receive, and on successful return it will
  *                 contain the number of code points actually output.
- * @output: The output will be represented as an array of ASCII code
- *          points.  The output string is *not* null-terminated; it
+ * @output: The @output will be represented as an array of ASCII code
+ *          points.  The output string is *not* zero-terminated; it
  *          will contain zeros if and only if the input contains
  *          zeros. (Of course the caller can leave room for a
  *          terminator and add one if needed.)
  *
  * Converts Unicode to Punycode.
  *
- * Return value: The return value can be any of the punycode_status
- *               values defined above except punycode_bad_input; if
- *               not punycode_success, then output_size and output
+ * Return value: The return value can be any of the Punycode_status
+ *               values defined above except %PUNYCODE_BAD_INPUT; if
+ *               not %PUNYCODE_SUCCESS, then @output_size and @output
  *               might contain garbage.
  **/
 int
@@ -285,16 +285,16 @@ punycode_encode (size_t input_length,
 
 /**
  * punycode_decode:
- * @input_length: The input_length is the number of code points in the input.
- * @input: The input is represented as an array of ASCII code points.
- * @output_length: The output_length is an in/out argument: the caller
+ * @input_length: The @input_length is the number of code points in the input.
+ * @input: The @input is represented as an array of ASCII code points.
+ * @output_length: The @output_length is an in/out argument: the caller
  *                 passes in the maximum number of code points that it
  *                 can receive, and on successful return it will
  *                 contain the actual number of code points output.
  * @output: The output will be represented as an array of Unicode code
  *          points.
- * @case_flags: The case_flags array needs room for at least
- *              output_length values, or it can be a null pointer if
+ * @case_flags: The @case_flags array needs room for at least
+ *              @output_length values, or it can be a %NULL pointer if
  *              the case information is not needed.  A nonzero flag
  *              suggests that the corresponding Unicode character be
  *              forced to uppercase by the caller (if possible), while
@@ -306,11 +306,11 @@ punycode_encode (size_t input_length,
  *
  * Converts Punycode to Unicode.
  *
- * Return value: The return value can be any of the punycode_status
- *               values defined above; if not punycode_success, then
- *               output_length, output, and case_flags might contain
+ * Return value: The return value can be any of the Punycode_status
+ *               values defined above; if not %PUNYCODE_SUCCESS, then
+ *               @output_length, @output, and @case_flags might contain
  *               garbage.  On success, the decoder will never need to
- *               write an output_length greater than input_length,
+ *               write an @output_length greater than @input_length,
  *               because of how the encoding is defined.
  *
  **/
