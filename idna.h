@@ -45,7 +45,7 @@ extern "C"
   };
 
 #ifndef IDNA_ACE_PREFIX
-#define IDNA_ACE_PREFIX "xk--"
+#define IDNA_ACE_PREFIX "xn--"
 #endif
 
   int idna_to_ascii (const unsigned long *in, size_t inlen,
