@@ -1,5 +1,5 @@
 Libidn THANKS -- Acknowledgements.
-Copyright (C) 2002, 2003, 2004 Simon Josefsson
+Copyright (C) 2002, 2003, 2004, 2005 Simon Josefsson
 See the end for copying conditions.
 
 The punycode code was taken from the IETF IDN Punycode specification,
@@ -16,6 +16,7 @@ Waldo Bastian
 Jakub Bogusz
 Stephane Bortzmeyer
 Laurentiu Buzdugan
+Marco Colombo
 Adam M. Costello
 Elros Cyriatan
 Ulrich Drepper
