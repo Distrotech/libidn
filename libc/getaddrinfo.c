@@ -37,8 +37,10 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include <assert.h>
 #include <errno.h>
+#include <ifaddrs.h>
 #include <netdb.h>
 #include <resolv.h>
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -51,7 +53,10 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <sys/utsname.h>
 #include <net/if.h>
 #include <nsswitch.h>
-#include <idna.h>
+#include <not-cancel.h>
+
+extern int idna_to_ascii_lz (const char *input, char **output, int flags);
+#define IDNA_SUCCESS 0
 
 #define GAIH_OKIFUNSPEC 0x0100
 #define GAIH_EAI        ~(GAIH_OKIFUNSPEC)
@@ -112,12 +117,17 @@ struct gaih
 		const struct addrinfo *req, struct addrinfo **pai);
   };
 
-#if PF_UNSPEC == 0
-static const struct addrinfo default_hints;
-#else
 static const struct addrinfo default_hints =
-	{ 0, PF_UNSPEC, 0, 0, 0, NULL, NULL, NULL };
-#endif
+  {
+    .ai_flags = AI_DEFAULT,
+    .ai_family = PF_UNSPEC,
+    .ai_socktype = 0,
+    .ai_protocol = 0,
+    .ai_addrlen = 0,
+    .ai_addr = NULL,
+    .ai_canonname = NULL,
+    .ai_next = NULL
+  };
 
 
 #if 0
@@ -266,93 +276,137 @@ gaih_inet_serv (const char *servicename, const struct gaih_typeproto *tp,
   return 0;
 }
 
-#define gethosts(_family, _type)				\
- {								\
-  int i, herrno;						\
-  size_t tmpbuflen;						\
-  struct hostent th;						\
-  char *tmpbuf = NULL;						\
-  tmpbuflen = 512;						\
-  no_data = 0;							\
-  do {								\
-    tmpbuf = extend_alloca (tmpbuf, tmpbuflen, 2 * tmpbuflen);	\
-    rc = __gethostbyname2_r (name, _family, &th, tmpbuf,	\
-         tmpbuflen, &h, &herrno);				\
-  } while (rc == ERANGE && herrno == NETDB_INTERNAL);		\
-  if (rc != 0)							\
-    {								\
-      if (herrno == NETDB_INTERNAL)				\
-	{							\
-	  __set_h_errno (herrno);				\
-	  return -EAI_SYSTEM;					\
-	}							\
-      if (herrno == TRY_AGAIN)					\
-	no_data = EAI_AGAIN;					\
-      else							\
-	no_data = herrno == NO_DATA;				\
-    }								\
-  else if (h != NULL)						\
-    {								\
-      for (i = 0; h->h_addr_list[i]; i++)			\
-	{							\
-	  if (*pat == NULL) {					\
-	    *pat = __alloca (sizeof (struct gaih_addrtuple));	\
-	    (*pat)->scopeid = 0;				\
-	  }							\
-	  (*pat)->next = NULL;					\
-	  (*pat)->family = _family;				\
-	  memcpy ((*pat)->addr, h->h_addr_list[i],		\
-		 sizeof(_type));				\
-	  pat = &((*pat)->next);				\
-	}							\
-    }								\
+#define gethosts(_family, _type) \
+ {									      \
+  int i, herrno;							      \
+  size_t tmpbuflen;							      \
+  struct hostent th;							      \
+  char *tmpbuf = NULL;							      \
+  tmpbuflen = 512;							      \
+  no_data = 0;								      \
+  do {									      \
+    tmpbuf = extend_alloca (tmpbuf, tmpbuflen, 2 * tmpbuflen);		      \
+    rc = __gethostbyname2_r (name, _family, &th, tmpbuf,		      \
+         tmpbuflen, &h, &herrno);					      \
+  } while (rc == ERANGE && herrno == NETDB_INTERNAL);			      \
+  if (rc != 0)								      \
+    {									      \
+      if (herrno == NETDB_INTERNAL)					      \
+	{								      \
+	  __set_h_errno (herrno);					      \
+	  return -EAI_SYSTEM;						      \
+	}								      \
+      if (herrno == TRY_AGAIN)						      \
+	no_data = EAI_AGAIN;						      \
+      else								      \
+	no_data = herrno == NO_DATA;					      \
+    }									      \
+  else if (h != NULL)							      \
+    {									      \
+      for (i = 0; h->h_addr_list[i]; i++)				      \
+	{								      \
+	  if (*pat == NULL) {						      \
+	    *pat = __alloca (sizeof (struct gaih_addrtuple));		      \
+	    (*pat)->scopeid = 0;					      \
+	  }								      \
+	  (*pat)->next = NULL;						      \
+	  (*pat)->family = _family;					      \
+	  memcpy ((*pat)->addr, h->h_addr_list[i],			      \
+		 sizeof(_type));					      \
+	  pat = &((*pat)->next);					      \
+	}								      \
+      if (_family == AF_INET6)						      \
+	got_ipv6 = true;						      \
+    }									      \
+  else if (_family == AF_INET6 && (req->ai_flags & AI_V4MAPPED))	      \
+    {									      \
+      /* We have to add V4 mapped addresses.  Maybe we discard them	      \
+         later again but we get them anyhow for now.  */		      \
+      while ((rc = __gethostbyname2_r (name, AF_INET6, &th, tmpbuf,	      \
+				       tmpbuflen, &h, &herrno)) == ERANGE     \
+	     && herrno == NETDB_INTERNAL)				      \
+	tmpbuf = extend_alloca (tmpbuf, tmpbuflen, 2 * tmpbuflen);	      \
+									      \
+      if (rc != 0)							      \
+	{								      \
+	  if (herrno == NETDB_INTERNAL)					      \
+	    {								      \
+	      __set_h_errno (herrno);					      \
+	      return -EAI_SYSTEM;					      \
+	    }								      \
+	  if (herrno == TRY_AGAIN)					      \
+	    no_data = EAI_AGAIN;					      \
+	  else								      \
+	    no_data = herrno == NO_DATA;				      \
+	}								      \
+      else if (h != NULL)						      \
+	{								      \
+	  for (i = 0; h->h_addr_list[i]; ++i)				      \
+	    {								      \
+	      if (*pat == NULL)						      \
+		{							      \
+		  *pat = __alloca (sizeof (struct gaih_addrtuple));	      \
+		  (*pat)->scopeid = 0;					      \
+		}							      \
+	      uint32_t *addr = (uint32_t *) (*pat)->addr;		      \
+	      (*pat)->next = NULL;					      \
+	      (*pat)->family = _family;					      \
+	      addr[3] = *(uint32_t *) h->h_addr_list[i];		      \
+	      addr[2] = htonl (0xffff);					      \
+	      addr[1] = 0;						      \
+	      addr[0] = 0;						      \
+	      pat = &((*pat)->next);					      \
+	    }								      \
+	}								      \
+    }									      \
  }
 
-#define gethosts2(_family, _type)				\
- {								\
-  int i, herrno;						\
-  size_t tmpbuflen;						\
-  struct hostent th;						\
-  char *tmpbuf = NULL;						\
-  tmpbuflen = 512;						\
-  no_data = 0;							\
-  do {								\
-    tmpbuf = extend_alloca (tmpbuf, tmpbuflen, 2 * tmpbuflen);	\
-    rc = 0;							\
-    status = DL_CALL_FCT (fct, (name, _family, &th, tmpbuf,	\
-           tmpbuflen, &rc, &herrno));			        \
-  } while (rc == ERANGE && herrno == NETDB_INTERNAL);		\
-  if (status == NSS_STATUS_SUCCESS && rc == 0)			\
-    h = &th;							\
-  else								\
-    h = NULL;							\
-  if (rc != 0)							\
-    {								\
-      if (herrno == NETDB_INTERNAL)				\
-	{							\
-	  __set_h_errno (herrno);				\
-	  return -EAI_SYSTEM;					\
-	}							\
-      if (herrno == TRY_AGAIN)					\
-	no_data = EAI_AGAIN;					\
-      else							\
-	no_data = herrno == NO_DATA;				\
-    }								\
-  else if (h != NULL)						\
-    {								\
-      for (i = 0; h->h_addr_list[i]; i++)			\
-	{							\
-	  if (*pat == NULL) {					\
-	    *pat = __alloca (sizeof (struct gaih_addrtuple));	\
-	    (*pat)->scopeid = 0;				\
-	  }							\
-	  (*pat)->next = NULL;					\
-	  (*pat)->family = _family;				\
-	  memcpy ((*pat)->addr, h->h_addr_list[i],		\
-		 sizeof(_type));				\
-	  pat = &((*pat)->next);				\
-	}							\
-    }								\
+
+#define gethosts2(_family, _type) \
+ {									      \
+  int i, herrno;							      \
+  size_t tmpbuflen;							      \
+  struct hostent th;							      \
+  char *tmpbuf = NULL;							      \
+  tmpbuflen = 512;							      \
+  no_data = 0;								      \
+  do {									      \
+    tmpbuf = extend_alloca (tmpbuf, tmpbuflen, 2 * tmpbuflen);		      \
+    rc = 0;								      \
+    status = DL_CALL_FCT (fct, (name, _family, &th, tmpbuf,		      \
+           tmpbuflen, &rc, &herrno));					      \
+  } while (rc == ERANGE && herrno == NETDB_INTERNAL);			      \
+  if (status == NSS_STATUS_SUCCESS && rc == 0)				      \
+    h = &th;								      \
+  else									      \
+    h = NULL;								      \
+  if (rc != 0)								      \
+    {									      \
+      if (herrno == NETDB_INTERNAL)					      \
+	{								      \
+	  __set_h_errno (herrno);					      \
+	  return -EAI_SYSTEM;						      \
+	}								      \
+      if (herrno == TRY_AGAIN)						      \
+	no_data = EAI_AGAIN;						      \
+      else								      \
+	no_data = herrno == NO_DATA;					      \
+    }									      \
+  else if (h != NULL)							      \
+    {									      \
+      for (i = 0; h->h_addr_list[i]; i++)				      \
+	{								      \
+	  if (*pat == NULL) {						      \
+	    *pat = __alloca (sizeof (struct gaih_addrtuple));		      \
+	    (*pat)->scopeid = 0;					      \
+	  }								      \
+	  (*pat)->next = NULL;						      \
+	  (*pat)->family = _family;					      \
+	  memcpy ((*pat)->addr, h->h_addr_list[i],			      \
+		 sizeof(_type));					      \
+	  pat = &((*pat)->next);					      \
+	}								      \
+    }									      \
  }
 
 typedef enum nss_status (*nss_gethostbyname2_r)
@@ -369,6 +423,7 @@ gaih_inet (const char *name, const struct gaih_service *service,
   struct gaih_servtuple *st = (struct gaih_servtuple *) &nullserv;
   struct gaih_addrtuple *at = NULL;
   int rc;
+  bool got_ipv6 = false;
 
   if (req->ai_protocol || req->ai_socktype)
     {
@@ -489,17 +544,25 @@ gaih_inet (const char *name, const struct gaih_service *service,
 
       if (req->ai_flags & AI_IDN)
 	{
-	  char *p;
+	  char *p = NULL;
 	  rc = idna_to_ascii_lz (name, &p, 0);
 	  if (rc != IDNA_SUCCESS)
 	    return -EAI_IDN_ENCODE;
-	  name = p; /* XXX memory leak */
+	  name = strdupa (p);
+	  free (p);
 	}
 
       if (inet_pton (AF_INET, name, at->addr) > 0)
 	{
 	  if (req->ai_family == AF_UNSPEC || req->ai_family == AF_INET)
 	    at->family = AF_INET;
+	  else if (req->ai_flags & AI_V4MAPPED)
+	    {
+	      ((uint32_t *) at->addr)[3] = *(uint32_t *) at->addr;
+	      ((uint32_t *) at->addr)[2] = htonl (0xffff);
+	      ((uint32_t *) at->addr)[1] = 0;
+	      ((uint32_t *) at->addr)[0] = 0;
+	    }
 	  else
 	    return -EAI_ADDRFAMILY;
 	}
@@ -517,6 +580,8 @@ gaih_inet (const char *name, const struct gaih_service *service,
 	    {
 	      if (req->ai_family == AF_UNSPEC || req->ai_family == AF_INET6)
 		at->family = AF_INET6;
+	      else if (IN6_IS_ADDR_V4MAPPED (at->addr))
+		*(uint32_t *) at->addr = ((uint32_t *) at->addr)[3];
 	      else
 		return -EAI_ADDRFAMILY;
 
@@ -552,8 +617,6 @@ gaih_inet (const char *name, const struct gaih_service *service,
 	  struct gaih_addrtuple **pat = &at;
 	  int no_data = 0;
 	  int no_inet6_data = 0;
-	  int old_res_options = _res.options;
-
 	  /* If we are looking for both IPv4 and IPv6 address we don't
 	     want the lookup functions to automatically promote IPv4
 	     addresses to IPv6 addresses.  Currently this is decided
@@ -564,6 +627,7 @@ gaih_inet (const char *name, const struct gaih_service *service,
 	      enum nss_status inet6_status, status = NSS_STATUS_UNAVAIL;
 	      int no_more;
 	      nss_gethostbyname2_r fct;
+	      int old_res_options;
 
 	      if (__nss_hosts_database != NULL)
 		{
@@ -574,6 +638,9 @@ gaih_inet (const char *name, const struct gaih_service *service,
 		no_more = __nss_database_lookup ("hosts", NULL,
 						 "dns [!UNAVAIL=return] files", &nip);
 
+	      if ((_res.options & RES_INIT) == 0 && __res_ninit(&_res) == -1)
+		no_more = 1;
+	      old_res_options = _res.options;
 	      _res.options &= ~RES_USE_INET6;
 
 	      while (!no_more)
@@ -620,7 +687,10 @@ gaih_inet (const char *name, const struct gaih_service *service,
 	      no_inet6_data = no_data;
 	    }
 	  else if (req->ai_family == AF_INET)
-	    gethosts (AF_INET, struct in_addr);
+	    {
+	      gethosts (AF_INET, struct in_addr);
+	      no_inet6_data = no_data;
+	    }
 
 	  if (no_data != 0 && no_inet6_data != 0)
 	    {
@@ -687,13 +757,11 @@ gaih_inet (const char *name, const struct gaih_service *service,
 	    int herrno;
 	    struct hostent th;
 	    size_t tmpbuflen = 512;
-	    char *tmpbuf;
+	    char *tmpbuf = NULL;
 
 	    do
 	      {
-		tmpbuflen *= 2;
-		tmpbuf = __alloca (tmpbuflen);
-
+		tmpbuf = extend_alloca (tmpbuf, tmpbuflen, tmpbuflen * 2);
 		rc = __gethostbyaddr_r (at2->addr,
 					((at2->family == AF_INET6)
 					 ? sizeof(struct in6_addr)
@@ -702,7 +770,7 @@ gaih_inet (const char *name, const struct gaih_service *service,
 					&h, &herrno);
 
 	      }
-	    while (rc == errno && herrno == NETDB_INTERNAL);
+	    while (rc == ERANGE && herrno == NETDB_INTERNAL);
 
 	    if (rc != 0 && herrno == NETDB_INTERNAL)
 	      {
@@ -759,6 +827,14 @@ gaih_inet (const char *name, const struct gaih_service *service,
 	  {
 	    family = AF_INET6;
 	    socklen = sizeof (struct sockaddr_in6);
+
+	    /* If we looked up IPv4 mapped address discard them here if
+	       the caller isn't interested in all address and we have
+	       found at least one IPv6 address.  */
+	    if (! got_ipv6
+		&& (req->ai_flags & (AI_V4MAPPED|AI_ALL)) == AI_V4MAPPED
+		&& IN6_IS_ADDR_V4MAPPED (at2->addr))
+	      goto ignore;
 	  }
 	else
 	  {
@@ -777,7 +853,7 @@ gaih_inet (const char *name, const struct gaih_service *service,
 	    (*pai)->ai_socktype = st2->socktype;
 	    (*pai)->ai_protocol = st2->protocol;
 	    (*pai)->ai_addrlen = socklen;
-	    (*pai)->ai_addr = (void *) (*pai) + sizeof(struct addrinfo);
+	    (*pai)->ai_addr = (void *) (*pai) + sizeof (struct addrinfo);
 #if SALEN
 	    (*pai)->ai_addr->sa_len = socklen;
 #endif /* SALEN */
@@ -817,6 +893,7 @@ gaih_inet (const char *name, const struct gaih_service *service,
 	    pai = &((*pai)->ai_next);
 	  }
 
+      ignore:
 	at2 = at2->next;
       }
   }
@@ -833,14 +910,346 @@ static struct gaih gaih[] =
     { PF_UNSPEC, NULL }
   };
 
+struct sort_result
+{
+  struct addrinfo *dest_addr;
+  struct sockaddr_storage source_addr;
+  bool got_source_addr;
+};
+
+
+static int
+get_scope (const struct sockaddr_storage *ss)
+{
+  int scope;
+  if (ss->ss_family == PF_INET6)
+    {
+      const struct sockaddr_in6 *in6 = (const struct sockaddr_in6 *) ss;
+
+      if (! IN6_IS_ADDR_MULTICAST (&in6->sin6_addr))
+	{
+	  if (IN6_IS_ADDR_LINKLOCAL (&in6->sin6_addr))
+	    scope = 2;
+	  else if (IN6_IS_ADDR_SITELOCAL (&in6->sin6_addr))
+	    scope = 5;
+	  else
+	    /* XXX Is this the correct default behavior?  */
+	    scope = 14;
+	}
+      else
+	scope = in6->sin6_addr.s6_addr[1] & 0xf;
+    }
+  else if (ss->ss_family == PF_INET)
+    {
+      const struct sockaddr_in *in = (const struct sockaddr_in *) ss;
+      const uint8_t *addr = (const uint8_t *) &in->sin_addr;
+
+      /* RFC 3484 specifies how to map IPv6 addresses to scopes.
+	 169.254/16 and 127/8 are link-local.  */
+      if ((addr[0] == 169 && addr[1] == 254) || addr[0] == 127)
+	scope = 2;
+      else if (addr[0] == 10 || (addr[0] == 172 && addr[1] == 16)
+	       || (addr[0] == 192 && addr[1] == 168))
+	scope = 5;
+      else
+	scope = 14;
+    }
+  else
+    /* XXX What is a good default?  */
+    scope = 15;
+
+  return scope;
+}
+
+
+/* XXX The system administrator should be able to install other
+   tables.  We need to make this configurable.  The problem is that
+   the kernel is also involved since it needs the same table.  */
+static const struct prefixlist
+{
+  struct in6_addr prefix;
+  unsigned int bits;
+  int val;
+} default_labels[] =
+  {
+    /* See RFC 3484 for the details.  */
+    { { .in6_u = { .u6_addr16 = { 0x0000, 0x0000, 0x0000, 0x0000,
+				  0x0000, 0x0000, 0x0000, 0x0001 } } },
+      128, 0 },
+    { { .in6_u = { .u6_addr16 = { 0x2002, 0x0000, 0x0000, 0x0000,
+				  0x0000, 0x0000, 0x0000, 0x0000 } } },
+      16, 2 },
+    { { .in6_u = { .u6_addr16 = { 0x0000, 0x0000, 0x0000, 0x0000,
+				  0x0000, 0x0000, 0x0000, 0x0000 } } },
+      96, 3 },
+    { { .in6_u = { .u6_addr16 = { 0x0000, 0x0000, 0x0000, 0x0000,
+				  0x0000, 0xffff, 0x0000, 0x0000 } } },
+      96, 4 },
+    { { .in6_u = { .u6_addr16 = { 0x0000, 0x0000, 0x0000, 0x0000,
+				  0x0000, 0x0000, 0x0000, 0x0000 } } },
+      0, 1 }
+  };
+
+
+static const struct prefixlist default_precedence[] =
+  {
+    /* See RFC 3484 for the details.  */
+    { { .in6_u = { .u6_addr16 = { 0x0000, 0x0000, 0x0000, 0x0000,
+				  0x0000, 0x0000, 0x0000, 0x0001 } } },
+      128, 50 },
+    { { .in6_u = { .u6_addr16 = { 0x2002, 0x0000, 0x0000, 0x0000,
+				  0x0000, 0x0000, 0x0000, 0x0000 } } },
+      16, 30 },
+    { { .in6_u = { .u6_addr16 = { 0x0000, 0x0000, 0x0000, 0x0000,
+				  0x0000, 0x0000, 0x0000, 0x0000 } } },
+      96, 20 },
+    { { .in6_u = { .u6_addr16 = { 0x0000, 0x0000, 0x0000, 0x0000,
+				  0x0000, 0xffff, 0x0000, 0x0000 } } },
+      96, 10 },
+    { { .in6_u = { .u6_addr16 = { 0x0000, 0x0000, 0x0000, 0x0000,
+				  0x0000, 0x0000, 0x0000, 0x0000 } } },
+      0, 40 }
+  };
+
+
+static int
+match_prefix (const struct sockaddr_storage *ss, const struct prefixlist *list,
+	      int default_val)
+{
+  int idx;
+  struct sockaddr_in6 in6_mem;
+  const struct sockaddr_in6 *in6;
+
+  if (ss->ss_family == PF_INET6)
+    in6 = (const struct sockaddr_in6 *) ss;
+  else if (ss->ss_family == PF_INET)
+    {
+      const struct sockaddr_in *in = (const struct sockaddr_in *) ss;
+
+      /* Convert to IPv6 address.  */
+      in6_mem.sin6_family = PF_INET6;
+      in6_mem.sin6_port = in->sin_port;
+      in6_mem.sin6_flowinfo = 0;
+      if (in->sin_addr.s_addr == htonl (0x7f000001))
+	in6_mem.sin6_addr = (struct in6_addr) IN6ADDR_LOOPBACK_INIT;
+      else
+	{
+	  /* Construct a V4-to-6 mapped address.  */
+	  memset (&in6_mem.sin6_addr, '\0', sizeof (in6_mem.sin6_addr));
+	  in6_mem.sin6_addr.s6_addr16[5] = 0xffff;
+	  in6_mem.sin6_addr.s6_addr32[3] = in->sin_addr.s_addr;
+	  in6_mem.sin6_scope_id = 0;
+	}
+
+      in6 = &in6_mem;
+    }
+  else
+    return default_val;
+
+  for (idx = 0; ; ++idx)
+    {
+      unsigned int bits = list[idx].bits;
+      uint8_t *mask = list[idx].prefix.s6_addr;
+      uint8_t *val = in6->sin6_addr.s6_addr;
+
+      while (bits > 8)
+	{
+	  if (*mask != *val)
+	    break;
+
+	  ++mask;
+	  ++val;
+	  bits -= 8;
+	}
+
+      if (bits < 8)
+	{
+	  if ((*mask & (0xff00 >> bits)) == (*val & (0xff00 >> bits)))
+	    /* Match!  */
+	    break;
+	}
+    }
+
+  return list[idx].val;
+}
+
+
+static int
+get_label (const struct sockaddr_storage *ss)
+{
+  /* XXX What is a good default value?  */
+  return match_prefix (ss, default_labels, INT_MAX);
+}
+
+
+static int
+get_precedence (const struct sockaddr_storage *ss)
+{
+  /* XXX What is a good default value?  */
+  return match_prefix (ss, default_precedence, 0);
+}
+
+
+static int
+rfc3484_sort (const void *p1, const void *p2)
+{
+  const struct sort_result *a1 = (const struct sort_result *) p1;
+  const struct sort_result *a2 = (const struct sort_result *) p2;
+
+  /* Rule 1: Avoid unusable destinations.
+     We have the got_source_addr flag set if the destination is reachable.  */
+  if (a1->got_source_addr && ! a2->got_source_addr)
+    return -1;
+  if (! a1->got_source_addr && a2->got_source_addr)
+    return 1;
+
+
+  /* Rule 2: Prefer matching scope.  Only interesting if both
+     destination addresses are IPv6.  */
+  int a1_dst_scope
+    = get_scope ((struct sockaddr_storage *) a1->dest_addr->ai_addr);
+
+  int a2_dst_scope
+    = get_scope ((struct sockaddr_storage *) a2->dest_addr->ai_addr);
+
+  if (a1->got_source_addr)
+    {
+      int a1_src_scope = get_scope (&a1->source_addr);
+      int a2_src_scope = get_scope (&a2->source_addr);
+
+      if (a1_dst_scope == a1_src_scope && a2_dst_scope != a2_src_scope)
+	return -1;
+      if (a1_dst_scope != a1_src_scope && a2_dst_scope == a2_src_scope)
+	return 1;
+    }
+
+
+  /* Rule 3: Avoid deprecated addresses.
+     That's something only the kernel could decide.  */
+
+  /* Rule 4: Prefer home addresses.
+     Another thing only the kernel can decide.  */
+
+  /* Rule 5: Prefer matching label.  */
+  if (a1->got_source_addr)
+    {
+      int a1_dst_label
+	= get_label ((struct sockaddr_storage *) a1->dest_addr->ai_addr);
+      int a1_src_label = get_label (&a1->source_addr);
+
+      int a2_dst_label
+	= get_label ((struct sockaddr_storage *) a2->dest_addr->ai_addr);
+      int a2_src_label = get_label (&a2->source_addr);
+
+      if (a1_dst_label == a1_src_label && a2_dst_label != a2_src_label)
+	return -1;
+      if (a1_dst_label != a1_src_label && a2_dst_label == a2_src_label)
+	return 1;
+    }
+
+
+  /* Rule 6: Prefer higher precedence.  */
+  int a1_prec
+    = get_precedence ((struct sockaddr_storage *) a1->dest_addr->ai_addr);
+  int a2_prec
+    = get_precedence ((struct sockaddr_storage *) a2->dest_addr->ai_addr);
+
+  if (a1_prec > a2_prec)
+    return -1;
+  if (a1_prec < a2_prec)
+    return 1;
+
+
+  /* Rule 7: Prefer native transport.
+     XXX How to recognize tunnels?  */
+
+
+  /* Rule 8: Prefer smaller scope.  */
+  if (a1_dst_scope < a2_dst_scope)
+    return -1;
+  if (a1_dst_scope > a2_dst_scope)
+    return 1;
+
+
+  /* Rule 9: Use longest matching prefix.  */
+  if (a1->got_source_addr
+      && a1->dest_addr->ai_family == a2->dest_addr->ai_family)
+    {
+      int bit1 = 0;
+      int bit2 = 0;
+
+      if (a1->dest_addr->ai_family == PF_INET)
+	{
+	  assert (a1->source_addr.ss_family == PF_INET);
+	  assert (a2->source_addr.ss_family == PF_INET);
+
+	  struct sockaddr_in *in1_dst;
+	  struct sockaddr_in *in1_src;
+	  struct sockaddr_in *in2_dst;
+	  struct sockaddr_in *in2_src;
+
+	  in1_dst = (struct sockaddr_in *) a1->dest_addr->ai_addr;
+	  in1_src = (struct sockaddr_in *) &a1->source_addr;
+	  in2_dst = (struct sockaddr_in *) a2->dest_addr->ai_addr;
+	  in2_src = (struct sockaddr_in *) &a2->source_addr;
+
+	  bit1 = ffs (in1_dst->sin_addr.s_addr ^ in1_src->sin_addr.s_addr);
+	  bit2 = ffs (in2_dst->sin_addr.s_addr ^ in2_src->sin_addr.s_addr);
+	}
+      else if (a1->dest_addr->ai_family == PF_INET6)
+	{
+	  assert (a1->source_addr.ss_family == PF_INET6);
+	  assert (a2->source_addr.ss_family == PF_INET6);
+
+	  struct sockaddr_in6 *in1_dst;
+	  struct sockaddr_in6 *in1_src;
+	  struct sockaddr_in6 *in2_dst;
+	  struct sockaddr_in6 *in2_src;
+
+	  in1_dst = (struct sockaddr_in6 *) a1->dest_addr->ai_addr;
+	  in1_src = (struct sockaddr_in6 *) &a1->source_addr;
+	  in2_dst = (struct sockaddr_in6 *) a2->dest_addr->ai_addr;
+	  in2_src = (struct sockaddr_in6 *) &a2->source_addr;
+
+	  int i;
+	  for (i = 0; i < 4; ++i)
+	    if (in1_dst->sin6_addr.s6_addr32[i]
+		!= in1_src->sin6_addr.s6_addr32[i]
+		|| (in2_dst->sin6_addr.s6_addr32[i]
+		    != in2_src->sin6_addr.s6_addr32[i]))
+	      break;
+
+	  if (i < 4)
+	    {
+	      bit1 = ffs (in1_dst->sin6_addr.s6_addr32[i]
+			  ^ in1_src->sin6_addr.s6_addr32[i]);
+	      bit2 = ffs (in2_dst->sin6_addr.s6_addr32[i]
+			  ^ in2_src->sin6_addr.s6_addr32[i]);
+	    }
+	}
+
+      if (bit1 > bit2)
+	return -1;
+      if (bit1 < bit2)
+	return 1;
+    }
+
+
+  /* Rule 10: Otherwise, leave the order unchanged.  */
+  return 0;
+}
+
+
 int
 getaddrinfo (const char *name, const char *service,
 	     const struct addrinfo *hints, struct addrinfo **pai)
 {
   int i = 0, j = 0, last_i = 0;
+  int nresults = 0;
   struct addrinfo *p = NULL, **end;
   struct gaih *g = gaih, *pg = NULL;
   struct gaih_service gaih_service, *pservice;
+  struct addrinfo local_hints;
 
   if (name != NULL && name[0] == '*' && name[1] == 0)
     name = NULL;
@@ -854,11 +1263,40 @@ getaddrinfo (const char *name, const char *service,
   if (hints == NULL)
     hints = &default_hints;
 
-  if (hints->ai_flags & ~(AI_PASSIVE|AI_CANONNAME|AI_NUMERICHOST|AI_IDN))
+  if (hints->ai_flags
+      & ~(AI_PASSIVE|AI_CANONNAME|AI_NUMERICHOST|AI_ADDRCONFIG|AI_V4MAPPED
+	  |AI_ALL|AI_IDN))
     return EAI_BADFLAGS;
 
-  if ((hints->ai_flags & (AI_CANONNAME|AI_IDN)) && name == NULL)
+  if ((hints->ai_flags & AI_CANONNAME) && name == NULL)
     return EAI_BADFLAGS;
+
+  if (hints->ai_flags & AI_ADDRCONFIG)
+    {
+      /* Determine whether we have IPv4 or IPv6 interfaces or both.
+	 We cannot cache the results since new interfaces could be
+	 added at any time.  */
+      bool seen_ipv4;
+      bool seen_ipv6;
+      __check_pf (&seen_ipv4, &seen_ipv6);
+
+      /* Now make a decision on what we return, if anything.  */
+      if (hints->ai_family == PF_UNSPEC)
+	{
+	  /* If we haven't seen both IPv4 and IPv6 interfaces we can
+	     narrow down the search.  */
+	  if (! seen_ipv4 || ! seen_ipv6)
+	    {
+	      local_hints = *hints;
+	      local_hints.ai_family = seen_ipv4 ? PF_INET : PF_INET6;
+	      hints = &local_hints;
+	    }
+	}
+      else if ((hints->ai_family == PF_INET && ! seen_ipv4)
+	       || (hints->ai_family == PF_INET6 && ! seen_ipv6))
+	/* We cannot possibly return a valid answer.  */
+	return EAI_NONAME;
+    }
 
   if (service && service[0])
     {
@@ -909,7 +1347,11 @@ getaddrinfo (const char *name, const char *service,
 		  return -(i & GAIH_EAI);
 		}
 	      if (end)
-		while(*end) end = &((*end)->ai_next);
+		while (*end)
+		  {
+		    end = &((*end)->ai_next);
+		    ++nresults;
+		  }
 	    }
 	}
       ++g;
@@ -917,6 +1359,46 @@ getaddrinfo (const char *name, const char *service,
 
   if (j == 0)
     return EAI_FAMILY;
+
+  if (nresults > 1)
+    {
+      /* Sort results according to RFC 3484.  */
+      struct sort_result results[nresults];
+      struct addrinfo *q;
+
+      for (i = 0, q = p; q != NULL; ++i, q = q->ai_next)
+	{
+	  results[i].dest_addr = q;
+	  results[i].got_source_addr = false;
+
+	  /* We overwrite the type with SOCK_DGRAM since we do not
+	     want connect() to connect to the other side.  If we
+	     cannot determine the source address remember this
+	     fact.  */
+	  int fd = __socket (q->ai_family, SOCK_DGRAM, IPPROTO_IP);
+	  if (fd != -1)
+	    {
+	      socklen_t sl = sizeof (results[i].source_addr);
+	      if (__connect (fd, q->ai_addr, q->ai_addrlen) == 0
+		  && __getsockname (fd,
+				    (struct sockaddr *) &results[i].source_addr,
+				    &sl) == 0)
+		results[i].got_source_addr = true;
+
+	      close_not_cancel_no_status (fd);
+	    }
+	}
+
+      /* We got all the source addresses we can get, now sort using
+	 the information.  */
+      qsort (results, nresults, sizeof (results[0]), rfc3484_sort);
+
+      /* Queue the results up as they come out of sorting.  */
+      q = p = results[0].dest_addr;
+      for (i = 1; i < nresults; ++i)
+	q = q->ai_next = results[i].dest_addr;
+      q->ai_next = NULL;
+    }
 
   if (p)
     {
@@ -932,6 +1414,8 @@ getaddrinfo (const char *name, const char *service,
   return last_i ? -(last_i & GAIH_EAI) : EAI_NONAME;
 }
 libc_hidden_def (getaddrinfo)
+
+static_link_warning (getaddrinfo)
 
 void
 freeaddrinfo (struct addrinfo *ai)
