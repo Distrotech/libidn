@@ -161,10 +161,10 @@ $blankline_tex = "\\\\";
 $blankline_sgml = "</para><para>\n";
 
 # these are pretty rough
-%highlights_man = ( "\\s*" .$type_constant . "\\s*", "\\n.I \\\"\$1\\\"\\n",
-		    $type_func . "\\s*", "\\n.B \\\"\$1\\\"\\n",
-		    $type_struct . "\\s*", "\\n.I \\\"\$1\\\"\\n",
-		    $type_param."([\.\, ]*)\n?", "\\n.I \\\"\$1\$2\\\"\\n" );
+%highlights_man = ( $type_constant, "\\\\fB\$1\\\\fP",
+		    $type_func, "\\\\fB\$1\\\\fP",
+		    $type_struct, "\\\\fB\$1\\\\fP",
+		    $type_param, "\\\\fI\$1\\\\fP" );
 $blankline_man = "";
 
 # text-mode
