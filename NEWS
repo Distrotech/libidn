@@ -4,9 +4,11 @@ See the end for copying conditions.
 
 * Version 0.5.14 (unreleased)
 
-** Vietnamese translation added, thanks to Clytie Siddall.
-
 ** Building for srcdir != objdir from CVS now work, thanks to Linus Nordberg.
+
+** Simplified Chinese translations added, thanks to Meng Jie.
+
+** Vietnamese translation added, thanks to Clytie Siddall.
 
 ** API and ABI is backwards compatible with the previous version.
 
