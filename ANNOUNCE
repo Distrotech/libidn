@@ -1,26 +1,33 @@
-Libstringprep ANNOUNCE -- Overview to attract interest.
+Libidn ANNOUNCE -- Overview to attract interest.
 See the end for copying conditions.
 
-Libstringprep is an implementation of the Stringprep specification
-used by the Internationalized Domain Names IETF working group to
-implement internationalized domain names.  It is licensed under the
-GNU Lesser General Public License.
+Libidn is an implementation of the Stringprep/Nameprep, Punycode and
+IDNA specifications defined by the Internationalized Domain Names IETF
+working group to implement internationalized domain names.  It is
+licensed under the GNU Lesser General Public License.
 
-The library implements Unicode 3.2 NFKC normalization, mapping
-characters in strings according to Stringprep, and the Bidirectional
-Character handling steps of Stringprep.  The simple API consists of
-two main functions, one for converting data from the system's native
-representation into UTF-8, and one function to perform the Stringprep
-processing.
+The library contains a generic Stringprep implementation (with Unicode
+3.2 NFKC normalization, table mapping of characters, and the
+Bidirectional Character handling), and currently two Stringprep
+profiles; Nameprep (for IDN) and Kerberos5.  The library also
+implements Punycode, and the low-level IDNA operations.  A high-level
+API for handling internationalized domain names is being developed.
 
-The library contains the Nameprep and Kerberos 5 stringprep profiles,
-but adding a new Stringprep profile is straightforward.  The library
-is currently used by forthcoming SASL and Kerberos libraries to
-process user names and passwords before they are input to
-cryptographic operations.  No domain name related application use it.
+The Stringprep API consists of two main functions, one for converting
+data from the system's native representation into UTF-8, and one
+function to perform the Stringprep processing.  Each stringprep
+profile has a corresponding CPP macro.  Adding a new Stringprep for
+your application is straightforward. The Punycode API consists of one
+encoding function and one decoding function.  The IDNA API consists of
+the ToASCII and ToUnicode functions.
 
-Libstringprep is developed for the GNU/Linux system, but runs on over
-20 Unix platforms (including Linux, Solaris, IRIX, AIX, and Tru64) and
+The library is currently used by forthcoming SASL and Kerberos
+libraries to process user names and passwords before they are input to
+cryptographic operations.  It is also used by experimental code for
+domain name related purposes.
+
+Libidn is developed for the GNU/Linux system, but runs on over 20 Unix
+platforms (including Linux, Solaris, IRIX, AIX, and Tru64) and
 Windows.
 
 The project page of the library is available at:
