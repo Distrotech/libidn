@@ -105,6 +105,16 @@ stringprep_apply_table_to_string (unsigned long *ucs4,
  * as stringprep_nameprep(), stringprep_kerberos5() etc instead of
  * calling this function directly.
  *
+ * Since the stringprep operation can expand the string, @maxlen
+ * indicate how large the buffer holding the string is.  The @flags
+ * are one of Stringprep_profile_flags, or 0.  The profile indicates
+ * processing details, see the profile header files, such as
+ * stringprep_generic.h and stringprep_nameprep.h for two examples.
+ * Your application can define new profiles, possibly re-using the
+ * generic stringprep tables that always will be part of the library.
+ * Note that you must convert strings entered in the systems locale
+ * into UTF-8 before using this function.
+ *
  * Return value: Returns 0 iff successful, or an error code.
  **/
 int
