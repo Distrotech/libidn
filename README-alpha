@@ -1,5 +1,5 @@
 Libidn README-alpha -- Important introductory notes for alpha releases.
-Copyright (C) 2002, 2003 Simon Josefsson
+Copyright (C) 2002, 2003, 2004 Simon Josefsson
 See the end for copying conditions.
 
 Libidn is unstable.  You should expect it to not work.  You should
@@ -16,9 +16,10 @@ securely in-place.
 
 It will not become stable without help.  Donate time or money.
 
-To compile from CVS, you may need recent versions of perl, texinfo,
-gengetopt (>= 2.10), cvs2cl, help2man, autoconf (>= 2.59), automake
-(>= 1.8), libtool (I use CVS, YMMV), gtk-doc, doxygen, docbook.
+To compile from CVS, you may need recent versions of perl, texinfo (>=
+CVS), gengetopt (>= 2.10), cvs2cl, help2man, autoconf (>= 2.59),
+automake (>= 1.8), libtool (I use CVS, YMMV), gtk-doc, doxygen,
+docbook.
 
 Bootstrap the build environment using:
 
