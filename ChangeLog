@@ -1,3 +1,219 @@
+2003-03-06  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Version 0.1.12.
+
+2003-03-06  Simon Josefsson <simon@josefsson.org>
+
+	* libidn.texi: Remove stringprep_*.h.  Document stringprep in idn.
+
+2003-03-06  Simon Josefsson <simon@josefsson.org>
+
+	* THANKS: Add.
+
+2003-03-06  Simon Josefsson <simon@josefsson.org>
+
+	* libc/README: Fix ace.
+
+2003-03-06  Simon Josefsson <simon@josefsson.org>
+
+	* contrib/web/idn.php: Add errors.
+
+2003-03-06  Simon Josefsson <simon@josefsson.org>
+
+	* contrib/web/idn.php: Support stringprep.
+
+2003-03-06  Simon Josefsson <simon@josefsson.org>
+
+	* Makefile.am: Ignore gengetopt errors.
+
+2003-03-06  Simon Josefsson <simon@josefsson.org>
+
+	* draft-ietf-xmpp-nodeprep-00.txt,
+	draft-ietf-xmpp-resourceprep-00.txt: Remove.
+
+2003-03-06  Simon Josefsson <simon@josefsson.org>
+
+	* idn.c, idn.ggo.in: Add -s and -p for stringprep.
+
+2003-03-06  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Mention stringprep API changes.
+
+2003-03-06  Simon Josefsson <simon@josefsson.org>
+
+	* profiles.c, stringprep.c, stringprep.h.in, tst_stringprep.c: Add
+	stringprep_profile().
+
+2003-03-06  Simon Josefsson <simon@josefsson.org>
+
+	* reference/Makefile.am: Cosmetic fix.
+
+2003-03-06  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS, example.c, internal.h, profiles.c, stringprep.h.in,
+	stringprep_generic.h, stringprep_iscsi.h, stringprep_kerberos5.h,
+	stringprep_nameprep.h, stringprep_plain.h, stringprep_xmpp.h,
+	reference/Makefile.am, reference/libidn-docs.tmpl: Deprecate
+	stringprep_*.h.
+
+2003-03-06  Simon Josefsson <simon@josefsson.org>
+
+	* draft-ietf-ips-iscsi-string-prep-04.txt,
+	draft-ietf-krb-wg-utf8-profile-01.txt: Add.
+
+2003-03-04  Simon Josefsson <simon@josefsson.org>
+
+	* README-alpha: Fixup.
+
+2003-03-02  Simon Josefsson <simon@josefsson.org>
+
+	* contrib/web/idn.php: Fix typo.
+
+2003-03-02  Simon Josefsson <simon@josefsson.org>
+
+	* contrib/web/idn.php: Reorder.  Add errors.
+
+2003-03-02  Simon Josefsson <simon@josefsson.org>
+
+	* contrib/web/idn.php: Fix.
+
+2003-03-02  Simon Josefsson <simon@josefsson.org>
+
+	* contrib/web/idn.php: Add examples.
+
+2003-03-02  Simon Josefsson <simon@josefsson.org>
+
+	* contrib/web/idn.php: Fix ct.  Add example.
+
+2003-03-02  Simon Josefsson <simon@josefsson.org>
+
+	* contrib/web/idn.php: Add example.
+
+2003-03-02  Simon Josefsson <simon@josefsson.org>
+
+	* contrib/web/idn.php: Fix.
+
+2003-03-02  Simon Josefsson <simon@josefsson.org>
+
+	* contrib/web/idn.php: Examples.
+
+2003-03-02  Simon Josefsson <simon@josefsson.org>
+
+	* contrib/web/idn.php: Fix typos.
+
+2003-03-02  Simon Josefsson <simon@josefsson.org>
+
+	* contrib/web/idn.php: Move examples to bottom.
+
+2003-03-02  Simon Josefsson <simon@josefsson.org>
+
+	* contrib/web/idn.php: Add examples.
+
+2003-03-02  Simon Josefsson <simon@josefsson.org>
+
+	* contrib/web/idn.php: Bug reporting.
+
+2003-03-02  Simon Josefsson <simon@josefsson.org>
+
+	* contrib/web/idn.php: Fixes.
+
+2003-03-02  Simon Josefsson <simon@josefsson.org>
+
+	* contrib/web/idn.php: Charset fixes.
+
+2003-03-02  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Mention idn.php.
+
+2003-03-02  Simon Josefsson <simon@josefsson.org>
+
+	* contrib/README: Add.
+
+2003-03-02  Simon Josefsson <simon@josefsson.org>
+
+	* contrib/web/idn.php: Add.
+
+2003-03-01  Simon Josefsson <simon@josefsson.org>
+
+	* configure.ac: Check for gengetopt.
+
+2003-03-01  Simon Josefsson <simon@josefsson.org>
+
+	* Makefile.am: Use GENGETOPT.
+
+2003-03-01  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add glibc 2.3.2.
+
+2003-03-01  Simon Josefsson <simon@josefsson.org>
+
+	* configure.ac: Bump version.
+
+2003-03-01  Simon Josefsson <simon@josefsson.org>
+
+	* libc/README, libc/Versions, libc/getaddrinfo.c, libc/libc.patch: 
+	Update to libc 2.3.2.
+
+2003-02-28  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2003-02-27  Simon Josefsson <simon@josefsson.org>
+
+	* libidn.texi: Copying conditions.
+
+2003-02-27  Simon Josefsson <simon@josefsson.org>
+
+	* profiles.c: Add SASLprep.
+
+2003-02-27  Simon Josefsson <simon@josefsson.org>
+
+	* stringprep.h.in: Add SASL profile.
+
+2003-02-27  Simon Josefsson <simon@josefsson.org>
+
+	* tst_stringprep.c: Test SASL profile.
+
+2003-02-27  Simon Josefsson <simon@josefsson.org>
+
+	* Makefile.am: Don't byte compile elisp.  Cleanup EXTRA_DIST.
+
+2003-02-27  Simon Josefsson <simon@josefsson.org>
+
+	* idn.ggo.in: Add copyright.
+
+2003-02-27  Simon Josefsson <simon@josefsson.org>
+
+	* draft-ietf-sasl-saslprep-00.txt: Add.
+
+2003-02-27  Simon Josefsson <simon@josefsson.org>
+
+	* libidn.texi: Don't ack self.
+
+2003-02-26  Simon Josefsson <simon@josefsson.org>
+
+	* Makefile.am: Cleanup extra dist.
+
+2003-02-26  Simon Josefsson <simon@josefsson.org>
+
+	* Makefile.am: Make idn.c depend on idn_cmd.*.
+
+2003-02-26  Simon Josefsson <simon@josefsson.org>
+
+	* reference/Makefile.am: Ignore getopt.h.
+
+2003-02-26  Simon Josefsson <simon@josefsson.org>
+
+	* idna.el, punycode.el: Doc fix.
+
+2003-02-26  Simon Josefsson <simon@josefsson.org>
+
+	* libidn.texi: Reorder acks.  Add function and variable index.
+
+2003-02-26  Simon Josefsson <simon@josefsson.org>
+
+	* fdl.texi, lgpl.texi: Fix TOC.
+
 2003-02-26  Simon Josefsson <simon@josefsson.org>
 
 	* NEWS: Version 0.1.11.
