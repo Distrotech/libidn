@@ -20,7 +20,6 @@
  */
 
 #include "internal.h"
-#include "punycode.h"
 
 static int debug = 0;
 static int error_count = 0;
@@ -37,6 +36,23 @@ fail (const char *format, ...)
   error_count++;
   if (break_on_error)
     exit (1);
+}
+
+static void
+ucs4print (unsigned long *str, ssize_t len)
+{
+  int i;
+
+  printf ("\t;; ");
+  for (i = 0; len >= 0 ? i < len : str[i]; i++)
+    {
+      printf ("U+%04x ", str[i]);
+      if ((i + 1) % 4 == 0)
+	printf (" ");
+      if ((i + 1) % 8 == 0 && i + 1 < len)
+	printf ("\n\t;; ");
+    }
+  puts("");
 }
 
 struct punycode
@@ -193,13 +209,13 @@ punycode[] =
     0x002D, 0x003E, 0x0020, 0x0024, 0x0031, 0x002E, 0x0030, 0x0030,
 	0x0020, 0x003C, 0x002D}
   , "-> $1.00 <--", PUNYCODE_SUCCESS}
-,};
+};
 
 int
 main (int argc, char *argv[])
 {
   char *p;
-  int rc, i, j;
+  int rc, i;
   size_t outlen;
 
   do
@@ -226,18 +242,12 @@ main (int argc, char *argv[])
   for (i = 0; i < sizeof (punycode) / sizeof (punycode[0]); i++)
     {
       if (debug)
-	printf ("PUNYCODE entry %d\n", i);
+	printf ("PUNYCODE entry %d: %s\n", i, punycode[i].name);
 
       if (debug)
 	{
 	  printf ("in:\n");
-	  for (j = 0; j < punycode[i].inlen; j++)
-	    {
-	      printf ("U+%04x ", punycode[i].in[j]);
-	      if ((j + 1) % 8 == 0)
-		printf ("\n");
-	    }
-	  puts ("");
+	  ucs4print(punycode[i].in, punycode[i].inlen);
 	}
 
       outlen = BUFSIZ;
