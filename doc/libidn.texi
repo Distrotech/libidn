@@ -1140,18 +1140,6 @@ Prepare the input UTF-8 string according to the draft XMPP resource
 identifier profile.  Returns 0 iff successful, or an error code.
 @end deftypefun
 
-@deftypefun {int} stringprep_generic (char * @var{in}, int @var{maxlen})
-
-@var{in}: input/ouput array with string to prepare.
-
-@var{maxlen}: maximum length of input/output array.
-
-Prepare the input UTF-8 string according to a hypotetical "generic"
-stringprep profile. This is mostly used for debugging or when
-constructing new stringprep profiles. Returns 0 iff successful, or an
-error code.
-@end deftypefun
-
 @c **********************************************************
 @c *******************  Punycode Functions ******************
 @c **********************************************************
