@@ -34,6 +34,9 @@ stringprep_find_character_in_table (uint32_t ucs4,
 {
   ssize_t i;
 
+  /* During self tests, this is where it spends its CPU time and
+     causes most cache misses.  Do a binary search? */
+
   for (i = 0; table[i].start; i++)
     if (ucs4 >= table[i].start &&
 	ucs4 <= (table[i].end ? table[i].end : table[i].start))
