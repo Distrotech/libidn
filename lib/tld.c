@@ -33,8 +33,8 @@
 /**
  * tld_get_table:
  * @tld_str: TLD name (e.g. "com") as zero terminated ASCII byte string.
- * @overrides: Table of well-formed info-structures for TLDs, or %NULL
- * to use library deault tables.
+ * @overrides: Additional well-formed info-structures for TLDs, or %NULL
+ * to only use library deault tables.
  *
  * Return value: Return structure corresponding to TLD @tld_str, first
  * looking through @xtra_tlds then thru built-in list, or %NULL if no
@@ -48,7 +48,12 @@ tld_get_table (const char *tld_str, const Tld_table ** overrides)
   if (!tld_str)
     return NULL;
 
-  for (tld = overrides ? overrides : tld_tables; *tld; tld++)
+  if (overrides)
+    for (tld = overrides; *tld; tld++)
+      if (!strcmp ((*tld)->name, tld_str))
+	return *tld;
+
+  for (tld = tld_tables; *tld; tld++)
     if (!strcmp ((*tld)->name, tld_str))
       return *tld;
 
