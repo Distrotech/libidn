@@ -20,7 +20,7 @@
 DIST_SUBDIRS = reference
 SUBDIRS = @GTKDOC@
 
-ACLOCAL_AMFLAGS = -I . -I m4
+ACLOCAL_AMFLAGS = -I m4
 
 EXTRA_DIST = FAQ libidn.pc.in \
 	m4/iconv.m4 m4/ax_create_stdint_h.m4 m4/ac_compile_check_sizeof.m4 \
@@ -92,7 +92,8 @@ idn.1: idn.c
 
 # Test suite
 
-tests = tst_stringprep tst_nfkc tst_punycode tst_idna
+tests = tst_stringprep tst_punycode tst_idna tst_nfkc \
+	tst_ostringprep tst_opunycode tst_oidna
 
 check_PROGRAMS = $(tests)
 
