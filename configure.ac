@@ -1,5 +1,5 @@
 dnl Process this file with autoconf to produce a configure script.
-AC_INIT(libstringprep, 0.0.6, bug-libstringprep@josefsson.org)
+AC_INIT(libstringprep, 0.0.7, bug-libstringprep@josefsson.org)
 AC_CONFIG_SRCDIR(stringprep.h.in)
 
 # Interfaces removed:    CURRENT++, AGE=0, REVISION=0
@@ -12,7 +12,7 @@ AC_SUBST(LT_CURRENT)
 AC_SUBST(LT_AGE)
 AC_SUBST(LT_REVISION)
 
-AM_INIT_AUTOMAKE
+AM_INIT_AUTOMAKE(gnits)
 AM_CONFIG_HEADER(config.h)
 
 # Checks for programs.

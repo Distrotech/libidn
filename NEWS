@@ -3,6 +3,12 @@ See the end for copying conditions.
 
 Please send libstringprep bug reports to bug-libstringprep@josefsson.org.
 
+* Version 0.0.7
+
+** Apply all tables to entire strings, not just first hit.
+
+** Fix bidi infloop.
+
 * Version 0.0.5
 
 ** Fix prohibited characters handling.
