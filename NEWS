@@ -7,6 +7,12 @@ See the end for copying conditions.
 ** Align GTK-DOC build infrastructure with GTK-DOC official recommendations.
 This mean that you can now browse the Libidn API manual using Devhelp.
 
+** Update of gnulib files to fix potential problem in getopt on BSD.
+
+** Documentation improvements.
+
+** API and ABI is backwards compatible with the previous version.
+
 * Version 0.5.8 (released 2004-10-12)
 
 ** BidiMirroring-3.2.0.txt is now included, not only the generated source code.
