@@ -345,6 +345,9 @@ GCC 2.95.4 and GNU Make. @code{alpha-unknown-freebsd4.7},
 GCC 3.1 and GNU Make. @code{powerpc-apple-darwin6.5}.
 
 @item Cross compiled to uClinux/uClibc on Motorola Coldfire.
+@cindex Motorola Coldfire
+@cindex uClinux
+@cindex uClibc
 
 GCC 3.4 and GNU Make @code{m68k-uclinux-elf}.  (Only the library.)
 
