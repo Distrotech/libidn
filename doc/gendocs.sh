@@ -29,6 +29,16 @@ srcdir=`pwd`
 scripturl="http://savannah.gnu.org/cgi-bin/viewcvs/libidn/libidn/doc/gendocs.sh"
 templateurl="http://savannah.gnu.org/cgi-bin/viewcvs/libidn/libidn/doc/gendocs_template"
 
+: ${MAKEINFO="makeinfo"}
+: ${TEXI2DVI="texi2dvi"}
+: ${DVIPS="dvips"}
+: ${DOCBOOK2TXT="docbook2txt"}
+: ${DOCBOOK2HTML="docbook2html"}
+: ${DOCBOOK2PDF="docbook2pdf"}
+: ${DOCBOOK2PS="docbook2ps"}
+: ${GENDOCS_TEMPLATE_DIR="."}
+unset CDPATH
+
 rcs_revision='$Revision$'
 rcs_version=`set - $rcs_revision; echo $2`
 program=`echo $0 | sed -e 's!.*/!!'`
@@ -44,7 +54,7 @@ usage="Usage: $prog [OPTION]... PACKAGE MANUAL-TITLE
 Generate various output formats from PACKAGE.texinfo (or .texi or .txi) source.
 
 Options:
-  -o OUTDIR   write to OUTDIR, instead of manual/.
+  -o OUTDIR   write files into OUTDIR, instead of manual/.
   --help      display this help and exit successfully.
   --version   display version information and exit successfully.
 
@@ -64,8 +74,8 @@ http://www.gnu.org/prep/maintain_toc.html
 MANUAL-TITLE is included as part of the HTML <title> of the overall
 manual/index.html file.  It should include the name of the package being
 documented.  manual/index.html is created by substitution from the file
-$GENDOCS_TEMPLATE_DIR/gendocs_template; you can modify this generic
-version for your own purposes, if you like.
+$GENDOCS_TEMPLATE_DIR/gendocs_template.  (Feel free to modify the
+generic template for your own purposes.)
 
 If you have several manuals, you'll need to run this script several
 times with different YOURMANUAL values, specifying a different output
@@ -75,17 +85,9 @@ with links to them all.
 You can set the environment variables MAKEINFO, TEXI2DVI, and DVIPS to
 control the programs that get executed, and GENDOCS_TEMPLATE_DIR to
 control where the gendocs_template file is looked for.
-"
 
-: ${MAKEINFO="makeinfo"}
-: ${TEXI2DVI="texi2dvi"}
-: ${DVIPS="dvips"}
-: ${DOCBOOK2TXT="docbook2txt"}
-: ${DOCBOOK2HTML="docbook2html"}
-: ${DOCBOOK2PDF="docbook2pdf"}
-: ${DOCBOOK2PS="docbook2ps"}
-: ${GENDOCS_TEMPLATE_DIR="."}
-unset CDPATH
+Email bug reports or enhancement requests to bug-texinfo@gnu.org.
+"
 
 calcsize()
 {
@@ -137,9 +139,6 @@ if test ! -r $GENDOCS_TEMPLATE_DIR/gendocs_template; then
 fi
 
 echo Generating output formats for $srcfile
-# remove any old junk
-rm -f $outdir/*.{gz,ps,pdf,html,txt,xml}
-rm -rf $outdir/html_node/*.html $outdir/html_node_db/*.html
 
 echo Generating info files...
 ${MAKEINFO} -o $PACKAGE.info $srcfile
@@ -193,11 +192,14 @@ elif test -d $PACKAGE.html; then
 else 
   echo "$0: can't find split html dir for $srcfile." >&2
 fi
-(cd ${split_html_dir} && tar czf - *.html) > \
-    $outdir/${PACKAGE}_html_node.tar.gz
+(
+  cd ${split_html_dir} || exit 1
+  tar -czf ../$outdir/${PACKAGE}_html_node.tar.gz -- *.html
+)
 html_node_tgz_size="`calcsize $outdir/${PACKAGE}_html_node.tar.gz`"
-mkdir -p $outdir/html_node
-mv ${split_html_dir}/* $outdir/html_node/
+rm -f $outdir/html_node/*.html
+mkdir -p $outdir/html_node/
+mv ${split_html_dir}/*.html $outdir/html_node/
 rmdir ${split_html_dir}
 
 echo Making .tar.gz for sources...
@@ -215,11 +217,14 @@ mv $PACKAGE-db.xml $outdir/
 echo Generating docbook HTML...
 split_html_db_dir=html_node_db
 ${DOCBOOK2HTML} -o $split_html_db_dir ${outdir}/$PACKAGE-db.xml
-(cd ${split_html_db_dir} && tar czf - *.html) > \
-    $outdir/${PACKAGE}_html_node_db.tar.gz
+(
+  cd ${split_html_db_dir} || exit 1
+  tar -czf ../$outdir/${PACKAGE}_html_node_db.tar.gz -- *.html
+)
 html_node_db_tgz_size="`calcsize $outdir/${PACKAGE}_html_node_db.tar.gz`"
+rm -f $outdir/html_node_db/*.html
 mkdir -p $outdir/html_node_db
-mv ${split_html_db_dir}/* $outdir/html_node_db/
+mv ${split_html_db_dir}/*.html $outdir/html_node_db/
 rmdir ${split_html_db_dir}
 
 echo Generating docbook ASCII...
