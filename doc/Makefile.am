@@ -30,14 +30,10 @@ info_TEXINFOS = libidn.texi
 pdf_TEXINFOS = libidn.texi
 ps_TEXINFOS = libidn.texi
 
-libidn_TEXINFOS = fdl.texi $(gdoc_TEXINFOS) \
-	example.c.texi example2.c.texi example3.c.texi example4.c.texi
+libidn_TEXINFOS = fdl.texi $(gdoc_TEXINFOS)
 
 libidn.html: libidn.texi $(libidn_TEXINFOS)
 	$(MAKEINFO) --html --no-split --number-sections libidn.texi
-
-%.c.texi: ../examples/%.c
-	sed -e 's/{/@{/g' -e 's/}/@}/g' < $< > $@
 
 # Man pages.
 
