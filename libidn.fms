@@ -9,9 +9,9 @@ BSD-Port-URL: http://www.freshports.org/devel/libidn/
 CVS-URL: http://josefsson.org/cgi-bin/viewcvs.cgi/libidn/
 Mirror-Site-URL: http://josefsson.org/libidn
 Demo-URL: http://josefsson.org/idn.php
-Version: 0.5.6
-Release-Focus: Minor feature enhancements
+Version: 0.5.7
+Release-Focus: Minor bugfixes
 
-Added functions (e.g., idna_strerror) to convert return codes to human
-readable text.  Now using GNULib in command line front end (src/) for
-portability code.
+Shared library version incremented to reflect the new APIs that were
+added in earlier versions.  French translation updated.  Minor bug
+fixes.
