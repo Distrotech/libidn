@@ -8,6 +8,10 @@ licensed under the same licence as Libidn itself.
 
 The web/ sub-directory contains a online libidn interface in PHP.
 
+The java/ sub-directory builds Java *.class files that implement the
+Libidn API.  Note!  It is unfinished and left as a proof of concept.
+A developer with knowledge about Java is encouraged to take over it.
+
 ----------------------------------------------------------------------
 Copying and distribution of this file, with or without modification,
 are permitted in any medium without royalty provided the copyright
