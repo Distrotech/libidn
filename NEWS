@@ -2,15 +2,15 @@ Libidn NEWS -- History of user-visible changes.                 -*- outline -*-
 Copyright (C) 2002, 2003 Simon Josefsson
 See the end for copying conditions.
 
-* Version 0.1.9 (unreleased)
+* Version 0.1.9 (released 2003-02-20)
 
 ** SASL ANONYMOUS "plain" stringprep profile added.
 
 ** XMPP nodeprep profile fixed.
 
-** No API or ABI changes.
+** API and ABI is backwards compatible with the previous version.
 For future releases, the NEWS entry will specifically mention whether
-the C header API or library ABI is modified.
+the C header API or library ABI backwards compatibility is affected.
 
 * Version 0.1.8 (released 2003-02-14)
 
