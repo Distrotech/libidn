@@ -77,6 +77,6 @@ GTK_DOC_CHECK(1.1)
 
 AC_CONFIG_FILES([Makefile libidn.pc doc/reference/Makefile \
 		lib/stringprep.h contrib/doxygen/Doxyfile \
-		doc/Makefile doc/specifications/Makefile \
+		doc/Makefile doc/specifications/Makefile doc/tld/Makefile \
 		lib/Makefile src/Makefile tests/Makefile examples/Makefile])
 AC_OUTPUT
