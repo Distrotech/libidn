@@ -9,6 +9,8 @@ See the end for copying conditions.
 ** Fixed debug information in 'idn'.
 
 ** API and ABI is backwards compatible with the previous version.
+stringprep_4i: NEW.
+stringprep_4zi: NEW.
 
 * Version 0.3.2 (released 2003-10-07)
 
