@@ -33,7 +33,7 @@
 static const char *
 stringprep_locale_charset_slow ()
 {
-  const char *charset = getenv ("CHARSET");
+  const char *charset = getenv ("CHARSET"); /* flawfinder: ignore */
   char *p;
 
   if (charset && *charset)
@@ -46,10 +46,10 @@ stringprep_locale_charset_slow ()
   charset = nl_langinfo (CODESET);
 
   setlocale (LC_CTYPE, p);
-#endif
 
   if (charset && *charset)
     return charset;
+#endif
 
   return "ASCII";
 }
