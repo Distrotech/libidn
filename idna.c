@@ -256,7 +256,7 @@ idna_to_unicode_internal (char *utf8in, size_t utf8len,
 
     inasciirange = 1;
     for (i = 0; utf8in[i]; i++)
-      if (utf8in[i] > 0x7F)
+      if (utf8in[i] & ~0x7F)
 	inasciirange = 0;
     if (inasciirange)
       goto step3;
@@ -441,7 +441,7 @@ idna_to_ascii_4z (const uint32_t *input, char **output, int flags)
 	}
       else
 	{
-	  out = strdup (buf);
+	  out = (char*) strdup (buf);
 	  if (!out)
 	    return IDNA_MALLOC_ERROR;
 	}
@@ -712,7 +712,6 @@ idna_to_unicode_lzlz (const char *input, char **output, int flags)
 
 /* Deprecated interfaces */
 
-
 /*
  * idna_to_ascii
  * @in: input array with unicode code points.
@@ -868,7 +867,7 @@ idna_to_ascii_from_ucs4 (const unsigned long *input, char **output,
 
   for (inlen = 0; input[inlen]; inlen++)
     ;
-  tmp = malloc (sizeof (tmp[0]) * inlen);
+  tmp = malloc (sizeof (tmp[0]) * (inlen + 1));
   if (!tmp)
     return IDNA_MALLOC_ERROR;
 
@@ -879,6 +878,7 @@ idna_to_ascii_from_ucs4 (const unsigned long *input, char **output,
 
   for (i = 0; i < inlen; i++)
     tmp[i] = input[i];
+  tmp[i] = 0;
   rc = idna_to_ascii_4z (tmp, output, flags);
   free (tmp);
 
@@ -973,7 +973,7 @@ idna_to_unicode_ucs4_from_ucs4 (const unsigned long *input,
 
   for (inlen = 0; input[inlen]; inlen++)
     ;
-  tmpin = malloc (sizeof (tmpin[0]) * inlen);
+  tmpin = malloc (sizeof (tmpin[0]) * (inlen + 1));
   if (!tmpin)
     return IDNA_MALLOC_ERROR;
 
@@ -984,6 +984,7 @@ idna_to_unicode_ucs4_from_ucs4 (const unsigned long *input,
 
   for (i = 0; i < inlen; i++)
     tmpin[i] = input[i];
+  tmpin[i] = 0;
   rc = idna_to_unicode_4z4z (tmpin, &tmpout, flags);
   free (tmpin);
 
@@ -1019,17 +1020,35 @@ int
 idna_to_unicode_ucs4_from_utf8 (const char *input, unsigned long **output,
 				int allowunassigned, int usestd3asciirules)
 {
-  unsigned long *ucs4;
-  size_t ucs4len;
+  size_t tmpinlen, tmpoutlen;
   int rc;
+  int flags = 0;
+  uint32_t *tmpin;
+  uint32_t *tmpout;
+  size_t i;
 
-  ucs4 = stringprep_utf8_to_ucs4 (input, -1, &ucs4len);
-  if (!ucs4)
+  tmpin = stringprep_utf8_to_ucs4 (input, -1, &tmpinlen);
+  if (!tmpin)
     return IDNA_ICONV_ERROR;
 
-  rc = idna_to_unicode_ucs4_from_ucs4 (ucs4, output,
-				       allowunassigned, usestd3asciirules);
-  free (ucs4);
+  if (allowunassigned)
+    flags |= IDNA_ALLOW_UNASSIGNED;
+  if (usestd3asciirules)
+    flags |= IDNA_USE_STD3_ASCII_RULES;
+
+  rc = idna_to_unicode_4z4z (tmpin, &tmpout, flags);
+  free (tmpin);
+
+  for (tmpoutlen = 0; tmpout[tmpoutlen]; tmpoutlen++)
+    ;
+
+  *output = malloc(sizeof(output[0]) * (tmpoutlen + 1));
+  if (!*output)
+    return IDNA_MALLOC_ERROR;
+
+  for (i = 0; i < tmpoutlen; i++)
+    (*output)[i] = tmpout[i];
+  (*output)[i] = 0;
 
   return rc;
 }
