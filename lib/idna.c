@@ -641,6 +641,7 @@ idna_to_unicode_4z4z (const uint32_t * input, uint32_t ** output, int flags)
 				    * (outlen + 1 + buflen + 1));
 	  if (!newp)
 	    {
+	      free (buf);
 	      free (out);
 	      return IDNA_MALLOC_ERROR;
 	    }
