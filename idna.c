@@ -60,12 +60,6 @@ idna_to_ascii (const unsigned long *in, size_t inlen,
   unsigned long *src;		/* XXX don't need to copy data? */
   int rc;
 
-  src = malloc (sizeof (in[0]) * (inlen + 1));
-  if (src == NULL)
-    return IDNA_MALLOC_ERROR;
-
-  memcpy (src, in, sizeof (in[0]) * inlen);
-  src[inlen] = 0;
 
   /*
    * ToASCII consists of the following steps:
@@ -79,11 +73,20 @@ idna_to_ascii (const unsigned long *in, size_t inlen,
     int inasciirange;
 
     inasciirange = 1;
-    for (i = 0; src[i]; i++)
-      if (src[i] > 0x7F)
+    for (i = 0; in[i]; i++)
+      if (in[i] > 0x7F)
 	inasciirange = 0;
     if (inasciirange)
-      goto step3;
+      {
+	src = malloc (sizeof (in[0]) * (inlen + 1));
+	if (src == NULL)
+	  return IDNA_MALLOC_ERROR;
+
+	memcpy (src, in, sizeof (in[0]) * inlen);
+	src[inlen] = 0;
+
+	goto step3;
+      }
   }
 
   /*
@@ -94,20 +97,24 @@ idna_to_ascii (const unsigned long *in, size_t inlen,
   {
     char *p;
 
-    p = stringprep_ucs4_to_utf8 (src, inlen, NULL, NULL);
+    p = stringprep_ucs4_to_utf8 (in, inlen, NULL, NULL);
     if (p == NULL)
       return IDNA_MALLOC_ERROR;
 
-    free (src);
+    len = strlen(p);
+    do
+      {
+	len = 2 * len + 10; /* XXX better guess? */
+	p = realloc (p, len);
+	if (p == NULL)
+	  return IDNA_MALLOC_ERROR;
 
-    p = realloc (p, BUFSIZ);  /* XXX this is exessive */
-    if (p == NULL)
-      return IDNA_MALLOC_ERROR;
-
-    if (allowunassigned)
-      rc = stringprep_nameprep (p, BUFSIZ);
-    else
-      rc = stringprep_nameprep_no_unassigned (p, BUFSIZ);
+	if (allowunassigned)
+	  rc = stringprep_nameprep (p, len);
+	else
+	  rc = stringprep_nameprep_no_unassigned (p, len);
+      }
+    while (rc == STRINGPREP_TOO_SMALL_BUFFER);
 
     if (rc != STRINGPREP_OK)
       {
@@ -141,10 +148,16 @@ step3:
 	    (src[i] >= 0x3A && src[i] <= 0x40) ||
 	    (src[i] >= 0x5B && src[i] <= 0x60) ||
 	    (src[i] >= 0x7B && src[i] <= 0x7F))
-	  return IDNA_CONTAINS_LDH;
+	  {
+	    free(src);
+	    return IDNA_CONTAINS_LDH;
+	  }
 
       if (src[0] == 0x002D || (i > 0 && src[i - 1] == 0x002D))
-	return IDNA_CONTAINS_MINUS;
+	{
+	  free(src);
+	  return IDNA_CONTAINS_MINUS;
+	}
     }
 
   /*
@@ -185,7 +198,10 @@ step3:
       if (((unsigned long)IDNA_ACE_PREFIX[i] & 0xFF) != src[i])
 	match = 0;
     if (match)
-      return IDNA_CONTAINS_ACE_PREFIX;
+      {
+	free(src);
+	return IDNA_CONTAINS_ACE_PREFIX;
+      }
   }
 
   /*
@@ -198,6 +214,7 @@ step3:
   outlen = 63 - strlen (IDNA_ACE_PREFIX);
   rc = punycode_encode (len, src, NULL,
 			&outlen, &out[strlen (IDNA_ACE_PREFIX)]);
+  free(src);
   if (rc != PUNYCODE_SUCCESS)
     return IDNA_PUNYCODE_ERROR;
   out[strlen (IDNA_ACE_PREFIX) + outlen] = '\0';
