@@ -18,7 +18,7 @@
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
 
 DIST_SUBDIRS = doc m4 reference
-SUBDIRS = . doc m4 @GTKDOC@ gl lib src tests examples
+SUBDIRS = . m4 @GTKDOC@ gl lib src doc tests examples
 
 ACLOCAL_AMFLAGS = -I m4 -I gl/m4
 
