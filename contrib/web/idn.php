@@ -1,7 +1,15 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<?php
+if (!$charset) {
+	$data = "räksmörgås.josefsson.org"; 
+	$charset = "ISO-8859-1";
+} else if ($lastcharset && $charset != $lastcharset) {
+	$data = "foo";
+} ?>
+
 <html>
   <head>
-    <?php if (!$charset) { $charset = "ISO-8859-1"; } ?>
     <meta http-equiv='Content-Type' content='text/html; charset="<?php print $charset ?>"'>
     <title>Try GNU Libidn</title>
   </head>
@@ -33,9 +41,6 @@
       <p>The following string must be in <?php print $charset; ?>, if
 	you wish to use another charset you must select it below,
 	submit the form, and start over.<br>
-
-	<?php if (!$lastcharset) { $data = "räksmörgås.josefsson.org"; }
-	      else if ($charset != $lastcharset) { $data = "foo"; } ?>
 
       <input type=text name=data size=40 value="<?php print $data ?>"><br>
 
