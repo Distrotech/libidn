@@ -246,8 +246,6 @@ Stringprep_profile stringprep_xmpp_nodeprep[] = {
 Stringprep_profile stringprep_xmpp_resourceprep[] = {
   {STRINGPREP_MAP_TABLE, 0, stringprep_generic_B_1, "B.1"}
   ,
-  {STRINGPREP_MAP_TABLE, 0, stringprep_generic_B_3, "B.3"}
-  ,
   {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_1_2, "C.1.2"}
   ,
   {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_2_1, "C.2.1"}
