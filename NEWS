@@ -13,7 +13,9 @@ the new API "tld.h" is installed which can be used to check a string
 for conformance to TLD specific rules.  This add a new self test, and
 updates to the manual.  People responsible for maintaining TLD tables
 are hereby encouraged to contribute them (under reasonable licensing
-terms) for inclusion in future versions of Libidn.
+terms) for inclusion in future versions of Libidn.  Be warned that the
+API for TLD checking may change throughout the 0.4.x series as we get
+feedback on it.
 
 ** API and ABI is backwards compatible with the previous version.
 stringprep_kerberos5: DEPRECATED.
