@@ -75,16 +75,16 @@ stringprep_locale_charset (void)
   if (charset && *charset)
     return charset;
 
-# ifdef LOCALE_WORKS
+#  ifdef LOCALE_WORKS
   charset = nl_langinfo (CODESET);
 
   if (charset && *charset)
     return charset;
-# endif
+#  endif
 
   return "ASCII";
 }
-#endif
+# endif
 
 /**
  * stringprep_convert:
