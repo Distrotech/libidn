@@ -57,8 +57,16 @@ Software Foundation raise funds for GNU development.''
 * Stringprep Functions::	Stringprep functions.
 * Punycode Functions::		Punycode functions.
 * IDNA Functions::		IDNA functions.
-* Examples::                    Demonstration on how to use the library.
-* Copying This Manual::
+* Examples::                    Demonstrate how to use the library.
+* Acknowledgements::            Whom to blame.
+
+Appendices
+
+* Library Copying::		How you can copy and share GNU Libidn.
+* Copying This Manual::		How you can copy and share this manual.
+
+Indices
+
 * Index::
 @end menu
 
@@ -578,6 +586,23 @@ compatible names to internationalized domain names.
 @example
 @include example4.c.texi
 @end example
+
+@c **********************************************************
+@c *******************  Acknowledgements  *******************
+@c **********************************************************
+@node Acknowledgements
+@chapter Acknowledgements
+
+Simon Josefsson created the library autumn 2002 when he really should
+have been studying mathematics.
+
+The punycode code was taken from the IETF IDN Punycode specification,
+by Adam M. Costello.
+
+Some functions (see nfkc.c and toutf8.c) has been borrowed from GLib
+downloaded from www.gtk.org.
+
+@include lgpl.texi
 
 @node Copying This Manual
 @appendix Copying This Manual
