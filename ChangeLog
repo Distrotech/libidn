@@ -1,3 +1,86 @@
+2004-05-31  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Version 0.4.7.
+
+2004-05-31  Simon Josefsson <simon@josefsson.org>
+
+	* po/da.po, po/de.po, po/fr.po, po/nl.po, po/pl.po, po/ro.po,
+	po/sr.po, po/sv.po: Generated.
+
+2004-05-31  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Fix.
+
+2004-05-31  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi: Markup fix.
+
+2004-05-31  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi: (Java API): Fix.
+
+2004-05-31  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi: Markup fixes.
+
+2004-05-31  Simon Josefsson <simon@josefsson.org>
+
+	* java/Makefile.am, java/README.UNICODE, java/README.html: Remove
+	(moved to doc/libidn.texi).
+
+2004-05-31  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi:
+	(Introduction): Mention Java port.  (Downloading and Installing):
+	Mention --enable-java.  (Java API): Add, taken from java/README.html
+	and java/README.UNICODE by Oliver Hitz.
+
+2004-05-31  Simon Josefsson <simon@josefsson.org>
+
+	* java/Makefile.am: Revert, I don't want to require gcj for CVS
+	builds.
+
+2004-05-31  Simon Josefsson <simon@josefsson.org>
+
+	* java/Makefile.am: Dist libidn.jar (this seem to be the norm among
+	Java libraries?).
+
+2004-05-31  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2004-05-31  Simon Josefsson <simon@josefsson.org>
+
+	* java/Makefile.am: Build more.
+
+2004-05-31  Simon Josefsson <simon@josefsson.org>
+
+	* configure.ac, java/Makefile.am, java/README.UNICODE,
+	java/README.html, java/gnu/inet/encoding/CombiningClass.java,
+	java/gnu/inet/encoding/Composition.java,
+	java/gnu/inet/encoding/DecompositionKeys.java,
+	java/gnu/inet/encoding/DecompositionMappings.java,
+	java/gnu/inet/encoding/IDNA.java,
+	java/gnu/inet/encoding/IDNAException.java,
+	java/gnu/inet/encoding/Makefile.am,
+	java/gnu/inet/encoding/NFKC.java,
+	java/gnu/inet/encoding/RFC3454.java,
+	java/gnu/inet/encoding/Stringprep.java,
+	java/gnu/inet/encoding/StringprepException.java,
+	java/misc/GenerateNFKC.java, java/misc/GenerateRFC3454.java,
+	java/misc/Makefile.am, java/misc/TestIDNA.java,
+	java/misc/TestNFKC.java, java/gnu/inet/encoding/Punycode.java,
+	java/gnu/inet/encoding/PunycodeException.java: Improve JAVA port,
+	from Oliver Hitz <oliver@net-track.ch>.
+
+2004-05-25  Simon Josefsson <simon@josefsson.org>
+
+	* README-alpha: Fix.
+
+2004-05-25  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS, configure.ac: Bump versions.
+
 2004-05-24  Simon Josefsson <simon@josefsson.org>
 
 	* NEWS: Version 0.4.6.
