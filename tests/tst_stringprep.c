@@ -180,16 +180,20 @@ const struct stringprep strprep[] = {
   /* SASL trace */
   {"SASL ANONYMOUS plain mechanism", "simon@josefsson.org",
    "simon@josefsson.org", "plain"},
+  {"SASLprep 1 old", "x\xC2\xADy", "xy", "SASLprep"},
+  {"SASLprep 4 old", "\xE2\x85\xA3", "IV", "SASLprep"},
   /* SASLprep test vectors. */
-  {"SASLprep 1 SOFT HYPHEN mapped to nothing", "x\xC2\xADy", "xy",
-   "SASLprep"},
+  {"SASLprep 1 SOFT HYPHEN mapped to nothing", "I\xC2\xADX", "IX", "SASLprep"},
   {"SASLprep 2 no transformation", "user", "user", "SASLprep"},
   {"SASLprep 3 case preserved, will not match #2", "USER", "USER",
    "SASLprep"},
-  {"SASLprep 4 output is NFKC", "\xE2\x85\xA3", "IV", "SASLprep"},
-  {"SASLprep 5 Error - prohibited character", "\x07", NULL, "SASLprep",
+  {"SASLprep 4 output is NFKC, input in ISO 8859-1", "\xC2\xAA", "a",
+   "SASLprep"},
+  {"SASLprep 5 output is NFKC, will match #1", "\xE2\x85\xA8", "IX",
+   "SASLprep"},
+  {"SASLprep 6 Error - prohibited character", "\x07", NULL, "SASLprep",
    0, STRINGPREP_CONTAINS_PROHIBITED},
-  {"SASLprep 6 Error - bidirectional check", "\xD8\xA7" "1", NULL, "SASLprep",
+  {"SASLprep 7 Error - bidirectional check", "\xD8\xA7" "1", NULL, "SASLprep",
    0, STRINGPREP_BIDI_LEADTRAIL_NOT_RAL}
 };
 
