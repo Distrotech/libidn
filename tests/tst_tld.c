@@ -128,7 +128,7 @@ main (int argc, char *argv[])
 	  ucs4print (tld[i].in, tld[i].inlen);
 	}
 
-      tldtable = tld_get_table (tld[i].tld, NULL);
+      tldtable = tld_default_table (tld[i].tld, NULL);
       if (tldtable == NULL)
 	{
 	  fail ("TLD entry %d tld_get_table (%s)\n", i, tld[i].tld);
