@@ -100,8 +100,8 @@
 	    (kill-process idna-to-ascii-process)
 	  (error)))
     (when (setq idna-to-ascii-process
-		(let ((process-environment (append process-environment
-						   idna-environment)))
+		(let ((process-environment (append idna-environment
+						   process-environment)))
 		  (apply 'start-process "idna" nil idna-program
 			 idna-to-ascii-parameters)))
       (set-process-filter idna-to-ascii-process 'idna-to-ascii-filter)
@@ -135,8 +135,8 @@
 	    (kill-process idna-to-unicode-process)
 	  (error)))
     (when (setq idna-to-unicode-process
-		(let ((process-environment (append process-environment
-						   idna-environment)))
+		(let ((process-environment (append idna-environment
+						   process-environment)))
 		  (apply 'start-process "idna" nil idna-program
 			 idna-to-unicode-parameters)))
       (set-process-filter idna-to-unicode-process 'idna-to-unicode-filter)

@@ -97,8 +97,8 @@
 	    (kill-process punycode-encode-process)
 	  (error)))
     (when (setq punycode-encode-process
-		(let ((process-environment (append process-environment
-						   punycode-environment)))
+		(let ((process-environment (append punycode-environment
+						   process-environment)))
 		  (apply 'start-process "punycode" nil punycode-program
 			 punycode-encode-parameters)))
       (set-process-filter punycode-encode-process 'punycode-encode-filter)
@@ -132,8 +132,8 @@
 	    (kill-process punycode-decode-process)
 	  (error)))
     (when (setq punycode-decode-process
-		(let ((process-environment (append process-environment
-						   punycode-environment)))
+		(let ((process-environment (append punycode-environment
+						   process-environment)))
 		  (apply 'start-process "punycode" nil punycode-program
 			 punycode-decode-parameters)))
       (set-process-filter punycode-decode-process 'punycode-decode-filter)
