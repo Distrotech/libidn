@@ -1,3 +1,26 @@
+2004-05-24  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Version 0.4.6.
+
+2004-05-24  Simon Josefsson <simon@josefsson.org>
+
+	* po/da.po, po/de.po, po/fr.po, po/nl.po, po/pl.po, po/ro.po,
+	po/sr.po, po/sv.po: Generated.
+
+2004-05-24  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2004-05-24  Simon Josefsson <simon@josefsson.org>
+
+	* lib/Makefile.am:
+	(include_HEADERS): Install idn-free.h, reported by Daniel Stenberg
+	<daniel-curl@haxx.se>.
+
+2004-05-21  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS, configure.ac: Bump versions.
+
 2004-05-21  Simon Josefsson <simon@josefsson.org>
 
 	* NEWS: Version 0.4.5.
