@@ -1,3 +1,75 @@
+2004-09-13  Simon Josefsson <simon@josefsson.org>
+
+	* doc/reference/Makefile.am: Clean more.
+
+2004-09-13  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Version 0.5.5.
+
+2004-09-13  Simon Josefsson <simon@josefsson.org>
+
+	* po/da.po, po/de.po, po/eo.po, po/fr.po, po/nl.po, po/pl.po,
+	po/ro.po, po/sr.po, po/sv.po: Generated.
+
+2004-09-13  Simon Josefsson <simon@josefsson.org>
+
+	* Makefile.am:
+	(POURL): Fix.
+
+2004-09-13  Simon Josefsson <simon@josefsson.org>
+
+	* po/da.po, po/de.po, po/eo.po, po/fr.po, po/nl.po, po/pl.po,
+	po/ro.po, po/sr.po, po/sv.po: Sync with TP.
+
+2004-09-13  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2004-09-05  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2004-09-05  Simon Josefsson <simon@josefsson.org>
+
+	* lib/nfkc.c:
+	(g_utf8_skip): Hide variable, using "static".
+
+2004-09-02  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi: Move.  Fix ack.
+
+2004-08-23  Simon Josefsson <simon@josefsson.org>
+
+	* m4/autobuild.m4: Update.
+
+2004-08-18  Simon Josefsson <simon@josefsson.org>
+
+	* README: Fix.
+
+2004-08-18  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi: Fix.
+
+2004-08-17  Simon Josefsson <simon@josefsson.org>
+
+	* README: Add.
+
+2004-08-17  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS, configure.ac: Bump version.
+
+2004-08-10  Simon Josefsson <simon@josefsson.org>
+
+	* src/idn.c: Shut up 'uno' by fixing array boundary.
+
+2004-08-08  Simon Josefsson <simon@josefsson.org>
+
+	* libidn.fms: Fix.
+
+2004-08-08  Simon Josefsson <simon@josefsson.org>
+
+	* libidn.fms: Add.
+
 2004-08-08  Simon Josefsson <simon@josefsson.org>
 
 	* po/da.po, po/de.po, po/eo.po, po/fr.po, po/nl.po, po/pl.po,
