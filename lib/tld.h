@@ -70,12 +70,8 @@ extern "C"
 
   /* Return structure corresponding to the named tld, first looking
    * thru xtra_tlds then thru built-in list, or NULL if not found. */
-  const Tld_table *tld_finddomain (const char *tld_str,
-				   const Tld_table ** xtra_tlds);
-
-  /* Verify if ch is either in [a-z0-9-.] or mentioned as a legal
-   * character in tld and return TLD_SUCCESS/ILLEGAL respectively. */
-  int tld_checkchar (uint32_t ch, const Tld_table * tld);
+  const Tld_table *tld_get_table (const char *tld_str,
+				  const Tld_table ** xtra_tlds);
 
   /* Determine TLD of UCS4 DNS name and return in out. */
   int tld_gettld_4i (const uint32_t * in, size_t inlen, char **out);

@@ -30,6 +30,42 @@
 #define DOTP(c) ((c) == 0x002E || (c) == 0x3002 ||	\
 		 (c) == 0xFF0E || (c) == 0xFF61)
 
+/*
+ * tld_checkchar:
+ * @ch: 32 bit unicode character to check.
+ * @tld: Tld_table data structure to check @ch against
+ *
+ * Verify if @ch is either in [a-z0-9-.] or mentioned
+ * as a legal character in @tld.
+ *
+ * Return value: Return %TLD_SUCCESS if @ch is a legal character for
+ * the TLD @tld or if @tld is %NULL, %TLD_ILLEGAL if @ch is not a
+ * legal as defined by @tld.
+ */
+static int
+_tld_checkchar (uint32_t ch, const Tld_table * tld)
+{
+  const Tld_table_element *p;
+  size_t i;
+  int found = 0;
+
+  if (!tld)
+    return TLD_SUCCESS;
+
+  /* Check for [-a-z0-9.]. */
+  if ((ch >= 0x61 && ch <= 0x7A) ||
+      (ch >= 0x30 && ch <= 0x39) || ch == 0x2D || DOTP (ch))
+    return TLD_SUCCESS;
+
+  /* FIXME: replace searches by bsearch like stuff. */
+
+  for (p = tld->valid, i = 0; i < tld->nvalid; i++, p++)
+    if (ch >= p->start && ch <= p->end)
+      return TLD_SUCCESS;
+
+  return TLD_ILLEGAL;
+}
+
 /**
  * tld_gettld_4i:
  * @in: Array of unicode code points to process (Does not need to be
@@ -139,7 +175,7 @@ tld_check_4it (const uint32_t * in, size_t inlen, size_t * errpos,
   ipos = in;
   while (ipos < &in[inlen])
     {
-      rc = tld_checkchar (*ipos, tld);
+      rc = _tld_checkchar (*ipos, tld);
       if (rc != TLD_SUCCESS)
 	{
 	  if (errpos)
@@ -193,13 +229,14 @@ tld_check_4zt (const uint32_t * in, size_t * errpos, const Tld_table * tld)
  * @xtra_tlds: An array of additional domain restriction structures
  *  that complement and supersede the built-in information.
  *
- * Test each of the code points in @in for whether or not
- * they are allowed by the information in @xtra_tlds or by the built-in
- * TLD restriction data. When data for the same TLD is available both internally
- * and in @xtra_tlds, the information in @xtra_tlds takes precedence. If
- * several entries for a specific TLD are found, the first one is used.
- * If @xtra_tlds is %NULL, only the built-in information is used.
- * The position of the first offending character is returned in @errpos.
+ * Test each of the code points in @in for whether or not they are
+ * allowed by the information in @xtra_tlds or by the built-in TLD
+ * restriction data. When data for the same TLD is available both
+ * internally and in @xtra_tlds, the information in @xtra_tlds takes
+ * precedence. If several entries for a specific TLD are found, the
+ * first one is used.  If @xtra_tlds is %NULL, only the built-in
+ * information is used.  The position of the first offending character
+ * is returned in @errpos.
  *
  * Return value: Returns %TLD_SUCCESS if all code points
  * are valid or when @tld is null, %TLD_ILLEGAL if a
@@ -228,7 +265,7 @@ tld_check_4i (const uint32_t * in, size_t inlen, size_t * errpos,
     }
 
   /* Retrieve appropriate data structure. */
-  tld = tld_finddomain (domain, xtra_tlds);
+  tld = tld_get_table (domain, xtra_tlds);
   free (domain);
 
   return tld_check_4it (in, inlen, errpos, tld);
@@ -241,13 +278,14 @@ tld_check_4i (const uint32_t * in, size_t inlen, size_t * errpos,
  * @xtra_tlds: An array of additional domain restriction structures
  * that complement and supersede the built-in information.
  *
- * Test each of the code points in @in for whether or not
- * they are allowed by the information in @xtra_tlds or by the built-in
- * TLD restriction data. When data for the same TLD is available both internally
- * and in @xtra_tlds, the information in @xtra_tlds takes precedence. If
- * several entries for a specific TLD are found, the first one is used.
- * If @xtra_tlds is %NULL, only the built-in information is used.
- * The position of the first offending character is returned in @errpos.
+ * Test each of the code points in @in for whether or not they are
+ * allowed by the information in @xtra_tlds or by the built-in TLD
+ * restriction data. When data for the same TLD is available both
+ * internally and in @xtra_tlds, the information in @xtra_tlds takes
+ * precedence. If several entries for a specific TLD are found, the
+ * first one is used.  If @xtra_tlds is %NULL, only the built-in
+ * information is used.  The position of the first offending character
+ * is returned in @errpos.
  *
  * Return value: Returns %TLD_SUCCESS if all code points
  * are valid or when @tld is null, %TLD_ILLEGAL if a
@@ -276,15 +314,16 @@ tld_check_4z (const uint32_t * in, size_t * errpos,
  * @xtra_tlds: An array of additional domain restriction structures
  * that complement and supersede the built-in information.
  *
- * Test each of the characters in @in for whether or not
- * they are allowed by the information in @xtra_tlds or by the built-in
- * TLD restriction data. When data for the same TLD is available both internally
- * and in @xtra_tlds, the information in @xtra_tlds takes precedence. If
- * several entries for a specific TLD are found, the first one is used.
- * If @xtra_tlds is %NULL, only the built-in information is used.
- * The position of the first offending character is returned in @errpos.
- * Note that the error position refers to the decoded character offset
- * rather than the byte position in the string.
+ * Test each of the characters in @in for whether or not they are
+ * allowed by the information in @xtra_tlds or by the built-in TLD
+ * restriction data. When data for the same TLD is available both
+ * internally and in @xtra_tlds, the information in @xtra_tlds takes
+ * precedence. If several entries for a specific TLD are found, the
+ * first one is used.  If @xtra_tlds is %NULL, only the built-in
+ * information is used.  The position of the first offending character
+ * is returned in @errpos.  Note that the error position refers to the
+ * decoded character offset rather than the byte position in the
+ * string.
  *
  * Return value: Returns %TLD_SUCCESS if all characters
  * are valid or when @tld is null, %TLD_ILLEGAL if a
@@ -320,15 +359,16 @@ tld_check_8z (const char *in, size_t * errpos, const Tld_table ** xtra_tlds)
  * @xtra_tlds: An array of additional domain restriction structures
  * that complement and supersede the built-in information.
  *
- * Test each of the characters in @in for whether or not
- * they are allowed by the information in @xtra_tlds or by the built-in
- * TLD restriction data. When data for the same TLD is available both internally
- * and in @xtra_tlds, the information in @xtra_tlds takes precedence. If
- * several entries for a specific TLD are found, the first one is used.
- * If @xtra_tlds is %NULL, only the built-in information is used.
- * The position of the first offending character is returned in @errpos.
- * Note that the error position refers to the decoded character offset
- * rather than the byte position in the string.
+ * Test each of the characters in @in for whether or not they are
+ * allowed by the information in @xtra_tlds or by the built-in TLD
+ * restriction data. When data for the same TLD is available both
+ * internally and in @xtra_tlds, the information in @xtra_tlds takes
+ * precedence. If several entries for a specific TLD are found, the
+ * first one is used.  If @xtra_tlds is %NULL, only the built-in
+ * information is used.  The position of the first offending character
+ * is returned in @errpos.  Note that the error position refers to the
+ * decoded character offset rather than the byte position in the
+ * string.
  *
  * Return value: Returns %TLD_SUCCESS if all characters
  * are valid or when @tld is null, %TLD_ILLEGAL if a
@@ -356,56 +396,17 @@ tld_check_lz (const char *in, size_t * errpos, const Tld_table ** xtra_tlds)
   return rc;
 }
 
-
-
 /**
- * tld_checkchar:
- * @ch: 32 bit unicode character to check.
- * @tld: Tld_table data structure to check @ch against
- *
- * Verify if @ch is either in [a-z0-9-.] or mentioned
- * as a legal character in @tld.
- *
- * Return value: Return %TLD_SUCCESS if @ch is a legal character
- * for the TLD @tld or if @tld is %NULL, %TLD_ILLEGAL if @ch is not a
- * legal as defined by @tld.
- */
-
-int
-tld_checkchar (uint32_t ch, const Tld_table * tld)
-{
-  const Tld_table_element *p;
-  size_t i;
-  int found = 0;
-
-  if (!tld)
-    return TLD_SUCCESS;
-
-  /* Check for [-a-z0-9.]. */
-  if ((ch >= 0x61 && ch <= 0x7A) ||
-      (ch >= 0x30 && ch <= 0x39) || ch == 0x2D || DOTP (ch))
-    return TLD_SUCCESS;
-
-  /* FIXME: replace searches by bsearch like stuff. */
-
-  for (p = tld->valid, i = 0; i < tld->nvalid; i++, p++)
-    if (ch >= p->start && ch <= p->end)
-      return TLD_SUCCESS;
-
-  return TLD_ILLEGAL;
-}
-
-
-/**
- * tld_finddomain:
+ * tld_get_table:
  * @tld_str: TLD name (e.g. "com") as zero terminated ASCII byte string.
  * @xtra_tlds: Additional well-formed info-structures for TLDs or %NULL.
  *
- * Return value: Return structure corresponding to TLD @tld_str, first looking through
- * @xtra_tlds then thru built-in list, or %NULL if no such structure found.
+ * Return value: Return structure corresponding to TLD @tld_str, first
+ *   looking through @xtra_tlds then thru built-in list, or %NULL if
+ *   no such structure found.
  */
 const Tld_table *
-tld_finddomain (const char *tld_str, const Tld_table ** xtra_tlds)
+tld_get_table (const char *tld_str, const Tld_table ** xtra_tlds)
 {
   const Tld_table **tld = NULL;
   int found = 0;
