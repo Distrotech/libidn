@@ -25,6 +25,7 @@ pi) If you are using libidn from CVS you must build some files manually:
 
 $ perl gen-unicode-tables.pl -decomp 3.2 UnicodeData-3.2.0.txt LineBreak-3.2.0.txt SpecialCasing-3.2.0.txt CaseFolding-3.2.0.txt CompositionExclusions-3.2.0.txt
 $ perl gen-stringprep-tables.pl rfc3454.txt
+$ cp stringprep.h.in stringprep.h
 
 4) Configure Libc indicating that the Libidn add-on should be built:
 
