@@ -1363,10 +1363,14 @@ To process a string that starts with @code{-}, for example
 
       --usestd3asciirules  Toggle IDNA UseSTD3ASCIIRules flag  (default=off)
 
-  -p, --profile=STRING     Use specified stringprep profile instead
+  -t, --tld                Check string for TLD specific rules
+                             Only for --idna-to-ascii and --idna-to-unicode
+                             (default=on)
 
-  Valid stringprep profiles are `Nameprep', `KRBprep', `Nodeprep',
-  `Resourceprep', `plain', `trace', `SASLprep', and `iSCSI'.
+  -p, --profile=STRING     Use specified stringprep profile instead
+                             Valid stringprep profiles are `Nameprep',
+                             `iSCSI', `Nodeprep', `Resourceprep', `trace', and
+                             `SASLprep'.
 
       --debug              Print debugging information  (default=off)
 
