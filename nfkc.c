@@ -307,7 +307,7 @@ combine (unsigned long a, unsigned long b, unsigned long *result)
 
   if (index_a >= COMPOSE_FIRST_START && index_a < COMPOSE_FIRST_SINGLE_START
       && index_b >= COMPOSE_SECOND_START
-      && index_a < COMPOSE_SECOND_SINGLE_START)
+      && index_b < COMPOSE_SECOND_SINGLE_START)
     {
       unsigned long res =
 	compose_array[index_a - COMPOSE_FIRST_START][index_b -
