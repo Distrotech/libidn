@@ -83,7 +83,7 @@ main (int argc, char *argv[])
   rc = idna_to_ascii_8z (buf, &p, 0);
   if (rc != IDNA_SUCCESS)
     {
-      printf ("idna_to_ascii_8z failed (%d)...\n", rc);
+      printf ("idna_to_ascii_8z failed (%d): %s\n", rc, idna_strerror (rc));
       return 2;
     }
 
@@ -93,7 +93,8 @@ main (int argc, char *argv[])
   free (p);
   if (rc != IDNA_SUCCESS)
     {
-      printf ("idna_to_unicode_8z4z failed (%d)...\n", rc);
+      printf ("idna_to_unicode_8z4z failed (%d): %s\n",
+	      rc, idna_strerror (rc));
       return 2;
     }
 
@@ -111,7 +112,7 @@ main (int argc, char *argv[])
     }
   else if (rc != TLD_SUCCESS)
     {
-      printf ("tld_check_4z() failed... %d\n", rc);
+      printf ("tld_check_4z() failed (%d): %s\n", rc, tld_strerror (rc));
       return 2;
     }
 

@@ -1,4 +1,4 @@
-/* example.c	Example code showing how to use stringprep().
+/* example.c --- Example code showing how to use stringprep().
  * Copyright (C) 2002, 2003, 2004  Simon Josefsson
  *
  * This file is part of GNU Libidn.
@@ -73,7 +73,7 @@ main (int argc, char *argv[])
 
   rc = stringprep (buf, BUFSIZ, 0, stringprep_nameprep);
   if (rc != STRINGPREP_OK)
-    printf ("Stringprep failed with rc %d...\n", rc);
+    printf ("Stringprep failed (%d): %s\n", rc, stringprep_strerror (rc));
   else
     {
       printf ("After stringprep (length %d): ", strlen (buf));
