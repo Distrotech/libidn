@@ -31,24 +31,27 @@
 #endif
 
 static const char *
-stringprep_locale_charset_slow ()
+stringprep_locale_charset_slow (void)
 {
   const char *charset = getenv ("CHARSET");	/* flawfinder: ignore */
-  char *p;
 
   if (charset && *charset)
     return charset;
 
 #if LOCALE_WORKS
-  p = setlocale (LC_CTYPE, NULL);
-  setlocale (LC_CTYPE, "");
+  {
+    char *p;
 
-  charset = nl_langinfo (CODESET);
+    p = setlocale (LC_CTYPE, NULL);
+    setlocale (LC_CTYPE, "");
 
-  setlocale (LC_CTYPE, p);
+    charset = nl_langinfo (CODESET);
 
-  if (charset && *charset)
-    return charset;
+    setlocale (LC_CTYPE, p);
+
+    if (charset && *charset)
+      return charset;
+  }
 #endif
 
   return "ASCII";
