@@ -4,7 +4,7 @@ See the end for copying conditions.
 
 * Version 0.5.6 (unreleased)
 
-** Now using Lesser GNULib for portability code.
+** Now using GNULib for portability code.
 This means the code now use strdup, which improve readability.
 
 ** Added functions to convert return codes to human readable text.
