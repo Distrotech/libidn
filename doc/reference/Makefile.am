@@ -17,7 +17,7 @@
 # License along with GNU Libidn; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
 
-HIGNORE = gunibreak.h gunicomp.h gunidecomp.h idn-int.h
+HIGNORE = gunibreak.h gunicomp.h gunidecomp.h idn-int.h idn-free.h
 HTML_OBJECTS = index.html c4.html libidn-tld.html \
 	libidn-idna.html libidn-punycode.html libidn-stringprep.html
 
