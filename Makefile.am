@@ -38,10 +38,10 @@ pkgconfig_DATA = libidn.pc
 
 # Maintainer targets
 
+POURL = ftp://tiger.informatik.hu-berlin.de/pub/po/maint/$(PACKAGE)
 update-po:
 	cd po && \
-	wget --timestamping --retr-symlinks \
-		ftp://ftp.unex.es/pub/gnu-i18n/po/maint/$(PACKAGE)/??.po && \
+	wget --timestamping --retr-symlinks $(POURL)/??.po && \
 	cvs add ??.po || true && \
 	cvs commit -m "Sync with TP." ??.po
 
