@@ -41,6 +41,7 @@ AM_GNU_GETTEXT(external)
 AM_GNU_GETTEXT_VERSION(0.14.1)
 AC_PROG_LIBTOOL
 AC_PROG_CC
+gl_EARLY
 AM_MISSING_PROG(PERL, perl, $missing_dir)
 AM_MISSING_PROG(HELP2MAN, help2man, $missing_dir)
 AM_ICONV
@@ -53,26 +54,11 @@ AC_CHECK_HEADERS(unistd.h errno.h)
 # Checks for typedefs, structures, and compiler characteristics.
 AX_CREATE_STDINT_H(lib/idn-int.h, sys/types.h)
 
-# Need getopt.
-GETOPT_H=
-AC_CHECK_HEADERS([getopt.h], [], [GETOPT_H=getopt.h])
-AC_CHECK_FUNCS([getopt_long_only], [],
-  [GETOPT_H=getopt.h
-   AC_LIBOBJ([getopt])
-   AC_LIBOBJ([getopt1])
-   AC_DEFINE([optarg], [rpl_optarg],
-     [Define to rpl_optarg if the replacement variable should be used.])
-   AC_DEFINE([optind], [rpl_optind],
-     [Define to rpl_optind if the replacement variable should be used.])
-   AC_DEFINE([optopt], [rpl_optopt],
-     [Define to rpl_optopt if the replacement variable should be used.])
-   AC_DEFINE([getopt], [rpl_getopt],
-     [Define to rpl_getopt if the replacement function should be used.])
-   AC_DEFINE([getopt_long], [rpl_getopt_long],
-     [Define to rpl_getopt_long if the replacement function should be used.])
-   AC_DEFINE([getopt_long_only], [rpl_getopt_long_only],
-     [Define to rpl_getopt_long_only if the replacement function should be used.])])
-AC_SUBST([GETOPT_H])
+# For gnulib stuff in gl/.
+gl_SOURCE_BASE(gl)
+gl_M4_BASE(gl/m4)
+gl_MODULES(strdup dummy getopt)
+gl_INIT
 
 # Check if locale stuff works
 AC_CACHE_CHECK([if setlocale() and nl_langinfo() works],
@@ -119,7 +105,7 @@ AC_MSG_CHECKING([if implementation in Java should be built])
 AC_MSG_RESULT($enable_java)
 
 AC_CONFIG_FILES([Makefile libidn.pc doc/reference/Makefile doc/java/Makefile \
-		lib/stringprep.h contrib/doxygen/Doxyfile \
+		gl/Makefile lib/stringprep.h contrib/doxygen/Doxyfile \
 		doc/Makefile doc/specifications/Makefile doc/tld/Makefile \
 		lib/Makefile src/Makefile tests/Makefile examples/Makefile \
 		java/Makefile java/gnu/Makefile java/gnu/inet/Makefile \

@@ -1,0 +1,5 @@
+.deps
+.libs
+getopt.h
+*.la
+*.lo

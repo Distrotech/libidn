@@ -17,25 +17,16 @@
 # License along with GNU Libidn; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
 
-AM_CPPFLAGS = -I$(top_srcdir)/lib -I../lib
+AM_CPPFLAGS = -I$(top_srcdir)/lib -I../lib -I$(top_srcdir)/gl -I../gl
 
 dist_lisp_DATA = punycode.el idna.el
 
 bin_PROGRAMS = idn
 
-BUILT_SOURCES = idn_cmd.c idn_cmd.h $(GETOPT_H)
+BUILT_SOURCES = idn_cmd.c idn_cmd.h
 idn_SOURCES = idn.c gettext.h idn.ggo idn_cmd.c idn_cmd.h
-EXTRA_DIST = getopt_.h getopt_int.h
 DISTCLEANFILES = $(BUILT_SOURCES)
-idn_LDADD = ../lib/libidn.la $(LTLIBINTL) $(LTLIBOBJS)
-
-# We need the following in order to create an <getopt.h> when the system
-# doesn't have one that works with the given compiler.
-all-local $(idn_OBJECTS): $(GETOPT_H)
-getopt.h: getopt_.h
-	cp $(srcdir)/getopt_.h $@-t
-	mv $@-t $@
-MOSTLYCLEANFILES = getopt.h getopt.h-t
+idn_LDADD = ../lib/libidn.la ../gl/libgnu.la $(LTLIBINTL)
 
 localedir = $(datadir)/locale
 DEFS = -DLOCALEDIR=\"$(localedir)\" @DEFS@

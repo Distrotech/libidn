@@ -17,9 +17,9 @@
 # License along with GNU Libidn; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
 
-SUBDIRS = lib po src doc tests examples java
+SUBDIRS = gl lib po src doc tests examples java
 
-ACLOCAL_AMFLAGS = -I m4
+ACLOCAL_AMFLAGS = -I m4 -I gl/m4
 
 EXTRA_DIST = FAQ libidn.pc.in \
 	libc/README libc/getaddrinfo-idn.txt libc/example.c \
