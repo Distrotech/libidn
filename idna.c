@@ -101,10 +101,10 @@ idna_to_ascii_4i (const uint32_t * in, size_t inlen, char *out, int flags)
     if (p == NULL)
       return IDNA_MALLOC_ERROR;
 
-    len = strlen(p);
+    len = strlen (p);
     do
       {
-	len = 2 * len + 10; /* XXX better guess? */
+	len = 2 * len + 10;	/* XXX better guess? */
 	p = realloc (p, len);
 	if (p == NULL)
 	  return IDNA_MALLOC_ERROR;
@@ -118,16 +118,16 @@ idna_to_ascii_4i (const uint32_t * in, size_t inlen, char *out, int flags)
 
     if (rc != STRINGPREP_OK)
       {
-	free(p);
+	free (p);
 	return IDNA_STRINGPREP_ERROR;
       }
 
     src = stringprep_utf8_to_ucs4 (p, -1, NULL);
 
-    free(p);
+    free (p);
   }
 
- step3:
+step3:
   /*
    * 3. If the UseSTD3ASCIIRules flag is set, then perform these checks:
    *
@@ -149,13 +149,13 @@ idna_to_ascii_4i (const uint32_t * in, size_t inlen, char *out, int flags)
 	    (src[i] >= 0x5B && src[i] <= 0x60) ||
 	    (src[i] >= 0x7B && src[i] <= 0x7F))
 	  {
-	    free(src);
+	    free (src);
 	    return IDNA_CONTAINS_LDH;
 	  }
 
       if (src[0] == 0x002D || (i > 0 && src[i - 1] == 0x002D))
 	{
-	  free(src);
+	  free (src);
 	  return IDNA_CONTAINS_MINUS;
 	}
     }
@@ -195,11 +195,11 @@ idna_to_ascii_4i (const uint32_t * in, size_t inlen, char *out, int flags)
 
     match = 1;
     for (i = 0; match && i < strlen (IDNA_ACE_PREFIX); i++)
-      if (((uint32_t)IDNA_ACE_PREFIX[i] & 0xFF) != src[i])
+      if (((uint32_t) IDNA_ACE_PREFIX[i] & 0xFF) != src[i])
 	match = 0;
     if (match)
       {
-	free(src);
+	free (src);
 	return IDNA_CONTAINS_ACE_PREFIX;
       }
   }
@@ -214,7 +214,7 @@ idna_to_ascii_4i (const uint32_t * in, size_t inlen, char *out, int flags)
   outlen = 63 - strlen (IDNA_ACE_PREFIX);
   rc = punycode_encode (len, src, NULL,
 			&outlen, &out[strlen (IDNA_ACE_PREFIX)]);
-  free(src);
+  free (src);
   if (rc != PUNYCODE_SUCCESS)
     return IDNA_PUNYCODE_ERROR;
   out[strlen (IDNA_ACE_PREFIX) + outlen] = '\0';
@@ -230,7 +230,7 @@ idna_to_ascii_4i (const uint32_t * in, size_t inlen, char *out, int flags)
    * inclusive.
    */
 
- step8:
+step8:
   if (strlen (out) < 1 || strlen (out) > 63)
     return IDNA_INVALID_LENGTH;
 
@@ -239,8 +239,7 @@ idna_to_ascii_4i (const uint32_t * in, size_t inlen, char *out, int flags)
 
 static int
 idna_to_unicode_internal (char *utf8in, size_t utf8len,
-			  uint32_t *out, size_t * outlen,
-			  int flags)
+			  uint32_t * out, size_t * outlen, int flags)
 {
   int rc;
   char tmpout[64];
@@ -281,7 +280,7 @@ idna_to_unicode_internal (char *utf8in, size_t utf8len,
    * copy of the sequence.
    */
 
- step3:
+step3:
   if (memcmp (IDNA_ACE_PREFIX, utf8in, strlen (IDNA_ACE_PREFIX)) != 0)
     return IDNA_NO_ACE_PREFIX;
 
@@ -296,13 +295,13 @@ idna_to_unicode_internal (char *utf8in, size_t utf8len,
    * this step.
    */
 
-  (*outlen)--; /* reserve one for the zero */
+  (*outlen)--;			/* reserve one for the zero */
 
   rc = punycode_decode (strlen (utf8in), utf8in, outlen, out, NULL);
   if (rc != PUNYCODE_SUCCESS)
     return IDNA_PUNYCODE_ERROR;
 
-  out[*outlen] = 0; /* add zero */
+  out[*outlen] = 0;		/* add zero */
 
   /* 6. Apply ToASCII.
    */
@@ -360,9 +359,8 @@ idna_to_unicode_internal (char *utf8in, size_t utf8len,
  *               standard.
  */
 int
-idna_to_unicode_44i (const uint32_t *in, size_t inlen,
-		     uint32_t *out, size_t * outlen,
-		     int flags)
+idna_to_unicode_44i (const uint32_t * in, size_t inlen,
+		     uint32_t * out, size_t * outlen, int flags)
 {
   int rc;
   size_t outlensave = *outlen;
@@ -404,7 +402,7 @@ idna_to_unicode_44i (const uint32_t *in, size_t inlen,
  * Return value: Returns IDNA_SUCCESS on success, or error code.
  **/
 int
-idna_to_ascii_4z (const uint32_t *input, char **output, int flags)
+idna_to_ascii_4z (const uint32_t * input, char **output, int flags)
 {
   const uint32_t *start = input;
   const uint32_t *end = input;
@@ -423,8 +421,8 @@ idna_to_ascii_4z (const uint32_t *input, char **output, int flags)
          U+3002 (ideographic full stop), U+FF0E (fullwidth full stop),
          U+FF61 (halfwidth ideographic full stop). */
       for (; *end &&
-	     *end != 0x002E &&
-	     *end != 0x3002 && *end != 0xFF0E && *end != 0xFF61; end++)
+	   *end != 0x002E &&
+	   *end != 0x3002 && *end != 0xFF0E && *end != 0xFF61; end++)
 	;
 
       rc = idna_to_ascii_4i (start, end - start, buf, flags);
@@ -441,7 +439,7 @@ idna_to_ascii_4z (const uint32_t *input, char **output, int flags)
 	}
       else
 	{
-	  out = (char*) strdup (buf);
+	  out = (char *) strdup (buf);
 	  if (!out)
 	    return IDNA_MALLOC_ERROR;
 	}
@@ -529,7 +527,7 @@ idna_to_ascii_lz (const char *input, char **output, int flags)
  * Return value: Returns IDNA_SUCCESS on success, or error code.
  **/
 int
-idna_to_unicode_4z4z (const uint32_t *input, uint32_t **output, int flags)
+idna_to_unicode_4z4z (const uint32_t * input, uint32_t ** output, int flags)
 {
   const uint32_t *start = input;
   const uint32_t *end = input;
@@ -603,7 +601,7 @@ idna_to_unicode_4z4z (const uint32_t *input, uint32_t **output, int flags)
  * Return value: Returns IDNA_SUCCESS on success, or error code.
  **/
 int
-idna_to_unicode_8z4z (const char *input, uint32_t **output, int flags)
+idna_to_unicode_8z4z (const char *input, uint32_t ** output, int flags)
 {
   uint32_t *ucs4;
   size_t ucs4len;
@@ -708,8 +706,8 @@ idna_to_unicode_lzlz (const char *input, char **output, int flags)
 
   return rc;
 }
-
 
+
 /* Deprecated interfaces */
 
 /*
@@ -836,7 +834,7 @@ idna_to_unicode (const unsigned long *in, size_t inlen,
   for (i = 0; i < *outlen; i++)
     out[i] = tmpout[i];
 
-  free(tmpout);
+  free (tmpout);
 
   return rc;
 
@@ -991,7 +989,7 @@ idna_to_unicode_ucs4_from_ucs4 (const unsigned long *input,
   for (tmpoutlen = 0; tmpout[tmpoutlen]; tmpoutlen++)
     ;
 
-  *output = malloc(sizeof(output[0]) * (tmpoutlen + 1));
+  *output = malloc (sizeof (output[0]) * (tmpoutlen + 1));
   if (!*output)
     return IDNA_MALLOC_ERROR;
 
@@ -1042,7 +1040,7 @@ idna_to_unicode_ucs4_from_utf8 (const char *input, unsigned long **output,
   for (tmpoutlen = 0; tmpout[tmpoutlen]; tmpoutlen++)
     ;
 
-  *output = malloc(sizeof(output[0]) * (tmpoutlen + 1));
+  *output = malloc (sizeof (output[0]) * (tmpoutlen + 1));
   if (!*output)
     return IDNA_MALLOC_ERROR;
 
@@ -1149,8 +1147,8 @@ idna_to_unicode_locale_from_locale (const char *input, char **output,
 
   return rc;
 }
-
 
+
 /* Deprecated interfaces (even older) */
 
 

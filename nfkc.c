@@ -160,7 +160,7 @@ stringprep_utf8_to_unichar (const char *p)
 
   UTF8_COMPUTE (c, mask, len);
   if (len == -1)
-    return (uint32_t) -1;
+    return (uint32_t) - 1;
   UTF8_GET (result, p, i, mask, len);
 
   return result;
@@ -185,7 +185,7 @@ stringprep_utf8_to_unichar (const char *p)
  * manual for more information.
  **/
 static void
-g_unicode_canonical_ordering (uint32_t *string, size_t len)
+g_unicode_canonical_ordering (uint32_t * string, size_t len)
 {
   size_t i;
   int swap = 1;
@@ -274,7 +274,7 @@ find_decomposition (uint32_t ch, int compat)
      (((Char) > (G_UNICODE_LAST_CHAR)) ? 0 : CI((Char) >> 8, (Char) & 0xff))
 
 static int
-combine (uint32_t a, uint32_t b, uint32_t *result)
+combine (uint32_t a, uint32_t b, uint32_t * result)
 {
   int index_a, index_b;
 
@@ -627,7 +627,7 @@ stringprep_utf8_to_ucs4 (const char *str, ssize_t len, size_t * items_written)
  *               @error set.
  **/
 char *
-stringprep_ucs4_to_utf8 (const uint32_t *str, ssize_t len,
+stringprep_ucs4_to_utf8 (const uint32_t * str, ssize_t len,
 			 size_t * items_read, size_t * items_written)
 {
   int result_length;
@@ -761,7 +761,7 @@ stringprep_utf8_nfkc_normalize (const char *str, ssize_t len)
  *   normalized form of @str.
  **/
 uint32_t *
-stringprep_ucs4_nfkc_normalize (uint32_t *str, ssize_t len)
+stringprep_ucs4_nfkc_normalize (uint32_t * str, ssize_t len)
 {
   char *p;
   uint32_t *result_wc;

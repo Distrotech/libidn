@@ -36,7 +36,7 @@ stringprep_find_character_in_table (uint32_t ucs4,
 }
 
 static ssize_t
-stringprep_find_string_in_table (uint32_t *ucs4,
+stringprep_find_string_in_table (uint32_t * ucs4,
 				 size_t ucs4len,
 				 int *tablepos,
 				 Stringprep_table_element * table)
@@ -56,7 +56,7 @@ stringprep_find_string_in_table (uint32_t *ucs4,
 }
 
 static int
-stringprep_apply_table_to_string (uint32_t *ucs4,
+stringprep_apply_table_to_string (uint32_t * ucs4,
 				  size_t * ucs4len,
 				  size_t maxucs4len,
 				  Stringprep_table_element * table,

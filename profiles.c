@@ -22,15 +22,23 @@
 #include "internal.h"
 
 Stringprep_profiles stringprep_profiles[] = {
-  { "generic", stringprep_generic },
-  { "Nameprep", stringprep_nameprep },
-  { "KRBprep", stringprep_kerberos5 },
-  { "Nodeprep", stringprep_xmpp_nodeprep },
-  { "Resourceprep", stringprep_xmpp_resourceprep },
-  { "plain", stringprep_plain },
-  { "SASLprep", stringprep_saslprep },
-  { "ISCSIprep", stringprep_iscsi },
-  { NULL, NULL }
+  {"generic", stringprep_generic}
+  ,
+  {"Nameprep", stringprep_nameprep}
+  ,
+  {"KRBprep", stringprep_kerberos5}
+  ,
+  {"Nodeprep", stringprep_xmpp_nodeprep}
+  ,
+  {"Resourceprep", stringprep_xmpp_resourceprep}
+  ,
+  {"plain", stringprep_plain}
+  ,
+  {"SASLprep", stringprep_saslprep}
+  ,
+  {"ISCSIprep", stringprep_iscsi}
+  ,
+  {NULL, NULL}
 };
 
 Stringprep_profile stringprep_generic[] = {
@@ -327,70 +335,134 @@ Stringprep_profile stringprep_plain[] = {
 };
 
 Stringprep_table_element stringprep_iscsi_prohibit[] = {
-  {0x0000}, /* [ASCII CONTROL CHARACTERS and SPACE through ,] */
-  {0x0001},
-  {0x0002},
-  {0x0003},
-  {0x0004},
-  {0x0005},
-  {0x0006},
-  {0x0007},
-  {0x0008},
-  {0x0009},
-  {0x000A},
-  {0x000B},
-  {0x000C},
-  {0x000D},
-  {0x000E},
-  {0x000F},
-  {0x0010},
-  {0x0011},
-  {0x0012},
-  {0x0013},
-  {0x0014},
-  {0x0015},
-  {0x0016},
-  {0x0017},
-  {0x0018},
-  {0x0019},
-  {0x001A},
-  {0x001B},
-  {0x001C},
-  {0x001D},
-  {0x001E},
-  {0x001F},
-  {0x0020},
-  {0x0021},
-  {0x0022},
-  {0x0023},
-  {0x0024},
-  {0x0025},
-  {0x0026},
-  {0x0027},
-  {0x0028},
-  {0x0029},
-  {0x002A},
-  {0x002B},
-  {0x002C},
-  {0x002F}, /* [ASCII /] */
-  {0x003B}, /* [ASCII ; through @] */
-  {0x003C},
-  {0x003D},
-  {0x003E},
-  {0x003F},
-  {0x0040},
-  {0x005B}, /* [ASCII [ through `] */
-  {0x005C},
-  {0x005D},
-  {0x005E},
-  {0x005F},
-  {0x0060},
-  {0x007B}, /* [ASCII { through DEL] */
-  {0x007C},
-  {0x007D},
-  {0x007E},
-  {0x007F},
-  {0x3002}, /* ideographic full stop */
+  {0x0000}
+  ,				/* [ASCII CONTROL CHARACTERS and SPACE through ,] */
+  {0x0001}
+  ,
+  {0x0002}
+  ,
+  {0x0003}
+  ,
+  {0x0004}
+  ,
+  {0x0005}
+  ,
+  {0x0006}
+  ,
+  {0x0007}
+  ,
+  {0x0008}
+  ,
+  {0x0009}
+  ,
+  {0x000A}
+  ,
+  {0x000B}
+  ,
+  {0x000C}
+  ,
+  {0x000D}
+  ,
+  {0x000E}
+  ,
+  {0x000F}
+  ,
+  {0x0010}
+  ,
+  {0x0011}
+  ,
+  {0x0012}
+  ,
+  {0x0013}
+  ,
+  {0x0014}
+  ,
+  {0x0015}
+  ,
+  {0x0016}
+  ,
+  {0x0017}
+  ,
+  {0x0018}
+  ,
+  {0x0019}
+  ,
+  {0x001A}
+  ,
+  {0x001B}
+  ,
+  {0x001C}
+  ,
+  {0x001D}
+  ,
+  {0x001E}
+  ,
+  {0x001F}
+  ,
+  {0x0020}
+  ,
+  {0x0021}
+  ,
+  {0x0022}
+  ,
+  {0x0023}
+  ,
+  {0x0024}
+  ,
+  {0x0025}
+  ,
+  {0x0026}
+  ,
+  {0x0027}
+  ,
+  {0x0028}
+  ,
+  {0x0029}
+  ,
+  {0x002A}
+  ,
+  {0x002B}
+  ,
+  {0x002C}
+  ,
+  {0x002F}
+  ,				/* [ASCII /] */
+  {0x003B}
+  ,				/* [ASCII ; through @] */
+  {0x003C}
+  ,
+  {0x003D}
+  ,
+  {0x003E}
+  ,
+  {0x003F}
+  ,
+  {0x0040}
+  ,
+  {0x005B}
+  ,				/* [ASCII [ through `] */
+  {0x005C}
+  ,
+  {0x005D}
+  ,
+  {0x005E}
+  ,
+  {0x005F}
+  ,
+  {0x0060}
+  ,
+  {0x007B}
+  ,				/* [ASCII { through DEL] */
+  {0x007C}
+  ,
+  {0x007D}
+  ,
+  {0x007E}
+  ,
+  {0x007F}
+  ,
+  {0x3002}
+  ,				/* ideographic full stop */
   {0}
 };
 
@@ -440,24 +512,58 @@ Stringprep_profile stringprep_iscsi[] = {
 };
 
 Stringprep_table_element stringprep_saslprep_space_map[] = {
-  { 0x0000A0, 0, { 0x0020 }},               /* 00A0; NO-BREAK SPACE */
-  { 0x001680, 0, { 0x0020 }},             /* 1680; OGHAM SPACE MARK */
-  { 0x002000, 0, { 0x0020 }},                      /* 2000; EN QUAD */
-  { 0x002001, 0, { 0x0020 }},                      /* 2001; EM QUAD */
-  { 0x002002, 0, { 0x0020 }},                     /* 2002; EN SPACE */
-  { 0x002003, 0, { 0x0020 }},                     /* 2003; EM SPACE */
-  { 0x002004, 0, { 0x0020 }},           /* 2004; THREE-PER-EM SPACE */
-  { 0x002005, 0, { 0x0020 }},            /* 2005; FOUR-PER-EM SPACE */
-  { 0x002006, 0, { 0x0020 }},             /* 2006; SIX-PER-EM SPACE */
-  { 0x002007, 0, { 0x0020 }},                 /* 2007; FIGURE SPACE */
-  { 0x002008, 0, { 0x0020 }},            /* 2008; PUNCTUATION SPACE */
-  { 0x002009, 0, { 0x0020 }},                   /* 2009; THIN SPACE */
-  { 0x00200A, 0, { 0x0020 }},                   /* 200A; HAIR SPACE */
-  { 0x00200B, 0, { 0x0020 }},             /* 200B; ZERO WIDTH SPACE */
-  { 0x00202F, 0, { 0x0020 }},        /* 202F; NARROW NO-BREAK SPACE */
-  { 0x00205F, 0, { 0x0020 }},    /* 205F; MEDIUM MATHEMATICAL SPACE */
-  { 0x003000, 0, { 0x0020 }},            /* 3000; IDEOGRAPHIC SPACE */
-  { 0 }
+  {0x0000A0, 0, {0x0020}
+   }
+  ,				/* 00A0; NO-BREAK SPACE */
+  {0x001680, 0, {0x0020}
+   }
+  ,				/* 1680; OGHAM SPACE MARK */
+  {0x002000, 0, {0x0020}
+   }
+  ,				/* 2000; EN QUAD */
+  {0x002001, 0, {0x0020}
+   }
+  ,				/* 2001; EM QUAD */
+  {0x002002, 0, {0x0020}
+   }
+  ,				/* 2002; EN SPACE */
+  {0x002003, 0, {0x0020}
+   }
+  ,				/* 2003; EM SPACE */
+  {0x002004, 0, {0x0020}
+   }
+  ,				/* 2004; THREE-PER-EM SPACE */
+  {0x002005, 0, {0x0020}
+   }
+  ,				/* 2005; FOUR-PER-EM SPACE */
+  {0x002006, 0, {0x0020}
+   }
+  ,				/* 2006; SIX-PER-EM SPACE */
+  {0x002007, 0, {0x0020}
+   }
+  ,				/* 2007; FIGURE SPACE */
+  {0x002008, 0, {0x0020}
+   }
+  ,				/* 2008; PUNCTUATION SPACE */
+  {0x002009, 0, {0x0020}
+   }
+  ,				/* 2009; THIN SPACE */
+  {0x00200A, 0, {0x0020}
+   }
+  ,				/* 200A; HAIR SPACE */
+  {0x00200B, 0, {0x0020}
+   }
+  ,				/* 200B; ZERO WIDTH SPACE */
+  {0x00202F, 0, {0x0020}
+   }
+  ,				/* 202F; NARROW NO-BREAK SPACE */
+  {0x00205F, 0, {0x0020}
+   }
+  ,				/* 205F; MEDIUM MATHEMATICAL SPACE */
+  {0x003000, 0, {0x0020}
+   }
+  ,				/* 3000; IDEOGRAPHIC SPACE */
+  {0}
 };
 
 Stringprep_profile stringprep_saslprep[] = {

@@ -102,14 +102,14 @@ stringprep_convert (const char *str,
   int len;
 
   if (strcmp (to_codeset, from_codeset) == 0)
-    return (char*)strdup (str);
+    return (char *) strdup (str);
 
   cd = iconv_open (to_codeset, from_codeset);
 
   if (cd == (iconv_t) - 1)
     return NULL;
 
-  p = (char*) strdup(str);
+  p = (char *) strdup (str);
   if (p == NULL)
     return NULL;
   len = strlen (p);
@@ -162,7 +162,7 @@ again:
     have_error = 1;
 
 
-  free(startp);
+  free (startp);
 
   iconv_close (cd);
 
