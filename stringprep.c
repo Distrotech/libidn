@@ -35,13 +35,14 @@ stringprep_find_character_in_table (unsigned long ucs4,
   return -1;
 }
 
-static size_t
+static ssize_t
 stringprep_find_string_in_table (unsigned long *ucs4,
 				 size_t ucs4len,
 				 int *tablepos,
 				 Stringprep_table_element * table)
 {
-  int j, pos;
+  size_t j;
+  int pos;
 
   for (j = 0; j < ucs4len; j++)
     if ((pos = stringprep_find_character_in_table (ucs4[j], table)) != -1)
@@ -62,7 +63,8 @@ stringprep_apply_table_to_string (unsigned long *ucs4,
 				  const char *tablename)
 {
   int i;
-  size_t pos, maplen;
+  ssize_t pos;
+  size_t maplen;
 #ifdef DRAFT
   int modified = 0;
 #endif
