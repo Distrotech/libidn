@@ -358,66 +358,16 @@ follows:
 @table @asis
 @item stringprep.h
 
-The low-level stringprep API entry point.  Normal applications uses
-one specific stringprep profile, and should rather include the
-corresponding profile header file (see below).  If you are writing an
-application that only makes use of the utility functions, including
-this header file may be more appropriate however.
+The low-level stringprep API entry point.  For IDN applications, this
+is usually invoked via IDNA. Some applications, specifically non-IDN
+ones, may want to prepare strings directly though, and should include
+this header file.
 
 The name space of the stringprep part of Libidn is @code{stringprep*}
 for function names, @code{Stringprep*} for data types and
 @code{STRINGPREP_*} for other symbols.  In addition the same name
 prefixes with one prepended underscore are reserved for internal use
 and should never be used by an application.
-
-@item stringprep_generic.h
-
-The entry point to the generic tables specified in the stringprep
-specification.  It is normally only needed by applications that want
-to define its own stringprep profile, based on the generic tables.
-
-This header file uses the same namespace as the main stringprep.h
-header file.
-
-@item stringprep_iscsi.h
-
-The entry point to the experimental iSCSI profile of stringprep.
-
-This header file uses the same namespace as the main stringprep.h
-header file.
-
-@item stringprep_kerberos5.h
-
-The entry point to the experimental Kerberos 5 profile of stringprep.
-
-This header file uses the same namespace as the main stringprep.h
-header file.
-
-@item stringprep_nameprep.h
-
-The entry point to the IDN (``nameprep'') profile of stringprep.  This
-is the entry point used by applications needing low-level access to
-the stringprep profile used in IDN.  Most applications requesting IDN
-functionality will want idna.h instead though.
-
-This header file uses the same namespace as the main stringprep.h
-header file.
-
-@item stringprep_plain.h
-
-The entry point to the SASL ANONYMOUS (``plain'') profile of
-stringprep.
-
-This header file uses the same namespace as the main stringprep.h
-header file.
-
-@item stringprep_xmpp.h
-
-The entry point to the experimental XMPP node (``nodeprep'') and
-resource identifier (``resourceprep'') profiles of stringprep.
-
-This header file uses the same namespace as the main stringprep.h
-header file.
 
 @item punycode.h
 
@@ -665,10 +615,10 @@ compatible names to internationalized domain names.
 GNU Libidn (idn) -- Internationalized Domain Names command line tool
 
 @majorheading Description
-@code{idn} is a utility part of GNU Libidn.  It allows encoding and
-decoding of punycode data and IDNA ToASCII and ToUnicode operations to
-be performed on the command line, without the need to write a program
-that uses libidn.
+@code{idn} is a utility part of GNU Libidn.  It allows preparation of
+strings, encoding and decoding of punycode data, and IDNA
+ToASCII/ToUnicode operations to be performed on the command line,
+without the need to write a program that uses libidn.
 
 Data is read, line by line, from the standard input, and one of the
 operations indicated by command parameters are performed and the
@@ -684,6 +634,9 @@ the execution of the applications is aborted.
 
        -V  --version
               Print version and exit
+
+       -s --stringprep
+              Prepare string according to nameprep profile
 
        -e  --punycode-encode
               Encode UTF-8 to Punycode
@@ -702,6 +655,13 @@ the execution of the applications is aborted.
 
        --usestd3asciirules
               Toggle IDNA UseSTD3ASCIIRules flag (default=off)
+
+       -pSTRING   --profile=STRING
+              Use specified stringprep profile instead
+
+              Valid stringprep profiles are 'generic', 'Nameprep',
+              'KRBprep', 'Nodeprep', 'Resourceprep', 'plain',
+              'SASLprep', and 'ISCSIprep'.
 
        --debug
               Print debugging information (default=off)
