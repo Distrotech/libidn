@@ -8,6 +8,8 @@ See the end for copying conditions.
 
 ** The PHP interface pass the string directly on the command line.
 
+** The macro that create 'idn-int.h' has been updated to latest version.
+
 * Version 0.3.5 (released 2003-12-15)
 
 ** The program 'idn' accepts input strings directly on the command line.
