@@ -31,7 +31,7 @@ option "idna-to-ascii"   a "Convert to ACE according to IDNA (default)" no
 option "idna-to-unicode" u "Convert from ACE according to IDNA" no
 option "allow-unassigned" - "Toggle IDNA AllowUnassigned flag" flag off
 option "usestd3asciirules" - "Toggle IDNA UseSTD3ASCIIRules flag" flag off
-option "tld" t "Check string for TLD specific rules" string argoptional
+option "tld" t "Check string for TLD specific rules\nOnly for --idna-to-ascii and --idna-to-unicode" flag off
 option "profile" p "Use specified stringprep profile instead" string no
 option "debug" - "Print debugging information" flag off
 option "quiet" - "Silent operation" flag off
