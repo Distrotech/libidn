@@ -70,7 +70,7 @@ idn_SOURCES = idn.c idn_cmd.c idn_cmd.h
 idn_LDADD = @LIBOBJS@ libidn.la
 
 idn_cmd.c idn_cmd.h: idn.ggo
-	gengetopt --input idn.ggo --file-name idn_cmd --unamed-opts
+	gengetopt --input $< --file-name idn_cmd
 
 # Test suite
 
