@@ -43,10 +43,10 @@ pkgconfig_DATA = libidn.pc
 # Maintainer targets
 
 ChangeLog:
-	test ! -f .cvsusers || \
-	(cvs2cl --FSF --fsf --usermap .cvsusers \
-	-I "ChangeLog|.cvs|.prev-version|autogen.sh|contrib|doc/specifications/|draft.*xml" && \
-	cat .cvscopying >> ChangeLog)
+	cvs2cl --FSF --fsf --usermap .cvsusers -I ChangeLog -I .cvs \
+	-I .prev-version -I autogen.sh -I contrib -I doc/specifications/ \
+	-I draft- && \
+	cat .cvscopying >> ChangeLog
 
 indent:
 	indent $(SOURCES)
