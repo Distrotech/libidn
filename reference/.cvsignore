@@ -13,10 +13,7 @@ libidn-doc.top
 libidn-idna.html
 libidn-punycode.html
 libidn-sections.txt
-libidn-stringprep-generic.html
-libidn-stringprep-kerberos5.html
-libidn-stringprep-nameprep.html
-libidn-stringprep-xmpp.html
+libidn-stringprep-*.html
 libidn-stringprep.html
 libidn-undocumented.txt
 libidn-unused.sgml
@@ -26,9 +23,6 @@ right.png
 scan.stamp
 sgml.stamp
 stringprep.sgml
-stringprep_generic.sgml
-stringprep_kerberos5.sgml
-stringprep_nameprep.sgml
-stringprep_xmpp.sgml
+stringprep_*.sgml
 tmpl.stamp
 up.png
