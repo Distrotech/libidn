@@ -26,7 +26,9 @@ EXTRA_DIST = libidn.pc.in iconv.m4 strdup.c memset.c \
 	gen-unicode-tables.pl UnicodeData-3.2.0.txt LineBreak-3.2.0.txt \
 	SpecialCasing-3.2.0.txt CaseFolding-3.2.0.txt \
 	CompositionExclusions-3.2.0.txt \
-	gdoc libidn.html libidn.ps libidn.pdf lgpl.texi
+	gdoc libidn.html libidn.ps libidn.pdf lgpl.texi \
+	libc/README libc/Makefile libc/Versions libc/configure \
+	libc/example.c libc/getaddrinfo.c libc/libc.patch libc/netdb.h
 
 pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = libidn.pc
