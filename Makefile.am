@@ -59,6 +59,7 @@ noinst_PROGRAMS = $(tests) example
 
 ACLOCAL_AMFLAGS = -I .
 
+.PHONY: ChangeLog
 ChangeLog:
 	cvs2cl --fsf --usermap .cvsusers --separate-header -I \
 	"ChangeLog|.cvsignore|.cvsusers|autogen.sh"
