@@ -52,12 +52,12 @@
  *
  * Return value: Returns 0 on success, or an error code.
  */
-enum Idna_rc
+int
 idna_to_ascii (const unsigned long *in, size_t inlen,
 	       char *out, int allowunassigned, int usestd3asciirules)
 {
-  enum Idna_rc rc;
-  enum Idna_flags flags = 0;
+  int rc;
+  int flags = 0;
   uint32_t *tmp;
   size_t i;
 
@@ -114,13 +114,13 @@ idna_to_ascii (const unsigned long *in, size_t inlen,
  *               from this function, as checking it means breaking the
  *               standard.
  */
-enum Idna_rc
+int
 idna_to_unicode (const unsigned long *in, size_t inlen,
 		 unsigned long *out, size_t * outlen,
 		 int allowunassigned, int usestd3asciirules)
 {
-  enum Idna_rc rc;
-  enum Idna_flags flags = 0;
+  int rc;
+  int flags = 0;
   uint32_t *tmpin;
   uint32_t *tmpout;
   size_t i;
@@ -164,13 +164,13 @@ idna_to_unicode (const unsigned long *in, size_t inlen,
  *
  * Return value: Returns IDNA_SUCCESS on success, or error code.
  **/
-enum Idna_rc
+int
 idna_to_ascii_from_ucs4 (const unsigned long *input, char **output,
 			 int allowunassigned, int usestd3asciirules)
 {
   size_t inlen;
-  enum Idna_rc rc;
-  enum Idna_flags flags = 0;
+  int rc;
+  int flags = 0;
   uint32_t *tmp;
   size_t i;
 
@@ -207,12 +207,12 @@ idna_to_ascii_from_ucs4 (const unsigned long *input, char **output,
  *
  * Return value: Returns IDNA_SUCCESS on success, or error code.
  **/
-enum Idna_rc
+int
 idna_to_ascii_from_utf8 (const char *input, char **output,
 			 int allowunassigned, int usestd3asciirules)
 {
-  enum Idna_rc rc;
-  enum Idna_flags flags = 0;
+  int rc;
+  int flags = 0;
 
   if (allowunassigned)
     flags |= IDNA_ALLOW_UNASSIGNED;
@@ -237,12 +237,12 @@ idna_to_ascii_from_utf8 (const char *input, char **output,
  *
  * Return value: Returns IDNA_SUCCESS on success, or error code.
  **/
-enum Idna_rc
+int
 idna_to_ascii_from_locale (const char *input, char **output,
 			   int allowunassigned, int usestd3asciirules)
 {
-  enum Idna_rc rc;
-  enum Idna_flags flags = 0;
+  int rc;
+  int flags = 0;
 
   if (allowunassigned)
     flags |= IDNA_ALLOW_UNASSIGNED;
@@ -268,14 +268,14 @@ idna_to_ascii_from_locale (const char *input, char **output,
  *
  * Return value: Returns IDNA_SUCCESS on success, or error code.
  **/
-enum Idna_rc
+int
 idna_to_unicode_ucs4_from_ucs4 (const unsigned long *input,
 				unsigned long **output,
 				int allowunassigned, int usestd3asciirules)
 {
   size_t inlen, tmpoutlen;
-  enum Idna_rc rc;
-  enum Idna_flags flags = 0;
+  int rc;
+  int flags = 0;
   uint32_t *tmpin;
   uint32_t *tmpout;
   size_t i;
@@ -325,13 +325,13 @@ idna_to_unicode_ucs4_from_ucs4 (const unsigned long *input,
  *
  * Return value: Returns IDNA_SUCCESS on success, or error code.
  **/
-enum Idna_rc
+int
 idna_to_unicode_ucs4_from_utf8 (const char *input, unsigned long **output,
 				int allowunassigned, int usestd3asciirules)
 {
   size_t tmpinlen, tmpoutlen;
-  enum Idna_rc rc;
-  enum Idna_flags flags = 0;
+  int rc;
+  int flags = 0;
   uint32_t *tmpin;
   uint32_t *tmpout;
   size_t i;
@@ -376,12 +376,12 @@ idna_to_unicode_ucs4_from_utf8 (const char *input, unsigned long **output,
  *
  * Return value: Returns IDNA_SUCCESS on success, or error code.
  **/
-enum Idna_rc
+int
 idna_to_unicode_utf8_from_utf8 (const char *input, char **output,
 				int allowunassigned, int usestd3asciirules)
 {
-  enum Idna_flags flags = 0;
-  enum Idna_rc rc;
+  int flags = 0;
+  int rc;
 
   if (allowunassigned)
     flags |= IDNA_ALLOW_UNASSIGNED;
@@ -408,12 +408,12 @@ idna_to_unicode_utf8_from_utf8 (const char *input, char **output,
  *
  * Return value: Returns IDNA_SUCCESS on success, or error code.
  **/
-enum Idna_rc
+int
 idna_to_unicode_locale_from_utf8 (const char *input, char **output,
 				  int allowunassigned, int usestd3asciirules)
 {
-  enum Idna_flags flags = 0;
-  enum Idna_rc rc;
+  int flags = 0;
+  int rc;
 
   if (allowunassigned)
     flags |= IDNA_ALLOW_UNASSIGNED;
@@ -441,13 +441,13 @@ idna_to_unicode_locale_from_utf8 (const char *input, char **output,
  *
  * Return value: Returns IDNA_SUCCESS on success, or error code.
  **/
-enum Idna_rc
+int
 idna_to_unicode_locale_from_locale (const char *input, char **output,
 				    int allowunassigned,
 				    int usestd3asciirules)
 {
-  enum Idna_flags flags = 0;
-  enum Idna_rc rc;
+  int flags = 0;
+  int rc;
 
   if (allowunassigned)
     flags |= IDNA_ALLOW_UNASSIGNED;
@@ -478,7 +478,7 @@ idna_to_unicode_locale_from_locale (const char *input, char **output,
  *
  * Return value: Returns IDNA_SUCCESS on success, or error code.
  **/
-enum Idna_rc
+int
 idna_ucs4_to_ace (const unsigned long *input, char **output)
 {
   return idna_to_ascii_from_ucs4 (input, output, 0, 0);
@@ -499,7 +499,7 @@ idna_ucs4_to_ace (const unsigned long *input, char **output)
  *
  * Return value: Returns IDNA_SUCCESS on success, or error code.
  **/
-enum Idna_rc
+int
 idna_utf8_to_ace (const char *input, char **output)
 {
   return idna_to_ascii_from_utf8 (input, output, 0, 0);
@@ -520,7 +520,7 @@ idna_utf8_to_ace (const char *input, char **output)
  *
  * Return value: Returns IDNA_SUCCESS on success, or error code.
  **/
-enum Idna_rc
+int
 idna_locale_to_ace (const char *input, char **output)
 {
   return idna_to_ascii_from_locale (input, output, 0, 0);
@@ -543,7 +543,7 @@ idna_locale_to_ace (const char *input, char **output)
  *
  * Return value: Returns IDNA_SUCCESS on success, or error code.
  **/
-enum Idna_rc
+int
 idna_ucs4ace_to_ucs4 (const unsigned long *input, unsigned long **output)
 {
   return idna_to_unicode_ucs4_from_ucs4 (input, output, 0, 0);
@@ -566,7 +566,7 @@ idna_ucs4ace_to_ucs4 (const unsigned long *input, unsigned long **output)
  *
  * Return value: Returns IDNA_SUCCESS on success, or error code.
  **/
-enum Idna_rc
+int
 idna_utf8ace_to_ucs4 (const char *input, unsigned long **output)
 {
   return idna_to_unicode_ucs4_from_utf8 (input, output, 0, 0);
@@ -589,7 +589,7 @@ idna_utf8ace_to_ucs4 (const char *input, unsigned long **output)
  *
  * Return value: Returns IDNA_SUCCESS on success, or error code.
  **/
-enum Idna_rc
+int
 idna_utf8ace_to_utf8 (const char *input, char **output)
 {
   return idna_to_unicode_utf8_from_utf8 (input, output, 0, 0);
@@ -613,7 +613,7 @@ idna_utf8ace_to_utf8 (const char *input, char **output)
  *
  * Return value: Returns IDNA_SUCCESS on success, or error code.
  **/
-enum Idna_rc
+int
 idna_utf8ace_to_locale (const char *input, char **output)
 {
   return idna_to_unicode_locale_from_utf8 (input, output, 0, 0);
@@ -638,7 +638,7 @@ idna_utf8ace_to_locale (const char *input, char **output)
  *
  * Return value: Returns IDNA_SUCCESS on success, or error code.
  **/
-enum Idna_rc
+int
 idna_localeace_to_locale (const char *input, char **output)
 {
   return idna_to_unicode_locale_from_locale (input, output, 0, 0);
