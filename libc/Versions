@@ -1,15 +1,15 @@
 libc {
   GLIBC_2.3.2 {
-    idna_to_ascii_4i idna_to_unicode_44i idna_to_ascii_4z
-    idna_to_ascii_8z idna_to_ascii_lz idna_to_unicode_4z4z
-    idna_to_unicode_8z4z idna_to_unicode_8z8z idna_to_unicode_8zlz
-    idna_to_unicode_lzlz
-    punycode_encode punycode_decode
-    stringprep stringprep_profile stringprep_unichar_to_utf8
-    stringprep_utf8_to_unichar stringprep_utf8_to_ucs4
-    stringprep_ucs4_to_utf8 stringprep_utf8_nfkc_normalize
-    stringprep_ucs4_nfkc_normalize stringprep_locale_charset
-    stringprep_convert stringprep_locale_to_utf8
-    stringprep_utf8_to_locale
+    idna_to_ascii_4i; idna_to_unicode_44i; idna_to_ascii_4z;
+    idna_to_ascii_8z; idna_to_ascii_lz; idna_to_unicode_4z4z;
+    idna_to_unicode_8z4z; idna_to_unicode_8z8z; idna_to_unicode_8zlz;
+    idna_to_unicode_lzlz;
+    punycode_encode; punycode_decode;
+    stringprep; stringprep_profile; stringprep_unichar_to_utf8;
+    stringprep_utf8_to_unichar; stringprep_utf8_to_ucs4;
+    stringprep_ucs4_to_utf8; stringprep_utf8_nfkc_normalize;
+    stringprep_ucs4_nfkc_normalize; stringprep_locale_charset;
+    stringprep_convert; stringprep_locale_to_utf8;
+    stringprep_utf8_to_locale;
   }
 }
