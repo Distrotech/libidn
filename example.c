@@ -9,10 +9,10 @@
  * $ libtool cc -o example example.c `pkg-config --cflags --libs libstringprep`
  * $ ./example
  * Input string encoded as `ISO-8859-1': ª
- * Before locale2utf8 (length 2): aa 0a 
- * Before stringprep (length 3): c2 aa 0a 
- * After stringprep (length 2): 61 0a 
- * $ 
+ * Before locale2utf8 (length 2): aa 0a
+ * Before stringprep (length 3): c2 aa 0a
+ * After stringprep (length 2): 61 0a
+ * $
  *
  */
 
