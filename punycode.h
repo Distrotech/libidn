@@ -1,6 +1,6 @@
 /* punycode.h	Declarations for punycode functions.
+ * Copyright (C) 2002, 2003  Simon Josefsson
  * Copyright (C) 2002  Adam M. Costello
- * Copyright (C) 2002  Simon Josefsson
  *
  * This file is part of GNU Libidn.
  *
@@ -21,8 +21,7 @@
  */
 
 /*
- * This file is derived from from draft-ietf-idn-punycode-03.txt by
- * Adam M. Costello.
+ * This file is derived from RFC 3492 written by Adam M. Costello.
  *
  * Disclaimer and license: Regarding this entire document or any
  * portion of it (including the pseudocode and C code), the author
