@@ -1,3 +1,56 @@
+2004-07-14  Simon Josefsson <simon@josefsson.org>
+
+	* po/da.po, po/de.po, po/eo.po, po/fr.po, po/nl.po, po/pl.po,
+	po/ro.po, po/sr.po, po/sv.po: Generated.
+
+2004-07-14  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Version 0.5.2.
+
+2004-07-14  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2004-07-14  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Fix.
+
+2004-07-14  Simon Josefsson <simon@josefsson.org>
+
+	* configure.ac: Bump version.
+
+2004-07-14  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2004-07-14  Simon Josefsson <simon@josefsson.org>
+
+	* THANKS: Add.
+
+2004-07-14  Simon Josefsson <simon@josefsson.org>
+
+	* java/Makefile.am:
+	(install-jar): Make DESTDIR compatible, patch from Oliver Hitz
+	<oliver@net-track.ch> based on report by Benjamin Reed
+	<ranger@befunk.com>.
+
+2004-07-13  Simon Josefsson <simon@josefsson.org>
+
+	* libc/example.c: Doc fix.
+
+2004-07-13  Simon Josefsson <simon@josefsson.org>
+
+	* libc/example.c: Use setlocale, reported by Robert Scheck
+	<libidn@robert-scheck.de>.
+
+2004-07-09  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi: Add.
+
+2004-07-09  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi: Mention pr29.h.
+
 2004-07-09  Simon Josefsson <simon@josefsson.org>
 
 	* po/da.po, po/de.po, po/eo.po, po/fr.po, po/nl.po, po/pl.po,
