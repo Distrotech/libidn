@@ -177,13 +177,15 @@ with the '#' character.</t>
 
 <section title="Security Considerations">
 
-<t>The security considerations from Nameprep and IDNA are inherited,
-refer to each respective document.  These test vectors are not
-believed to introduce new security considerations nor disrupt the
-operation of the Internet, but may expose security weaknesses in
-existing implementations.  Any such incident should not be regarded as
-a problem with this document, though, but rather taken as evidence
-that this document served its purpose.</t>
+<t>The security considerations from Nameprep and IDNA are
+inherited.</t>
+
+<t>These test vectors are not believed to introduce new security
+considerations nor disrupt the operation of the Internet, but may
+expose security weaknesses in existing implementations.  Any such
+incident should not be regarded as a problem with this document,
+though, but rather taken as evidence that this document served its
+purpose.</t>
 
 </section>
 
