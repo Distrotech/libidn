@@ -6,6 +6,8 @@ See the end for copying conditions.
 
 ** Experimental documentation generation in contrib/doxygen/.
 
+** API and ABI is backwards compatible with the previous version.
+
 * Version 0.1.13 (released 2003-03-13)
 
 ** Unfinished Java *.class files implementing the libidn API.
