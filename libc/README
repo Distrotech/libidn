@@ -12,10 +12,11 @@ $ tar xfz glibc-2.3.1.tar.gz
 
 $ cd glibc-2.3.1
 $ tar xfz ~/libidn-0.1.5.tar.gz
+$ mv libidn-0.1.5 libidn
 
 3) Set up Libidn for building as a Libc add-on:
 
-$ cd libidn-0.1.5
+$ cd libidn
 $ cp libc/Makefile .
 $ cp libc/configure .
 $ cp libc/getaddrinfo.c ../sysdeps/posix/
