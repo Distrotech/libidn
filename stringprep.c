@@ -65,8 +65,8 @@ stringprep_apply_table_to_string (long *ucs4,
   int i;
   int pos, maplen;
 
-  if ((pos =
-       stringprep_find_string_in_table (ucs4, *ucs4len, &i, table)) != -1)
+  while ((pos = stringprep_find_string_in_table
+	  (ucs4, *ucs4len, &i, table)) != -1)
     {
 #if DBG
       printf ("hit %06lx %06lx-%06lx\n", ucs4[pos], table[i].start,
