@@ -24,7 +24,7 @@ HTML_OBJECTS = index.html c4.html \
 IMAGES = home.png left.png right.png up.png
 
 MODULE = libidn
-HIGNORE = config.h gunibreak.h gunicomp.h gunidecomp.h \
+HIGNORE = config.h gunibreak.h gunicomp.h gunidecomp.h idn-int.h \
 	netdb.h getopt.h internal.h stringprep_*.h idn_cmd.h
 
 scan.stamp: $(top_srcdir)/*.c $(top_srcdir)/*.h
