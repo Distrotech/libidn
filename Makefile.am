@@ -18,7 +18,7 @@
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
 
 DIST_SUBDIRS = doc reference
-SUBDIRS = doc @GTKDOC@
+SUBDIRS = . doc @GTKDOC@
 
 ACLOCAL_AMFLAGS = -I m4
 
