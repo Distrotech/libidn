@@ -36,7 +36,6 @@ AM_INIT_AUTOMAKE([1.8 gnits])
 AC_CONFIG_HEADERS(config.h)
 
 # Checks for programs.
-AC_LIBTOOL_TAGS
 AC_PROG_LIBTOOL
 AC_PROG_CC
 AM_MISSING_PROG(PERL, perl, $missing_dir)
