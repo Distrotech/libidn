@@ -211,9 +211,7 @@ tld_get_z (const char *in, char **out)
 static int
 _tld_checkchar (uint32_t ch, const Tld_table * tld)
 {
-  const Tld_table_element *p;
-  size_t i;
-  int found = 0;
+  const Tld_table_element *s, *e, *m;
 
   if (!tld)
     return TLD_SUCCESS;
@@ -223,11 +221,18 @@ _tld_checkchar (uint32_t ch, const Tld_table * tld)
       (ch >= 0x30 && ch <= 0x39) || ch == 0x2D || DOTP (ch))
     return TLD_SUCCESS;
 
-  /* FIXME: replace searches by bsearch like stuff. */
-
-  for (p = *tld->valid, i = 0; i < tld->nvalid; i++, p++)
-    if (ch >= p->start && ch <= p->end)
-      return TLD_SUCCESS;
+  s = *tld->valid;
+  e = s + tld->nvalid;
+  while (s < e)
+    {
+      m = s + ((e - s) >> 1);
+      if (ch < m->start)
+	e = m;
+      else if (ch > m->end)
+	s = m + 1;
+      else
+	return TLD_SUCCESS;
+    }
 
   return TLD_INVALID;
 }
