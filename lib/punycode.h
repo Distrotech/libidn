@@ -75,7 +75,7 @@ extern "C"
     PUNYCODE_SUCCESS = 0,
     PUNYCODE_BAD_INPUT,		/* Input is invalid.                       */
     PUNYCODE_BIG_OUTPUT,	/* Output would exceed the space provided. */
-    PUNYCODE_OVERFLOW,		/* Input needs wider integers to process.  */
+    PUNYCODE_OVERFLOW		/* Input needs wider integers to process.  */
   } Punycode_status;
 
   /* For RFC compatibility. */
