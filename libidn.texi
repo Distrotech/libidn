@@ -283,7 +283,7 @@ Send your bug report to:
 @node Preparation
 @chapter Preparation
 
-To use `Libidn, you have to perform some changes to your sources and
+To use `Libidn', you have to perform some changes to your sources and
 the build system.  The necessary changes are small and explained in
 the following sections.  At the end of this chapter, it is described
 how the library is initialized, and how the requirements of the
