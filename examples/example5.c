@@ -56,7 +56,7 @@ int
 main (int argc, char *argv[])
 {
   char buf[BUFSIZ];
-  char *p, *q;
+  char *p;
   uint32_t *r;
   int rc;
   size_t errpos, i;
