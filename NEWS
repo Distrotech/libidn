@@ -2,7 +2,7 @@ Libidn NEWS -- History of user-visible changes.                 -*- outline -*-
 Copyright (C) 2002, 2003, 2004 Simon Josefsson
 See the end for copying conditions.
 
-* Version 0.4.9 (unreleased)
+* Version 0.4.9 (released 2004-06-11)
 
 ** The Java library (java/libidn-*.jar) is included in the distribution.
 
