@@ -462,6 +462,22 @@ the world. The stringprep protocol is useful for protocol identifier
 values, company and personal names, internationalized domain names,
 and other text strings.
 
+@defcv {Enumerated type} Stringprep_profile_flags STRINGPREP_NO_NFKC
+STRINGPREP_NO_NFKC disables the NFKC normalization, as well as
+selecting the non-NFKC case folding tables.  Usually the profile
+specifies BIDI and NFKC settings.
+@end defcv
+
+@defcv {Enumerated type} Stringprep_profile_flags STRINGPREP_NO_BIDI
+STRINGPREP_NO_BIDI disables the BIDI step.  Usually the profile
+specifies BIDI and NFKC settings.
+@end defcv
+
+@defcv {Enumerated type} Stringprep_profile_flags STRINGPREP_NO_UNASSIGNED
+STRINGPREP_NO_UNASSIGNED causes stringprep() abort with an error if
+string contains unassigned characters according to profile.
+@end defcv
+
 @include libidn-api-stringprep.texi
 
 @c **********************************************************
