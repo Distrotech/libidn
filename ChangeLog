@@ -1,3 +1,50 @@
+2004-08-05  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Version 0.5.3.
+
+2004-08-05  Simon Josefsson <simon@josefsson.org>
+
+	* po/da.po, po/de.po, po/eo.po, po/fr.po, po/nl.po, po/pl.po,
+	po/ro.po, po/sr.po, po/sv.po: Generated.
+
+2004-08-05  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2004-08-05  Simon Josefsson <simon@josefsson.org>
+
+	* THANKS: Add.
+
+2004-08-05  Simon Josefsson <simon@josefsson.org>
+
+	* src/idn.c: Fix crash, tiny patch by Andreas Schwab reported by
+	Stephan Kulow <coolo@suse.de>.
+
+2004-08-01  Simon Josefsson <simon@josefsson.org>
+
+	* lib/pr29.c: Use PR29_* error mnemonics, instead of hard coded
+	integers.
+
+2004-08-01  Simon Josefsson <simon@josefsson.org>
+
+	* lib/pr29.c: Cosmetic fix.
+
+2004-07-14  Simon Josefsson <simon@josefsson.org>
+
+	* doc/gendocs.sh, doc/gendocs_template: Update.
+
+2004-07-14  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Bump version.
+
+2004-07-14  Simon Josefsson <simon@josefsson.org>
+
+	* configure.ac: Bump versions.
+
+2004-07-14  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
 2004-07-14  Simon Josefsson <simon@josefsson.org>
 
 	* po/da.po, po/de.po, po/eo.po, po/fr.po, po/nl.po, po/pl.po,
