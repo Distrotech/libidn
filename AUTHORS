@@ -8,6 +8,9 @@ Designed and implemented libidn.
 Thomas Jacob <jacob@internet24.de>
 Contributed TLD support.
 
+Oliver Hitz <oliver@net-track.ch>
+Contributed Java implementation.
+
 -----BEGIN PGP PUBLIC KEY BLOCK-----
 Comment: This 0xB565716F key is used to sign releases of Libidn.
 
