@@ -31,6 +31,7 @@
 
 #define HAVE_ICONV 1
 #define LOCALE_WORKS 1
+#define ICONV_CONST
 
 #else /* _LIBC */
 
