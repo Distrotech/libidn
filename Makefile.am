@@ -28,7 +28,7 @@ EXTRA_DIST = FAQ libidn.pc.in \
 	gen-unicode-tables.pl UnicodeData-3.2.0.txt LineBreak-3.2.0.txt \
 	SpecialCasing-3.2.0.txt CaseFolding-3.2.0.txt \
 	CompositionExclusions-3.2.0.txt \
-	gdoc libidn.html libidn.ps libidn.pdf lgpl.texi \
+	libidn.html libidn.ps libidn.pdf lgpl.texi \
 	libc/README libc/Makefile libc/Versions libc/configure \
 	libc/example.c libc/getaddrinfo.c libc/libc.patch libc/netdb.h \
 	contrib/README contrib/idn-python/README contrib/idn-python/Makefile \
@@ -120,24 +120,10 @@ libidn.html: libidn.texi
 	$(MAKEINFO) --html --no-split --number-sections $^
 
 libidn_TEXINFOS = fdl.texi \
-	example.c.texi example2.c.texi example3.c.texi example4.c.texi \
-	libidn-api-version.texi libidn-api-stringprep.texi \
-	libidn-api-punycode.texi libidn-api-idna.texi
+	example.c.texi example2.c.texi example3.c.texi example4.c.texi
 
 %.c.texi: %.c
 	sed -e 's/{/@{/g' -e 's/}/@}/g' < $< > $@
-
-libidn-api-version.texi: version.c
-	$(PERL) $(srcdir)/gdoc -texinfo $^ > $@
-
-libidn-api-stringprep.texi: stringprep.c nfkc.c toutf8.c reference/dummy.c
-	$(PERL) $(srcdir)/gdoc -texinfo $^ > $@
-
-libidn-api-punycode.texi: punycode.c
-	$(PERL) $(srcdir)/gdoc -texinfo $^ > $@
-
-libidn-api-idna.texi: idna.c
-	$(PERL) $(srcdir)/gdoc -texinfo $^ > $@
 
 # Maintainer targets
 
