@@ -600,8 +600,11 @@ sub output_man {
     print ".SH NAME\n";
 
     print $args{'function'};
-    print " \\- " . $args{'purpose'} if ($args{'purpose'});
-    print "\n";
+    if ($args{'purpose'}) {
+	print " \\- " . $args{'purpose'} . "\n";
+    } else {
+	print " \\- API function\n";
+    }
 
     print ".SH SYNOPSIS\n";
     print ".B #include <". $args{'include'} . ">\n"
