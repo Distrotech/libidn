@@ -39,27 +39,6 @@ fail (const char *format, ...)
 }
 
 static void
-escapeprint (char *str, int len)
-{
-  int i;
-
-  printf ("(length %d bytes):\n", len);
-  printf ("\t'");
-  for (i = 0; i < len; i++)
-    {
-      if (((str[i] & 0xFF) >= 'A' && (str[i] & 0xFF) <= 'Z') ||
-	  ((str[i] & 0xFF) >= 'a' && (str[i] & 0xFF) <= 'z') ||
-	  ((str[i] & 0xFF) >= '0' && (str[i] & 0xFF) <= '9')
-	  || (str[i] & 0xFF) == ' ' || (str[i] & 0xFF) == '.')
-	printf ("%c", (str[i] & 0xFF));
-      else
-	printf ("\\x%02X", (str[i] & 0xFF));
-      if ((i + 1) % 16 == 0 && (i + 1) < len)
-	printf ("'\n\t'");
-    }
-}
-
-static void
 ucs4print (uint32_t * str, ssize_t len)
 {
   int i;
