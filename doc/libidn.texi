@@ -1796,7 +1796,7 @@ Supplementary Characters (U+10000 to U+10FFFF). Starting from Java
 1.5, these characters will also be supported by Java, but this will
 require changes to this library.  See also the next section.
 
-@section A Note on Java and Unicode:
+@section A Note on Java and Unicode
 
 This library uses Java's builtin 'char' datatype. Up to Java 1.4, this
 datatype only supports 16-bit Unicode code points, also called the
