@@ -49,7 +49,7 @@ AC_HEADER_STDC
 AC_CHECK_HEADERS(unistd.h errno.h)
 
 # Checks for typedefs, structures, and compiler characteristics.
-AX_CREATE_STDINT_H(lib/idn-int.h)
+AX_CREATE_STDINT_H(lib/idn-int.h, sys/types.h)
 
 # Need getopt.
 AC_CHECK_FUNCS(getopt_long,, [AC_LIBOBJ(getopt) AC_LIBOBJ(getopt1)])
