@@ -53,18 +53,18 @@ include $(srcdir)/Makefile.gdoci
 
 # DocBook
 
-libidn_html_auto_deps = html/a1559.html html/a1682.html			\
+libidn_html_auto_deps = html/a1562.html html/a1685.html			\
 	html/c1176.html html/c1197.html html/c1207.html			\
-	html/c1210.html html/c1215.html html/c1220.html			\
-	html/c1225.html html/c1304.html html/c16.html html/c261.html	\
-	html/c364.html html/c541.html html/c803.html html/c9.html	\
-	html/c917.html html/i1309.html html/i1440.html html/index.html	\
+	html/c1210.html html/c1218.html html/c1223.html			\
+	html/c1228.html html/c1307.html html/c16.html html/c261.html	\
+	html/c364.html html/c541.html html/c803.html html/c917.html	\
+	html/c9.html html/i1312.html html/i1443.html html/index.html	\
 	html/x1052.html html/x1099.html html/x1185.html			\
-	html/x1189.html html/x1193.html html/x1268.html			\
-	html/x1667.html html/x1785.html html/x179.html html/x195.html	\
-	html/x214.html html/x232.html html/x29.html html/x297.html	\
+	html/x1189.html html/x1193.html html/x1271.html			\
+	html/x1670.html html/x1788.html html/x179.html html/x195.html	\
+	html/x214.html html/x232.html html/x297.html html/x29.html	\
 	html/x300.html html/x319.html html/x345.html html/x376.html	\
-	html/x45.html html/x456.html html/x490.html html/x553.html	\
+	html/x456.html html/x45.html html/x490.html html/x553.html	\
 	html/x558.html html/x611.html html/x625.html html/x740.html	\
 	html/x815.html html/x835.html html/x842.html html/x929.html	\
 	html/x976.html html/x988.html html/x995.html
