@@ -1,0 +1,396 @@
+<?xml version="1.0"?>
+<!DOCTYPE rfc SYSTEM "rfc2629.dtd">
+
+<?rfc compact="yes"?>
+<?rfc toc="yes"?>
+
+<rfc category="info" ipr="full2026"
+     maillist=""
+     docName="draft-josefsson-idn-test-vectors">
+
+<front>
+
+<title>Nameprep and IDNA Test Vectors</title>
+
+<author initials="S." surname="Josefsson" fullname="Simon Josefsson">
+	<organization>Extundo</organization>
+	<address>
+		<postal>
+			<street>Drottningholmsv. 70</street>
+			<city>Stockholm</city> <code>112 42</code>
+			<country>Sweden</country>
+		</postal>
+		<email>simon@josefsson.org</email>
+	</address>
+</author>
+	
+<date month="February" year="2003"/>
+
+<abstract>
+
+<t>This document contains test vectors for Nameprep and IDNA.  The
+majority of test vectors are derived in order to cover various corner
+cases in the specifications, but some anticipated typical data from
+the real world are also included.  The aim is to promote
+interoperability and standards compliance in deployed
+implementations.</t>
+
+</abstract>
+
+</front>
+
+<middle>
+
+<section title="Introduction">
+
+<t>The Nameprep and IDNA specifications lack thorough examples that
+would aid in implementing them.  This document is a complement to
+those specifications.</t>
+
+<t>It should be pointed out that this document is not normative, and
+hence any errors here should not be treated as gospel defining
+Nameprep nor IDNA.  When conforming to the specification and
+generating output corresponding to values in this document is in
+conflict, implementations must conform to the specification.</t>
+
+</section>
+
+<section title="Format of Nameprep Test Vectors">
+
+<t>The tests follow a certain syntax, described here by showing one
+complete example with comments intermixed.  The comments are prefixed
+with the '#' character.</t>
+
+<figure>
+<artwork>
+# First the (UTF-8) string is printed as a C octet string, with
+# characters [A-Za-z .0-9] shown inline and other characters shown
+# escaped with \xAB where AB is the hex sequence of that octet.  The
+# number of octets are also shown.
+
+in: `foo\xC2\xADbar' (length 8)
+
+# The input is also printed as Unicode codepoints.
+
+input: U+0066 U+006F U+006F U+00AD U+0062 U+0061 U+0072
+
+# After printing the input, the nameprep steps starts.  When the
+# string is modified, the specific operation that caused it is printed
+# along with the new string of Unicode code points.
+
+# 1) Map -- For each character in the input, check if it has a mapping
+#    and, if so, replace it with its mapping.  This is described in
+#    section 3.
+
+Table B.1 maps U+00AD to nothing.
+U+0066 U+006f U+006f U+0062 U+0061 U+0072
+
+# 2) Normalize -- Possibly normalize the result of step 1 using Unicode
+#    normalization.  This is described in section 4.
+
+# 3) Prohibit -- Check for any characters that are not allowed in the
+#    output.  If any are found, return an error.  This is described in
+#    section 5.
+
+# 4) Check bidi -- Possibly check for right-to-left characters, and if
+#    any are found, make sure that the whole string satisfies the
+#    requirements for bidirectional strings.  If the string does not
+#    satisfy the requirements for bidirectional strings, return an
+#    error.  This is described in section 6.
+#
+#    1) The characters in section 5.8 MUST be prohibited.
+
+#    2) If a string contains any RandALCat character, the string MUST NOT
+#       contain any LCat character.
+
+#    3) If a string contains any RandALCat character, a RandALCat
+#       character MUST be the first character of the string, and a
+#       RandALCat character MUST be the last character of the string.
+
+# The output is printed as Unicode codepoints.
+
+output: U+0066 U+006f U+006f U+0062 U+0061 U+0072
+
+# And finally the output is printed as UTF-8
+
+out: `foobar' (length 6 bytes)
+</artwork>
+</figure>
+
+</section>
+
+<section title="Nameprep Test Vectors">
+
+<?rfc include="foo"?>
+
+</section>
+
+<section title="Security Considerations">
+
+<t>The security considerations of Nameprep and IDNA are discussed in
+those specifications.</t>
+
+</section>
+
+</middle>
+
+<back>
+
+<note title="Acknowledgments">
+
+<t>TBA</t>
+
+</note>
+
+<section title="Test vector in C syntax">
+
+<t>In order to avoid having implementators type in the test vectors
+above, a C structure with the data is provided.  While it is specific
+for one implementation, it should be trivial to adopt for any package.</t>
+
+<t>The comment field is the section titles used in this document.  The
+in field contains UTF-8 encoded strings.  The out field contains
+expected output, or NULL if the expected result is an error.  The
+profile field can be ignored.  The only significant setting for the
+flags field is STRINGPREP_NO_UNASSIGNED which signals to the Nameprep
+implementation that it should perform unassigned code point checking,
+aka the "AllowUnassigned" flag.  The rc field contains expected error
+codes, where 0 indicates success and the other flags should be pretty
+self explanatory.</t>
+
+<figure>
+<artwork>
+struct stringprep
+{
+  char *comment;
+  char *in;
+  char *out;
+  Stringprep_profile *profile;
+  int flags;
+  int rc;
+}
+strprep[] =
+{
+  {
+    "Map to nothing",
+    "foo\xC2\xAD\xCD\x8F\xE1\xA0\x86\xE1\xA0\x8B"
+    "bar""\xE2\x80\x8B\xE2\x81\xA0""baz\xEF\xB8\x80\xEF\xB8\x88"
+    "\xEF\xB8\x8F\xEF\xBB\xBF", "foobarbaz"
+  },
+  {
+    "Case folding ASCII U+0043 U+0041 U+0046 U+0045",
+    "CAFE", "cafe"
+  },
+  {
+    "Case folding 8bit U+00DF (german sharp s)",
+    "\xC3\xDF", "ss"
+  },
+  {
+    "Case folding U+0130 (turkish capital I with dot)",
+    "\xC4\xB0", "i\xcc\x87"
+  },
+  {
+    "Case folding multibyte U+0143 U+037A",
+    "\xC5\x83\xCD\xBA", "\xC5\x84 \xCE\xB9"
+  },
+  {
+    "Case folding U+2121 U+33C6 U+1D7BB",
+    "\xE2\x84\xA1\xE3\x8F\x86\xF0\x9D\x9E\xBB",
+    "telc\xE2\x88\x95""kg\xCF\x83"
+  },
+  {
+    "Normalization of U+006a U+030c U+00A0 U+00AA",
+    "\x6A\xCC\x8C\xC2\xA0\xC2\xAA", "\xC7\xB0 a"
+  },
+  {
+    "Case folding U+1FB7 and normalization",
+    "\xE1\xBE\xB7", "\xE1\xBE\xB6\xCE\xB9"
+  },
+  {
+    "Self-reverting case folding U+01F0 and normalization",
+    "\xC7\xF0", "\xC7\xB0"
+  },
+  {
+    "Self-reverting case folding U+0390 and normalization",
+    "\xCE\x90", "\xCE\x90"
+  },
+  {
+    "Self-reverting case folding U+03B0 and normalization",
+    "\xCE\xB0", "\xCE\xB0"
+  },
+  {
+    "Self-reverting case folding U+1E96 and normalization",
+    "\xE1\xBA\x96", "\xE1\xBA\x96"
+  },
+  {
+    "Self-reverting case folding U+1F56 and normalization",
+    "\xE1\xBD\x96", "\xE1\xBD\x96"
+  },
+  {
+    "ASCII space character U+0020",
+    "\x20", "\x20"
+  },
+  {
+    "Non-ASCII 8bit space character U+00A0",
+    "\xC2\xA0", "\x20"
+  },
+  {
+    "Non-ASCII multibyte space character U+1680",
+    "\xE1\x9A\x80", NULL, stringprep_nameprep, 0,
+    STRINGPREP_CONTAINS_PROHIBITED
+  },
+  {
+    "Non-ASCII multibyte space character U+2000",
+    "\xE2\x80\x80", "\x20"
+  },
+  {
+    "Zero Width Space U+200b",
+    "\xE2\x80\x8b", ""
+  },
+  {
+    "Non-ASCII multibyte space character U+3000",
+    "\xE3\x80\x80", "\x20"
+  },
+  {
+    "ASCII control characters U+0010 U+007F",
+    "\x10\x7F", "\x10\x7F"
+  },
+  {
+    "Non-ASCII 8bit control character U+0085",
+    "\xC2\x85", NULL, stringprep_nameprep, 0,
+    STRINGPREP_CONTAINS_PROHIBITED
+  },
+  {
+    "Non-ASCII multibyte control character U+180E",
+    "\xE1\xA0\x8E", NULL, stringprep_nameprep, 0,
+    STRINGPREP_CONTAINS_PROHIBITED
+  },
+  {
+    "Zero Width No-Break Space U+FEFF",
+    "\xEF\xBB\xBF", ""
+  },
+  {
+    "Non-ASCII control character U+1D175",
+    "\xF0\x9D\x85\xB5", NULL, stringprep_nameprep, 0,
+    STRINGPREP_CONTAINS_PROHIBITED
+  },
+  {
+    "Plane 0 private use character U+F123",
+    "\xEF\x84\xA3", NULL, stringprep_nameprep, 0,
+    STRINGPREP_CONTAINS_PROHIBITED
+  },
+  {
+    "Plane 15 private use character U+F1234",
+    "\xF3\xB1\x88\xB4", NULL, stringprep_nameprep, 0,
+    STRINGPREP_CONTAINS_PROHIBITED
+  },
+  {
+    "Plane 16 private use character U+10F234",
+    "\xF4\x8F\x88\xB4", NULL, stringprep_nameprep, 0,
+    STRINGPREP_CONTAINS_PROHIBITED
+  },
+  {
+    "Non-character code point U+8FFFE",
+    "\xF2\x8F\xBF\xBE", NULL, stringprep_nameprep, 0,
+    STRINGPREP_CONTAINS_PROHIBITED
+  },
+  {
+    "Non-character code point U+10FFFF",
+    "\xF4\x8F\xBF\xBF", NULL, stringprep_nameprep, 0,
+    STRINGPREP_CONTAINS_PROHIBITED
+  },
+  {
+    "Surrogate code U+DF42",
+    "\xED\xBD\x82", NULL, stringprep_nameprep, 0,
+    STRINGPREP_CONTAINS_PROHIBITED
+  },
+  {
+    "Non-plain text character U+FFFD",
+    "\xEF\xBF\xBD", NULL, stringprep_nameprep, 0,
+    STRINGPREP_CONTAINS_PROHIBITED
+  },
+  {
+    "Ideographic description character U+2FF5",
+    "\xE2\xBF\xB5", NULL, stringprep_nameprep, 0,
+    STRINGPREP_CONTAINS_PROHIBITED
+  },
+  {
+    "Display property character U+0341",
+    "\xCD\x81", "\xCC\x81"
+  },
+  {
+    "Left-to-right mark U+200E",
+    "\xE2\x80\x8E", "\xCC\x81", stringprep_nameprep, 0,
+    STRINGPREP_CONTAINS_PROHIBITED
+  },
+  {
+    "Deprecated U+202A",
+    "\xE2\x80\xAA", "\xCC\x81", stringprep_nameprep, 0,
+    STRINGPREP_CONTAINS_PROHIBITED
+  },
+  {
+    "Language tagging character U+E0001",
+    "\xF3\xA0\x80\x81", "\xCC\x81", stringprep_nameprep, 0,
+    STRINGPREP_CONTAINS_PROHIBITED
+  },
+  {
+    "Language tagging character U+E0042",
+    "\xF3\xA0\x81\x82", NULL, stringprep_nameprep, 0,
+    STRINGPREP_CONTAINS_PROHIBITED
+  },
+  {
+    "Bidi: RandALCat character U+05BE and LCat characters",
+    "foo\xD6\xBE""bar", NULL, stringprep_nameprep, 0,
+    STRINGPREP_BIDI_BOTH_L_AND_RAL
+  },
+  {
+    "Bidi: RandALCat character U+FD50 and LCat characters",
+    "foo\xEF\xB5\x90""bar", NULL, stringprep_nameprep, 0,
+    STRINGPREP_BIDI_BOTH_L_AND_RAL
+  },
+  {
+    "Bidi: RandALCat character U+FB38 and LCat characters",
+    "foo\xEF\xB9\xB6""bar", "foo \xd9\x8e""bar"
+  },
+  { "Bidi: RandALCat without trailing RandALCat U+0627 U+0031",
+    "\xD8\xA7\x31", NULL, stringprep_nameprep, 0,
+    STRINGPREP_BIDI_LEADTRAIL_NOT_RAL}
+  ,
+  {
+    "Bidi: RandALCat character U+0627 U+0031 U+0628",
+    "\xD8\xA7\x31\xD8\xA8", "\xD8\xA7\x31\xD8\xA8"
+  },
+  {
+    "Unassigned code point U+E0002",
+    "\xF3\xA0\x80\x82", NULL, stringprep_nameprep, STRINGPREP_NO_UNASSIGNED,
+    STRINGPREP_CONTAINS_UNASSIGNED
+  },
+  {
+    "Larger test (shrinking)",
+    "X\xC2\xAD\xC3\xDF\xC4\xB0\xE2\x84\xA1\x6a\xcc\x8c\xc2\xa0\xc2"
+    "\xaa\xce\xb0\xe2\x80\x80", "xssi\xcc\x87""tel\xc7\xb0 a\xce\xb0 ",
+    stringprep_nameprep
+  },
+  {
+    "Larger test (expanding)",
+    "X\xC3\xDF\xe3\x8c\x96\xC4\xB0\xE2\x84\xA1\xE2\x92\x9F\xE3\x8c\x80",
+    "xss\xe3\x82\xad\xe3\x83\xad\xe3\x83\xa1\xe3\x83\xbc\xe3\x83\x88"
+    "\xe3\x83\xab""i\xcc\x87""tel\x28""d\x29\xe3\x82\xa2\xe3\x83\x91"
+    "\xe3\x83\xbc\xe3\x83\x88"
+  },
+};
+</artwork>
+</figure>
+
+</section>
+
+<references title="Normative References">
+   <?rfc include="reference.RFC.3454.xml"?>
+</references>
+
+<references title="Informative References">
+</references>
+
+</back>
+
+</rfc>
