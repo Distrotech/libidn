@@ -64,44 +64,8 @@ tld_get_table (const char *tld_str, const Tld_table ** xtra_tlds)
 #define DOTP(c) ((c) == 0x002E || (c) == 0x3002 ||	\
 		 (c) == 0xFF0E || (c) == 0xFF61)
 
-/*
- * tld_checkchar:
- * @ch: 32 bit unicode character to check.
- * @tld: Tld_table data structure to check @ch against
- *
- * Verify if @ch is either in [a-z0-9-.] or mentioned
- * as a legal character in @tld.
- *
- * Return value: Return %TLD_SUCCESS if @ch is a legal character for
- * the TLD @tld or if @tld is %NULL, %TLD_ILLEGAL if @ch is not a
- * legal as defined by @tld.
- */
-static int
-_tld_checkchar (uint32_t ch, const Tld_table * tld)
-{
-  const Tld_table_element *p;
-  size_t i;
-  int found = 0;
-
-  if (!tld)
-    return TLD_SUCCESS;
-
-  /* Check for [-a-z0-9.]. */
-  if ((ch >= 0x61 && ch <= 0x7A) ||
-      (ch >= 0x30 && ch <= 0x39) || ch == 0x2D || DOTP (ch))
-    return TLD_SUCCESS;
-
-  /* FIXME: replace searches by bsearch like stuff. */
-
-  for (p = *tld->valid, i = 0; i < tld->nvalid; i++, p++)
-    if (ch >= p->start && ch <= p->end)
-      return TLD_SUCCESS;
-
-  return TLD_ILLEGAL;
-}
-
 /**
- * tld_gettld_4i:
+ * tld_get_4i:
  * @in: Array of unicode code points to process (Does not need to be
  * zero terminated).
  * @inlen: Number of unicode code points.
@@ -114,13 +78,13 @@ _tld_checkchar (uint32_t ch, const Tld_table * tld)
  * error code otherwise.
  */
 int
-tld_gettld_4i (const uint32_t * in, size_t inlen, char **out)
+tld_get_4i (const uint32_t * in, size_t inlen, char **out)
 {
   const uint32_t *ipos;
   size_t olen;
 
   *out = NULL;
-  if (!in || (inlen <= 0))
+  if (!in || inlen == 0)
     return TLD_NODATA;
 
   ipos = &in[inlen - 1];
@@ -174,6 +138,42 @@ tld_gettld_4z (const uint32_t * in, char **out)
     ipos++;
 
   return tld_gettld_4i (in, ipos - in, out);
+}
+
+/*
+ * tld_checkchar:
+ * @ch: 32 bit unicode character to check.
+ * @tld: Tld_table data structure to check @ch against
+ *
+ * Verify if @ch is either in [a-z0-9-.] or mentioned
+ * as a legal character in @tld.
+ *
+ * Return value: Return %TLD_SUCCESS if @ch is a legal character for
+ * the TLD @tld or if @tld is %NULL, %TLD_ILLEGAL if @ch is not a
+ * legal as defined by @tld.
+ */
+static int
+_tld_checkchar (uint32_t ch, const Tld_table * tld)
+{
+  const Tld_table_element *p;
+  size_t i;
+  int found = 0;
+
+  if (!tld)
+    return TLD_SUCCESS;
+
+  /* Check for [-a-z0-9.]. */
+  if ((ch >= 0x61 && ch <= 0x7A) ||
+      (ch >= 0x30 && ch <= 0x39) || ch == 0x2D || DOTP (ch))
+    return TLD_SUCCESS;
+
+  /* FIXME: replace searches by bsearch like stuff. */
+
+  for (p = *tld->valid, i = 0; i < tld->nvalid; i++, p++)
+    if (ch >= p->start && ch <= p->end)
+      return TLD_SUCCESS;
+
+  return TLD_ILLEGAL;
 }
 
 

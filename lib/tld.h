@@ -68,14 +68,14 @@ extern "C"
     TLD_NOTLD = 5
   } Tld_rc;
 
+  /* Extract TLD, as ASCII string, of UCS4 domain name into "out". */
+  int tld_get_4i (const uint32_t * in, size_t inlen, char **out);
+  int tld_get_4z (const uint32_t * in, char **out);
+
   /* Return structure corresponding to the named tld, first looking
    * thru xtra_tlds then thru built-in list, or NULL if not found. */
   const Tld_table *tld_get_table (const char *tld_str,
 				  const Tld_table ** xtra_tlds);
-
-  /* Determine TLD of UCS4 DNS name and return in out. */
-  int tld_gettld_4i (const uint32_t * in, size_t inlen, char **out);
-  int tld_gettld_4z (const uint32_t * in, char **out);
 
   /* Check NAMEPREPPED domain name for valid characters as defined by
    * the relevant registering body + [a-z0-9.-] return Tld_rc,
