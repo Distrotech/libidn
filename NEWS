@@ -4,6 +4,10 @@ See the end for copying conditions.
 
 * Version 0.3.3 (unreleased)
 
+** Fixed list of Stringprep profiles in 'idn --help'.
+
+** API and ABI is backwards compatible with the previous version.
+
 * Version 0.3.2 (released 2003-10-07)
 
 ** SASL ANONYMOUS stringprep profile "trace" added.
