@@ -69,18 +69,18 @@ extern "C"
    * position of offending character in errpos if TLDCHK_ILLEGAL.
    */
   int tld_check_4it (const uint32_t * in, size_t inlen, size_t * errpos,
-		     const TLDCHK_domain * tld);
+		     const Tld_table * tld);
   int tld_check_4iz (const uint32_t * in, size_t * errpos,
-		     const TLDCHK_domain * tld);
+		     const Tld_table * tld);
 
   int tld_check_4i (const uint32_t * in, size_t inlen, size_t * errpos,
-		    const TLDCHK_domain ** xtra_tlds);
+		    const Tld_table ** xtra_tlds);
   int tld_check_4z (const uint32_t * in, size_t * errpos,
-		    const TLDCHK_domain ** xtra_tlds);
+		    const Tld_table ** xtra_tlds);
   int tld_check_8z (const char *in, size_t * errpos,
-		    const TLDCHK_domain ** xtra_tlds);
+		    const Tld_table ** xtra_tlds);
   int tld_check_lz (const char *in, size_t * errpos,
-		    const TLDCHK_domain ** xtra_tlds);
+		    const Tld_table ** xtra_tlds);
 
   /* Verify if ch is either in [a-z0-9-.] or mentioned as a legal
    * character in tld and return TLDCHK_SUCCESS/ILLEGAL respectively.
