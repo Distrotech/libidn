@@ -26,3 +26,8 @@ noinst_PROGRAMS = example example2 example3 example4
 if TLD
 noinst_PROGRAMS += example5
 endif
+
+# Maintainer targets
+
+indent:
+	indent $(SOURCES)
