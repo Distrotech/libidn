@@ -91,12 +91,11 @@ extern "C"
 
   typedef uint32_t punycode_uint;
 
-  extern int punycode_encode (size_t,	/* input_length  */
-			      const punycode_uint[],	/* input         */
-			      const unsigned char[],	/* case_flags    */
-			      size_t *,	/* output_length */
-			      char[]	/* output        */
-    );
+  extern int punycode_encode (size_t input_length,
+			      const punycode_uint input[],
+			      const unsigned char case_flags[],
+			      size_t *output_length,
+			      char output[]);
 
 /*
     punycode_encode() converts a sequence of code points (presumed to be
@@ -153,12 +152,11 @@ extern "C"
         and output might contain garbage.
 */
 
-  extern int punycode_decode (size_t,	/* input_length  */
-			      const char[],	/* input         */
-			      size_t *,	/* output_length */
-			      punycode_uint[],	/* output        */
-			      unsigned char[]	/* case_flags    */
-    );
+  extern int punycode_decode (size_t input_length,
+			      const char input[],
+			      size_t *output_length,
+			      punycode_uint output[],
+			      unsigned char case_flags[]);
 
 /*
     punycode_decode() converts Punycode to a sequence of code points
