@@ -27,6 +27,12 @@
 #include <stdlib.h>
 #include <string.h>
 
+#ifdef LOCALE_WORKS
+# include <locale.h>
+#else
+# define setlocale(Category, Locale)	/* empty */
+#endif
+
 #include <stringprep.h>
 #include <punycode.h>
 #include <idna.h>
@@ -51,6 +57,8 @@ main (int argc, char *argv[])
   uint32_t *q;
   unsigned cmdn = 0;
   int rc;
+
+  setlocale (LC_ALL, "");
 
   if (cmdline_parser (argc, argv, &args_info) != 0)
     return 1;
