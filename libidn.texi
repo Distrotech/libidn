@@ -116,8 +116,10 @@ The library is used by, e.g., GNU SASL and Shishi to process user
 names and passwords.  Libidn can be built into GNU Libc to enable a
 new system-wide getaddrinfo() flag for IDN processing.
 
-GNU Libidn is developed for the GNU/Linux system, but runs on over 20
-Unix platforms (including Solaris, IRIX, AIX, and Tru64) and Windows.
+Libidn is developed for the GNU/Linux system, but runs on over 20 Unix
+platforms (including Solaris, IRIX, AIX, and Tru64) and Windows.
+Libidn is written in C and (parts of) the API is accessible from C,
+C++, Emacs Lisp, Python and Java.
 
 @menu
 * Getting Started::
