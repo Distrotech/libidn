@@ -43,7 +43,7 @@ escapeprint (char *str, int len)
 {
   int i;
 
-  printf ("`");
+  printf (" (length %d bytes):\n\t", len);
   for (i = 0; i < len; i++)
     {
       if (((str[i] & 0xFF) >= 'A' && (str[i] & 0xFF) <= 'Z') ||
@@ -52,11 +52,10 @@ escapeprint (char *str, int len)
 	  || (str[i] & 0xFF) == ' ' || (str[i] & 0xFF) == '.')
 	printf ("%c", (str[i] & 0xFF));
       else
-	printf ("\\x%02x", (str[i] & 0xFF));
+	printf ("\\x%02X", (str[i] & 0xFF));
       if ((i+1)%16 == 0 && (i+1) < len)
 	printf("'\n\t'");
     }
-  printf ("' (length %d bytes)\n", len);
 }
 
 static void
@@ -393,12 +392,13 @@ main (int argc, char *argv[])
   for (i = 0; i < sizeof (strprep) / sizeof (strprep[0]); i++)
     {
 #ifdef DRAFT
-      printf("<section title=\"%s.\">\n", strprep[i].comment);
-      printf("\n");
-      printf("<figure>\n");
-      printf("<artwork>\n");
-      printf ("in: ");
+      printf ("<section title=\"%s.\">\n", strprep[i].comment);
+      printf ("\n");
+      printf ("<figure>\n");
+      printf ("<artwork>\n");
+      printf ("in");
       escapeprint (strprep[i].in, strlen (strprep[i].in));
+      printf ("\n");
 #endif
       if (debug)
 	printf ("STRINGPREP entry %d\n", i);
@@ -433,7 +433,7 @@ main (int argc, char *argv[])
 #ifdef DRAFT
       if (rc == STRINGPREP_OK)
 	{
-	  printf ("out: ");
+	  printf ("out");
 	  escapeprint (p, strlen (p));
 	}
 #endif

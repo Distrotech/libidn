@@ -174,7 +174,7 @@ stringprep (char *in, size_t maxlen, int flags, Stringprep_profile * profile)
 #ifdef DRAFT
   {
     int j;
-    printf ("input: ");
+    printf ("input (length %d):\n\t", ucs4len);
     for (j = 0; j < ucs4len; j++)
       {
 	printf ("U+%04lx ", ucs4[j]);
@@ -370,7 +370,7 @@ stringprep (char *in, size_t maxlen, int flags, Stringprep_profile * profile)
   {
     int j;
     printf ("\n");
-    printf ("output: ");
+    printf ("output (length %d):\n\t", ucs4len);
     for (j = 0; j < ucs4len; j++)
       {
 	printf ("U+%04lx ", ucs4[j]);
