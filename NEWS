@@ -2,7 +2,7 @@ Libidn NEWS -- History of user-visible changes.                 -*- outline -*-
 Copyright (C) 2002, 2003, 2004 Simon Josefsson
 See the end for copying conditions.
 
-* Version 0.5.12 (unreleased)
+* Version 0.5.12 (released 2004-12-04)
 
 ** Java code now support the XMPP NodePrep and ResourcePrep profiles.
 
