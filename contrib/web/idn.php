@@ -19,6 +19,11 @@
     in the charset you select.  If not, incorrect output or an error
     is the proper response.
 
+    <p>As it happens, using this page may also be a good test of your
+    browsers' charset capabilities.  I have only had success with
+    Mozilla 1.2.1 in Debian unstable (but I have only tried Galeon and
+    Konqueror from Debian unstable..).
+
     <hr>
     <h2>Input</h2>
     <form>
