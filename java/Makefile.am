@@ -21,9 +21,9 @@ SUBDIRS = gnu . misc
 
 if JAVA
 libidn_jardir = $(datadir)/java
-dist_libidn_jar_DATA = libidn.jar
+dist_libidn_jar_DATA = libidn-@VERSION@.jar
 
-libidn.jar:
+libidn-@VERSION@.jar:
 	$(JAR) cf $@ gnu/inet/encoding/CombiningClass.class	\
 		gnu/inet/encoding/Composition.class		\
 		gnu/inet/encoding/DecompositionKeys.class	\
