@@ -20,4 +20,5 @@
 EXTRA_DIST = rfc3454.txt \
 	UnicodeData-3.2.0.txt LineBreak-3.2.0.txt \
 	SpecialCasing-3.2.0.txt CaseFolding-3.2.0.txt \
-	CompositionExclusions-3.2.0.txt COPYING.UCD
+	CompositionExclusions-3.2.0.txt BidiMirroring-3.2.0.txt \
+	COPYING.UCD
