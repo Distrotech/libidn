@@ -1,3 +1,84 @@
+2004-04-22  Simon Josefsson <simon@josefsson.org>
+
+	* po/da.po, po/de.po, po/fr.po, po/nl.po, po/pl.po, po/sr.po,
+	po/sv.po: Generated.
+
+2004-04-22  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Version 0.4.3.
+
+2004-04-22  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2004-04-22  Simon Josefsson <simon@josefsson.org>
+
+	* lib/tld.h:
+	(Tld_table): Mark "name" and "version" as const.
+
+2004-04-22  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2004-04-22  Simon Josefsson <simon@josefsson.org>
+
+	* tests/tst_stringprep.c: Add SASLprep test vectors (would catch
+	the C.2.1 bug).
+
+2004-04-22  Simon Josefsson <simon@josefsson.org>
+
+	* lib/stringprep.c:
+	(stringprep_find_character_in_table): Fix end-of-table test, to
+	handle valid uses of start=0 (as in table C.2.1).
+
+2004-04-21  Simon Josefsson <simon@josefsson.org>
+
+	* AUTHORS: Update PGP key.
+
+2004-04-18  Simon Josefsson <simon@josefsson.org>
+
+	* THANKS: Add.
+
+2004-04-18  Simon Josefsson <simon@josefsson.org>
+
+	* libidn.pc.in: Drop -R lib flag, suggested by Martin Waitz
+	<tali@debian.org>.
+
+2004-04-11  Simon Josefsson <simon@josefsson.org>
+
+	* README-alpha: Fix versions.
+
+2004-04-09  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS, THANKS: Add.
+
+2004-04-09  Simon Josefsson <simon@josefsson.org>
+
+	* po/LINGUAS, po/nl.po: Add, from Elros Cyriatan
+	<cyriatan@fastmail.fm> via Translation Project.
+
+2004-03-28  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS, THANKS: Add.
+
+2004-03-28  Simon Josefsson <simon@josefsson.org>
+
+	* po/LINGUAS, po/de.po: Add German translation, from Roland Illig
+	<roland.illig@gmx.de> via translation project.
+
+2004-03-20  Simon Josefsson <simon@josefsson.org>
+
+	* THANKS: Add.
+
+2004-03-20  Simon Josefsson <simon@josefsson.org>
+
+	* doc/Makefile.gdoci: Use TAB instead of \t, suggested by Jørgen
+	Thomsen <jth@jth.net>.
+
+2004-03-20  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS, configure.ac: Bump versions.
+
 2004-03-20  Simon Josefsson <simon@josefsson.org>
 
 	* po/da.po, po/fr.po, po/pl.po, po/sr.po, po/sv.po: Generated.
