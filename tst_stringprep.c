@@ -425,6 +425,8 @@ main (int argc, char *argv[])
 	  fail ("stringprep() entry %d failed: %d\n", i, rc);
 	  if (debug)
 	    printf ("FATAL\n");
+	  if (rc == STRINGPREP_OK)
+	    free(p);
 	  continue;
 	}
 

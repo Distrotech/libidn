@@ -448,6 +448,8 @@ stringprep_profile (char *in, char **out, char *profile, int flags)
 
   if (rc == STRINGPREP_OK)
     *out = str;
+  else
+    free(str);
 
   return rc;
 }
