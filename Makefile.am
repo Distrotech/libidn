@@ -37,6 +37,8 @@ EXTRA_DIST = FAQ libidn.pc.in iconv.m4 \
 	contrib/java/configure.ac contrib/java/Makefile.am \
 	contrib/java/ExampleIDNA.java contrib/java/IDNA.java \
 	contrib/java/IDNA.c \
+	contrib/doxygen/Doxyfile.in contrib/doxygen/Doxyfile.orig \
+	contrib/doxygen/gdoc2doxygen \
 	getopt.h getopt.c getopt1.c strdup.c memset.c
 
 clean-local:
