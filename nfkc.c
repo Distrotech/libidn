@@ -727,9 +727,7 @@ g_utf8_normalize (const char *str, ssize_t len, GNormalizeMode mode)
  * Converts a string into canonical form, standardizing
  * such issues as whether a character with an accent
  * is represented as a base character and combining
- * accent or as a single precomposed character. You
- * should generally call g_utf8_normalize() before
- * comparing two Unicode strings.
+ * accent or as a single precomposed character.
  *
  * The normalization mode is NFKC (ALL COMPOSE).  It standardizes
  * differences that do not affect the text content, such as the
