@@ -148,7 +148,7 @@ adapt (punycode_uint delta, punycode_uint numpoints, int firsttime)
 /*** Main encode function ***/
 
 /**
- * punycode_encode:
+ * punycode_encode - encode Unicode to Punycode
  * @input_length: The number of code points in the @input array and
  *   the number of flags in the @case_flags array.
  * @input: An array of code points.  They are presumed to be Unicode
@@ -299,7 +299,7 @@ punycode_encode (size_t input_length,
 /*** Main decode function ***/
 
 /**
- * punycode_decode:
+ * punycode_decode - decode Punycode to Unicode
  * @input_length: The number of ASCII code points in the @input array.
  * @input: An array of ASCII code points (0..7F).
  * @output_length: The caller passes in the maximum number of code
