@@ -1223,45 +1223,45 @@ Error during iconv string conversion.
 No top-level domain found in domain string.
 @end deftypevr
 
-@section Data Types
-
-@deftp {Data type} {Tld_table_element} @var{start} @var{end}
-@example
-/* Interval of valid code points in the TLD. */
-struct Tld_table_element
-@{
-  uint32_t start;		/* Start of range. */
-  uint32_t end;		/* End of range, end == start if single. */
-@};
-typedef struct Tld_table_element Tld_table_element;
-@end example
-This @code{struct} contain the @var{start} and @var{end} positions
-(inclusive) of a range.  If the range is a single (i.e., starts and
-ends in the same character), then set @var{end} to the same as
-@var{start}.  This structure is normally used as an array.
-@end deftp
-
-@deftp {Data type} {Tld_table} @var{name} @var{version} @var{nvalid} @var{valid}
-@example
-/* List valid code points in a TLD. */
-struct Tld_table
-@{
-  char *name;			/* TLD name, e.g., "no". */
-  char *version;		/* Version string from TLD file. */
-  size_t nvalid;		/* Number of entries in data. */
-  Tld_table_element *valid[];	/* Sorted array of valid code points. */
-@};
-typedef struct Tld_table Tld_table;
-@end example
-In this @code{struct}, the @var{name} field is a string (@samp{char*})
-indicating the TLD name (e.g., ``no'').  The @var{version} field is a
-string (@samp{char*}) containing a free form humanly readable string
-that can be used for equality comparison to compare different versions
-of the table.  The @var{nvalid} field indicate how many entries there
-are in @var{valid}, which brings us finally to @var{valid} that
-contain the actual code points that are valid for this TLD (see
-@code{Tld_table_element} above).
-@end deftp
+@c @section Data Types
+@c
+@c @deftp {Data type} {Tld_table_element} @var{start} @var{end}
+@c @example
+@c /* Interval of valid code points in the TLD. */
+@c struct Tld_table_element
+@c @{
+@c   uint32_t start;		/* Start of range. */
+@c   uint32_t end;		/* End of range, end == start if single. */
+@c @};
+@c typedef struct Tld_table_element Tld_table_element;
+@c @end example
+@c This @code{struct} contain the @var{start} and @var{end} positions
+@c (inclusive) of a range.  If the range is a single (i.e., starts and
+@c ends in the same character), then set @var{end} to the same as
+@c @var{start}.  This structure is normally used as an array.
+@c @end deftp
+@c 
+@c @deftp {Data type} {Tld_table} @var{name} @var{version} @var{nvalid} @var{valid}
+@c @example
+@c /* List valid code points in a TLD. */
+@c struct Tld_table
+@c @{
+@c   char *name;			/* TLD name, e.g., "no". */
+@c   char *version;		/* Version string from TLD file. */
+@c   size_t nvalid;		/* Number of entries in data. */
+@c   Tld_table_element *valid[];	/* Sorted array of valid code points. */
+@c @};
+@c typedef struct Tld_table Tld_table;
+@c @end example
+@c In this @code{struct}, the @var{name} field is a string (@samp{char*})
+@c indicating the TLD name (e.g., ``no'').  The @var{version} field is a
+@c string (@samp{char*}) containing a free form humanly readable string
+@c that can be used for equality comparison to compare different versions
+@c of the table.  The @var{nvalid} field indicate how many entries there
+@c are in @var{valid}, which brings us finally to @var{valid} that
+@c contain the actual code points that are valid for this TLD (see
+@c @code{Tld_table_element} above).
+@c @end deftp
 
 @section Core Functions
 
