@@ -73,6 +73,9 @@ if test "$ac_cv_locale_works" = "yes"; then
   AC_DEFINE(LOCALE_WORKS, 1, [Define if setlocale() and nl_langinfo() works.])
 fi
 
+# Check for getopt in standard library.
+AC_CHECK_FUNCS(getopt_long,, [AC_LIBOBJ(getopt) AC_LIBOBJ(getopt1)])
+
 # Check for gtk-doc.
 AC_ARG_WITH(html-dir, AC_HELP_STRING([--with-html-dir=PATH], [path to installed docs]))
 if test "x$with_html_dir" = "x" ; then
@@ -94,5 +97,5 @@ AM_MISSING_PROG(GTKDOC_MKDB, gtkdoc-mkdb, $missing_dir)
 AM_MISSING_PROG(GTKDOC_MKHTML, gtkdoc-mkhtml, $missing_dir)
 AM_MISSING_PROG(GTKDOC_FIXXREF, gtkdoc-fixxref, $missing_dir)
 
-AC_CONFIG_FILES([Makefile libidn.pc stringprep.h reference/Makefile])
+AC_CONFIG_FILES([Makefile libidn.pc stringprep.h reference/Makefile idn.ggo])
 AC_OUTPUT
