@@ -116,7 +116,7 @@ tld_get_4i (const uint32_t * in, size_t inlen, char **out)
 
 
 /**
- * tld_gettld_4z:
+ * tld_get_4z:
  * @in: Zero terminated array of unicode code points to process.
  * @out: Zero terminated ascii result string pointer.
  *
@@ -127,7 +127,7 @@ tld_get_4i (const uint32_t * in, size_t inlen, char **out)
  * error code otherwise.
  */
 int
-tld_gettld_4z (const uint32_t * in, char **out)
+tld_get_4z (const uint32_t * in, char **out)
 {
   const uint32_t *ipos = in;
 
@@ -137,7 +137,7 @@ tld_gettld_4z (const uint32_t * in, char **out)
   while (*ipos)
     ipos++;
 
-  return tld_gettld_4i (in, ipos - in, out);
+  return tld_get_4i (in, ipos - in, out);
 }
 
 /*
@@ -251,7 +251,7 @@ tld_check_4tz (const uint32_t * in, size_t * errpos, const Tld_table * tld)
   while (*ipos)
     ipos++;
 
-  return tld_check_4it (in, ipos - in, errpos, tld);
+  return tld_check_4ti (in, ipos - in, errpos, tld);
 }
 
 /**
@@ -288,7 +288,7 @@ tld_check_4i (const uint32_t * in, size_t inlen, size_t * errpos,
 
   *errpos = 0;
   /* Get TLD name. */
-  rc = tld_gettld_4i (in, inlen, &domain);
+  rc = tld_get_4i (in, inlen, &domain);
 
   if (rc != TLD_SUCCESS)
     {
@@ -302,7 +302,7 @@ tld_check_4i (const uint32_t * in, size_t inlen, size_t * errpos,
   tld = tld_get_table (domain, xtra_tlds);
   free (domain);
 
-  return tld_check_4it (in, inlen, errpos, tld);
+  return tld_check_4ti (in, inlen, errpos, tld);
 }
 
 /**
@@ -431,7 +431,7 @@ tld_check_lz (const char *in, size_t * errpos, const Tld_table ** xtra_tlds)
 }
 
 /**
- * Tldchk_rc:
+ * Tld_rc:
  * @TLD_SUCCESS: Successful operation.  This value is guaranteed to
  * always be zero, the remaining ones are only guaranteed to hold
  * non-zero values, for logical comparison purposes.
