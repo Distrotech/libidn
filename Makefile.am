@@ -1,5 +1,5 @@
 ## Process this file with automake to produce Makefile.in
-# Copyright (C) 2002, 2003 Simon Josefsson.
+# Copyright (C) 2002, 2003, 2004 Simon Josefsson.
 #
 # This file is part of GNU Libidn.
 #
@@ -21,9 +21,7 @@ SUBDIRS = lib src doc tests examples
 
 ACLOCAL_AMFLAGS = -I m4
 
-EXTRA_DIST = Makefile.cfg Makefile.maint GNUmakefile \
-	.prev-version announce-gen \
-	FAQ libidn.pc.in \
+EXTRA_DIST = FAQ libidn.pc.in \
 	libc/README libc/Makefile libc/Versions libc/Banner libc/configure \
 	libc/example.c libc/getaddrinfo.c libc/libc.patch libc/netdb.h \
 	libc/getaddrinfo-idn.txt \
@@ -44,8 +42,7 @@ pkgconfig_DATA = libidn.pc
 
 ChangeLog:
 	cvs2cl --FSF --fsf --usermap .cvsusers -I ChangeLog -I .cvs \
-	-I .prev-version -I autogen.sh -I contrib -I doc/specifications/ \
-	-I draft- && \
+		-I autogen.sh -I contrib -I doc/specifications/ -I draft- && \
 	cat .cvscopying >> ChangeLog
 
 indent:
