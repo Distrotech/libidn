@@ -2,20 +2,10 @@ Libidn README -- Important introductory notes.
 Copyright (C) 2002, 2003 Simon Josefsson
 See the end for copying conditions.
 
-GNU Libidn is a package for internationalized string handling based on
-stringprep, punycode and IDNA.  It is licensed under the LGPL.  See
-ANNOUNCE for an overview, and libidn.{info,ps,pdf} for the manual.
-
-Things left to do below.  If you like to start working on anything,
-please let me know so work duplication can be avoided.
-
-  - Optimize stringprep for speed, the table searching is slow (but
-    does it matter?).
-  - Optimize for size?  The stringprep tables can be compressed _alot_
-    (most map entries are simply zeroes).
-  - Port applications to use libidn.
-  - Include more stringprep profiles.
-  - Improve IDN tool.
+Libidn is a package for internationalized string handling based on the
+stringprep, punycode and IDNA specifications.  It is licensed under
+the LGPL, see COPYING.LIB.  See ANNOUNCE for an overview, INSTALL for
+installation instructions, and libidn.{info,ps,pdf} for the manual.
 
 If you are in a position to support the development financially,
 contact the author or donate via PayPal to one of the author's email
