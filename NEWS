@@ -3,6 +3,20 @@ See the end for copying conditions.
 
 Please send libstringprep bug reports to bug-libstringprep@josefsson.org.
 
+* Version 0.0.5
+
+** Fix prohibited characters handling.
+
+** Fix bidi.
+
+** Renamed type (struct) stringprep_table_element to Stringprep_table_element.
+
+** Renamed type stringprep_profile to Stringprep_profile.
+
+** Renamed type (struct) stringprep_table to Stringprep_table.
+
+** Added more self-tests.
+
 * Version 0.0.4
 
 ** Add unassigned code point handling, including self test cases.
