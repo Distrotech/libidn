@@ -49,3 +49,29 @@ indent:
 	(cd lib && make indent)
 	(cd src && make indent)
 	(cd tests && make indent)
+
+tag = $(PACKAGE)-`echo $(VERSION) | sed 's/\./-/g'`
+htmldir = ../www-$(PACKAGE)
+
+release:
+	cvs upd -p -r HEAD NEWS > /dev/null
+	if cvs upd -p -r $(tag) NEWS > /dev/null; then false else true; fi
+	rm -f ChangeLog && cvs upd ChangeLog
+	cvs commit
+	rm -f ChangeLog
+	$(MAKE) ChangeLog distcheck
+	cvs commit -m "" ChangeLog
+	cvs rtag $(tag) $(PACKAGE)
+	gpg -b $(distdir).tar.gz
+	gpg --verify $(distdir).tar.gz.sig
+	echo "directory: $(PACKAGE)" > $(distdir).tar.gz.directive
+	gpg --clearsign $(distdir).tar.gz.directive
+	ncftpput ftp-upload.gnu.org /incoming/alpha \
+		$(distdir).tar.gz{,.sig,.directive.asc}
+	cd doc && ./gendocs.sh --html "--css-include=texinfo.css" \
+		-o ../$(htmldir)/manual/ $(PACKAGE) "GNU Libidn"
+	cp -v $(distdir).tar.gz{,.sig} $(htmldir)/releases/
+	cp -v doc/reference/*.{html,png} $(htmldir)/reference/
+	cd contrib/doxygen && doxygen && cd ../.. && cp -v contrib/doxygen/html/* $(htmldir)/doxygen/ && cd contrib/doxygen/latex && make ps pdf && cd ../../../ && cp contrib/doxygen/latex/refman.pdf $(htmldir)/doxygen/$(PACKAGE).pdf && cp contrib/doxygen/latex/refman.ps $(htmldir)/doxygen/$(PACKAGE).ps
+	cd $(htmldir) && cvs add -kb releases/$(distdir).tar.gz{,.sig} && \
+		cvs commit -m "Update." manual/ reference/ doxygen/ releases/
