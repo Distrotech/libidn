@@ -19,7 +19,17 @@
  *
  */
 
-#include "internal.h"
+#if HAVE_CONFIG_H
+# include "config.h"
+#endif
+
+#if defined(STDC_HEADERS) || defined(_LIBC)
+# include <stdlib.h>
+# include <string.h>
+#endif
+
+/* Get specification. */
+#include "stringprep.h"
 
 static ssize_t
 stringprep_find_character_in_table (uint32_t ucs4,
@@ -120,7 +130,7 @@ stringprep_apply_table_to_string (uint32_t * ucs4,
  * Return value: Returns %STRINGPREP_OK iff successful, or an error code.
  **/
 int
-stringprep_4i (uint32_t *ucs4, size_t *len, size_t maxucs4len,
+stringprep_4i (uint32_t * ucs4, size_t * len, size_t maxucs4len,
 	       Stringprep_profile_flags flags, Stringprep_profile * profile)
 {
   size_t i, j;
@@ -257,8 +267,9 @@ stringprep_4i (uint32_t *ucs4, size_t *len, size_t maxucs4len,
 }
 
 static int
-stringprep_4zi_1 (uint32_t *ucs4, size_t ucs4len, size_t maxucs4len,
-		  Stringprep_profile_flags flags, Stringprep_profile * profile)
+stringprep_4zi_1 (uint32_t * ucs4, size_t ucs4len, size_t maxucs4len,
+		  Stringprep_profile_flags flags,
+		  Stringprep_profile * profile)
 {
   int rc;
 
@@ -298,7 +309,7 @@ stringprep_4zi_1 (uint32_t *ucs4, size_t ucs4len, size_t maxucs4len,
  * Return value: Returns %STRINGPREP_OK iff successful, or an error code.
  **/
 int
-stringprep_4zi (uint32_t *ucs4, size_t maxucs4len,
+stringprep_4zi (uint32_t * ucs4, size_t maxucs4len,
 		Stringprep_profile_flags flags, Stringprep_profile * profile)
 {
   size_t ucs4len;
@@ -408,9 +419,7 @@ stringprep (char *in,
  **/
 int
 stringprep_profile (const char *in,
-		    char **out,
-		    char *profile,
-		    Stringprep_profile_flags flags)
+		    char **out, char *profile, Stringprep_profile_flags flags)
 {
   Stringprep_profiles *p;
   char *str = NULL;

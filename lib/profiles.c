@@ -19,7 +19,7 @@
  *
  */
 
-#include "internal.h"
+#include <stringprep.h>
 
 Stringprep_profiles stringprep_profiles[] = {
   {"generic", stringprep_generic}
@@ -32,9 +32,9 @@ Stringprep_profiles stringprep_profiles[] = {
   ,
   {"Resourceprep", stringprep_xmpp_resourceprep}
   ,
-  {"plain", stringprep_plain} /* sasl-anon-00 */
+  {"plain", stringprep_plain}	/* sasl-anon-00 */
   ,
-  {"trace", stringprep_trace} /* sasl-anon-01,02 */
+  {"trace", stringprep_trace}	/* sasl-anon-01,02 */
   ,
   {"SASLprep", stringprep_saslprep}
   ,

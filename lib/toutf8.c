@@ -19,16 +19,35 @@
  *
  */
 
-#include "internal.h"
+#if HAVE_CONFIG_H
+# include "config.h"
+#endif
+
+#if defined(STDC_HEADERS) || defined(_LIBC)
+# include <stdio.h>
+# include <stdlib.h>
+# include <string.h>
+#endif
+
+#ifdef _LIBC
+# define HAVE_ICONV 1
+# define LOCALE_WORKS 1
+# define ICONV_CONST
+#endif
+
+#if defined(HAVE_ERRNO_H) || defined(_LIBC)
+# include <errno.h>
+#endif
+
+#include <stringprep.h>
 
 #ifdef HAVE_ICONV
+# include <iconv.h>
 
-#include <iconv.h>
-
-#if LOCALE_WORKS
-#include <langinfo.h>
-#include <locale.h>
-#endif
+# if LOCALE_WORKS
+#  include <langinfo.h>
+#  include <locale.h>
+# endif
 
 static const char *
 stringprep_locale_charset_slow (void)
@@ -38,7 +57,7 @@ stringprep_locale_charset_slow (void)
   if (charset && *charset)
     return charset;
 
-#if LOCALE_WORKS
+# ifdef LOCALE_WORKS
   {
     char *p;
 
@@ -52,7 +71,7 @@ stringprep_locale_charset_slow (void)
     if (charset && *charset)
       return charset;
   }
-#endif
+# endif
 
   return "ASCII";
 }
@@ -199,7 +218,7 @@ again:
   return dest;
 }
 
-#else
+#else /* HAVE_ICONV */
 
 const char *
 stringprep_locale_charset ()
@@ -221,7 +240,7 @@ stringprep_convert (const char *str,
   return p;
 }
 
-#endif
+#endif /* HAVE_ICONV */
 
 /**
  * stringprep_locale_to_utf8:

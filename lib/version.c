@@ -1,6 +1,6 @@
 /* version.c	Version handling.
+ * Copyright (C) 2002, 2003  Simon Josefsson
  * Copyright (C) 1998, 1999, 2000, 2001, 2002 Free Software Foundation, Inc.
- * Copyright (C) 2002  Simon Josefsson
  *
  * This file is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -20,7 +20,16 @@
 
 /* This file is based on src/global.c from Werner Koch's libgcrypt */
 
-#include "internal.h"
+#if HAVE_CONFIG_H
+# include "config.h"
+#endif
+
+#if defined(STDC_HEADERS) || defined(_LIBC)
+# include <ctype.h>
+# include <string.h>
+#endif
+
+#include <stringprep.h>
 
 static const char *
 parse_version_number (const char *s, int *number)
