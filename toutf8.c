@@ -116,7 +116,7 @@ stringprep_convert (const char *str,
   inbytes_remaining = len;
   outbuf_size = len + 1; /* + 1 for nul in case len == 1 */
   
-  outbytes_remaining = 2*outbuf_size - 1; /* -1 for nul */
+  outbytes_remaining = outbuf_size - 1; /* -1 for nul */
   outp = dest = malloc (outbuf_size);
 
  again:
@@ -135,7 +135,6 @@ stringprep_convert (const char *str,
 	  {
 	    size_t used = outp - dest;
 
-	  puts("2big");
 	    outbuf_size *= 2;
 	    dest = realloc (dest, outbuf_size);
 		
@@ -151,7 +150,6 @@ stringprep_convert (const char *str,
 	  break;
 
 	default:
-	  puts("def");
 	  have_error = 1;
 	  break;
 	}

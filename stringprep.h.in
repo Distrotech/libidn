@@ -99,7 +99,7 @@ extern const char *stringprep_locale_charset ();
 extern char *stringprep_convert (const char *str,
 				 const char *to_codeset,
 				 const char *from_codeset);
-extern char *stringprep_locale_to_utf8 (const char  *opsysstring);
+extern char *stringprep_locale_to_utf8 (const char *str);
 
 #ifdef __cplusplus
 }
