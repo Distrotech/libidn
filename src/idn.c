@@ -33,6 +33,9 @@
 # define setlocale(Category, Locale)	/* empty */
 #endif
 
+#include "gettext.h"
+#define _(String) dgettext (PACKAGE, String)
+
 #include <stringprep.h>
 #include <punycode.h>
 #include <idna.h>
@@ -59,6 +62,8 @@ main (int argc, char *argv[])
   int rc;
 
   setlocale (LC_ALL, "");
+  bindtextdomain (PACKAGE, LOCALEDIR);
+  textdomain (PACKAGE);
 
   if (cmdline_parser (argc, argv, &args_info) != 0)
     return 1;
@@ -89,8 +94,8 @@ main (int argc, char *argv[])
 	     stringprep_locale_charset ());
 
   if (!args_info.quiet_given && args_info.inputs_num == 0)
-    fprintf (stderr, "Type each input string on a line by itself, "
-	     "terminated by a newline character.\n");
+    fprintf (stderr, _("Type each input string on a line by itself, "
+		       "terminated by a newline character.\n"));
 
   do
     {
