@@ -45,7 +45,7 @@ extern "C"
     STRINGPREP_FLAG_ERROR = 102,
     /* Internal errors. */
     STRINGPREP_NFKC_FAILED = 200,
-    STRINGPREP_MALLOC_ERROR = 201,
+    STRINGPREP_MALLOC_ERROR = 201
   };
 
 /* Flags used when calling stringprep(). */
@@ -53,7 +53,7 @@ extern "C"
   {
     STRINGPREP_NO_NFKC = 1,
     STRINGPREP_NO_BIDI = 2,
-    STRINGPREP_NO_UNASSIGNED = 4,
+    STRINGPREP_NO_UNASSIGNED = 4
   };
 
 /* Steps in a stringprep profile. */
