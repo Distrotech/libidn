@@ -4,6 +4,12 @@ See the end for copying conditions.
 
 * Version 0.3.1 (unreleased)
 
+** Fixed handling of implicit and explicit zero-length root labels in ToASCII.
+
+** Fixed support for Hangul Syllables during Unicode NFKC normalization.
+
+** Added more IDNA test vectors.
+
 ** Emacs Lisp IDNA implementation now set the UseSTD3ASCIIRules flag.
 This is the appropriate setting for mail-related uses of IDNA.
 
