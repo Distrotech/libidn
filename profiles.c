@@ -283,3 +283,33 @@ Stringprep_profile stringprep_xmpp_resourceprep[] = {
   ,
   {0}
 };
+
+Stringprep_profile stringprep_plain[] = {
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_2_1, "C.2.1"}
+  ,
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_2_2, "C.2.2"}
+  ,
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_3, "C.3"}
+  ,
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_4, "C.4"}
+  ,
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_5, "C.5"}
+  ,
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_6, "C.6"}
+  ,
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_8, "C.8"}
+  ,
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_9, "C.9"}
+  ,
+  {STRINGPREP_BIDI, 0, 0, "BIDI"}
+  ,
+  {STRINGPREP_BIDI_PROHIBIT_TABLE, 0, stringprep_generic_C_8, "C.8"}
+  ,
+  {STRINGPREP_BIDI_RAL_TABLE, ~STRINGPREP_NO_BIDI, stringprep_generic_D_1,
+   "D.1"}
+  ,
+  {STRINGPREP_BIDI_L_TABLE, ~STRINGPREP_NO_BIDI, stringprep_generic_D_2,
+   "D.2"}
+  ,
+  {0}
+};
