@@ -1184,17 +1184,16 @@ compatible names to internationalized domain names.
 GNU Libidn (idn) -- Internationalized Domain Names command line tool
 
 @majorheading Description
-@code{idn} is a utility part of GNU Libidn.  It allows preparation of
-strings, encoding and decoding of punycode data, and IDNA
-ToASCII/ToUnicode operations to be performed on the command line,
-without the need to write a program that uses libidn.
+@code{idn} allows internationalized string preparation
+(@samp{stringprep}), encoding and decoding of punycode data, and IDNA
+ToASCII/ToUnicode operations to be performed on the command line.
 
 If strings are specified on the command line, they are used as input
 and the computed output is printed to standard output @code{stdout}.
 If no strings are specified on the command line, the program read
 data, line by line, from the standard input @code{stdin}, and print
 the computed output to standard output.  What processing is performed
-(e.g., ToASCII, Punycode encode) is indicated by options.  If any
+(e.g., ToASCII, or Punycode encode) is indicated by options.  If any
 errors are encountered, the execution of the applications is aborted.
 
 @majorheading Options
@@ -1211,7 +1210,7 @@ errors are encountered, the execution of the applications is aborted.
 
   -e, --punycode-encode    Encode Punycode
 
-  -a, --idna-to-ascii      Convert to ACE according to IDNA
+  -a, --idna-to-ascii      Convert to ACE according to IDNA (default)
 
   -u, --idna-to-unicode    Convert from ACE according to IDNA
 
