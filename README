@@ -1,9 +1,10 @@
 Libidn README -- Important introductory notes.
+Copyright (C) 2002, 2003 Simon Josefsson
 See the end for copying conditions.
 
-GNU Libidn is an implementation of the IETF Stringprep, Nameprep,
-Punycode and IDNA specifications, licensed under the LGPL.  See
-ANNOUNCE for an overview, and libidn.{info,ps,pdf} for the manual.
+GNU Libidn is an implementation of the Stringprep, Nameprep, Punycode
+and IDNA specifications, licensed under the LGPL.  See ANNOUNCE for an
+overview, and libidn.{info,ps,pdf} for the manual.
 
 Things left to do below.  If you like to start working on anything,
 please let me know so work duplication can be avoided.
@@ -11,22 +12,31 @@ please let me know so work duplication can be avoided.
   - Optimize stringprep, the table searching is slow (but does it matter?).
   - Port applications to use libidn.
   - Include more stringprep profiles.
-  - Add texi documentation.
-  - Implement IDNA tools?  Is there more?
+  - Add IDNA tools
   - Rename package?  Stringprep useful outside of IDN.  Separating
     into libstringprep + libidn was considered, but libidn would
     be so small it would be wasteful to create it.  libunicodenames?
 
-Before it becomes a FAQ: This library do not link with GLIB for the
-UTF-8 functions for two reasons.  First, GLIB does not provide
-versioning of the Unicode tables (and the developers said it will not
-be added either) and this package must know the Unicode version used.
-Secondly, GLIB requires some things (e.g., threads) that would make
-this package less portable.
+Anticipated Frequently Asked Questions:
+
+Q#1: Why doesn't Libidn use a separate library for the Unicode
+     operations?
+
+A#1: Separate libraries (Glib, QT, libiconv) seldom mark the Unicode
+     tables with the corresponding Unicode version they implement, nor
+     do they provide a interface where a specific version can be
+     requested.  This violates the stringprep specification which
+     requires that a specific version is used.  Also, some of these
+     third party libraries depend on non-portable behavior
+     (e.g. threads).
+
+Q#2: Why do Libidn include several stringprep profiles? They waste space!
+
+A#2: The stringprep profiles included are derived from the generic
+     stringprep tables, and doesn't waste more than say a few hundred
+     bytes (see profiles.c).
 
 ----------------------------------------------------------------------
-Copyright (C) 2002 Simon Josefsson
-
 Copying and distribution of this file, with or without modification,
 are permitted in any medium without royalty provided the copyright
 notice and this notice are preserved.
