@@ -27,6 +27,9 @@ extern "C"
 {
 #endif
 
+#include <stddef.h>		/* size_t */
+#include <idn-int.h>		/* uint32_t */
+
   /* Error codes. */
   enum
   {
@@ -44,15 +47,51 @@ extern "C"
     IDNA_MALLOC_ERROR = 201
   };
 
+  /* IDNA flags */
+  enum
+  {
+    IDNA_ALLOW_UNASSIGNED = 0x0001,
+    IDNA_USE_STD3_ASCII_RULES = 0x0002
+  };
+
 #ifndef IDNA_ACE_PREFIX
 #define IDNA_ACE_PREFIX "xn--"
 #endif
 
+  extern int idna_to_ascii_4i (const uint32_t * in, size_t inlen,
+			       char *out, int flags);
+
+  extern int idna_to_ascii_4z (const uint32_t * input, char **output,
+			       int flags);
+
+  extern int idna_to_ascii_8z (const char *input, char **output, int flags);
+
+  extern int idna_to_ascii_lz (const char *input, char **output, int flags);
+
+  extern int idna_to_unicode_44i (const uint32_t * in, size_t inlen,
+				  uint32_t * out, size_t * outlen, int flags);
+
+  extern int idna_to_unicode_4z4z (const uint32_t * input, uint32_t ** output,
+				   int flags);
+
+  extern int idna_to_unicode_8z4z (const char *input, uint32_t ** output,
+				   int flags);
+
+  extern int idna_to_unicode_8z8z (const char *input, char **output,
+				   int flags);
+
+  extern int idna_to_unicode_8zlz (const char *input, char **output,
+				   int flags);
+
+  extern int idna_to_unicode_lzlz (const char *input, char **output,
+				   int flags);
+
+  /* Deprecated interfaces */
+
   extern int idna_to_ascii (const unsigned long *in,
 			    size_t inlen,
 			    char *out,
-			    int allowunassigned,
-			    int usestd3asciirules);
+			    int allowunassigned, int usestd3asciirules);
 
   extern int idna_to_ascii_from_ucs4 (const unsigned long *input,
 				      char **output,
@@ -73,8 +112,7 @@ extern "C"
 			      size_t inlen,
 			      unsigned long *out,
 			      size_t * outlen,
-			      int allowunassigned,
-			      int usestd3asciirules);
+			      int allowunassigned, int usestd3asciirules);
 
   extern int idna_to_unicode_ucs4_from_ucs4 (const unsigned long *input,
 					     unsigned long **output,
@@ -101,7 +139,7 @@ extern "C"
 						 int allowunassigned,
 						 int usestd3asciirules);
 
-  /* Deprecated interfaces */
+  /* Deprecated interfaces (even older) */
 
   extern int idna_ucs4_to_ace (const unsigned long *input, char **output);
   extern int idna_utf8_to_ace (const char *input, char **output);
