@@ -1484,8 +1484,8 @@ LANG} at a @code{/bin/sh} prompt, to set up your locale for a Swedish
 environment using @code{UTF-8} as the encoding.
 
 Sometimes @samp{idn} appear to be unable to translate from your system
-locale into @code{UTF-8} (which is used internally), i.e., you get an
-error like:
+locale into @code{UTF-8} (which is used internally), and you get an
+error like the following:
 
 @example
 jas@@latte:~$ idn --quiet foo
