@@ -25,6 +25,7 @@ noinst_LTLIBRARIES = libutils.la
 libutils_la_SOURCES = utils.h utils.c
 
 TESTS = tst_stringprep tst_punycode tst_idna tst_idna2 tst_nfkc tst_pr29
+TESTS += tst_strerror
 if TLD
 TESTS += tst_tld
 endif
