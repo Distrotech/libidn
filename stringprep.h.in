@@ -72,7 +72,7 @@ extern "C"
     STRINGPREP_BIDI_L_TABLE = 8
   } Stringprep_profile_steps;
 
-#define STRINGPREP_MAX_MAP_CHARS 5
+#define STRINGPREP_MAX_MAP_CHARS 4
 
   struct Stringprep_table_element
   {
