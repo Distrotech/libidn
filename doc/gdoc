@@ -526,7 +526,7 @@ sub output_man {
     print $args{'function'}."\n";
 
     print ".SH SYNOPSIS\n";
-    print ".B #include <". lc($args{'module'}) . ".h>\n";
+    print ".B #include <". lc((split /_/, $args{'function'})[0]) . ".h>\n";
     print ".sp\n";
     print ".BI \"".$args{'functiontype'}." ".$args{'function'}."(";
     $count = 0;
