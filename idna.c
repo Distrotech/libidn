@@ -60,7 +60,7 @@ idna_to_ascii (const unsigned long *in, size_t inlen,
   unsigned long *src; /* XXX don't need to copy data? */
   int rc;
 
-  src = malloc (sizeof (in[0]) * inlen + 1);
+  src = malloc (sizeof (in[0]) * (inlen + 1));
   if (src == NULL)
     return IDNA_MALLOC_ERROR;
 
@@ -533,7 +533,7 @@ idna_ucs4ace_to_ucs4 (const unsigned long *input, unsigned long **output)
 	;
 
       buflen = end-start;
-      buf = malloc(sizeof(buf[0]) * buflen);
+      buf = malloc(sizeof(buf[0]) * (buflen + 1));
       if (!buf)
 	return IDNA_MALLOC_ERROR;
 
@@ -555,6 +555,7 @@ idna_ucs4ace_to_ucs4 (const unsigned long *input, unsigned long **output)
 	{
 	  out = buf;
 	  outlen = buflen;
+	  out[outlen] = 0x0;
 	}
 
       start = end+1;
