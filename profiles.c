@@ -311,3 +311,116 @@ Stringprep_profile stringprep_plain[] = {
   ,
   {0}
 };
+
+Stringprep_table_element stringprep_iscsi_prohibit[] = {
+  {0x0000}, /* [ASCII CONTROL CHARACTERS and SPACE through ,] */
+  {0x0001},
+  {0x0002},
+  {0x0003},
+  {0x0004},
+  {0x0005},
+  {0x0006},
+  {0x0007},
+  {0x0008},
+  {0x0009},
+  {0x000A},
+  {0x000B},
+  {0x000C},
+  {0x000D},
+  {0x000E},
+  {0x000F},
+  {0x0010},
+  {0x0011},
+  {0x0012},
+  {0x0013},
+  {0x0014},
+  {0x0015},
+  {0x0016},
+  {0x0017},
+  {0x0018},
+  {0x0019},
+  {0x001A},
+  {0x001B},
+  {0x001C},
+  {0x001D},
+  {0x001E},
+  {0x001F},
+  {0x0020},
+  {0x0021},
+  {0x0022},
+  {0x0023},
+  {0x0024},
+  {0x0025},
+  {0x0026},
+  {0x0027},
+  {0x0028},
+  {0x0029},
+  {0x002A},
+  {0x002B},
+  {0x002C},
+  {0x002F}, /* [ASCII /] */
+  {0x003B}, /* [ASCII ; through @] */
+  {0x003C},
+  {0x003D},
+  {0x003E},
+  {0x003F},
+  {0x0040},
+  {0x005B}, /* [ASCII [ through `] */
+  {0x005C},
+  {0x005D},
+  {0x005E},
+  {0x005F},
+  {0x0060},
+  {0x007B}, /* [ASCII { through DEL] */
+  {0x007C},
+  {0x007D},
+  {0x007E},
+  {0x007F},
+  {0x3002}, /* ideographic full stop */
+  {0}
+};
+
+Stringprep_profile stringprep_iscsi[] = {
+  {STRINGPREP_MAP_TABLE, 0, stringprep_generic_B_1, "B.1"}
+  ,
+  {STRINGPREP_MAP_TABLE, 0, stringprep_generic_B_2, "B.2"}
+  ,
+  {STRINGPREP_NFKC, 0, 0, "NFKC"}
+  ,
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_2_1, "C.1.1"}
+  ,
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_2_2, "C.1.2"}
+  ,
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_2_1, "C.2.1"}
+  ,
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_2_2, "C.2.2"}
+  ,
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_3, "C.3"}
+  ,
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_4, "C.4"}
+  ,
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_5, "C.5"}
+  ,
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_6, "C.6"}
+  ,
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_8, "C.8"}
+  ,
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_9, "C.9"}
+  ,
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_iscsi_prohibit, "ISCSI-PROHIBIT"}
+  ,
+  {STRINGPREP_BIDI, 0, 0, "BIDI"}
+  ,
+  {STRINGPREP_BIDI_PROHIBIT_TABLE, 0, stringprep_generic_C_8, "C.8"}
+  ,
+  {STRINGPREP_BIDI_RAL_TABLE, ~STRINGPREP_NO_BIDI, stringprep_generic_D_1,
+   "D.1"}
+  ,
+  {STRINGPREP_BIDI_L_TABLE, ~STRINGPREP_NO_BIDI, stringprep_generic_D_2,
+   "D.2"}
+  ,
+  {STRINGPREP_UNASSIGNED_TABLE, ~STRINGPREP_NO_UNASSIGNED,
+   stringprep_generic_A_1, "A.1"}
+  ,
+  {0}
+};

@@ -37,6 +37,19 @@ stringprep_nameprep_no_unassigned (char *in, int maxlen)
 }
 
 /**
+ * stringprep_iscsi:
+ * @in: input/ouput array with string to prepare.
+ * @maxlen: maximum length of input/output array.
+ *
+ * Prepare the input UTF-8 string according to the draft iSCSI
+ * stringprep profile.  Returns 0 iff successful, or an error code.
+ **/
+int
+stringprep_iscsi (char *in, int maxlen)
+{
+}
+
+/**
  * stringprep_kerberos5:
  * @in: input/ouput array with string to prepare.
  * @maxlen: maximum length of input/output array.

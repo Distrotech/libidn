@@ -78,7 +78,8 @@ GNU Libidn is an implementation of the Stringprep, Punycode and IDNA
 specifications defined by the IETF Internationalized Domain Names
 (IDN) working group, used for internationalized domain names.  It is
 available under the GNU Lesser General Public License.  Currently the
-Nameprep, Kerberos 5, SASL and XMPP Stringprep profiles are supported.
+iSCSI, Kerberos 5, Nameprep, SASL and XMPP Stringprep profiles are
+supported.
 
 The library contains a generic Stringprep implementation (including
 Unicode 3.2 NFKC normalization, table mapping of characters, and
@@ -355,6 +356,13 @@ and should never be used by an application.
 The entry point to the generic tables specified in the stringprep
 specification.  It is normally only needed by applications that want
 to define its own stringprep profile, based on the generic tables.
+
+This header file uses the same namespace as the main stringprep.h
+header file.
+
+@item stringprep_iscsi.h
+
+The entry point to the experimental iSCSI profile of stringprep.
 
 This header file uses the same namespace as the main stringprep.h
 header file.

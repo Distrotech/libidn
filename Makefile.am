@@ -39,7 +39,7 @@ lib_LTLIBRARIES = libidn.la
 
 include_HEADERS = stringprep.h stringprep_generic.h stringprep_nameprep.h \
 	stringprep_kerberos5.h stringprep_xmpp.h stringprep_plain.h \
-	idna.h punycode.h
+	stringprep_iscsi.h idna.h punycode.h
 
 libidn_la_SOURCES = gunicomp.h gunidecomp.h internal.h \
 	stringprep.c nfkc.c version.c toutf8.c \

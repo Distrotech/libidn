@@ -355,7 +355,9 @@ strprep[] =
   { "XMPP resource profile on same string should work though",
     "foo@bar", "foo@bar", stringprep_xmpp_resourceprep},
   { "SASL ANONYMOUS plain mechanism",
-    "simon@josefsson.org", "simon@josefsson.org", stringprep_plain}
+    "simon@josefsson.org", "simon@josefsson.org", stringprep_plain},
+  { "iSCSI profile",
+    "Example-Name", "example-name", stringprep_iscsi}
 #endif
 };
 

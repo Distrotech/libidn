@@ -48,6 +48,17 @@ A#3: The reasoning for this was for libraries that provide unique
      only encourage people not to use Libidn which would not help the
      spread of free software.
 
+Q#4: How do I add a new stringprep profile?
+
+A#4: Add the profile definition to profiles.c, create a new
+     stringprep_PROFILENAME.h header file, and add it to
+     Makefile.am. For the texinfo documentation document the header in
+     libidn.texi and for the GTK-DOC manual, add it to
+     reference/libidn-docs.sgml and document the header definitions in
+     reference/dummy.c.  If you want to add self tests, include the
+     header file in internal.h and add the self tests (easiest through
+     tst_stringprep.c).  Mention it in NEWS.
+
 ----------------------------------------------------------------------
 Copying and distribution of this file, with or without modification,
 are permitted in any medium without royalty provided the copyright
