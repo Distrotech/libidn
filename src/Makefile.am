@@ -33,6 +33,7 @@ idn.c: $(BUILT_SOURCES)
 
 $(BUILT_SOURCES): idn.ggo
 	gengetopt --input $^ --file-name idn_cmd || \
+		test -f idn_cmd.h -a -f idn_cmd.c || \
 		cp $(srcdir)/idn_cmd.h $(srcdir)/idn_cmd.h .
 
 # Maintainer targets
