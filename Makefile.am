@@ -17,6 +17,8 @@
 # License along with GNU Libidn; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
 
+DISTCHECK_CONFIGURE_FLAGS = --disable-gtk-doc
+
 SUBDIRS = reference
 
 EXTRA_DIST = libidn.pc.in iconv.m4 strdup.c memset.c \
@@ -24,7 +26,7 @@ EXTRA_DIST = libidn.pc.in iconv.m4 strdup.c memset.c \
 	gen-unicode-tables.pl UnicodeData-3.2.0.txt LineBreak-3.2.0.txt \
 	SpecialCasing-3.2.0.txt CaseFolding-3.2.0.txt \
 	CompositionExclusions-3.2.0.txt \
-	gdoc libidn.txt libidn.html libidn.ps libidn.pdf
+	gdoc libidn.txt libidn.html libidn.ps libidn.pdf lgpl.texi
 
 pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = libidn.pc
