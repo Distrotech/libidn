@@ -534,7 +534,33 @@ stringprep_profile (const char *in,
  */
 
 /**
- * Stringprep_rc
+ * Stringprep_rc:
+ * @STRINGPREP_OK: Successful operation.  This value is guaranteed to
+ *   always be zero, the remaining ones are only guaranteed to hold
+ *   non-zero values, for logical comparison purposes.
+ * @STRINGPREP_CONTAINS_UNASSIGNED: String contain unassigned Unicode
+ *   code points, which is forbidden by the profile.
+ * @STRINGPREP_CONTAINS_PROHIBITED: String contain code points
+ *   prohibited by the profile.
+ * @STRINGPREP_BIDI_BOTH_L_AND_RAL: String contain code points with
+ *   conflicting bidirection category.
+ * @STRINGPREP_BIDI_LEADTRAIL_NOT_RAL: Leading and trailing character
+ *   in string not of proper bidirectional category.
+ * @STRINGPREP_BIDI_CONTAINS_PROHIBITED: Contains prohibited code
+ *   points detected by bidirectional code.
+ * @STRINGPREP_TOO_SMALL_BUFFER: Buffer handed to function was too
+ *   small.  This usually indicate a problem in the calling
+ *   application.
+ * @STRINGPREP_PROFILE_ERROR: The stringprep profile was inconsistent.
+ *   This usually indicate an internal error in the library.
+ * @STRINGPREP_FLAG_ERROR: The supplied flag conflicted with profile.
+ *   This usually indicate a problem in the calling application.
+ * @STRINGPREP_UNKNOWN_PROFILE: The supplied profile name was not
+ *   known to the library.
+ * @STRINGPREP_NFKC_FAILED: The Unicode NFKC operation failed.  This
+ *   usually indicate an internal error in the library.
+ * @STRINGPREP_MALLOC_ERROR: The malloc() was out of memory.  This is
+ *   usually a fatal error.
  *
  * Enumerated return codes of stringprep(), stringprep_profile()
  * functions (and macros using those functions).  The value 0 is
@@ -571,8 +597,8 @@ stringprep_profile (const char *in,
  *
  * Prepare the input UTF-8 string according to the nameprep profile.
  * The AllowUnassigned flag is true, use
- * stringprep_nameprep_no_unassigned() for false AllowUnassigned.
- * Returns 0 iff successful, or an error code.
+ * stringprep_nameprep_no_unassigned() if you want a false
+ * AllowUnassigned.  Returns 0 iff successful, or an error code.
  **/
 
 /**
