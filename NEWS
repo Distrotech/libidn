@@ -1,6 +1,12 @@
 Libidn NEWS -- History of user-visible changes.                 -*- outline -*-
 See the end for copying conditions.
 
+* Version 0.1.2
+
+** Added high-level IDNA API.
+
+** Added example3.c and example4.c demonstrating the high-level IDNA API.
+
 * Version 0.1.1
 
 ** Added documentation using GTK-DOC.
