@@ -56,7 +56,6 @@ tld_get_table (const char *tld, const Tld_table ** tables)
   return NULL;
 }
 
-
 /**
  * tld_default_table:
  * @tld: TLD name (e.g. "com") as zero terminated ASCII byte string.
@@ -232,7 +231,6 @@ _tld_checkchar (uint32_t ch, const Tld_table * tld)
 
   return TLD_INVALID;
 }
-
 
 /**
  * tld_check_4ti
