@@ -752,7 +752,7 @@ _g_utf8_normalize_wc (const gchar    *str,
 
       if (wc >= 0xac00 && wc <= 0xd7af)
         {
-          gint result_len;
+          gsize result_len;
           decompose_hangul (wc, NULL, &result_len);
           n_wc += result_len;
         }
@@ -783,7 +783,7 @@ _g_utf8_normalize_wc (const gchar    *str,
 	  
       if (wc >= 0xac00 && wc <= 0xd7af)
         {
-          gint result_len;
+          gsize result_len;
           decompose_hangul (wc, wc_buffer + n_wc, &result_len);
           n_wc += result_len;
         }
