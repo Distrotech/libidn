@@ -1215,7 +1215,7 @@ errors are encountered, the execution of the applications is aborted.
   -p, --profile=STRING     Use specified stringprep profile instead
 
   Valid stringprep profiles are 'Nameprep', 'KRBprep', 'Nodeprep',
-  'Resourceprep', 'plain', 'trace', 'SASLprep', and 'ISCSIprep'.
+  'Resourceprep', 'plain', 'trace', 'SASLprep', and 'iSCSI.
 
       --debug              Print debugging information  (default=off)
 

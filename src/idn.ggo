@@ -1,4 +1,4 @@
-# Copyright (C) 2003 Simon Josefsson.
+# Copyright (C) 2003, 2004 Simon Josefsson.
 #
 # This file is part of GNU Libidn.
 #
@@ -19,7 +19,7 @@
 purpose "Command line interface to the internationalized domain name library.
 
 Valid stringprep profiles are 'Nameprep', 'KRBprep', 'Nodeprep',
-'Resourceprep', 'plain', 'trace', 'SASLprep', and 'ISCSIprep'."
+'Resourceprep', 'plain', 'trace', 'SASLprep', and 'iSCSI'."
 
 option "stringprep" s "Prepare string according to nameprep profile" no
 option "punycode-decode" d "Decode Punycode" no

@@ -1,5 +1,5 @@
 /* tst_stringprep.c	Self tests for stringprep().
- * Copyright (C) 2002, 2003  Simon Josefsson
+ * Copyright (C) 2002, 2003, 2004  Simon Josefsson
  *
  * This file is part of GNU Libidn.
  *
@@ -248,7 +248,7 @@ const struct stringprep strprep[] = {
    "foo@bar", "foo@bar", "Resourceprep"},
   {"SASL ANONYMOUS plain mechanism",
    "simon@josefsson.org", "simon@josefsson.org", "plain"},
-  {"iSCSI profile", "Example-Name", "example-name", "ISCSIprep"},
+  {"iSCSI profile", "Example-Name", "example-name", "iSCSI"},
   {"SASL profile", "Example\xC2\xA0" "Name", "Example Name", "SASLprep"}
 };
 
