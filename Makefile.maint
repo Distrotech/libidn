@@ -498,8 +498,7 @@ alpha beta major: $(local-check)
 	$(CVS) ci -m. $(prev_version_file)
 	@$(emit-upload-commands)
 	-cd contrib/doxygen && doxygen && cd ../.. && cp -v contrib/doxygen/html/* $(htmldir)/doxygen/ && cd contrib/doxygen/latex && make refman.pdf && cd ../../../ && cp contrib/doxygen/latex/refman.pdf $(htmldir)/doxygen/$(PACKAGE).pdf
-	-cp -v doc/$(PACKAGE).{ps,pdf,html} $(htmldir)/
 	-cp -v reference/*.html $(htmldir)/reference/
+	-cd doc && ./gendocs.sh -o $(htmldir)/manual/ $(PACKAGE) "GNU Libidn"
 	-cd $(htmldir) && \
-		cvs commit -m "Update." \
-			$(PACKAGE).{ps,pdf,html} reference/*.html doxygen/
+		cvs commit -m "Update." manual/ reference/*.html doxygen/
