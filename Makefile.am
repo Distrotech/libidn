@@ -34,7 +34,7 @@ include_HEADERS = stringprep.h stringprep_generic.h stringprep_nameprep.h \
 libstringprep_la_SOURCES = gunicomp.h gunidecomp.h internal.h \
 	stringprep.c nfkc.c version.c toutf8.c \
 	stringprep_generic.c profiles.c
-libstringprep_la_LIBADD = @LTLIBOBJS@
+libstringprep_la_LIBADD = @LTLIBOBJS@ @LTLIBICONV@
 libstringprep_la_LDFLAGS = -version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE)
 
 nfkc.c: gunicomp.h gunidecomp.h
