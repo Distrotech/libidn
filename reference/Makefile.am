@@ -27,7 +27,7 @@ MODULE = libidn
 HIGNORE = config.h gunibreak.h gunicomp.h gunidecomp.h idn-int.h \
 	netdb.h getopt.h internal.h stringprep_*.h idn_cmd.h
 
-scan.stamp: ../lib/*.c ../lib/*.h
+scan.stamp: $(top_srcdir)/lib/*.c $(top_srcdir)/lib/*.h
 	$(GTKDOC_SCAN) --module=$(MODULE) --source-dir=$(top_srcdir) \
 		--ignore-headers="$(HIGNORE)"
 	touch scan.stamp
