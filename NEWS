@@ -4,6 +4,13 @@ See the end for copying conditions.
 
 * Version 0.5.7 (unreleased)
 
+** Shared library version incremented, because new APIs were added.
+This was forgotten in the last release.
+
+** French translation updated.
+
+** Minor bug fixes.
+
 ** API and ABI is backwards compatible with the previous version.
 
 * Version 0.5.6 (released 2004-10-02)
