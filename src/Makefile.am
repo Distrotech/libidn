@@ -17,7 +17,7 @@
 # License along with GNU Libidn; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
 
-INCLUDES = -I../lib
+INCLUDES = -I$(top_srcdir)/lib -I../lib
 
 bin_PROGRAMS = idn
 
