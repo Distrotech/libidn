@@ -176,8 +176,12 @@ platforms.
 
 GCC 2.95.4 and GNU Make. This is the main development platform.
 @code{alphaev67-unknown-linux-gnu}, @code{alphaev6-unknown-linux-gnu},
+@code{arm-unknown-linux-gnu}, @code{hppa-unknown-linux-gnu},
 @code{hppa64-unknown-linux-gnu}, @code{i686-pc-linux-gnu},
-@code{ia64-unknown-linux-gnu}.
+@code{ia64-unknown-linux-gnu}, @code{m68k-unknown-linux-gnu},
+@code{mips-unknown-linux-gnu}, @code{mipsel-unknown-linux-gnu},
+@code{powerpc-unknown-linux-gnu}, @code{s390-ibm-linux-gnu},
+@code{sparc-unknown-linux-gnu}.
 
 @item Debian GNU/Linux 2.1
 @cindex Debian
