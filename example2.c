@@ -40,7 +40,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "punycode.h"
+#include <punycode.h>
 
 /* For testing, we'll just set some compile-time limits rather than */
 /* use malloc(), and set a compile-time option rather than using a  */
@@ -84,23 +84,17 @@ static const char invalid_input[] = "invalid input\n";
 static const char overflow[] = "arithmetic overflow\n";
 static const char io_error[] = "I/O error\n";
 
-
 /* The following string is used to convert printable */
 /* characters between ASCII and the native charset:  */
 
-static const char print_ascii[] =
-  "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
-  "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
-  " !\"#$%&'()*+,-./"
-  "0123456789:;<=>?"
-  "\x40""ABCDEFGHIJKLMNO"
+static const char print_ascii[] = "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" " !\"#$%&'()*+,-./" "0123456789:;<=>?" "\0x40"	/* at sign */
+  "ABCDEFGHIJKLMNO"
   "PQRSTUVWXYZ[\\]^_" "`abcdefghijklmno" "pqrstuvwxyz{|}~\n";
-
 
 int
 main (int argc, char **argv)
 {
-  int status;
+  enum punycode_status status;
   int r;
   size_t input_length, output_length, j;
   unsigned char case_flags[unicode_max_length];
@@ -114,7 +108,7 @@ main (int argc, char **argv)
 
   if (argv[1][1] == 'e')
     {
-      unsigned long input[unicode_max_length];
+      uint32_t input[unicode_max_length];
       unsigned long codept;
       char output[ace_max_length + 1], uplus[3];
       int c;
@@ -131,7 +125,7 @@ main (int argc, char **argv)
 	  if (r == EOF || r == 0)
 	    break;
 
-	  if (r != 2 || uplus[1] != '+' || codept > (unsigned long) -1)
+	  if (r != 2 || uplus[1] != '+' || codept > (uint32_t) - 1)
 	    {
 	      fail (invalid_input);
 	    }
@@ -154,13 +148,13 @@ main (int argc, char **argv)
       output_length = ace_max_length;
       status = punycode_encode (input_length, input, case_flags,
 				&output_length, output);
-      if (status == PUNYCODE_BAD_INPUT)
+      if (status == punycode_bad_input)
 	fail (invalid_input);
-      if (status == PUNYCODE_BIG_OUTPUT)
+      if (status == punycode_big_output)
 	fail (too_big);
-      if (status == PUNYCODE_OVERFLOW)
+      if (status == punycode_overflow)
 	fail (overflow);
-      assert (status == PUNYCODE_SUCCESS);
+      assert (status == punycode_success);
 
       /* Convert to native charset and output: */
 
@@ -183,7 +177,7 @@ main (int argc, char **argv)
   if (argv[1][1] == 'd')
     {
       char input[ace_max_length + 2], *p, *pp;
-      unsigned long output[unicode_max_length];
+      uint32_t output[unicode_max_length];
 
       /* Read the Punycode input string and convert to ASCII: */
 
@@ -210,13 +204,13 @@ main (int argc, char **argv)
       output_length = unicode_max_length;
       status = punycode_decode (input_length, input, &output_length,
 				output, case_flags);
-      if (status == PUNYCODE_BAD_INPUT)
+      if (status == punycode_bad_input)
 	fail (invalid_input);
-      if (status == PUNYCODE_BIG_OUTPUT)
+      if (status == punycode_big_output)
 	fail (too_big);
-      if (status == PUNYCODE_OVERFLOW)
+      if (status == punycode_overflow)
 	fail (overflow);
-      assert (status == PUNYCODE_SUCCESS);
+      assert (status == punycode_success);
 
       /* Output the result: */
 
@@ -233,5 +227,4 @@ main (int argc, char **argv)
 
   usage (argv);
   return EXIT_SUCCESS;		/* not reached, but quiets compiler warning */
-
 }
