@@ -804,7 +804,7 @@ here.  Look into the @file{stringprep.h} header file, and the
 
 @section Core Functions
 
-@deftypefun {int} stringprep (char * @var{in}, size_t @var{maxlen}, int @var{flags}, Stringprep_profile * @var{profile})
+@deftypefun {int} stringprep (char * @var{in}, size_t @var{maxlen}, int @var{flags}, const Stringprep_profile * @var{profile})
 
 @var{in}: input/ouput array with string to prepare.
 
@@ -835,7 +835,7 @@ of the currently supported profiles.
 Returns @code{STRINGPREP_OK} iff successful, or an error code.
 @end deftypefun
 
-@deftypefun int stringprep_4i (uint32_t * @var{ucs4}, size_t *@var{len}, size_t @var{maxucs4len}, Stringprep_profile_flags @var{flags}, Stringprep_profile *@var{profile})
+@deftypefun int stringprep_4i (uint32_t * @var{ucs4}, size_t *@var{len}, size_t @var{maxucs4len}, Stringprep_profile_flags @var{flags}, const Stringprep_profile *@var{profile})
 
 @var{ucs4}: input/output array with string to prepare.
 
@@ -871,7 +871,7 @@ of the currently supported profiles.
 Returns @code{STRINGPREP_OK} iff successful, or an error code.
 @end deftypefun
 
-@deftypefun int stringprep_4zi (uint32_t * @var{ucs4} size_t @var{maxucs4len}, Stringprep_profile_flags @var{flags}, Stringprep_profile *@var{profile})
+@deftypefun int stringprep_4zi (uint32_t * @var{ucs4} size_t @var{maxucs4len}, Stringprep_profile_flags @var{flags}, const Stringprep_profile *@var{profile})
 
 @var{ucs4}: input/output array with string to prepare.
 
@@ -898,7 +898,7 @@ of the currently supported profiles.
 Returns @code{STRINGPREP_OK} iff successful, or an error code.
 @end deftypefun
 
-@deftypefun {int} stringprep_profile (char * @var{in}, char ** @var{out}, char * @var{profile}, int @var{flags})
+@deftypefun {int} stringprep_profile (char * @var{in}, char ** @var{out}, const char * @var{profile}, int @var{flags})
 
 @var{in}: input/ouput array with string to prepare.
 
