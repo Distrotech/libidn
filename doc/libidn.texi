@@ -168,7 +168,7 @@ Anybody can use, modify, and redistribute it under the terms of the
 GNU Lesser General Public License.
 
 @item It's thread-safe
-No global state is kept in the library.
+No global state is kept in the library.  All functions are reentrant.
 
 @item It's portable
 The code is intended to be written in pure ANSI C89.  It has been
@@ -176,16 +176,20 @@ tested on many Unix like operating systems, and Windows.
 
 @item It's modularized
 The library is composed of several modules, and the only interaction
-between modules is through the public API.  If you only need one piece
-of functionality, it is possible to take the files you need and
-incorporate them into your own project.
+between modules is through each modules' public API.  If you only need
+one piece of functionality, it is possible to take the files you need
+and incorporate them into your own project.
 
 @item It's not bloated
 The design of the library is based on the smallest API necessary to
 implement the basic functionality.  It has been carefully extended
-with a small number of high-level wrappers for comfortable use of the
-library.  However, it does not implement additional functionality just
-for the sake of completeness.
+with a small number of high-level wrappers to make it comfortable to
+use the library.  However, it does not implement additional
+functionality just for the sake of completeness.
+
+@item It's documented
+Sadly, not all software comes with documentation these days.  This one
+does.
 
 @end table
 
