@@ -1095,6 +1095,12 @@ Allow unassigned Unicode code points.
 Check output to make sure it is a STD3 conforming host name.
 @end deftypevr
 
+@section Prefix String
+
+@deftypevr {Macro} {#define} IDNA_ACE_PREFIX
+String with the official IDNA prefix, ``xn--''.
+@end deftypevr
+
 @section Core Functions
 
 The idea behind the IDNA function names are as follows: the

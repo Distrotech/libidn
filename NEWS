@@ -2,6 +2,17 @@ Libidn NEWS -- History of user-visible changes.                 -*- outline -*-
 Copyright (C) 2002, 2003 Simon Josefsson
 See the end for copying conditions.
 
+* Version 0.2.3 (unreleased)
+
+** Documentation improvements.
+
+** Prototype cleanups.
+The proper enum types (Stringprep_rc, Idna_rc, etc) are now used in
+several places where plain int where used before.  String lengths are
+handled by (s)size_t instead of int.
+
+** API and ABI is backwards compatible with the previous version.
+
 * Version 0.2.2 (released 2003-08-13)
 
 ** Fixed problem with strings longer than 4GB in punycode functions.

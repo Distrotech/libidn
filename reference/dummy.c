@@ -8,6 +8,29 @@
 #define STRINGPREP_VERSION
 
 /**
+ * IDNA_ACE_PREFIX
+ *
+ * The IANA allocated prefix to use for IDNA. "xn--"
+ */
+#define IDNA_ACE_PREFIX
+
+/**
+ * STRINGPREP_MAX_MAP_CHARS
+ *
+ * Maximum number of code points that can replace a single code point,
+ * during stringprep mapping.
+ */
+#define STRINGPREP_MAX_MAP_CHARS
+
+/**
+ * punycode_uint
+ *
+ * Unicode code point data type, this is always a 32 bit unsigned
+ * integer .
+ */
+typedef uint32_t punycode_uint;
+
+/**
  * stringprep_nameprep:
  * @in: input/ouput array with string to prepare.
  * @maxlen: maximum length of input/output array.
