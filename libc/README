@@ -16,7 +16,7 @@ $ tar xfz ~/libidn-0.3.0.tar.gz
 3) Set up the Libidn add-on inside the Libc directory:
 
 $ cp -r libidn-0.3.0/libc glibc-2.3.2/libidn
-$ cp libidn-0.3.0/libc/{Makefile,configure,Versions} glibc-2.3.2/libidn/
+$ cp libidn-0.3.0/libc/{Makefile,configure,Banner,Versions} glibc-2.3.2/libidn/
 $ cp libidn-0.3.0/lib/*.{c,h} glibc-2.3.2/libidn/
 $ cp libidn-0.3.0/libc/getaddrinfo.c glibc-2.3.2/sysdeps/posix/
 $ ln -s ../libidn/idna.h glibc-2.3.2/include/
