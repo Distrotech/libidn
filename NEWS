@@ -10,6 +10,8 @@ See the end for copying conditions.
 
 ** The program 'idn' now print user instructions before waiting for input.
 
+** Autoconf 2.59, automake 1.8 and libtool from CVS is used.
+
 ** API and ABI is backwards compatible with the previous version.
 IDNA_CONTAINS_NON_LDH: ADD.  Same integer value as IDNA_CONTAINS_LDH.
 IDNA_CONTAINS_LDH: DEPRECATED.  LDH (letter-digits-hyphens) characters
