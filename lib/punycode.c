@@ -185,21 +185,21 @@ adapt (punycode_uint delta, punycode_uint numpoints, int firsttime)
  *   garbage.
  **/
 int
-punycode_encode (size_t input_length_orig,
+punycode_encode (size_t input_length,
 		 const punycode_uint input[],
 		 const unsigned char case_flags[],
-		 size_t * output_length, char output[])
+		 size_t *output_length, char output[])
 {
-  punycode_uint input_length, n, delta, h, b, bias, j, m, q, k, t;
+  punycode_uint input_len, n, delta, h, b, bias, j, m, q, k, t;
   size_t out, max_out;
 
   /* The Punycode spec assumes that the input length is the same type */
   /* of integer as a code point, so we need to convert the size_t to  */
   /* a punycode_uint, which could overflow.                           */
 
-  if (input_length_orig > maxint)
+  if (input_length > maxint)
     return punycode_overflow;
-  input_length = (punycode_uint) input_length_orig;
+  input_len = (punycode_uint) input_length;
 
   /* Initialize the state: */
 
@@ -211,7 +211,7 @@ punycode_encode (size_t input_length_orig,
 
   /* Handle the basic code points: */
 
-  for (j = 0; j < input_length; ++j)
+  for (j = 0; j < input_len; ++j)
     {
       if (basic (input[j]))
 	{
@@ -225,7 +225,7 @@ punycode_encode (size_t input_length_orig,
     }
 
   h = b = (punycode_uint) out;
-  /* cannot overflow because out <= input_length <= maxint */
+  /* cannot overflow because out <= input_len <= maxint */
 
   /* h is the number of code points that have been handled, b is the  */
   /* number of basic code points, and out is the number of ASCII code */
@@ -236,12 +236,12 @@ punycode_encode (size_t input_length_orig,
 
   /* Main encoding loop: */
 
-  while (h < input_length)
+  while (h < input_len)
     {
       /* All non-basic code points < n have been     */
       /* handled already.  Find the next larger one: */
 
-      for (m = maxint, j = 0; j < input_length; ++j)
+      for (m = maxint, j = 0; j < input_len; ++j)
 	{
 	  /* if (basic(input[j])) continue; */
 	  /* (not needed for Punycode) */
@@ -257,7 +257,7 @@ punycode_encode (size_t input_length_orig,
       delta += (m - n) * (h + 1);
       n = m;
 
-      for (j = 0; j < input_length; ++j)
+      for (j = 0; j < input_len; ++j)
 	{
 	  /* Punycode does not need to check whether input[j] is basic: */
 	  if (input[j] < n /* || basic(input[j]) */ )
