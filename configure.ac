@@ -102,6 +102,6 @@ AC_CONFIG_FILES([Makefile libidn.pc reference/Makefile \
 		lib/stringprep.h src/idn.ggo \
 		gl/Makefile gl/m4/Makefile \
 		contrib/doxygen/Doxyfile m4/Makefile \
-		doc/Makefile doc/specifications/Makefile \
+		doc/Makefile doc/specifications/Makefile doc/man/Makefile \
 		lib/Makefile src/Makefile tests/Makefile examples/Makefile])
 AC_OUTPUT

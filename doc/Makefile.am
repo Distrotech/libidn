@@ -17,15 +17,9 @@
 # License along with GNU Libidn; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
 
-SUBDIRS = specifications
+SUBDIRS = specifications man
 
 EXTRA_DIST = libidn.html libidn.ps libidn.pdf lgpl.texi
-
-dist_man_MANS = idn.1
-
-idn.1: ../src/idn.c
-	$(HELP2MAN) --name="Internationalized Domain Names command line tool" \
-		--output=$@ $(top_builddir)/src/idn
 
 info_TEXINFOS = libidn.texi
 pdf_TEXINFOS = libidn.texi

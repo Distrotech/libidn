@@ -4,6 +4,8 @@ See the end for copying conditions.
 
 * Version 0.2.4 (unreleased)
 
+** Man pages for all public API functions are included.
+
 ** API and ABI is backwards compatible with the previous version.
 
 * Version 0.2.3 (released 2003-08-26)
