@@ -22,27 +22,6 @@
     in the charset you select.  If not, an error is the proper
     response.
 
-
-    <p>A few examples:
-    <ul>
-	<li><a href="http://josefsson.org/idn.php?data=r%E4ksm%F6rg%E5s.josefsson.org&mode=toascii&charset=ISO-8859-1">Simple ISO-8859-1 example</a>
-	<li><a href="http://josefsson.org/idn.php?data=%E2%82%ACcu&mode=toascii&charset=UTF-8">UTF-8 Euro example</a>
-	<li><a href="http://josefsson.org/idn.php?data=%B0%C2%BC%BC%C6%E0%C8%FE%B7%C3-with-SUPER-MONKEYS&mode=toascii&charset=EUC-JP">EUC-JP example</a>
-	<li><a href="http://josefsson.org/idn.php?data=%B9%CC%BC%FA&mode=toascii&charset=EUC-KR">EUC-KR example</a>
-	<li><a href="http://josefsson.org/idn.php?data=%D9%84%D9%8A%D9%87%D9%85%D8%A7%D8%A8%D8%AA%D9%83%D9%84%D9%85%D9%88%D8%B4%D8%B9%D8%B1%D8%A8%D9%8A%D8%9F&mode=toascii&charset=UTF-8">UTF-8 Arabic (Egyptian)</a>
-	<li><a href="http://josefsson.org/idn.php?data=%E4%BB%96%E4%BB%AC%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E8%AF%B4%E4%B8%AD%E6%96%87&mode=toascii&charset=UTF-8">UTF-8 Simplified Chinese</a>
-	<li><a href="http://josefsson.org/idn.php?data=%CB%FB%C3%C7%CE%AA%CA%B2%C3%B4%B2%BB%CB%B5%D6%D0%CE%C4&mode=toascii&charset=GB18030">GB18030 Simplified Chinese (same as previous)</a>
-	<li><a href="http://josefsson.org/idn.php?data=%D7%9C%D7%9E%D7%94%D7%94%D7%9D%D7%A4%D7%A9%D7%95%D7%98%D7%9C%D7%90%D7%9E%D7%93%D7%91%D7%A8%D7%99%D7%9D%D7%A2%D7%91%D7%A8%D7%99%D7%AA&mode=toascii&charset=UTF-8">UTF-8 Hebrew</a>
-	<li><a href="http://josefsson.org/idn.php?data=%D0%BF%D0%BE%D1%87%D0%B5%D0%BC%D1%83%D0%B6%D0%B5%D0%BE%D0%BD%D0%B8%D0%BD%D0%B5%D0%B3%D0%BE%D0%B2%D0%BE%D1%80%D1%8F%D1%82%D0%BF%D0%BE%D1%80%D1%83%D1%81%D1%81%D0%BA%D0%B8&mode=toascii&charset=UTF-8">UTF-8 Russian (Cyrillic)</a>
-	<li><a href="http://josefsson.org/idn.php?data=%D0%CF%DE%C5%CD%D5%D6%C5%CF%CE%C9%CE%C5%C7%CF%D7%CF%D2%D1%D4%D0%CF%D2%D5%D3%D3%CB%C9&mode=toascii&charset=KOI8-R">KOI8-R Russian Cyrillic (same as previous)</a>
-	<li><a href="http://josefsson.org/idn.php?data=T%E1%BA%A1isaoh%E1%BB%8Dkh%C3%B4ngth%E1%BB%83ch%E1%BB%89n%C3%B3iti%E1%BA%BFngVi%E1%BB%87t&mode=toascii&charset=UTF-8">UTF-8 Vietnamese</a>
-	<li><a href="http://josefsson.org/idn.php?data=%E3%81%B2%E3%81%A8%E3%81%A4%E5%B1%8B%E6%A0%B9%E3%81%AE%E4%B8%8B2&mode=toascii&charset=UTF-8">UTF-8 Japanese</a>
-	<li><a href="http://josefsson.org/idn.php?data=%A4%D2%A4%C8%A4%C4%B2%B0%BA%AC%A4%CE%B2%BC2&mode=toascii&charset=EUC-JP">EUC-JP Japanese (same as previous</a>
-	<li><a href="http://josefsson.org/idn.php?data=Pro%C4%8Dprost%C4%9Bnemluv%C3%AD%C4%8Desky&mode=toascii&charset=UTF-8">UTF-8 Czech</a>
-	<li><a href="http://josefsson.org/idn.php?data=Pro%E8prost%ECnemluv%ED%E8esky&mode=toascii&charset=ISO-8859-2">ISO-8859-2 Czech</a>
-	<li><a href="http://josefsson.org/idn.php?data=%E0%A4%AF%E0%A4%B9%E0%A4%B2%E0%A5%8B%E0%A4%97%E0%A4%B9%E0%A4%BF%E0%A4%A8%E0%A5%8D%E0%A4%A6%E0%A5%80%E0%A4%95%E0%A5%8D%E0%A4%AF%E0%A5%8B%E0%A4%82%E0%A4%A8%E0%A4%B9%E0%A5%80%E0%A4%82%E0%A4%AC%E0%A5%8B%E0%A4%B2%E0%A4%B8%E0%A4%95%E0%A4%A4%E0%A5%87%E0%A4%B9%E0%A5%88%E0%A4%82&mode=toascii&charset=UTF-8">UTF-8 Hindi Devanagari</a>
-    </ul>
-
     <hr>
     <h2>Input</h2>
     <form>
@@ -303,6 +282,28 @@
     IDNA_MALLOC_ERROR = 201
   };
 </pre>
+
+    <hr>
+    <h2>Examples</h2>
+
+    <ul>
+	<li><a href="http://josefsson.org/idn.php?data=r%E4ksm%F6rg%E5s.josefsson.org&mode=toascii&charset=ISO-8859-1">Simple ISO-8859-1 example</a>
+	<li><a href="http://josefsson.org/idn.php?data=%E2%82%ACcu&mode=toascii&charset=UTF-8">UTF-8 Euro example</a>
+	<li><a href="http://josefsson.org/idn.php?data=%B0%C2%BC%BC%C6%E0%C8%FE%B7%C3-with-SUPER-MONKEYS&mode=toascii&charset=EUC-JP">EUC-JP example</a>
+	<li><a href="http://josefsson.org/idn.php?data=%B9%CC%BC%FA&mode=toascii&charset=EUC-KR">EUC-KR example</a>
+	<li><a href="http://josefsson.org/idn.php?data=%D9%84%D9%8A%D9%87%D9%85%D8%A7%D8%A8%D8%AA%D9%83%D9%84%D9%85%D9%88%D8%B4%D8%B9%D8%B1%D8%A8%D9%8A%D8%9F&mode=toascii&charset=UTF-8">UTF-8 Arabic (Egyptian)</a>
+	<li><a href="http://josefsson.org/idn.php?data=%E4%BB%96%E4%BB%AC%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E8%AF%B4%E4%B8%AD%E6%96%87&mode=toascii&charset=UTF-8">UTF-8 Simplified Chinese</a>
+	<li><a href="http://josefsson.org/idn.php?data=%CB%FB%C3%C7%CE%AA%CA%B2%C3%B4%B2%BB%CB%B5%D6%D0%CE%C4&mode=toascii&charset=GB18030">GB18030 Simplified Chinese (same as previous)</a>
+	<li><a href="http://josefsson.org/idn.php?data=%D7%9C%D7%9E%D7%94%D7%94%D7%9D%D7%A4%D7%A9%D7%95%D7%98%D7%9C%D7%90%D7%9E%D7%93%D7%91%D7%A8%D7%99%D7%9D%D7%A2%D7%91%D7%A8%D7%99%D7%AA&mode=toascii&charset=UTF-8">UTF-8 Hebrew</a>
+	<li><a href="http://josefsson.org/idn.php?data=%D0%BF%D0%BE%D1%87%D0%B5%D0%BC%D1%83%D0%B6%D0%B5%D0%BE%D0%BD%D0%B8%D0%BD%D0%B5%D0%B3%D0%BE%D0%B2%D0%BE%D1%80%D1%8F%D1%82%D0%BF%D0%BE%D1%80%D1%83%D1%81%D1%81%D0%BA%D0%B8&mode=toascii&charset=UTF-8">UTF-8 Russian (Cyrillic)</a>
+	<li><a href="http://josefsson.org/idn.php?data=%D0%CF%DE%C5%CD%D5%D6%C5%CF%CE%C9%CE%C5%C7%CF%D7%CF%D2%D1%D4%D0%CF%D2%D5%D3%D3%CB%C9&mode=toascii&charset=KOI8-R">KOI8-R Russian Cyrillic (same as previous)</a>
+	<li><a href="http://josefsson.org/idn.php?data=T%E1%BA%A1isaoh%E1%BB%8Dkh%C3%B4ngth%E1%BB%83ch%E1%BB%89n%C3%B3iti%E1%BA%BFngVi%E1%BB%87t&mode=toascii&charset=UTF-8">UTF-8 Vietnamese</a>
+	<li><a href="http://josefsson.org/idn.php?data=%E3%81%B2%E3%81%A8%E3%81%A4%E5%B1%8B%E6%A0%B9%E3%81%AE%E4%B8%8B2&mode=toascii&charset=UTF-8">UTF-8 Japanese</a>
+	<li><a href="http://josefsson.org/idn.php?data=%A4%D2%A4%C8%A4%C4%B2%B0%BA%AC%A4%CE%B2%BC2&mode=toascii&charset=EUC-JP">EUC-JP Japanese (same as previous</a>
+	<li><a href="http://josefsson.org/idn.php?data=Pro%C4%8Dprost%C4%9Bnemluv%C3%AD%C4%8Desky&mode=toascii&charset=UTF-8">UTF-8 Czech</a>
+	<li><a href="http://josefsson.org/idn.php?data=Pro%E8prost%ECnemluv%ED%E8esky&mode=toascii&charset=ISO-8859-2">ISO-8859-2 Czech</a>
+	<li><a href="http://josefsson.org/idn.php?data=%E0%A4%AF%E0%A4%B9%E0%A4%B2%E0%A5%8B%E0%A4%97%E0%A4%B9%E0%A4%BF%E0%A4%A8%E0%A5%8D%E0%A4%A6%E0%A5%80%E0%A4%95%E0%A5%8D%E0%A4%AF%E0%A5%8B%E0%A4%82%E0%A4%A8%E0%A4%B9%E0%A5%80%E0%A4%82%E0%A4%AC%E0%A5%8B%E0%A4%B2%E0%A4%B8%E0%A4%95%E0%A4%A4%E0%A5%87%E0%A4%B9%E0%A5%88%E0%A4%82&mode=toascii&charset=UTF-8">UTF-8 Hindi Devanagari</a>
+    </ul>
 
     <hr>
   </body>
