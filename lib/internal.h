@@ -28,6 +28,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <errno.h>
+#include <string.h>
 
 #define HAVE_ICONV 1
 #define LOCALE_WORKS 1
@@ -36,40 +37,27 @@
 #else /* _LIBC */
 
 #if HAVE_CONFIG_H
-#include "config.h"
+# include "config.h"
 #endif
 
 #ifdef STDC_HEADERS
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdarg.h>
-#include <ctype.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <stdarg.h>
+# include <ctype.h>
+# include <string.h>
 #endif
 
 #if HAVE_UNISTD_H
-#include <unistd.h>
-#endif
-
-#ifdef HAVE_SYS_TYPES_H
-#include <sys/types.h>
+# include <unistd.h>
 #endif
 
 #ifdef HAVE_ERRNO_H
-#include <errno.h>
-#endif
-
-#if HAVE_STRING_H
-# if !STDC_HEADERS && HAVE_MEMORY_H
-#  include <memory.h>
-# endif
-# include <string.h>
-#endif
-#if HAVE_STRINGS_H
-# include <strings.h>
+# include <errno.h>
 #endif
 
 #if defined(WITH_DMALLOC) && WITH_DMALLOC
-#include <dmalloc.h>
+# include <dmalloc.h>
 #endif
 
 #endif /* _LIBC */
