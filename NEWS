@@ -2,6 +2,10 @@ Libidn NEWS -- History of user-visible changes.                 -*- outline -*-
 Copyright (C) 2002, 2003 Simon Josefsson
 See the end for copying conditions.
 
+* Version 0.1.7 (released 2003-02-12)
+
+** Uses official IDNA ACE prefix.
+
 * Version 0.1.6 (released 2003-02-11)
 
 ** Uses tentative IDNA ACE prefix.
