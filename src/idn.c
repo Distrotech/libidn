@@ -88,8 +88,8 @@ main (int argc, char *argv[])
     {
       if (cmdn < args_info.inputs_num)
 	{
-	  strncpy(readbuf, args_info.inputs[cmdn++], BUFSIZ - 1);
-	  readbuf[BUFSIZ-1] = '\0';
+	  strncpy (readbuf, args_info.inputs[cmdn++], BUFSIZ - 1);
+	  readbuf[BUFSIZ - 1] = '\0';
 	}
       else if (fgets (readbuf, BUFSIZ, stdin) == NULL)
 	{

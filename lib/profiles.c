@@ -23,7 +23,7 @@
 
 const Stringprep_profiles stringprep_profiles[] = {
   {"Nameprep", stringprep_nameprep},
-  {"KRBprep", stringprep_kerberos5}, /* Deprecate? */
+  {"KRBprep", stringprep_kerberos5},	/* Deprecate? */
   {"Nodeprep", stringprep_xmpp_nodeprep},
   {"Resourceprep", stringprep_xmpp_resourceprep},
   {"plain", stringprep_plain},	/* sasl-anon-00. */

@@ -77,19 +77,18 @@ struct tld
 
 const struct tld tld[] = {
   {
-    "Simple valid French domain",
-    "fr",
-    3,
-    { 0x00E0, 0x00E2, 0x00E6 },
-    TLD_SUCCESS },
+   "Simple valid French domain",
+   "fr",
+   3,
+   {0x00E0, 0x00E2, 0x00E6},
+   TLD_SUCCESS},
   {
-    "Simple invalid French domain",
-    "fr",
-    5,
-    { 0x00E0, 0x00E2, 0x00E6, 0x4711, 0x0042 },
-    TLD_INVALID,
-    3
-  }
+   "Simple invalid French domain",
+   "fr",
+   5,
+   {0x00E0, 0x00E2, 0x00E6, 0x4711, 0x0042},
+   TLD_INVALID,
+   3}
 };
 
 int

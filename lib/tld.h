@@ -75,8 +75,7 @@ extern "C"
   /* Return structure corresponding to the named TLD from specified
    * list of TLD tables, or return NULL if no matching TLD can be
    * found. */
-  const Tld_table *tld_get_table (const char *tld,
-				  const Tld_table ** tables);
+  const Tld_table *tld_get_table (const char *tld, const Tld_table ** tables);
 
   /* Return structure corresponding to the named TLD, first looking
    * thru overrides then thru built-in list, or return NULL if no
