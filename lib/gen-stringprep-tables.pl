@@ -111,7 +111,7 @@ while(<>) {
 	$header =~ s/\n/\n * /s;
 
 	print FH "\n/*\n * $header */\n\n";
-	print FH "Stringprep_table_element stringprep_${profile}_${varname}\[\] = {\n";
+	print FH "const Stringprep_table_element stringprep_${profile}_${varname}\[\] = {\n";
     }
 }
 
