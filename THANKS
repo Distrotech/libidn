@@ -1,4 +1,5 @@
 Libidn THANKS -- Acknowledgements.
+Copyright (C) 2002, 2003 Simon Josefsson
 See the end for copying conditions.
 
 The punycode code was taken from the IETF IDN Punycode specification,
@@ -7,12 +8,10 @@ by Adam M. Costello.
 Some functions (see nfkc.c and toutf8.c) has been borrowed from GLib
 downloaded from www.gtk.org.
 
-Waldo Bastian, Stephane Bortzmeyer, and Seungho Lee sent bug reports,
-patches and/or suggested improvements.
+Waldo Bastian, Stephane Bortzmeyer, Seungho Lee, and Travis Shirk sent
+bug reports, patches and/or suggested improvements.
 
 ----------------------------------------------------------------------
-Copyright (C) 2002 Simon Josefsson
-
 Copying and distribution of this file, with or without modification,
 are permitted in any medium without royalty provided the copyright
 notice and this notice are preserved.
