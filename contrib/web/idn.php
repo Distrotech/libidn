@@ -251,38 +251,6 @@
    print $out;
 ?>
 </pre>
-
-    <hr>
-    <h2>Error codes</h2>
-
-<pre>
-
-  enum
-  {
-    PUNYCODE_SUCCESS = 0,
-    PUNYCODE_BAD_INPUT,		/* Input is invalid.                       */
-    PUNYCODE_BIG_OUTPUT,	/* Output would exceed the space provided. */
-    PUNYCODE_OVERFLOW		/* Input needs wider integers to process.  */
-  };
-
-  /* Error codes. */
-  enum
-  {
-    IDNA_SUCCESS = 0,
-    IDNA_STRINGPREP_ERROR = 1,
-    IDNA_PUNYCODE_ERROR = 2,
-    IDNA_CONTAINS_LDH = 3,
-    IDNA_CONTAINS_MINUS = 4,
-    IDNA_INVALID_LENGTH = 5,
-    IDNA_NO_ACE_PREFIX = 6,
-    IDNA_ROUNDTRIP_VERIFY_ERROR = 7,
-    IDNA_CONTAINS_ACE_PREFIX = 8,
-    IDNA_ICONV_ERROR = 9,
-    /* Internal errors. */
-    IDNA_MALLOC_ERROR = 201
-  };
-</pre>
-
     <hr>
     <h2>Examples</h2>
 
@@ -316,6 +284,55 @@
 	<li><a href="http://josefsson.org/idn.php?data=%CE%B5%CE%BB%CE%BB%CE%B7%CE%BD%CE%B9%CE%BA%CE%AC&mode=toascii&charset=UTF-8">UTF-8 Greek</a>
 	<li><a href="http://josefsson.org/idn.php?data=%E5%EB%EB%E7%ED%E9%EA%DC&mode=toascii&charset=ISO-8859-7">ISO-8859-7 Greek (same as previous)</a>
     </ul>
+
+
+    <hr>
+    <h2>Error codes</h2>
+
+<pre>
+
+  enum
+  {
+    PUNYCODE_SUCCESS = 0,
+    PUNYCODE_BAD_INPUT,		/* Input is invalid.                       */
+    PUNYCODE_BIG_OUTPUT,	/* Output would exceed the space provided. */
+    PUNYCODE_OVERFLOW		/* Input needs wider integers to process.  */
+  };
+
+  enum
+  {
+    STRINGPREP_OK = 0,
+    /* Stringprep errors. */
+    STRINGPREP_CONTAINS_UNASSIGNED = 1,
+    STRINGPREP_CONTAINS_PROHIBITED = 2,
+    STRINGPREP_BIDI_BOTH_L_AND_RAL = 3,
+    STRINGPREP_BIDI_LEADTRAIL_NOT_RAL = 4,
+    STRINGPREP_BIDI_CONTAINS_PROHIBITED = 5,
+    /* Error in calling application. */
+    STRINGPREP_TOO_SMALL_BUFFER = 100,
+    STRINGPREP_PROFILE_ERROR = 101,
+    STRINGPREP_FLAG_ERROR = 102,
+    /* Internal errors. */
+    STRINGPREP_NFKC_FAILED = 200,
+    STRINGPREP_MALLOC_ERROR = 201
+  } Stringprep_rc;
+
+  enum
+  {
+    IDNA_SUCCESS = 0,
+    IDNA_STRINGPREP_ERROR = 1,
+    IDNA_PUNYCODE_ERROR = 2,
+    IDNA_CONTAINS_LDH = 3,
+    IDNA_CONTAINS_MINUS = 4,
+    IDNA_INVALID_LENGTH = 5,
+    IDNA_NO_ACE_PREFIX = 6,
+    IDNA_ROUNDTRIP_VERIFY_ERROR = 7,
+    IDNA_CONTAINS_ACE_PREFIX = 8,
+    IDNA_ICONV_ERROR = 9,
+    /* Internal errors. */
+    IDNA_MALLOC_ERROR = 201
+  };
+</pre>
 
     <hr>
   </body>
