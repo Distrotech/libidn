@@ -341,8 +341,8 @@ to be mentioned here, contact the author (@pxref{Bug Reports}).
 
 The package can be downloaded from several places, including
 @url{http://josefsson.org/libidn/releases/}.  The latest version is
-stored in a file, e.g., @samp{libidn-0.3.42.tar.gz} where the
-@samp{0.3.42} indicate the highest version number.
+stored in a file, e.g., @samp{libidn-@value{VERSION}.tar.gz} where the
+@samp{@value{VERSION}} indicate the highest version number.
 
 The package is then extracted, configured and built like many other
 packages that use Autoconf.  For detailed information on configuring
@@ -354,9 +354,9 @@ and install the package.  You will need a few basic tools, such as
 @samp{sh}, @samp{make} and @samp{cc}.
 
 @example
-$ wget -q http://josefsson.org/libidn/releases/libidn-0.3.1.tar.gz
-$ tar xfz libidn-0.3.1.tar.gz
-$ cd libidn-0.3.1/
+$ wget -q http://josefsson.org/libidn/releases/libidn-@value{VERSION}.tar.gz
+$ tar xfz libidn-@value{VERSION}.tar.gz
+$ cd libidn-@value{VERSION}/
 $ ./configure
 ...
 $ make
