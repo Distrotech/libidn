@@ -2,7 +2,7 @@ Libidn NEWS -- History of user-visible changes.                 -*- outline -*-
 Copyright (C) 2002, 2003, 2004 Simon Josefsson
 See the end for copying conditions.
 
-* Version 0.5.9 (unreleased)
+* Version 0.5.9 (released 2004-11-07)
 
 ** Align GTK-DOC build infrastructure with GTK-DOC official recommendations.
 This mean that you can now browse the Libidn API manual using Devhelp.
