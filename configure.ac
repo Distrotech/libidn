@@ -57,7 +57,7 @@ AX_CREATE_STDINT_H(lib/idn-int.h, sys/types.h)
 # For gnulib stuff in gl/.
 gl_SOURCE_BASE(gl)
 gl_M4_BASE(gl/m4)
-gl_MODULES(strdup dummy getopt error iconvme)
+gl_MODULES(strdup getopt error iconvme)
 gl_LGPL
 gl_INIT
 
