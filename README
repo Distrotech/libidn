@@ -3,178 +3,7 @@ See the end for copying conditions.
 
 GNU Libidn is an implementation of the IETF Stringprep, Nameprep,
 Punycode and IDNA specifications, licensed under the LGPL.  See
-ANNOUNCE for an overview.
-
-Currently the API include the following definitions and functions:
-
-Header file: #include <stringprep.h>
-
-     Main Stringprep API header file.
-
-Header file: #include <stringprep_nameprep.h>
-Header file: #include <stringprep_kerbero5.h>
-
-     Convenience header files for stringprep_nameprep* and
-     stringprep_kerberos5 macros (see below).
-
-Function: int stringprep (char *in, int maxlen, int flags,
-                          Stringprep_profile * profile);
-
-     Perform stringprep on a zero terminated UTF-8 string.  Since the
-     stringprep operation can expand the string, maxlen indicate how
-     large the buffer holding the string is.  See below for valid
-     flags options.  The profile indicates processing details, see the
-     profile header files, such as stringprep_generic.h and
-     stringprep_nameprep.h for two examples.  Your application can
-     define new profiles, possibly re-using the generic stringprep
-     tables that always will be part of the library.  Note that you
-     must convert strings entered in the systems locale into UTF-8
-     before using this function.
-
-Macro: int stringprep_nameprep(char *in, int maxlen)
-Macro: int stringprep_nameprep_no_unassigned(char *in, int maxlen)
-Macro: int stringprep_kerberos5(char *in, int maxlen)
-
-     Short-hand macros for applying Nameprep with
-     AllowUnassigned=TRUE, Nameprep with AllowUnassigned=FALSE and
-     Kerberos 5 stringprep profiles to strings, respectively.
-
-Macro: STRINGPREP_VERSION
-
-     CPP definition, a string with version of the stringprep header file.
-
-Function: extern char *stringprep_check_version (char *req_version);
-
-     Check that the the version of the library is at minimum the one
-     given as a string in REQ_VERSION and return the actual version
-     string of the library; return NULL if the condition is not met.
-     If `NULL' is passed to this function no check is done and only the
-     version string is returned.
-
-Type: STRINGPREP_NO_NFKC
-Type: STRINGPREP_NO_BIDI
-Type: STRINGPREP_NO_UNASSIGNED
-
-     Valid options to the FLAGS parameter of stringprep().
-     STRINGPREP_NO_NFKC disables the NFKC normalization, as well as
-     selecting the non-NFKC case folding tables. STRINGPREP_NO_BIDI
-     disables the BIDI step.  STRINGPREP_NO_UNASSIGNED causes
-     stringprep() abort with an error if string contains unassigned
-     characters according to profile.  Usually the profile specifies
-     BIDI and NFKC settings.
-
-Header file: #include <punycode.h>
-
-     Main Punycode API header file.
-
-Function: int punycode_encode (size_t input_length,
-                               const unsigned long input[],
-		               const unsigned char case_flags[],
-		               size_t * output_length, char output[]);
-
-     punycode_encode() converts Unicode to Punycode.  The input is
-     represented as an array of Unicode code points (not code units;
-     surrogate pairs are not allowed), and the output will be
-     represented as an array of ASCII code points.  The output string
-     is *not* null-terminated; it will contain zeros if and only if
-     the input contains zeros.  (Of course the caller can leave room
-     for a terminator and add one if needed.)  The input_length is the
-     number of code points in the input.  The output_length is an
-     in/out argument: the caller passes in the maximum number of code
-     points that it can receive, and on successful return it will
-     contain the number of code points actually output.  The
-     case_flags array holds input_length boolean values, where nonzero
-     suggests that the corresponding Unicode character be forced to
-     uppercase after being decoded (if possible), and zero suggests
-     that it be forced to lowercase (if possible).  ASCII code points
-     are encoded literally, except that ASCII letters are forced to
-     uppercase or lowercase according to the corresponding uppercase
-     flags.  If case_flags is a null pointer then ASCII letters are
-     left as they are, and other code points are treated as if their
-     uppercase flags were zero.  The return value can be any of the
-     punycode_status values defined above except punycode_bad_input;
-     if not punycode_success, then output_size and output might
-     contain garbage.
-
-Function: int punycode_decode (size_t input_length,
-		               const char input[],
-		               size_t * output_length,
-                               unsigned long output[],
-                               unsigned char case_flags[]);
-
-     punycode_decode() converts Punycode to Unicode.  The input is
-     represented as an array of ASCII code points, and the output will
-     be represented as an array of Unicode code points.  The
-     input_length is the number of code points in the input.  The
-     output_length is an in/out argument: the caller passes in the
-     maximum number of code points that it can receive, and on
-     successful return it will contain the actual number of code
-     points output.  The case_flags array needs room for at least
-     output_length values, or it can be a null pointer if the case
-     information is not needed.  A nonzero flag suggests that the
-     corresponding Unicode character be forced to uppercase by the
-     caller (if possible), while zero suggests that it be forced to
-     lowercase (if possible).  ASCII code points are output already in
-     the proper case, but their flags will be set appropriately so
-     that applying the flags would be harmless.  The return value can
-     be any of the punycode_status values defined above; if not
-     punycode_success, then output_length, output, and case_flags
-     might contain garbage.  On success, the decoder will never need
-     to write an output_length greater than input_length, because of
-     how the encoding is defined.
-
-Header file: #include <idna.h>
-
-     Main IDNA API header file.
-
-Function: int idna_to_ascii (const unsigned long *in, size_t inlen,
-		             char *out,
-                             int allowunassigned, int usestd3asciirules);
-
-Function: int idna_to_unicode (const unsigned long *in, size_t inlen,
-		               unsigned long *out, size_t *outlen,
-		               int allowunassigned, int usestd3asciirules);
-
-The library also contains the following utility functions:
-
-Function: int stringprep_unichar_to_utf8 (long c, char *outbuf);
-Function: long stringprep_utf8_to_unichar (const char *p);
-
-     Convert between Unicode (UCS4) and UTF-8, one character only.
-
-Function: long *stringprep_utf8_to_ucs4 (const char *str, int  len,
-				      int *items_written);
-Function: char *stringprep_ucs4_to_utf8 (const long * str, int len,
-				      int * items_read, int * items_written);
-
-     Convert between Unicode (UCS4) and UTF-8, zero-terminated strings.
-
-Function: char *stringprep_utf8_nfkc_normalize (const char *str, int len);
-Function: long *stringprep_ucs4_nfkc_normalize (long *str, int len);
-
-     Perform NFKC normalization on strings.
-
-Function: const char *stringprep_locale_charset ();
-Function: char *stringprep_convert (const char *str,
-				 const char *to_codeset,
-				 const char *from_codeset);
-Function: char *stringprep_locale_to_utf8 (const char *str);
-
-     Convert strings between character sets.
-
-Libidn has at some point in time passed the self tests on the
-following systems, but no guarantees.
-
-  - alphaev67-dec-osf5.0 (Tru64 UNIX C, Tru64 make -- iconv failed!)
-  - i686-pc-linux-gnu (Debian Sid, iconv ok)
-  - i686-pc-linux-gnu (RedHat 7.2, iconv ok)
-  - mips-sgi-irix6.5 (MIPS C compiler, IRIX make, iconv ok)
-  - rs6000-ibm-aix4.3.2.0 (GCC 2.9-aix43-000718, GNU make, iconv failed!)
-  - rs6000-ibm-aix4.3.2.0 (IBM C for AIX compiler, AIX make, iconv failed!)
-  - sparc-sun-solaris2.6 (Sun WorkShop Compiler C 5.0, non-GNU make)
-  - sparc-sun-solaris2.8 (Sun WorkShop Compiler C 6.0U2, SUN make, iconv ok)
-  - sparc-sun-solaris2.8 (GCC 3.1, GNU make, iconv ok)
-  - ... and over 10 other unix systems including cygwin.
+ANNOUNCE for an overview, and libidn.{info,ps,pdf} for the manual.
 
 Things left to do below.  If you like to start working on anything,
 please let me know so work duplication can be avoided.
@@ -184,6 +13,9 @@ please let me know so work duplication can be avoided.
   - Include more stringprep profiles.
   - Add texi documentation.
   - Implement IDNA tools?  Is there more?
+  - Rename package?  Stringprep useful outside of IDN.  Separating
+    into libstringprep + libidn was considered, but libidn would
+    be so small it would be wasteful to create it.  libunicodenames?
 
 Before it becomes a FAQ: This library do not link with GLIB for the
 UTF-8 functions for two reasons.  First, GLIB does not provide
@@ -191,10 +23,6 @@ versioning of the Unicode tables (and the developers said it will not
 be added either) and this package must know the Unicode version used.
 Secondly, GLIB requires some things (e.g., threads) that would make
 this package less portable.
-
-For more information see <URL:http://josefsson.org/libidn/>.
-
-Send all bug reports by electronic mail to bug-libidn@josefsson.org.
 
 ----------------------------------------------------------------------
 Copyright (C) 2002 Simon Josefsson
