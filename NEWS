@@ -8,6 +8,8 @@ See the end for copying conditions.
 
 ** Update of gnulib files to fix potential getopt problem on ELF systems.
 
+** API and ABI is backwards compatible with the previous version.
+
 * Version 0.5.10 (released 2004-11-08)
 
 ** Libtool's -export-symbols-regex is now used to only export official APIs.
