@@ -1,6 +1,6 @@
 #! /usr/bin/perl -w
 
-# Copyright (C) 2002 Simon Josefsson
+# Copyright (C) 2002, 2003 Simon Josefsson
 
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -27,8 +27,8 @@ my ($intable) = 0;
 my ($tablename);
 my ($varname);
 my ($starheader, $header);
-my ($profile) = "generic";
-my ($filename) = "stringprep_${profile}.c";
+my ($profile) = "rfc3454";
+my ($filename) = "$profile.c";
 my ($line, $start, $end, @map);
 
 open(FH, ">$filename") or die "cannot open $filename for writing";
