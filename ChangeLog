@@ -1,3 +1,646 @@
+2004-02-28  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Version 0.4.0.
+
+2004-02-28  Simon Josefsson <simon@josefsson.org>
+
+	* lib/toutf8.c: Always include errno.h (C89).
+
+2004-02-28  Simon Josefsson <simon@josefsson.org>
+
+	* lib/tld.c, src/idn.c: Indent.
+
+2004-02-28  Simon Josefsson <simon@josefsson.org>
+
+	* README: Mention TLD.
+
+2004-02-28  Simon Josefsson <simon@josefsson.org>
+
+	* lib/gen-tld-tables.pl: Handle draft-hoffman-idn-reg-*.txt tables
+	better.
+
+2004-02-28  Simon Josefsson <simon@josefsson.org>
+
+	* doc/tld/fr.tld: Add headers.  Fix typos and comments.
+
+2004-02-28  Simon Josefsson <simon@josefsson.org>
+
+	* doc/tld/fr.tld: Add copying conditions.
+
+2004-02-28  Simon Josefsson <simon@josefsson.org>
+
+	* doc/tld/fr.tld: Add, from Stephane Bortzmeyer
+	<bortzmeyer@nic.fr>.
+
+2004-02-28  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi: Don't document Tld_table* for now.
+
+2004-02-28  Simon Josefsson <simon@josefsson.org>
+
+	* lib/tld.c:
+	(_tld_checkchar): Use new Tld_table API.
+
+2004-02-28  Simon Josefsson <simon@josefsson.org>
+
+	* lib/tld.h:
+	(Tld_table): Change valid definition.
+
+2004-02-28  Simon Josefsson <simon@josefsson.org>
+
+	* lib/gen-tld-tables.pl: Use new API.
+
+2004-02-28  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi: Fix.
+
+2004-02-28  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi: Improve Troubleshooting.
+
+2004-02-27  Simon Josefsson <simon@josefsson.org>
+
+	* lib/tld.c: Cosmetic fix.
+
+2004-02-27  Simon Josefsson <simon@josefsson.org>
+
+	* lib/tld.c:
+	(tld_check_4): Don't write to NULL errpos, from Thomas Jacob
+	<jacob@internet24.de>.
+
+2004-02-18  Simon Josefsson <simon@josefsson.org>
+
+	* lib/gen-tld-tables.pl: Typo.
+
+2004-02-18  Simon Josefsson <simon@josefsson.org>
+
+	* lib/gen-tld-tables.pl: Use hex in output.
+
+2004-02-18  Simon Josefsson <simon@josefsson.org>
+
+	* lib/gen-tld-tables.pl: Add comment.
+
+2004-02-18  Simon Josefsson <simon@josefsson.org>
+
+	* lib/gen-tld-tables.pl: Parse tables conforming to
+	draft-hoffman-idn-reg.
+
+2004-02-18  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi: Fix typos.
+
+2004-02-18  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi: Fix autoconf stuff, suggested by Stephane
+	Bortzmeyer <bortzmeyer@nic.fr>.
+
+2004-02-15  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Fix.
+
+2004-02-14  Simon Josefsson <simon@josefsson.org>
+
+	* lib/tld.c: Doc fix.
+
+2004-02-14  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Fix.
+
+2004-02-12  Simon Josefsson <simon@josefsson.org>
+
+	* lib/tld.c: Fix.  Indent.
+
+2004-02-12  Simon Josefsson <simon@josefsson.org>
+
+	* lib/tld.c:
+	(tld_get_z): Allocate correct amount, from Thomas Jacob
+	<jacob@internet24.de>.
+
+2004-02-11  Simon Josefsson <simon@josefsson.org>
+
+	* examples/README: Fix title.
+
+2004-02-11  Simon Josefsson <simon@josefsson.org>
+
+	* examples/README: Add.
+
+2004-02-10  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2004-02-10  Simon Josefsson <simon@josefsson.org>
+
+	* examples/example5.c: Fix warning.
+
+2004-02-10  Simon Josefsson <simon@josefsson.org>
+
+	* src/idn.c: Fix TLD debug.
+
+2004-02-10  Simon Josefsson <simon@josefsson.org>
+
+	* src/idn.c: TLD check correct string.
+
+2004-02-10  Simon Josefsson <simon@josefsson.org>
+
+	* lib/tld.c: Fix warning.
+
+2004-02-10  Simon Josefsson <simon@josefsson.org>
+
+	* examples/Makefile.am: TLD fix.
+
+2004-02-10  Simon Josefsson <simon@josefsson.org>
+
+	* lib/gen-tld-tables.pl: Fix include, from Thomas Jacob
+	<jacob@internet24.de>.
+
+2004-02-09  Simon Josefsson <simon@josefsson.org>
+
+	* lib/stringprep.c: Mention example5.
+
+2004-02-09  Simon Josefsson <simon@josefsson.org>
+
+	* lib/stringprep.c: Sync libidn text.
+
+2004-02-09  Simon Josefsson <simon@josefsson.org>
+
+	* doc/reference/libidn-docs.tmpl: Sync text.
+
+2004-02-09  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi: Fix introduction.
+
+2004-02-09  Simon Josefsson <simon@josefsson.org>
+
+	* lib/tld.c, tests/tst_tld.c: Typo.
+
+2004-02-09  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi: TLD fixes.
+
+2004-02-09  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi: Add.
+
+2004-02-09  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi: Add example 5.
+
+2004-02-09  Simon Josefsson <simon@josefsson.org>
+
+	* lib/tld.c:
+	(_tld_checkchar): Binary search, from jacob@internet24.de.
+
+2004-02-09  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Remove.
+
+2004-02-09  Simon Josefsson <simon@josefsson.org>
+
+	* lib/tld.c, lib/tld.h: Indent.
+
+2004-02-09  Simon Josefsson <simon@josefsson.org>
+
+	* lib/tld.c: Whitespace.
+
+2004-02-09  Simon Josefsson <simon@josefsson.org>
+
+	* lib/tld.h: Doc fix.
+
+2004-02-09  Simon Josefsson <simon@josefsson.org>
+
+	* lib/gen-tld-tables.pl, lib/tld.c, lib/tld.h: Hide tld_tables.
+
+2004-02-09  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS, doc/libidn.texi, lib/tld.c, lib/tld.h:
+	(tld_get_z): Support any charset (renamed from tld_get_8z).
+
+2004-02-09  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS, lib/tld.c, lib/tld.h: Typo.
+
+2004-02-08  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi, NEWS: Add.
+
+2004-02-08  Simon Josefsson <simon@josefsson.org>
+
+	* lib/tld.c, lib/tld.h:
+	(tld_get_8z): Add.
+
+2004-02-08  Simon Josefsson <simon@josefsson.org>
+
+	* examples/Makefile.am: Add.
+
+2004-02-08  Simon Josefsson <simon@josefsson.org>
+
+	* examples/example5.c: Add.
+
+2004-02-08  Simon Josefsson <simon@josefsson.org>
+
+	* lib/idna.c: Doc fix.
+
+2004-02-08  Simon Josefsson <simon@josefsson.org>
+
+	* lib/gen-tld-tables.pl: Fix.
+
+2004-02-07  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi: Fix.
+
+2004-02-07  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi: Add.
+
+2004-02-07  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi: Add.
+
+2004-02-07  Simon Josefsson <simon@josefsson.org>
+
+	* lib/profiles.c, lib/tld.h, src/idn.c, tests/tst_tld.c: Indent.
+
+2004-02-07  Simon Josefsson <simon@josefsson.org>
+
+	* src/Makefile.am: Fix indent.
+
+2004-02-06  Simon Josefsson <simon@josefsson.org>
+
+	* doc/tld/README: Add.
+
+2004-02-06  Simon Josefsson <simon@josefsson.org>
+
+	* doc/tld/README: Fix.
+
+2004-02-06  Simon Josefsson <simon@josefsson.org>
+
+	* doc/tld/README: Rewrite.
+
+2004-02-06  Simon Josefsson <simon@josefsson.org>
+
+	* lib/gen-tld-tables.pl: Fix "include".
+
+2004-02-06  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2004-02-06  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Fix.
+
+2004-02-06  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi, lib/tld.c, lib/tld.h, src/idn.c,
+	tests/tst_tld.c: Rename TLD_ILLEGAL to TLD_INVALID.
+
+2004-02-06  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi: Fix.
+
+2004-02-06  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi: Add.
+
+2004-02-06  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi: Update idn command line.
+
+2004-02-06  Simon Josefsson <simon@josefsson.org>
+
+	* src/idn.ggo: Move around.
+
+2004-02-06  Simon Josefsson <simon@josefsson.org>
+
+	* src/idn.ggo: Fix stringprep profiles.
+
+2004-02-06  Simon Josefsson <simon@josefsson.org>
+
+	* src/idn.c: TLD typo.
+
+2004-02-06  Simon Josefsson <simon@josefsson.org>
+
+	* src/idn.ggo: Make --tld the default.
+
+2004-02-06  Simon Josefsson <simon@josefsson.org>
+
+	* src/idn.c: Support --tld.  Make sure output is hold in "p".  Fix
+	error messages.
+
+2004-02-06  Simon Josefsson <simon@josefsson.org>
+
+	* src/idn.ggo: TLD fix.
+
+2004-02-06  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Fix.
+
+2004-02-06  Simon Josefsson <simon@josefsson.org>
+
+	* THANKS: Add.
+
+2004-02-06  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi: Typos.
+
+2004-02-06  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi: Fix.
+
+2004-02-06  Simon Josefsson <simon@josefsson.org>
+
+	* lib/tld.h: Doc fix.
+
+2004-02-06  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi: Add.
+
+2004-02-06  Simon Josefsson <simon@josefsson.org>
+
+	* lib/tld.c: Typo.
+
+2004-02-06  Simon Josefsson <simon@josefsson.org>
+
+	* lib/tld.c: Doc fix.
+
+2004-02-06  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi: Add.
+
+2004-02-06  Simon Josefsson <simon@josefsson.org>
+
+	* lib/tld.h: Doc fix.
+
+2004-02-06  Simon Josefsson <simon@josefsson.org>
+
+	* tests/tst_tld.c: Use new API.
+
+2004-02-06  Simon Josefsson <simon@josefsson.org>
+
+	* lib/tld.c, lib/tld.h:
+	(tld_default_table): Add.
+	(tld_get_table): Fix.
+
+2004-02-06  Simon Josefsson <simon@josefsson.org>
+
+	* lib/tld.c, lib/tld.h: Typo.
+
+2004-02-06  Simon Josefsson <simon@josefsson.org>
+
+	* lib/tld.h, lib/tld.c: Revert.
+
+2004-02-06  Simon Josefsson <simon@josefsson.org>
+
+	* lib/tld.c, lib/tld.h: Change semantics if tld_get_table.
+
+2004-02-06  Simon Josefsson <simon@josefsson.org>
+
+	* lib/gen-tld-tables.pl, lib/tld.h, lib/tld.c: Typo.
+
+2004-02-06  Simon Josefsson <simon@josefsson.org>
+
+	* lib/tld.c: Typos.
+
+2004-02-06  Simon Josefsson <simon@josefsson.org>
+
+	* tests/tst_tld.c: Use new API.
+
+2004-02-06  Simon Josefsson <simon@josefsson.org>
+
+	* lib/tld.c: Rename tld_check_*.
+
+2004-02-06  Simon Josefsson <simon@josefsson.org>
+
+	* lib/tld.h: Rename tld_check_*.  Doc fix.
+
+2004-02-06  Simon Josefsson <simon@josefsson.org>
+
+	* lib/tld.h, lib/tld.c: Rename tld_gettld_* to tld_get_*.
+
+2004-02-06  Simon Josefsson <simon@josefsson.org>
+
+	* lib/tld.c: Use new API.
+	(tld_get_table): Rewrite.
+
+2004-02-06  Simon Josefsson <simon@josefsson.org>
+
+	* lib/gen-tld-tables.pl: Use new API.
+
+2004-02-06  Simon Josefsson <simon@josefsson.org>
+
+	* lib/tld.h: Fix Tld_table.
+
+2004-02-06  Simon Josefsson <simon@josefsson.org>
+
+	* lib/tld.c: Reorder.
+
+2004-02-06  Simon Josefsson <simon@josefsson.org>
+
+	* tests/tst_tld.c: Use new API.
+
+2004-02-06  Simon Josefsson <simon@josefsson.org>
+
+	* lib/tld.c, lib/tld.h: Don't export tld_checkchar.  Rename
+	tld_finddomain to tld_get_table.  Fixes.
+
+2004-02-06  Simon Josefsson <simon@josefsson.org>
+
+	* tests/tst_tld.c: Fix.
+
+2004-02-06  Simon Josefsson <simon@josefsson.org>
+
+	* lib/profiles.c, lib/punycode.c, lib/stringprep.c, lib/tld.c,
+	lib/tld.h: Indent.
+
+2004-02-06  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi: Fix acks.
+
+2004-02-06  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi: Add.
+
+2004-02-06  Simon Josefsson <simon@josefsson.org>
+
+	* AUTHORS: Add.
+
+2004-02-06  Simon Josefsson <simon@josefsson.org>
+
+	* doc/reference/libidn-docs.tmpl: Update.
+
+2004-02-06  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2004-02-06  Simon Josefsson <simon@josefsson.org>
+
+	* doc/components.fig: Add TLD.
+
+2004-02-06  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi: Fix.
+
+2004-02-06  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi: Update introduction.  Add TLD.  Fix autoconf
+	example.  Remove Kerberos 5 macro documentation.
+
+2004-02-06  Simon Josefsson <simon@josefsson.org>
+
+	* lib/stringprep.c: Doc fix.
+
+2004-02-06  Simon Josefsson <simon@josefsson.org>
+
+	* lib/tld.h: Fix.
+
+2004-02-06  Simon Josefsson <simon@josefsson.org>
+
+	* doc/reference/libidn-docs.tmpl, doc/reference/Makefile.am: Add
+	TLD.
+
+2004-02-06  Simon Josefsson <simon@josefsson.org>
+
+	* configure.ac: Bump versions.
+
+2004-02-06  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2004-02-06  Simon Josefsson <simon@josefsson.org>
+
+	* lib/Makefile.am, tests/Makefile.am: Make it possible to exclude
+	TLD.
+
+2004-02-06  Simon Josefsson <simon@josefsson.org>
+
+	* configure.ac: Add --disable-tld.
+
+2004-02-06  Simon Josefsson <simon@josefsson.org>
+
+	* configure.ac: Build doc/tld/Makefile.
+
+2004-02-06  Simon Josefsson <simon@josefsson.org>
+
+	* tests/Makefile.am: Add tst_tld.
+
+2004-02-06  Simon Josefsson <simon@josefsson.org>
+
+	* src/idn.ggo: Add --tld.
+
+2004-02-06  Simon Josefsson <simon@josefsson.org>
+
+	* tests/tst_tld.c: Add.
+
+2004-02-06  Simon Josefsson <simon@josefsson.org>
+
+	* lib/tld.h, lib/gen-tld-tables.pl: Fix Tld_table.
+
+2004-02-06  Simon Josefsson <simon@josefsson.org>
+
+	* lib/tld.c: TLD code fix.
+
+2004-02-06  Simon Josefsson <simon@josefsson.org>
+
+	* lib/tld.c: TLD fixes.
+
+2004-02-06  Simon Josefsson <simon@josefsson.org>
+
+	* lib/tld.h: TLD typos.
+
+2004-02-06  Simon Josefsson <simon@josefsson.org>
+
+	* lib/Makefile.am: TLD fix.
+
+2004-02-06  Simon Josefsson <simon@josefsson.org>
+
+	* lib/tld.c: Add, from Thomas Jacob <jacob@internet24.de>.
+
+2004-02-06  Simon Josefsson <simon@josefsson.org>
+
+	* lib/tld.h: Fixes.
+
+2004-02-06  Simon Josefsson <simon@josefsson.org>
+
+	* lib/tld.h: Add, from Thomas Jacob <jacob@internet24.de>.
+
+2004-02-06  Simon Josefsson <simon@josefsson.org>
+
+	* lib/gen-tld-tables.pl: TLD fixes.
+
+2004-02-06  Simon Josefsson <simon@josefsson.org>
+
+	* lib/gen-tld-tables.pl: Print to stdout.
+
+2004-02-06  Simon Josefsson <simon@josefsson.org>
+
+	* lib/Makefile.am: TLD fixes.
+
+2004-02-06  Simon Josefsson <simon@josefsson.org>
+
+	* lib/gen-tld-tables.pl, lib/Makefile.am: Add, from Thomas Jacob
+	<jacob@internet24.de>.
+
+2004-02-06  Simon Josefsson <simon@josefsson.org>
+
+	* doc/Makefile.am: Add tld/.
+
+2004-02-06  Simon Josefsson <simon@josefsson.org>
+
+	* doc/tld/Makefile.am: Fix.
+
+2004-02-06  Simon Josefsson <simon@josefsson.org>
+
+	* doc/tld/README: Add copying conditions.
+
+2004-02-06  Simon Josefsson <simon@josefsson.org>
+
+	* doc/tld/README, doc/tld/Makefile.am: Add, from Thomas Jacob
+	<jacob@internet24.de>.
+
+2004-02-04  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi: Typo.
+
+2004-02-01  Simon Josefsson <simon@josefsson.org>
+
+	* doc/components.fig: Fix.
+
+2004-02-01  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi: Fix.
+
+2004-02-01  Simon Josefsson <simon@josefsson.org>
+
+	* doc/components.fig: Add.
+
+2004-02-01  Simon Josefsson <simon@josefsson.org>
+
+	* doc/Makefile.am: Build components.pdf too.
+
+2004-02-01  Simon Josefsson <simon@josefsson.org>
+
+	* doc/Makefile.am, doc/libidn.texi: Add components.fig.
+
+2004-01-31  Simon Josefsson <simon@josefsson.org>
+
+	* THANKS: Add.
+
+2004-01-31  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi: Fix, reported by nisse@lysator.liu.se (Niels
+	Möller).
+
+2004-01-22  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS, configure.ac: Bump versions.
+
+2004-01-22  Simon Josefsson <simon@josefsson.org>
+
+	* Makefile.am: Fix release target.
+
+2004-01-22  Simon Josefsson <simon@josefsson.org>
+
+	* doc/gendocs.sh: Upstream sync.
+
 2004-01-22  Simon Josefsson <simon@josefsson.org>
 
 	* NEWS: Version 0.3.7.
