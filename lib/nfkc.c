@@ -351,6 +351,8 @@ g_utf8_to_ucs4_fast (const gchar * str, glong len, glong * items_written)
     }
 
   result = g_new (gunichar, n_chars + 1);
+  if (!result)
+    return NULL;
 
   p = str;
   for (i = 0; i < n_chars; i++)
@@ -767,6 +769,8 @@ _g_utf8_normalize_wc (const gchar * str, gssize max_len, GNormalizeMode mode)
     }
 
   wc_buffer = g_new (gunichar, n_wc + 1);
+  if (!wc_buffer)
+    return NULL;
 
   last_start = 0;
   n_wc = 0;
