@@ -2,7 +2,7 @@ Libidn NEWS -- History of user-visible changes.                 -*- outline -*-
 Copyright (C) 2002, 2003, 2004 Simon Josefsson
 See the end for copying conditions.
 
-* Version 0.3.6 (unreleased)
+* Version 0.3.6 (released 2004-01-06)
 
 ** The manual now contain a troubleshooting section for the command line tool.
 
