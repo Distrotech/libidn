@@ -56,6 +56,7 @@ escapeprint (char *str, int len)
       if ((i + 1) % 16 == 0 && (i + 1) < len)
 	printf ("'\n\t'");
     }
+  printf("\n");
 }
 
 static void
@@ -72,6 +73,7 @@ hexprint (char *str, int len)
       if ((i + 1) % 16 == 0 && i + 1 < len)
 	printf ("\n\t;; ");
     }
+  printf("\n");
 }
 
 static void
@@ -95,6 +97,7 @@ binprint (char *str, int len)
       if ((i + 1) % 6 == 0 && i + 1 < len)
 	printf ("\n\t;; ");
     }
+  printf("\n");
 }
 
 struct stringprep
@@ -343,9 +346,7 @@ main (int argc, char *argv[])
 	  printf ("in: ");
 	  escapeprint (strprep[i].in, strlen (strprep[i].in));
 	  hexprint (strprep[i].in, strlen (strprep[i].in));
-	  puts ("");
 	  binprint (strprep[i].in, strlen (strprep[i].in));
-	  puts ("");
 	}
 
       {
@@ -363,10 +364,9 @@ main (int argc, char *argv[])
 		puts ("expected:");
 		escapeprint (strprep[i].in, strlen (strprep[i].in));
 		hexprint (strprep[i].in, strlen (strprep[i].in));
-		puts ("\ncomputed:");
+		puts ("computed:");
 		escapeprint (x, strlen (x));
 		hexprint (x, strlen (x));
-		puts ("");
 	      }
 	  }
 
@@ -391,16 +391,12 @@ main (int argc, char *argv[])
 	  printf ("out: ");
 	  escapeprint (p, strlen (p));
 	  hexprint (p, strlen (p));
-	  puts ("");
 	  binprint (p, strlen (p));
-	  puts ("");
 
 	  printf ("expected out: ");
 	  escapeprint (strprep[i].out, strlen (strprep[i].out));
 	  hexprint (strprep[i].out, strlen (strprep[i].out));
-	  puts ("");
 	  binprint (strprep[i].out, strlen (strprep[i].out));
-	  puts ("");
 	}
       else if (debug)
 	printf ("returned %d expected %d\n", rc, strprep[i].rc);
