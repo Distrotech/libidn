@@ -23,7 +23,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stringprep.h> /* stringprep_locale_charset() */
-#include <idna.h> /* idna_locale_to_ace() */
+#include <idna.h> /* idna_localeace_to_locale() */
 
 /*
  * Compiling using libtool and pkg-config is recommended:
