@@ -1027,6 +1027,7 @@ sub output_composition_table
     my %vals;
     
     open OUT, ">gunicomp.h" or die "Cannot open gunicomp.h: $!\n";
+    printf OUT "#include \"internal.h\"\n";
     
     # Assign values in lookup table for all code points involved
     
@@ -1082,7 +1083,7 @@ sub output_composition_table
 
     # Output first singletons
 
-    print OUT "static const unsigned long compose_first_single[][2] = {\n";
+    print OUT "static const uint32_t compose_first_single[][2] = {\n";
     $i = 0;				     
     for $record (@first_singletons) {
 	print OUT ",\n" if $i++ > 0;
@@ -1094,7 +1095,7 @@ sub output_composition_table
 		  
     # Output second singletons
 
-    print OUT "static const unsigned long compose_second_single[][2] = {\n";
+    print OUT "static const uint32_t compose_second_single[][2] = {\n";
     $i = 0;				     
     for $record (@second_singletons) {
 	print OUT ",\n" if $i++ > 0;
