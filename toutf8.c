@@ -19,31 +19,11 @@
  *
  */
 
-#ifdef HAVE_CONFIG_H
-#include "config.h"
-#endif
+#include "internal.h"
 
 #ifdef HAVE_ICONV
 
 #include <iconv.h>
-
-#ifdef STDC_HEADERS
-#include <stdlib.h>
-#endif
-#if HAVE_STRING_H
-# if !STDC_HEADERS && HAVE_MEMORY_H
-#  include <memory.h>
-# endif
-# include <string.h>
-#endif
-#if HAVE_STRINGS_H
-# include <strings.h>
-#endif
-
-#ifdef HAVE_ERRNO_H
-#include <errno.h>
-#endif
-extern int errno;
 
 #if LOCALE_WORKS
 #include <langinfo.h>

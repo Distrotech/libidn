@@ -19,9 +19,7 @@
  *
  */
 
-#ifdef HAVE_CONFIG_H
-#include "config.h"
-#endif
+#include "internal.h"
 
 /* This file contains functions from GLIB including gutf8.c and
  * gunidecomp.c, all with the following license.
@@ -60,8 +58,6 @@ GNormalizeMode;
 
 #include "gunidecomp.h"
 #include "gunicomp.h"
-
-#include <stdlib.h>
 
 #define UTF8_COMPUTE(Char, Mask, Len)					      \
   if (Char < 128)							      \

@@ -20,10 +20,7 @@
 
 /* This file is based on src/global.c from Werner Koch's libgcrypt */
 
-#include <stdio.h>
-#ifdef HAVE_CONFIG_H
-#include "config.h"
-#endif
+#include "internal.h"
 
 static const char *
 parse_version_number (const char *s, int *number)
