@@ -347,8 +347,7 @@ main (int argc, char *argv[])
 	      if (rc == TLD_INVALID)
 		{
 		  fprintf (stderr, "%s: string rejected by TLD test "
-			   "(Unicode position %d)\n",
-			   argv[0], errpos);
+			   "(Unicode position %d)\n", argv[0], errpos);
 		  free (q);
 		  return 1;
 		}
@@ -432,8 +431,7 @@ main (int argc, char *argv[])
 	      if (rc == TLD_INVALID)
 		{
 		  fprintf (stderr, "%s: string rejected by TLD test "
-			   "(Unicode position %d)\n",
-			   argv[0], errpos);
+			   "(Unicode position %d)\n", argv[0], errpos);
 		  free (q);
 		  return 1;
 		}

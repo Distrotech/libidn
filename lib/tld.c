@@ -264,7 +264,7 @@ _tld_checkchar (uint32_t ch, const Tld_table * tld)
  */
 int
 tld_check_4t (const uint32_t * in, size_t inlen, size_t * errpos,
-	       const Tld_table * tld)
+	      const Tld_table * tld)
 {
   const uint32_t *ipos;
   int rc;
