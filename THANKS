@@ -1,8 +1,14 @@
-Libidn THANKS -- acknowledgements
+Libidn THANKS -- Acknowledgements.
 See the end for copying conditions.
+
+The punycode code was taken from the IETF IDN Punycode specification,
+by Adam M. Costello.
 
 Some functions (see nfkc.c and toutf8.c) has been borrowed from GLib
 downloaded from www.gtk.org.
+
+Stephane Bortzmeyer, and Seungho Lee sent bug reports and/or suggested
+improvements.
 
 ----------------------------------------------------------------------
 Copyright (C) 2002 Simon Josefsson
