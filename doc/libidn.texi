@@ -1480,7 +1480,10 @@ $ CHARSET=ISO-8859-1 idn --punycode-encode
 
 Included in Libidn are @file{punycode.el} and @file{idna.el} that
 provides an Emacs Lisp API to (a limited set of) the Libidn API.  This
-section describes the API.
+section describes the API.  Currently the IDNA API always set the
+@code{UseSTD3ASCIIRules} flag and clear the @code{AllowUnassigned}
+flag, in the future there may be functionality to specify these flags
+via the API.
 
 @defvar punycode-program
 Name of the GNU Libidn @file{idn} application.  The default is
