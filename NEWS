@@ -4,6 +4,9 @@ See the end for copying conditions.
 
 * Version 0.3.1 (unreleased)
 
+** Emacs Lisp IDNA implementation now set the UseSTD3ASCIIRules flag.
+This is the appropriate setting for mail-related uses of IDNA.
+
 * Version 0.3.0 (released 2003-09-23)
 
 ** Ported to Mac OS X.
