@@ -108,8 +108,10 @@ tag = $(PACKAGE)-`echo $(VERSION) | sed 's/\./-/g'`
 release:
 	cvs upd -p -r libidn-0-1-0 NEWS > /dev/null
 	if cvs upd -p -r $(tag) NEWS > /dev/null; then false else true; fi
+	rm -f ChangeLog && cvs upd ChangeLog
 	cvs commit
-	make distcheck
+	$(MAKE) distcheck
+	cvs commit -m "" ChangeLog
 	rm -f $(distdir).tar.gz.asc
 	gpg -a --sign --detach $(distdir).tar.gz
 	gpg --verify $(distdir).tar.gz.asc
