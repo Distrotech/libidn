@@ -32,7 +32,7 @@ extern "C"
 
 #include <stringprep.h>
 
-extern struct stringprep_table stringprep_nameprep[];
+extern Stringprep_profile stringprep_nameprep[];
 
 #define stringprep_nameprep(in, maxlen) \
 	stringprep(in, maxlen, 0, stringprep_nameprep)

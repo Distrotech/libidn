@@ -32,25 +32,25 @@ extern "C"
 
 #include <stringprep.h>
 
-extern struct stringprep_table_element stringprep_generic_A_1[];
-extern struct stringprep_table_element stringprep_generic_B_1[];
-extern struct stringprep_table_element stringprep_generic_B_2[];
-extern struct stringprep_table_element stringprep_generic_B_3[];
-extern struct stringprep_table_element stringprep_generic_C_1_1[];
-extern struct stringprep_table_element stringprep_generic_C_1_2[];
-extern struct stringprep_table_element stringprep_generic_C_2_1[];
-extern struct stringprep_table_element stringprep_generic_C_2_2[];
-extern struct stringprep_table_element stringprep_generic_C_3[];
-extern struct stringprep_table_element stringprep_generic_C_4[];
-extern struct stringprep_table_element stringprep_generic_C_5[];
-extern struct stringprep_table_element stringprep_generic_C_6[];
-extern struct stringprep_table_element stringprep_generic_C_7[];
-extern struct stringprep_table_element stringprep_generic_C_8[];
-extern struct stringprep_table_element stringprep_generic_C_9[];
-extern struct stringprep_table_element stringprep_generic_D_1[];
-extern struct stringprep_table_element stringprep_generic_D_2[];
+extern Stringprep_table_element stringprep_generic_A_1[];
+extern Stringprep_table_element stringprep_generic_B_1[];
+extern Stringprep_table_element stringprep_generic_B_2[];
+extern Stringprep_table_element stringprep_generic_B_3[];
+extern Stringprep_table_element stringprep_generic_C_1_1[];
+extern Stringprep_table_element stringprep_generic_C_1_2[];
+extern Stringprep_table_element stringprep_generic_C_2_1[];
+extern Stringprep_table_element stringprep_generic_C_2_2[];
+extern Stringprep_table_element stringprep_generic_C_3[];
+extern Stringprep_table_element stringprep_generic_C_4[];
+extern Stringprep_table_element stringprep_generic_C_5[];
+extern Stringprep_table_element stringprep_generic_C_6[];
+extern Stringprep_table_element stringprep_generic_C_7[];
+extern Stringprep_table_element stringprep_generic_C_8[];
+extern Stringprep_table_element stringprep_generic_C_9[];
+extern Stringprep_table_element stringprep_generic_D_1[];
+extern Stringprep_table_element stringprep_generic_D_2[];
 
-extern struct stringprep_table stringprep_generic[];
+extern Stringprep_profile stringprep_generic[];
 
 #define stringprep_generic(in, maxlen) \
 	stringprep(in, maxlen, 0, stringprep_generic)

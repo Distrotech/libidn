@@ -32,7 +32,7 @@ extern "C"
 
 #include <stringprep.h>
 
-extern struct stringprep_table stringprep_kerberos5[];
+extern Stringprep_profile stringprep_kerberos5[];
 
 #define stringprep_kerberos5(in, maxlen) \
 	stringprep(in, maxlen, 0, stringprep_kerberos5)

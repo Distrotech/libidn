@@ -43,7 +43,7 @@ escapeprint (char *str, int len)
 {
   int i;
 
-  printf ("\t ;; `");
+  printf ("\t;; `");
   for (i = 0; i < len; i++)
     {
       if (((str[i] & 0xFF) >= 'A' && (str[i] & 0xFF) <= 'Z') ||
@@ -62,14 +62,14 @@ hexprint (char *str, int len)
 {
   int i;
 
-  printf ("\t ;; ");
+  printf ("\t;; ");
   for (i = 0; i < len; i++)
     {
       printf ("%02x ", (str[i] & 0xFF));
       if ((i + 1) % 8 == 0)
 	printf (" ");
       if ((i + 1) % 16 == 0 && i + 1 < len)
-	printf ("\n\t ;; ");
+	printf ("\n\t;; ");
     }
 }
 
@@ -78,7 +78,7 @@ binprint (char *str, int len)
 {
   int i;
 
-  printf ("\t ;; ");
+  printf ("\t;; ");
   for (i = 0; i < len; i++)
     {
       printf ("%d%d%d%d%d%d%d%d ",
@@ -92,7 +92,7 @@ binprint (char *str, int len)
       if ((i + 1) % 3 == 0)
 	printf (" ");
       if ((i + 1) % 6 == 0 && i + 1 < len)
-	printf ("\n\t ;; ");
+	printf ("\n\t;; ");
     }
 }
 
@@ -101,12 +101,12 @@ struct stringprep
   char *in;
   int flags;
   char *out;
-  stringprep_profile *profile;
+  Stringprep_profile *profile;
   int rc;
 }
 strprep[] =
 {
-  /* nothing */
+  /* nothing 00AD */
   {
   "foo\xC2\xAD" "bar", 0, "foobar", stringprep_generic}
   ,
@@ -127,7 +127,8 @@ strprep[] =
   ,
   /* unassigned code point 0221: */
   {
-    "\xC8\xA1", STRINGPREP_NO_UNASSIGNED, NULL, stringprep_generic, STRINGPREP_CONTAINS_UNASSIGNED}
+    "\xC8\xA1", STRINGPREP_NO_UNASSIGNED, NULL, stringprep_generic,
+    STRINGPREP_CONTAINS_UNASSIGNED}
   ,
   /* unassigned code point 0236: */
   {
@@ -135,7 +136,8 @@ strprep[] =
   ,
   /* unassigned code point 0236: */
   {
-    "\xC8\xB6", STRINGPREP_NO_UNASSIGNED, NULL, stringprep_generic, STRINGPREP_CONTAINS_UNASSIGNED}
+    "\xC8\xB6", STRINGPREP_NO_UNASSIGNED, NULL, stringprep_generic,
+    STRINGPREP_CONTAINS_UNASSIGNED}
 };
 
 int
@@ -172,13 +174,6 @@ main (int argc, char *argv[])
 
       strcpy (p, strprep[i].in);
 
-      rc = stringprep (p, BUFSIZ, strprep[i].flags, strprep[i].profile);
-      if (rc != strprep[i].rc)
-	{
-	  fail ("stringprep() entry %d failed: %d\n", i, rc);
-	  continue;
-	}
-
       if (debug)
 	{
 	  printf ("flags: %d\n", strprep[i].flags);
@@ -189,26 +184,35 @@ main (int argc, char *argv[])
 	  puts ("");
 	  binprint (strprep[i].in, strlen (strprep[i].in));
 	  puts ("");
-
-	  if (rc == STRINGPREP_OK)
-	    {
-	      printf ("out:\n");
-	      escapeprint (p, strlen (p));
-	      hexprint (p, strlen (p));
-	      puts ("");
-	      binprint (p, strlen (p));
-	      puts ("");
-
-	      printf ("expected out:\n");
-	      escapeprint (strprep[i].out, strlen (strprep[i].out));
-	      hexprint (strprep[i].out, strlen (strprep[i].out));
-	      puts ("");
-	      binprint (strprep[i].out, strlen (strprep[i].out));
-	      puts ("");
-	    }
-	  else
-	    printf("returned %d expected %d\n", rc, strprep[i].rc);
 	}
+
+      rc = stringprep (p, BUFSIZ, strprep[i].flags, strprep[i].profile);
+      if (rc != strprep[i].rc)
+	{
+	  fail ("stringprep() entry %d failed: %d\n", i, rc);
+	  if (debug)
+	    printf ("FATAL\n");
+	  continue;
+	}
+
+      if (debug && rc == STRINGPREP_OK)
+	{
+	  printf ("out:\n");
+	  escapeprint (p, strlen (p));
+	  hexprint (p, strlen (p));
+	  puts ("");
+	  binprint (p, strlen (p));
+	  puts ("");
+
+	  printf ("expected out:\n");
+	  escapeprint (strprep[i].out, strlen (strprep[i].out));
+	  hexprint (strprep[i].out, strlen (strprep[i].out));
+	  puts ("");
+	  binprint (strprep[i].out, strlen (strprep[i].out));
+	  puts ("");
+	}
+      else if (debug)
+	printf("returned %d expected %d\n", rc, strprep[i].rc);
 
       if (rc == STRINGPREP_OK)
 	{
@@ -219,9 +223,11 @@ main (int argc, char *argv[])
 	      if (debug)
 		printf ("ERROR\n");
 	    }
+	  else if (debug)
+	    printf ("OK\n\n");
 	}
       else if (debug)
-	printf ("OK\n");
+	printf ("OK\n\n");
     }
 
   free (p);

@@ -25,64 +25,76 @@
 #ifdef __cplusplus
 extern "C"
 {
-#if 0 /* keep Emacsens's auto-indent happy */
+#if 0				/* keep Emacsens's auto-indent happy */
 }
 #endif
 #endif
 
 #define STRINGPREP_VERSION "@PACKAGE_VERSION@"
 
-/* Error codes */
-enum {
+/* Error codes. */
+enum
+{
   STRINGPREP_OK = 0,
-  STRINGPREP_NFKC_FAILED,
-  STRINGPREP_TOO_SMALL_BUFFER,
-  STRINGPREP_MALLOC_ERROR,
-  STRINGPREP_BIDI_NOT_IN_PROFILE,
-  STRINGPREP_BIDI_BOTH_L_AND_RAL,
-  STRINGPREP_BIDI_LEADTRAIL_NOT_RAL,
-  STRINGPREP_CONTAINS_UNASSIGNED
+  /* Internal errors. */
+  STRINGPREP_NFKC_FAILED = 1,
+  STRINGPREP_MALLOC_ERROR = 2,
+  /* Error in calling application. */
+  STRINGPREP_TOO_SMALL_BUFFER = 3,
+  STRINGPREP_PROFILE_ERROR = 4,
+  STRINGPREP_FLAG_ERROR = 5,
+  /* Stringprep errors. */
+  STRINGPREP_BIDI_BOTH_L_AND_RAL = 6,
+  STRINGPREP_BIDI_LEADTRAIL_NOT_RAL = 7,
+  STRINGPREP_CONTAINS_UNASSIGNED = 8,
+  STRINGPREP_CONTAINS_PROHIBITED = 9,
+  STRINGPREP_CONTAINS_BIDI_PROHIBITED = 10
 };
 
-enum {
-  /* Flags used when calling stringprep(). */
-  STRINGPREP_NO_NFKC = (1<<1),
-  STRINGPREP_NO_BIDI = (1<<2),
-  STRINGPREP_NO_UNASSIGNED = (1<<3),
-  /* Flags used when defining new stringprep profile. */
-  STRINGPREP_UNASSIGNED = (1<<26),
-  STRINGPREP_BIDI_PROHIBITED = (1<<27),
-  STRINGPREP_BIDI_RAL = (1<<28),
-  STRINGPREP_BIDI_L = (1<<29),
-  STRINGPREP_INVERT_MAGIC = (1<<30)
+/* Flags used when calling stringprep(). */
+enum
+{
+  STRINGPREP_NO_NFKC = 1,
+  STRINGPREP_NO_BIDI = 2,
+  STRINGPREP_NO_UNASSIGNED = 4,
 };
 
-#define STRINGPREP_BIDI_PROHIBITED_MASK (~STRINGPREP_NO_BIDI       & STRINGPREP_BIDI_PROHIBITED)
-#define STRINGPREP_BIDI_RAL_MASK        (~STRINGPREP_NO_BIDI       & STRINGPREP_BIDI_RAL)
-#define STRINGPREP_BIDI_L_MASK          (~STRINGPREP_NO_BIDI       & STRINGPREP_BIDI_L)
-#define STRINGPREP_UNASSIGNED_MASK      (~STRINGPREP_NO_UNASSIGNED & STRINGPREP_UNASSIGNED)
+/* Steps in a stringprep profile. */
+enum
+{
+  STRINGPREP_NFKC = 1,
+  STRINGPREP_BIDI = 2,
+  STRINGPREP_MAP_TABLE = 3,
+  STRINGPREP_UNASSIGNED_TABLE = 4,
+  STRINGPREP_PROHIBIT_TABLE = 5,
+  STRINGPREP_BIDI_PROHIBIT_TABLE = 6,
+  STRINGPREP_BIDI_RAL_TABLE = 7,
+  STRINGPREP_BIDI_L_TABLE = 8
+};
 
 #define STRINGPREP_MAX_MAP_CHARS 5
 
-struct stringprep_table_element
+struct Stringprep_table_element
 {
   long start;
-  long end;                /* 0 if only one character     */
-  long map[STRINGPREP_MAX_MAP_CHARS]; /* Always NULL if end is non-0 */
+  long end;				/* 0 if only one character     */
+  long map[STRINGPREP_MAX_MAP_CHARS];	/* Always NULL if end is non-0 */
 };
+typedef struct Stringprep_table_element Stringprep_table_element;
 
-struct stringprep_table
+struct Stringprep_table
 {
-  int flags;
-  struct stringprep_table_element *table;
+  int				operation;
+  int				flags;
+  Stringprep_table_element	*table;
+  char				*name;
 };
-
-typedef struct stringprep_table stringprep_profile;
+typedef struct Stringprep_table Stringprep_profile;
 
 /* API */
 
 extern int stringprep (char *in, int maxlen, int flags,
-		       stringprep_profile * profile);
+		       Stringprep_profile * profile);
 
 extern const char *stringprep_check_version (const char *req_version);
 
@@ -91,10 +103,10 @@ extern const char *stringprep_check_version (const char *req_version);
 extern int stringprep_unichar_to_utf8 (long c, char *outbuf);
 extern long stringprep_utf8_to_unichar (const char *p);
 
-extern long *stringprep_utf8_to_ucs4 (const char *str, int  len,
+extern long *stringprep_utf8_to_ucs4 (const char *str, int len,
 				      int *items_written);
-extern char *stringprep_ucs4_to_utf8 (const long * str, int len,
-				      int * items_read, int * items_written);
+extern char *stringprep_ucs4_to_utf8 (const long *str, int len,
+				      int *items_read, int *items_written);
 
 extern char *stringprep_utf8_nfkc_normalize (const char *str, int len);
 extern long *stringprep_ucs4_nfkc_normalize (long *str, int len);
@@ -108,4 +120,4 @@ extern char *stringprep_locale_to_utf8 (const char *str);
 #ifdef __cplusplus
 }
 #endif
-#endif				/* _STRINGPREP_H */
+#endif /* _STRINGPREP_H */

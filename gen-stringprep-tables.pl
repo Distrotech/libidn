@@ -27,9 +27,8 @@ my ($intable) = 0;
 my ($tablename);
 my ($varname);
 my ($starheader, $header);
-my ($prefix) = "stringprep";
 my ($profile) = "generic";
-my ($filename) = "${prefix}_${profile}.c";
+my ($filename) = "stringprep_${profile}.c";
 my ($line, $start, $end, @map);
 
 open(FH, ">$filename") or die "cannot open $filename for writing";
@@ -43,7 +42,7 @@ while(<>) {
     die "not in table" if !$intable && m,^----- End Table (.*) -----,;
 
     if ($intable && m,^----- End Table (.*) -----,) {
-	die "table error" unless $1 eq $tablename ||  
+	die "table error" unless $1 eq $tablename ||
 	    ($1 eq "C.1.2" && $tablename eq "C.1.1"); # Typo in draft
 	$intable = 0;
 	print FH "  { 0 },\n";
@@ -85,17 +84,17 @@ while(<>) {
 	    $start, $map[0], $tab-length($line)-14, " ", $line,
 	    $map[1], $map[2];
 	} elsif ($map[1]) {
-	    printf FH "  { 0x%06s, 0, { 0x%06s,%*s/* %s */\n                   0x%06s }},\n", 
+	    printf FH "  { 0x%06s, 0, { 0x%06s,%*s/* %s */\n                   0x%06s }},\n",
 	    $start, $map[0], $tab-length($line)-14, " ", $line,
 	    $map[1];
 	} elsif ($map[0]) {
-	    printf FH "  { 0x%06s, 0, { 0x%06s }},%*s/* %s */\n", 
+	    printf FH "  { 0x%06s, 0, { 0x%06s }},%*s/* %s */\n",
 	    $start, $map[0], $tab-length($line)-17, " ",  $line;
 	} elsif ($end) {
-	    printf FH "  { 0x%06s, 0x%06s },%*s/* %s */\n", 
+	    printf FH "  { 0x%06s, 0x%06s },%*s/* %s */\n",
 	    $start, $end, $tab-length($line)-11, " ",  $line;
 	} else {
-	    printf FH "  { 0x%06s           },%*s/* %s */\n", 
+	    printf FH "  { 0x%06s           },%*s/* %s */\n",
 	    $start, $tab-length($line)-11, " ",  $line;
 	}
     } else {
@@ -106,7 +105,7 @@ while(<>) {
 	$header =~ s/\n/\n * /s;
 
 	print FH "\n/*\n * $header */\n\n";
-	print FH "struct ${prefix}_table_element ${prefix}_${profile}_${varname}\[\] = {\n";
+	print FH "Stringprep_table_element stringprep_${profile}_${varname}\[\] = {\n";
     }
 }
 
