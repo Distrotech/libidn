@@ -98,7 +98,9 @@ idna_to_ascii (const unsigned long *in, size_t inlen,
     if (p == NULL)
       return IDNA_MALLOC_ERROR;
 
-    p = realloc (p, BUFSIZ);
+    free (src);
+
+    p = realloc (p, BUFSIZ);  /* XXX this is exessive */
     if (p == NULL)
       return IDNA_MALLOC_ERROR;
 
@@ -108,11 +110,14 @@ idna_to_ascii (const unsigned long *in, size_t inlen,
       rc = stringprep_nameprep_no_unassigned (p, BUFSIZ);
 
     if (rc != STRINGPREP_OK)
-      return IDNA_STRINGPREP_ERROR;
-
-    free (src);
+      {
+	free(p);
+	return IDNA_STRINGPREP_ERROR;
+      }
 
     src = stringprep_utf8_to_ucs4 (p, -1, NULL);
+
+    free(p);
   }
 
 step3:
