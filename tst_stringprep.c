@@ -357,7 +357,9 @@ strprep[] =
   { "SASL ANONYMOUS plain mechanism",
     "simon@josefsson.org", "simon@josefsson.org", stringprep_plain},
   { "iSCSI profile",
-    "Example-Name", "example-name", stringprep_iscsi}
+    "Example-Name", "example-name", stringprep_iscsi},
+  { "SASL profile",
+    "Example\xC2\xA0""Name", "Example Name", stringprep_saslprep}
 #endif
 };
 
