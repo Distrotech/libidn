@@ -40,6 +40,7 @@ AC_PROG_CC
 AM_MISSING_PROG(PERL, perl, $missing_dir)
 AM_ICONV
 AM_WITH_DMALLOC
+AM_PATH_LISPDIR
 
 # Checks for header files.
 AC_HEADER_STDC
