@@ -23,7 +23,8 @@ EXTRA_DIST = libidn.pc.in iconv.m4 strdup.c memset.c \
 	gen-stringprep-tables.pl rfc3454.txt \
 	gen-unicode-tables.pl UnicodeData-3.2.0.txt LineBreak-3.2.0.txt \
 	SpecialCasing-3.2.0.txt CaseFolding-3.2.0.txt \
-	CompositionExclusions-3.2.0.txt
+	CompositionExclusions-3.2.0.txt \
+	gdoc libidn.txt libidn.html libidn.ps libidn.pdf
 
 pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = libidn.pc
@@ -40,6 +41,38 @@ libidn_la_SOURCES = gunicomp.h gunidecomp.h internal.h \
 	idna.h idna.c
 libidn_la_LIBADD = @LTLIBOBJS@ @LTLIBICONV@
 libidn_la_LDFLAGS = -version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE)
+info_TEXINFOS = libidn.texi
+
+libidn_TEXINFOS = fdl.texi \
+	example.c.texi example2.c.texi example3.c.texi example4.c.texi \
+	libidn-api-version.texi libidn-api-stringprep.texi \
+	libidn-api-punycode.texi libidn-api-idna.texi
+
+%.c.texi: %.c
+	sed -e 's/{/@{/g' -e 's/}/@}/g' < $< > $@
+
+libidn-api-version.texi: version.c
+	$(PERL) $(srcdir)/gdoc -texinfo $^ > $@
+
+libidn-api-stringprep.texi: stringprep.c nfkc.c toutf8.c
+	$(PERL) $(srcdir)/gdoc -texinfo $^ > $@
+
+libidn-api-punycode.texi: punycode.c
+	$(PERL) $(srcdir)/gdoc -texinfo $^ > $@
+
+libidn-api-idna.texi: idna.c
+	$(PERL) $(srcdir)/gdoc -texinfo $^ > $@
+
+libidn.txt: libidn.texi
+	$(MAKEINFO) --no-header $< > $@
+
+libidn.html: libidn.texi
+	$(MAKEINFO) --html --no-split --number-sections $<
+
+libidn.ps: libidn.texi
+
+libidn.pdf: libidn.texi
+	$(TEXI2PDF) $<
 
 nfkc.c: gunicomp.h gunidecomp.h
 

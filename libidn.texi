@@ -1,0 +1,582 @@
+\input texinfo   @c -*-texinfo-*-
+@comment $Id$
+@comment %**start of header
+@setfilename libidn.info
+@include version.texi
+@settitle GNU Libidn @value{VERSION}
+@syncodeindex pg cp
+@comment %**end of header
+@copying
+This manual is for GNU Libidn
+(version @value{VERSION}, @value{UPDATED}),
+which is a library for internationalized string processing.
+
+Copyright @copyright{} 2002 Free Software Foundation, Inc.
+
+@quotation
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover Texts being ``A GNU Manual,''
+and with the Back-Cover Texts as in (a) below.  A copy of the
+license is included in the section entitled ``GNU Free Documentation
+License.''
+
+(a) The FSF's Back-Cover Text is: ``You have freedom to copy and modify
+this GNU Manual, like GNU software.  Copies published by the Free
+Software Foundation raise funds for GNU development.''
+@end quotation
+@end copying
+
+@dircategory GNU Libraries
+@direntry
+* libidn:	(libidn)Internationalized string processing library.
+@end direntry
+
+@titlepage
+@title GNU Libidn
+@subtitle for version @value{VERSION}, @value{UPDATED}
+@author Simon Josefsson (@email{bug-libidn@@gnu.org})
+@page
+@vskip 0pt plus 1filll
+@insertcopying
+@end titlepage
+
+@contents
+
+@ifnottex
+@node Top
+@top GNU Libidn
+
+@insertcopying
+@end ifnottex
+
+@menu
+* Introduction::		How to use this manual.
+* Preparation::			What you should do before using the library.
+* Stringprep Functions::	Stringprep functions.
+* Punycode Functions::		Punycode functions.
+* IDNA Functions::		IDNA functions.
+* Examples::                    Demonstration on how to use the library.
+* Copying This Manual::
+* Index::
+@end menu
+
+
+@node Introduction
+@chapter Introduction
+
+GNU Libidn is an implementation of the Stringprep (with the Nameprep
+and Kerberos 5 profiles), Punycode and IDNA specifications defined by
+the IETF Internationalized Domain Names (IDN) working group, used for
+internationalized domain names.  It is licensed under the GNU Lesser
+General Public License.
+
+The library contains a generic Stringprep implementation (including
+Unicode 3.2 NFKC normalization, table mapping of characters, and
+Bidirectional Character handling), two Stringprep profiles; Nameprep
+(for IDN) and Kerberos5, as well as a Punycode and IDNA.
+
+The Stringprep API consists of two main functions, one for converting
+data from the system's native representation into UTF-8, and one
+function to perform the Stringprep processing.  Each stringprep
+profile has a corresponding CPP macro.  Adding a new Stringprep
+profile for your application within the API is straightforward.  The
+Punycode API consists of one encoding function and one decoding
+function.  The IDNA API consists of the ToASCII and ToUnicode
+functions.
+
+The library is currently used by forthcoming SASL and Kerberos
+libraries to process user names and passwords before they are input to
+cryptographic operations.  It is also used by experimental code for
+domain name related purposes.
+
+GNU Libidn is developed for the GNU/Linux system, but runs on over 20
+Unix platforms (including Solaris, IRIX, AIX, and Tru64) and Windows.
+
+@menu
+* Getting Started::
+* Features::
+* Supported Platforms::
+* Bug Reports::
+@end menu
+
+@node Getting Started
+@section Getting Started
+
+This manual documents the library programming interface.  All
+functions and data types provided by the library are explained.
+
+The reader is assumed to possess basic familiarity with
+internationalization concepts and network programming in C or C++.
+
+This manual can be used in several ways.  If read from the beginning
+to the end, it gives a good introduction into the library and how it
+can be used in an application.  Forward references are included where
+necessary.  Later on, the manual can be used as a reference manual to
+get just the information needed about any particular interface of the
+library.  Experienced programmers might want to start looking at the
+examples at the end of the manual (@pxref{Examples}), and then only
+read up those parts of the interface which are unclear.
+
+@node Features
+@section Features
+
+This library might have a couple of advantages over other libraries
+doing a similar job.
+
+@table @asis
+@item It's Free Software
+Anybody can use, modify, and redistribute it under the terms of the
+GNU Lesser General Public License.
+
+@item It's thread-safe
+No global state is kept in the library.
+
+@item It's portable
+It should work on all Unix like operating systems, including Windows.
+
+@end table
+
+@node Supported Platforms
+@section Supported Platforms
+
+Libidn has at some point in time been tested on the following
+platforms.
+
+@enumerate
+
+@item Debian GNU/Linux 3.0r0 (Woody)
+@cindex Debian
+
+GCC 2.95.4 and GNU Make. This is the main development
+platform. alphaev67-unknown-linux-gnu, alphaev6-unknown-linux-gnu,
+hppa64-unknown-linux-gnu, i686-pc-linux-gnu, ia64-unknown-linux-gnu.
+
+@item Tru64 UNIX
+@cindex Tru64
+
+Tru64 UNIX C compiler and Tru64 Make. alphaev68-dec-osf5.1.
+
+@item SuSE Linux 7.1
+@cindex SuSE
+
+GCC 2.96 and GNU Make. alphaev67-unknown-linux-gnu.
+
+@item SuSE Linux 7.2a
+@cindex SuSE Linux
+
+GCC 3.0 and GNU Make. ia64-unknown-linux-gnu.
+
+@item RedHat Linux 7.2
+@cindex RedHat
+
+GCC 2.96 and GNU Make. i686-pc-linux-gnu.
+
+@item RedHat Linux 8.0
+@cindex RedHat
+
+GCC 3.2 and GNU Make. i686-pc-linux-gnu.
+
+@item IRIX 6.5
+@cindex IRIX
+
+mips-sgi-irix6.5, MIPS C compiler, IRIX Make.
+
+@item AIX 4.3.2
+@cindex AIX
+
+rs6000-ibm-aix4.3.2.0, IBM C for AIX compiler, AIX Make.
+
+@item Microsoft Windows 2000 (Cygwin)
+@cindex Windows
+
+GCC 3.2, GNU make. i686-pc-cygwin
+
+@item HP-UX 11.11
+@cindex HP-UX
+
+HP-UX C compiler and HP Make. hppa2.0w-hp-hpux11.11.
+
+@item SUN Solaris 2.8
+@cindex Solaris
+
+Sun WorkShop Compiler C 6.0 and SUN Make. sparc-sun-solaris2.8.
+
+@item NetBSD 1.6
+@cindex NetBSD
+
+GCC 2.95.3 and GNU Make. alpha-unknown-netbsd1.6,
+i386-unknown-netbsdelf1.6.
+
+@item OpenBSD 3.1
+@cindex OpenBSD
+
+GCC 2.95.3 and GNU Make.
+@c alpha-unknown-openbsd3.1,
+i386-unknown-openbsd3.1.
+
+@item FreeBSD 4.7
+@cindex FreeBSD
+
+GCC 2.95.4 and GNU Make. alpha-unknown-freebsd4.7,
+i386-unknown-freebsd4.7.
+
+@end enumerate
+
+If you use Libidn on, or port Libidn to, a new platform please report
+it to the author.
+
+@node Bug Reports
+@section Bug Reports
+@cindex Reporting Bugs
+
+If you think you have found a bug in Libidn, please investigate it and
+report it.
+
+@itemize @bullet
+
+@item Please make sure that the bug is really in Libidn, and
+preferably also check that it hasn't already been fixed in the latest
+version.
+
+@item You have to send us a test case that makes it possible for us to
+reproduce the bug.
+
+@item You also have to explain what is wrong; if you get a crash, or
+if the results printed are not good and in that case, in what way.
+Make sure that the bug report includes all information you would need
+to fix this kind of bug for someone else.
+
+@end itemize
+
+Please make an effort to produce a self-contained report, with
+something definite that can be tested or debugged.  Vague queries or
+piecemeal messages are difficult to act on and don't help the
+development effort.
+
+If your bug report is good, we will do our best to help you to get a
+corrected version of the software; if the bug report is poor, we won't
+do anything about it (apart from asking you to send better bug
+reports).
+
+If you think something in this manual is unclear, or downright
+incorrect, or if the language needs to be improved, please also send a
+note.
+
+Send your bug report to:
+
+@center @samp{bug-libidn@@gnu.org}
+
+
+@c **********************************************************
+@c *******************  Preparation  ************************
+@c **********************************************************
+@node Preparation
+@chapter Preparation
+
+To use `Libidn, you have to perform some changes to your sources and
+the build system.  The necessary changes are small and explained in
+the following sections.  At the end of this chapter, it is described
+how the library is initialized, and how the requirements of the
+library are verified.
+
+A faster way to find out how to adapt your application for use with
+`Libidn' may be to look at the examples at the end of this manual
+(@pxref{Examples}).
+
+@menu
+* Header::
+* Initialization::
+* Version Check::
+* Building the source::
+@end menu
+
+@node Header
+@section Header
+
+The library contains a few independent parts, and each part export the
+interfaces (data types and functions) in a header file.  You must
+include the appropriate header files in all programs using the
+library, either directly or through some other header file, like this:
+
+@example
+#include <stringprep.h>
+@end example
+
+The header files and the functions they define are categorized as
+follows:
+
+@table @asis
+@item stringprep.h
+
+The low-level stringprep API entry point.  Normal applications uses
+one specific stringprep profile, and should rather include the
+corresponding profile header file (see below).  If you are writing an
+application that only makes use of the utility functions, including
+this header file may be more appropriate however.
+
+The name space of the stringprep part of Libidn is @code{stringprep_*}
+for function names, @code{Stringprep*} for data types and
+@code{STRINGPREP_*} for other symbols.  In addition the same name
+prefixes with one prepended underscore are reserved for internal use
+and should never be used by an application.
+
+@item stringprep_generic.h
+
+The entry point to the generic tables specified in the stringprep
+specification.  It is normally only needed by applications that want
+to define its own stringprep profile, based on the generic tables.
+
+This header file uses the same namespace as the main stringprep.h
+header file.
+
+@item stringprep_nameprep.h
+
+The entry point to the nameprep profile of stringprep.  This is the
+entry point used by applications needing low-level access to the
+stringprep profile used in IDN.  Most applications requesting IDN
+functionality will want idna.h instead though.
+
+This header file uses the same namespace as the main stringprep.h
+header file.
+
+@item stringprep_kerberos5.h
+
+The entry point to the experimental Kerberos 5 profile of stringprep.
+
+This header file uses the same namespace as the main stringprep.h
+header file.
+
+@item punycode.h
+
+The entry point to Punycode encoding and decoding functions.  Normally
+punycode is used via the idna.h interface, but some application may
+want to perform raw punycode operations.
+
+The name space of the punycode part of Libidn is @code{punycode_*} for
+function names, @code{Punycode*} for data types and @code{PUNYCODE_*}
+for other symbols.  In addition the same name prefixes with one
+prepended underscore are reserved for internal use and should never be
+used by an application.
+
+@item idna.h
+
+The entry point to the IDNA functions.  This is the normal entry point
+for applications that need IDN functionality.
+
+The name space of the IDNA part of Libidn is @code{idna_*} for
+function names, @code{Idna*} for data types and @code{IDNA_*} for
+other symbols.  In addition the same name prefixes with one prepended
+underscore are reserved for internal use and should never be used by
+an application.
+
+@end table
+
+@node Initialization
+@section Initialization
+
+Libidn is stateless and does not need any initialization.
+
+@node Version Check
+@section Version Check
+
+It is often desirable to check that the version of `Libidn' used is
+indeed one which fits all requirements.  Even with binary
+compatibility new features may have been introduced but due to problem
+with the dynamic linker an old version is actually used.  So you may
+want to check that the version is okay right after program startup.
+
+@include libidn-api-version.texi
+
+The normal way to use the function is to put something similar to the
+following first in your @code{main()}:
+
+@example
+  if (!stringprep_check_version (STRINGPREP_VERSION))
+    @{
+      printf ("stringprep_check_version() failed:\n"
+              "Header file incompatible with shared library.\n");
+      exit(1);
+    @}
+@end example
+
+@node Building the source
+@section Building the source
+@cindex Compiling your application
+
+If you want to compile a source file including e.g. the `idna.h' header
+file, you must make sure that the compiler can find it in the
+directory hierarchy.  This is accomplished by adding the path to the
+directory in which the header file is located to the compilers include
+file search path (via the @option{-I} option).
+
+However, the path to the include file is determined at the time the
+source is configured.  To solve this problem, `Libidn' uses the
+external package @command{pkg-config} that knows the path to the
+include file and other configuration options.  The options that need
+to be added to the compiler invocation at compile time are output by
+the @option{--cflags} option to @command{pkg-config libidn}.  The
+following example shows how it can be used at the command line:
+
+@example
+gcc -c foo.c `pkg-config libidn --cflags`
+@end example
+
+Adding the output of @samp{pkg-config libidn --cflags} to the
+compilers command line will ensure that the compiler can find e.g. the
+idna.h header file.
+
+A similar problem occurs when linking the program with the library.
+Again, the compiler has to find the library files.  For this to work,
+the path to the library files has to be added to the library search
+path (via the @option{-L} option).  For this, the option
+@option{--libs} to @command{pkg-config libidn} can be used.  For
+convenience, this option also outputs all other options that are
+required to link the program with the `libidn' libarary.  The example
+shows how to link @file{foo.o} with the `libidn' library to a program
+@command{foo}.
+
+@example
+gcc -o foo foo.o `pkg-config libidn --libs`
+@end example
+
+Of course you can also combine both examples to a single command by
+specifying both options to @command{pkg-config}:
+
+@example
+gcc -o foo foo.c `pkg-config libidn --cflags --libs`
+@end example
+
+@c **********************************************************
+@c ******************  Stringprep Functions *****************
+@c **********************************************************
+@node Stringprep Functions
+@chapter Stringprep Functions
+@cindex Stringprep Functions
+
+Stringprep describes a framework for preparing Unicode text strings in
+order to increase the likelihood that string input and string
+comparison work in ways that make sense for typical users throughout
+the world. The stringprep protocol is useful for protocol identifier
+values, company and personal names, internationalized domain names,
+and other text strings.
+
+@include libidn-api-stringprep.texi
+
+@c **********************************************************
+@c *******************  Punycode Functions ******************
+@c **********************************************************
+@node Punycode Functions
+@chapter Punycode Functions
+@cindex Punycode Functions
+
+Punycode is a simple and efficient transfer encoding syntax designed
+for use with Internationalized Domain Names in Applications. It
+uniquely and reversibly transforms a Unicode string into an ASCII
+string. ASCII characters in the Unicode string are represented
+literally, and non-ASCII characters are represented by ASCII
+characters that are allowed in host name labels (letters, digits, and
+hyphens). This document defines a general algorithm called Bootstring
+that allows a string of basic code points to uniquely represent any
+string of code points drawn from a larger set. Punycode is an instance
+of Bootstring that uses particular parameter values specified by this
+document, appropriate for IDNA.
+
+@include libidn-api-punycode.texi
+
+@c **********************************************************
+@c ********************* IDNA Functions *********************
+@c **********************************************************
+@node IDNA Functions
+@chapter IDNA Functions
+@cindex IDNA Functions
+
+Until now, there has been no standard method for domain names to use
+characters outside the ASCII repertoire. The IDNA document defines
+internationalized domain names (IDNs) and a mechanism called IDNA for
+handling them in a standard fashion. IDNs use characters drawn from a
+large repertoire (Unicode), but IDNA allows the non-ASCII characters
+to be represented using only the ASCII characters already allowed in
+so-called host names today. This backward-compatible representation is
+required in existing protocols like DNS, so that IDNs can be
+introduced with no changes to the existing infrastructure. IDNA is
+only meant for processing domain names, not free text.
+
+@include libidn-api-idna.texi
+
+@c **********************************************************
+@c ***********************  Examples  ***********************
+@c **********************************************************
+@node Examples
+@chapter Examples
+@cindex Examples
+
+This chapter contains example code which illustrate how `Libidn' can
+be used when writing your own application.
+
+@menu
+* Example 1::		Example using stringprep.
+* Example 2::		Example using punycode.
+* Example 3::		Example using IDNA ToASCII.
+* Example 4::		Example using IDNA ToUnicode.
+@end menu
+
+@node Example 1
+@section Example 1
+
+This example demonstrates how the stringprep functions are used.
+
+@example
+@include example.c.texi
+@end example
+
+
+@node Example 2
+@section Example 2
+
+This example demonstrates how the punycode functions are used.
+
+@example
+@include example2.c.texi
+@end example
+
+
+@node Example 3
+@section Example 3
+
+This example demonstrates how the library is used to convert
+internationalized domain names into ASCII compatible names.
+
+@example
+@include example3.c.texi
+@end example
+
+
+@node Example 4
+@section Example 4
+
+This example demonstrates how the library is used to convert ASCII
+compatible names to internationalized domain names.
+
+@example
+@include example4.c.texi
+@end example
+
+@node Copying This Manual
+@appendix Copying This Manual
+
+@menu
+* GNU Free Documentation License::  License for copying this manual.
+@end menu
+
+@include fdl.texi
+
+
+@node Index
+@unnumbered Index
+
+@printindex cp
+
+@bye
+
