@@ -20,7 +20,7 @@
 if JAVA
 
 JAVAROOT = $(top_builddir)/java/misc
-JAVACFLAGS = -classpath $(top_builddir)/java/libidn.jar
+JAVACFLAGS = -classpath $(top_builddir)/java/libidn-@VERSION@.jar
 
 dist_noinst_JAVA = GenerateRFC3454.java GenerateNFKC.java	\
 			TestIDNA.java TestNFKC.java
