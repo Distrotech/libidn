@@ -1,5 +1,5 @@
 ## Process this file with automake to produce Makefile.in
-# Copyright (C) 2002, 2003 Simon Josefsson.
+# Copyright (C) 2002, 2003, 2004 Simon Josefsson.
 #
 # This file is part of GNU Libidn.
 #
@@ -22,4 +22,4 @@ EXTRA_DIST = README
 AM_CPPFLAGS = -I$(top_srcdir)/lib -I../lib
 LDADD = ../lib/libidn.la
 
-noinst_PROGRAMS = example example2 example3 example4
+noinst_PROGRAMS = example example2 example3 example4 example5
