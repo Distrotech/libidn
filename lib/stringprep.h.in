@@ -89,7 +89,6 @@ extern "C"
     Stringprep_profile_steps operation;
     Stringprep_profile_flags flags;
     Stringprep_table_element *table;
-    char *name;
   };
   typedef struct Stringprep_table Stringprep_profile;
 
@@ -100,37 +99,30 @@ extern "C"
   };
   typedef struct Stringprep_profiles Stringprep_profiles;
 
-  extern Stringprep_profiles stringprep_profiles[];
+  extern const Stringprep_profiles stringprep_profiles[];
 
 /* Profiles */
-  extern Stringprep_table_element stringprep_rfc3454_A_1[];
-  extern Stringprep_table_element stringprep_rfc3454_B_1[];
-  extern Stringprep_table_element stringprep_rfc3454_B_2[];
-  extern Stringprep_table_element stringprep_rfc3454_B_3[];
-  extern Stringprep_table_element stringprep_rfc3454_C_1_1[];
-  extern Stringprep_table_element stringprep_rfc3454_C_1_2[];
-  extern Stringprep_table_element stringprep_rfc3454_C_2_1[];
-  extern Stringprep_table_element stringprep_rfc3454_C_2_2[];
-  extern Stringprep_table_element stringprep_rfc3454_C_3[];
-  extern Stringprep_table_element stringprep_rfc3454_C_4[];
-  extern Stringprep_table_element stringprep_rfc3454_C_5[];
-  extern Stringprep_table_element stringprep_rfc3454_C_6[];
-  extern Stringprep_table_element stringprep_rfc3454_C_7[];
-  extern Stringprep_table_element stringprep_rfc3454_C_8[];
-  extern Stringprep_table_element stringprep_rfc3454_C_9[];
-  extern Stringprep_table_element stringprep_rfc3454_D_1[];
-  extern Stringprep_table_element stringprep_rfc3454_D_2[];
-
-  /* Generic (for debugging) */
-
-  extern Stringprep_profile stringprep_generic[];
-
-#define stringprep_generic(in, maxlen)		\
-  stringprep(in, maxlen, 0, stringprep_generic)
+  extern const Stringprep_table_element stringprep_rfc3454_A_1[];
+  extern const Stringprep_table_element stringprep_rfc3454_B_1[];
+  extern const Stringprep_table_element stringprep_rfc3454_B_2[];
+  extern const Stringprep_table_element stringprep_rfc3454_B_3[];
+  extern const Stringprep_table_element stringprep_rfc3454_C_1_1[];
+  extern const Stringprep_table_element stringprep_rfc3454_C_1_2[];
+  extern const Stringprep_table_element stringprep_rfc3454_C_2_1[];
+  extern const Stringprep_table_element stringprep_rfc3454_C_2_2[];
+  extern const Stringprep_table_element stringprep_rfc3454_C_3[];
+  extern const Stringprep_table_element stringprep_rfc3454_C_4[];
+  extern const Stringprep_table_element stringprep_rfc3454_C_5[];
+  extern const Stringprep_table_element stringprep_rfc3454_C_6[];
+  extern const Stringprep_table_element stringprep_rfc3454_C_7[];
+  extern const Stringprep_table_element stringprep_rfc3454_C_8[];
+  extern const Stringprep_table_element stringprep_rfc3454_C_9[];
+  extern const Stringprep_table_element stringprep_rfc3454_D_1[];
+  extern const Stringprep_table_element stringprep_rfc3454_D_2[];
 
   /* Nameprep */
 
-  extern Stringprep_profile stringprep_nameprep[];
+  extern const Stringprep_profile stringprep_nameprep[];
 
 #define stringprep_nameprep(in, maxlen)			\
   stringprep(in, maxlen, 0, stringprep_nameprep)
@@ -140,25 +132,25 @@ extern "C"
 
   /* SASL */
 
-  extern Stringprep_profile stringprep_saslprep[];
-  extern Stringprep_profile stringprep_plain[];
-  extern Stringprep_profile stringprep_trace[];
+  extern const Stringprep_profile stringprep_saslprep[];
+  extern const Stringprep_profile stringprep_plain[];
+  extern const Stringprep_profile stringprep_trace[];
 
 #define stringprep_plain(in, maxlen)		\
   stringprep(in, maxlen, 0, stringprep_plain)
 
   /* Kerberos */
 
-  extern Stringprep_profile stringprep_kerberos5[];
+  extern const Stringprep_profile stringprep_kerberos5[];
 
 #define stringprep_kerberos5(in, maxlen)		\
   stringprep(in, maxlen, 0, stringprep_kerberos5)
 
   /* XMPP */
 
-  extern Stringprep_profile stringprep_xmpp_nodeprep[];
-  extern Stringprep_profile stringprep_xmpp_resourceprep[];
-  extern Stringprep_table_element stringprep_xmpp_nodeprep_prohibit[];
+  extern const Stringprep_profile stringprep_xmpp_nodeprep[];
+  extern const Stringprep_profile stringprep_xmpp_resourceprep[];
+  extern const Stringprep_table_element stringprep_xmpp_nodeprep_prohibit[];
 
 #define stringprep_xmpp_nodeprep(in, maxlen)		\
   stringprep(in, maxlen, 0, stringprep_xmpp_nodeprep)
@@ -167,7 +159,7 @@ extern "C"
 
   /* iSCSI */
 
-  extern Stringprep_profile stringprep_iscsi[];
+  extern const Stringprep_profile stringprep_iscsi[];
 
 #define stringprep_iscsi(in, maxlen)		\
   stringprep(in, maxlen, 0, stringprep_iscsi)
