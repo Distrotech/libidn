@@ -53,9 +53,6 @@ enum
   ace_max_length = 256
 };
 
-typedef void usagefn (char **argv);
-static volatile usagefn usage;
-
 static void
 usage (char **argv)
 {
@@ -74,9 +71,6 @@ usage (char **argv)
 	   argv[0], argv[0]);
   exit (EXIT_FAILURE);
 }
-
-typedef void failfn (const char *msg);
-static volatile failfn fail;
 
 static void
 fail (const char *msg)
