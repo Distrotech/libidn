@@ -1,6 +1,13 @@
 Libidn NEWS -- History of user-visible changes.                 -*- outline -*-
 See the end for copying conditions.
 
+* Version 0.1.1
+
+** Added documentation using GTK-DOC.
+
+** The obsolete stringprep_utf8_to_ucs4_fast API entry point was removed.
+By accident it was never removed in 0.1.0.
+
 * Version 0.1.0
 
 ** Official GNU project.
