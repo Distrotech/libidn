@@ -17,6 +17,8 @@ between GCJ, IBM's JDK and Sun's JDK.
 
 ** Bug fixes.
 
+** API and ABI is backwards compatible with the previous version.
+
 * Version 0.1.12 (released 2003-03-06)
 
 ** Building libidn doesn't require gengetopt.
