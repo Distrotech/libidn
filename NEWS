@@ -12,8 +12,12 @@ of the table, causing the entire table to be skipped, of the special
 prohibited output character table defined in RFC 3722 (see section 6,
 the characters in the table are various ASCII characters and U+3002).
 
+** A few test vectors for iSCSI were added.
+
 ** More translations.
 Added Romanian (by Laurentiu Buzdugan).
+
+** API and ABI is backwards compatible with the previous version.
 
 * Version 0.4.3 (released 2004-04-22)
 
