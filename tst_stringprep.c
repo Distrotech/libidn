@@ -478,14 +478,14 @@ main (int argc, char *argv[])
 #endif
     }
 
-  free (p);
-
 #if 0
   memset (p, 0, 10);
   stringprep_unichar_to_utf8 (0x3316, p);
   hexprint (p, strlen (p));
   puts ("");
 #endif
+
+  free (p);
 
   if (debug)
     printf ("Stringprep self tests done with %d errors\n", error_count);
