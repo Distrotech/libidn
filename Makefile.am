@@ -48,13 +48,13 @@ pkgconfig_DATA = libidn.pc
 
 lib_LTLIBRARIES = libidn.la
 
-include_HEADERS = stringprep.h stringprep_generic.h stringprep_nameprep.h \
-	stringprep_kerberos5.h stringprep_xmpp.h stringprep_plain.h \
-	stringprep_iscsi.h idna.h punycode.h
-
 idn_int = idn-int.h
 BUILT_SOURCES = $(idn_int)
 DISTCLEANFILES = $(idn_int)
+include_HEADERS = stringprep.h stringprep_generic.h stringprep_nameprep.h \
+	stringprep_kerberos5.h stringprep_xmpp.h stringprep_plain.h \
+	stringprep_iscsi.h idna.h punycode.h
+nodist_include_HEADERS = $(idn_int)
 
 libidn_la_SOURCES = gunicomp.h gunidecomp.h internal.h \
 	stringprep.c nfkc.c version.c toutf8.c \
