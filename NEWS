@@ -4,6 +4,11 @@ See the end for copying conditions.
 
 * Version 0.5.13 (unreleased)
 
+** The code to convert data between character encodings have been cleaned up.
+The stringprep_convert function has been added to gnulib, under the
+name iconv_string, and is now used by libidn.  This should not have
+any user-visible consequences, though.
+
 ** Italian translation added, thanks to Marco Colombo.
 
 ** Swedish translation updated.
