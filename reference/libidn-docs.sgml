@@ -3,6 +3,7 @@
 <!ENTITY libidn-stringprep-generic SYSTEM "sgml/stringprep_generic.sgml">
 <!ENTITY libidn-stringprep-kerberos5 SYSTEM "sgml/stringprep_kerberos5.sgml">
 <!ENTITY libidn-stringprep-nameprep SYSTEM "sgml/stringprep_nameprep.sgml">
+<!ENTITY libidn-stringprep-xmpp SYSTEM "sgml/stringprep_xmpp.sgml">
 <!ENTITY libidn-stringprep SYSTEM "sgml/stringprep.sgml">
 <!ENTITY libidn-idna SYSTEM "sgml/idna.sgml">
 ]>
@@ -54,6 +55,7 @@ Unix platforms (including Solaris, IRIX, AIX, and Tru64) and Windows.
     &libidn-stringprep-generic;
     &libidn-stringprep-kerberos5;
     &libidn-stringprep-nameprep;
+    &libidn-stringprep-xmpp;
     &libidn-stringprep;
     &libidn-idna;
   </chapter>
