@@ -175,7 +175,7 @@ sub print_changelog_deltas ($$)
      'current-version=s' => \$curr_version,
      'release-archive-directory=s' => \$release_archive_dir,
      'url-directory=s@' => \@url_dir_list,
-     'news=s@' => \$news_file,
+     'news=s' => \$news_file,
 
      help => sub { usage 0 },
      version => sub { print "$ME version $VERSION\n"; exit },
