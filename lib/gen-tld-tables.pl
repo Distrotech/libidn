@@ -116,7 +116,9 @@ sub process_definition
     {
 	chomp;
 
-	if (m/^#include\s+(\S+)\s*$/i)
+	s/#.*$//;
+
+	if (m/^include\s+(\S+)\s*$/i)
 	{
 	    my $incfile = $1;
 	    my ($junk, $ver);
@@ -125,8 +127,6 @@ sub process_definition
 	    push @data, @$incdata;
 	    next;
 	}
-
-	s/#.*$//;
 
 	if (m/^version "(.*)"/)
 	{
