@@ -18,7 +18,7 @@
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
 
 INCLUDES = -I$(top_srcdir)/lib -I../lib
-LDADD = -L../lib -lidn
+LDADD = ../lib/libidn.la
 
 tests = tst_stringprep tst_punycode tst_idna tst_nfkc
 

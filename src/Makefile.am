@@ -24,7 +24,7 @@ bin_PROGRAMS = idn
 idn_cmd = idn_cmd.c idn_cmd.h
 idn_SOURCES = idn.c $(idn_cmd)
 BUILT_SOURCES = $(idn_cmd)
-idn_LDADD = -L../lib -lidn -L../gl -lfoo
+idn_LDADD = ../lib/libidn.la ../gl/libfoo.la
 
 idn.c: $(idn_cmd)
 
