@@ -69,7 +69,7 @@ stringprep_apply_table_to_string (long *ucs4,
        stringprep_find_string_in_table (ucs4, *ucs4len, &i, table)) != -1)
     {
 #if DBG
-      printf ("hit %06x %06x-%06x\n", ucs4[pos], table[i].start,
+      printf ("hit %06lx %06lx-%06lx\n", ucs4[pos], table[i].start,
 	      table[i].end);
 #endif
 
@@ -118,7 +118,7 @@ stringprep (char *in, int maxlen, int flags, Stringprep_profile * profile)
     int j;
     printf ("\t;;    in: ");
     for (j = 0; j < ucs4len; j++)
-      printf ("U+%06x ", ucs4[j]);
+      printf ("U+%06lx ", ucs4[j]);
     printf ("\n");
   }
 #endif
@@ -197,7 +197,7 @@ stringprep (char *in, int maxlen, int flags, Stringprep_profile * profile)
 	    int contains_l = -1;
 	    int j;
 
-	    for (j = 0; profile[j].flags || profile[j].table; j++)
+	    for (j = 0; profile[j].operation; j++)
 	      if (profile[j].operation == STRINGPREP_BIDI_PROHIBIT_TABLE)
 		{
 		  done_prohibited = 1;
@@ -254,7 +254,7 @@ stringprep (char *in, int maxlen, int flags, Stringprep_profile * profile)
 	int j;
 	printf ("\t;; %5s: ", profile[i].name ? profile[i].name : "<NONAME>");
 	for (j = 0; j < ucs4len; j++)
-	  printf ("U+%06x ", ucs4[j]);
+	  printf ("U+%06lx ", ucs4[j]);
 	printf ("\n");
       }
 #endif
