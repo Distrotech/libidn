@@ -72,9 +72,9 @@ stringprep_apply_table_to_string (unsigned long *ucs4,
   while ((pos = stringprep_find_string_in_table
 	  (ucs4, *ucs4len, &i, table)) != -1)
     {
-      for (maplen = 0;
-	   maplen < STRINGPREP_MAX_MAP_CHARS &&
-	     table[i].map[maplen]; maplen++)
+      for(maplen = STRINGPREP_MAX_MAP_CHARS;
+	  maplen > 0 && table[i].map[maplen-1] == 0;
+	  maplen--)
 	;
 
       if (*ucs4len - 1 + maplen >= maxucs4len)
