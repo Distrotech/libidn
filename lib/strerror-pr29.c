@@ -26,7 +26,7 @@
 
 /**
  * pr29_strerror:
- * @rc: pr29 return code
+ * @rc: an #Pr29_rc return code.
  *
  * Convert a return code integer to a text string.  This string can be
  * used to output a diagnostic message to the user.
@@ -39,7 +39,7 @@
  *   for pr29_8() and pr29_8z()).
  *
  * Return value: Returns a pointer to a statically allocated string
- * containing a description of the error with the return code @rc.
+ *   containing a description of the error with the return code @rc.
  **/
 const char *
 pr29_strerror (Pr29_rc rc)

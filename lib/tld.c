@@ -42,7 +42,7 @@ extern const Tld_table *_tld_tables[];
  * TLD table array.
  *
  * Return value: Return structure corresponding to TLD @tld by going
- * thru @tables, or return %NULL if no such structure is found.
+ *   thru @tables, or return %NULL if no such structure is found.
  */
 const Tld_table *
 tld_get_table (const char *tld, const Tld_table ** tables)
@@ -63,14 +63,14 @@ tld_get_table (const char *tld, const Tld_table ** tables)
  * tld_default_table:
  * @tld: TLD name (e.g. "com") as zero terminated ASCII byte string.
  * @overrides: Additional well-formed info-structures for TLDs, or %NULL
- * to only use library deault tables.
+ *   to only use library deault tables.
  *
  * Get the TLD table for a named TLD, using the internal defaults,
  * possibly overrided by the (optional) supplied tables.
  *
  * Return value: Return structure corresponding to TLD @tld_str, first
- * looking through @overrides then thru built-in list, or %NULL if no
- * such structure found.
+ *   looking through @overrides then thru built-in list, or %NULL if
+ *   no such structure found.
  */
 const Tld_table *
 tld_default_table (const char *tld, const Tld_table ** overrides)
@@ -95,15 +95,15 @@ tld_default_table (const char *tld, const Tld_table ** overrides)
 /**
  * tld_get_4:
  * @in: Array of unicode code points to process. Does not need to be
- * zero terminated.
+ *   zero terminated.
  * @inlen: Number of unicode code points.
  * @out: Zero terminated ascii result string pointer.
  *
  * Isolate the top-level domain of @in and return it as an ASCII
  * string in @out.
  *
- * Return value: Return %TLD_SUCCESS on success, the corresponding
- * error code otherwise.
+ * Return value: Return %TLD_SUCCESS on success, or the corresponding
+ *   #Tld_rc error code otherwise.
  */
 int
 tld_get_4 (const uint32_t * in, size_t inlen, char **out)
@@ -150,8 +150,8 @@ tld_get_4 (const uint32_t * in, size_t inlen, char **out)
  * Isolate the top-level domain of @in and return it as an ASCII
  * string in @out.
  *
- * Return value: Returns %TLD_SUCCESS on success, the corresponding
- * error code otherwise.
+ * Return value: Return %TLD_SUCCESS on success, or the corresponding
+ *   #Tld_rc error code otherwise.
  */
 int
 tld_get_4z (const uint32_t * in, char **out)
@@ -176,8 +176,8 @@ tld_get_4z (const uint32_t * in, char **out)
  * string in @out.  The input string @in may be UTF-8, ISO-8859-1 or
  * any ASCII compatible character encoding.
  *
- * Return value: Returns %TLD_SUCCESS on success, the corresponding
- * error code otherwise.
+ * Return value: Return %TLD_SUCCESS on success, or the corresponding
+ *   #Tld_rc error code otherwise.
  */
 int
 tld_get_z (const char *in, char **out)
@@ -210,9 +210,9 @@ tld_get_z (const char *in, char **out)
  * Verify if @ch is either in [a-z0-9-.] or mentioned as a valid
  * character in @tld.
  *
- * Return value: Return %TLD_SUCCESS if @ch is a valid character for
- * the TLD @tld or if @tld is %NULL, %TLD_INVALID if @ch is invalid as
- * defined by @tld.
+ * Return value: Return the #Tld_rc value %TLD_SUCCESS if @ch is a
+ *   valid character for the TLD @tld or if @tld is %NULL,
+ *   %TLD_INVALID if @ch is invalid as defined by @tld.
  */
 static int
 _tld_checkchar (uint32_t ch, const Tld_table * tld)
@@ -257,10 +257,10 @@ _tld_checkchar (uint32_t ch, const Tld_table * tld)
  * the position of the first character for which this is not
  * the case in @errpos.
  *
- * Return value: Returns %TLD_SUCCESS if all code points
- * are valid or when @tld is null, %TLD_INVALID if a
- * character is not allowed, or additional error codes on
- * general failure conditions.
+ * Return value: Returns the #Tld_rc value %TLD_SUCCESS if all code
+ *   points are valid or when @tld is null, %TLD_INVALID if a
+ *   character is not allowed, or additional error codes on general
+ *   failure conditions.
  */
 int
 tld_check_4t (const uint32_t * in, size_t inlen, size_t * errpos,
@@ -299,10 +299,10 @@ tld_check_4t (const uint32_t * in, size_t inlen, size_t * errpos,
  * the position of the first character for which this is not
  * the case in @errpos.
  *
- * Return value: Returns %TLD_SUCCESS if all code points
- * are valid or when @tld is null, %TLD_INVALID if a
- * character is not allowed, or additional error codes on
- * general failure conditions.
+ * Return value: Returns the #Tld_rc value %TLD_SUCCESS if all code
+ *   points are valid or when @tld is null, %TLD_INVALID if a
+ *   character is not allowed, or additional error codes on general
+ *   failure conditions.
  */
 int
 tld_check_4tz (const uint32_t * in, size_t * errpos, const Tld_table * tld)
@@ -336,10 +336,10 @@ tld_check_4tz (const uint32_t * in, size_t * errpos, const Tld_table * tld)
  * information is used.  The position of the first offending character
  * is returned in @errpos.
  *
- * Return value: Returns %TLD_SUCCESS if all code points
- * are valid or when @tld is null, %TLD_INVALID if a
- * character is not allowed, or additional error codes on
- * general failure conditions.
+ * Return value: Returns the #Tld_rc value %TLD_SUCCESS if all code
+ *   points are valid or when @tld is null, %TLD_INVALID if a
+ *   character is not allowed, or additional error codes on general
+ *   failure conditions.
  */
 int
 tld_check_4 (const uint32_t * in, size_t inlen, size_t * errpos,
@@ -386,10 +386,10 @@ tld_check_4 (const uint32_t * in, size_t inlen, size_t * errpos,
  * information is used.  The position of the first offending character
  * is returned in @errpos.
  *
- * Return value: Returns %TLD_SUCCESS if all code points
- * are valid or when @tld is null, %TLD_INVALID if a
- * character is not allowed, or additional error codes on
- * general failure conditions.
+ * Return value: Returns the #Tld_rc value %TLD_SUCCESS if all code
+ *   points are valid or when @tld is null, %TLD_INVALID if a
+ *   character is not allowed, or additional error codes on general
+ *   failure conditions.
  */
 int
 tld_check_4z (const uint32_t * in, size_t * errpos,
@@ -424,10 +424,10 @@ tld_check_4z (const uint32_t * in, size_t * errpos,
  * decoded character offset rather than the byte position in the
  * string.
  *
- * Return value: Returns %TLD_SUCCESS if all characters
- * are valid or when @tld is null, %TLD_INVALID if a
- * character is not allowed, or additional error codes on
- * general failure conditions.
+ * Return value: Returns the #Tld_rc value %TLD_SUCCESS if all
+ *   characters are valid or when @tld is null, %TLD_INVALID if a
+ *   character is not allowed, or additional error codes on general
+ *   failure conditions.
  */
 int
 tld_check_8z (const char *in, size_t * errpos, const Tld_table ** overrides)
@@ -469,10 +469,10 @@ tld_check_8z (const char *in, size_t * errpos, const Tld_table ** overrides)
  * decoded character offset rather than the byte position in the
  * string.
  *
- * Return value: Returns %TLD_SUCCESS if all characters
- * are valid or when @tld is null, %TLD_INVALID if a
- * character is not allowed, or additional error codes on
- * general failure conditions.
+ * Return value: Returns the #Tld_rc value %TLD_SUCCESS if all
+ *   characters are valid or when @tld is null, %TLD_INVALID if a
+ *   character is not allowed, or additional error codes on general
+ *   failure conditions.
  */
 int
 tld_check_lz (const char *in, size_t * errpos, const Tld_table ** overrides)

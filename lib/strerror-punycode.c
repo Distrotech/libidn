@@ -26,7 +26,7 @@
 
 /**
  * punycode_strerror:
- * @rc: punycode return code
+ * @rc: an #Punycode_status return code.
  *
  * Convert a return code integer to a text string.  This string can be
  * used to output a diagnostic message to the user.

@@ -1,5 +1,5 @@
 /* punycode.c	Implementation of punycode used to ASCII encode IDN's.
- * Copyright (C) 2002, 2003  Simon Josefsson
+ * Copyright (C) 2002, 2003, 2004  Simon Josefsson
  *
  * This file is part of GNU Libidn.
  *
@@ -179,9 +179,9 @@ adapt (punycode_uint delta, punycode_uint numpoints, int firsttime)
  * Converts a sequence of code points (presumed to be Unicode code
  * points) to Punycode.
  *
- * Return value: The return value can be any of the punycode_status
- *   values defined above except %punycode_bad_input.  If not
- *   %punycode_success, then @output_size and @output might contain
+ * Return value: The return value can be any of the #Punycode_status
+ *   values defined above except %PUNYCODE_BAD_INPUT.  If not
+ *   %PUNYCODE_SUCCESS, then @output_size and @output might contain
  *   garbage.
  **/
 int
@@ -328,8 +328,8 @@ punycode_encode (size_t input_length,
  * Converts Punycode to a sequence of code points (presumed to be
  * Unicode code points).
  *
- * Return value: The return value can be any of the punycode_status
- *   values defined above.  If not %punycode_success, then
+ * Return value: The return value can be any of the #Punycode_status
+ *   values defined above.  If not %PUNYCODE_SUCCESS, then
  *   @output_length, @output, and @case_flags might contain garbage.
  *
  **/

@@ -1228,9 +1228,10 @@ combinationclass (uint32_t c)
  * strings by different NFKC implementations, due to an anomaly in the
  * NFKC specifications.
  *
- * Return value: Returns PR29_SUCCESS on success, PR29_PROBLEM if the
- *   input sequence is a "problem sequence" (i.e., may be normalized
- *   into different strings by different implementations).
+ * Return value: Returns the #Pr29_rc value %PR29_SUCCESS on success,
+ *   and %PR29_PROBLEM if the input sequence is a "problem sequence"
+ *   (i.e., may be normalized into different strings by different
+ *   implementations).
  **/
 int
 pr29_4 (const uint32_t * in, size_t len)
@@ -1268,9 +1269,10 @@ pr29_4 (const uint32_t * in, size_t len)
  * strings by different NFKC implementations, due to an anomaly in the
  * NFKC specifications.
  *
- * Return value: Returns PR29_SUCCESS on success, PR29_PROBLEM if the
- *   input sequence is a "problem sequence" (i.e., may be normalized
- *   into different strings by different implementations).
+ * Return value: Returns the #Pr29_rc value %PR29_SUCCESS on success,
+ *   and %PR29_PROBLEM if the input sequence is a "problem sequence"
+ *   (i.e., may be normalized into different strings by different
+ *   implementations).
  **/
 int
 pr29_4z (const uint32_t * in)
@@ -1291,11 +1293,11 @@ pr29_4z (const uint32_t * in)
  * strings by different NFKC implementations, due to an anomaly in the
  * NFKC specifications.
  *
- * Return value: Returns PR29_SUCCESS on success, PR29_PROBLEM if the
- *   input sequence is a "problem sequence" (i.e., may be normalized
- *   into different strings by different implementations), or
- *   PR29_STRINGPREP_ERROR if there was a problem converting the
- *   string from UTF-8 to UCS-4.
+ * Return value: Returns the #Pr29_rc value %PR29_SUCCESS on success,
+ *   and %PR29_PROBLEM if the input sequence is a "problem sequence"
+ *   (i.e., may be normalized into different strings by different
+ *   implementations), or %PR29_STRINGPREP_ERROR if there was a
+ *   problem converting the string from UTF-8 to UCS-4.
  **/
 int
 pr29_8z (const char *in)

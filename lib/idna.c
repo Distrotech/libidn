@@ -41,7 +41,8 @@
  * @inlen: length of input array with unicode code points.
  * @out: output zero terminated string that must have room for at
  *       least 63 characters plus the terminating zero.
- * @flags: IDNA flags, e.g. IDNA_ALLOW_UNASSIGNED or IDNA_USE_STD3_ASCII_RULES.
+ * @flags: an #Idna_flags value, e.g., %IDNA_ALLOW_UNASSIGNED or
+ *   %IDNA_USE_STD3_ASCII_RULES.
  *
  * The ToASCII operation takes a sequence of Unicode code points that make
  * up one label and transforms it into a sequence of code points in the
@@ -63,7 +64,7 @@
  * operation multiple times has exactly the same effect as applying it just
  * once.
  *
- * Return value: Returns 0 on success, or an error code.
+ * Return value: Returns 0 on success, or an #Idna_rc error code.
  */
 int
 idna_to_ascii_4i (const uint32_t * in, size_t inlen, char *out, int flags)
@@ -382,7 +383,8 @@ step3:
  * @out: output array with unicode code points.
  * @outlen: on input, maximum size of output array with unicode code points,
  *          on exit, actual size of output array with unicode code points.
- * @flags: IDNA flags, e.g. IDNA_ALLOW_UNASSIGNED or IDNA_USE_STD3_ASCII_RULES.
+ * @flags: an #Idna_flags value, e.g., %IDNA_ALLOW_UNASSIGNED or
+ *   %IDNA_USE_STD3_ASCII_RULES.
  *
  * The ToUnicode operation takes a sequence of Unicode code points
  * that make up one label and returns a sequence of Unicode code
@@ -402,13 +404,12 @@ step3:
  * AllowUnassigned flag, and the UseSTD3ASCIIRules flag. The output of
  * ToUnicode is always a sequence of Unicode code points.
  *
- * Return value: Returns error condition, but it must only be used for
- *               debugging purposes.  The output buffer is always
- *               guaranteed to contain the correct data according to
- *               the specification (sans malloc induced errors).  NB!
- *               This means that you normally ignore the return code
- *               from this function, as checking it means breaking the
- *               standard.
+ * Return value: Returns #Idna_rc error condition, but it must only be
+ *   used for debugging purposes.  The output buffer is always
+ *   guaranteed to contain the correct data according to the
+ *   specification (sans malloc induced errors).  NB!  This means that
+ *   you normally ignore the return code from this function, as
+ *   checking it means breaking the standard.
  */
 int
 idna_to_unicode_44i (const uint32_t * in, size_t inlen,
@@ -441,7 +442,8 @@ idna_to_unicode_44i (const uint32_t * in, size_t inlen,
  * idna_to_ascii_4z:
  * @input: zero terminated input Unicode string.
  * @output: pointer to newly allocated output string.
- * @flags: IDNA flags, e.g. IDNA_ALLOW_UNASSIGNED or IDNA_USE_STD3_ASCII_RULES.
+ * @flags: an #Idna_flags value, e.g., %IDNA_ALLOW_UNASSIGNED or
+ *   %IDNA_USE_STD3_ASCII_RULES.
  *
  * Convert UCS-4 domain name to ASCII string.  The domain name may
  * contain several labels, separated by dots.  The output buffer must
@@ -536,7 +538,8 @@ idna_to_ascii_4z (const uint32_t * input, char **output, int flags)
  * idna_to_ascii_8z:
  * @input: zero terminated input UTF-8 string.
  * @output: pointer to newly allocated output string.
- * @flags: IDNA flags, e.g. IDNA_ALLOW_UNASSIGNED or IDNA_USE_STD3_ASCII_RULES.
+ * @flags: an #Idna_flags value, e.g., %IDNA_ALLOW_UNASSIGNED or
+ *   %IDNA_USE_STD3_ASCII_RULES.
  *
  * Convert UTF-8 domain name to ASCII string.  The domain name may
  * contain several labels, separated by dots.  The output buffer must
@@ -568,7 +571,8 @@ idna_to_ascii_8z (const char *input, char **output, int flags)
  * @input: zero terminated input string encoded in the current locale's
  *   character set.
  * @output: pointer to newly allocated output string.
- * @flags: IDNA flags, e.g. IDNA_ALLOW_UNASSIGNED or IDNA_USE_STD3_ASCII_RULES.
+ * @flags: an #Idna_flags value, e.g., %IDNA_ALLOW_UNASSIGNED or
+ *   %IDNA_USE_STD3_ASCII_RULES.
  *
  * Convert domain name in the locale's encoding to ASCII string.  The
  * domain name may contain several labels, separated by dots.  The
@@ -597,7 +601,8 @@ idna_to_ascii_lz (const char *input, char **output, int flags)
  * idna_to_unicode_4z4z:
  * @input: zero-terminated Unicode string.
  * @output: pointer to newly allocated output Unicode string.
- * @flags: IDNA flags, e.g. IDNA_ALLOW_UNASSIGNED or IDNA_USE_STD3_ASCII_RULES.
+ * @flags: an #Idna_flags value, e.g., %IDNA_ALLOW_UNASSIGNED or
+ *   %IDNA_USE_STD3_ASCII_RULES.
  *
  * Convert possibly ACE encoded domain name in UCS-4 format into a
  * UCS-4 string.  The domain name may contain several labels,
@@ -672,7 +677,8 @@ idna_to_unicode_4z4z (const uint32_t * input, uint32_t ** output, int flags)
  * idna_to_unicode_8z4z:
  * @input: zero-terminated UTF-8 string.
  * @output: pointer to newly allocated output Unicode string.
- * @flags: IDNA flags, e.g. IDNA_ALLOW_UNASSIGNED or IDNA_USE_STD3_ASCII_RULES.
+ * @flags: an #Idna_flags value, e.g., %IDNA_ALLOW_UNASSIGNED or
+ *   %IDNA_USE_STD3_ASCII_RULES.
  *
  * Convert possibly ACE encoded domain name in UTF-8 format into a
  * UCS-4 string.  The domain name may contain several labels,
@@ -702,7 +708,8 @@ idna_to_unicode_8z4z (const char *input, uint32_t ** output, int flags)
  * idna_to_unicode_8z8z:
  * @input: zero-terminated UTF-8 string.
  * @output: pointer to newly allocated output UTF-8 string.
- * @flags: IDNA flags, e.g. IDNA_ALLOW_UNASSIGNED or IDNA_USE_STD3_ASCII_RULES.
+ * @flags: an #Idna_flags value, e.g., %IDNA_ALLOW_UNASSIGNED or
+ *   %IDNA_USE_STD3_ASCII_RULES.
  *
  * Convert possibly ACE encoded domain name in UTF-8 format into a
  * UTF-8 string.  The domain name may contain several labels,
@@ -732,7 +739,8 @@ idna_to_unicode_8z8z (const char *input, char **output, int flags)
  * @input: zero-terminated UTF-8 string.
  * @output: pointer to newly allocated output string encoded in the
  *   current locale's character set.
- * @flags: IDNA flags, e.g. IDNA_ALLOW_UNASSIGNED or IDNA_USE_STD3_ASCII_RULES.
+ * @flags: an #Idna_flags value, e.g., %IDNA_ALLOW_UNASSIGNED or
+ *   %IDNA_USE_STD3_ASCII_RULES.
  *
  * Convert possibly ACE encoded domain name in UTF-8 format into a
  * string encoded in the current locale's character set.  The domain
@@ -763,7 +771,8 @@ idna_to_unicode_8zlz (const char *input, char **output, int flags)
  *   character set.
  * @output: pointer to newly allocated output string encoded in the
  *   current locale's character set.
- * @flags: IDNA flags, e.g. IDNA_ALLOW_UNASSIGNED or IDNA_USE_STD3_ASCII_RULES.
+ * @flags: an #Idna_flags value, e.g., %IDNA_ALLOW_UNASSIGNED or
+ *   %IDNA_USE_STD3_ASCII_RULES.
  *
  * Convert possibly ACE encoded domain name in the locale's character
  * set into a string encoded in the current locale's character set.
