@@ -22,6 +22,18 @@
 #ifndef _INTERNAL_H
 #define _INTERNAL_H
 
+#ifdef _LIBC
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <errno.h>
+
+#define HAVE_ICONV 1
+#define LOCALE_WORKS 1
+
+#else /* _LIBC */
+
 #if HAVE_CONFIG_H
 #include "config.h"
 #endif
@@ -66,6 +78,8 @@
 #if WITH_DMALLOC
 #include <dmalloc.h>
 #endif
+
+#endif /* _LIBC */
 
 #include "stringprep.h"
 #include "stringprep_generic.h"
