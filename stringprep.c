@@ -93,6 +93,17 @@ stringprep_apply_table_to_string (unsigned long *ucs4,
   ((!INVERTED(profileflags) && !(profileflags & flags) && profileflags) || \
    ( INVERTED(profileflags) && (profileflags & flags)))
 
+/**
+ * stringprep:
+ * @in: input/ouput array with string to prepare.
+ * @maxlen: maximum length of input/output array.
+ * @flags: optional stringprep profile flags.
+ * @profile: pointer to stringprep profile to use.
+ *
+ * Prepare the input UTF-8 string according to the stringprep profile.
+ *
+ * Return value: Returns 0 iff successful, or an error code.
+ **/
 int
 stringprep (char *in, int maxlen, int flags, Stringprep_profile * profile)
 {

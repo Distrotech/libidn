@@ -56,11 +56,17 @@ parse_version_string (const char *s, int *major, int *minor, int *micro)
   return s;			/* patchlevel */
 }
 
-/****************
+/**
+ * stringprep_check_version
+ * @req_version: Required version number, or NULL.
+ *
  * Check that the the version of the library is at minimum the requested one
  * and return the version string; return NULL if the condition is not
  * satisfied.  If a NULL is passed to this function, no check is done,
  * but the version string is simply returned.
+ *
+ * Return value: Version string of run-time library, or NULL if the
+ * run-time library does not meet the required version number.
  */
 const char *
 stringprep_check_version (const char *req_version)

@@ -447,7 +447,7 @@ _g_utf8_normalize_wc (const char *str, int max_len, GNormalizeMode mode)
 }
 
 /**
- * g_unichar_to_utf8:
+ * stringprep_unichar_to_utf8:
  * @c: a ISO10646 character code
  * @outbuf: output buffer, must have at least 6 bytes of space.
  *       If %NULL, the length will be computed and returned
@@ -509,7 +509,7 @@ stringprep_unichar_to_utf8 (unsigned long c, char *outbuf)
 }
 
 /**
- * stringgprep_utf8_to_ucs4:
+ * stringprep_utf8_to_ucs4:
  * @str: a UTF-8 encoded string
  * @len: the maximum length of @str to use. If @len < 0, then
  *       the string is nul-terminated.
@@ -608,17 +608,8 @@ stringprep_utf8_to_ucs4 (const char *str, int len, int *items_written)
   return result;
 }
 
-/* This one is kept around for binary backwards compatibility with
-   library version CURRENT=1. */
-unsigned long *
-stringprep_utf8_to_ucs4_fast (const char *str, int len, int *items_written)
-{
-  return stringprep_utf8_to_ucs4 (str, len, items_written);
-
-}
-
 /**
- * g_ucs4_to_utf8:
+ * stringprep_ucs4_to_utf8:
  * @str: a UCS-4 encoded string
  * @len: the maximum length of @str to use. If @len < 0, then
  *       the string is terminated with a 0 character.
@@ -626,9 +617,6 @@ stringprep_utf8_to_ucs4_fast (const char *str, int len, int *items_written)
  * @items_written: location to store number of bytes written or %NULL.
  *                 The value here stored does not include the trailing 0
  *                 byte.
- * @error: location to store the error occuring, or %NULL to ignore
- *         errors. Any of the errors in #GConvertError other than
- *         %G_CONVERT_ERROR_NO_CONVERSION may occur.
  *
  * Convert a string from a 32-bit fixed width representation as UCS-4.
  * to UTF-8. The result will be terminated with a 0 byte.
@@ -731,12 +719,47 @@ g_utf8_normalize (const char *str, int len, GNormalizeMode mode)
   return result;
 }
 
+/**
+ * stringprep_utf8_nfkc_normalize:
+ * @str: a UTF-8 encoded string.
+ * @len: length of @str, in bytes, or -1 if @str is nul-terminated.
+ *
+ * Converts a string into canonical form, standardizing
+ * such issues as whether a character with an accent
+ * is represented as a base character and combining
+ * accent or as a single precomposed character. You
+ * should generally call g_utf8_normalize() before
+ * comparing two Unicode strings.
+ *
+ * The normalization mode is NFKC (ALL COMPOSE).  It standardizes
+ * differences that do not affect the text content, such as the
+ * above-mentioned accent representation. It standardizes the
+ * "compatibility" characters in Unicode, such as SUPERSCRIPT THREE to
+ * the standard forms (in this case DIGIT THREE). Formatting
+ * information may be lost but for most text operations such
+ * characters should be considered the same. It returns a result with
+ * composed forms rather than a maximally decomposed form.
+ *
+ * Return value: a newly allocated string, that is the
+ *   NFKC normalized form of @str.
+ **/
 char *
 stringprep_utf8_nfkc_normalize (const char *str, int len)
 {
   return g_utf8_normalize (str, len, G_NORMALIZE_NFKC);
 }
 
+/**
+ * stringprep_ucs4_nfkc_normalize:
+ * @str: a Unicode string.
+ * @len: length of @str array, or -1 if @str is nul-terminated.
+ *
+ * Converts UCS4 string into UTF-8 and runs
+ * stringprep_utf4_nfkc_normalize().
+ *
+ * Return value: a newly allocated Unicode string, that is the NFKC
+ *   normalized form of @str.
+ **/
 unsigned long *
 stringprep_ucs4_nfkc_normalize (unsigned long *str, int len)
 {
