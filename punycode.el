@@ -49,19 +49,24 @@
 (defgroup punycode nil
   "Punycode: An ASCII compatible Unicode encoding format.")
 
-(defcustom punycode-program "env CHARSET=UTF-8 idn"
+(defcustom punycode-program "idn"
   "Name of the GNU Libidn \"idn\" application."
   :type 'string
   :group 'punycode)
 
-(defcustom punycode-encode-parameters "--quiet --punycode-encode"
-  "Parameters passed to `punycode-program' to invoke punycode encoding mode."
-  :type 'string
+(defcustom punycode-environment '("CHARSET=UTF-8")
+  "List of environment variable definitions prepended to `process-environment'."
+  :type '(repeat string)
   :group 'punycode)
 
-(defcustom punycode-decode-parameters "--quiet --punycode-decode"
+(defcustom punycode-encode-parameters '("--quiet" "--punycode-encode")
+  "Parameters passed to `punycode-program' to invoke punycode encoding mode."
+  :type '(repeat string)
+  :group 'punycode)
+
+(defcustom punycode-decode-parameters '("--quiet" "--punycode-decode")
   "Parameters passed to `punycode-program' to invoke punycode decoding mode."
-  :type 'string
+  :type '(repeat string)
   :group 'punycode)
 
 ;; Internal process handling:
@@ -92,10 +97,10 @@
 	    (kill-process punycode-encode-process)
 	  (error)))
     (when (setq punycode-encode-process
-		(start-process "punycode" nil
-			       shell-file-name shell-command-switch
-			       (concat punycode-program " "
-				       punycode-encode-parameters)))
+		(let ((process-environment (append process-environment
+						   punycode-environment)))
+		  (apply 'start-process "punycode" nil punycode-program
+			 punycode-encode-parameters)))
       (set-process-filter punycode-encode-process 'punycode-encode-filter)
       (set-process-coding-system punycode-encode-process 'utf-8 'utf-8)
       (process-kill-without-query punycode-encode-process))
@@ -127,10 +132,10 @@
 	    (kill-process punycode-decode-process)
 	  (error)))
     (when (setq punycode-decode-process
-		(start-process "punycode" nil
-			       shell-file-name shell-command-switch
-			       (concat punycode-program " "
-				       punycode-decode-parameters)))
+		(let ((process-environment (append process-environment
+						   punycode-environment)))
+		  (apply 'start-process "punycode" nil punycode-program
+			 punycode-decode-parameters)))
       (set-process-filter punycode-decode-process 'punycode-decode-filter)
       (set-process-coding-system punycode-decode-process 'utf-8 'utf-8)
       (process-kill-without-query punycode-decode-process))
@@ -147,7 +152,7 @@
       (punycode-encode-response-clear)
       (process-send-string proc (concat str "\n"))
       (setq string (punycode-encode-response))
-      (if (string= (substring string (1- (length string))) "\n")
+      (if (and string (string= (substring string (1- (length string))) "\n"))
 	  (substring string 0 (1- (length string)))
 	string))))
 
@@ -160,7 +165,7 @@
       (punycode-decode-response-clear)
       (process-send-string proc (concat str "\n"))
       (setq string (punycode-decode-response))
-      (if (string= (substring string (1- (length string))) "\n")
+      (if (and string (string= (substring string (1- (length string))) "\n"))
 	  (substring string 0 (1- (length string)))
 	string))))
 
