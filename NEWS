@@ -16,20 +16,22 @@ are hereby encouraged to contribute them (under reasonable licensing
 terms) for inclusion in future versions of Libidn.
 
 ** API and ABI is backwards compatible with the previous version.
-stringprep_kerberos5: Removed macro documentation, likely to be deprecated.
+stringprep_kerberos5: Removed macro documentation, as the macro itself
+                      is likely to be deprecated in the future.
 Tld_table_element:
 Tld_table:
-Tld_rc: Added new TLD types.
-tld_finddomain:
-tld_checkchar:
-tld_gettld_4i:
-tld_gettld_4z:
-tld_check_4it:
-tld_check_4iz:
+Tld_rc: Added new data types.
+tld_tables: Added new variable with built-in TLD tables.
+tld_get_4i:
+tld_get_4z: Added new functions to extract TLD from string.
+tld_get_table:
+tld_default_table: Added new functions to get TLD table from TLD name.
+tld_check_4ti:
+tld_check_4tz: Added new function to provide core TLD operations.
 tld_check_4i:
 tld_check_4z:
 tld_check_8z:
-tld_check_lz: Added new TLD functions.
+tld_check_lz: Added new functions that combine all TLD operations in one call.
 
 * Version 0.3.7 (released 2004-01-22)
 
