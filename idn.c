@@ -28,7 +28,7 @@
 
 #include "idn_cmd.h"
 
-#define GREETING "Copyright 2003 Simon Josefsson\n"\
+#define GREETING "Copyright 2002, 2003 Simon Josefsson\n"\
 	"GNU Libidn comes with NO WARRANTY, to the extent permitted by law.\n"\
 	"You may redistribute copies of GNU Libidn under the terms of\n"\
 	"the GNU Lesser General Public License.  For more information\n"\
@@ -46,12 +46,13 @@ main (int argc, char *argv[])
   if (cmdline_parser(argc, argv, &args_info) != 0)
     return 1;
 
-  if ((args_info.punycode_encode_given ? 1 : 0) +
+  if ((args_info.stringprep_given ? 1 : 0) +
+      (args_info.punycode_encode_given ? 1 : 0) +
       (args_info.punycode_decode_given ? 1 : 0) +
       (args_info.idna_to_ascii_given ? 1 : 0) +
       (args_info.idna_to_unicode_given ? 1 : 0) != 1)
     {
-      fprintf(stderr, "%s: One of -e, -d, -a or -u must be specified.\n",
+      fprintf(stderr, "%s: One of -s, -e, -d, -a or -u must be specified.\n",
 	      argv[0]);
       cmdline_parser_print_help();
       return 1;
@@ -76,6 +77,56 @@ main (int argc, char *argv[])
 
       if (readbuf[strlen(readbuf)-1] == '\n')
 	readbuf[strlen(readbuf)-1] = '\0';
+
+      if (args_info.stringprep_given)
+	{
+	  p = stringprep_locale_to_utf8 (readbuf);
+	  if (!p)
+	    {
+	      fprintf(stderr, "%s: could not convert from %s to UTF-8.\n",
+		      argv[0], stringprep_locale_charset());
+	      return 1;
+	    }
+
+	  if (args_info.debug_given)
+	    {
+	      size_t i;
+	      for (i = 0; p[i]; i++)
+		fprintf(stderr, "input[%d] = U+%04x\n", i, p[i] & 0xFFFF);
+	    }
+
+	  rc = stringprep_profile (p, &r,
+				   args_info.profile_given ?
+				   args_info.profile_arg :
+				   "Nameprep", 0);
+	  free(p);
+	  if (rc != STRINGPREP_OK)
+	    {
+	      fprintf(stderr,
+		      "%s: stringprep_profile() failed with error %d.\n",
+		      argv[0], rc);
+	      return 1;
+	    }
+
+	  if (args_info.debug_given)
+	    {
+	      size_t i;
+	      for (i = 0; r[i]; i++)
+		fprintf(stderr, "output[%d] = U+%04x\n", i, r[i] & 0xFFFF);
+	    }
+
+	  p = stringprep_utf8_to_locale (r);
+	  if (!p)
+	    {
+	      fprintf(stderr, "%s: could not convert from UTF-8 to %s.\n",
+		      argv[0], stringprep_locale_charset());
+	      return 1;
+	    }
+
+	  fprintf(stdout, "%s\n", p);
+
+	  free(p);
+	}
 
       if (args_info.punycode_encode_given)
 	{
@@ -102,7 +153,7 @@ main (int argc, char *argv[])
 	    {
 	      size_t i;
 	      for (i = 0; i < len; i++)
-		fprintf(stderr, "input[%d] = U+%04x\n", i, q[i]);
+		fprintf(stderr, "input[%d] = U+%04x\n", i, q[i] & 0xFFFF);
 	    }
 
 	  len2 = BUFSIZ;
@@ -155,7 +206,7 @@ main (int argc, char *argv[])
 	    {
 	      size_t i;
 	      for (i = 0; i < len; i++)
-		fprintf(stderr, "output[%d] = U+%04x\n", i, q[i]);
+		fprintf(stderr, "output[%d] = U+%04x\n", i, q[i] & 0xFFFF);
 	    }
 
 	  q[len] = 0;
@@ -184,34 +235,74 @@ main (int argc, char *argv[])
 
       if (args_info.idna_to_ascii_given)
 	{
-	  rc = idna_to_ascii_from_locale (readbuf, &p,
-					  args_info.allow_unassigned_given,
-					  args_info.usestd3asciirules_given);
+	  p = stringprep_locale_to_utf8 (readbuf);
+	  if (!p)
+	    {
+	      fprintf(stderr, "%s: could not convert from %s to UTF-8.\n",
+		      argv[0], stringprep_locale_charset());
+	      return 1;
+	    }
+
+	  if (args_info.debug_given)
+	    {
+	      size_t i;
+	      for (i = 0; p[i]; i++)
+		fprintf(stderr, "input[%d] = U+%04x\n", i, p[i] & 0xFFFF);
+	    }
+
+	  rc = idna_to_ascii_from_utf8 (p, &r,
+					args_info.allow_unassigned_given,
+					args_info.usestd3asciirules_given);
+	  free(p);
 	  if (rc != IDNA_SUCCESS)
 	    {
 	      fprintf(stderr, "%s: idna_to_ascii_from_locale() failed "
 		      "with error %d.\n", argv[0], rc);
 	      return 1;
 	    }
-	  fprintf(stdout, "%s\n", p);
+	  fprintf(stdout, "%s\n", r);
 
-	  free(p);
+	  free(r);
 	}
 
       if (args_info.idna_to_unicode_given)
 	{
-	  rc = idna_to_unicode_locale_from_locale
-	    (readbuf, &p, args_info.allow_unassigned_given,
+	  p = stringprep_locale_to_utf8 (readbuf);
+	  if (!p)
+	    {
+	      fprintf(stderr, "%s: could not convert from %s to UTF-8.\n",
+		      argv[0], stringprep_locale_charset());
+	      return 1;
+	    }
+
+	  if (args_info.debug_given)
+	    {
+	      size_t i;
+	      for (i = 0; p[i]; i++)
+		fprintf(stderr, "input[%d] = U+%04x\n", i, p[i] & 0xFFFF);
+	    }
+
+	  rc = idna_to_unicode_utf8_from_utf8
+	    (p, &r, args_info.allow_unassigned_given,
 	     args_info.usestd3asciirules_given);
+	  free(p);
 	  if (rc != IDNA_SUCCESS)
 	    {
 	      fprintf(stderr, "%s: idna_to_unicode_locale_from_locale() "
 		      "failed with error %d.\n", argv[0], rc);
 	      return 1;
 	    }
-	  fprintf(stdout, "%s\n", p);
 
-	  free(p);
+	  if (args_info.debug_given)
+	    {
+	      size_t i;
+	      for (i = 0; r[i]; i++)
+		fprintf(stderr, "output[%d] = U+%04x\n", i, r[i] & 0xFFFF);
+	    }
+
+	  fprintf(stdout, "%s\n", r);
+
+	  free(r);
 	}
 
     }
