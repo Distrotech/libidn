@@ -21,7 +21,7 @@
 subdir	:= libidn
 
 headers	= punycode.h stringprep.h idna.h
-routines = punycode profiles toutf8 nfkc stringprep stringprep_generic idna
+routines = punycode profiles toutf8 nfkc stringprep rfc3454 idna
 
 inhibit-o = $(filter-out .os,$(object-suffixes))
 
