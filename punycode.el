@@ -55,12 +55,12 @@
   :group 'punycode)
 
 (defcustom punycode-encode-parameters "--quiet --punycode-encode"
-  "Parameters passed `punycode-program' to invoke punycode encoding mode."
+  "Parameters passed to `punycode-program' to invoke punycode encoding mode."
   :type 'string
   :group 'punycode)
 
 (defcustom punycode-decode-parameters "--quiet --punycode-decode"
-  "Parameters passed `punycode-program' to invoke punycode decoding mode."
+  "Parameters passed to `punycode-program' to invoke punycode decoding mode."
   :type 'string
   :group 'punycode)
 
