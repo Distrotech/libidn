@@ -169,7 +169,10 @@ strprep[] =
   /* bidi both RandALCat and LCat  <U+0627><U+00AA><U+0628>: */
   {
     "\xD8\xA7\xC2\xAA\xD8\xA8", 0, NULL, stringprep_generic,
-    STRINGPREP_BIDI_BOTH_L_AND_RAL}
+    STRINGPREP_BIDI_BOTH_L_AND_RAL},
+  /* case mapping (this triggered a bug in 0.0.5) */
+  {
+    "CAFE", 0, "cafe", stringprep_generic}
 };
 
 int
