@@ -1,8 +1,9 @@
 Libidn README -- Important introductory notes.
 See the end for copying conditions.
 
-Libidn is an implementation of the IETF Stringprep, Nameprep, Punycode
-and IDNA specifications, licensed under the LGPL.
+GNU Libidn is an implementation of the IETF Stringprep, Nameprep,
+Punycode and IDNA specifications, licensed under the LGPL.  See
+ANNOUNCE for an overview.
 
 Currently the API include the following definitions and functions:
 
