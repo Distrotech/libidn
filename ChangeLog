@@ -1,3 +1,69 @@
+2003-02-21  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Version 0.1.10.
+
+2003-02-21  Simon Josefsson <simon@josefsson.org>
+
+	* reference/Makefile.am: Distribute libidn-stringprep-iscsi.html.
+
+2003-02-21  Simon Josefsson <simon@josefsson.org>
+
+	* idna.c: Doc fix.
+
+2003-02-21  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS, idna.c, idna.h: Deprecate idna_*_to_ace() and
+	idna_*ace_to_*().  Add idna_to_ascii_from_*() and
+	idna_to_unicode_*_from_*().
+
+2003-02-21  Simon Josefsson <simon@josefsson.org>
+
+	* Makefile.am: Make release project independent.
+
+2003-02-21  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2003-02-21  Simon Josefsson <simon@josefsson.org>
+
+	* ANNOUNCE, Makefile.am, README, internal.h, libidn.texi,
+	profiles.c, stringprep_iscsi.h, tst_stringprep.c,
+	reference/dummy.c, reference/libidn-docs.tmpl: Add iSCSI profile.
+
+2003-02-21  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2003-02-21  Simon Josefsson <simon@josefsson.org>
+
+	* configure.ac: Bump versions.
+
+2003-02-21  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2003-02-21  Simon Josefsson <simon@josefsson.org>
+
+	* Makefile.am: Distribute contrib/*.
+
+2003-02-21  Simon Josefsson <simon@josefsson.org>
+
+	* contrib/README: Describe contents of contrib/.
+
+2003-02-21  Simon Josefsson <simon@josefsson.org>
+
+	* contrib/idn-python/Makefile, contrib/idn-python/README,
+	contrib/idn-python/idn.c, contrib/idn-python/test.py: Add Stephane
+	Bortzmeyer's python interface.
+
+2003-02-21  Simon Josefsson <simon@josefsson.org>
+
+	* Makefile.am: Install punycode.h.
+
+2003-02-21  Simon Josefsson <simon@josefsson.org>
+
+	* Makefile.am: Install idna.h, tiny patch from Stephane Bortzmeyer.
+
 2003-02-20  Simon Josefsson <simon@josefsson.org>
 
 	* NEWS: Version 0.1.9.
