@@ -315,7 +315,6 @@ strprep[] =
     "\xe3\x83\xab""i\xcc\x87""tel\x28""d\x29\xe3\x82\xa2\xe3\x83\x91"
     "\xe3\x83\xbc\xe3\x83\x88"
   },
-#if !defined(DRAFT)
   { "Test of prohibited ASCII character U+0020",
     "\x20", NULL, "generic", 0, STRINGPREP_CONTAINS_PROHIBITED
   },
@@ -359,7 +358,6 @@ strprep[] =
     "Example-Name", "example-name", "ISCSIprep"},
   { "SASL profile",
     "Example\xC2\xA0""Name", "Example Name", "SASLprep"}
-#endif
 };
 
 int
@@ -391,15 +389,6 @@ main (int argc, char *argv[])
 
   for (i = 0; i < sizeof (strprep) / sizeof (strprep[0]); i++)
     {
-#ifdef DRAFT
-      printf ("<section title=\"%s\">\n", strprep[i].comment);
-      printf ("\n");
-      printf ("<figure>\n");
-      printf ("<artwork>\n");
-      printf ("in");
-      escapeprint (strprep[i].in, strlen (strprep[i].in));
-      printf ("\n");
-#endif
       if (debug)
 	printf ("STRINGPREP entry %d\n", i);
 
@@ -451,14 +440,6 @@ main (int argc, char *argv[])
 	  continue;
 	}
 
-#ifdef DRAFT
-      if (rc == STRINGPREP_OK)
-	{
-	  printf ("out");
-	  escapeprint (p, strlen (p));
-	}
-#endif
-
       if (debug && rc == STRINGPREP_OK)
 	{
 	  printf ("out: ");
@@ -494,13 +475,6 @@ main (int argc, char *argv[])
 	}
       else if (debug)
 	  printf ("OK\n\n");
-
-#ifdef DRAFT
-      printf("</artwork>\n");
-      printf("</figure>\n");
-      printf("\n");
-      printf("</section>\n");
-#endif
     }
 
 #if 0
