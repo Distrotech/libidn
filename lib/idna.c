@@ -1,5 +1,5 @@
 /* idna.c	Convert to or from IDN strings.
- * Copyright (C) 2002, 2003  Simon Josefsson
+ * Copyright (C) 2002, 2003, 2004  Simon Josefsson
  *
  * This file is part of GNU Libidn.
  *
@@ -240,7 +240,7 @@ step3:
 
   /*
    * 8. Verify that the number of code points is in the range 1 to 63
-   * inclusive.
+   * inclusive (0 is excluded).
    */
 
 step8:
@@ -262,8 +262,10 @@ idna_to_unicode_internal (char *utf8in,
   size_t addlen = 0;
 
   /*
-   * 1. If all code points in the sequence are in the ASCII range (0..7F)
-   * then skip to step 3.
+   * ToUnicode consists of the following steps:
+   *
+   * 1. If the sequence contains any code points outside the ASCII range
+   * (0..7F) then proceed to step 2, otherwise skip to step 3.
    */
 
   {
@@ -365,10 +367,10 @@ step3:
  * ToUnicode never fails. If any step fails, then the original input
  * sequence is returned immediately in that step.
  *
- * The ToUnicode output never contains more code points than its
- * input.  Note that the number of octets needed to represent a
- * sequence of code points depends on the particular character
- * encoding used.
+ * The Punycode decoder can never output more code points than it
+ * inputs, but Nameprep can, and therefore ToUnicode can.  Note that
+ * the number of octets needed to represent a sequence of code points
+ * depends on the particular character encoding used.
  *
  * The inputs to ToUnicode are a sequence of code points, the
  * AllowUnassigned flag, and the UseSTD3ASCIIRules flag. The output of
