@@ -7,8 +7,8 @@ AUTOMAKE_OPTIONS = 1.5 gnits no-dependencies
 noinst_LIBRARIES = libfoo.a
 
 libfoo_a_SOURCES =
-libfoo_a_LIBADD = @LIBOBJS@
-#libfoo_la_LIBADD = @LTLIBOBJS@
+libfoo_a_LIBADD = $(LIBOBJS)
+#libfoo_la_LIBADD = $(LTLIBOBJS)
 EXTRA_DIST =
 BUILT_SOURCES =
 SUFFIXES =
