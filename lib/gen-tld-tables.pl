@@ -148,11 +148,12 @@ sub process_definition
 	{
 	    s/^\s*//;
 	    if ( (s/^(0x)([a-f0-9]+)//i) ||
+		 (s/^(U\+)([a-f0-9]+)//i) ||
 		 (s/^(0)(\d+)//) ||
 		 (s/^(\d+)//) )
 	    {
 		$cnum = $1;
-		if ((lc($1) eq "0x") && $2)
+		if (((lc($1) eq "0x") || (lc($1) eq "u+")) && $2)
 		{
 		    $cnum = hex($2);
 		}
@@ -185,9 +186,13 @@ sub process_definition
 	    {
 		$is_int = 1;
 	    }
+	    elsif (index($_, "|") != -1)
+	    {
+		$_ = "";
+	    }
 	    else
 	    {
-		die "Parser error in file $filename  at line $line near $_, "
+		die "Parser error in file $filename at line $line near $_, "
 		    if $_ ne "";
 	    }
 	}
