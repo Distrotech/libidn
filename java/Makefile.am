@@ -1,5 +1,5 @@
 ## Process this file with automake to produce Makefile.in
-# Copyright (C) 2004 Oliver Hitz.
+# Copyright (C) 2004 Simon Josefsson.
 #
 # This file is part of GNU Libidn.
 #
@@ -17,12 +17,9 @@
 # License along with GNU Libidn; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
 
-EXTRA_DIST = README.html
-
 SUBDIRS = gnu
 
 if JAVA
-
 libidn_jardir = $(datadir)/java
 libidn_jar_DATA = libidn.jar
 
@@ -37,5 +34,4 @@ libidn.jar:
 		gnu/inet/encoding/Stringprep.class			\
 		gnu/inet/encoding/StringprepException.class		\
 		gnu/inet/encoding/TestIDNA.class
-
 endif

@@ -1,5 +1,5 @@
 ## Process this file with automake to produce Makefile.in
-# Copyright (C) 2004 Oliver Hitz.
+# Copyright (C) 2004 Simon Josefsson.
 #
 # This file is part of GNU Libidn.
 #
@@ -18,8 +18,6 @@
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
 
 if JAVA
-
 JAVAROOT = $(top_builddir)/java
 noinst_JAVA = Punycode.java PunycodeException.java
-
 endif
