@@ -142,6 +142,7 @@ extern "C"
 
   extern Stringprep_profile stringprep_saslprep[];
   extern Stringprep_profile stringprep_plain[];
+  extern Stringprep_profile stringprep_trace[];
 
 #define stringprep_plain(in, maxlen)		\
   stringprep(in, maxlen, 0, stringprep_plain)

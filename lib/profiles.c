@@ -32,7 +32,9 @@ Stringprep_profiles stringprep_profiles[] = {
   ,
   {"Resourceprep", stringprep_xmpp_resourceprep}
   ,
-  {"plain", stringprep_plain}
+  {"plain", stringprep_plain} /* sasl-anon-00 */
+  ,
+  {"trace", stringprep_trace} /* sasl-anon-01 */
   ,
   {"SASLprep", stringprep_saslprep}
   ,
@@ -305,6 +307,36 @@ Stringprep_profile stringprep_xmpp_resourceprep[] = {
 };
 
 Stringprep_profile stringprep_plain[] = {
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_rfc3454_C_2_1, "C.2.1"}
+  ,
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_rfc3454_C_2_2, "C.2.2"}
+  ,
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_rfc3454_C_3, "C.3"}
+  ,
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_rfc3454_C_4, "C.4"}
+  ,
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_rfc3454_C_5, "C.5"}
+  ,
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_rfc3454_C_6, "C.6"}
+  ,
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_rfc3454_C_8, "C.8"}
+  ,
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_rfc3454_C_9, "C.9"}
+  ,
+  {STRINGPREP_BIDI, 0, 0, "BIDI"}
+  ,
+  {STRINGPREP_BIDI_PROHIBIT_TABLE, 0, stringprep_rfc3454_C_8, "C.8"}
+  ,
+  {STRINGPREP_BIDI_RAL_TABLE, ~STRINGPREP_NO_BIDI, stringprep_rfc3454_D_1,
+   "D.1"}
+  ,
+  {STRINGPREP_BIDI_L_TABLE, ~STRINGPREP_NO_BIDI, stringprep_rfc3454_D_2,
+   "D.2"}
+  ,
+  {0}
+};
+
+Stringprep_profile stringprep_trace[] = {
   {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_rfc3454_C_2_1, "C.2.1"}
   ,
   {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_rfc3454_C_2_2, "C.2.2"}
