@@ -122,7 +122,7 @@ main (int argc, char *argv[])
 	    {
 	      size_t i;
 	      for (i = 0; q[i]; i++)
-		fprintf (stderr, "input[%d] = U+%0.4x\n", i, q[i]);
+		fprintf (stderr, "input[%d] = U+%04x\n", i, q[i]);
 	    }
 	  free (q);
 
@@ -151,7 +151,7 @@ main (int argc, char *argv[])
 	    {
 	      size_t i;
 	      for (i = 0; q[i]; i++)
-		fprintf (stderr, "output[%d] = U+%0.4x\n", i, q[i]);
+		fprintf (stderr, "output[%d] = U+%04x\n", i, q[i]);
 	    }
 	  free (q);
 
@@ -194,7 +194,7 @@ main (int argc, char *argv[])
 	    {
 	      size_t i;
 	      for (i = 0; i < len; i++)
-		fprintf (stderr, "input[%d] = U+%0.4x\n", i, q[i]);
+		fprintf (stderr, "input[%d] = U+%04x\n", i, q[i]);
 	    }
 
 	  len2 = BUFSIZ;
@@ -251,7 +251,7 @@ main (int argc, char *argv[])
 	    {
 	      size_t i;
 	      for (i = 0; i < len; i++)
-		fprintf (stderr, "output[%d] = U+%0.4x\n", i, q[i]);
+		fprintf (stderr, "output[%d] = U+%04x\n", i, q[i]);
 	    }
 
 	  q[len] = 0;
@@ -301,7 +301,7 @@ main (int argc, char *argv[])
 	    {
 	      size_t i;
 	      for (i = 0; q[i]; i++)
-		fprintf (stderr, "input[%d] = U+%0.4x\n", i, q[i]);
+		fprintf (stderr, "input[%d] = U+%04x\n", i, q[i]);
 	    }
 
 	  rc = idna_to_ascii_4z (q, &r,
@@ -321,7 +321,7 @@ main (int argc, char *argv[])
 	    {
 	      size_t i;
 	      for (i = 0; r[i]; i++)
-		fprintf (stderr, "output[%d] = U+%0.4x\n", i, r[i]);
+		fprintf (stderr, "output[%d] = U+%04x\n", i, r[i]);
 	    }
 
 	  fprintf (stdout, "%s\n", r);
@@ -352,7 +352,7 @@ main (int argc, char *argv[])
 	    {
 	      size_t i;
 	      for (i = 0; q[i]; i++)
-		fprintf (stderr, "input[%d] = U+%0.4x\n", i, q[i]);
+		fprintf (stderr, "input[%d] = U+%04x\n", i, q[i]);
 	    }
 	  free (q);
 
@@ -373,7 +373,7 @@ main (int argc, char *argv[])
 	    {
 	      size_t i;
 	      for (i = 0; q[i]; i++)
-		fprintf (stderr, "output[%d] = U+%0.4x\n", i, q[i]);
+		fprintf (stderr, "output[%d] = U+%04x\n", i, q[i]);
 	    }
 
 	  p = stringprep_ucs4_to_utf8 (q, -1, NULL, NULL);
