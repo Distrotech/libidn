@@ -13,6 +13,7 @@ duplication can be avoided.
   - Include more stringprep profiles.
   - Improve IDN tool.
   - Reimplement punycode without string length restrictions.
+  - Reject invalid Unicode data.
 
 ----------------------------------------------------------------------
 Copying and distribution of this file, with or without modification,
