@@ -1,0 +1,13 @@
+2002-11-05 12:53  Simon Josefsson <simon@josefsson.org>
+
+	* AUTHORS, COPYING, CaseFolding-3.2.0.txt,
+	CompositionExclusions-3.2.0.txt, LineBreak-3.2.0.txt, Makefile.am,
+	NEWS, README, SpecialCasing-3.2.0.txt, THANKS,
+	UnicodeData-3.2.0.txt, configure.ac,
+	draft-hoffman-stringprep-07.txt, gen-stringprep-tables.pl,
+	gen-unicode-tables.pl, libstringprep.pc.in, nfkc.c, stringprep.c,
+	stringprep.h.in, stringprep_generic.h, stringprep_kerberos5.h,
+	stringprep_nameprep.h, tst_stringprep.c, version.c:
+
+	Initial version.  
+
