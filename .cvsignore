@@ -19,7 +19,7 @@ gunidecomp.h
 install-sh
 libstringprep.la
 libstringprep.pc
-libstringprep-*.tar.gz
+libstringprep-*.tar.gz*
 libtool
 ltmain.sh
 missing
