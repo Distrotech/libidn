@@ -130,9 +130,9 @@ release:
 	rm -f $(distdir).tar.gz.asc
 	gpg -a --sign --detach $(distdir).tar.gz
 	gpg --verify $(distdir).tar.gz.asc
+	-cd contrib/doxygen && doxygen && cp -v html/* $(htmldir)/doxygen/
 	-cp -v doc/$(PACKAGE).{ps,pdf,html} $(htmldir)/ && \
 		cp -v reference/*.html $(htmldir)/reference/ && \
 		cd $(htmldir) && cvs commit -m "Update." \
-		$(PACKAGE).{ps,pdf,html} reference/*.html
-	-cd contrib/doxygen && doxygen && cp -v html/* $(htmldir)/doxygen/
+			$(PACKAGE).{ps,pdf,html} reference/*.html doxygen/*
 	cvs rtag $(tag) $(PACKAGE)
