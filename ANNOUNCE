@@ -30,8 +30,11 @@ all normal application.
 GNU Libidn is developed for the GNU/Linux system, but runs on over 20
 Unix platforms (including Solaris, IRIX, AIX, and Tru64) and Windows.
 
-The project page of the library is available at:
+The project web page:
 http://www.gnu.org/software/libidn/
+
+The software archive:
+ftp://alpha.gnu.org/pub/gnu/libidn/
 
 For more information see:
 http://www.ietf.org/html.charters/idn-charter.html
