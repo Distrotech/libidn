@@ -1,5 +1,5 @@
 libc {
-  GLIBC_2.3.1 {
+  GLIBC_2.3.2 {
     stringprep_generic; stringprep_nameprep; stringprep_kerberos5;
     stringprep_check_version; stringprep; 
     stringprep_unichar_to_utf8; stringprep_utf8_to_unichar;
@@ -11,8 +11,9 @@ libc {
     stringprep_locale_charset;
     punycode_encode; punycode_decode;
     idna_to_ascii; idna_to_unicode;
-    idna_ucs4_to_ace; idna_utf8_to_ace; idna_locale_to_ace;
-    idna_ucs4ace_to_ucs4; idna_utf8ace_to_ucs4; idna_utf8ace_to_utf8;
-    idna_utf8ace_to_locale; idna_localeace_to_locale;
+    idna_to_ascii_from_ucs4; idna_to_ascii_from_utf8; idna_to_ascii_from_locale;
+    idna_to_unicode_ucs4_from_ucs4; idna_to_unicode_ucs4_from_utf8;
+    idna_to_unicode_utf8_from_utf8; idna_to_unicode_locale_from_utf8;
+    idna_to_unicode_locale_from_locale;
   }
 }
