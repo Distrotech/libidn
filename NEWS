@@ -4,7 +4,7 @@ See the end for copying conditions.
 
 * Version 0.4.9 (unreleased)
 
-** The Java library (java/libidn.jar) is included in the distribution archive.
+** The Java library (java/libidn-*.jar) is included in the distribution.
 
 ** JavaDoc manuals (doc/javadoc/) are included.
 
