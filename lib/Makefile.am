@@ -17,6 +17,8 @@
 # License along with GNU Libidn; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
 
+EXTRA_DIST = gen-stringprep-tables.pl gen-unicode-tables.pl 
+
 lib_LTLIBRARIES = libidn.la
 
 idn_int = idn-int.h
