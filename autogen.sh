@@ -1,3 +1,3 @@
 #!/bin/sh -x
 autoreconf --install --force --verbose
-./configure CFLAGS="-g -Wall -pedantic" --enable-maintainer-mode --with-dmalloc "$@"
+./configure CFLAGS="-g -Wall -pedantic" --with-dmalloc "$@"
