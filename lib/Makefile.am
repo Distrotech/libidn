@@ -43,11 +43,12 @@ libidn_la_SOURCES = gunibreak.h gunicomp.h gunidecomp.h \
 	pr29.h pr29.c \
 	idn-free.h idn-free.c \
 	strerror-idna.c strerror-pr29.c strerror-punycode.c \
-	strerror-stringprep.c strerror-tld.c
+	strerror-stringprep.c strerror-tld.c \
+	iconvme.h iconvme.c
 if TLD
 libidn_la_SOURCES += tld.h tld.c tlds.c
 endif
-libidn_la_LIBADD = ../gl/libgnu.la $(LTLIBICONV)
+libidn_la_LIBADD = $(LTLIBICONV)
 libidn_la_LDFLAGS = \
 	-export-symbols-regex '^(idn|pr29_|punycode_|stringprep|tld_).*' \
 	-version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE)
