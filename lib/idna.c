@@ -424,12 +424,12 @@ idna_to_ascii_4z (const uint32_t * input, char **output, int flags)
 	   *end != 0x3002 && *end != 0xFF0E && *end != 0xFF61; end++)
 	;
 
-      /* Handle empty trailing labels. The RFC is not clear on this,
-         the text that mandate this behaviour inside a parenthesis in
-         the terminology section. */
       if (end == start && *end == '\0')
 	{
-	  strcpy (buf, out ? "" : ".");
+	  /* Handle empty trailing labels. The RFC is not clear on this,
+	     the text that mandate this behaviour inside a parenthesis in
+	     the terminology section. */
+	  strcpy (buf, (out || end == input) ? "" : ".");
 	}
       else
 	{
