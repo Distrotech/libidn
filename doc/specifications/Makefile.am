@@ -1,5 +1,5 @@
 ## Process this file with automake to produce Makefile.in
-# Copyright (C) 2002, 2003 Simon Josefsson.
+# Copyright (C) 2002, 2003, 2004 Simon Josefsson.
 #
 # This file is part of GNU Libidn.
 #
@@ -20,4 +20,4 @@
 EXTRA_DIST = rfc3454.txt \
 	UnicodeData-3.2.0.txt LineBreak-3.2.0.txt \
 	SpecialCasing-3.2.0.txt CaseFolding-3.2.0.txt \
-	CompositionExclusions-3.2.0.txt
+	CompositionExclusions-3.2.0.txt COPYING.UCD
