@@ -30,8 +30,9 @@
     <h2>Input</h2>
     <form>
 
-      <p>The string must be in <?php print $charset; ?>, if you wish
-	to use another charset, select it below and reload page:<br>
+      <p>The following string must be in <?php print $charset; ?>, if
+	you wish to use another charset you must select it below,
+	submit the form, and start over.<br>
 
 	<?php if (!$lastcharset) { $data = "räksmörgås.josefsson.org"; }
 	      else if ($charset != $lastcharset) { $data = "foo"; } ?>
