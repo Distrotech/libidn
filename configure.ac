@@ -36,6 +36,8 @@ AM_INIT_AUTOMAKE([1.8 gnits])
 AC_CONFIG_HEADERS(config.h)
 
 # Checks for programs.
+AM_GNU_GETTEXT(external)
+AM_GNU_GETTEXT_VERSION(0.14.1)
 AC_PROG_LIBTOOL
 AC_PROG_CC
 AM_MISSING_PROG(PERL, perl, $missing_dir)
@@ -88,5 +90,6 @@ GTK_DOC_CHECK(1.1)
 AC_CONFIG_FILES([Makefile libidn.pc doc/reference/Makefile \
 		lib/stringprep.h contrib/doxygen/Doxyfile \
 		doc/Makefile doc/specifications/Makefile doc/tld/Makefile \
-		lib/Makefile src/Makefile tests/Makefile examples/Makefile])
+		lib/Makefile src/Makefile tests/Makefile examples/Makefile \
+		po/Makefile.in])
 AC_OUTPUT
