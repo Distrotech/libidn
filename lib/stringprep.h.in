@@ -34,7 +34,7 @@ extern "C"
 #define STRINGPREP_VERSION "@PACKAGE_VERSION@"
 
 /* Error codes. */
-  enum Stringprep_rc
+  typedef enum
   {
     STRINGPREP_OK = 0,
     /* Stringprep errors. */
@@ -51,18 +51,18 @@ extern "C"
     /* Internal errors. */
     STRINGPREP_NFKC_FAILED = 200,
     STRINGPREP_MALLOC_ERROR = 201
-  };
+  } Stringprep_rc;
 
 /* Flags used when calling stringprep(). */
-  enum Stringprep_profile_flags
+  typedef enum
   {
     STRINGPREP_NO_NFKC = 1,
     STRINGPREP_NO_BIDI = 2,
     STRINGPREP_NO_UNASSIGNED = 4
-  };
+  } Stringprep_profile_flags;
 
 /* Steps in a stringprep profile. */
-  enum Stringprep_profile_steps
+  typedef enum
   {
     STRINGPREP_NFKC = 1,
     STRINGPREP_BIDI = 2,
@@ -72,7 +72,7 @@ extern "C"
     STRINGPREP_BIDI_PROHIBIT_TABLE = 6,
     STRINGPREP_BIDI_RAL_TABLE = 7,
     STRINGPREP_BIDI_L_TABLE = 8
-  };
+  } Stringprep_profile_steps;
 
 #define STRINGPREP_MAX_MAP_CHARS 4
 
@@ -86,8 +86,8 @@ extern "C"
 
   struct Stringprep_table
   {
-    enum Stringprep_profile_steps operation;
-    enum Stringprep_profile_flags flags;
+    Stringprep_profile_steps operation;
+    Stringprep_profile_flags flags;
     Stringprep_table_element *table;
     char *name;
   };
@@ -173,15 +173,14 @@ extern "C"
 
   /* API */
 
-  extern enum Stringprep_rc
-    stringprep (char *in, size_t maxlen,
-		enum Stringprep_profile_flags flags,
-		Stringprep_profile *profile);
+  extern int stringprep (char *in, size_t maxlen,
+			 Stringprep_profile_flags flags,
+			 Stringprep_profile *profile);
 
-  extern enum Stringprep_rc
-    stringprep_profile (char *in,
-			char **out,
-			char *profile, enum Stringprep_profile_flags flags);
+  extern int stringprep_profile (char *in,
+				 char **out,
+				 char *profile,
+				 Stringprep_profile_flags flags);
 
   extern const char *stringprep_check_version (const char *req_version);
 
