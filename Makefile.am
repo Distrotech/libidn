@@ -42,11 +42,10 @@ pkgconfig_DATA = libidn.pc
 POURL = ftp://ftp.unex.es/pub/gnu-i18n/po/maint/$(PACKAGE)
 update-po:
 	cd po && \
-	wget --non-verbose --timestamping --retr-symlinks $(POURL)/??.po && \
-	cvs add ??.po || true && \
-	echo en@boldquot en@quot > LINGUAS && \
-	ls ??.po | sed 's/.po//' >> LINGUAS && \
-	cvs commit -m "Sync with TP." LINGUAS ??.po
+	wget --non-verbose --timestamping --retr-symlinks $(POURL)/*.po && \
+	cvs add `ls *.po | grep -v quot.po` || true && \
+	ls *.po | sed 's/.po//' > LINGUAS && \
+	cvs commit -m "Sync with TP." LINGUAS `ls *.po | grep -v quot.po`
 
 ChangeLog:
 	cvs2cl --FSF --fsf --usermap .cvsusers -I ChangeLog -I .cvs \
