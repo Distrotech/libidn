@@ -1,11 +1,14 @@
 \input texinfo   @c -*-texinfo-*-
-@comment $Id$
-@comment %**start of header
+@c This file is part of the GNU Libidn Manual.
+@c Copyright (C) 2002, 2003 Simon Josefsson
+@c See below for copying conditions.
+
 @setfilename libidn.info
 @include version.texi
 @settitle GNU Libidn @value{VERSION}
+
 @syncodeindex pg cp
-@comment %**end of header
+
 @copying
 This manual is for GNU Libidn
 (version @value{VERSION}, @value{UPDATED}),
