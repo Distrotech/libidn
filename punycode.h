@@ -1,6 +1,5 @@
 /* punycode.h	Declarations for punycode functions.
  * Copyright (C) 2002, 2003  Simon Josefsson
- * Copyright (C) 2002  Adam M. Costello
  *
  * This file is part of GNU Libidn.
  *
@@ -33,6 +32,31 @@
  * misleading author or version information.  Derivative works need
  * not be licensed under similar terms.
  *
+ * Copyright (C) The Internet Society (2003).  All Rights Reserved.
+ *
+ * This document and translations of it may be copied and furnished to
+ * others, and derivative works that comment on or otherwise explain it
+ * or assist in its implementation may be prepared, copied, published
+ * and distributed, in whole or in part, without restriction of any
+ * kind, provided that the above copyright notice and this paragraph are
+ * included on all such copies and derivative works.  However, this
+ * document itself may not be modified in any way, such as by removing
+ * the copyright notice or references to the Internet Society or other
+ * Internet organizations, except as needed for the purpose of
+ * developing Internet standards in which case the procedures for
+ * copyrights defined in the Internet Standards process must be
+ * followed, or as required to translate it into languages other than
+ * English.
+ *
+ * The limited permissions granted above are perpetual and will not be
+ * revoked by the Internet Society or its successors or assigns.
+ *
+ * This document and the information contained herein is provided on an
+ * "AS IS" basis and THE INTERNET SOCIETY AND THE INTERNET ENGINEERING
+ * TASK FORCE DISCLAIMS ALL WARRANTIES, EXPRESS OR IMPLIED, INCLUDING
+ * BUT NOT LIMITED TO ANY WARRANTY THAT THE USE OF THE INFORMATION
+ * HEREIN WILL NOT INFRINGE ANY RIGHTS OR ANY IMPLIED WARRANTIES OF
+ * MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE.
  */
 
 #ifndef _PUNYCODE_H
@@ -43,19 +67,28 @@ extern "C"
 {
 #endif
 
-  enum
+#include <stddef.h>		/* size_t */
+#include <idn-int.h>		/* uint32_t */
+
+  enum punycode_status
   {
     PUNYCODE_SUCCESS = 0,
     PUNYCODE_BAD_INPUT,		/* Input is invalid.                       */
     PUNYCODE_BIG_OUTPUT,	/* Output would exceed the space provided. */
-    PUNYCODE_OVERFLOW		/* Input needs wider integers to process.  */
+    PUNYCODE_OVERFLOW,		/* Input needs wider integers to process.  */
+    /* For compatibility with RFC: */
+    punycode_success = PUNYCODE_SUCCESS,
+    punycode_bad_input = PUNYCODE_BAD_INPUT,
+    punycode_big_output = PUNYCODE_BIG_OUTPUT,
+    punycode_overflow = PUNYCODE_OVERFLOW
   };
 
-  int punycode_encode (size_t input_length,
-		       const unsigned long input[],
-		       const unsigned char case_flags[],
-		       size_t * output_length, char output[]);
-
+  enum punycode_status punycode_encode (size_t input_length,
+					const uint32_t input[],
+					const unsigned char case_flags[],
+					size_t * output_length,
+					char output[]);
+
 /* punycode_encode() converts Unicode to Punycode.  The input     */
 /* is represented as an array of Unicode code points (not code    */
 /* units; surrogate pairs are not allowed), and the output        */
@@ -81,10 +114,11 @@ extern "C"
 /* except punycode_bad_input; if not punycode_success, then       */
 /* output_size and output might contain garbage.                  */
 
-  int punycode_decode (size_t input_length,
-		       const char input[],
-		       size_t * output_length,
-		       unsigned long output[], unsigned char case_flags[]);
+  enum punycode_status punycode_decode (size_t input_length,
+					const char input[],
+					size_t * output_length,
+					uint32_t output[],
+					unsigned char case_flags[]);
 
 /* punycode_decode() converts Punycode to Unicode.  The input is  */
 /* represented as an array of ASCII code points, and the output   */
