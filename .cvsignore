@@ -17,9 +17,7 @@ depcomp
 elc-stamp
 elisp-comp
 install-sh
-libidn-*.tar.gz
-libidn-*.tar.gz.asc
-libidn-*.xdelta
+libidn-*
 libidn.la
 libidn.pc
 libtool
