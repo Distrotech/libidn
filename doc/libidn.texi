@@ -1102,6 +1102,10 @@ Could not convert string in locale encoding.
 Could not allocate buffer (this is typically a fatal error).
 @end deftypevr
 
+@deftypevr {Return code} {Idna_rc} IDNA_DLOPEN_ERROR
+Could not dlopen libcidn DSO (only used internally in libc).
+@end deftypevr
+
 @section Control Flags
 
 The IDNA @code{flags} parameter can take on the following values, or a
