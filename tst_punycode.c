@@ -39,7 +39,7 @@ fail (const char *format, ...)
 }
 
 static void
-ucs4print (uint32_t *str, ssize_t len)
+ucs4print (uint32_t * str, ssize_t len)
 {
   int i;
 

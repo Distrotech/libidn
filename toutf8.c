@@ -122,7 +122,7 @@ stringprep_convert (const char *str,
 
 again:
 
-  err = iconv (cd, (ICONV_CONST char **)&p, &inbytes_remaining,
+  err = iconv (cd, (ICONV_CONST char **) &p, &inbytes_remaining,
 	       &outp, &outbytes_remaining);
 
   if (err == (size_t) - 1)
