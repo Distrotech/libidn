@@ -38,6 +38,11 @@ Software Foundation raise funds for GNU development.''
 * idn: (libidn)Invoking idn.		Command line interface to GNU Libidn.
 @end direntry
 
+@dircategory Emacs
+@direntry
+* IDN Library: (libidn)Emacs API.	Emacs API for IDN functions.
+@end direntry
+
 @titlepage
 @title GNU Libidn
 @subtitle for version @value{VERSION}, @value{UPDATED}
@@ -66,6 +71,8 @@ Software Foundation raise funds for GNU development.''
 * Acknowledgements::            Whom to blame.
 
 * Invoking idn::		Command line interface to the library.
+
+* Emacs API::                   Emacs Lisp API for Libidn.
 
 Appendices
 
@@ -728,6 +735,68 @@ used automatically.  Example usage:
 $ CHARSET=ISO-8859-1 idn --punycode-encode
 ...
 @end verbatim
+
+@node Emacs API
+@chapter Emacs API
+
+Included in Libidn are @file{punycode.el} and @file{idna.el} that
+provides an Emacs Lisp API to (a limited set of) the Libidn API.  This
+section describes the API.
+
+@defvar punycode-program
+Name of the GNU Libidn @file{idn} application.  The default is
+@samp{env CHARSET=UTF-8 idn}.  This variable can be customized.
+@end defvar
+
+@defvar punycode-encode-parameters
+Parameters passed to @var{punycode-program} to invoke punycode
+encoding mode.  The default is @samp{--quiet --punycode-encode}.  This
+variable can be customized.
+@end defvar
+
+@defvar punycode-decode-parameters
+Parameters passed to @var{punycode-program} to invoke punycode
+decoding mode.  The default is @samp{--quiet --punycode-decode}.  This
+variable can be customized.
+@end defvar
+
+@defun punycode-encode string
+Returns a Punycode encoding of the @var{string}, after converting the
+input into UTF-8.
+@end defun
+
+@defun punycode-decode string
+Returns a possibly multibyte string which is the decoding of the
+@var{string} which is a punycode encoded string.
+@end defun
+
+@defvar idna-program
+Name of the GNU Libidn @file{idn} application.  The default is
+@samp{env CHARSET=UTF-8 idn}.  This variable can be customized.
+@end defvar
+
+@defvar idna-to-ascii-parameters
+Parameters passed to @var{idna-program} to invoke IDNA ToASCII mode.
+The default is @samp{--quiet --idna-to-ascii}.  This variable can be
+customized.
+@end defvar
+
+@defvar idna-to-unicode-parameters
+Parameters passed @var{idna-program} to invoke IDNA ToUnicode mode.
+The default is @samp{--quiet --idna-to-unicode}.  This variable can be
+customized.
+@end defvar
+
+@defun idna-to-ascii string
+Returns an ASCII Compatible Encoding (ACE) of the string computed by
+the IDNA ToASCII operation on the input @var{string}, after converting
+the input to UTF-8.
+@end defun
+
+@defun idna-to-unicode string
+Returns a possibly multibyte string which is the output of the IDNA
+ToUnicode operation computed on the input @var{string}.
+@end defun
 
 @include lgpl.texi
 
