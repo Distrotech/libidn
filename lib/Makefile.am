@@ -21,6 +21,7 @@
 EXTRA_DIST = gen-stringprep-tables.pl gen-unicode-tables.pl gen-tld-tables.pl
 
 AM_CPPFLAGS = -I$(top_srcdir)/gl -I../gl
+DEFS = -DLOCALEDIR=\"$(localedir)\" @DEFS@
 
 lib_LTLIBRARIES = libidn.la
 
