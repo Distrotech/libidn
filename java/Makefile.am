@@ -24,14 +24,6 @@ libidn_jardir = $(datadir)/java
 libidn_jar_DATA = libidn.jar
 
 libidn.jar:
-	$(JAR) cf $@ gnu/inet/encoding/GenerateRFC3454.class		\
-		"gnu/inet/encoding/GenerateRFC3454$$Range.class"	\
-		gnu/inet/encoding/IDNA.class				\
-		gnu/inet/encoding/IDNAException.class			\
-		gnu/inet/encoding/Punycode.class			\
-		gnu/inet/encoding/PunycodeException.class		\
-		gnu/inet/encoding/RFC3454.class				\
-		gnu/inet/encoding/Stringprep.class			\
-		gnu/inet/encoding/StringprepException.class		\
-		gnu/inet/encoding/TestIDNA.class
+	$(JAR) cf $@ gnu/inet/encoding/Punycode.class		\
+		gnu/inet/encoding/PunycodeException.class
 endif
