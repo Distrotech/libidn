@@ -4,6 +4,8 @@ See the end for copying conditions.
 
 * Version 0.5.11 (unreleased)
 
+** Fix formatting of man pages, based on warnings from Doclifter.
+
 ** Update of gnulib files to fix potential getopt problem on ELF systems.
 
 * Version 0.5.10 (released 2004-11-08)
