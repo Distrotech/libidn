@@ -25,7 +25,7 @@
 #define _(String) dgettext (PACKAGE, String)
 
 /**
- * punycode_strerror:
+ * punycode_strerror - return string describing punycode error code
  * @rc: an #Punycode_status return code.
  *
  * Convert a return code integer to a text string.  This string can be
