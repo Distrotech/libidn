@@ -4,9 +4,12 @@ See the end for copying conditions.
 
 * Version 0.4.2 (unreleased)
 
-** Polish translation added, by Jakub Bogusz.
+** More translations.
+Added Polish, by Jakub Bogusz, and Serbian, by Aleksandar Jelenak.
 
 ** Norwegian TLD table added, by Thomas Jacob.
+
+** API and ABI is backwards compatible with the previous version.
 
 * Version 0.4.1 (released 2004-03-08)
 
