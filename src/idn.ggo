@@ -18,8 +18,8 @@
 
 purpose "Command line interface to the internationalized domain name library.
 
-Valid stringprep profiles are `Nameprep', `KRBprep', `Nodeprep',
-`Resourceprep', `plain', `trace', `SASLprep', and `iSCSI'.
+Valid stringprep profiles are `Nameprep', `iSCSI', `Nodeprep',
+`Resourceprep', `trace', and `SASLprep'.
 
 To process a string that starts with `-', for example `-foo', use `--'
 to signal the end of parameters, as in `idn --quiet -a -- -foo'."
