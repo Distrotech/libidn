@@ -73,6 +73,7 @@ section entitled "GNU Free Documentation License".
 * Emacs API::                   Emacs Lisp API for Libidn.
 * Java API::                    Notes on the Java port of Libidn.
 * Acknowledgements::            Whom to blame.
+* Milestones::                  Rough outline of development history.
 
 Indices
 
@@ -1902,6 +1903,52 @@ downloaded from www.gtk.org.
 
 Several people reported bugs, sent patches or suggested improvements,
 see the file THANKS in the top-level directory of the source code.
+
+@c **********************************************************
+@c **********************  Milestones  **********************
+@c **********************************************************
+@node Milestones
+@chapter Milestones
+
+The complete history of user visible changes is stored in the file
+@file{NEWS} in the top-level directory of the source code tree.  The
+complete history of modifications to each file is stored in the file
+@file{ChangeLog} in the same directory.  This section contain a
+condensed version of that information, in the form of ``milestones''
+for the project.
+
+@table @asis
+@item Stringprep implementation.
+Version 0.0.0 released on 2002-11-05.
+
+@item IDNA and Punycode implementations, part of the GNU project.
+Version 0.1.0 released on 2003-01-05.
+
+@item Uses official IDNA ACE prefix 'xn--'.
+Version 0.1.7 released on 2003-02-12.
+
+@item Command line interface.
+Version 0.1.11 released on 2003-02-26.
+
+@item GNU Libc add-on proposed.
+Version 0.1.12 released on 2003-03-06.
+
+@item Interoperability testing during IDNConnect.
+Version 0.3.1 released on 2003-10-02.
+
+@item TLD restriction testing.
+Version 0.4.0 released on 2004-02-28.
+
+@item GNU Libc add-on integrated.
+Version 0.4.1 released on 2004-03-08.
+
+@item Native Java implementation.
+Version 0.4.2-0.4.9 released between 2004-03-20 and 2004-06-11.
+
+@item PR-29 functions for ``problem sequences''.
+Version 0.5.0 released on 2004-06-26.
+
+@end table
 
 @node Concept Index
 @unnumbered Concept Index
