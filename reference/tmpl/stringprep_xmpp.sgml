@@ -1,0 +1,40 @@
+<!-- ##### SECTION Title ##### -->
+stringprep_xmpp
+
+<!-- ##### SECTION Short_Description ##### -->
+Stringprep Profiles for XMPP Node and Resource Identifiers
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+This specifies processing rules that will enable users to enter
+internationalized node identifiers in XMPP (see XMPP Core [2]) and
+have the highest chance of getting the content of the strings correct.
+These processing rules are intended for XMPP node identifiers only,
+and not for arbitrary text.
+</para>
+
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO stringprep_xmpp_nodeprep ##### -->
+<para>
+
+</para>
+
+@in: 
+@maxlen: 
+
+
+<!-- ##### MACRO stringprep_xmpp_resourceprep ##### -->
+<para>
+
+</para>
+
+@in: 
+@maxlen: 
+
+

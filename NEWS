@@ -1,5 +1,12 @@
 Libidn NEWS -- History of user-visible changes.                 -*- outline -*-
+Copyright (C) 2002, 2003 Simon Josefsson
 See the end for copying conditions.
+
+* Version 0.1.6 (released 2003-)
+
+** Added XMPP Node/Resource Identifiers stringprep profiles.
+
+** Fixed prohibited character checks for bidi.
 
 * Version 0.1.5 (released 2003-01-28)
 
@@ -116,8 +123,6 @@ used is included.
 ** Initial release
 
 ----------------------------------------------------------------------
-Copyright (C) 2002 Simon Josefsson
-
 Copying and distribution of this file, with or without modification,
 are permitted in any medium without royalty provided the copyright
 notice and this notice are preserved.
