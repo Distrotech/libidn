@@ -1,3 +1,77 @@
+2005-03-19  Simon Josefsson <simon@josefsson.org>
+
+	* po/da.po, po/de.po, po/eo.po, po/fr.po, po/it.po, po/nl.po,
+	po/pl.po, po/ro.po, po/sr.po, po/sv.po, po/vi.po, po/zh_CN.po:
+	Generated.
+
+2005-03-19  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Version 0.5.14.
+
+2005-03-19  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi: Ramblings.
+
+2005-03-19  Simon Josefsson <simon@josefsson.org>
+
+	* po/da.po, po/de.po, po/eo.po, po/fr.po, po/it.po, po/nl.po,
+	po/pl.po, po/ro.po, po/sr.po, po/sv.po, po/vi.po: Sync with TP.
+
+2005-03-12  Simon Josefsson <simon@josefsson.org>
+
+	* po/zh_CN.po, po/LINGUAS, NEWS, THANKS: Add.
+
+2005-02-27  Simon Josefsson <simon@josefsson.org>
+
+	* lib/idn-free.c: Include the specification first, to verify it is
+	standalone.  Doc fix.
+
+2005-02-16  Simon Josefsson <simon@josefsson.org>
+
+	* THANKS: Add.
+
+2005-02-16  Simon Josefsson <simon@josefsson.org>
+
+	* THANKS: Reorder chronologically.
+
+2005-02-13  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2005-02-07  Simon Josefsson <simon@josefsson.org>
+
+	* THANKS: Sort (should be sorted chronologically..).
+
+2005-02-07  Simon Josefsson <simon@josefsson.org>
+
+	* configure.ac: Bump versions.
+
+2005-02-07  Simon Josefsson <simon@josefsson.org>
+
+	* po/vi.po, po/LINGUAS, THANKS, NEWS: Add.
+
+2005-01-30  Simon Josefsson <simon@josefsson.org>
+
+	* lib/Makefile.am: Fix last commit, reported by Linus Nordberg
+	<linus@nordberg.se>.
+
+2005-01-30  Simon Josefsson <simon@josefsson.org>
+
+	* lib/Makefile.am: Fix srcdir != objdir when bootstrapping from
+	CVS, patch from Linus Nordberg <linus@nordberg.se> (tiny change).
+
+2005-01-30  Simon Josefsson <simon@josefsson.org>
+
+	* README-alpha: Fix.
+
+2005-01-30  Simon Josefsson <simon@josefsson.org>
+
+	* doc/reference/Makefile.am: Remove hack, fixed in gtk-doc CVS.
+
+2005-01-29  Simon Josefsson <simon@josefsson.org>
+
+	* libidn.fms: 0.5.13.
+
 2005-01-29  Simon Josefsson <simon@josefsson.org>
 
 	* po/da.po, po/de.po, po/eo.po, po/fr.po, po/it.po, po/nl.po,
