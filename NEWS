@@ -14,6 +14,8 @@ the characters in the table are various ASCII characters and U+3002).
 
 ** A few test vectors for iSCSI were added.
 
+** The self tests are linked with libtool -no-install to avoid wrapper script.
+
 ** More translations.
 Added Romanian (by Laurentiu Buzdugan).
 
