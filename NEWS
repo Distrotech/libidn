@@ -2,7 +2,7 @@ Libidn NEWS -- History of user-visible changes.                 -*- outline -*-
 Copyright (C) 2002, 2003 Simon Josefsson
 See the end for copying conditions.
 
-* Version 0.3.2 (unreleased)
+* Version 0.3.2 (released 2003-10-07)
 
 ** SASL ANONYMOUS stringprep profile "trace" added.
 It is equivalent to the already supported "plain" SASL ANONYMOUS
