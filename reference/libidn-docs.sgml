@@ -13,6 +13,41 @@
 
   <chapter>
     <title>GNU Libidn API Reference Manual</title>
+
+    <para>
+GNU Libidn is an implementation of the Stringprep (with the Nameprep
+and Kerberos 5 profiles), Punycode and IDNA specifications defined by
+the IETF Internationalized Domain Names (IDN) working group, used for
+internationalized domain names.  It is licensed under the GNU Lesser
+General Public License.
+    </para>
+    <para>
+The library contains a generic Stringprep implementation (including
+Unicode 3.2 NFKC normalization, table mapping of characters, and
+Bidirectional Character handling), two Stringprep profiles; Nameprep
+(for IDN) and Kerberos5, as well as a Punycode and IDNA.
+    </para>
+    <para>
+The Stringprep API consists of two main functions, one for converting
+data from the system's native representation into UTF-8, and one
+function to perform the Stringprep processing.  Each stringprep
+profile has a corresponding CPP macro.  Adding a new Stringprep
+profile for your application within the API is straightforward.  The
+Punycode API consists of one encoding function and one decoding
+function.  The IDNA API consists of the ToASCII and ToUnicode
+functions.
+    </para>
+    <para>
+The library is currently used by forthcoming SASL and Kerberos
+libraries to process user names and passwords before they are input to
+cryptographic operations.  It is also used by experimental code for
+domain name related purposes.
+    </para>
+    <para>
+GNU Libidn is developed for the GNU/Linux system, but runs on over 20
+Unix platforms (including Solaris, IRIX, AIX, and Tru64) and Windows.
+    </para>
+
     &libidn-punycode;
     &libidn-stringprep-generic;
     &libidn-stringprep-kerberos5;
