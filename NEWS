@@ -2,6 +2,10 @@ Libidn NEWS -- History of user-visible changes.                 -*- outline -*-
 Copyright (C) 2002, 2003 Simon Josefsson
 See the end for copying conditions.
 
+* Version 0.3.2 (unreleased)
+
+** API and ABI is backwards compatible with the previous version.
+
 * Version 0.3.1 (released 2003-10-02)
 
 ** Fixed handling of implicit and explicit zero-length root labels in ToASCII.
@@ -16,6 +20,8 @@ fixed other bugs in the earlier versions of the updated functions.
 
 ** Emacs Lisp IDNA implementation now set the UseSTD3ASCIIRules flag.
 This is the appropriate setting for mail-related uses of IDNA.
+
+** API and ABI is backwards compatible with the previous version.
 
 * Version 0.3.0 (released 2003-09-23)
 
