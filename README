@@ -2,62 +2,28 @@ Libidn README -- Important introductory notes.
 Copyright (C) 2002, 2003 Simon Josefsson
 See the end for copying conditions.
 
-GNU Libidn is an implementation of the Stringprep, Nameprep, Punycode
-and IDNA specifications, licensed under the LGPL.  See ANNOUNCE for an
-overview, and libidn.{info,ps,pdf} for the manual.
+GNU Libidn is a package for internationalized string handling based on
+stringprep, punycode and IDNA.  It is licensed under the LGPL.  See
+ANNOUNCE for an overview, and libidn.{info,ps,pdf} for the manual.
 
 Things left to do below.  If you like to start working on anything,
 please let me know so work duplication can be avoided.
 
-  - Optimize stringprep, the table searching is slow (but does it
-    matter?).  Optimize for speed?  The stringprep tables can be
-    compressed _alot_ (most map entries are simply zeroes).
+  - Optimize stringprep for speed, the table searching is slow (but
+    does it matter?).
+  - Optimize for size?  The stringprep tables can be compressed _alot_
+    (most map entries are simply zeroes).
   - Port applications to use libidn.
   - Include more stringprep profiles.
-  - Add IDNA tools
-  - Rename package?  Stringprep useful outside of IDN.  Separating
-    into libstringprep + libidn was considered, but libidn would
-    be so small it would be wasteful to create it.  libunicodenames?
+  - Improve IDN tool.
 
-Anticipated Frequently Asked Questions:
-
-Q#1: Why doesn't Libidn use a separate library for the Unicode
-     operations?
-
-A#1: Separate libraries (Glib, QT, libiconv) seldom mark the Unicode
-     tables with the corresponding Unicode version they implement, nor
-     do they provide a interface where a specific version can be
-     requested.  This violates the stringprep specification which
-     requires that a specific version is used.  Also, some of these
-     third party libraries depend on non-portable behavior
-     (e.g. threads).
-
-Q#2: Why do Libidn include several stringprep profiles? They waste space!
-
-A#2: The stringprep profiles included are derived from the generic
-     stringprep tables, and doesn't waste more than say a few hundred
-     bytes (see profiles.c).  The Unicode normalization tables and the
-     generic stringprep tables are roughly equivalent in size,
-     although the latter tables can surely be compressed much further.
-
-Q#3: I thought GNU was encouraging libraries to be licensed under the GPL?
-
-A#3: The reasoning for this was for libraries that provide unique
-     functionality to encourage more free programs.  Since there are
-     several IDN libraries out there, using the GPL for Libidn would
-     only encourage people not to use Libidn which would not help the
-     spread of free software.
-
-Q#4: How do I add a new stringprep profile?
-
-A#4: Add the profile definition to profiles.c, create a new
-     stringprep_PROFILENAME.h header file, and add it to
-     Makefile.am. For the texinfo documentation document the header in
-     libidn.texi and for the GTK-DOC manual, add it to
-     reference/libidn-docs.sgml and document the header definitions in
-     reference/dummy.c.  If you want to add self tests, include the
-     header file in internal.h and add the self tests (easiest through
-     tst_stringprep.c).  Mention it in NEWS.
+If you are in a position to support the development financially,
+contact the author or donate via PayPal to one of the author's email
+addresses.  Donations will be used to conduct a security audit, unless
+specific requests for other directions are made.  Indicate if you wish
+to be acknowledged as a donor, otherwise donations are anonymous.
+Other ways to help the effort is to improve the software, proof read
+the manual and report bugs.
 
 ----------------------------------------------------------------------
 Copying and distribution of this file, with or without modification,
