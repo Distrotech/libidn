@@ -529,6 +529,7 @@ stringprep_profile (const char *in,
  * \include example.c
  * \include example3.c
  * \include example4.c
+ * \include example5.c
  */
 
 /**
