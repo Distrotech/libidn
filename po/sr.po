@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libidn 0.4.1\n"
 "Report-Msgid-Bugs-To: bug-libidn@gnu.org\n"
-"POT-Creation-Date: 2004-08-05 10:09+0200\n"
+"POT-Creation-Date: 2004-06-01 08:28+0200\n"
 "PO-Revision-Date: 2004-03-13 17:54-0500\n"
 "Last-Translator: Aleksandar Jelenak <jelenak@netlinkplus.net>\n"
 "Language-Team: Serbian <gnu@prevod.org>\n"
@@ -26,11 +26,8 @@ msgstr "Скуп знакова „%s“.\n"
 
 #: src/idn.c:96
 #, c-format
-msgid ""
-"Type each input string on a line by itself, terminated by a newline "
-"character.\n"
-msgstr ""
-"Куцајте улазну ниску на засебној линији, завршавајући знаком за нови ред.\n"
+msgid "Type each input string on a line by itself, terminated by a newline character.\n"
+msgstr "Куцајте улазну ниску на засебној линији, завршавајући знаком за нови ред.\n"
 
 #: src/idn.c:108
 #, c-format

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libidn 0.4.1\n"
 "Report-Msgid-Bugs-To: bug-libidn@gnu.org\n"
-"POT-Creation-Date: 2004-08-05 10:09+0200\n"
+"POT-Creation-Date: 2004-06-01 08:28+0200\n"
 "PO-Revision-Date: 2004-03-16 10:07+0100\n"
 "Last-Translator: Morten Bo Johansen <mojo@mbjnet.dk>\n"
 "Language-Team: Danish <dansk@klid.dk>\n"
@@ -26,9 +26,7 @@ msgstr "Tegnsæt `%s'.\n"
 
 #: src/idn.c:96
 #, c-format
-msgid ""
-"Type each input string on a line by itself, terminated by a newline "
-"character.\n"
+msgid "Type each input string on a line by itself, terminated by a newline character.\n"
 msgstr "Indtast hver streng på en særskilt linje, afsluttet med en ny linje.\n"
 
 #: src/idn.c:108
