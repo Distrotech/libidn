@@ -169,6 +169,16 @@
 	  (substring string 0 (1- (length string)))
 	string))))
 
+(defun punycode-shutdown ()
+  "Kill the punycode related process."
+  (interactive)
+  (if (and punycode-decode-process
+	   (eq (process-status punycode-decode-process) 'run))
+      (kill-process punycode-decode-process))
+  (if (and punycode-encode-process
+	   (eq (process-status punycode-encode-process) 'run))
+      (kill-process punycode-encode-process)))
+
 (provide 'punycode)
 
 ;;; punycode.el ends here
