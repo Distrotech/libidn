@@ -1,0 +1,9 @@
+.deps
+.libs
+Makefile
+Makefile.in
+gunibreak.h
+gunicomp.h
+gunidecomp.h
+idn-int.h
+*.lo
