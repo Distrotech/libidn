@@ -102,7 +102,7 @@ stringprep_apply_table_to_string (uint32_t * ucs4,
  * and write back the result to the input string.
  *
  * The input is not required to be zero terminated (@ucs4[@len] = 0).
- * The output will not be zero terminated unless $ucs4[@len] = 0.
+ * The output will not be zero terminated unless @ucs4[@len] = 0.
  * Instead, see stringprep_4zi() if your input is zero terminated or
  * if you want the output to be.
  *
@@ -335,7 +335,7 @@ stringprep_4zi (uint32_t *ucs4, size_t maxucs4len,
  * tables that always will be part of the library, or use one of the
  * currently supported profiles.
  *
- * Return value: Returns 0 iff successful, or an error code.
+ * Return value: Returns %STRINGPREP_OK iff successful, or an error code.
  **/
 int
 stringprep (char *in,
@@ -386,7 +386,7 @@ stringprep (char *in,
  * @in: input array with UTF-8 string to prepare.
  * @out: output variable with pointer to newly allocate string.
  * @profile: name of stringprep profile to use.
- * @flags: optional stringprep profile flags.
+ * @flags: stringprep profile flags, or 0.
  *
  * Prepare the input zero terminated UTF-8 string according to the
  * stringprep profile, and return the result in a newly allocated
@@ -403,7 +403,7 @@ stringprep (char *in,
  * The @profile specifies the name of the stringprep profile to use.
  * It must be one of the internally supported stringprep profiles.
  *
- * Return value: Returns 0 iff successful, or an error code.
+ * Return value: Returns %STRINGPREP_OK iff successful, or an error code.
  **/
 int
 stringprep_profile (const char *in,
