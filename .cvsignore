@@ -97,3 +97,7 @@ tst_punycode
 tst_stringprep
 version.lo
 version.texi
+idn
+idn.ggo
+idn_cmd.c
+idn_cmd.h
