@@ -6,10 +6,9 @@ See the end for copying conditions.
 
 ** A Punycode implementation in Java was added, by Oliver Hitz.
 Eventually hopefully a StringPrep, Nameprep and IDNA implementation
-will be added as well.  You currently need to specify --enable-java to
-enable the Java interface.  See java/ for the files, the Java sources
-are compiled into byte-code (not native code) and packaged into a JAR
-library.
+will be added as well.  Currently you need to specify --enable-java to
+enable the Java interface.  The Java sources (below java/) are
+compiled into byte-code (not native code) into a JAR library.
 
 ** More translations.
 Added Danish (by Morten Bo Johansen), French (by Michel Robitaille),

@@ -1655,9 +1655,10 @@ ToUnicode operation computed on the input @var{string}.
 
 The punycode code was taken from the IETF IDN Punycode specification,
 by Adam M. Costello.  The TLD code was contributed by Thomas Jacob.
-The Unicode tables were provided by Unicode, Inc.  Some functions for
-dealing with Unicode (see nfkc.c and toutf8.c) has been borrowed from
-GLib downloaded from www.gtk.org.
+The Java implementation was contributed by Oliver Hitz.  The Unicode
+tables were provided by Unicode, Inc.  Some functions for dealing with
+Unicode (see nfkc.c and toutf8.c) has been borrowed from GLib
+downloaded from www.gtk.org.
 
 Several people reported bugs, sent patches or suggested improvements,
 see the file THANKS in the top-level directory of the source code.
