@@ -461,7 +461,7 @@ idna_to_ascii_from_ucs4 (const unsigned long *input, char **output,
   return IDNA_SUCCESS;
 }
 
-/**
+/*
  * idna_ucs4_to_ace:
  * @input: zero terminated input Unicode string.
  * @output: pointer to newly allocated output string.
@@ -514,7 +514,7 @@ idna_to_ascii_from_utf8 (const char *input, char **output,
   return rc;
 }
 
-/**
+/*
  * idna_utf8_to_ace:
  * @input: zero terminated input UTF-8 string.
  * @output: pointer to newly allocated output string.
@@ -566,7 +566,7 @@ idna_to_ascii_from_locale (const char *input, char **output,
   return rc;
 }
 
-/**
+/*
  * idna_locale_to_ace:
  * @input: zero terminated input UTF-8 string.
  * @output: pointer to newly allocated output string.
@@ -665,7 +665,7 @@ idna_to_unicode_ucs4_from_ucs4 (const unsigned long *input,
   return IDNA_SUCCESS;
 }
 
-/**
+/*
  * idna_ucs4ace_to_ucs4:
  * @input: zero-terminated Unicode string.
  * @output: pointer to newly allocated output Unicode string.
@@ -721,7 +721,7 @@ idna_to_unicode_ucs4_from_utf8 (const char *input, unsigned long **output,
   return rc;
 }
 
-/**
+/*
  * idna_utf8ace_to_ucs4:
  * @input: zero-terminated UTF-8 string.
  * @output: pointer to newly allocated output Unicode string.
@@ -776,7 +776,7 @@ idna_to_unicode_utf8_from_utf8 (const char *input, char **output,
   return rc;
 }
 
-/**
+/*
  * idna_utf8ace_to_utf8:
  * @input: zero-terminated UTF-8 string.
  * @output: pointer to newly allocated output UTF-8 string.
@@ -832,7 +832,7 @@ idna_to_unicode_locale_from_utf8 (const char *input, char **output,
   return rc;
 }
 
-/**
+/*
  * idna_utf8ace_to_locale:
  * @input: zero-terminated UTF-8 string.
  * @output: pointer to newly allocated output string encoded in the
@@ -891,7 +891,7 @@ idna_to_unicode_locale_from_locale (const char *input, char **output,
   return rc;
 }
 
-/**
+/*
  * idna_localeace_to_locale:
  * @input: zero-terminated string encoded in the current locale's
  *   character set.
