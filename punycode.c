@@ -186,7 +186,7 @@ punycode_encode (size_t input_length,
 {
   punycode_uint n, delta, h, b, out, max_out, bias, j, m, q, k, t;
 
-  if (input_length > max_int || *output_length > max_int)
+  if (input_length > maxint || *output_length > maxint)
     return punycode_bad_input;
 
   /* Initialize the state: */
@@ -322,7 +322,7 @@ punycode_decode (size_t input_length,
 {
   punycode_uint n, out, i, max_out, bias, b, j, in, oldi, w, k, digit, t;
 
-  if (input_length > max_int || *output_length > max_int)
+  if (input_length > maxint || *output_length > maxint)
     return punycode_bad_input;
 
   /* Initialize the state: */
