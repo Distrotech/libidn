@@ -38,9 +38,9 @@ ftp://alpha.gnu.org/pub/gnu/libidn/
 For more information see:
 http://www.ietf.org/html.charters/idn-charter.html
 http://www.ietf.org/rfc/rfc3454.txt (stringprep specification)
-http://www.ietf.org/internet-drafts/draft-ietf-idn-punycode-03.txt
-http://www.ietf.org/internet-drafts/draft-ietf-idn-nameprep-11.txt
-http://www.ietf.org/internet-drafts/draft-ietf-idn-idna-14.txt
+http://www.ietf.org/rfc/rfc3490.txt (idna specification)
+http://www.ietf.org/rfc/rfc3491.txt (nameprep specification)
+http://www.ietf.org/rfc/rfc3492.txt (punycode specification)
 http://www.ietf.org/internet-drafts/draft-ietf-ips-iscsi-string-prep-04.txt
 http://www.ietf.org/internet-drafts/draft-ietf-krb-wg-utf8-profile-01.txt
 http://www.ietf.org/internet-drafts/draft-ietf-sasl-anon-00.txt
