@@ -1,4 +1,4 @@
-# Copyright (C) 2003 Free Software Foundation, Inc.
+# Copyright (C) 2003, 2004 Free Software Foundation, Inc.
 # This file is part of the GNU C Library.
 
 # The GNU C Library is free software; you can redistribute it and/or
@@ -20,10 +20,15 @@
 
 subdir	:= libidn
 
-headers	= punycode.h stringprep.h idna.h
-routines = punycode profiles toutf8 nfkc stringprep rfc3454 idna
+distribute := punycode.h stringprep.h idna.h
 
-inhibit-o = $(filter-out .os,$(object-suffixes))
+routines = idn-stub
 
-distribute =
+extra-libs		= libcidn
+extra-libs-others	= $(extra-libs)
+
+libcidn-routines := punycode toutf8 nfkc stringprep rfc3454 profiles idna
+
 include ../Rules
+
+$(objpfx)libcidn.so: $(common-objpfx)libc.so $(common-objpfx)libc_nonshared.a
