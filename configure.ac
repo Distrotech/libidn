@@ -103,5 +103,6 @@ AC_CONFIG_FILES([Makefile libidn.pc doc/reference/Makefile \
 		doc/Makefile doc/specifications/Makefile doc/tld/Makefile \
 		lib/Makefile src/Makefile tests/Makefile examples/Makefile \
 		java/Makefile java/gnu/Makefile java/gnu/inet/Makefile \
-		java/gnu/inet/encoding/Makefile po/Makefile.in])
+		java/gnu/inet/encoding/Makefile java/misc/Makefile \
+		po/Makefile.in])
 AC_OUTPUT

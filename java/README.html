@@ -1,0 +1,204 @@
+<html>
+  <head>
+    <title>GNU Libidn Java API</title>
+  </head>
+
+  <body>
+    <h1>GNU Libidn Java API</h1>
+
+    <p>
+      Copyright (C) 2004  Free Software Foundation, Inc.
+    </p>
+    <p>
+      Written by <a href="mailto:oliver@net-track.ch">Oliver Hitz</a>.
+    </p>
+
+    <h2>1. Introduction</h2>
+
+    <p>
+      This package provides a Java implementation of the
+      Internationalized Domain Names in Applications (IDNA)
+      standard. It is written entirely in Java and does not require
+      any additional libraries to be set up.
+    </p>
+
+    <h2>2. License</h2>
+
+    <p>
+      This library is free software; you can redistribute it and/or
+      modify it under the terms of the GNU Lesser General Public
+      License as published by the Free Software Foundation; either
+      version 2.1 of the License, or (at your option) any later
+      version.
+    </p>
+    
+    <p>
+      This library is distributed in the hope that it will be useful,
+      but WITHOUT ANY WARRANTY; without even the implied warranty of
+      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+      GNU Lesser General Public License for more details.
+    </p>
+
+    <p>
+      You should have received a copy of the GNU Lesser General Public
+      License along with this library; if not, write to the Free
+      Software Foundation, Inc., 59 Temple Place, Suite 330, Boston,
+      MA 02111-1307 USA
+    </p>
+
+    <h2>3. Usage Overview</h2>
+
+    <p>
+      The gnu.inet.encoding.IDNA class offers two public
+      functions, toASCII and toUnicode which can be used as follows:
+    </p>
+
+    <pre>
+      gnu.inet.encoding.IDNA.toASCII("bl&ouml;ds.z&uuml;g");
+      gnu.inet.encoding.IDNA.toUnicode("xn--blds-6qa.xn--zg-xka");
+    </pre>
+
+    <h2>4. Miscellaneous Programs</h2>
+
+    <p>
+      The <tt>misc</tt> directory contains several programs that are
+      related to the Java part of GNU Libidn, but that don't need to
+      be included in the main source tree.
+    </p>
+
+    <h3>4.1 GenerateRFC3454</h3>
+
+    <p>
+      This program parses RFC3454 and creates the RFC3454.java program
+      that is required during the StringPrep phase.
+    </p>
+
+    <p>
+      The RFC can be found at various locations, for example at <a
+      href="http://www.ietf.org/rfc/rfc3454.txt">http://www.ietf.org/rfc/rfc3454.txt</a>.
+    </p>
+
+    <p>
+      Invoke the program as follows:
+    </p>
+
+    <pre>
+      $ java GenerateRFC3454
+      Creating RFC3454.java... Ok.
+    </pre>
+
+    <h3>4.2 GenerateNFKC</h3>
+
+    <p>
+      The GenerateNFKC program parses the Unicode character database
+      file and generates all the tables required for NFKC. This
+      program requires the two files UnicodeData.txt and
+      CompositionExclusions.txt of version 3.2 of the Unicode
+      files. Note that RFC3454 (Stringprep) defines that Unicode
+      version 3.2 is to be used, not the latest version.
+    </p>
+
+    <p>
+      The Unicode data files can be found at <a
+      href="http://www.unicode.org/Public/">http://www.unicode.org/Public/</a>.
+    </p>
+
+    <p>
+      Invoke the program as follows:
+    </p>
+
+    <pre>
+      $ java GenerateNFKC
+      Creating CombiningClass.java... Ok.
+      Creating DecompositionKeys.java... Ok.
+      Creating DecompositionMappings.java... Ok.
+      Creating Composition.java... Ok.
+    </pre>
+
+    <h3>4.3 TestIDNA</h3>
+
+    <p>
+      The TestIDNA program allows to test the IDNA implementation
+      manually or against Simon Josefsson's test vectors.
+    </p>
+
+    <p>
+      The test vectors can be found at the Libidn homepage, <a
+      href="http://www.gnu.org/software/libidn">http://www.gnu.org/software/libidn</a>.
+    </p>
+
+    <p>
+      To test the tranformation manually, use:
+    </p>
+
+    <pre>
+      $ java -cp .:../libidn.jar TestIDNA -a &lt;string to test&gt;
+      Input: &lt;string to test&gt;
+      Output: &lt;toASCII(string to test)&gt;
+      $ java -cp .:../libidn.jar TestIDNA -u &lt;string to test&gt;
+      Input: &lt;string to test&gt;
+      Output: &lt;toUnicode(string to test)&gt;
+    </pre>
+
+    <p>
+      To test against draft-josefsson-idn-test-vectors.html, use:
+    </p>
+
+    <pre>
+      $ java -cp .:../libidn.jar TestIDNA -t
+      No errors detected!
+    </pre>
+
+    <h3>4.4 TestNFKC</h3>
+
+    <p>
+      The TestNFKC program allows to test the NFKC implementation
+      manually or against the NormalizationTest.txt file from the
+      Unicode data files.
+    </p>
+
+    <p>
+      To test the normalization manually, use:
+    </p>
+
+    <pre>
+      $ java -cp .:../libidn.jar TestNFKC &lt;string to test&gt;
+      Input: &lt;string to test&gt;
+      Output: &lt;nfkc version of the string to test&gt;
+    </pre>
+
+    <p>
+      To test against NormalizationTest.txt:
+    </p>
+
+    <pre>
+      $ java -cp .:../libidn.jar TestNFKC
+      No errors detected!
+    </pre>
+
+    <h2>5. Possible Problems</h2>
+    
+    <ul>
+      <li>
+	Beware of Bugs: This Java API needs a lot more testing,
+	especially with "exotic" character sets. While it works for
+	me, it may not work for you.
+      </li>
+      <li>
+	Encoding of your Java sources: If you are using non-ASCII
+	characters in your Java source code, make sure javac compiles
+	your programs with the correct encoding. If necessary specify
+	the encoding using the -encoding parameter.
+      </li>
+      <li>
+        Java Unicode handling: Java 1.4 only handles 16-bit Unicode
+        code points (i.e. characters in the Basic Multilingual Plane),
+        this implementation therefore ignores all references to
+        so-called Supplementary Characters (U+10000 to
+        U+10FFFF). Starting from Java 1.5, these characters will also
+        be supported by Java, but this will require changes to this
+        library. See also the file <tt>README.UNICODE</tt>.
+      </li>
+    </ul>
+  </body>
+</html>

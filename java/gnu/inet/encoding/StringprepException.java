@@ -23,18 +23,15 @@
 
 package gnu.inet.encoding;
 
-public class PunycodeException
+public class StringprepException
   extends Exception
 {
-  public static String OVERFLOW = "Overflow.";
-  public static String BAD_INPUT = "Bad input.";
+  public static String CONTAINS_UNASSIGNED = "Contains unassigned code points.";
+  public static String CONTAINS_PROHIBITED = "Contains prohibited code points.";
+  public static String BIDI_BOTHRAL = "Contains both R and AL code points.";
+  public static String BIDI_LTRAL = "Leading and trailing code points not both R or AL.";
 
-  /**
-   * Creates a new PunycodeException.
-   *
-   * @param m message.
-   */
-  public PunycodeException(String m)
+  public StringprepException(String m)
   {
     super(m);
   }

@@ -1,5 +1,5 @@
 ## Process this file with automake to produce Makefile.in
-# Copyright (C) 2004 Simon Josefsson.
+# Copyright (C) 2004  Free Software Foundation
 #
 # This file is part of GNU Libidn.
 #
@@ -17,18 +17,15 @@
 # License along with GNU Libidn; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
 
-SUBDIRS = gnu misc
-
-EXTRA_DIST = README.html README.UNICODE
-
 if JAVA
-libidn_jardir = $(datadir)/java
-libidn_jar_DATA = libidn.jar
 
-libidn.jar:
-	$(JAR) cf $@ gnu/inet/encoding/Punycode.class		\
-		gnu/inet/encoding/PunycodeException.class
+JAVAROOT = $(top_builddir)/java/misc
 
-clean-local:
-	rm -f $(libidn_jar_DATA)
-endif
+override CLASSPATH_ENV=CLASSPATH=$(top_builddir)/java/libidn.jar
+
+noinst_JAVA = GenerateRFC3454.java		\
+	GenerateNFKC.java			\
+	TestIDNA.java				\
+	TestNFKC.java
+
+endif # JAVA

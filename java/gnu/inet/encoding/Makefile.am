@@ -19,5 +19,17 @@
 
 if JAVA
 JAVAROOT = $(top_builddir)/java
-noinst_JAVA = Punycode.java PunycodeException.java
-endif
+
+noinst_JAVA = CombiningClass.java	\
+	Composition.java		\
+	DecompositionKeys.java		\
+	DecompositionMappings.java	\
+	IDNA.java			\
+	IDNAException.java		\
+	NFKC.java			\
+	Punycode.java			\
+	PunycodeException.java		\
+	RFC3454.java			\
+	Stringprep.java			\
+	StringprepException.java
+endif # JAVA

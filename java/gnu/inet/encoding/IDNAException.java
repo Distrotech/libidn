@@ -23,19 +23,26 @@
 
 package gnu.inet.encoding;
 
-public class PunycodeException
+public class IDNAException
   extends Exception
 {
-  public static String OVERFLOW = "Overflow.";
-  public static String BAD_INPUT = "Bad input.";
+  public static String CONTAINS_NON_LDH = "Contains non-LDH characters.";
+  public static String CONTAINS_HYPHEN = "Leading or trailing hyphen not allowed.";
+  public static String CONTAINS_ACE_PREFIX = "ACE prefix (xn--) not allowed.";
+  public static String TOO_LONG = "String too long.";
 
-  /**
-   * Creates a new PunycodeException.
-   *
-   * @param m message.
-   */
-  public PunycodeException(String m)
+  public IDNAException(String m)
   {
     super(m);
+  }
+
+  public IDNAException(StringprepException e)
+  {
+    super(e);
+  }
+
+  public IDNAException(PunycodeException e)
+  {
+    super(e);
   }
 }
