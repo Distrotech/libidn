@@ -6,7 +6,7 @@ See the end for copying conditions.
 
 ** Added functions to convert return codes to human readable text.
 
-** Now using GNULib in application front end (src/) for portability code.
+** Now using GNULib in command line front end (src/) for portability code.
 See <http://www.gnu.org/software/gnulib/> for more information on
 GNULib.  This should make the code easier to read and maintain.
 
