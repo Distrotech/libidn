@@ -9,8 +9,9 @@ BSD-Port-URL: http://www.freshports.org/devel/libidn/
 CVS-URL: http://josefsson.org/cgi-bin/viewcvs.cgi/libidn/
 Mirror-Site-URL: http://josefsson.org/libidn
 Demo-URL: http://josefsson.org/idn.php
-Version: 0.5.11
-Release-Focus: Minor bugfixes
+Version: 0.5.12
+Release-Focus: Minor feature enhancements
 
-Fix formatting of man pages, based on warnings from Doclifter.  Update
-of gnulib files to fix potential getopt problem on ELF systems.
+Java code now support the XMPP NodePrep and ResourcePrep profiles.
+Bug fixes and improvements to Java code.  Update getopt from gnulib.
+Documentation improvements.
