@@ -9,4 +9,4 @@ idn-int.h
 libidn.la
 *.lo
 stringprep.h
-stringprep_generic.c
+rfc3454.c
