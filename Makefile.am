@@ -72,6 +72,12 @@ idn_LDADD = @LIBOBJS@ libidn.la
 idn_cmd.c idn_cmd.h: idn.ggo
 	gengetopt --input $< --file-name idn_cmd
 
+man_MANS = idn.1
+
+idn.1: idn.c
+	$(HELP2MAN) --name="Internationalized Domain Names command line tool" \
+		--output=$@ $(top_builddir)/idn
+
 # Test suite
 
 tests = tst_stringprep tst_nfkc tst_punycode tst_idna
