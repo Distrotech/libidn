@@ -168,7 +168,21 @@ GNU Lesser General Public License.
 No global state is kept in the library.
 
 @item It's portable
-It should work on all Unix like operating systems, including Windows.
+The code is intended to be written in pure ANSI C89.  It has been
+tested on many Unix like operating systems, and Windows.
+
+@item It's modularized
+The library is composed of several modules, and the only interaction
+between modules is through the public API.  If you only need one piece
+of functionality, it is possible to take the files you need and
+incorporate them into your own project.
+
+@item It's not bloated
+The design of the library is based on the smallest API necessary to
+implement the basic functionality.  It has been carefully extended
+with a small number of high-level wrappers for comfortable use of the
+library.  However, it does not implement additional functionality just
+for the sake of completeness.
 
 @end table
 
