@@ -84,7 +84,7 @@ sub print_tld_domain
 	{
 	    printf "  { 0x%x,  0x%x },\n", $_->[0], $_->[1];
 	}
-	printf "  { 0x%x,  0x%x }\n", last->[0], last->[1];
+	printf "  { 0x%x,  0x%x }\n", $last->[0], $last->[1];
     }
     print "};\n";
     print "\n";
