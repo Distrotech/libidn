@@ -13,7 +13,8 @@ Libidn API.  Note!  It is unfinished and left as a proof of concept.
 A developer with knowledge about Java is encouraged to take over it.
 
 The doxygen/ sub-directory builds Doxygen documentation (HTML,
-LaTeX/PDF and MAN).
+LaTeX/PDF and MAN).  Simply invoke "doxygen" in that directory and it
+should build the documentation.
 
 ----------------------------------------------------------------------
 Copying and distribution of this file, with or without modification,
