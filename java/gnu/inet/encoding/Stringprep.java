@@ -25,15 +25,45 @@ package gnu.inet.encoding;
 
 public class Stringprep
 {
+  /**
+   * Preps a name according to the Stringprep profile defined in
+   * RFC3491. Unassigned code points are not allowed.
+   *
+   * @param input the name to prep.
+   * @return the prepped name.
+   * @throws StringPrepException If the name cannot be prepped with
+   * this profile.
+   * @throws NullPointerException If the name is null.
+   */
+  public static String nameprep(String input)
+    throws StringprepException
+  {
+    return nameprep(input, false);
+  }
+
+  /**
+   * Preps a name according to the Stringprep profile defined in
+   * RFC3491.
+   *
+   * @param input the name to prep.
+   * @param allowUnassigned true if the name may contain unassigned
+   * code points.
+   * @return the prepped name.
+   * @throws StringPrepException If the name cannot be prepped with
+   * this profile.
+   * @throws NullPointerException If the name is null.
+   */
   public static String nameprep(String input, boolean allowUnassigned)
     throws StringprepException
   {
+    if (input == null) {
+      throw new NullPointerException();
+    }
+
     StringBuffer s = new StringBuffer(input);
 
-    if (allowUnassigned) {
-      if (contains(s, RFC3454.A1)) {
-	throw new StringprepException(StringprepException.CONTAINS_UNASSIGNED);
-      }
+    if (!allowUnassigned && contains(s, RFC3454.A1)) {
+      throw new StringprepException(StringprepException.CONTAINS_UNASSIGNED);
     }
 
     filter(s, RFC3454.B1);
@@ -43,13 +73,13 @@ public class Stringprep
     // B.3 is only needed if NFKC is not used, right?
     // map(s, RFC3454.B3search, RFC3454.B3replace);
 
-    if (contains(s, RFC3454.C12) &&
-	contains(s, RFC3454.C22) &&
-	contains(s, RFC3454.C3) &&
-	contains(s, RFC3454.C4) &&
-	contains(s, RFC3454.C5) &&
-	contains(s, RFC3454.C6) &&
-	contains(s, RFC3454.C7) &&
+    if (contains(s, RFC3454.C12) ||
+	contains(s, RFC3454.C22) ||
+	contains(s, RFC3454.C3) ||
+	contains(s, RFC3454.C4) ||
+	contains(s, RFC3454.C5) ||
+	contains(s, RFC3454.C6) ||
+	contains(s, RFC3454.C7) ||
 	contains(s, RFC3454.C8)) {
       // Table C.9 only contains code points > 0xFFFF which Java
       // doesn't handle
@@ -75,6 +105,180 @@ public class Stringprep
       }
     }
 
+    return s.toString();
+  }
+
+  /**
+   * Characters prohibited by RFC3920 nodeprep that aren't defined as
+   * part of the RFC3454 tables.
+   */
+  private static final char [] RFC3920_NODEPREP_PROHIBIT = new char [] {
+    '\u0022', '\u0026', '\'',     '\u002F',
+    '\u003A', '\u003C', '\u003E', '\u0040'
+  };
+
+  /**
+   * Preps a node name according to the Stringprep profile defined in
+   * RFC3920. Unassigned code points are not allowed.
+   *
+   * @param input the node name to prep.
+   * @return the prepped node name.
+   * @throws StringPrepException If the node name cannot be prepped
+   * with this profile.
+   * @throws NullPointerException If the node name is null.
+   */
+  public static String nodeprep(String input)
+    throws StringprepException
+  {
+    return nodeprep(input, false);
+  }
+
+  /**
+   * Preps a node name according to the Stringprep profile defined in
+   * RFC3920.
+   *
+   * @param input the node name to prep.
+   * @param allowUnassigned true if the node name may contain
+   * unassigned code points.
+   * @return the prepped node name.
+   * @throws StringPrepException If the node name cannot be prepped
+   * with this profile.
+   * @throws NullPointerException If the node name is null.
+   */
+  public static String nodeprep(String input, boolean allowUnassigned)
+    throws StringprepException
+  {
+    if (input == null) {
+      throw new NullPointerException();
+    }
+
+    StringBuffer s = new StringBuffer(input);
+
+    if (!allowUnassigned && contains(s, RFC3454.A1)) {
+      throw new StringprepException(StringprepException.CONTAINS_UNASSIGNED);
+    }
+
+    filter(s, RFC3454.B1);
+    map(s, RFC3454.B2search, RFC3454.B2replace);
+
+    s = new StringBuffer(NFKC.normalizeNFKC(s.toString()));
+    
+    if (contains(s, RFC3454.C11) ||
+	contains(s, RFC3454.C12) ||
+	contains(s, RFC3454.C21) ||
+	contains(s, RFC3454.C22) ||
+	contains(s, RFC3454.C3) ||
+	contains(s, RFC3454.C4) ||
+	contains(s, RFC3454.C5) ||
+	contains(s, RFC3454.C6) ||
+	contains(s, RFC3454.C7) ||
+	contains(s, RFC3454.C8) ||
+	contains(s, RFC3920_NODEPREP_PROHIBIT)) {                           
+      // Table C.9 only contains code points > 0xFFFF which Java
+      // doesn't handle
+      throw new StringprepException(StringprepException.CONTAINS_PROHIBITED);
+    }
+
+    // Bidi handling
+    boolean r = contains(s, RFC3454.D1);
+    boolean l = contains(s, RFC3454.D2);
+
+    // RFC 3454, section 6, requirement 1: already handled above (table C.8)
+
+    // RFC 3454, section 6, requirement 2
+    if (r && l) {
+      throw new	StringprepException(StringprepException.BIDI_BOTHRAL);
+    }
+    
+    // RFC 3454, section 6, requirement 3
+    if (r) {
+      if (!contains(s.charAt(0), RFC3454.D1) ||
+	  !contains(s.charAt(s.length() - 1), RFC3454.D1)) {
+	throw new StringprepException(StringprepException.BIDI_LTRAL);
+      }
+    }
+    
+    return s.toString();
+  }
+
+  /**
+   * Preps a resource name according to the Stringprep profile defined
+   * in RFC3920. Unassigned code points are not allowed.
+   *
+   * @param input the resource name to prep.
+   * @return the prepped node name.
+   * @throws StringPrepException If the resource name cannot be prepped
+   * with this profile.
+   * @throws NullPointerException If the resource name is null.
+   */
+  public static String resourceprep(String input)
+    throws StringprepException
+  {
+    return resourceprep(input, false);
+  }
+
+  /**
+   * Preps a resource name according to the Stringprep profile defined
+   * in RFC3920.
+   *
+   * @param input the resource name to prep.
+   * @param allowUnassigned true if the resource name may contain
+   * unassigned code points.
+   * @return the prepped node name.
+   * @throws StringPrepException If the resource name cannot be prepped
+   * with this profile.
+   * @throws NullPointerException If the resource name is null.
+   */
+  public static String resourceprep(String input, boolean allowUnassigned)
+    throws StringprepException
+  {
+    if (input == null) {
+      throw new NullPointerException();
+    }
+
+    StringBuffer s = new StringBuffer(input);
+    
+    if (!allowUnassigned && contains(s, RFC3454.A1)) {
+      throw new StringprepException(StringprepException.CONTAINS_UNASSIGNED);
+    }
+
+    filter(s, RFC3454.B1);
+    
+    s = new StringBuffer(NFKC.normalizeNFKC(s.toString()));
+    
+    if (contains(s, RFC3454.C12) ||
+	contains(s, RFC3454.C21) ||
+	contains(s, RFC3454.C22) ||
+	contains(s, RFC3454.C3) ||
+	contains(s, RFC3454.C4) ||
+	contains(s, RFC3454.C5) ||
+	contains(s, RFC3454.C6) ||
+	contains(s, RFC3454.C7) ||
+	contains(s, RFC3454.C8)) {
+      // Table C.9 only contains code points > 0xFFFF which Java
+      // doesn't handle
+      throw new StringprepException(StringprepException.CONTAINS_PROHIBITED);
+    }
+    
+    // Bidi handling
+    boolean r = contains(s, RFC3454.D1);
+    boolean l = contains(s, RFC3454.D2);
+    
+    // RFC 3454, section 6, requirement 1: already handled above (table C.8)
+    
+    // RFC 3454, section 6, requirement 2
+    if (r && l) {
+      throw new	StringprepException(StringprepException.BIDI_BOTHRAL);
+    }
+
+    // RFC 3454, section 6, requirement 3
+    if (r) {
+      if (!contains(s.charAt(0), RFC3454.D1) ||
+	  !contains(s.charAt(s.length() - 1), RFC3454.D1)) {
+	throw new StringprepException(StringprepException.BIDI_LTRAL);
+      }
+    }
+    
     return s.toString();
   }
 
