@@ -181,7 +181,7 @@ GCC 2.95.4 and GNU Make. This is the main development platform.
 @code{ia64-unknown-linux-gnu}, @code{m68k-unknown-linux-gnu},
 @code{mips-unknown-linux-gnu}, @code{mipsel-unknown-linux-gnu},
 @code{powerpc-unknown-linux-gnu}, @code{s390-ibm-linux-gnu},
-@code{sparc-unknown-linux-gnu}.
+@code{sparc-unknown-linux-gnu}, @code{sparc64-unknown-linux-gnu}.
 
 @item Debian GNU/Linux 2.1
 @cindex Debian
