@@ -4,6 +4,8 @@ See the end for copying conditions.
 
 * Version 0.1.10 (unreleased)
 
+** IPS iSCSI stringprep profile added.
+
 ** A new contrib/ directory added.
 Currently it contains a Python interface to Libidn, contributed by
 Stephane Bortzmeyer.
