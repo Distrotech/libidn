@@ -1,5 +1,5 @@
 /* nfkc.c	Unicode normalization utilities.
- * Copyright (C) 2002, 2003  Simon Josefsson
+ * Copyright (C) 2002, 2003, 2004  Simon Josefsson
  *
  * This file is part of GNU Libidn.
  *
@@ -51,7 +51,7 @@
 #define g_malloc malloc
 #define g_free free
 #define GError void
-#define g_set_error(a,b,c,d) 0
+#define g_set_error(a,b,c,d) ((void) 0)
 #define g_new(struct_type, n_structs)					\
   ((struct_type *) g_malloc (((gsize) sizeof (struct_type)) * ((gsize) (n_structs))))
 #  if defined (__GNUC__) && !defined (__STRICT_ANSI__) && !defined (__cplusplus)
