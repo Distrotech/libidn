@@ -50,9 +50,7 @@ AC_CHECK_HEADERS(sys/types.h string.h strings.h memory.h unistd.h errno.h)
 AC_TYPE_SIZE_T
 AX_CREATE_STDINT_H(lib/idn-int.h)
 
-# For gnulib stuff.
-gl_FUNC_MEMSET
-gl_FUNC_STRDUP
+# Need getopt.
 AC_CHECK_FUNCS(getopt_long,, [AC_LIBOBJ(getopt) AC_LIBOBJ(getopt1)])
 
 # Check if locale stuff works
@@ -100,7 +98,6 @@ AM_MISSING_PROG(GTKDOC_FIXXREF, gtkdoc-fixxref, $missing_dir)
 
 AC_CONFIG_FILES([Makefile libidn.pc reference/Makefile \
 		lib/stringprep.h src/idn.ggo \
-		gl/Makefile gl/m4/Makefile \
 		contrib/doxygen/Doxyfile m4/Makefile \
 		doc/Makefile doc/specifications/Makefile doc/man/Makefile \
 		lib/Makefile src/Makefile tests/Makefile examples/Makefile])
