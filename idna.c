@@ -51,18 +51,17 @@
  */
 int
 idna_to_ascii (const unsigned long *in, size_t inlen,
-	       char *out,
-	       int allowunassigned, int usestd3asciirules)
+	       char *out, int allowunassigned, int usestd3asciirules)
 {
   size_t len, outlen;
   unsigned long *src;
   int rc;
 
-  src = malloc(sizeof(in[0]) * inlen + 1);
+  src = malloc (sizeof (in[0]) * inlen + 1);
   if (src == NULL)
     return IDNA_MALLOC_ERROR;
 
-  memcpy(src, in, sizeof(in[0]) * inlen);
+  memcpy (src, in, sizeof (in[0]) * inlen);
   src[inlen] = 0;
 
   /*
@@ -96,24 +95,24 @@ idna_to_ascii (const unsigned long *in, size_t inlen,
     if (p == NULL)
       return IDNA_MALLOC_ERROR;
 
-    p = realloc(p, BUFSIZ);
+    p = realloc (p, BUFSIZ);
     if (p == NULL)
       return IDNA_MALLOC_ERROR;
 
     if (allowunassigned)
-      rc = stringprep_nameprep(p, BUFSIZ);
+      rc = stringprep_nameprep (p, BUFSIZ);
     else
-      rc = stringprep_nameprep_no_unassigned(p, BUFSIZ);
+      rc = stringprep_nameprep_no_unassigned (p, BUFSIZ);
 
     if (rc != STRINGPREP_OK)
       return IDNA_STRINGPREP_ERROR;
 
-    free(src);
+    free (src);
 
-    src = stringprep_utf8_to_ucs4(p, -1, NULL);
+    src = stringprep_utf8_to_ucs4 (p, -1, NULL);
   }
 
- step3:
+step3:
   /*
    * 3. If the UseSTD3ASCIIRules flag is set, then perform these checks:
    *
@@ -136,7 +135,7 @@ idna_to_ascii (const unsigned long *in, size_t inlen,
 	    (src[i] >= 0x7B && src[i] <= 0x7F))
 	  return IDNA_CONTAINS_LDH;
 
-      if (src[0] == 0x002D || (i > 0 && src[i-1] == 0x002D))
+      if (src[0] == 0x002D || (i > 0 && src[i - 1] == 0x002D))
 	return IDNA_CONTAINS_MINUS;
     }
 
@@ -173,29 +172,112 @@ idna_to_ascii (const unsigned long *in, size_t inlen,
   for (len = 0; src[len]; len++)
     ;
   src[len] = '\0';
-  outlen = 63 - strlen(IDNA_ACE_PREFIX);
+  outlen = 63 - strlen (IDNA_ACE_PREFIX);
   rc = punycode_encode (len, src, NULL,
-			&outlen, &out[strlen(IDNA_ACE_PREFIX)]);
+			&outlen, &out[strlen (IDNA_ACE_PREFIX)]);
   if (rc != PUNYCODE_SUCCESS)
     return IDNA_PUNYCODE_ERROR;
-  if (outlen > 63)
-    return IDNA_PUNYCODE_ERROR;
-  out[strlen(IDNA_ACE_PREFIX) + outlen] = '\0';
+  out[strlen (IDNA_ACE_PREFIX) + outlen] = '\0';
 
   /*
    * 7. Prepend the ACE prefix.
    */
 
-  memcpy(out, IDNA_ACE_PREFIX, strlen(IDNA_ACE_PREFIX));
+  memcpy (out, IDNA_ACE_PREFIX, strlen (IDNA_ACE_PREFIX));
 
   /*
    * 8. Verify that the number of code points is in the range 1 to 63
    * inclusive.
    */
 
- step8:
-  if (strlen(out) < 1 || strlen(out) > 63)
+step8:
+  if (strlen (out) < 1 || strlen (out) > 63)
     return IDNA_INVALID_LENGTH;
+
+  return IDNA_SUCCESS;
+}
+
+static int
+idna_to_unicode_internal (const unsigned long *in, size_t inlen,
+			  unsigned long *out, size_t * outlen,
+			  int allowunassigned, int usestd3asciirules,
+			  char *utf8in, size_t utf8len)
+{
+  int rc;
+  char tmpout[64];
+
+  /*
+   * 1. If all code points in the sequence are in the ASCII range (0..7F)
+   * then skip to step 3.
+   */
+
+  {
+    size_t i;
+    int inasciirange;
+
+    inasciirange = 1;
+    for (i = 0; in[i]; i++)
+      if (in[i] > 0x7F)
+	inasciirange = 0;
+    if (inasciirange)
+      goto step3;
+  }
+
+  /*
+   * 2. Perform the steps specified in [NAMEPREP] and fail if there is an
+   * error. (If step 3 of ToASCII is also performed here, it will not
+   * affect the overall behavior of ToUnicode, but it is not
+   * necessary.) The AllowUnassigned flag is used in [NAMEPREP].
+   */
+
+  if (allowunassigned)
+    rc = stringprep_nameprep (utf8in, utf8len);
+  else
+    rc = stringprep_nameprep_no_unassigned (utf8in, utf8len);
+
+  if (rc != STRINGPREP_OK)
+    return IDNA_STRINGPREP_ERROR;
+
+  /* 3. Verify that the sequence begins with the ACE prefix, and save a
+   * copy of the sequence.
+   */
+
+step3:
+  if (memcmp (IDNA_ACE_PREFIX, utf8in, strlen (IDNA_ACE_PREFIX)) != 0)
+    return IDNA_NO_ACE_PREFIX;
+
+  /* 4. Remove the ACE prefix.
+   */
+
+  memmove (utf8in, &utf8in[strlen (IDNA_ACE_PREFIX)],
+	   strlen (utf8in) - strlen (IDNA_ACE_PREFIX) + 1);
+
+  /* 5. Decode the sequence using the decoding algorithm in [PUNYCODE]
+   * and fail if there is an error. Save a copy of the result of
+   * this step.
+   */
+
+  rc = punycode_decode (strlen(utf8in), utf8in, outlen, out, NULL);
+  if (rc != PUNYCODE_SUCCESS)
+    return IDNA_PUNYCODE_ERROR;
+
+  /* 6. Apply ToASCII.
+   */
+
+  rc = idna_to_ascii (out, *outlen, tmpout,
+		      allowunassigned, usestd3asciirules);
+  if (rc != IDNA_SUCCESS)
+    return rc;
+
+  /* 7. Verify that the result of step 6 matches the saved copy from
+   * step 3, using a case-insensitive ASCII comparison.
+   */
+
+  if (strcasecmp(utf8in, tmpout + strlen(IDNA_ACE_PREFIX)) != 0)
+    return IDNA_ROUNDTRIP_VERIFY_ERROR;
+
+  /* 8. Return the saved copy from step 5.
+   */
 
   return IDNA_SUCCESS;
 }
@@ -226,89 +308,43 @@ idna_to_ascii (const unsigned long *in, size_t inlen,
  * The inputs to ToUnicode are a sequence of code points, the
  * AllowUnassigned flag, and the UseSTD3ASCIIRules flag. The output of
  * ToUnicode is always a sequence of Unicode code points.
+ *
+ * Return value: Returns error condition, but it must only be used for
+ *               debugging purposes.  The output buffer is always
+ *               guaranteed to contain the correct data according to
+ *               the specification (sans malloc induced errors).  NB!
+ *               This means that you normally ignore the return code
+ *               from this function, as checking it means breaking the
+ *               standard.
  */
 int
 idna_to_unicode (const unsigned long *in, size_t inlen,
-		 unsigned long *out, size_t *outlen,
+		 unsigned long *out, size_t * outlen,
 		 int allowunassigned, int usestd3asciirules)
 {
-  char *p;
   int rc;
-  char *src;
-
-  /*
-   * 1. If all code points in the sequence are in the ASCII range (0..7F)
-   * then skip to step 3.
-   */
-
-  {
-    size_t i;
-    int inasciirange;
-
-    inasciirange = 1;
-    for (i = 0; in[i]; i++)
-      if (in[i] > 0x7F)
-	inasciirange = 0;
-    if (inasciirange)
-      goto step3;
-  }
-
-  /*
-   * 2. Perform the steps specified in [NAMEPREP] and fail if there is an
-   * error. (If step 3 of ToASCII is also performed here, it will not
-   * affect the overall behavior of ToUnicode, but it is not
-   * necessary.) The AllowUnassigned flag is used in [NAMEPREP].
-   */
+  int outlensave = *outlen;
+  char *p;
 
   p = stringprep_ucs4_to_utf8 (in, inlen, NULL, NULL);
   if (p == NULL)
     return IDNA_MALLOC_ERROR;
 
-  p = realloc(p, BUFSIZ);
+  p = realloc (p, BUFSIZ);
   if (p == NULL)
     return IDNA_MALLOC_ERROR;
 
-  if (allowunassigned)
-    rc = stringprep_nameprep(p, BUFSIZ);
-  else
-    rc = stringprep_nameprep_no_unassigned(p, BUFSIZ);
+  rc = idna_to_unicode_internal (in, inlen, out, outlen,
+				 allowunassigned, usestd3asciirules,
+				 p, BUFSIZ);
+  if (rc != IDNA_SUCCESS)
+    {
+      memcpy(out, in,
+	     sizeof (in[0]) * (inlen < outlensave ? inlen : outlensave));
+      *outlen = inlen;
+    }
 
-  if (rc != STRINGPREP_OK)
-    return IDNA_STRINGPREP_ERROR;
+  free(p);
 
-  free(src);
-
-  src = stringprep_utf8_to_ucs4(p, -1, NULL);
-
-  /* 3. Verify that the sequence begins with the ACE prefix, and save a
-   * copy of the sequence.
-   */
-
- step3:
-  if (memcmp(IDNA_ACE_PREFIX, p, strlen(IDNA_ACE_PREFIX)) != 0)
-    return IDNA_NO_ACE_PREFIX;
-
-  /* 4. Remove the ACE prefix.
-   */
-
-  memmove(p, &p[strlen(IDNA_ACE_PREFIX)], strlen(p)-strlen(IDNA_ACE_PREFIX));
-
-  /* 5. Decode the sequence using the decoding algorithm in [PUNYCODE]
-   * and fail if there is an error. Save a copy of the result of
-   * this step.
-   */
-
-
-
-  /* 6. Apply ToASCII.
-   */
-
-  /* 7. Verify that the result of step 6 matches the saved copy from
-   * step 3, using a case-insensitive ASCII comparison.
-   */
-
-  /* 8. Return the saved copy from step 5.
-   */
-
-  return IDNA_SUCCESS;
+  return rc;
 }
