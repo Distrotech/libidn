@@ -1,3 +1,11 @@
+2003-05-28  Simon Josefsson <simon@josefsson.org>
+
+	* draft-ietf-ldapbis-strprep-00.txt: Add.
+
+2003-05-28  Simon Josefsson <simon@josefsson.org>
+
+	* draft-ietf-sasl-saslprep-02.txt: Add.
+
 2003-05-10  Simon Josefsson <simon@josefsson.org>
 
 	* NEWS: Version 0.1.14.
