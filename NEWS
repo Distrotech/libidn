@@ -4,6 +4,10 @@ See the end for copying conditions.
 
 * Version 0.4.9 (unreleased)
 
+** The Java library (java/libidn.jar) is included in the distribution archive.
+
+** JavaDoc manuals (doc/javadoc/) are included.
+
 ** API and ABI is backwards compatible with the previous version.
 
 * Version 0.4.8 (released 2004-06-01)
