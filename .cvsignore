@@ -13,6 +13,8 @@ config.status
 config.sub
 configure
 depcomp
+elc-stamp
+elisp-comp
 example
 example.c.texi
 example2
@@ -24,6 +26,10 @@ example4.c.texi
 gunibreak.h
 gunicomp.h
 gunidecomp.h
+idn
+idn.ggo
+idn_cmd.c
+idn_cmd.h
 idna.d
 idna.lo
 idna.op
@@ -97,7 +103,3 @@ tst_punycode
 tst_stringprep
 version.lo
 version.texi
-idn
-idn.ggo
-idn_cmd.c
-idn_cmd.h
