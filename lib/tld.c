@@ -238,7 +238,7 @@ _tld_checkchar (uint32_t ch, const Tld_table * tld)
 }
 
 /**
- * tld_check_4ti
+ * tld_check_4t
  * @in: Array of unicode code points to process. Does not need to be
  * zero terminated.
  * @inlen: Number of unicode code points.
@@ -257,7 +257,7 @@ _tld_checkchar (uint32_t ch, const Tld_table * tld)
  * general failure conditions.
  */
 int
-tld_check_4ti (const uint32_t * in, size_t inlen, size_t * errpos,
+tld_check_4t (const uint32_t * in, size_t inlen, size_t * errpos,
 	       const Tld_table * tld)
 {
   const uint32_t *ipos;
@@ -311,7 +311,7 @@ tld_check_4tz (const uint32_t * in, size_t * errpos, const Tld_table * tld)
   while (*ipos)
     ipos++;
 
-  return tld_check_4ti (in, ipos - in, errpos, tld);
+  return tld_check_4t (in, ipos - in, errpos, tld);
 }
 
 /**
@@ -362,7 +362,7 @@ tld_check_4 (const uint32_t * in, size_t inlen, size_t * errpos,
   tld = tld_default_table (domain, overrides);
   free (domain);
 
-  return tld_check_4ti (in, inlen, errpos, tld);
+  return tld_check_4t (in, inlen, errpos, tld);
 }
 
 /**
