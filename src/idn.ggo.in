@@ -33,4 +33,4 @@ option "allow-unassigned" - "Toggle IDNA AllowUnassigned flag" flag off
 option "usestd3asciirules" - "Toggle IDNA UseSTD3ASCIIRules flag" flag off
 option "profile" p "Use specified stringprep profile instead" string no
 option "debug" - "Print debugging information" flag off
-option "quiet" - "Don't print the welcome greeting" flag off
+option "quiet" - "Silent operation" flag off
