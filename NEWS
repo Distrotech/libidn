@@ -10,6 +10,8 @@ Stephane Bortzmeyer.
 
 ** idna.h and punycode.h are now installed by "make install".
 
+** API and ABI is backwards compatible with the previous version.
+
 * Version 0.1.9 (released 2003-02-20)
 
 ** SASL ANONYMOUS "plain" stringprep profile added.
