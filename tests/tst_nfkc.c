@@ -40,7 +40,29 @@ struct nfkc
 
 static struct nfkc nfkc[] = {
   {"\xC2\xB5", "\xCE\xBC"},
-  {"\xC2\xAA", "\x61"}
+  {"\xC2\xAA", "\x61"},
+  /* From <http://www.unicode.org/review/pr-29.html>. Note that we
+   * compute the output according to Unicode 3.2 without the proposed
+   * update.
+   *
+   *   1.
+   *
+   *   U+1100 (ᄀ) HANGUL CHOSEONG KIYEOK +
+   *   U+0300 (◌̀) COMBINING GRAVE ACCENT +
+   *   U+1161 (ᅡ) HANGUL JUNGSEONG A
+   *
+   *   According to the old language, the NFC form of this would be B:
+   *
+   *   2.
+   *
+   *   U+AC00 (가) HANGUL SYLLABLE GA +
+   *   U+0300 (◌̀) COMBINING GRAVE ACCENT
+   */
+  {"\xE1\x84\x80\xCC\x80\xE1\x85\xA1", "\xEA\xB0\x80\xCC\x80"},
+  /* Second test case from page.  Again, we do not implement the
+   * updated proposal.  <U+0B47; U+0300; U+0B3E> -> U+0B4B U+0300
+   */
+  {"\xE0\xAD\x87\xCC\x80\xE0\xAC\xBE", "\xE0\xAD\x8b\xCC\x80"}
 };
 
 void
@@ -63,26 +85,30 @@ doit (void)
 
       if (debug)
 	{
+	  uint32_t *t;
+	  size_t len;
+
 	  printf ("in:\n");
 	  escapeprint (nfkc[i].in, strlen (nfkc[i].in));
 	  hexprint (nfkc[i].in, strlen (nfkc[i].in));
-	  puts ("");
 	  binprint (nfkc[i].in, strlen (nfkc[i].in));
-	  puts ("");
+
 
 	  printf ("out:\n");
 	  escapeprint (out, strlen (out));
 	  hexprint (out, strlen (out));
-	  puts ("");
 	  binprint (out, strlen (out));
-	  puts ("");
+	  t = stringprep_utf8_to_ucs4 (out, -1, &len);
+	  if (t)
+	    {
+	      ucs4print (t, len);
+	      free (t);
+	    }
 
 	  printf ("expected out:\n");
 	  escapeprint (nfkc[i].out, strlen (nfkc[i].out));
 	  hexprint (nfkc[i].out, strlen (nfkc[i].out));
-	  puts ("");
 	  binprint (nfkc[i].out, strlen (nfkc[i].out));
-	  puts ("");
 	}
 
       if (strlen (nfkc[i].out) != strlen (out) ||
