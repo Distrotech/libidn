@@ -34,3 +34,12 @@ mdate-sh
 stamp-*
 texinfo.tex
 version.texi
+idna-core.api.texi
+idna-toascii.api.texi
+idna-tounicode.api.texi
+nfkc-basic.api.texi
+nfkc-main.api.texi
+punycode.api.texi
+stringprep.api.texi
+toutf8.api.texi
+version.api.texi
