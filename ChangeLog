@@ -1,3 +1,45 @@
+2002-11-07 04:28  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS, configure.ac:
+
+	Release 0.0.2.  
+
+2002-11-07 04:14  Simon Josefsson <simon@josefsson.org>
+
+	* toutf8.c:
+
+	Remove unused variable.  
+
+2002-11-07 04:14  Simon Josefsson <simon@josefsson.org>
+
+	* stringprep.c:
+
+	Fix memory leak.  
+
+2002-11-07 02:51  Simon Josefsson <simon@josefsson.org>
+
+	* Makefile.am, tst_nfkc.c, tst_stringprep.c:
+
+	Add NFKC self test.  
+
+2002-11-06 12:25  Simon Josefsson <simon@josefsson.org>
+
+	* stringprep.h.in, toutf8.c:
+
+	Cosmetic fixes.  
+
+2002-11-06 12:25  Simon Josefsson <simon@josefsson.org>
+
+	* ANNOUNCE:
+
+	Add.  
+
+2002-11-06 07:56  Simon Josefsson <simon@josefsson.org>
+
+	* README:
+
+	Explain why GLIB is not used.  
+
 2002-11-06 07:33  Simon Josefsson <simon@josefsson.org>
 
 	* Makefile.am, README:
