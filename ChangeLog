@@ -1,3 +1,98 @@
+2003-01-08 06:52  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS, configure.ac:
+
+	Release 0.1.1.  
+
+2003-01-08 06:51  Simon Josefsson <simon@josefsson.org>
+
+	* reference/Makefile.am:
+
+	dist dummy.c.  
+
+2003-01-08 06:28  Simon Josefsson <simon@josefsson.org>
+
+	* reference/tmpl/: idna.sgml, punycode.sgml, stringprep.sgml,
+	stringprep_generic.sgml, stringprep_kerberos5.sgml,
+	stringprep_nameprep.sgml:
+
+	Fix.  
+
+2003-01-08 06:26  Simon Josefsson <simon@josefsson.org>
+
+	* reference/: Makefile.am, tmpl/idna.sgml, tmpl/punycode.sgml,
+	tmpl/stringprep.sgml, tmpl/stringprep_generic.sgml,
+	tmpl/stringprep_kerberos5.sgml, tmpl/stringprep_nameprep.sgml:
+
+	Add templates.  Don't parse internal.h 
+
+2003-01-08 06:16  Simon Josefsson <simon@josefsson.org>
+
+	* reference/libidn-docs.sgml:
+
+	Add ANNOUNCE text.  
+
+2003-01-08 06:00  Simon Josefsson <simon@josefsson.org>
+
+	* reference/dummy.c:
+
+	Add.  
+
+2003-01-08 05:59  Simon Josefsson <simon@josefsson.org>
+
+	* version.c, toutf8.c:
+
+	Doc fix.  
+
+2003-01-08 05:53  Simon Josefsson <simon@josefsson.org>
+
+	* idna.c:
+
+	Doc fix.  
+
+2003-01-08 05:49  Simon Josefsson <simon@josefsson.org>
+
+	* stringprep.c:
+
+	Doc fix.  
+
+2003-01-08 05:47  Simon Josefsson <simon@josefsson.org>
+
+	* nfkc.c, stringprep.c, version.c:
+
+	Add GTK-DOC documentation.  
+
+2003-01-08 05:46  Simon Josefsson <simon@josefsson.org>
+
+	* reference/: dummy.c, Makefile.am:
+
+	Dummy GTK-DOC C file with documentation for #define macros.  
+
+2003-01-08 05:33  Simon Josefsson <simon@josefsson.org>
+
+	* stringprep.h.in:
+
+	GTK-DOC fixes.  
+
+2003-01-08 05:33  Simon Josefsson <simon@josefsson.org>
+
+	* toutf8.c:
+
+	Add GTK-DOC documentation.  
+
+2003-01-08 05:14  Simon Josefsson <simon@josefsson.org>
+
+	* punycode.c:
+
+	Add GTK-DOC documentation.  
+
+2003-01-08 05:13  Simon Josefsson <simon@josefsson.org>
+
+	* Makefile.am, configure.ac, reference/Makefile.am,
+	reference/libidn-docs.sgml, reference/libidn.types:
+
+	Add API Reference Manual.  
+
 2003-01-05 05:45  Simon Josefsson <simon@josefsson.org>
 
 	* configure.ac:
