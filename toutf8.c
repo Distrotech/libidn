@@ -199,3 +199,19 @@ stringprep_locale_to_utf8 (const char *str)
 {
   return stringprep_convert (str, "UTF-8", stringprep_locale_charset ());
 }
+
+/**
+ * stringprep_utf8_to_locale:
+ * @str: input zero terminated string.
+ *
+ * Convert string encoded in UTF-8 into the locale's character set by
+ * using stringprep_convert().
+ *
+ * Return value: Returns newly allocated zero-terminated string which
+ *   is @str transcoded into the locale's character set.
+ **/
+char *
+stringprep_utf8_to_locale (const char *str)
+{
+  return stringprep_convert (str, stringprep_locale_charset (), "UTF-8");
+}

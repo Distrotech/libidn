@@ -114,6 +114,7 @@ extern "C"
 				   const char *to_codeset,
 				   const char *from_codeset);
   extern char *stringprep_locale_to_utf8 (const char *str);
+  extern char *stringprep_utf8_to_locale (const char *str);
 
 #ifdef __cplusplus
 }

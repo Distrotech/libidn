@@ -58,7 +58,7 @@ TESTS = $(tests)
 INCLUDES = -I$(top_srcdir)
 LDADD = libidn.la
 
-noinst_PROGRAMS = $(tests) example example2
+noinst_PROGRAMS = $(tests) example example2 example3 example4
 
 ACLOCAL_AMFLAGS = -I .
 

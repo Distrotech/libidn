@@ -53,6 +53,17 @@ extern "C"
 		       unsigned long *out, size_t * outlen,
 		       int allowunassigned, int usestd3asciirules);
 
+  int idna_ucs4_to_ace (const unsigned long *input, char **output);
+  int idna_utf8_to_ace (const char *input, char **output);
+  int idna_locale_to_ace (const char *input, char **output);
+
+  int idna_ucs4ace_to_ucs4 (const unsigned long *input,
+			    unsigned long **output);
+  int idna_utf8ace_to_ucs4 (const char *input, unsigned long **output);
+  int idna_utf8ace_to_utf8 (const char *input, char **output);
+  int idna_utf8ace_to_locale (const char *input, char **output);
+  int idna_localeace_to_locale (const char *input, char **output);
+
 #ifdef __cplusplus
 }
 #endif
