@@ -1,3 +1,45 @@
+2004-10-12  Simon Josefsson <simon@josefsson.org>
+
+	* po/da.po, po/de.po, po/eo.po, po/fr.po, po/nl.po, po/pl.po,
+	po/ro.po, po/sr.po, po/sv.po: Generated.
+
+2004-10-12  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Version 0.5.7.
+
+2004-10-12  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2004-10-11  Simon Josefsson <simon@josefsson.org>
+
+	* po/fr.po: Generated.
+
+2004-10-11  Simon Josefsson <simon@josefsson.org>
+
+	* po/fr.po: Sync with TP.
+
+2004-10-05  Simon Josefsson <simon@josefsson.org>
+
+	* gl/error.c: Update Gnulib.
+
+2004-10-04  Simon Josefsson <simon@josefsson.org>
+
+	* po/da.po, po/de.po, po/eo.po, po/fr.po, po/nl.po, po/pl.po,
+	po/ro.po, po/sr.po, po/sv.po: Generated.
+
+2004-10-04  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS, configure.ac: Bump versions.
+
+2004-10-03  Simon Josefsson <simon@josefsson.org>
+
+	* src/idn.c: Use EXIT_SUCCESS and EXIT_FAILURE.
+
+2004-10-02  Simon Josefsson <simon@josefsson.org>
+
+	* AUTHORS: Update PGP key.
+
 2004-10-02  Simon Josefsson <simon@josefsson.org>
 
 	* po/da.po, po/de.po, po/eo.po, po/fr.po, po/nl.po, po/pl.po,
