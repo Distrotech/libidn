@@ -20,6 +20,7 @@
  */
 
 #include "internal.h"
+#include <stringprep_nameprep.h>
 
 static int debug = 0;
 static int error_count = 0;
@@ -120,6 +121,10 @@ strprep[] =
   ,
   {
   "\xC2\xAA", 0, "\x61", stringprep_generic}
+  ,
+  /* nameprep, exposed a bug in libstringprep 0.0.5 */
+  {
+    "\xC2\xAA\x0A", 0, "\x61\x0A", stringprep_nameprep}
   ,
   /* unassigned code point U+0221: */
   {
