@@ -9,8 +9,6 @@ Added Polish, by Jakub Bogusz, and Serbian, by Aleksandar Jelenak.
 
 ** Norwegian TLD table added, by Thomas Jacob.
 
-** API and ABI is backwards compatible with the previous version.
-
 * Version 0.4.1 (released 2004-03-08)
 
 ** The user messages from the command line utility are now translated.
