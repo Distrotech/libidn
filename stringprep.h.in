@@ -176,7 +176,7 @@ extern "C"
   extern enum Stringprep_rc
     stringprep (char *in, size_t maxlen,
 		enum Stringprep_profile_flags flags,
-		struct Stringprep_table *profile);
+		Stringprep_profile *profile);
 
   extern enum Stringprep_rc
     stringprep_profile (char *in,
