@@ -6,6 +6,8 @@ See the end for copying conditions.
 
 ** Java "make install" rules are now DESTDIR compatible.
 
+** API and ABI is backwards compatible with the previous version.
+
 * Version 0.5.1 (released 2004-07-09)
 
 ** Cross compile builds should work.
