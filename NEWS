@@ -2,7 +2,7 @@ Libidn NEWS -- History of user-visible changes.                 -*- outline -*-
 Copyright (C) 2002, 2003, 2004 Simon Josefsson
 See the end for copying conditions.
 
-* Version 0.5.3 (unreleased)
+* Version 0.5.3 (released 2004-08-05)
 
 ** Fix crash in `idn --tld' command line tool.
 
