@@ -1,17 +1,18 @@
 \input texinfo   @c -*-texinfo-*-
-@c This file is part of the GNU Libidn Manual.
 @c Copyright (C) 2002, 2003 Simon Josefsson
+@c This file is part of GNU Libidn.
 @c See below for copying conditions.
 
 @setfilename libidn.info
+@documentencoding ISO-8859-1
 @include version.texi
-@settitle GNU Libidn @value{VERSION}
+@settitle GNU Libidn
 
 @syncodeindex pg cp
 
 @copying
-This manual is for GNU Libidn version @value{VERSION},
-@value{UPDATED}.
+This manual is last updated @value{UPDATED} for version
+@value{VERSION} of GNU Libidn.
 
 Copyright @copyright{} 2002, 2003 Simon Josefsson.
 
@@ -47,8 +48,9 @@ Software Foundation raise funds for GNU development.''
 
 @titlepage
 @title GNU Libidn
+@subtitle Internationalized string processing for the GNU system
 @subtitle for version @value{VERSION}, @value{UPDATED}
-@author Simon Josefsson (@email{bug-libidn@@gnu.org})
+@author Simon Josefsson
 @page
 @vskip 0pt plus 1filll
 @insertcopying
