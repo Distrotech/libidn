@@ -2,6 +2,14 @@ Libidn NEWS -- History of user-visible changes.                 -*- outline -*-
 Copyright (C) 2002, 2003 Simon Josefsson
 See the end for copying conditions.
 
+* Version 0.1.8 (unreleased)
+
+** Type of string length variables is now (s)size_t.
+Unfortunately this means binary shared library binary backwards
+compatible is lost.
+
+** New nameprep test vectors.
+
 * Version 0.1.7 (released 2003-02-12)
 
 ** Uses official IDNA ACE prefix.
