@@ -90,7 +90,6 @@ stringprep_convert (const char *str,
 		    const char *to_codeset,
 		    const char *from_codeset)
 {
-  char *res;
   iconv_t cd;
   char *dest;
   char *outp;
