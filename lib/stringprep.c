@@ -76,7 +76,7 @@ stringprep_apply_table_to_string (uint32_t * ucs4,
 	return STRINGPREP_TOO_SMALL_BUFFER;
 
       memmove (&ucs4[pos + maplen], &ucs4[pos + 1],
-	       *ucs4len * sizeof (uint32_t) - (&ucs4[pos + 1] - ucs4));
+	       sizeof (uint32_t) * (*ucs4len - pos - 1));
       memcpy (&ucs4[pos], table[i].map, sizeof (uint32_t) * maplen);
       *ucs4len = *ucs4len - 1 + maplen;
     }
@@ -346,23 +346,30 @@ stringprep (char *in,
   ssize_t k;
   int rc;
   char *utf8 = NULL;
-  uint32_t *ucs4;
-  size_t ucs4len, maxucs4len;
+  uint32_t *ucs4 = NULL;
+  size_t ucs4len, maxucs4len, adducs4len = 50;
 
-  ucs4 = stringprep_utf8_to_ucs4 (in, -1, &ucs4len);
-  maxucs4len = 4 * ucs4len + 10;	/* XXX */
-  ucs4 = realloc (ucs4, 1 + maxucs4len * sizeof (uint32_t));
-  if (!ucs4)
+  do
     {
-      rc = STRINGPREP_MALLOC_ERROR;
-      goto done;
-    }
+      if (ucs4)
+	free (ucs4);
+      ucs4 = stringprep_utf8_to_ucs4 (in, -1, &ucs4len);
+      maxucs4len = ucs4len + adducs4len;
+      ucs4 = realloc (ucs4, maxucs4len * sizeof (uint32_t));
+      if (!ucs4)
+	{
+	  rc = STRINGPREP_MALLOC_ERROR;
+	  goto done;
+	}
 
-  rc = stringprep_4zi_1 (ucs4, ucs4len, maxucs4len, flags, profile);
+      rc = stringprep_4i (ucs4, &ucs4len, maxucs4len, flags, profile);
+      adducs4len += 50;
+    }
+  while (rc == STRINGPREP_TOO_SMALL_BUFFER);
   if (rc != STRINGPREP_OK)
     goto done;
 
-  utf8 = stringprep_ucs4_to_utf8 (ucs4, -1, 0, 0);
+  utf8 = stringprep_ucs4_to_utf8 (ucs4, ucs4len, 0, 0);
   if (strlen (utf8) >= maxlen)
     {
       rc = STRINGPREP_TOO_SMALL_BUFFER;
