@@ -15,7 +15,7 @@ dnl the set of basic 'stdint's definitions/typedefs:
 dnl   int8_t,uint8_t,int16_t,uint16_t,int32_t,uint32_t,intptr_t,uintptr_t
 dnl   int_least32_t.. int_fast32_t.. intmax_t
 dnl which may or may not rely on the definitions of other files,
-dnl or using the AC_COMPILE_CHECK_SIZEOF macro to determine the actual
+dnl or using the AC_CHECK_SIZEOF macro to determine the actual
 dnl sizeof each type.
 dnl
 dnl if your header files require the stdint-types you will want to create an
@@ -75,7 +75,7 @@ ac_cv_stdint_result="(no helpful system typedefs seen)"
 AC_CACHE_CHECK([for stdint uintptr_t], [ac_cv_header_stdint_x],[
  ac_cv_header_stdint_x="" # the 1997 typedefs (inttypes.h)
   AC_MSG_RESULT([(..)])
-  for i in stdint.h inttypes.h sys/inttypes.h sys/types.h $inttype_headers ; do
+  for i in stdint.h inttypes.h sys/inttypes.h $inttype_headers ; do
    unset ac_cv_type_uintptr_t 
    unset ac_cv_type_uint64_t
    _AC_CHECK_TYPE_NEW(uintptr_t,[ac_cv_header_stdint_x=$i],dnl
@@ -91,7 +91,7 @@ if test "_$ac_cv_header_stdint_x" = "_" ; then
 AC_CACHE_CHECK([for stdint uint32_t], [ac_cv_header_stdint_o],[
  ac_cv_header_stdint_o="" # the 1995 typedefs (sys/inttypes.h)
   AC_MSG_RESULT([(..)])
-  for i in inttypes.h sys/inttypes.h stdint.h sys/types.h $inttype_headers ; do
+  for i in inttypes.h sys/inttypes.h stdint.h $inttype_headers ; do
    unset ac_cv_type_uint32_t
    unset ac_cv_type_uint64_t
    AC_CHECK_TYPE(uint32_t,[ac_cv_header_stdint_o=$i],dnl
@@ -126,11 +126,11 @@ dnl if there was no good C99 header file, do some typedef checks...
 if test "_$ac_cv_header_stdint_x" = "_" ; then
    AC_MSG_CHECKING([for stdint datatype model])
    AC_MSG_RESULT([(..)])
-   AC_COMPILE_CHECK_SIZEOF(char)
-   AC_COMPILE_CHECK_SIZEOF(short)
-   AC_COMPILE_CHECK_SIZEOF(int)
-   AC_COMPILE_CHECK_SIZEOF(long)
-   AC_COMPILE_CHECK_SIZEOF(void*)
+   AC_CHECK_SIZEOF(char)
+   AC_CHECK_SIZEOF(short)
+   AC_CHECK_SIZEOF(int)
+   AC_CHECK_SIZEOF(long)
+   AC_CHECK_SIZEOF(void*)
    ac_cv_stdint_char_model=""
    ac_cv_stdint_char_model="$ac_cv_stdint_char_model$ac_cv_sizeof_char"
    ac_cv_stdint_char_model="$ac_cv_stdint_char_model$ac_cv_sizeof_short"
