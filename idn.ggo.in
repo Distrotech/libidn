@@ -1,5 +1,5 @@
-package "idn (@PACKAGE@)"
-version "@VERSION@"
+package "idn"
+version "(@PACKAGE@) @VERSION@"
 
 purpose "Command line interface to the library."
 
