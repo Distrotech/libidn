@@ -20,8 +20,6 @@
 if JAVA
 
 JAVAROOT = $(top_builddir)/java
-noinst_JAVA = GenerateRFC3454.java IDNAException.java IDNA.java	\
-	PunycodeException.java Punycode.java RFC3454.java	\
-	StringprepException.java Stringprep.java TestIDNA.java
+noinst_JAVA = Punycode.java PunycodeException.java
 
 endif
