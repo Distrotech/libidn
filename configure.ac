@@ -84,7 +84,7 @@ AC_SUBST(HTML_DIR)
 AC_ARG_ENABLE(gtk-doc,
 	AC_HELP_STRING([--enable-gtk-doc], [Build API reference using GTK-DOC]),
 	enable_gtk_doc="$enableval")
-if test "$enable_gtk_doc" == "yes"; then
+if test "$enable_gtk_doc" = "yes"; then
 	GTKDOC=reference
 fi
 AC_SUBST(GTKDOC)
