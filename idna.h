@@ -37,6 +37,7 @@ extern "C"
     IDNA_CONTAINS_MINUS = 4,
     IDNA_INVALID_LENGTH = 5,
     IDNA_NO_ACE_PREFIX = 6,
+    IDNA_ROUNDTRIP_VERIFY_ERROR = 7,
     /* Internal errors. */
     IDNA_MALLOC_ERROR = 201
   };
@@ -49,7 +50,7 @@ extern "C"
 		     char *out, int allowunassigned, int usestd3asciirules);
 
   int idna_to_unicode (const unsigned long *in, size_t inlen,
-		       unsigned long *out, size_t *outlen,
+		       unsigned long *out, size_t * outlen,
 		       int allowunassigned, int usestd3asciirules);
 
 #ifdef __cplusplus

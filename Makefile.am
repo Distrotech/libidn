@@ -47,7 +47,7 @@ gunicomp.h gunidecomp.h: gen-unicode-tables.pl UnicodeData-3.2.0.txt LineBreak-3
 stringprep_generic.c: rfc3454.txt gen-stringprep-tables.pl
 	$(PERL) $(srcdir)/gen-stringprep-tables.pl rfc3454.txt
 
-tests = tst_stringprep tst_nfkc tst_punycode
+tests = tst_stringprep tst_nfkc tst_punycode tst_idna
 
 check_PROGRAMS = $(tests)
 
