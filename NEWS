@@ -11,11 +11,11 @@ make it possible for you to test strings for TLD conformance locally.
 The code can be disabled by --disable-tld.  If enabled (the default),
 the new API "tld.h" is installed which can be used to check a string
 for conformance to TLD specific rules.  This add a new self test, and
-updates to the manual.  People responsible for maintaining TLD tables
-are hereby encouraged to contribute them (under reasonable licensing
-terms) for inclusion in future versions of Libidn.  Be warned that the
-API for TLD checking may change throughout the 0.4.x series as we get
-feedback on it.
+a new chapter in the manual.  People responsible for maintaining TLD
+tables are hereby encouraged to contribute them (under reasonable
+licensing terms) for inclusion in future versions of Libidn.  Be
+warned that the API for TLD checking may change throughout the 0.4.x
+series as we get feedback on it.
 
 ** Kerberos 5 stringprep profile macro is no longer documented.
 The macro itself will probably be removed in the future, if the
