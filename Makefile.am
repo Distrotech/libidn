@@ -27,7 +27,10 @@ EXTRA_DIST = libidn.pc.in iconv.m4 strdup.c memset.c \
 	CompositionExclusions-3.2.0.txt \
 	gdoc libidn.html libidn.ps libidn.pdf lgpl.texi \
 	libc/README libc/Makefile libc/Versions libc/configure \
-	libc/example.c libc/getaddrinfo.c libc/libc.patch libc/netdb.h
+	libc/example.c libc/getaddrinfo.c libc/libc.patch libc/netdb.h \
+	contrib/README \
+	contrib/idn-python/README contrib/idn-python/Makefile \
+	contrib/idn-python/idn.c contrib/idn-python/test.py
 
 pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = libidn.pc
