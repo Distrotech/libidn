@@ -4,8 +4,8 @@ See the end for copying conditions.
 
 * Version 0.4.1 (unreleased)
 
-** The command line utility now support gettext for translations.
-Currently only English and Swedish is supported.
+** The user messages from the command line utility are now translated.
+Currently English and Swedish is supported.
 
 ** Logic of stringprep_locale_charset modified.
 Future versions will use, in order, $CHARSET iff defined, nl_langinfo
