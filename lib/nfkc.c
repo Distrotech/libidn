@@ -931,11 +931,9 @@ g_utf8_normalize (const gchar * str, gssize len, GNormalizeMode mode)
  *
  * Converts a sequence of bytes encoded as UTF-8 to a Unicode character.
  * If @p does not point to a valid UTF-8 encoded character, results are
- * undefined. If you are not sure that the bytes are complete
- * valid Unicode characters, you should use g_utf8_get_char_validated()
- * instead.
+ * undefined.
  *
- * Return value: the resulting character
+ * Return value: the resulting character.
  **/
 uint32_t
 stringprep_utf8_to_unichar (const char *p)
@@ -952,7 +950,7 @@ stringprep_utf8_to_unichar (const char *p)
  *
  * Converts a single character to UTF-8.
  *
- * Return value: number of bytes written
+ * Return value: number of bytes written.
  **/
 int
 stringprep_unichar_to_utf8 (uint32_t c, char *outbuf)
