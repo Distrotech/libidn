@@ -62,21 +62,21 @@ include $(srcdir)/Makefile.gdoci
 
 # DocBook
 
-libidn_html_auto_deps = html/a1553.html html/a1676.html			\
-	html/c1166.html html/c1191.html html/c1201.html			\
-	html/c1204.html html/c1209.html html/c1214.html			\
-	html/c1219.html html/c1298.html html/c16.html html/c261.html	\
-	html/c364.html html/c531.html html/c793.html html/c9.html	\
-	html/c907.html html/i1303.html html/i1434.html html/index.html	\
-	html/x1042.html html/x1089.html html/x1176.html			\
-	html/x1181.html html/x1186.html html/x1262.html			\
-	html/x1661.html html/x1779.html html/x179.html html/x195.html	\
+libidn_html_auto_deps = html/a1563.html html/a1686.html			\
+	html/c1176.html html/c1201.html html/c1211.html			\
+	html/c1214.html html/c1219.html html/c1224.html			\
+	html/c1229.html html/c1308.html html/c16.html html/c261.html	\
+	html/c364.html html/c541.html html/c803.html html/c9.html	\
+	html/c917.html html/i1313.html html/i1444.html html/index.html	\
+	html/x1052.html html/x1099.html html/x1186.html			\
+	html/x1191.html html/x1196.html html/x1272.html			\
+	html/x1671.html html/x1789.html html/x179.html html/x195.html	\
 	html/x214.html html/x232.html html/x29.html html/x297.html	\
 	html/x300.html html/x319.html html/x345.html html/x376.html	\
-	html/x446.html html/x45.html html/x480.html html/x543.html	\
-	html/x548.html html/x601.html html/x615.html html/x730.html	\
-	html/x805.html html/x825.html html/x832.html html/x919.html	\
-	html/x966.html html/x978.html html/x985.html
+	html/x45.html html/x456.html html/x490.html html/x553.html	\
+	html/x558.html html/x611.html html/x625.html html/x740.html	\
+	html/x815.html html/x835.html html/x842.html html/x929.html	\
+	html/x976.html html/x988.html html/x995.html
 
 libidn-db.xml: libidn.texi $(libidn_TEXINFOS)
 	$(MAKEINFO) --docbook --output $@ libidn.texi
