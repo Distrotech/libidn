@@ -1,5 +1,5 @@
 /* example.c	Example code showing how to use stringprep().
- * Copyright (C) 2002  Simon Josefsson
+ * Copyright (C) 2002, 2003  Simon Josefsson
  *
  * This file is part of GNU Libidn.
  *
@@ -42,7 +42,8 @@ main (int argc, char *argv[])
 {
   char buf[BUFSIZ];
   char *p;
-  int rc, i;
+  int rc;
+  size_t i;
 
   printf ("Input string encoded as `%s': ", stringprep_locale_charset ());
   fflush (stdout);

@@ -75,7 +75,7 @@
 # include <strings.h>
 #endif
 
-#if WITH_DMALLOC
+#if defined(WITH_DMALLOC) && WITH_DMALLOC
 #include <dmalloc.h>
 #endif
 

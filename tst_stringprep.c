@@ -316,7 +316,7 @@ strprep[] =
     "\xe3\x83\xab""i\xcc\x87""tel\x28""d\x29\xe3\x82\xa2\xe3\x83\x91"
     "\xe3\x83\xbc\xe3\x83\x88"
   },
-#if !DBG
+#if !defined(DRAFT)
   { "Test of prohibited ASCII character U+0020",
     "\x20", NULL, stringprep_generic, 0, STRINGPREP_CONTAINS_PROHIBITED
   },
@@ -365,7 +365,8 @@ int
 main (int argc, char *argv[])
 {
   char *p;
-  int rc, i;
+  int rc;
+  size_t i;
 
   if (!stringprep_check_version (STRINGPREP_VERSION))
     fail ("stringprep_check_version() failed\n");
@@ -393,7 +394,7 @@ main (int argc, char *argv[])
 
   for (i = 0; i < sizeof (strprep) / sizeof (strprep[0]); i++)
     {
-#if DBG
+#ifdef DRAFT
       printf("<section title=\"%s.\">\n", strprep[i].comment);
       printf("\n");
       printf("<figure>\n");
@@ -430,7 +431,7 @@ main (int argc, char *argv[])
 	  continue;
 	}
 
-#if DBG
+#ifdef DRAFT
       printf ("out: ");
       escapeprint (p, strlen (p));
 #endif
@@ -469,7 +470,7 @@ main (int argc, char *argv[])
       else if (debug)
 	  printf ("OK\n\n");
 
-#if DBG
+#ifdef DRAFT
       printf("</artwork>\n");
       printf("</figure>\n");
       printf("\n");

@@ -226,9 +226,8 @@ main (int argc, char *argv[])
   char label[100];
   unsigned long *ucs4label;
   unsigned long tmp[100];
-  ssize_t len;
-  size_t len2;
-  int rc, i;
+  size_t len, len2, i;
+  int rc;
 
   do
     if (strcmp (argv[argc - 1], "-v") == 0 ||

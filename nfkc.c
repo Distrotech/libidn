@@ -1,5 +1,5 @@
 /* nfkc.c	Unicode normalization utilities.
- * Copyright (C) 2002  Simon Josefsson
+ * Copyright (C) 2002, 2003  Simon Josefsson
  *
  * This file is part of GNU Libidn.
  *
@@ -139,7 +139,7 @@ static const char utf8_skip_data[256] = {
 };
 static const char *const g_utf8_skip = utf8_skip_data;
 
-#define g_utf8_next_char(p) (char *)((p) + g_utf8_skip[*(unsigned char *)(p)])
+#define g_utf8_next_char(p) (const char *)((p) + g_utf8_skip[*(const unsigned char *)(p)])
 
 /**
  * stringprep_utf8_to_unichar:
@@ -324,7 +324,7 @@ combine (unsigned long a, unsigned long b, unsigned long *result)
 }
 
 static unsigned long *
-_g_utf8_normalize_wc (const char *str, int max_len, GNormalizeMode mode)
+_g_utf8_normalize_wc (const char *str, ssize_t max_len, GNormalizeMode mode)
 {
   size_t n_wc;
   unsigned long *wc_buffer;
@@ -524,7 +524,7 @@ stringprep_unichar_to_utf8 (unsigned long c, char *outbuf)
  *               This value must be freed with free().
  **/
 unsigned long *
-stringprep_utf8_to_ucs4 (const char *str, int len, int *items_written)
+stringprep_utf8_to_ucs4 (const char *str, ssize_t len, size_t *items_written)
 {
   int j, charlen;
   unsigned long *result;
@@ -555,7 +555,7 @@ stringprep_utf8_to_ucs4 (const char *str, int len, int *items_written)
   p = str;
   for (i = 0; i < n_chars; i++)
     {
-      unsigned long wc = ((unsigned char *) p)[0];
+      unsigned long wc = ((const unsigned char *) p)[0];
 
       if (wc < 0x80)
 	{
@@ -593,7 +593,7 @@ stringprep_utf8_to_ucs4 (const char *str, int len, int *items_written)
 	  for (j = 1; j < charlen; j++)
 	    {
 	      wc <<= 6;
-	      wc |= ((unsigned char *) p)[j] & 0x3f;
+	      wc |= ((const unsigned char *) p)[j] & 0x3f;
 	    }
 
 	  result[i] = wc;
@@ -627,8 +627,8 @@ stringprep_utf8_to_ucs4 (const char *str, int len, int *items_written)
  *               @error set.
  **/
 char *
-stringprep_ucs4_to_utf8 (const unsigned long *str,
-			 int len, int *items_read, int *items_written)
+stringprep_ucs4_to_utf8 (const unsigned long *str, ssize_t len,
+			 size_t *items_read, size_t *items_written)
 {
   int result_length;
   char *result = NULL;
@@ -708,7 +708,7 @@ err_out:
  *   normalized form of @str.
  **/
 static char *
-g_utf8_normalize (const char *str, int len, GNormalizeMode mode)
+g_utf8_normalize (const char *str, ssize_t len, GNormalizeMode mode)
 {
   unsigned long *result_wc = _g_utf8_normalize_wc (str, len, mode);
   char *result;
@@ -744,7 +744,7 @@ g_utf8_normalize (const char *str, int len, GNormalizeMode mode)
  *   NFKC normalized form of @str.
  **/
 char *
-stringprep_utf8_nfkc_normalize (const char *str, int len)
+stringprep_utf8_nfkc_normalize (const char *str, ssize_t len)
 {
   return g_utf8_normalize (str, len, G_NORMALIZE_NFKC);
 }
@@ -761,7 +761,7 @@ stringprep_utf8_nfkc_normalize (const char *str, int len)
  *   normalized form of @str.
  **/
 unsigned long *
-stringprep_ucs4_nfkc_normalize (unsigned long *str, int len)
+stringprep_ucs4_nfkc_normalize (unsigned long *str, ssize_t len)
 {
   char *p;
   unsigned long *result_wc;

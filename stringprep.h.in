@@ -27,6 +27,9 @@ extern "C"
 {
 #endif
 
+#include <stddef.h>		/* size_t */
+#include <unistd.h>		/* ssize_t */
+
 #define STRINGPREP_VERSION "@PACKAGE_VERSION@"
 
 /* Error codes. */
@@ -90,7 +93,7 @@ extern "C"
 
 /* API */
 
-  extern int stringprep (char *in, int maxlen, int flags,
+  extern int stringprep (char *in, size_t maxlen, int flags,
 			 Stringprep_profile * profile);
 
   extern const char *stringprep_check_version (const char *req_version);
@@ -100,14 +103,15 @@ extern "C"
   extern int stringprep_unichar_to_utf8 (unsigned long c, char *outbuf);
   extern unsigned long stringprep_utf8_to_unichar (const char *p);
 
-  extern unsigned long *stringprep_utf8_to_ucs4 (const char *str, int len,
-						 int *items_written);
-  extern char *stringprep_ucs4_to_utf8 (const unsigned long *str, int len,
-					int *items_read, int *items_written);
+  extern unsigned long *stringprep_utf8_to_ucs4 (const char *str, ssize_t len,
+						 size_t *items_written);
+  extern char *stringprep_ucs4_to_utf8 (const unsigned long *str, ssize_t len,
+					size_t *items_read,
+					size_t *items_written);
 
-  extern char *stringprep_utf8_nfkc_normalize (const char *str, int len);
+  extern char *stringprep_utf8_nfkc_normalize (const char *str, ssize_t len);
   extern unsigned long *stringprep_ucs4_nfkc_normalize (unsigned long *str,
-							int len);
+							ssize_t len);
 
   extern const char *stringprep_locale_charset (void);
   extern char *stringprep_convert (const char *str,

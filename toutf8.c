@@ -1,5 +1,5 @@
 /* toutf8.c	Convert strings from system locale into UTF-8.
- * Copyright (C) 2002  Simon Josefsson
+ * Copyright (C) 2002, 2003  Simon Josefsson
  *
  * This file is part of GNU Libidn.
  *
@@ -93,7 +93,7 @@ stringprep_convert (const char *str,
   iconv_t cd;
   char *dest;
   char *outp;
-  char *p;
+  char *p, *startp;
   size_t inbytes_remaining;
   size_t outbytes_remaining;
   size_t err;
@@ -109,9 +109,11 @@ stringprep_convert (const char *str,
   if (cd == (iconv_t) - 1)
     return NULL;
 
-  len = strlen (str);
-
-  p = (char *) str;
+  p = strdup(str);
+  if (p == NULL)
+    return NULL;
+  len = strlen (p);
+  startp = p;
   inbytes_remaining = len;
   outbuf_size = len + 1;	/* + 1 for nul in case len == 1 */
 
@@ -156,8 +158,11 @@ again:
 
   *outp = '\0';
 
-  if ((p - str) != len)
+  if ((p - startp) != len)
     have_error = 1;
+
+
+  free(startp);
 
   iconv_close (cd);
 

@@ -177,7 +177,7 @@ step3:
 
     match = 1;
     for (i = 0; match && i < strlen (IDNA_ACE_PREFIX); i++)
-      if (IDNA_ACE_PREFIX[i] != src[i])
+      if (((unsigned long)IDNA_ACE_PREFIX[i] & 0xFF) != src[i])
 	match = 0;
     if (match)
       return IDNA_CONTAINS_ACE_PREFIX;
@@ -342,7 +342,7 @@ idna_to_unicode (const unsigned long *in, size_t inlen,
 		 int allowunassigned, int usestd3asciirules)
 {
   int rc;
-  int outlensave = *outlen;
+  size_t outlensave = *outlen;
   char *p;
 
   p = stringprep_ucs4_to_utf8 (in, inlen, NULL, NULL);
@@ -358,8 +358,8 @@ idna_to_unicode (const unsigned long *in, size_t inlen,
 				 p, BUFSIZ);
   if (rc != IDNA_SUCCESS)
     {
-      memcpy (out, in,
-	      sizeof (in[0]) * (inlen < outlensave ? inlen : outlensave));
+      memcpy (out, in, sizeof (in[0]) * (inlen < outlensave ?
+					 inlen : outlensave));
       *outlen = inlen;
     }
 

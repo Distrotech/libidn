@@ -1,6 +1,6 @@
 /* punycode.c	Implementation of punycode used to ASCII encode IDN's.
+ * Copyright (C) 2002, 2003  Simon Josefsson
  * Copyright (C) 2002  Adam M. Costello
- * Copyright (C) 2002  Simon Josefsson
  *
  * This file is part of GNU Libidn.
  *
@@ -88,7 +88,7 @@ encode_digit (unsigned long d, int flag)
 /* is caseless.  The behavior is undefined if bcp is not a basic */
 /* code point.                                                   */
 
-static char
+static unsigned char
 encode_basic (unsigned long bcp, int flag)
 {
   bcp -= (bcp - 97 < 26) << 5;

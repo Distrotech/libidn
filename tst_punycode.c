@@ -195,8 +195,8 @@ main (int argc, char *argv[])
 {
   char *p;
   unsigned long *q;
-  int rc, i;
-  size_t outlen;
+  int rc;
+  size_t i, outlen;
 
   do
     if (strcmp (argv[argc - 1], "-v") == 0 ||

@@ -1,5 +1,5 @@
 /* tst_nfkc.c	Self tests for stringprep_utf8_nfkc_normalize().
- * Copyright (C) 2002  Simon Josefsson
+ * Copyright (C) 2002, 2003  Simon Josefsson
  *
  * This file is part of GNU Libidn.
  *
@@ -116,7 +116,7 @@ int
 main (int argc, char *argv[])
 {
   char *out;
-  int i;
+  size_t i;
 
   do
     if (strcmp (argv[argc - 1], "-v") == 0 ||

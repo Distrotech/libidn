@@ -1,6 +1,6 @@
 /* example2.c	Example code showing how to use punycode.
+ * Copyright (C) 2002, 2003  Simon Josefsson
  * Copyright (C) 2002  Adam M. Costello
- * Copyright (C) 2002  Simon Josefsson
  *
  * This file is part of GNU Libidn.
  *
@@ -53,6 +53,9 @@ enum
   ace_max_length = 256
 };
 
+typedef void usagefn (char **argv);
+static volatile usagefn usage;
+
 static void
 usage (char **argv)
 {
@@ -72,6 +75,8 @@ usage (char **argv)
   exit (EXIT_FAILURE);
 }
 
+typedef void failfn (const char *msg);
+static volatile failfn fail;
 
 static void
 fail (const char *msg)
@@ -95,7 +100,7 @@ static const char print_ascii[] =
   "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
   " !\"#$%&'()*+,-./"
   "0123456789:;<=>?"
-  "\x40ABCDEFGHIJKLMNO"
+  "\x40""ABCDEFGHIJKLMNO"
   "PQRSTUVWXYZ[\\]^_" "`abcdefghijklmno" "pqrstuvwxyz{|}~\n";
 
 
