@@ -65,6 +65,8 @@ parse_version_string (const char *s, int *major, int *minor, int *micro)
  * satisfied.  If a NULL is passed to this function, no check is done,
  * but the version string is simply returned.
  *
+ * See %STRINGPREP_VERSION for a suitable @req_version string.
+ *
  * Return value: Version string of run-time library, or NULL if the
  * run-time library does not meet the required version number.
  */

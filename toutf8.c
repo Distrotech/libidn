@@ -61,7 +61,6 @@ static const char *stringprep_locale_charset_cache = NULL;
  *
  * Return value: Return the character set used by the system locale.
  *   It will never return NULL, but use "ASCII" as a fallback.
- *
  **/
 const char *
 stringprep_locale_charset (void)
