@@ -2,6 +2,8 @@ Libidn NEWS -- History of user-visible changes.                 -*- outline -*-
 Copyright (C) 2002, 2003 Simon Josefsson
 See the end for copying conditions.
 
+* Version 0.3.5 (unreleased)
+
 * Version 0.3.4 (released 2003-11-09)
 
 ** DocBook manuals in XML, PDF, PostScript, ASCII and HTML formats included.
