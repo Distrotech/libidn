@@ -1408,8 +1408,8 @@ You may redistribute copies of GNU Libidn under the terms of
 the GNU Lesser General Public License.  For more information
 about these matters, see the file named COPYING.LIB.
 Type each input string on a line by itself, terminated by a newline character.
-r@"aksm@"org@aa{}s
-xn--rksmrgs-5wao1o
+r@"aksm@"org@aa{}s.se
+xn--rksmrgs-5wao1o.se
 jas@@latte:~$
 @end example
 
@@ -1417,9 +1417,9 @@ Reading input from command line, and disabling copyright and license
 information:
 
 @example
-jas@@latte:~$ idn --quiet r@"aksm@"org@aa{}s bl@aa{}b@ae{}rgr@o{}d
-xn--rksmrgs-5wao1o
-xn--blbrgrd-fxak7p
+jas@@latte:~$ idn --quiet r@"aksm@"org@aa{}s.se bl@aa{}b@ae{}rgr@o{}d.no
+xn--rksmrgs-5wao1o.se
+xn--blbrgrd-fxak7p.no
 jas@@latte:~$
 @end example
 
