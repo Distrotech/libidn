@@ -1,5 +1,5 @@
 Libidn FAQ -- Anticipated Frequently Asked Questions.
-Copyright (C) 2002, 2003 Simon Josefsson
+Copyright (C) 2002, 2003, 2004 Simon Josefsson
 See the end for copying conditions.
 
 Q#1: Why doesn't Libidn use a separate library for the Unicode
@@ -21,8 +21,9 @@ A#2: The stringprep profiles included are usually derived from the
      hundred bytes (see profiles.c).  The Unicode normalization tables
      and the generic stringprep tables are roughly equivalent in size,
      although the latter tables can surely be compressed much further.
-     However, if in the future several large Stringprep profiles are
-     added, configure options will be added to help reduce size.
+     They occupy about 100 kilobytes on typical platforms.  However,
+     if in the future several large Stringprep profiles are added,
+     configure options will be added to help reduce size.
 
 Q#3: I thought GNU was encouraging libraries to be licensed under the GPL?
 
