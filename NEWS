@@ -1,6 +1,14 @@
 Libidn NEWS -- History of user-visible changes.                 -*- outline -*-
 See the end for copying conditions.
 
+* Version 0.1.5 (released 2003-01-28)
+
+** The library can now be built as part of GNU Libc.
+This is experimental and only tested against GNU Libc version 2.3.1.
+See the libc/ directory, and libc/README in particular.
+
+** Bug fixes.
+
 * Version 0.1.4 (released 2003-01-15)
 
 ** Documentation fixes.

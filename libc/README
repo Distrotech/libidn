@@ -1,0 +1,50 @@
+Libidn libc/README -- Instructions for building as a GNU Libc add-on.
+See the end for copying conditions.
+
+GNU Libidn can be built as part of GNU Libc if you follow these
+instructions.  Note that you should note run configure in Libidn.
+
+1) Unpack Libc:
+
+$ tar xfz glibc-2.3.1.tar.gz
+
+2) Unpack Libidn inside the Libc directory:
+
+$ cd glibc-2.3.1
+$ tar xfz ~/libidn-0.1.5.tar.gz
+
+3) Set up Libidn for building as a Libc add-on:
+
+$ cd libidn-0.1.5
+$ mv -f libc/Makefile .
+$ mv -f libc/configure .
+$ mv -f libc/getaddrinfo.c ../sysdeps/posix/
+$ mv -f libc/netdb.h ../resolv
+
+4) Configure Libc indicating that the Libidn add-on should be built:
+
+$ cd ..
+$ ./configure --enable-add-ons=linuxthreads,libidn --prefix=/usr/local/glibc
+$ make install
+
+5) Run the example
+
+$ cd libidn/libc
+$ gcc -o example example.c -L/usr/local/glibc/lib -Wl,-rpath,/usr/local/glibc/lib -nostdinc -I/usr/local/glibc/include -I/usr/include -I/usr/lib/gcc-lib/i386-linux/2.95.4/include
+$ CHARSET=iso-8859-1 ./example
+locale charset `iso-8859-1'
+gettaddrinfo(räksmörgås.josefsson.org):
+address `217.13.230.178'
+canonical name `178.230.13.217.in-addr.dgcsystems.net'
+$
+
+The file libc.patch in this directory contains the modifications made
+to getaddrinfo.c and netdb.h, should you wish to try this with another
+GNU Libc version.
+
+----------------------------------------------------------------------
+Copyright (C) 2003 Simon Josefsson
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.

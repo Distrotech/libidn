@@ -1,0 +1,18 @@
+libc {
+  GLIBC_2.3.1 {
+    stringprep_generic; stringprep_nameprep; stringprep_kerberos5;
+    stringprep_check_version; stringprep; 
+    stringprep_unichar_to_utf8; stringprep_utf8_to_unichar;
+    stringprep_utf8_to_ucs4; stringprep_ucs4_to_utf8;
+    stringprep_utf8_nfkc_normalize; stringprep_ucs4_nfkc_normalize;
+    stringprep_locale_charset; stringprep_convert;
+    stringprep_locale_to_utf8;
+    stringprep_utf8_to_locale;
+    stringprep_locale_charset;
+    punycode_encode; punycode_decode;
+    idna_to_ascii; idna_to_unicode;
+    idna_ucs4_to_ace; idna_utf8_to_ace; idna_locale_to_ace;
+    idna_ucs4ace_to_ucs4; idna_utf8ace_to_ucs4; idna_utf8ace_to_utf8;
+    idna_utf8ace_to_locale; idna_localeace_to_locale;
+  }
+}
