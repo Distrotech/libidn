@@ -1,9 +1,22 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
 <?php
+
+$charset = $_REQUEST["charset"];
+$lastcharset = $_REQUEST["lastcharset"];
+$mode = $_REQUEST["mode"];
+$data = $_REQUEST["data"];
+$profile = $_REQUEST["profile"];
+$allowunassigned = $_REQUEST["allowunassigned"];
+$usestd3asciirules = $_REQUEST["usestd3asciirules"];
+$debug = $_REQUEST["debug"];
+
 if (!$charset) {
 	$data = "räksmörgås.josefßon.org";
 	$charset = "UTF-8";
-} ?>
+}
+
+header("Content-Type: text/html; charset=$charset");
+?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=<?php print $charset ?>">
@@ -55,13 +68,13 @@ if (!$charset) {
 
       <select name=profile>
 	<option <?php if ($profile == "Nameprep" || !$profile) { print "selected"; } ?>>Nameprep
-	<option <?php if ($profile == "iSCSI") { print "selected"; } ?>>iSCSI
 	<option <?php if ($profile == "KRBprep") { print "selected"; } ?>>KRBprep
 	<option <?php if ($profile == "Nodeprep") { print "selected"; } ?>>Nodeprep
 	<option <?php if ($profile == "Resourceprep") { print "selected"; } ?>>Resourceprep
 	<option <?php if ($profile == "plain") { print "selected"; } ?>>plain
 	<option <?php if ($profile == "trace") { print "selected"; } ?>>trace
 	<option <?php if ($profile == "SASLprep") { print "selected"; } ?>>SASLprep
+	<option <?php if ($profile == "ISCSIprep") { print "selected"; } ?>>ISCSIprep
       </select><br>
 
       <input type=radio name=mode value=punyencode <?php if ($mode == "punyencode") { print "checked"; } ?>>Punycode encode<br>
@@ -260,7 +273,7 @@ if (!$charset) {
     <pre>
 <?php
    putenv("CHARSET=" . escapeshellarg($charset));
-   $cmd = "/usr/local/bin/idn" . ($debug ? " --debug" : "") . ($allowunassigned ? " --allow-unassigned" : "") . ($usestd3asciirules ? " --usestd3asciirules" : "") . ($mode == "stringprep" ? " --stringprep" : "") . ($mode == "stringprep" ? " --profile " . escapeshellarg($profile) : "") . ($mode == "punydecode" ? " --punycode-decode" : "") . ($mode == "punyencode" ? " --punycode-encode" : "") . ($mode == "toascii" || !$mode ? " --idna-to-ascii" : "") . ($mode == "tounicode" ? " --idna-to-unicode" : "") . " " . escapeshellarg($data) . " 2>&1";
+   $cmd = "idn" . ($debug ? " --debug" : "") . ($allowunassigned ? " --allow-unassigned" : "") . ($usestd3asciirules ? " --usestd3asciirules" : "") . ($mode == "stringprep" ? " --stringprep" : "") . ($mode == "stringprep" ? " --profile " . escapeshellarg($profile) : "") . ($mode == "punydecode" ? " --punycode-decode" : "") . ($mode == "punyencode" ? " --punycode-encode" : "") . ($mode == "toascii" || !$mode ? " --idna-to-ascii" : "") . ($mode == "tounicode" ? " --idna-to-unicode" : "") . " " . escapeshellarg($data) . " 2>&1";
    $h = popen($cmd, "r");
    while($s = fgets($h, 1024)) { $out .= $s; };
    pclose($h);
