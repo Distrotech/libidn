@@ -24,11 +24,11 @@ HTML_OBJECTS = index.html c4.html \
 IMAGES = home.png left.png right.png up.png
 
 MODULE = libidn
-HIGNORE = config.h gunibreak.h gunicomp.h gunidecomp.h idn-int.h \
-	netdb.h getopt.h internal.h stringprep_*.h idn_cmd.h
+HIGNORE = gunibreak.h gunicomp.h gunidecomp.h \
+	idn-int.h internal.h stringprep_*.h
 
 scan.stamp: $(top_srcdir)/lib/*.c $(top_srcdir)/lib/*.h
-	$(GTKDOC_SCAN) --module=$(MODULE) --source-dir=$(top_srcdir) \
+	$(GTKDOC_SCAN) --module=$(MODULE) --source-dir=$(top_srcdir)/lib \
 		--ignore-headers="$(HIGNORE)"
 	touch scan.stamp
 
@@ -36,8 +36,9 @@ tmpl.stamp: scan.stamp
 	$(GTKDOC_MKTMPL) --module=$(MODULE) --output-dir=.
 
 sgml.stamp: tmpl.stamp
-	$(GTKDOC_MKDB) --module=$(MODULE) --source-dir=$(top_srcdir) \
-		--tmpl-dir=. --output-dir=. --main-sgml-file=$(srcdir)/$(MODULE)-docs.tmpl
+	$(GTKDOC_MKDB) --module=$(MODULE) --source-dir=$(top_srcdir)/lib \
+		--tmpl-dir=. --output-dir=. \
+		--main-sgml-file=$(srcdir)/$(MODULE)-docs.tmpl
 
 index.html: sgml.stamp
 	cp $(srcdir)/$(MODULE)-docs.tmpl $(MODULE)-docs.sgml
