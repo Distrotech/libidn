@@ -122,6 +122,39 @@ adapt (unsigned long delta, unsigned long numpoints, int firsttime)
 
 /*** Main encode function ***/
 
+/**
+ * punycode_encode:
+ * @input_length: The input_length is the number of code points in the input.
+ * @input: The input is represented as an array of Unicode code points
+ *         (not code units; surrogate pairs are not allowed).
+ * @case_flags: The case_flags array holds input_length boolean
+ *              values, where nonzero suggests that the corresponding
+ *              Unicode character be forced to uppercase after being
+ *              decoded (if possible), and zero suggests that it be
+ *              forced to lowercase (if possible).  ASCII code points
+ *              are encoded literally, except that ASCII letters are
+ *              forced to uppercase or lowercase according to the
+ *              corresponding uppercase flags.  If case_flags is a
+ *              null pointer then ASCII letters are left as they are,
+ *              and other code points are treated as if their
+ *              uppercase flags were zero.
+ * @output_length: The output_length is an in/out argument: the caller
+ *                 passes in the maximum number of code points that it
+ *                 can receive, and on successful return it will
+ *                 contain the number of code points actually output.
+ * @output: The output will be represented as an array of ASCII code
+ *          points.  The output string is *not* null-terminated; it
+ *          will contain zeros if and only if the input contains
+ *          zeros. (Of course the caller can leave room for a
+ *          terminator and add one if needed.)
+ *
+ * Converts Unicode to Punycode.
+ *
+ * Return value: The return value can be any of the punycode_status
+ *               values defined above except punycode_bad_input; if
+ *               not punycode_success, then output_size and output
+ *               might contain garbage.
+ **/
 int
 punycode_encode (size_t input_length,
 		 const unsigned long input[],
@@ -226,6 +259,37 @@ punycode_encode (size_t input_length,
 
 /*** Main decode function ***/
 
+/**
+ * punycode_decode:
+ * @input_length: The input_length is the number of code points in the input.
+ * @input: The input is represented as an array of ASCII code points.
+ * @output_length: The output_length is an in/out argument: the caller
+ *                 passes in the maximum number of code points that it
+ *                 can receive, and on successful return it will
+ *                 contain the actual number of code points output.
+ * @output: The output will be represented as an array of Unicode code
+ *          points.
+ * @case_flags: The case_flags array needs room for at least
+ *              output_length values, or it can be a null pointer if
+ *              the case information is not needed.  A nonzero flag
+ *              suggests that the corresponding Unicode character be
+ *              forced to uppercase by the caller (if possible), while
+ *              zero suggests that it be forced to lowercase (if
+ *              possible).  ASCII code points are output already in
+ *              the proper case, but their flags will be set
+ *              appropriately so that applying the flags would be
+ *              harmless.
+ *
+ * Converts Punycode to Unicode.
+ *
+ * Return value: The return value can be any of the punycode_status
+ *               values defined above; if not punycode_success, then
+ *               output_length, output, and case_flags might contain
+ *               garbage.  On success, the decoder will never need to
+ *               write an output_length greater than input_length,
+ *               because of how the encoding is defined.
+ *
+ **/
 int
 punycode_decode (size_t input_length,
 		 const char input[],
