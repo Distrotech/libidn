@@ -12,6 +12,8 @@ and end code points of the range is 0.  Table C.2.1 is responsible for
 prohibiting non-ASCII control characters, i.e. ASCII 0-31 and 127.
 Before, libidn silently accepted such strings without complaining.
 
+** The pkg-config script no longer include a -R parameter.
+
 ** More translations.
 Added Dutch (by Elros Cyriatan), and German (by Roland Illig).
 
