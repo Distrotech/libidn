@@ -1,9 +1,12 @@
 Libidn AUTHORS -- Information about the authors.
-Copyright (C) 2002, 2003 Simon Josefsson
+Copyright (C) 2002, 2003, 2004 Simon Josefsson
 See the end for copying conditions.
 
 Simon Josefsson <simon@josefsson.org>
 Designed and implemented libidn.
+
+Thomas Jacob <jacob@internet24.de>
+Contributed TLD support.
 
 -----BEGIN PGP PUBLIC KEY BLOCK-----
 Comment: This 0xB565716F key is used to sign releases of Libidn.
