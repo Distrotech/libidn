@@ -1249,16 +1249,12 @@ pr29_4 (const uint32_t *in, size_t len)
    */
 
   for (i = 0; i < len; i++)
-    {
-      row = first_column (in[i]);
-
-      if (row > 0)
-	for (j = i + 1; j < len; j++)
-	  if (combinationclass (in[j]))
-	    for (k = j + 1; k < len; j++)
-	      if (in_last_column_row (in[k], row))
-		return 1;
-    }
+    if ((row = first_column (in[i])) > 0)
+      for (j = i + 1; j < len; j++)
+	if (combinationclass (in[j]))
+	  for (k = j + 1; k < len; j++)
+	    if (in_last_column_row (in[k], row))
+	      return 1;
 
   return 0;
 }
