@@ -4,6 +4,9 @@ See the end for copying conditions.
 
 * Version 0.4.4 (unreleased)
 
+** More translations.
+Added Romanian (by Laurentiu Buzdugan).
+
 * Version 0.4.3 (released 2004-04-22)
 
 ** Fixed a bug in table processing code to prohibit control characters.
