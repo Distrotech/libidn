@@ -18,15 +18,15 @@ dnl You should have received a copy of the GNU Lesser General Public
 dnl License along with GNU Libidn; if not, write to the Free Software
 dnl Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
 
-AC_INIT(libidn, 0.1.15, bug-libidn@gnu.org)
+AC_INIT(libidn, 0.1.16, bug-libidn@gnu.org)
 AC_CONFIG_SRCDIR(stringprep.h.in)
 
 # Interfaces removed:    CURRENT++, AGE=0, REVISION=0
 # Interfaces added:      CURRENT++, AGE++, REVISION=0
 # No interfaces changed:                   REVISION++
-LT_CURRENT=11
-LT_AGE=2
-LT_REVISION=3
+LT_CURRENT=12
+LT_AGE=3
+LT_REVISION=0
 AC_SUBST(LT_CURRENT)
 AC_SUBST(LT_AGE)
 AC_SUBST(LT_REVISION)
@@ -49,6 +49,7 @@ AC_CHECK_HEADERS(sys/types.h string.h strings.h memory.h unistd.h errno.h)
 
 # Checks for typedefs, structures, and compiler characteristics.
 AC_TYPE_SIZE_T
+AX_CREATE_STDINT_H(idn-int.h)
 
 # Checks for library functions.
 AC_REPLACE_FUNCS(memset strdup)

@@ -20,9 +20,10 @@
 DIST_SUBDIRS = reference
 SUBDIRS = @GTKDOC@
 
-ACLOCAL_AMFLAGS = -I .
+ACLOCAL_AMFLAGS = -I . -I m4
 
-EXTRA_DIST = FAQ libidn.pc.in iconv.m4 \
+EXTRA_DIST = FAQ libidn.pc.in \
+	m4/iconv.m4 m4/ax_create_stdint_h.m4 m4/ac_compile_check_sizeof.m4 \
 	gen-stringprep-tables.pl rfc3454.txt \
 	gen-unicode-tables.pl UnicodeData-3.2.0.txt LineBreak-3.2.0.txt \
 	SpecialCasing-3.2.0.txt CaseFolding-3.2.0.txt \
@@ -139,7 +140,6 @@ libidn-api-idna.texi: idna.c
 
 # Maintainer targets
 
-.PHONY: ChangeLog
 ChangeLog:
 	test ! -f .cvsusers || \
 	cvs2cl --FSF --usermap .cvsusers \
@@ -156,7 +156,8 @@ release:
 	if cvs upd -p -r $(tag) NEWS > /dev/null; then false else true; fi
 	rm -f ChangeLog && cvs upd ChangeLog
 	cvs commit
-	$(MAKE) distcheck
+	rm -f ChangeLog
+	$(MAKE) ChangeLog distcheck
 	cvs commit -m "" ChangeLog
 	rm -f $(distdir).tar.gz.asc
 	gpg -a --sign --detach $(distdir).tar.gz
