@@ -1279,6 +1279,93 @@ teßta
 jas@@latte:~$
 @end example
 
+@section Troubleshooting
+
+Getting the character set encoding issues can be difficult, especially
+if you use more than one encoding in your environment (e.g., UTF-8
+together with ISO-8859-1 or ISO-2022-JP).  The first step is to use
+the @samp{--debug} parameter to find out which character set encoding
+@samp{idn} believe your locale uses.
+
+@example
+jas@@latte:~$ idn --debug --quiet ""
+system locale uses charset `UTF-8'.
+
+jas@@latte:~$
+@end example
+
+If it prints ANSI_X3.4-1968 (i.e., US-ASCII), this indicate you have
+not configured your locale properly.  Use, e.g.,
+@samp{LANG=sv_SE.UTF-8; export LANG} to set up your locale for a
+Swedish environment using UTF-8 as the encoding.
+
+Sometimes @samp{idn} appear to be unable to translate from your system
+locale into UTF-8 (which is used internally), i.e., you get an error
+like:
+
+@example
+jas@@latte:~$ idn --quiet foo
+idn: could not convert from ISO-8859-1 to UTF-8.
+jas@@latte:~$
+@end example
+
+The simplest explanation is that you haven't installed the
+@samp{iconv} conversion tools.  You can find it as a standalone
+library in @acronym{GNU} Libiconv
+(@uref{http://www.gnu.org/software/libiconv/}).  On many
+@acronym{GNU}/Linux systems, this library is part of the system, but
+you may have to install additional packages (e.g., @samp{glibc-locale}).
+
+Another explanation is that the error is correct and you are feeding
+@samp{idn} invalid data.  This can happen inadvertently if you are not
+careful with the character set encodings you use.  For example, if
+your shell run in a ISO-8859-1 environment, and you invoke @samp{idn}
+with the @samp{CHARSET} environment variable as follows, you will feed
+it ISO-8859-1 characters but force it to believe they are UTF-8.
+Naturally this will lead to an error, unless the byte sequences happen
+to be parsable as UTF-8.  Note that even if you don't get an error,
+the output may be incorrect in this situation, because ISO-8859-1 and
+UTF-8 does not in general encode the same characters as the same byte
+sequences.
+
+@example
+jas@@latte:~$ idn --quiet --debug ""
+system locale uses charset `ISO-8859-1'.
+ 
+jas@@latte:~$ CHARSET=UTF-8 idn --quiet --debug räksmörgås
+system locale uses charset `UTF-8'.
+input[0] = U+0072
+input[1] = U+4af3
+input[2] = U+006d
+input[3] = U+1b29e5
+input[4] = U+0073
+output[0] = U+0078
+output[1] = U+006e
+output[2] = U+002d
+output[3] = U+002d
+output[4] = U+0072
+output[5] = U+006d
+output[6] = U+0073
+output[7] = U+002d
+output[8] = U+0068
+output[9] = U+0069
+output[10] = U+0036
+output[11] = U+0064
+output[12] = U+0035
+output[13] = U+0039
+output[14] = U+0037
+output[15] = U+0035
+output[16] = U+0035
+output[17] = U+0032
+output[18] = U+0061
+xn--rms-hi6d597552a
+jas@@latte:~$
+@end example
+
+The sense moral is to forget about @samp{CHARSET} unless you know what
+you are doing, and if you want to use it, do it carefully, after
+verifying with @samp{--debug} that you get the desired results.
+
 @node Emacs API
 @chapter Emacs API
 
