@@ -251,7 +251,7 @@ step8:
   return IDNA_SUCCESS;
 }
 
-/* ToUnicode().  May realloc() utf8in. */
+/* ToUnicode().  May realloc() utf8in.  Will free utf8in unconditionally. */
 static int
 idna_to_unicode_internal (char *utf8in,
 			  uint32_t * out, size_t * outlen, int flags)
