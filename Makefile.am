@@ -17,10 +17,10 @@
 # License along with GNU Libidn; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
 
-DIST_SUBDIRS = m4 gl lib src doc reference tests examples
-SUBDIRS = . m4 gl lib src doc $(GTKDOC) tests examples
+DIST_SUBDIRS = m4 lib src doc reference tests examples
+SUBDIRS = . m4 lib src doc $(GTKDOC) tests examples
 
-ACLOCAL_AMFLAGS = -I m4 -I gl/m4
+ACLOCAL_AMFLAGS = -I m4
 
 EXTRA_DIST = Makefile.cfg Makefile.maint GNUmakefile \
 	.prev-version announce-gen \

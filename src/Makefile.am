@@ -17,14 +17,15 @@
 # License along with GNU Libidn; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
 
-INCLUDES = -I$(top_srcdir)/lib -I../lib -I../gl
+INCLUDES = -I$(top_srcdir)/lib -I../lib
 
 bin_PROGRAMS = idn
 
 idn_cmd = idn_cmd.c idn_cmd.h
 idn_SOURCES = idn.c $(idn_cmd)
+EXTRA_DIST = getopt.h
 BUILT_SOURCES = $(idn_cmd)
-idn_LDADD = ../lib/libidn.la ../gl/libfoo.la
+idn_LDADD = ../lib/libidn.la $(LTLIBOBJS)
 
 idn.c: $(idn_cmd)
 
