@@ -18,8 +18,8 @@ API for TLD checking may change throughout the 0.4.x series as we get
 feedback on it.
 
 ** Kerberos 5 stringprep profile macro is no longer documented.
-The macro itself will probably be removed in the future, if its
-specification is not updated.
+The macro itself will probably be removed in the future, if the
+specification is dropped from the Kerberos WG agenda.
 
 ** API and ABI is backwards compatible with the previous version.
 stringprep_kerberos5: DEPRECATED.
