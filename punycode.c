@@ -1,6 +1,5 @@
 /* punycode.c	Implementation of punycode used to ASCII encode IDN's.
  * Copyright (C) 2002, 2003  Simon Josefsson
- * Copyright (C) 2002  Adam M. Costello
  *
  * This file is part of GNU Libidn.
  *
@@ -33,6 +32,31 @@
  * misleading author or version information.  Derivative works need
  * not be licensed under similar terms.
  *
+ * Copyright (C) The Internet Society (2003).  All Rights Reserved.
+ *
+ * This document and translations of it may be copied and furnished to
+ * others, and derivative works that comment on or otherwise explain it
+ * or assist in its implementation may be prepared, copied, published
+ * and distributed, in whole or in part, without restriction of any
+ * kind, provided that the above copyright notice and this paragraph are
+ * included on all such copies and derivative works.  However, this
+ * document itself may not be modified in any way, such as by removing
+ * the copyright notice or references to the Internet Society or other
+ * Internet organizations, except as needed for the purpose of
+ * developing Internet standards in which case the procedures for
+ * copyrights defined in the Internet Standards process must be
+ * followed, or as required to translate it into languages other than
+ * English.
+ *
+ * The limited permissions granted above are perpetual and will not be
+ * revoked by the Internet Society or its successors or assigns.
+ *
+ * This document and the information contained herein is provided on an
+ * "AS IS" basis and THE INTERNET SOCIETY AND THE INTERNET ENGINEERING
+ * TASK FORCE DISCLAIMS ALL WARRANTIES, EXPRESS OR IMPLIED, INCLUDING
+ * BUT NOT LIMITED TO ANY WARRANTY THAT THE USE OF THE INFORMATION
+ * HEREIN WILL NOT INFRINGE ANY RIGHTS OR ANY IMPLIED WARRANTIES OF
+ * MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE.
  */
 
 #include "internal.h"
@@ -45,7 +69,7 @@ enum
 };
 
 /* basic(cp) tests whether cp is a basic code point: */
-#define basic(cp) ((unsigned long)(cp) < 0x80)
+#define basic(cp) ((uint32_t)(cp) < 0x80)
 
 /* delim(cp) tests whether cp is a delimiter: */
 #define delim(cp) ((cp) == delimiter)
@@ -54,8 +78,8 @@ enum
 /* point (for use in representing integers) in the range 0 to */
 /* base-1, or base if cp is does not represent a value.       */
 
-static unsigned long
-decode_digit (unsigned long cp)
+static uint32_t
+decode_digit (uint32_t cp)
 {
   return cp - 48 < 10 ? cp - 22 : cp - 65 < 26 ? cp - 65 :
     cp - 97 < 26 ? cp - 97 : base;
@@ -68,7 +92,7 @@ decode_digit (unsigned long cp)
 /* is undefined if flag is nonzero and digit d has no uppercase form. */
 
 static char
-encode_digit (unsigned long d, int flag)
+encode_digit (uint32_t d, int flag)
 {
   return d + 22 + 75 * (d < 26) - ((flag != 0) << 5);
   /*  0..25 map to ASCII a..z or A..Z */
@@ -79,7 +103,7 @@ encode_digit (unsigned long d, int flag)
 /* (uppercase).  The behavior is undefined if bcp is not a  */
 /* basic code point.                                        */
 
-#define flagged(bcp) ((unsigned long)(bcp) - 65 < 26)
+#define flagged(bcp) ((uint32_t)(bcp) - 65 < 26)
 
 /* encode_basic(bcp,flag) forces a basic code point to lowercase */
 /* if flag is zero, uppercase if flag is nonzero, and returns    */
@@ -87,8 +111,8 @@ encode_digit (unsigned long d, int flag)
 /* is caseless.  The behavior is undefined if bcp is not a basic */
 /* code point.                                                   */
 
-static unsigned char
-encode_basic (unsigned long bcp, int flag)
+static char
+encode_basic (uint32_t bcp, int flag)
 {
   bcp -= (bcp - 97 < 26) << 5;
   return bcp + ((!flag && (bcp - 65 < 26)) << 5);
@@ -96,16 +120,16 @@ encode_basic (unsigned long bcp, int flag)
 
 /*** Platform-specific constants ***/
 
-/* maxint is the maximum value of a unsigned long variable: */
-static const unsigned long maxint = -1;
+/* maxint is the maximum value of a uint32_t variable: */
+static const uint32_t maxint = -1;
 /* Because maxint is unsigned, -1 becomes the maximum value. */
 
 /*** Bias adaptation function ***/
 
-static unsigned long
-adapt (unsigned long delta, unsigned long numpoints, int firsttime)
+static uint32_t
+adapt (uint32_t delta, uint32_t numpoints, int firsttime)
 {
-  unsigned long k;
+  uint32_t k;
 
   delta = firsttime ? delta / damp : delta >> 1;
   /* delta >> 1 is a faster way of doing delta / 2 */
@@ -154,14 +178,14 @@ adapt (unsigned long delta, unsigned long numpoints, int firsttime)
  *               not punycode_success, then output_size and output
  *               might contain garbage.
  **/
-int
+enum punycode_status
 punycode_encode (size_t input_length,
-		 const unsigned long input[],
+		 const uint32_t input[],
 		 const unsigned char case_flags[],
 		 size_t * output_length, char output[])
 {
-  unsigned long n, delta, b, out, bias, m, q, k, t;
-  size_t h, j, max_out;
+  uint32_t n, delta, b, out, bias, m, q, k, t;
+  size_t h, max_out, j;
 
   /* Initialize the state: */
 
@@ -171,13 +195,12 @@ punycode_encode (size_t input_length,
   bias = initial_bias;
 
   /* Handle the basic code points: */
-
   for (j = 0; j < input_length; ++j)
     {
       if (basic (input[j]))
 	{
 	  if (max_out - out < 2)
-	    return PUNYCODE_BIG_OUTPUT;
+	    return punycode_big_output;
 	  output[out++] =
 	    case_flags ? encode_basic (input[j], case_flags[j]) : input[j];
 	}
@@ -213,7 +236,7 @@ punycode_encode (size_t input_length,
       /* <n,i> state to <m,0>, but guard against overflow: */
 
       if (m - n > (maxint - delta) / (h + 1))
-	return PUNYCODE_OVERFLOW;
+	return punycode_overflow;
       delta += (m - n) * (h + 1);
       n = m;
 
@@ -223,7 +246,7 @@ punycode_encode (size_t input_length,
 	  if (input[j] < n /* || basic(input[j]) */ )
 	    {
 	      if (++delta == 0)
-		return PUNYCODE_OVERFLOW;
+		return punycode_overflow;
 	    }
 
 	  if (input[j] == n)
@@ -233,7 +256,7 @@ punycode_encode (size_t input_length,
 	      for (q = delta, k = base;; k += base)
 		{
 		  if (out >= max_out)
-		    return PUNYCODE_BIG_OUTPUT;
+		    return punycode_big_output;
 		  t = k <= bias /* + tmin */ ? tmin :	/* +tmin not needed */
 		    k >= bias + tmax ? tmax : k - bias;
 		  if (q < t)
@@ -253,7 +276,7 @@ punycode_encode (size_t input_length,
     }
 
   *output_length = out;
-  return PUNYCODE_SUCCESS;
+  return punycode_success;
 }
 
 /*** Main decode function ***/
@@ -289,14 +312,13 @@ punycode_encode (size_t input_length,
  *               because of how the encoding is defined.
  *
  **/
-int
+enum punycode_status
 punycode_decode (size_t input_length,
 		 const char input[],
 		 size_t * output_length,
-		 unsigned long output[], unsigned char case_flags[])
+		 uint32_t output[], unsigned char case_flags[])
 {
-  unsigned long n, i, bias, b, in, oldi, w, k, digit, t;
-  size_t out, max_out, j;
+  uint32_t n, out, i, max_out, bias, b, j, in, oldi, w, k, digit, t;
 
   /* Initialize the state: */
 
@@ -313,14 +335,14 @@ punycode_decode (size_t input_length,
     if (delim (input[j]))
       b = j;
   if (b > max_out)
-    return PUNYCODE_BIG_OUTPUT;
+    return punycode_big_output;
 
   for (j = 0; j < b; ++j)
     {
       if (case_flags)
 	case_flags[out] = flagged (input[j]);
       if (!basic (input[j]))
-	return PUNYCODE_BAD_INPUT;
+	return punycode_bad_input;
       output[out++] = input[j];
     }
 
@@ -341,19 +363,19 @@ punycode_decode (size_t input_length,
       for (oldi = i, w = 1, k = base;; k += base)
 	{
 	  if (in >= input_length)
-	    return PUNYCODE_BAD_INPUT;
+	    return punycode_bad_input;
 	  digit = decode_digit (input[in++]);
 	  if (digit >= base)
-	    return PUNYCODE_BAD_INPUT;
+	    return punycode_bad_input;
 	  if (digit > (maxint - i) / w)
-	    return PUNYCODE_OVERFLOW;
+	    return punycode_overflow;
 	  i += digit * w;
 	  t = k <= bias /* + tmin */ ? tmin :	/* +tmin not needed */
 	    k >= bias + tmax ? tmax : k - bias;
 	  if (digit < t)
 	    break;
 	  if (w > maxint / (base - t))
-	    return PUNYCODE_OVERFLOW;
+	    return punycode_overflow;
 	  w *= (base - t);
 	}
 
@@ -363,7 +385,7 @@ punycode_decode (size_t input_length,
       /* incrementing n each time, so we'll fix that now: */
 
       if (i / (out + 1) > maxint - n)
-	return PUNYCODE_OVERFLOW;
+	return punycode_overflow;
       n += i / (out + 1);
       i %= (out + 1);
 
@@ -372,11 +394,12 @@ punycode_decode (size_t input_length,
       /* not needed for Punycode: */
       /* if (decode_digit(n) <= base) return punycode_invalid_input; */
       if (out >= max_out)
-	return PUNYCODE_BIG_OUTPUT;
+	return punycode_big_output;
 
       if (case_flags)
 	{
 	  memmove (case_flags + i + 1, case_flags + i, out - i);
+
 	  /* Case of last character determines uppercase flag: */
 	  case_flags[i] = flagged (input[in - 1]);
 	}
@@ -386,5 +409,5 @@ punycode_decode (size_t input_length,
     }
 
   *output_length = out;
-  return PUNYCODE_SUCCESS;
+  return punycode_success;
 }
