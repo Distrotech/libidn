@@ -1,3 +1,15 @@
+2003-02-12  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS, configure.ac: Version 0.1.7.
+
+2003-02-12  Simon Josefsson <simon@josefsson.org>
+
+	* tst_idna.c: Fix IDNA ACE prefix.
+
+2003-02-12  Simon Josefsson <simon@josefsson.org>
+
+	* idna.h: Use official IDNA prefix.
+
 2003-02-11  Simon Josefsson <simon@josefsson.org>
 
 	* Makefile.am: Add upload target.
