@@ -427,7 +427,7 @@ idna_to_ascii_4z (const uint32_t * input, char **output, int flags)
       return IDNA_SUCCESS;
     }
 
-  if (DOTP(input[0]) && input[1] == 0)
+  if (DOTP (input[0]) && input[1] == 0)
     {
       /* Handle explicit zero-length root label. */
       *output = malloc (2);
@@ -442,7 +442,7 @@ idna_to_ascii_4z (const uint32_t * input, char **output, int flags)
     {
       end = start;
 
-      for (; *end && !DOTP(*end); end++)
+      for (; *end && !DOTP (*end); end++)
 	;
 
       if (*end == '\0' && start == end)
@@ -572,7 +572,7 @@ idna_to_unicode_4z4z (const uint32_t * input, uint32_t ** output, int flags)
     {
       end = start;
 
-      for (; *end && !DOTP(*end); end++)
+      for (; *end && !DOTP (*end); end++)
 	;
 
       buflen = end - start;

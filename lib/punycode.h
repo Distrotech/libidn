@@ -79,7 +79,8 @@ extern "C"
   } Punycode_status;
 
   /* For RFC compatibility. */
-  enum punycode_status {
+  enum punycode_status
+  {
     punycode_success = PUNYCODE_SUCCESS,
     punycode_bad_input = PUNYCODE_BAD_INPUT,
     punycode_big_output = PUNYCODE_BIG_OUTPUT,
@@ -91,8 +92,7 @@ extern "C"
   int punycode_encode (size_t input_length,
 		       const punycode_uint input[],
 		       const unsigned char case_flags[],
-		       size_t * output_length,
-		       char output[]);
+		       size_t * output_length, char output[]);
 
   /* punycode_encode() converts Unicode to Punycode.  The input     */
   /* is represented as an array of Unicode code points (not code    */
@@ -122,8 +122,7 @@ extern "C"
   int punycode_decode (size_t input_length,
 		       const char input[],
 		       size_t * output_length,
-		       punycode_uint output[],
-		       unsigned char case_flags[]);
+		       punycode_uint output[], unsigned char case_flags[]);
 
   /* punycode_decode() converts Punycode to Unicode.  The input is  */
   /* represented as an array of ASCII code points, and the output   */
