@@ -426,6 +426,12 @@ punycode_decode (size_t input_length,
 
 /**
  * Punycode_status
+ * @PUNYCODE_SUCCESS: Successful operation.  This value is guaranteed
+ *   to always be zero, the remaining ones are only guaranteed to hold
+ *   non-zero values, for logical comparison purposes.
+ * @PUNYCODE_BAD_INPUT: Input is invalid.
+ * @PUNYCODE_BIG_OUTPUT: Output would exceed the space provided.
+ * @PUNYCODE_OVERFLOW: Input needs wider integers to process.
  *
  * Enumerated return codes of punycode_encode() and punycode_decode().
  * The value 0 is guaranteed to always correspond to success.

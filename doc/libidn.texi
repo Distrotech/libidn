@@ -517,80 +517,80 @@ and other text strings.
 
 @section Return Codes
 
-All functions return a code of the @code{enum Stringprep_rc}
+All functions return a code of the @code{Stringprep_rc}
 enumerated type:
 
-@deftypevr {Return code} {enum Stringprep_rc} {STRINGPREP_OK = 0}
+@deftypevr {Return code} {Stringprep_rc} {STRINGPREP_OK = 0}
 Successful operation.  This value is guaranteed to always be zero, the
 remaining ones are only guaranteed to hold non-zero values, for
 logical comparison purposes.
 @end deftypevr
 
-@deftypevr {Return code} {enum Stringprep_rc} {STRINGPREP_CONTAINS_UNASSIGNED}
+@deftypevr {Return code} {Stringprep_rc} {STRINGPREP_CONTAINS_UNASSIGNED}
 String contain unassigned Unicode code points, which is forbidden by
 the profile.
 @end deftypevr
 
-@deftypevr {Return code} {enum Stringprep_rc} {STRINGPREP_CONTAINS_PROHIBITED}
+@deftypevr {Return code} {Stringprep_rc} {STRINGPREP_CONTAINS_PROHIBITED}
 String contain code points prohibited by the profile.
 @end deftypevr
 
-@deftypevr {Return code} {enum Stringprep_rc} {STRINGPREP_BIDI_BOTH_L_AND_RAL}
+@deftypevr {Return code} {Stringprep_rc} {STRINGPREP_BIDI_BOTH_L_AND_RAL}
 String contain code points with conflicting bidirection category.
 @end deftypevr
 
-@deftypevr {Return code} {enum Stringprep_rc} {STRINGPREP_BIDI_LEADTRAIL_NOT_RAL}
+@deftypevr {Return code} {Stringprep_rc} {STRINGPREP_BIDI_LEADTRAIL_NOT_RAL}
 Leading and trailing character in string not of proper bidirectional
 category.
 @end deftypevr
 
-@deftypevr {Return code} {enum Stringprep_rc} {STRINGPREP_BIDI_CONTAINS_PROHIBITED}
+@deftypevr {Return code} {Stringprep_rc} {STRINGPREP_BIDI_CONTAINS_PROHIBITED}
 Contains prohibited code points detected by bidirectional code.
 @end deftypevr
 
-@deftypevr {Return code} {enum Stringprep_rc} {STRINGPREP_TOO_SMALL_BUFFER}
+@deftypevr {Return code} {Stringprep_rc} {STRINGPREP_TOO_SMALL_BUFFER}
 Buffer handed to function was too small.  This usually indicate a
 problem in the calling application.
 @end deftypevr
 
-@deftypevr {Return code} {enum Stringprep_rc} {STRINGPREP_PROFILE_ERROR}
+@deftypevr {Return code} {Stringprep_rc} {STRINGPREP_PROFILE_ERROR}
 The stringprep profile was inconsistent..  This usually indicate an
 internal error in the library.
 @end deftypevr
 
-@deftypevr {Return code} {enum Stringprep_rc} {STRINGPREP_FLAG_ERROR}
+@deftypevr {Return code} {Stringprep_rc} {STRINGPREP_FLAG_ERROR}
 The supplied flag conflicted with profile.  This usually indicate a
 problem in the calling application.
 @end deftypevr
 
-@deftypevr {Return code} {enum Stringprep_rc} {STRINGPREP_UNKNOWN_PROFILE}
+@deftypevr {Return code} {Stringprep_rc} {STRINGPREP_UNKNOWN_PROFILE}
 The supplied profile name was not known to the library.
 @end deftypevr
 
-@deftypevr {Return code} {enum Stringprep_rc} {STRINGPREP_NFKC_FAILED}
+@deftypevr {Return code} {Stringprep_rc} {STRINGPREP_NFKC_FAILED}
 The Unicode NFKC operation failed.  This usually indicate an internal
 error in the library.
 @end deftypevr
 
-@deftypevr {Return code} {enum Stringprep_rc} {STRINGPREP_MALLOC_ERROR}
+@deftypevr {Return code} {Stringprep_rc} {STRINGPREP_MALLOC_ERROR}
 The @code{malloc} was out of memory.  This is usually a fatal error.
 @end deftypevr
 
 @section Control Flags
 
-@deftypevr {Stringprep flags} {enum Stringprep_profile_flags} {STRINGPREP_NO_NFKC}
+@deftypevr {Stringprep flags} {Stringprep_profile_flags} {STRINGPREP_NO_NFKC}
 Disable the NFKC normalization, as well as selecting the non-NFKC case
 folding tables.  Usually the profile specifies BIDI and NFKC settings,
 and applications should not override it unless in special situations.
 @end deftypevr
 
-@deftypevr {Stringprep flags} {enum Stringprep_profile_flags} {STRINGPREP_NO_BIDI}
+@deftypevr {Stringprep flags} {Stringprep_profile_flags} {STRINGPREP_NO_BIDI}
 Disable the BIDI step.  Usually the profile specifies BIDI and NFKC
 settings, and applications should not override it unless in special
 situations.
 @end deftypevr
 
-@deftypevr {Stringprep flags} {enum Stringprep_profile_flags} {STRINGPREP_NO_UNASSIGNED}
+@deftypevr {Stringprep flags} {Stringprep_profile_flags} {STRINGPREP_NO_UNASSIGNED}
 Make the library return with an error if string contains unassigned
 characters according to profile.
 @end deftypevr
@@ -605,7 +605,7 @@ here.  Look into the @file{stringprep.h} header file, and the
 
 @section Core Functions
 
-@deftypefun {enum Stringprep_rc} stringprep (char * @var{in}, size_t @var{maxlen}, enum Stringprep_profile_flags @var{flags}, Stringprep_profile * @var{profile})
+@deftypefun {int} stringprep (char * @var{in}, size_t @var{maxlen}, int @var{flags}, Stringprep_profile * @var{profile})
 
 @var{in}: input/ouput array with string to prepare.
 
@@ -633,7 +633,7 @@ UTF-8 before using this function.
 Returns 0 iff successful, or an error code.
 @end deftypefun
 
-@deftypefun {enum Stringprep_rc} stringprep_profile (char * @var{in}, char ** @var{out}, char * @var{profile}, enum Stringprep_profile_flags @var{flags})
+@deftypefun {int} stringprep_profile (char * @var{in}, char ** @var{out}, char * @var{profile}, int @var{flags})
 
 @var{in}: input/ouput array with string to prepare.
 
@@ -809,7 +809,7 @@ transcoded into the locale's character set.
 
 @section Stringprep Profile Macros
 
-@deftypefun {enum Stringprep_rc} stringprep_nameprep_no_unassigned (char * @var{in}, int @var{maxlen})
+@deftypefun {int} stringprep_nameprep_no_unassigned (char * @var{in}, int @var{maxlen})
 
 @var{in}: input/ouput array with string to prepare.
 
@@ -820,7 +820,7 @@ AllowUnassigned flag is false, use @code{stringprep_nameprep} for
 true AllowUnassigned.  Returns 0 iff successful, or an error code.
 @end deftypefun
 
-@deftypefun {enum Stringprep_rc} stringprep_iscsi (char * @var{in}, int @var{maxlen})
+@deftypefun {int} stringprep_iscsi (char * @var{in}, int @var{maxlen})
 
 @var{in}: input/ouput array with string to prepare.
 
@@ -830,7 +830,7 @@ Prepare the input UTF-8 string according to the draft iSCSI stringprep
 profile.  Returns 0 iff successful, or an error code.
 @end deftypefun
 
-@deftypefun {enum Stringprep_rc} stringprep_kerberos5 (char * @var{in}, int @var{maxlen})
+@deftypefun {int} stringprep_kerberos5 (char * @var{in}, int @var{maxlen})
 
 @var{in}:  input/ouput array with string to prepare.
 
@@ -840,7 +840,7 @@ Prepare the input UTF-8 string according to the draft Kerberos5
 stringprep profile.  Returns 0 iff successful, or an error code.
 @end deftypefun
 
-@deftypefun {enum Stringprep_rc} stringprep_plain (char * @var{in}, int @var{maxlen})
+@deftypefun {int} stringprep_plain (char * @var{in}, int @var{maxlen})
 
 @var{in}: input/ouput array with string to prepare.
 
@@ -850,7 +850,7 @@ Prepare the input UTF-8 string according to the draft SASL ANONYMOUS
 profile.  Returns 0 iff successful, or an error code.
 @end deftypefun
 
-@deftypefun {enum Stringprep_rc} stringprep_xmpp_nodeprep (char * @var{in}, int @var{maxlen})
+@deftypefun {int} stringprep_xmpp_nodeprep (char * @var{in}, int @var{maxlen})
 
 @var{in}: input/ouput array with string to prepare.
 
@@ -860,7 +860,7 @@ Prepare the input UTF-8 string according to the draft XMPP node
 identifier profile.  Returns 0 iff successful, or an error code.
 @end deftypefun
 
-@deftypefun {enum Stringprep_rc} stringprep_xmpp_resourceprep (char * @var{in}, int @var{maxlen})
+@deftypefun {int} stringprep_xmpp_resourceprep (char * @var{in}, int @var{maxlen})
 
 @var{in}: input/ouput array with string to prepare.
 
@@ -870,7 +870,7 @@ Prepare the input UTF-8 string according to the draft XMPP resource
 identifier profile.  Returns 0 iff successful, or an error code.
 @end deftypefun
 
-@deftypefun {enum Stringprep_rc} stringprep_generic (char * @var{in}, int @var{maxlen})
+@deftypefun {int} stringprep_generic (char * @var{in}, int @var{maxlen})
 
 @var{in}: input/ouput array with string to prepare.
 
@@ -902,24 +902,24 @@ uses particular parameter values, appropriate for IDNA.
 
 @section Return Codes
 
-All functions return a code of the @code{enum punycode_status}
-enumerated type:
+All functions return a code of the @code{Punycode_status} enumerated
+type:
 
-@deftypevr {Return code} {enum punycode_status} {PUNYCODE_SUCCESS = 0}
+@deftypevr {Return code} {Punycode_status} {PUNYCODE_SUCCESS = 0}
 Successful operation.  This value is guaranteed to always be zero, the
 remaining ones are only guaranteed to hold non-zero values, for
 logical comparison purposes.
 @end deftypevr
 
-@deftypevr {Return code} {enum punycode_status} {PUNYCODE_BAD_INPUT}
+@deftypevr {Return code} {Punycode_status} {PUNYCODE_BAD_INPUT}
 Input is invalid.
 @end deftypevr
 
-@deftypevr {Return code} {enum punycode_status} {PUNYCODE_BIG_OUTPUT}
+@deftypevr {Return code} {Punycode_status} {PUNYCODE_BIG_OUTPUT}
 Output would exceed the space provided.
 @end deftypevr
 
-@deftypevr {Return code} {enum punycode_status} {PUNYCODE_BIG_OVERFLOW}
+@deftypevr {Return code} {Punycode_status} {PUNYCODE_OVERFLOW}
 Input needs wider integers to process.
 @end deftypevr
 
@@ -942,7 +942,7 @@ initialize @code{input_length} and @code{output_length}.
 
 The functions provided are the following two entry points:
 
-@deftypefun {enum punycode_status} punycode_encode (size_t @var{input_length}, const punycode_uint @var{input}[], const unsigned char @var{case_flags}[], size_t * @var{output_length}, char @var{output}[])
+@deftypefun {int} punycode_encode (size_t @var{input_length}, const punycode_uint @var{input}[], const unsigned char @var{case_flags}[], size_t * @var{output_length}, char @var{output}[])
 
 @var{input_length}: The input_length is the number of code points in
 the input.
@@ -982,7 +982,7 @@ garbage.
 
 @end deftypefun
 
-@deftypefun {enum punycode_status} punycode_decode (size_t @var{input_length}, const char @var{input}[], size_t * @var{output_length}, punycode_uint @var{output}[], unsigned char @var{case_flags}[])
+@deftypefun {int} punycode_decode (size_t @var{input_length}, const char @var{input}[], size_t * @var{output_length}, punycode_uint @var{output}[], unsigned char @var{case_flags}[])
 
 @var{input_length}: The input_length is the number of code points in
 the input.
@@ -1044,52 +1044,52 @@ only meant for processing domain names, not free text.
 
 All functions return a exit code:
 
-@deftypevr {Return code} {enum Idna_rc} {IDNA_SUCCESS = 0}
+@deftypevr {Return code} {Idna_rc} {IDNA_SUCCESS = 0}
 Successful operation.  This value is guaranteed to always be zero, the
 remaining ones are only guaranteed to hold non-zero values, for
 logical comparison purposes.
 @end deftypevr
 
-@deftypevr {Return code} {enum Idna_rc} IDNA_STRINGPREP_ERROR
+@deftypevr {Return code} {Idna_rc} IDNA_STRINGPREP_ERROR
 Error during string preparation.
 @end deftypevr
 
-@deftypevr {Return code} {enum Idna_rc} IDNA_PUNYCODE_ERROR
+@deftypevr {Return code} {Idna_rc} IDNA_PUNYCODE_ERROR
 Error during punycode operation.
 @end deftypevr
 
-@deftypevr {Return code} {enum Idna_rc} IDNA_CONTAINS_LDH
+@deftypevr {Return code} {Idna_rc} IDNA_CONTAINS_LDH
 For IDNA_USE_STD3_ASCII_RULES, indicate that the string contains LDH
 ASCII characters.
 @end deftypevr
 
-@deftypevr {Return code} {enum Idna_rc} IDNA_CONTAINS_MINUS
+@deftypevr {Return code} {Idna_rc} IDNA_CONTAINS_MINUS
 For IDNA_USE_STD3_ASCII_RULES, indicate that the string contains a
 leading or trailing hyphen-minus (U+002D).
 @end deftypevr
 
-@deftypevr {Return code} {enum Idna_rc} IDNA_INVALID_LENGTH
+@deftypevr {Return code} {Idna_rc} IDNA_INVALID_LENGTH
 The final output string is not within the (inclusive) range 1 to 63
 characters.
 @end deftypevr
 
-@deftypevr {Return code} {enum Idna_rc} IDNA_NO_ACE_PREFIX
+@deftypevr {Return code} {Idna_rc} IDNA_NO_ACE_PREFIX
 The string does not contain the ACE prefix (for ToUnicode).
 @end deftypevr
 
-@deftypevr {Return code} {enum Idna_rc} IDNA_ROUNDTRIP_VERIFY_ERROR
+@deftypevr {Return code} {Idna_rc} IDNA_ROUNDTRIP_VERIFY_ERROR
 The ToASCII operation on output string does not equal the input.
 @end deftypevr
 
-@deftypevr {Return code} {enum Idna_rc} IDNA_CONTAINS_ACE_PREFIX
+@deftypevr {Return code} {Idna_rc} IDNA_CONTAINS_ACE_PREFIX
 The input contains the ACE prefix (for ToASCII).
 @end deftypevr
 
-@deftypevr {Return code} {enum Idna_rc} IDNA_ICONV_ERROR
+@deftypevr {Return code} {Idna_rc} IDNA_ICONV_ERROR
 Could not convert string in locale encoding.
 @end deftypevr
 
-@deftypevr {Return code} {enum Idna_rc} IDNA_MALLOC_ERROR
+@deftypevr {Return code} {Idna_rc} IDNA_MALLOC_ERROR
 Could not allocate buffer (this is typically a fatal error).
 @end deftypevr
 
@@ -1098,11 +1098,11 @@ Could not allocate buffer (this is typically a fatal error).
 The IDNA @code{flags} parameter can take on the following values, or a
 bit-wise inclusive or of any subset of the parameters:
 
-@deftypevr {Return code} {enum Idna_flags} IDNA_ALLOW_UNASSIGNED
+@deftypevr {Return code} {Idna_flags} IDNA_ALLOW_UNASSIGNED
 Allow unassigned Unicode code points.
 @end deftypevr
 
-@deftypevr {Return code} {enum Idna_flags} IDNA_USE_STD3_ASCII_RULES
+@deftypevr {Return code} {Idna_flags} IDNA_USE_STD3_ASCII_RULES
 Check output to make sure it is a STD3 conforming host name.
 @end deftypevr
 
@@ -1132,7 +1132,7 @@ encoded in the encoding used by the current locale.
 
 The functions provided are the following entry points:
 
-@deftypefun {enum Idna_rc} idna_to_ascii_4i (const uint32_t * @var{in}, size_t @var{inlen}, char * @var{out}, {enum Idna_flags} @var{flags})
+@deftypefun {int} idna_to_ascii_4i (const uint32_t * @var{in}, size_t @var{inlen}, char * @var{out}, {int} @var{flags})
 
 @var{in}: input array with unicode code points.
 
@@ -1167,7 +1167,7 @@ applying it just once.
 Returns 0 on success, or an error code.
 @end deftypefun
 
-@deftypefun {enum Idna_rc} idna_to_unicode_44i (const uint32_t * @var{in}, size_t @var{inlen}, uint32_t * @var{out}, size_t * @var{outlen}, {enum Idna_flags} @var{flags})
+@deftypefun {int} idna_to_unicode_44i (const uint32_t * @var{in}, size_t @var{inlen}, uint32_t * @var{out}, size_t * @var{outlen}, {int} @var{flags})
 
 @var{in}: input array with unicode code points.
 
@@ -1206,7 +1206,7 @@ from this function, as checking it means breaking the standard.
 
 @section Simplified ToASCII Interface
 
-@deftypefun {enum Idna_rc} idna_to_ascii_4z (const uint32_t * @var{input}, char ** @var{output}, {enum Idna_flags} @var{flags})
+@deftypefun {int} idna_to_ascii_4z (const uint32_t * @var{input}, char ** @var{output}, {int} @var{flags})
 
 @var{input}: zero terminated input Unicode string.
 
@@ -1221,7 +1221,7 @@ deallocated by the caller.
 Returns IDNA_SUCCESS on success, or error code.
 @end deftypefun
 
-@deftypefun {enum Idna_rc} idna_to_ascii_8z (const char * @var{input}, char ** @var{output}, {enum Idna_flags} @var{flags})
+@deftypefun {int} idna_to_ascii_8z (const char * @var{input}, char ** @var{output}, {int} @var{flags})
 
 @var{input}: zero terminated input UTF-8 string.
 
@@ -1236,7 +1236,7 @@ be deallocated by the caller.
 Returns IDNA_SUCCESS on success, or error code.
 @end deftypefun
 
-@deftypefun {enum Idna_rc} idna_to_ascii_lz (const char * @var{input}, char ** @var{output}, {enum Idna_flags} @var{flags})
+@deftypefun {int} idna_to_ascii_lz (const char * @var{input}, char ** @var{output}, {int} @var{flags})
 
 @var{input}: zero terminated input UTF-8 string.
 
@@ -1253,7 +1253,7 @@ Returns IDNA_SUCCESS on success, or error code.
 
 @section Simplified ToUnicode Interface
 
-@deftypefun {enum Idna_rc} idna_to_unicode_4z4z (const uint32_t * @var{input}, uint32_t ** @var{output}, {enum Idna_flags} @var{flags})
+@deftypefun {int} idna_to_unicode_4z4z (const uint32_t * @var{input}, uint32_t ** @var{output}, {int} @var{flags})
 
 @var{input}: zero-terminated Unicode string.
 
@@ -1268,7 +1268,7 @@ dots.  The output buffer must be deallocated by the caller.
 Returns IDNA_SUCCESS on success, or error code.
 @end deftypefun
 
-@deftypefun {enum Idna_rc} idna_to_unicode_8z4z (const char * @var{input}, uint32_t ** @var{output}, {enum Idna_flags} @var{flags})
+@deftypefun {int} idna_to_unicode_8z4z (const char * @var{input}, uint32_t ** @var{output}, {int} @var{flags})
 
 @var{input}: zero-terminated UTF-8 string.
 
@@ -1283,7 +1283,7 @@ dots.  The output buffer must be deallocated by the caller.
 Returns IDNA_SUCCESS on success, or error code.
 @end deftypefun
 
-@deftypefun {enum Idna_rc} idna_to_unicode_8z8z (const char * @var{input}, char ** @var{output}, {enum Idna_flags} @var{flags})
+@deftypefun {int} idna_to_unicode_8z8z (const char * @var{input}, char ** @var{output}, {int} @var{flags})
 
 @var{input}: zero-terminated UTF-8 string.
 
@@ -1298,7 +1298,7 @@ dots.  The output buffer must be deallocated by the caller.
 Returns IDNA_SUCCESS on success, or error code.
 @end deftypefun
 
-@deftypefun {enum Idna_rc} idna_to_unicode_8zlz (const char * @var{input}, char ** @var{output}, {enum Idna_flags} @var{flags})
+@deftypefun {int} idna_to_unicode_8zlz (const char * @var{input}, char ** @var{output}, {int} @var{flags})
 
 @var{input}: zero-terminated UTF-8 string.
 
@@ -1315,7 +1315,7 @@ deallocated by the caller.
 Returns IDNA_SUCCESS on success, or error code.
 @end deftypefun
 
-@deftypefun {enum Idna_rc} idna_to_unicode_lzlz (const char * @var{input}, char ** @var{output}, {enum Idna_flags} @var{flags})
+@deftypefun {int} idna_to_unicode_lzlz (const char * @var{input}, char ** @var{output}, {int} @var{flags})
 
 @var{input}: zero-terminated string encoded in the current locale's
 character set.

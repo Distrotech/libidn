@@ -375,6 +375,29 @@ stringprep_profile (char *in,
  */
 
 /**
+ * Stringprep_profile_flags:
+ * @STRINGPREP_NO_NFKC: Disable the NFKC normalization, as well as
+ *   selecting the non-NFKC case folding tables.  Usually the profile
+ *   specifies BIDI and NFKC settings, and applications should not
+ *   override it unless in special situations.
+ * @STRINGPREP_NO_BIDI: Disable the BIDI step.  Usually the profile
+ *   specifies BIDI and NFKC settings, and applications should not
+ *   override it unless in special situations.
+ * @STRINGPREP_NO_UNASSIGNED: Make the library return with an error if
+ *   string contains unassigned characters according to profile.
+ *
+ * Stringprep profile flags.
+ */
+
+/**
+ * Stringprep_profile_steps:
+ *
+ * Various steps in the stringprep algorithm.  You really want to
+ * study the source code to understand this one.  Only useful if you
+ * want to add another profile.
+ */
+
+/**
  * stringprep_nameprep:
  * @in: input/ouput array with string to prepare.
  * @maxlen: maximum length of input/output array.
