@@ -5,4 +5,4 @@ gdoc_TEXINFOS =
 EOF
 gtkdocize
 autoreconf --install --force
-: 'Run "./configure --enable-gtk-doc && make" now.'
+: 'Run "./configure --enable-java --enable-gtk-doc && make" now.'
