@@ -1,4 +1,4 @@
-/* punycode.c	Implementation of punycode used to ASCII encode IDN's.
+/* punycode.c --- Implementation of punycode used to ASCII encode IDN's.
  * Copyright (C) 2002, 2003, 2004  Simon Josefsson
  *
  * This file is part of GNU Libidn.

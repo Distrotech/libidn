@@ -1,5 +1,5 @@
-/* version.c	Version handling.
- * Copyright (C) 2002, 2003  Simon Josefsson
+/* version.c --- Version handling.
+ * Copyright (C) 2002, 2003, 2004  Simon Josefsson
  * Copyright (C) 1998, 1999, 2000, 2001, 2002 Free Software Foundation, Inc.
  *
  * This file is free software; you can redistribute it and/or

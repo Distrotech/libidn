@@ -1,4 +1,4 @@
-/* nfkc.c	Unicode normalization utilities.
+/* nfkc.c --- Unicode normalization utilities.
  * Copyright (C) 2002, 2003, 2004  Simon Josefsson
  *
  * This file is part of GNU Libidn.

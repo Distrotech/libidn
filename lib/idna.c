@@ -1,4 +1,4 @@
-/* idna.c	Convert to or from IDN strings.
+/* idna.c --- Convert to or from IDN strings.
  * Copyright (C) 2002, 2003, 2004  Simon Josefsson
  *
  * This file is part of GNU Libidn.
