@@ -194,7 +194,7 @@ int
 main (int argc, char *argv[])
 {
   char *p;
-  unsigned long *q;
+  uint32_t *q;
   int rc;
   size_t i, outlen;
 

@@ -405,7 +405,7 @@ main (int argc, char *argv[])
 	}
 
       {
-	unsigned long *l;
+	uint32_t *l;
 	char *x;
 	l = stringprep_utf8_to_ucs4 (strprep[i].in, -1, NULL);
 	x = stringprep_ucs4_to_utf8 (l, -1, NULL, NULL);
