@@ -50,7 +50,7 @@ extern "C"
     char *name;			/* TLD name, e.g., "no". */
     char *version;		/* Version string from TLD file. */
     size_t nvalid;		/* Number of entries in data. */
-    const Tld_table_element *valid;	/* Sorted array of valid code points. */
+    Tld_table_element *valid[];	/* Sorted array of valid code points. */
   };
   typedef struct Tld_table Tld_table;
 
