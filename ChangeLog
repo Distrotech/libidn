@@ -1,3 +1,148 @@
+2003-10-02  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Version 0.3.1.
+
+2003-10-02  Simon Josefsson <simon@josefsson.org>
+
+	* lib/gen-unicode-tables.pl, lib/nfkc.c: Fix NFKC, from Noah Levitt
+	<nlevitt@columbia.edu> via bugzilla.gnome.org bug 123421.
+
+2003-09-28  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi: Fix.
+
+2003-09-28  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi: Add.
+
+2003-09-28  Simon Josefsson <simon@josefsson.org>
+
+	* THANKS: Add.
+
+2003-09-28  Simon Josefsson <simon@josefsson.org>
+
+	* tests/tst_idna2.c: Indent.
+
+2003-09-28  Simon Josefsson <simon@josefsson.org>
+
+	* lib/Makefile.am: Fix.
+
+2003-09-28  Simon Josefsson <simon@josefsson.org>
+
+	* Makefile.am: Fix indent target.
+
+2003-09-28  Simon Josefsson <simon@josefsson.org>
+
+	* src/Makefile.am, tests/Makefile.am: Add indent rule.
+
+2003-09-28  Simon Josefsson <simon@josefsson.org>
+
+	* lib/idna.c, lib/nfkc.c, lib/punycode.h: Indent.
+
+2003-09-28  Simon Josefsson <simon@josefsson.org>
+
+	* lib/Makefile.am: Fix.  Add indent target.
+
+2003-09-26  Simon Josefsson <simon@josefsson.org>
+
+	* lib/nfkc.c: Fix Hangul patch.
+
+2003-09-26  Simon Josefsson <simon@josefsson.org>
+
+	* tests/tst_idna2.c: Fix typo.
+
+2003-09-26  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2003-09-26  Simon Josefsson <simon@josefsson.org>
+
+	* lib/Makefile.am, lib/gen-unicode-tables.pl, lib/nfkc.c: Sync with
+	GLIB for Unicode stuff.
+
+2003-09-26  Simon Josefsson <simon@josefsson.org>
+
+	* lib/punycode.h: Fix typo.
+
+2003-09-25  Simon Josefsson <simon@josefsson.org>
+
+	* tests/tst_idna2.c: Update test vectors.
+
+2003-09-25  Simon Josefsson <simon@josefsson.org>
+
+	* src/idn.c: Fix debug messages.
+
+2003-09-25  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2003-09-25  Simon Josefsson <simon@josefsson.org>
+
+	* lib/idna.c:
+	(DOTP): New.
+	(idna_to_unicode_4z4z): Use it.
+	(idna_to_ascii_4z): Use it. Make root label handling explicit.
+
+2003-09-25  Simon Josefsson <simon@josefsson.org>
+
+	* THANKS: Add.
+
+2003-09-25  Simon Josefsson <simon@josefsson.org>
+
+	* lib/nfkc.c:
+	(decompose_hangul, combine_hangul): New.
+	(combine, _g_utf8_normalize_wc): Use them.  Adds support for
+	algorithmic composition of Hangul Syllables, adapted from a patch
+	written by Noah Levitt <nlevitt@columbia.edu> for GLIB, discussed in
+	<http://bugzilla.gnome.org/show_bug.cgi?id=100456> and available
+	from <http://bugzilla.gnome.org/showattachment.cgi?attach_id=18915>.
+
+2003-09-25  Simon Josefsson <simon@josefsson.org>
+
+	* tests/tst_idna2.c: Fix.
+
+2003-09-25  Simon Josefsson <simon@josefsson.org>
+
+	* tests/Makefile.am, tests/tst_idna2.c: Add.
+
+2003-09-25  Simon Josefsson <simon@josefsson.org>
+
+	* lib/idna.c:
+	(idna_to_ascii_4z): Output "" instead of "." on input "".  (Some
+	religions claim "" should fail though.)
+
+2003-09-23  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2003-09-23  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi: Doc fix.
+
+2003-09-23  Simon Josefsson <simon@josefsson.org>
+
+	* src/punycode.el:
+	(punycode-shutdown): New.
+
+2003-09-23  Simon Josefsson <simon@josefsson.org>
+
+	* src/idna.el:
+	(idna-to-ascii-parameters, idna-to-unicode-parameters): Add
+	--usestd3asciirules.
+	(idna-shutdown): New.
+
+2003-09-23  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS, configure.ac: Bump versions.
+
+2003-09-23  Simon Josefsson <simon@josefsson.org>
+
+	* Makefile.maint: Fix.
+
+2003-09-23  Simon Josefsson <simon@josefsson.org>
+
+	* Makefile.maint: Fix.
+
 2003-09-23  Simon Josefsson <simon@josefsson.org>
 
 	* NEWS: Version 0.3.0.
