@@ -283,6 +283,11 @@ GCC 2.95.4 and GNU Make. @code{alpha-unknown-freebsd4.7},
 @code{alpha-unknown-freebsd4.8}, @code{i386-unknown-freebsd4.7},
 @code{i386-unknown-freebsd4.8}.
 
+@item MacOS X 10.2 Server Edition
+@cindex MacOS X
+
+GCC 3.1 and GNU Make. @code{powerpc-apple-darwin6.5}.
+
 @end enumerate
 
 If you use Libidn on, or port Libidn to, a new platform please report
