@@ -19,6 +19,7 @@ stringprep_4i: NEW.
 stringprep_4zi: NEW.
 stringprep: CHANGED. 'profile' is marked as 'const'.
 stringprep_profile: CHANGED. 'profile' is marked as 'const'.
+stringprep_generic: REMOVED. Never meant for public use.
 
 * Version 0.3.2 (released 2003-10-07)
 
