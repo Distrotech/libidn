@@ -8,10 +8,12 @@ See the end for copying conditions.
 Non-ASCII space has always been mapped to ASCII space, so it is not
 clear this really have any effect, but the specification require it.
 
-** Building libidn as part of glibc has been updated.
-Refer to libc/README for more information.
+** Building Libidn as part of GLIBC has been updated.
+Refer to libc/README for more information.  Incidentally, GLIBC in CVS
+now include a copy of Libidn.
 
 ** API and ABI is backwards compatible with the previous version.
+IDNA_DLOPEN_ERROR: ADD.  Only used internally by Libidn in libc.
 
 * Version 0.4.0 (released 2004-02-28)
 
