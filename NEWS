@@ -4,6 +4,9 @@ See the end for copying conditions.
 
 * Version 0.4.7 (unreleased)
 
+** The Java port should now be functional, contributed by Oliver Hitz.
+See java/README.html for more information.
+
 ** API and ABI is backwards compatible with the previous version.
 
 * Version 0.4.6 (released 2004-05-24)
