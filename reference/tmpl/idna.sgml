@@ -18,12 +18,10 @@ with no changes to the existing infrastructure. IDNA is only meant for
 processing domain names, not free text.
 </para>
 
-
 <!-- ##### SECTION See_Also ##### -->
 <para>
 
 </para>
-
 
 <!-- ##### MACRO IDNA_ACE_PREFIX ##### -->
 <para>

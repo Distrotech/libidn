@@ -14,12 +14,10 @@ values, company and personal names, internationalized domain names,
 and other text strings.
 </para>
 
-
 <!-- ##### SECTION See_Also ##### -->
 <para>
 
 </para>
-
 
 <!-- ##### MACRO STRINGPREP_VERSION ##### -->
 <para>
@@ -61,9 +59,11 @@ and other text strings.
 
 </para>
 
-@c: 
+@Param1: 
 @outbuf: 
 @Returns: 
+<!-- # Unused Parameters # -->
+@c: 
 
 
 <!-- ##### FUNCTION stringprep_utf8_to_unichar ##### -->

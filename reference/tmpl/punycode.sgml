@@ -19,12 +19,10 @@ instance of Bootstring that uses particular parameter values specified
 by this document, appropriate for IDNA.
 </para>
 
-
 <!-- ##### SECTION See_Also ##### -->
 <para>
 
 </para>
-
 
 <!-- ##### FUNCTION punycode_encode ##### -->
 <para>
@@ -32,11 +30,13 @@ by this document, appropriate for IDNA.
 </para>
 
 @input_length: 
-@input: 
+@Param2: 
 @case_flags: 
 @output_length: 
 @output: 
 @Returns: 
+<!-- # Unused Parameters # -->
+@input: 
 
 
 <!-- ##### FUNCTION punycode_decode ##### -->
@@ -47,8 +47,10 @@ by this document, appropriate for IDNA.
 @input_length: 
 @input: 
 @output_length: 
-@output: 
+@Param4: 
 @case_flags: 
 @Returns: 
+<!-- # Unused Parameters # -->
+@output: 
 
 

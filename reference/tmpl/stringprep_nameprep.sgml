@@ -13,12 +13,10 @@ world. This profile of the stringprep protocol is used as part of a
 suite of on-the-wire protocols for internationalizing the DNS.
 </para>
 
-
 <!-- ##### SECTION See_Also ##### -->
 <para>
 
 </para>
-
 
 <!-- ##### MACRO stringprep_nameprep ##### -->
 <para>
