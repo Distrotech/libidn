@@ -10,6 +10,13 @@ See the end for copying conditions.
 
 ** The program 'idn' now print user instructions before waiting for input.
 
+** API and ABI is backwards compatible with the previous version.
+IDNA_CONTAINS_NON_LDH: ADD.  Same integer value as IDNA_CONTAINS_LDH.
+IDNA_CONTAINS_LDH: DEPRECATED.  LDH (letter-digits-hyphens) characters
+   		are not an error, but non-LDH characters are, when
+   		IDNA_USE_STD3_ASCII_RULES is used.  The logic of the
+   		mnemonic name of this error constant was reversed.
+
 * Version 0.3.4 (released 2003-11-09)
 
 ** DocBook manuals in XML, PDF, PostScript, ASCII and HTML formats included.

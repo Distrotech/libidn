@@ -36,7 +36,9 @@ extern "C"
     IDNA_SUCCESS = 0,
     IDNA_STRINGPREP_ERROR = 1,
     IDNA_PUNYCODE_ERROR = 2,
-    IDNA_CONTAINS_LDH = 3,
+    IDNA_CONTAINS_NON_LDH = 3,
+    /* Workaround typo in earlier versions. */
+    IDNA_CONTAINS_LDH = IDNA_CONTAINS_NON_LDH,
     IDNA_CONTAINS_MINUS = 4,
     IDNA_INVALID_LENGTH = 5,
     IDNA_NO_ACE_PREFIX = 6,

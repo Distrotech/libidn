@@ -161,7 +161,7 @@ step3:
 	    (src[i] >= 0x7B && src[i] <= 0x7F))
 	  {
 	    free (src);
-	    return IDNA_CONTAINS_LDH;
+	    return IDNA_CONTAINS_NON_LDH;
 	  }
 
       if (src[0] == 0x002D || (i > 0 && src[i - 1] == 0x002D))
@@ -761,8 +761,8 @@ idna_to_unicode_lzlz (const char *input, char **output, int flags)
  *   non-zero values, for logical comparison purposes.
  * @IDNA_STRINGPREP_ERROR:  Error during string preparation.
  * @IDNA_PUNYCODE_ERROR: Error during punycode operation.
- * @IDNA_CONTAINS_LDH: For IDNA_USE_STD3_ASCII_RULES, indicate that
- *   the string contains LDH ASCII characters.
+ * @IDNA_CONTAINS_NON_LDH: For IDNA_USE_STD3_ASCII_RULES, indicate that
+ *   the string contains non-LDH ASCII characters.
  * @IDNA_CONTAINS_MINUS: For IDNA_USE_STD3_ASCII_RULES, indicate that
  *   the string contains a leading or trailing hyphen-minus (U+002D).
  * @IDNA_INVALID_LENGTH: The final output string is not within the

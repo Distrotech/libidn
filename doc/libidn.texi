@@ -1027,9 +1027,9 @@ Error during string preparation.
 Error during punycode operation.
 @end deftypevr
 
-@deftypevr {Return code} {Idna_rc} IDNA_CONTAINS_LDH
-For IDNA_USE_STD3_ASCII_RULES, indicate that the string contains LDH
-ASCII characters.
+@deftypevr {Return code} {Idna_rc} IDNA_CONTAINS_NON_LDH
+For IDNA_USE_STD3_ASCII_RULES, indicate that the string contains
+non-LDH ASCII characters.
 @end deftypevr
 
 @deftypevr {Return code} {Idna_rc} IDNA_CONTAINS_MINUS
