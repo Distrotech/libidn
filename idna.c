@@ -297,9 +297,13 @@ step3:
    * this step.
    */
 
+  (*outlen)--; /* reserve one for the zero */
+
   rc = punycode_decode (strlen (utf8in), utf8in, outlen, out, NULL);
   if (rc != PUNYCODE_SUCCESS)
     return IDNA_PUNYCODE_ERROR;
+
+  out[*outlen] = 0; /* add zero */
 
   /* 6. Apply ToASCII.
    */
