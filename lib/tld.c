@@ -351,7 +351,9 @@ tld_check_4 (const uint32_t * in, size_t inlen, size_t * errpos,
   char *domain;
   int rc;
 
-  *errpos = 0;
+  if (errpos)
+    *errpos = 0;
+
   /* Get TLD name. */
   rc = tld_get_4 (in, inlen, &domain);
 
