@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libidn 0.4.1\n"
 "Report-Msgid-Bugs-To: bug-libidn@gnu.org\n"
-"POT-Creation-Date: 2004-03-08 22:52+0100\n"
-"PO-Revision-Date: 2004-03-08 23:00+0100\n"
+"POT-Creation-Date: 2004-03-08 23:12+0100\n"
+"PO-Revision-Date: 2004-03-08 23:17+0100\n"
 "Last-Translator: Simon Josefsson <jas@extundo.com>\n"
 "Language-Team: Swedish <sv@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -17,9 +17,104 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
+#: src/idn.c:83
+#, c-format
+msgid "%s: Only one of -s, -e, -d, -a or -u can be specified.\n"
+msgstr "%s: Bara en av -s, -e, -d, -a eller -u kan anges.\n"
+
+#: src/idn.c:93
+#, c-format
+msgid "System locale uses charset `%s'.\n"
+msgstr ""
+
 #: src/idn.c:97
 #, c-format
 msgid ""
 "Type each input string on a line by itself, terminated by a newline "
 "character.\n"
 msgstr "Mata in en sträng per rad.\n"
+
+#: src/idn.c:109
+#, c-format
+msgid "%s: fgets() failed: "
+msgstr "%s: fel i fgets(): "
+
+#: src/idn.c:123 src/idn.c:197 src/idn.c:306 src/idn.c:403
+#, c-format
+msgid "%s: could not convert from %s to UTF-8.\n"
+msgstr "%s: kunde inte konvertera från %s till UTF-8.\n"
+
+#: src/idn.c:133 src/idn.c:163 src/idn.c:207 src/idn.c:476
+#, c-format
+msgid "%s: could not convert from UTF-8 to UCS-4.\n"
+msgstr "%s: kunde inte konvertera från UTF-8 till UCS-4.\n"
+
+#: src/idn.c:142 src/idn.c:216 src/idn.c:324 src/idn.c:422
+#, c-format
+msgid "input[%d] = U+%04x\n"
+msgstr ""
+
+#: src/idn.c:153
+#, c-format
+msgid "%s: stringprep_profile() failed with error %d.\n"
+msgstr "%s: stringprep_profile() misslyckades med fel %d.\n"
+
+#: src/idn.c:172 src/idn.c:273 src/idn.c:390 src/idn.c:443
+#, c-format
+msgid "output[%d] = U+%04x\n"
+msgstr ""
+
+#: src/idn.c:180 src/idn.c:235 src/idn.c:291 src/idn.c:485
+#, c-format
+msgid "%s: could not convert from UTF-8 to %s.\n"
+msgstr "%s: kunde inte konvertera från UTF-8 till %s.\n"
+
+#: src/idn.c:225
+#, c-format
+msgid "%s: punycode_encode() failed with error %d.\n"
+msgstr "%s: punycode_encode() misslyckades med fel %d.\n"
+
+#: src/idn.c:253
+#, c-format
+msgid "%s: malloc() failed: "
+msgstr "%s: fel i malloc(): "
+
+#: src/idn.c:264
+#, c-format
+msgid "%s: punycode_decode() failed with error %d.\n"
+msgstr "%s: punycode_decode() misslyckades med fel %d.\n"
+
+#: src/idn.c:282 src/idn.c:315 src/idn.c:413
+#, c-format
+msgid "%s: could not convert from UCS-4 to UTF-8.\n"
+msgstr "%s: kunde inte konvertera från UCS-4 till UTF-8.\n"
+
+#: src/idn.c:335
+#, c-format
+msgid "%s: idna_to_ascii_4z() failed with error %d.\n"
+msgstr "%s: idna_to_ascii_4z() misslyckades med fel %d.\n"
+
+#: src/idn.c:352
+#, c-format
+msgid "%s: TLD idna_to_unicode_8z8z() failed with error %d.\n"
+msgstr "%s: TLD idna_to_unicode_8z8z() misslyckades med fel %d.\n"
+
+#: src/idn.c:361
+#, c-format
+msgid "tld[%d] = U+%04x\n"
+msgstr ""
+
+#: src/idn.c:367 src/idn.c:454
+#, c-format
+msgid "%s: string rejected by TLD test (Unicode position %d)\n"
+msgstr "%s: sträng förkastad av TLD test (Unicode position %d)\n"
+
+#: src/idn.c:376 src/idn.c:463
+#, c-format
+msgid "%s: tld_check_4z failed with error %d.\n"
+msgstr "%s: tld_check_4z misslyckades med fel %d.\n"
+
+#: src/idn.c:434
+#, c-format
+msgid "%s: idna_to_unicode_8z4z() failed with error %d.\n"
+msgstr "%s: idna_to_unicode_8z4z() misslyckades med fel %d.\n"
