@@ -96,8 +96,8 @@ ACLOCAL_AMFLAGS = -I .
 .PHONY: ChangeLog
 ChangeLog:
 	test ! -f .cvsusers || \
-	cvs2cl --fsf --usermap .cvsusers --no-times --separate-header -I \
-	"ChangeLog|.cvsignore|.cvsusers|autogen.sh"
+	cvs2cl --fsf --usermap .cvsusers --no-times --no-common-dir --prune \
+	-I "ChangeLog|.cvsignore|.cvsusers|autogen.sh"
 
 indent:
 	indent $(SOURCES)
