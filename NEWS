@@ -2,6 +2,8 @@ Libidn NEWS -- History of user-visible changes.                 -*- outline -*-
 Copyright (C) 2002, 2003, 2004 Simon Josefsson
 See the end for copying conditions.
 
+** API and ABI is backwards compatible with the previous version.
+
 * Version 0.5.2 (released 2004-07-14)
 
 ** Java "make install" rules are now DESTDIR compatible.
