@@ -23,6 +23,16 @@
 
 package gnu.inet.encoding;
 
+/**
+ * This class offers static methods for preparing internationalized
+ * strings. It supports the following stringprep profiles:
+ * <ul>
+ * <li>RFC3491 nameprep
+ * <li>RFC3920 XMPP nodeprep and resourceprep
+ * </ul>
+ * Note that this implementation only supports 16-bit Unicode code
+ * points.
+ */
 public class Stringprep
 {
   /**
@@ -31,12 +41,13 @@ public class Stringprep
    *
    * @param input the name to prep.
    * @return the prepped name.
-   * @throws StringPrepException If the name cannot be prepped with
+   * @throws StringprepException If the name cannot be prepped with
    * this profile.
    * @throws NullPointerException If the name is null.
    */
   public static String nameprep(String input)
-    throws StringprepException
+    throws StringprepException,
+	   NullPointerException
   {
     return nameprep(input, false);
   }
@@ -49,12 +60,13 @@ public class Stringprep
    * @param allowUnassigned true if the name may contain unassigned
    * code points.
    * @return the prepped name.
-   * @throws StringPrepException If the name cannot be prepped with
+   * @throws StringprepException If the name cannot be prepped with
    * this profile.
    * @throws NullPointerException If the name is null.
    */
   public static String nameprep(String input, boolean allowUnassigned)
-    throws StringprepException
+    throws StringprepException,
+	   NullPointerException
   {
     if (input == null) {
       throw new NullPointerException();
@@ -123,12 +135,13 @@ public class Stringprep
    *
    * @param input the node name to prep.
    * @return the prepped node name.
-   * @throws StringPrepException If the node name cannot be prepped
+   * @throws StringprepException If the node name cannot be prepped
    * with this profile.
    * @throws NullPointerException If the node name is null.
    */
   public static String nodeprep(String input)
-    throws StringprepException
+    throws StringprepException,
+	   NullPointerException
   {
     return nodeprep(input, false);
   }
@@ -141,12 +154,13 @@ public class Stringprep
    * @param allowUnassigned true if the node name may contain
    * unassigned code points.
    * @return the prepped node name.
-   * @throws StringPrepException If the node name cannot be prepped
+   * @throws StringprepException If the node name cannot be prepped
    * with this profile.
    * @throws NullPointerException If the node name is null.
    */
   public static String nodeprep(String input, boolean allowUnassigned)
-    throws StringprepException
+    throws StringprepException,
+	   NullPointerException
   {
     if (input == null) {
       throw new NullPointerException();
@@ -207,12 +221,13 @@ public class Stringprep
    *
    * @param input the resource name to prep.
    * @return the prepped node name.
-   * @throws StringPrepException If the resource name cannot be prepped
+   * @throws StringprepException If the resource name cannot be prepped
    * with this profile.
    * @throws NullPointerException If the resource name is null.
    */
   public static String resourceprep(String input)
-    throws StringprepException
+    throws StringprepException,
+	   NullPointerException
   {
     return resourceprep(input, false);
   }
@@ -225,12 +240,13 @@ public class Stringprep
    * @param allowUnassigned true if the resource name may contain
    * unassigned code points.
    * @return the prepped node name.
-   * @throws StringPrepException If the resource name cannot be prepped
+   * @throws StringprepException If the resource name cannot be prepped
    * with this profile.
    * @throws NullPointerException If the resource name is null.
    */
   public static String resourceprep(String input, boolean allowUnassigned)
-    throws StringprepException
+    throws StringprepException,
+	   NullPointerException
   {
     if (input == null) {
       throw new NullPointerException();
