@@ -74,9 +74,9 @@ Status
 ------
 
 The AI_IDN flag has been implemented and shipped as a proof-of-concept
-patch for GNU Libc with GNU Libidn since January 2003, binary packages
-for at least two Linux distributions exists.  The AI_CANONIDN flag is
-not yet implemented.
+patch for GNU Libc with GNU Libidn since January 2003.  Binary libc
+packages with the patch exists for (at least) two GNU/Linux
+distributions.  The AI_CANONIDN flag is not yet implemented.
 
 Feedback
 --------
