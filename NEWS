@@ -2,6 +2,10 @@ Libidn NEWS -- History of user-visible changes.                 -*- outline -*-
 Copyright (C) 2002, 2003, 2004 Simon Josefsson
 See the end for copying conditions.
 
+* Version 0.4.5 (unreleased)
+
+** API and ABI is backwards compatible with the previous version.
+
 * Version 0.4.4 (released 2004-04-29)
 
 ** Fixed two bugs in iSCSI definition, syncing with newly published RFC 3722.
