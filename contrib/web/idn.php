@@ -17,7 +17,7 @@
     HREF="mailto:bug-libidn@gnu.org">bug-libidn@gnu.org</A>, but first
     please make sure your browser really is encoding the data you type
     in the charset you select.  If not, incorrect output or an error
-    is the "correct" output.
+    is the proper response.
 
     <hr>
     <h2>Input</h2>
