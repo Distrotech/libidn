@@ -669,7 +669,8 @@ main (int argc, char *argv[])
 	  escapeprint (idna[i].in, strlen (idna[i].in));
 	}
 
-      rc = idna_to_ascii_8z (idna[i].in, &out, IDNA_USE_STD3_ASCII_RULES);
+      rc = idna_to_ascii_8z (idna[i].in, &out,
+			     IDNA_ALLOW_UNASSIGNED| IDNA_USE_STD3_ASCII_RULES);
       if (rc != IDNA_SUCCESS && strlen (idna[i].out) > 0)
 	{
 	  fail ("IDNA2 entry %d failed: %d\n", i, rc);
