@@ -20,7 +20,10 @@
 AM_CPPFLAGS = -I$(top_srcdir)/lib -I../lib
 LDADD = ../lib/libidn.la
 
-TESTS = tst_stringprep tst_punycode tst_idna tst_idna2 tst_nfkc tst_tld
+TESTS = tst_stringprep tst_punycode tst_idna tst_idna2 tst_nfkc
+if TLD
+TESTS += tst_tld
+endif
 check_PROGRAMS = $(TESTS)
 
 # Maintainer targets

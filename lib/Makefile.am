@@ -27,14 +27,19 @@ idn_int = idn-int.h
 BUILT_SOURCES = $(idn_int) gunibreak.h gunicomp.h gunidecomp.h rfc3454.c tlds.c
 DISTCLEANFILES = $(idn_int)
 include_HEADERS = stringprep.h idna.h punycode.h tld.h
+if TLD
+include_HEADERS += tld.h
+endif
 nodist_include_HEADERS = $(idn_int)
 
 libidn_la_SOURCES = gunibreak.h gunicomp.h gunidecomp.h \
 	nfkc.c toutf8.c version.c \
 	stringprep.h.in stringprep.c rfc3454.c profiles.c \
 	punycode.h punycode.c \
-	idna.h idna.c \
-	tld.h tld.c tlds.c
+	idna.h idna.c
+if TLD
+libidn_la_SOURCES += tld.h tld.c tlds.c
+endif
 libidn_la_LIBADD = $(LTLIBICONV)
 libidn_la_LDFLAGS = -version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE)
 
