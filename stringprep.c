@@ -1,5 +1,5 @@
 /* stringprep.c		Core stringprep implementation.
- * Copyright (C) 2002  Simon Josefsson
+ * Copyright (C) 2002, 2003  Simon Josefsson
  *
  * This file is part of GNU Libidn.
  *
@@ -20,8 +20,6 @@
  */
 
 #include "internal.h"
-
-#define DBG 0
 
 static int
 stringprep_find_character_in_table (unsigned long ucs4,
@@ -60,30 +58,63 @@ static int
 stringprep_apply_table_to_string (unsigned long *ucs4,
 				  int *ucs4len,
 				  int maxucs4len,
-				  Stringprep_table_element * table)
+				  Stringprep_table_element * table,
+				  const char *tablename)
 {
   int i;
   int pos, maplen;
+#if DBG
+  int modified = 0;
+#endif
 
   while ((pos = stringprep_find_string_in_table
 	  (ucs4, *ucs4len, &i, table)) != -1)
     {
-#if DBG
-      printf ("hit %06lx %06lx-%06lx\n", ucs4[pos], table[i].start,
-	      table[i].end);
-#endif
-
       for (maplen = 0; table[i].map[maplen]; maplen++)
 	;
 
       if (*ucs4len - 1 + maplen >= maxucs4len)
 	return STRINGPREP_TOO_SMALL_BUFFER;
 
+#if DBG
+      modified = 1;
+
+      if (table[i].end)
+	printf ("Table %s maps U+%04lx (in range %04lx-%04lx) to",
+		tablename, ucs4[pos], table[i].start, table[i].end);
+      else
+	printf ("Table %s maps U+%04lx to", tablename, ucs4[pos]);
+      if (maplen == 0)
+	printf(" nothing");
+      else
+	{
+	  int n;
+
+	  for (n = 0; n < maplen; n++)
+	    printf(" U+%04lx", table[i].map[n]);
+	}
+      printf(".\n");
+#endif
+
       memmove (&ucs4[pos + maplen], &ucs4[pos + 1],
 	       *ucs4len * sizeof (unsigned long) - (&ucs4[pos + 1] - ucs4));
       memcpy (&ucs4[pos], table[i].map, sizeof (unsigned long) * maplen);
       *ucs4len = *ucs4len - 1 + maplen;
     }
+
+#if DBG
+  if (modified)
+    {
+      int j;
+      for (j = 0; j < *ucs4len; j++)
+	{
+	  printf ("U+%04lx ", ucs4[j]);
+	  if ((j+1)%8 == 0)
+	    printf("\n\t");
+	}
+      printf ("\n");
+    }
+#endif
 
   return STRINGPREP_OK;
 }
@@ -120,7 +151,7 @@ stringprep_apply_table_to_string (unsigned long *ucs4,
 int
 stringprep (char *in, int maxlen, int flags, Stringprep_profile * profile)
 {
-  int i;
+  int i, j;
   int rc;
   char *p = 0;
   unsigned long *q = 0;
@@ -140,9 +171,14 @@ stringprep (char *in, int maxlen, int flags, Stringprep_profile * profile)
 #if DBG
   {
     int j;
-    printf ("\t;;    in: ");
+    printf ("input: ");
     for (j = 0; j < ucs4len; j++)
-      printf ("U+%06lx ", ucs4[j]);
+      {
+	printf ("U+%04lx ", ucs4[j]);
+	if ((j+1)%8 == 0)
+	  printf("\n\t");
+      }
+    printf ("\n");
     printf ("\n");
   }
 #endif
@@ -153,7 +189,13 @@ stringprep (char *in, int maxlen, int flags, Stringprep_profile * profile)
 	{
 	case STRINGPREP_NFKC:
 	  if (UNAPPLICAPLEFLAGS (flags, profile[i].flags))
-	    break;
+	    {
+#if DBG
+	      printf("Unicode normalization with form KC not used.\n");
+#endif
+	      break;
+	    }
+
 	  if (flags & STRINGPREP_NO_NFKC && !profile[i].flags)
 	    {
 	      /* Profile requires NFKC, but callee asked for no NFKC. */
@@ -169,18 +211,39 @@ stringprep (char *in, int maxlen, int flags, Stringprep_profile * profile)
 	      goto done;
 	    }
 
-	  for (ucs4len = 0; ucs4[ucs4len]; ucs4len++)
+	  for (j = 0; q[j]; j++)
 	    ;
+
+#if DBG
+	  if (ucs4len != j || memcmp(ucs4, q, sizeof(ucs4[0]) * ucs4len) != 0)
+	    {
+	      int n;
+	      printf("Unicode normalization with form KC maps string into:\n");
+	      for (n = 0; n < j; n++)
+		{
+		  printf ("U+%04lx ", q[n]);
+		  if ((n+1)%8 == 0)
+		    printf("\n\t");
+		}
+	      printf ("\n");
+	    }
+#endif
 
 	  free (ucs4);
 	  ucs4 = q;
+	  ucs4len = j;
 	  q = 0;
 	  break;
 
 	case STRINGPREP_PROHIBIT_TABLE:
-	  if (stringprep_find_string_in_table
-	      (ucs4, ucs4len, NULL, profile[i].table) != -1)
+	  j = stringprep_find_string_in_table (ucs4, ucs4len,
+					       NULL, profile[i].table);
+	  if (j != -1)
 	    {
+#if DBG
+	      printf("Table %s prohibits string (character U+%04lx).\n",
+		     profile[i].name, ucs4[j]);
+#endif
 	      rc = STRINGPREP_CONTAINS_PROHIBITED;
 	      goto done;
 	    }
@@ -190,19 +253,26 @@ stringprep (char *in, int maxlen, int flags, Stringprep_profile * profile)
 	  if (UNAPPLICAPLEFLAGS (flags, profile[i].flags))
 	    break;
 	  if (flags & STRINGPREP_NO_UNASSIGNED)
-	    if (stringprep_find_string_in_table
-		(ucs4, ucs4len, NULL, profile[i].table) != -1)
-	      {
-		rc = STRINGPREP_CONTAINS_UNASSIGNED;
-		goto done;
+	    {
+	      j = stringprep_find_string_in_table
+		(ucs4, ucs4len, NULL, profile[i].table);
+	      if (j != -1)
+		{
+#if DBG
+		  printf("Table %s prohibits string (unassigned "
+			 "character U+%04lx).\n", profile[i].name, ucs4[j]);
+#endif
+		  rc = STRINGPREP_CONTAINS_UNASSIGNED;
+		  goto done;
 	      }
+	    }
 	  break;
 
 	case STRINGPREP_MAP_TABLE:
 	  if (UNAPPLICAPLEFLAGS (flags, profile[i].flags))
 	    break;
 	  rc = stringprep_apply_table_to_string
-	    (ucs4, &ucs4len, maxucs4len, profile[i].table);
+	    (ucs4, &ucs4len, maxucs4len, profile[i].table, profile[i].name);
 	  if (rc != STRINGPREP_OK)
 	    goto done;
 	  break;
@@ -219,15 +289,21 @@ stringprep (char *in, int maxlen, int flags, Stringprep_profile * profile)
 	    int done_l = 0;
 	    int contains_ral = -1;
 	    int contains_l = -1;
-	    int j;
+	    int k;
 
 	    for (j = 0; profile[j].operation; j++)
 	      if (profile[j].operation == STRINGPREP_BIDI_PROHIBIT_TABLE)
 		{
 		  done_prohibited = 1;
-		  if (stringprep_find_string_in_table
-		      (ucs4, ucs4len, NULL, profile[j].table) != -1)
+		  k = stringprep_find_string_in_table (ucs4, ucs4len,
+						       NULL, profile[j].table);
+		  if (k != -1)
 		    {
+#if DBG
+		      printf("Table %s prohibits string "
+			     "(bidi, character U+%04lx).\n",
+			     profile[i].name, ucs4[j]);
+#endif
 		      rc = STRINGPREP_BIDI_CONTAINS_PROHIBITED;
 		      goto done;
 		    }
@@ -255,19 +331,28 @@ stringprep (char *in, int maxlen, int flags, Stringprep_profile * profile)
 
 	    if (contains_ral != -1 && contains_l != -1)
 	      {
+#if DBG
+		printf("String contains both L and RAL characters.\n");
+#endif
 		rc = STRINGPREP_BIDI_BOTH_L_AND_RAL;
 		goto done;
 	      }
 
 	    if (contains_ral != -1)
-	      if (!(stringprep_find_character_in_table
-		    (ucs4[0], profile[contains_ral].table) != -1 &&
-		    stringprep_find_character_in_table
-		    (ucs4[ucs4len - 1], profile[contains_ral].table) != -1))
-		{
-		  rc = STRINGPREP_BIDI_LEADTRAIL_NOT_RAL;
-		  goto done;
-		}
+	      {
+		if (!(stringprep_find_character_in_table
+		      (ucs4[0], profile[contains_ral].table) != -1 &&
+		      stringprep_find_character_in_table
+		      (ucs4[ucs4len - 1], profile[contains_ral].table) != -1))
+		  {
+#if DBG
+		    printf("Bidi string does not start/end with "
+			   "RAL characters.\n");
+#endif
+		    rc = STRINGPREP_BIDI_LEADTRAIL_NOT_RAL;
+		    goto done;
+		  }
+	      }
 	  }
 	  break;
 
@@ -276,16 +361,22 @@ stringprep (char *in, int maxlen, int flags, Stringprep_profile * profile)
 	  goto done;
 	  break;
 	}
-#if DBG
-      {
-	int j;
-	printf ("\t;; %5s: ", profile[i].name ? profile[i].name : "<NONAME>");
-	for (j = 0; j < ucs4len; j++)
-	  printf ("U+%06lx ", ucs4[j]);
-	printf ("\n");
-      }
-#endif
     }
+
+#if DBG
+  {
+    int j;
+    printf ("\n");
+    printf ("output: ");
+    for (j = 0; j < ucs4len; j++)
+      {
+	printf ("U+%04lx ", ucs4[j]);
+	if ((j+1)%8 == 0)
+	  printf("\n\t");
+      }
+    printf ("\n");
+  }
+#endif
 
   p = stringprep_ucs4_to_utf8 (ucs4, ucs4len, 0, 0);
 
