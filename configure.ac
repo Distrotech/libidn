@@ -5,8 +5,8 @@ AC_CONFIG_SRCDIR(stringprep.h.in)
 # Interfaces removed:    CURRENT++, AGE=0, REVISION=0
 # Interfaces added:      CURRENT++, AGE++, REVISION=0
 # No interfaces changed:                   REVISION++
-LT_CURRENT=4
-LT_AGE=4
+LT_CURRENT=5
+LT_AGE=0
 LT_REVISION=0
 AC_SUBST(LT_CURRENT)
 AC_SUBST(LT_AGE)
