@@ -17,4 +17,5 @@
 # License along with GNU Libidn; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
 
-EXTRA_DIST = ac_compile_check_sizeof.m4 ax_create_stdint_h.m4 iconv.m4
+EXTRA_DIST = ac_compile_check_sizeof.m4 ax_create_stdint_h.m4
+EXTRA_DIST += lib-ld.m4 lib-link.m4 lib-prefix.m4 iconv.m4 
