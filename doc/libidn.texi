@@ -1133,15 +1133,16 @@ The functions provided are the following entry points:
 @chapter TLD Functions
 @cindex TLD Functions
 
-Several entities that manage Top Level Domains (@acronym{TLD}s) have
+Organizations that manage some Top Level Domains (@acronym{TLD}s) have
 published tables with characters they accept within the domain.  The
-reason may be to reduce complexity, and to protect themselves future
-changes in the IDN or Unicode specifications.  Libidn implement an
-infrastructure for defining and checking strings against such tables.
-Libidn also try to ship a default table that includes information from
-the @acronym{TLD}s we have managed to tables from.  Because these
-tables are even less static than Unicode or StringPrep table, it is
-likely that they will have to be updated from time to time.  The
+reason may be to reduce complexity from the full Unicode range, and to
+protect themselves from future (backwards incompatible) changes in the
+IDN or Unicode specifications.  Libidn implement an infrastructure for
+defining and checking strings against such tables.  Libidn also ship
+some tables from @acronym{TLD}s that we have managed to get permission
+to use them from.  Because these tables are even less static than
+Unicode or StringPrep tables, it is likely that they will be updated
+from time to time (even in backwards incompatibe ways).  The Libidn
 interface provide a ``version'' field for each @acronym{TLD} table,
 which can be compared for equality to guarantee the same operation
 over time.
@@ -1163,7 +1164,7 @@ the file @file{tld.h} using:
 
 All functions return a exit code:
 
-@deftypevr {Return code} {Idna_rc} {IDNA_SUCCESS = 0}
+@deftypevr {Return code} {Idna_rc} {TLD_SUCCESS = 0}
 Successful operation.  This value is guaranteed to always be zero, the
 remaining ones are only guaranteed to hold non-zero values, for
 logical comparison purposes.
