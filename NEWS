@@ -4,6 +4,8 @@ See the end for copying conditions.
 
 * Version 0.3.6 (unreleased)
 
+** The manual now contain a troubleshooting section for the command line tool.
+
 * Version 0.3.5 (released 2003-12-15)
 
 ** The program 'idn' accepts input strings directly on the command line.
