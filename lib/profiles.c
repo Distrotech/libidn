@@ -290,7 +290,7 @@ const Stringprep_profile stringprep_saslprep[] = {
   {STRINGPREP_MAP_TABLE, 0, stringprep_saslprep_space_map},
   {STRINGPREP_MAP_TABLE, 0, stringprep_rfc3454_B_1},
   {STRINGPREP_NFKC, 0, 0},
-  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_rfc3454_C_2_2},
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_rfc3454_C_1_2},
   {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_rfc3454_C_2_1},
   {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_rfc3454_C_2_2},
   {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_rfc3454_C_3},
