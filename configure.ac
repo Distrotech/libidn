@@ -18,7 +18,7 @@ dnl You should have received a copy of the GNU Lesser General Public
 dnl License along with GNU Libidn; if not, write to the Free Software
 dnl Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
 
-AC_INIT(libidn, 0.2.1, bug-libidn@gnu.org)
+AC_INIT(libidn, 0.2.2, bug-libidn@gnu.org)
 AC_CONFIG_SRCDIR(stringprep.h.in)
 
 # Interfaces removed:    CURRENT++, AGE=0, REVISION=0
@@ -26,7 +26,7 @@ AC_CONFIG_SRCDIR(stringprep.h.in)
 # No interfaces changed:                   REVISION++
 LT_CURRENT=10
 LT_AGE=0
-LT_REVISION=1
+LT_REVISION=2
 AC_SUBST(LT_CURRENT)
 AC_SUBST(LT_AGE)
 AC_SUBST(LT_REVISION)
