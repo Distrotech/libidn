@@ -24,7 +24,8 @@ Tld_table:
 Tld_rc: ADD.  New data types.
 tld_tables: ADD.  New variable with built-in TLD tables.
 tld_get_4i:
-tld_get_4z: ADD.  New functions to extract TLD from string.
+tld_get_4z:
+tld_get_8z: ADD.  New functions to extract TLD from string.
 tld_get_table:
 tld_default_table: ADD.  New functions to get TLD table from TLD name.
 tld_check_4ti:

@@ -1275,6 +1275,7 @@ contain the actual code points that are valid for this TLD (see
 
 @include texi/tld_get_4i.texi
 @include texi/tld_get_4z.texi
+@include texi/tld_get_8z.texi
 @include texi/tld_get_table.texi
 @include texi/tld_default_table.texi
 
