@@ -2,6 +2,8 @@ Libidn NEWS -- History of user-visible changes.                 -*- outline -*-
 Copyright (C) 2002, 2003, 2004 Simon Josefsson
 See the end for copying conditions.
 
+* Version 0.3.8 (unreleased)
+
 * Version 0.3.7 (released 2004-01-22)
 
 ** The command line parameter '--' idiom is documented.
