@@ -5,6 +5,10 @@ example2.c.texi
 example3.c.texi
 example4.c.texi
 idn.1
+libidn-db.pdf
+libidn-db.ps
+libidn-db.txt
+libidn-db.xml
 libidn.aux
 libidn.cp
 libidn.cps
