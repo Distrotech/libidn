@@ -4,6 +4,7 @@ ABOUT-NLS
 INSTALL
 Makefile
 Makefile.in
+a.out.gdb
 aclocal.m4
 autom4te.cache
 compile

@@ -11,3 +11,4 @@ tst_stringprep
 tst_tld
 utils.lo
 libutils.la
+*.gdb
