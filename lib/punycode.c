@@ -204,7 +204,8 @@ punycode_encode (size_t input_length,
 	  if (max_out - out < 2)
 	    return punycode_big_output;
 	  output[out++] =
-	    case_flags ? encode_basic (input[j], case_flags[j]) : input[j];
+	    case_flags ?
+	    (punycode_uint) encode_basic (input[j], case_flags[j]) : input[j];
 	}
       /* else if (input[j] < n) return punycode_bad_input; */
       /* (not needed for Punycode with unsigned code points) */
