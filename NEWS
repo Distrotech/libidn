@@ -4,6 +4,10 @@ See the end for copying conditions.
 
 * Version 0.4.1 (unreleased)
 
+** Fixed SASLprep tables to prohibit non-ASCII space in output.
+Non-ASCII space has always been mapped to ASCII space, so it is not
+clear this really have any effect, but the specification require it.
+
 * Version 0.4.0 (released 2004-02-28)
 
 ** Support for TLD restrictions on IDN strings, contributed by Thomas Jacob.
