@@ -40,6 +40,10 @@
 # define mbsrtowcs __mbsrtowcs
 #endif
 
+#if USE_UNLOCKED_IO
+# include "unlocked-io.h"
+#endif
+
 #ifndef _
 # define _(String) String
 #endif
