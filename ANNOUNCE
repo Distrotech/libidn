@@ -1,3 +1,6 @@
+Libstringprep ANNOUNCE -- Overview to attract interest.
+See the end for copying conditions.
+
 Libstringprep is an implementation of the Stringprep specification
 used by the Internationalized Domain Names IETF working group to
 implement internationalized domain names.  It is licensed under the
@@ -27,3 +30,13 @@ For more information see:
 http://www.ietf.org/html.charters/idn-charter.html
 http://www.ietf.org/internet-drafts/draft-hoffman-stringprep-07.txt
 http://www.i-d-n.net/
+
+Further information including paid contract development:
+Simon Josefsson <simon@josefsson.org>
+
+----------------------------------------------------------------------
+Copyright (C) 2002 Simon Josefsson
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.
