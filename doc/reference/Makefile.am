@@ -17,13 +17,12 @@
 # License along with GNU Libidn; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
 
-EXTRA_DIST = libidn-docs.tmpl $(HTML_OBJECTS) $(IMAGES)
-
+HIGNORE = gunibreak.h gunicomp.h gunidecomp.h idn-int.h
 HTML_OBJECTS = index.html c4.html \
 	libidn-idna.html libidn-punycode.html libidn-stringprep.html
-IMAGES = home.png left.png right.png up.png
 
-HIGNORE = gunibreak.h gunicomp.h gunidecomp.h idn-int.h
+EXTRA_DIST = $(PACKAGE)-docs.tmpl $(HTML_OBJECTS) $(IMAGES)
+IMAGES = home.png left.png right.png up.png
 
 scan.stamp: $(top_srcdir)/lib/*.c $(top_srcdir)/lib/*.h
 	gtkdoc-scan --module=$(PACKAGE) --source-dir=$(top_srcdir)/lib \
