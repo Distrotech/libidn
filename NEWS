@@ -8,6 +8,8 @@ See the end for copying conditions.
 
 ** SASLprep stringprep profile added.
 
+** An online interface to libidn written in PHP added to contrib/web/.
+
 ** API and ABI is backwards compatible with the previous version.
 
 * Version 0.1.11 (released 2003-02-26)
