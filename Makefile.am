@@ -17,8 +17,8 @@
 # License along with GNU Libidn; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
 
-DIST_SUBDIRS = doc reference
-SUBDIRS = . doc @GTKDOC@
+DIST_SUBDIRS = doc m4 reference
+SUBDIRS = . doc m4 @GTKDOC@
 
 ACLOCAL_AMFLAGS = -I m4
 
