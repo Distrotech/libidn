@@ -135,16 +135,10 @@ main (int argc, char *argv[])
       }
   while (argc-- > 1);
 
-
-
-
-
   for (i = 0; i < sizeof (nfkc) / sizeof (nfkc[0]); i++)
     {
       if (debug)
 	printf ("NFKC entry %d\n", i);
-
-
 
       out = stringprep_utf8_nfkc_normalize (nfkc[i].in, strlen (nfkc[i].in));
       if (out == NULL)
@@ -186,9 +180,9 @@ main (int argc, char *argv[])
 	}
       else if (debug)
 	printf ("OK\n");
+
+      free(out);
     }
-
-
 
   if (debug)
     printf ("NFKC self tests done with %d errors\n", error_count);
