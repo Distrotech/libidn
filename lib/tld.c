@@ -1,8 +1,7 @@
-/* tldchk.c  Handle TLD restriction checking
+/* tld.c --- Handle TLD restriction checking.
+ * Copyright (C) 2003, 2004  Free Software Foundation, Inc.
  *
- * Author  Thomas Jacob, Internet24.de
- *
- * Copyright (C) 2003,2004   Free Software Foundation, Inc.
+ * Author: Thomas Jacob, Internet24.de
  *
  * This file is part of GNU Libidn.
  *
@@ -22,12 +21,14 @@
  *
  */
 
-#include <tldchk.h>
-#include <string.h>
+/* Get stringprep_utf8_to_ucs4, stringprep_locale_to_utf8. */
 #include <stringprep.h>
 
-#define DOTP(c) ((c) == 0x002E || (c) == 0x3002 ||     \
-                 (c) == 0xFF0E || (c) == 0xFF61)
+/* Get specifications. */
+#include <tld.h>
+
+#define DOTP(c) ((c) == 0x002E || (c) == 0x3002 ||	\
+		 (c) == 0xFF0E || (c) == 0xFF61)
 
 /**
  * tld_gettld_4i:
@@ -39,7 +40,7 @@
  * Isolate the top-level domain of @in and return it as
  * an ascii string in @out.
  *
- * Return value: Return %TLDCHK_SUCCESS on success, the corresponding
+ * Return value: Return %TLD_SUCCESS on success, the corresponding
  * error code otherwise.
  */
 int
@@ -50,7 +51,7 @@ tld_gettld_4i (const uint32_t * in, size_t inlen, char **out)
 
   *out = NULL;
   if (!in || (inlen <= 0))
-    return TLDCHK_NODATA;
+    return TLD_NODATA;
 
   ipos = &in[inlen - 1];
   olen = 0;
@@ -65,7 +66,7 @@ tld_gettld_4i (const uint32_t * in, size_t inlen, char **out)
       char *opos = out_s;
 
       if (!opos)
-	return TLDCHK_MALLOC_ERROR;
+	return TLD_MALLOC_ERROR;
 
       ipos++;
       /* Transcribe to lowercase ascii string. */
@@ -73,10 +74,10 @@ tld_gettld_4i (const uint32_t * in, size_t inlen, char **out)
 	*opos = *ipos > 0x5A ? *ipos : *ipos + 0x20;
       *opos = 0;
       *out = out_s;
-	  return TLDCHK_SUCCESS;
+	  return TLD_SUCCESS;
     }
 
-  return TLDCHK_NOTLD;
+  return TLD_NOTLD;
 }
 
 
@@ -88,7 +89,7 @@ tld_gettld_4i (const uint32_t * in, size_t inlen, char **out)
  * Isolate the top-level domain of @in and return it as
  * an ascii string in @out.
  *
- * Return value: Returns %TLDCHK_SUCCESS on success, the corresponding
+ * Return value: Returns %TLD_SUCCESS on success, the corresponding
  * error code otherwise.
  */
 int
@@ -97,7 +98,7 @@ tld_gettld_4z (const uint32_t * in, char **out)
   const uint32_t *ipos = in;
 
   if (!in)
-    return TLDCHK_NODATA;
+    return TLD_NODATA;
 
   while (*ipos)
     ipos++;
@@ -120,26 +121,26 @@ tld_gettld_4z (const uint32_t * in, char **out)
  * the position of the first character for which this is not
  * the case in @errpos.
  *
- * Return value: Returns %TLDCHK_SUCCESS if all code points
- * are valid or when @tld is null, %TLDCHK_ILLEGAL if a
+ * Return value: Returns %TLD_SUCCESS if all code points
+ * are valid or when @tld is null, %TLD_ILLEGAL if a
  * character is not allowed, or additional error codes on
  * general failure conditions.
  */
 int
 tld_check_4it (const uint32_t * in, size_t inlen, size_t * errpos,
-	       const TLDCHK_domain * tld)
+	       const Tld_table * tld)
 {
   const uint32_t *ipos;
   int rc;
 
   if (!tld)			/* No data for TLD so everything is valid. */
-    return TLDCHK_SUCCESS;
+    return TLD_SUCCESS;
 
   ipos = in;
   while (ipos < &in[inlen])
     {
       rc = tld_checkchar (*ipos, tld);
-      if (rc != TLDCHK_SUCCESS)
+      if (rc != TLD_SUCCESS)
 	{
 	  if (errpos)
 	    {
@@ -149,7 +150,7 @@ tld_check_4it (const uint32_t * in, size_t inlen, size_t * errpos,
 	}
       ipos++;
     }
-  return TLDCHK_SUCCESS;
+  return TLD_SUCCESS;
 }
 
 /**
@@ -164,19 +165,19 @@ tld_check_4it (const uint32_t * in, size_t inlen, size_t * errpos,
  * the position of the first character for which this is not
  * the case in @errpos.
  *
- * Return value: Returns %TLDCHK_SUCCESS if all code points
- * are valid or when @tld is null, %TLDCHK_ILLEGAL if a
+ * Return value: Returns %TLD_SUCCESS if all code points
+ * are valid or when @tld is null, %TLD_ILLEGAL if a
  * character is not allowed, or additional error codes on
  * general failure conditions.
  */
 int
 tld_check_4zt (const uint32_t * in, size_t * errpos,
-	       const TLDCHK_domain * tld)
+	       const Tld_table * tld)
 {
   const uint32_t *ipos = in;
 
   if (!ipos)
-    return TLDCHK_NODATA;
+    return TLD_NODATA;
 
   while (*ipos)
     ipos++;
@@ -201,17 +202,17 @@ tld_check_4zt (const uint32_t * in, size_t * errpos,
  * If @xtra_tlds is %NULL, only the built-in information is used.
  * The position of the first offending character is returned in @errpos.
  *
- * Return value: Returns %TLDCHK_SUCCESS if all code points
- * are valid or when @tld is null, %TLDCHK_ILLEGAL if a
+ * Return value: Returns %TLD_SUCCESS if all code points
+ * are valid or when @tld is null, %TLD_ILLEGAL if a
  * character is not allowed, or additional error codes on
  * general failure conditions.
  */
 int
 tld_check_4i (const uint32_t * in, size_t inlen, size_t * errpos,
-	      const TLDCHK_domain ** xtra_tlds)
+	      const Tld_table ** xtra_tlds)
 {
   const uint32_t *ipos;
-  const TLDCHK_domain *tld;
+  const Tld_table *tld;
   char *domain;
   int rc;
 
@@ -219,10 +220,10 @@ tld_check_4i (const uint32_t * in, size_t inlen, size_t * errpos,
   /* Get TLD name. */
   rc = tld_gettld_4i (in, inlen, &domain);
 
-  if (rc != TLDCHK_SUCCESS)
+  if (rc != TLD_SUCCESS)
   {
-    if (rc == TLDCHK_NOTLD) /* No TLD, say OK */
-	  return TLDCHK_SUCCESS;
+    if (rc == TLD_NOTLD) /* No TLD, say OK */
+	  return TLD_SUCCESS;
 	else
       return rc;
   }
@@ -249,19 +250,19 @@ tld_check_4i (const uint32_t * in, size_t inlen, size_t * errpos,
  * If @xtra_tlds is %NULL, only the built-in information is used.
  * The position of the first offending character is returned in @errpos.
  *
- * Return value: Returns %TLDCHK_SUCCESS if all code points
- * are valid or when @tld is null, %TLDCHK_ILLEGAL if a
+ * Return value: Returns %TLD_SUCCESS if all code points
+ * are valid or when @tld is null, %TLD_ILLEGAL if a
  * character is not allowed, or additional error codes on
  * general failure conditions.
  */
 int
 tld_check_4z (const uint32_t * in, size_t * errpos,
-	      const TLDCHK_domain ** xtra_tlds)
+	      const Tld_table ** xtra_tlds)
 {
   const uint32_t *ipos = in;
 
   if (!ipos)
-    return TLDCHK_NODATA;
+    return TLD_NODATA;
 
   while (*ipos)
     ipos++;
@@ -286,26 +287,26 @@ tld_check_4z (const uint32_t * in, size_t * errpos,
  * Note that the error position refers to the decoded character offset
  * rather than the byte position in the string.
  *
- * Return value: Returns %TLDCHK_SUCCESS if all characters
- * are valid or when @tld is null, %TLDCHK_ILLEGAL if a
+ * Return value: Returns %TLD_SUCCESS if all characters
+ * are valid or when @tld is null, %TLD_ILLEGAL if a
  * character is not allowed, or additional error codes on
  * general failure conditions.
  */
 int
 tld_check_8z (const char *in, size_t * errpos,
-	      const TLDCHK_domain ** xtra_tlds)
+	      const Tld_table ** xtra_tlds)
 {
   uint32_t *iucs;
   size_t ilen;
   int rc;
 
   if (!in)
-    return TLDCHK_NODATA;
+    return TLD_NODATA;
 
   iucs = stringprep_utf8_to_ucs4 (in, -1, &ilen);
 
   if (!iucs)
-    return TLDCHK_MALLOC_ERROR;
+    return TLD_MALLOC_ERROR;
 
   rc = tld_check_4i (iucs, ilen, errpos, xtra_tlds);
 
@@ -331,24 +332,24 @@ tld_check_8z (const char *in, size_t * errpos,
  * Note that the error position refers to the decoded character offset
  * rather than the byte position in the string.
  *
- * Return value: Returns %TLDCHK_SUCCESS if all characters
- * are valid or when @tld is null, %TLDCHK_ILLEGAL if a
+ * Return value: Returns %TLD_SUCCESS if all characters
+ * are valid or when @tld is null, %TLD_ILLEGAL if a
  * character is not allowed, or additional error codes on
  * general failure conditions.
  */
 int
 tld_check_lz (const char *in, size_t * errpos,
-	      const TLDCHK_domain ** xtra_tlds)
+	      const Tld_table ** xtra_tlds)
 {
   char *utf8;
   int rc;
 
   if (!in)
-    return TLDCHK_NODATA;
+    return TLD_NODATA;
 
   utf8 = stringprep_locale_to_utf8 (in);
   if (!utf8)
-    return TLDCHK_ICONV_ERROR;
+    return TLD_ICONV_ERROR;
 
 
   rc = tld_check_8z (utf8, errpos, xtra_tlds);
@@ -363,59 +364,39 @@ tld_check_lz (const char *in, size_t * errpos,
 /**
  * tld_checkchar:
  * @ch: 32 bit unicode character to check.
- * @tld: TLDCHK_domain data structure to check @ch against
+ * @tld: Tld_table data structure to check @ch against
  *
  * Verify if @ch is either in [a-z0-9-.] or mentioned
  * as a legal character in @tld.
  *
- * Return value: Return %TLDCHK_SUCCESS if @ch is a legal character
- * for the TLD @tld or if @tld is %NULL, %TLDCHK_ILLEGAL if @ch is not a
+ * Return value: Return %TLD_SUCCESS if @ch is a legal character
+ * for the TLD @tld or if @tld is %NULL, %TLD_ILLEGAL if @ch is not a
  * legal as defined by @tld.
  */
 
 int
-tld_checkchar (uint32_t ch, const TLDCHK_domain * tld)
+tld_checkchar (uint32_t ch, const Tld_table * tld)
 {
-  const uint32_t *single;
-  const uint32_t *interval;
+  const uint32_t *p;
   size_t i;
   int found = 0;
 
   if (!tld)
-    return TLDCHK_SUCCESS;
+    return TLD_SUCCESS;
 
   /* Check for [-a-z0-9.]. */
-  if ((ch >= 0x61 && ch <= 0x7A) || (ch >= 0x30 && ch <= 0x39)
-      || ch == 0x2D || DOTP (ch))
-    return TLDCHK_SUCCESS;
+  if ((ch >= 0x61 && ch <= 0x7A) ||
+      (ch >= 0x30 && ch <= 0x39) ||
+      ch == 0x2D || DOTP (ch))
+    return TLD_SUCCESS;
 
-  /* FIXME: replace these two searches by bsearch like 
-   * stuff.
-   */
+  /* FIXME: replace searches by bsearch like stuff. */
 
-  /* Next check intervals. */
-  interval = tld->intervals;
-  i = tld->num_intervals;
-  while (i--)
-    {
-      if (ch >= *interval++)
-	if (ch <= *interval++)
-	  return TLDCHK_SUCCESS;
-    }
+  for (p = tld->data, i = 0; i < tld->ndata; i++, p++)
+    if (ch >= *p && ch <= *p)
+      return TLD_SUCCESS;
 
-  if (found)
-    return TLDCHK_SUCCESS;
-
-  /* Then check those singles.  */
-  single = tld->singles;
-  i = tld->num_singles;
-  while (i--);
-  {
-    if (*single++ == ch)
-      return TLDCHK_SUCCESS;
-  };
-
-  return TLDCHK_ILLEGAL;
+  return TLD_ILLEGAL;
 }
 
 
@@ -427,10 +408,10 @@ tld_checkchar (uint32_t ch, const TLDCHK_domain * tld)
  * Return value: Return structure corresponding to TLD @tld_str, first looking through
  * @xtra_tlds then thru built-in list, or %NULL if no such structure found.
  */
-const TLDCHK_domain *
-tld_finddomain (char *tld_str, const TLDCHK_domain ** xtra_tlds)
+const Tld_table *
+tld_finddomain (const char *tld_str, const Tld_table ** xtra_tlds)
 {
-  const TLDCHK_domain **tld = NULL;
+  const Tld_table **tld = NULL;
   int found = 0;
 
   if (!tld_str)
@@ -454,9 +435,9 @@ tld_finddomain (char *tld_str, const TLDCHK_domain ** xtra_tlds)
     return *tld;
 
   /* Then search the internal stuff. */
-  if (tldchk_domains)
+  if (tld_table)
     {
-      tld = tldchk_domains;
+      tld = tld_table;
       while (*tld)
 	if (!strcmp ((*tld)->name, tld_str))
 	  {
@@ -475,14 +456,14 @@ tld_finddomain (char *tld_str, const TLDCHK_domain ** xtra_tlds)
 
 /**
  * Tldchk_rc:
- * @TLDCHK_SUCCESS: Successful operation.  This value is guaranteed to
+ * @TLD_SUCCESS: Successful operation.  This value is guaranteed to
  * always be zero, the remaining ones are only guaranteed to hold
  * non-zero values, for logical comparison purposes.
- * @TLDCHK_ILLEGAL: Illegal character found.
- * @TLDCHK_NODATA: No input data was provided.
- * @TLDCHK_MALLOC_ERROR: Error during memory allocation.
- * @TLDCHK_ICONV_ERROR: Error during iconv string conversion.
- * @TLDCHK_NOTLD: No top-level domain found in domain string.
+ * @TLD_ILLEGAL: Illegal character found.
+ * @TLD_NODATA: No input data was provided.
+ * @TLD_MALLOC_ERROR: Error during memory allocation.
+ * @TLD_ICONV_ERROR: Error during iconv string conversion.
+ * @TLD_NOTLD: No top-level domain found in domain string.
  *
  * Enumerated return codes of the TLD checking functions.
  * The value 0 is guaranteed to always correspond to success.
