@@ -41,10 +41,8 @@ EXTRA_DIST = FAQ libidn.pc.in \
 	contrib/doxygen/gdoc2doxygen \
 	getopt.h getopt.c getopt1.c strdup.c memset.c
 
+MAINTAINERCLEANFILES = idn_cmd.c idn_cmd.h
 DISTCLEANFILES = idn-int.h
-
-clean-local:
-	rm -f idn_cmd.c idn_cmd.h
 
 # Library
 
