@@ -50,6 +50,19 @@ stringprep_kerberos5 (char *in, int maxlen)
 }
 
 /**
+ * stringprep_plain:
+ * @in: input/ouput array with string to prepare.
+ * @maxlen: maximum length of input/output array.
+ *
+ * Prepare the input UTF-8 string according to the draft SASL
+ * ANONYMOUS profile.  Returns 0 iff successful, or an error code.
+ **/
+int
+stringprep_plain (char *in, int maxlen)
+{
+}
+
+/**
  * stringprep_xmpp_nodeprep:
  * @in: input/ouput array with string to prepare.
  * @maxlen: maximum length of input/output array.
