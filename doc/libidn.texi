@@ -1380,7 +1380,7 @@ Check output to make sure it is a STD3 conforming host name.
 @section Prefix String
 
 @deftypevr {Macro} {#define} IDNA_ACE_PREFIX
-String with the official IDNA prefix, ``xn--''.
+String with the official IDNA prefix, @code{xn--}.
 @end deftypevr
 
 @section Core Functions
