@@ -15,7 +15,7 @@ have-Makefile := $(shell test -f Makefile && echo yes)
 ifeq ($(have-Makefile),yes)
 
 # Make tar archive easier to reproduce.
-export TAR_OPTIONS = --owner=0 --group=0 --numeric-owner
+#export TAR_OPTIONS = --owner=0 --group=0 --numeric-owner
 
 include Makefile
 include $(srcdir)/Makefile.cfg
