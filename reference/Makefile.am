@@ -30,7 +30,7 @@ FIXXREF_OPTIONS=
 
 # Used for dependencies.
 HFILE_GLOB=$(top_srcdir)/*.h
-CFILE_GLOB=$(top_srcdir)/*.c
+CFILE_GLOB=$(top_srcdir)/*.c dummy.c
 
 # Header files to ignore when scanning.
 IGNORE_HFILES=config.h \
