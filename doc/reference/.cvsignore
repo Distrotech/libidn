@@ -11,6 +11,7 @@ libidn-decl.txt
 libidn-doc.bottom
 libidn-doc.top
 libidn-idna.html
+libidn-pr29.html
 libidn-punycode.html
 libidn-sections.txt
 libidn-stringprep-*.html
