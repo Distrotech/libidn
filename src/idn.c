@@ -52,13 +52,19 @@ main (int argc, char *argv[])
   if (cmdline_parser (argc, argv, &args_info) != 0)
     return 1;
 
+  if (!args_info.stringprep_given &&
+      !args_info.punycode_encode_given && !args_info.punycode_decode_given &&
+      !args_info.idna_to_ascii_given && !args_info.idna_to_unicode_given)
+    args_info.idna_to_ascii_given = 1;
+
   if ((args_info.stringprep_given ? 1 : 0) +
       (args_info.punycode_encode_given ? 1 : 0) +
       (args_info.punycode_decode_given ? 1 : 0) +
       (args_info.idna_to_ascii_given ? 1 : 0) +
       (args_info.idna_to_unicode_given ? 1 : 0) != 1)
     {
-      fprintf (stderr, "%s: One of -s, -e, -d, -a or -u must be specified.\n",
+      fprintf (stderr,
+	       "%s: Only one of -s, -e, -d, -a or -u can be specified.\n",
 	       argv[0]);
       cmdline_parser_print_help ();
       return 1;
