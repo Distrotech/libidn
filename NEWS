@@ -4,7 +4,7 @@ See the end for copying conditions.
 
 * Version 0.2.0 (unreleased)
 
-** Unicode code point data types reverted to uint32_t.
+** Unicode code point data is now uint32_t, defined in "idn-int.h".
 A header file "idn-int.h" is generated and installed to make sure the
 "uint32_t" data type is available on all platforms.  The reason for
 this change is that on 64-bit platforms, the application was required
@@ -17,20 +17,21 @@ The allowunassigned and usestd3asciirules parameters were collapsed
 into a flags parameter, that can take on the IDNA_ALLOW_UNASSIGNED and
 IDNA_USE_STD3_ASCII_RULES values.  This allows for easier extensions
 to support, e.g., Unicode 4.0 or RFC 952 ASCII rules checking.  Note
-that the old entry points are unmodified, and new entry points with
-this modification were added.
+that the old entry points are unmodified (in this regard), and new
+entry points with this modification were added.
+
+** The manual was moved into a separate directory doc/.
 
 ** Bugfixes.
 
 ** API and ABI is not backwards compatible.
 In punycode.h and stringprep.h the "unsigned long" data type was
-changed into "uint32_t", which cause a API and ABI missmatch on
-platforms where the size of "unsigned long" is not 32 bits.  For 32
-bit platforms, the API and ABI is backwards compatible though.  For
+changed into "uint32_t", which cause a API and ABI missmatch.  For
 idna.h, the old entry points that used "unsigned long" still exist,
-and new entry points that uses "uint32_t" was added.  The shared
-object version has been increased, so that 64 bit platforms aren't
-confused.
+and new entry points that uses "uint32_t" was added.  To update your
+application, you probably only need to change "unsigned long" to
+"uint32_t".  As a result of these changes, the shared object version
+has been increased.
 
 * Version 0.1.15 (released 2003-06-07)
 
