@@ -165,6 +165,8 @@ release:
 	test -d $(htmldir) && cp -v $(PACKAGE).{ps,pdf,html} $(htmldir)/
 	test -d $(htmldir)/reference && \
 		cp -v reference/*.html $(htmldir)/reference/
+	test -d $(htmldir)/doxygen && test -d contrib/doxygen/html && \
+		cp -v contrib/doxygen/html/* $(htmldir)/doxygen/
 	test -d $(htmldir) && cd $(htmldir) && cvs commit -m "Update." \
 		$(PACKAGE).{ps,pdf,html} reference/*.html
 	cvs rtag $(tag) $(PACKAGE)
