@@ -1,3 +1,65 @@
+2004-07-09  Simon Josefsson <simon@josefsson.org>
+
+	* po/da.po, po/de.po, po/eo.po, po/fr.po, po/nl.po, po/pl.po,
+	po/ro.po, po/sr.po, po/sv.po: Generated.
+
+2004-07-09  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Version 0.5.1.
+
+2004-07-09  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2004-07-09  Simon Josefsson <simon@josefsson.org>
+
+	* configure.ac: Use autobuild.
+
+2004-07-09  Simon Josefsson <simon@josefsson.org>
+
+	* THANKS, m4/autobuild.m4: Add.
+
+2004-07-09  Simon Josefsson <simon@josefsson.org>
+
+	* examples/example.c, examples/example2.c, examples/example3.c,
+	examples/example4.c: Call setlocale to make iconv work, reported by
+	Robert Scheck <libidn@robert-scheck.de>.
+
+2004-07-02  Simon Josefsson <simon@josefsson.org>
+
+	* configure.ac, src/getopt.c, src/getopt1.c: Update getopt.
+
+2004-07-02  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2004-07-02  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi: Fix.
+
+2004-07-02  Simon Josefsson <simon@josefsson.org>
+
+	* src/getopt_int.h: Add.
+
+2004-07-02  Simon Josefsson <simon@josefsson.org>
+
+	* configure.ac, src/Makefile.am, src/getopt.c, src/getopt.h,
+	src/getopt1.c, src/getopt_.h: Update getopt module.  Now work on,
+	e.g., uClibc systems which uses GNU Libc header files, but do not
+	implement getopt_long.
+
+2004-06-29  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi: Add.
+
+2004-06-26  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS, configure.ac: Bump versions.
+
+2004-06-26  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi: Add.
+
 2004-06-26  Simon Josefsson <simon@josefsson.org>
 
 	* po/da.po, po/de.po, po/eo.po, po/fr.po, po/nl.po, po/pl.po,
