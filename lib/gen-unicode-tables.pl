@@ -1,6 +1,5 @@
 #! /usr/bin/perl -w
 
-#    Copyright (C) 2003 Simon Josefsson
 #    Copyright (C) 1998, 1999 Tom Tromey
 #    Copyright (C) 2001 Red Hat Software
 
@@ -24,7 +23,6 @@
 
 # gen-unicode-tables.pl - Generate tables for libunicode from Unicode data.
 # See http://www.unicode.org/Public/UNIDATA/UnicodeCharacterDatabase.html
-# Usage: gen-unicode-tables.pl [-decomp | -both] UNICODE-VERSION UnicodeData.txt LineBreak.txt SpecialCasing.txt CaseFolding.txt
 # I consider the output of this program to be unrestricted.  Use it as
 # you will.
 
@@ -32,7 +30,11 @@
 # * For decomp table it might make sense to use a shift count other
 #   than 8.  We could easily compute the perfect shift count.
 
+# we use some perl unicode features
+require 5.006;
+
 use vars qw($CODE $NAME $CATEGORY $COMBINING_CLASSES $BIDI_CATEGORY $DECOMPOSITION $DECIMAL_VALUE $DIGIT_VALUE $NUMERIC_VALUE $MIRRORED $OLD_NAME $COMMENT $UPPER $LOWER $TITLE $BREAK_CODE $BREAK_CATEGORY $BREAK_NAME $CASE_CODE $CASE_LOWER $CASE_TITLE $CASE_UPPER $CASE_CONDITION);
+
 
 # Names of fields in Unicode data table.
 $CODE = 0;
@@ -135,6 +137,8 @@ $FOLDING_MAPPING = 2;
      'PO' => "G_UNICODE_BREAK_POSTFIX",
      'SA' => "G_UNICODE_BREAK_COMPLEX_CONTEXT",
      'AI' => "G_UNICODE_BREAK_AMBIGUOUS",
+     'NL' => "G_UNICODE_BREAK_NEXT_LINE",
+     'WJ' => "G_UNICODE_BREAK_WORD_JOINER",
      'XX' => "G_UNICODE_BREAK_UNKNOWN"
      );
 
@@ -144,8 +148,9 @@ $FOLDING_MAPPING = 2;
 
 # Maximum length of special-case strings
 
-my $special_case_len = 0;
 my @special_cases;
+my @special_case_offsets;
+my $special_case_offset = 0;
 
 $do_decomp = 0;
 $do_props = 1;
@@ -161,17 +166,38 @@ elsif (@ARGV && $ARGV[0] eq '-both')
     shift @ARGV;
 }
 
-if (@ARGV != 6) {
+if (@ARGV != 2) {
     $0 =~ s@.*/@@;
-    die "Usage: $0 [-decomp | -both] UNICODE-VERSION UnicodeData.txt LineBreak.txt SpecialCasing.txt CaseFolding.txt CompositionExclusions.txt\n";
+    die "\nUsage: $0 [-decomp | -both] UNICODE-VERSION DIRECTORY\n\n       DIRECTORY should contain the following Unicode data files:\n       UnicodeData.txt, LineBreak.txt, SpecialCasing.txt, CaseFolding.txt,\n       CompositionExclusions.txt, BidiMirroring.txt\n\n";
 }
- 
+
+my ($unicodedatatxt, $linebreaktxt, $specialcasingtxt, $casefoldingtxt, $compositionexclusionstxt, $bidimirroringtxt);
+
+my $d = $ARGV[1];
+opendir (my $dir, $d) or die "Cannot open Unicode data dir $d: $!\n";
+for my $f (readdir ($dir))
+{
+    $unicodedatatxt = "$d/$f" if ($f =~ /UnicodeData.*\.txt/);
+    $linebreaktxt = "$d/$f" if ($f =~ /LineBreak.*\.txt/);
+    $specialcasingtxt = "$d/$f" if ($f =~ /SpecialCasing.*\.txt/);
+    $casefoldingtxt = "$d/$f" if ($f =~ /CaseFolding.*\.txt/);
+    $compositionexclusionstxt = "$d/$f" if ($f =~ /CompositionExclusions.*\.txt/);
+    $bidimirroringtxt = "$d/$f" if ($f =~ /BidiMirroring.*\.txt/);
+}
+
+defined $unicodedatatxt or die "Did not find UnicodeData file";
+defined $linebreaktxt or die "Did not find LineBreak file";
+defined $specialcasingtxt or die "Did not find SpecialCasing file";
+defined $casefoldingtxt or die "Did not find CaseFolding file";
+defined $compositionexclusionstxt or die "Did not find CompositionExclusions file";
+defined $bidimirroringtxt or die "Did not find BidiMirroring file";
+
 print "Creating decomp table\n" if ($do_decomp);
 print "Creating property table\n" if ($do_props);
 
-print "Composition exlusions from $ARGV[5]\n";
+print "Composition exlusions from $compositionexclusionstxt\n";
 
-open (INPUT, "< $ARGV[5]") || exit 1;
+open (INPUT, "< $compositionexclusionstxt") || exit 1;
 
 while (<INPUT>) {
 
@@ -190,9 +216,12 @@ while (<INPUT>) {
 
 close INPUT;
 
-print "Unicode data from $ARGV[1]\n";
+print "Unicode data from $unicodedatatxt\n";
 
-open (INPUT, "< $ARGV[1]") || exit 1;
+open (INPUT, "< $unicodedatatxt") || exit 1;
+
+# we save memory by skipping the huge empty area before U+E0000
+my $pages_before_e0000;
 
 $last_code = -1;
 while (<INPUT>)
@@ -206,7 +235,10 @@ while (<INPUT>)
 
     $code = hex ($fields[$CODE]);
 
-    last if ($code > 0xFFFF); # ignore characters out of the basic plane
+    if ($code >= 0xE0000 and $last_code < 0xE0000)
+    {
+        $pages_before_e0000 = ($last_code >> 8) + 1;
+    }
 
     if ($code > $last_code + 1)
     {
@@ -238,18 +270,18 @@ close INPUT;
 
 @gfields = ('', '', 'Cn', '0', '', '', '', '', '', '', '',
 	    '', '', '', '');
-for (++$last_code; $last_code < 0x10000; ++$last_code)
+for (++$last_code; $last_code <= 0x10FFFF; ++$last_code)
 {
     $gfields{$CODE} = sprintf ("%04x", $last_code);
     &process_one ($last_code, @gfields);
 }
---$last_code;			# Want last to be 0xFFFF.
+--$last_code;			# Want last to be 0x10FFFF.
 
 print "Creating line break table\n";
 
-print "Line break data from $ARGV[2]\n";
+print "Line break data from $linebreaktxt\n";
 
-open (INPUT, "< $ARGV[2]") || exit 1;
+open (INPUT, "< $linebreaktxt") || exit 1;
 
 $last_code = -1;
 while (<INPUT>)
@@ -269,7 +301,7 @@ while (<INPUT>)
 	next;
     }
 
-    if ($fields[$CODE] =~ /([A-F0-9]{4})..([A-F0-9]{4})/) 
+    if ($fields[$CODE] =~ /([A-F0-9]{4,6})\.\.([A-F0-9]{4,6})/) 
     {
 	$start_code = hex ($1);
 	$end_code = hex ($2);
@@ -277,8 +309,6 @@ while (<INPUT>)
 	$start_code = $end_code = hex ($fields[$CODE]);
 	
     }
-
-    last if ($start_code > 0xFFFF); # FIXME ignore characters out of the basic plane 
 
     if ($start_code > $last_code + 1)
     {
@@ -307,7 +337,7 @@ while (<INPUT>)
 
 close INPUT;
 
-for (++$last_code; $last_code < 0x10000; ++$last_code)
+for (++$last_code; $last_code <= 0x10FFFF; ++$last_code)
 {
   if ($type[$last_code] eq 'Cn')
     {
@@ -318,13 +348,13 @@ for (++$last_code; $last_code < 0x10000; ++$last_code)
       $break_props[$last_code] = 'AL';
     }
 }
---$last_code;			# Want last to be 0xFFFF.
+--$last_code;			# Want last to be 0x10FFFF.
 
-print STDERR "Last code is not 0xFFFF" if ($last_code != 0xFFFF);
+print STDERR "Last code is not 0x10FFFF" if ($last_code != 0x10FFFF);
 
 print "Reading special-casing table for case conversion\n";
 
-open (INPUT, "< $ARGV[3]") || exit 1;
+open (INPUT, "< $specialcasingtxt") || exit 1;
 
 while (<INPUT>)
 {
@@ -363,18 +393,18 @@ while (<INPUT>)
     {
 	(hex $fields[$CASE_UPPER] == $code) || die "$raw_code is Lu and UCD_Upper($raw_code) != $raw_code";
 
-	&add_special_case ($code, $value[$code],$fields[$CASE_LOWER], $fields[$CASE_TITLE]);
+	&add_special_case ($code, $value[$code], $fields[$CASE_LOWER], $fields[$CASE_TITLE]);
 	
     } elsif ($type[$code] eq 'Lt') 
     {
 	(hex $fields[$CASE_TITLE] == $code) || die "$raw_code is Lt and UCD_Title($raw_code) != $raw_code";
 	
-	&add_special_case ($code, undef,$fields[$CASE_LOWER], $fields[$CASE_UPPER]);
+	&add_special_case ($code, undef, $fields[$CASE_LOWER], $fields[$CASE_UPPER]);
     } elsif ($type[$code] eq 'Ll') 
     {
 	(hex $fields[$CASE_LOWER] == $code) || die "$raw_code is Ll and UCD_Lower($raw_code) != $raw_code";
 	
-	&add_special_case ($code, $value[$code],$fields[$CASE_UPPER], $fields[$CASE_TITLE]);
+	&add_special_case ($code, $value[$code], $fields[$CASE_UPPER], $fields[$CASE_TITLE]);
     } else {
 	printf STDERR "Special case for non-alphabetic code point: $raw_code\n";
 	next;
@@ -383,7 +413,7 @@ while (<INPUT>)
 
 close INPUT;
 
-open (INPUT, "< $ARGV[4]") || exit 1;
+open (INPUT, "< $casefoldingtxt") || exit 1;
 
 my $casefoldlen = 0;
 my @casefold;
@@ -404,22 +434,21 @@ while (<INPUT>)
     $raw_code = $fields[$FOLDING_CODE];
     $code = hex ($raw_code);
 
-    next if $code > 0xffff;	# FIXME!
-    
     if ($#fields != 3)
     {
 	printf STDERR ("Entry for $raw_code has wrong number of fields (%d)\n", $#fields);
 	next;
     }
 
-    next if ($fields[$FOLDING_STATUS] eq 'S');
+    # we don't use Simple or Turkic rules here
+    next if ($fields[$FOLDING_STATUS] =~ /^[ST]$/);
 
     @values = map { hex ($_) } split /\s+/, $fields[$FOLDING_MAPPING];
 
     # Check simple case
 
     if (@values == 1 && 
-	!(defined $value[$code] && $value[$code] >= 0xd800 && $value[$code] < 0xdc00) &&
+	!(defined $value[$code] && $value[$code] >= 0x1000000) &&
 	defined $type[$code]) {
 
 	my $lower;
@@ -442,15 +471,33 @@ while (<INPUT>)
     }
 
     my $string = pack ("U*", @values);
-    if (1 + length $string > $casefoldlen) {
-	$casefoldlen = 1 + length $string;
+
+    if (1 + &length_in_bytes ($string) > $casefoldlen) {
+	$casefoldlen = 1 + &length_in_bytes ($string);
     }
 
-    push @casefold, [ $code, $string ];
+    push @casefold, [ $code, &escape ($string) ];
 }
 
 close INPUT;
 
+open (INPUT, "< $bidimirroringtxt") || exit 1;
+
+my @bidimirror;
+while (<INPUT>)
+{
+    chomp;
+
+    next if /^#/;
+    next if /^\s*$/;
+
+    s/\s*#.*//;
+
+    @fields = split ('\s*;\s*', $_, 30);
+
+    push @bidimirror, [hex ($fields[0]), hex ($fields[1])];
+}
+ 
 if ($do_props) {
     &print_tables ($last_code)
 }
@@ -462,6 +509,16 @@ if ($do_decomp) {
 &print_line_break ($last_code);
 
 exit 0;
+
+
+# perl "length" returns the length in characters
+sub length_in_bytes
+{
+    my ($string) = @_;
+
+    use bytes;
+    return length $string;
+}
 
 # Process a single character.
 sub process_one
@@ -527,7 +584,11 @@ sub print_tables
 
     printf OUT "#define G_UNICODE_LAST_CHAR 0x%04x\n\n", $last;
 
-    printf OUT "#define G_UNICODE_MAX_TABLE_INDEX 1000\n\n";
+    printf OUT "#define G_UNICODE_MAX_TABLE_INDEX 10000\n\n";
+
+    my $last_part1 = ($pages_before_e0000 * 256) - 1;
+    printf OUT "#define G_UNICODE_LAST_CHAR_PART1 0x%04X\n\n", $last_part1;
+    printf OUT "#define G_UNICODE_LAST_PAGE_PART1 %d\n\n", $pages_before_e0000 - 1;
 
     $table_index = 0;
     printf OUT "static const char type_data[][256] = {\n";
@@ -537,10 +598,21 @@ sub print_tables
     }
     printf OUT "\n};\n\n";
 
-    print OUT "static const short type_table[256] = {\n";
-    for ($count = 0; $count <= $last; $count += 256)
+    printf OUT "/* U+0000 through U+%04X */\n", $last_part1;
+    print OUT "static const gint16 type_table_part1[$pages_before_e0000] = {\n";
+    for ($count = 0; $count <= $last_part1; $count += 256)
     {
 	print OUT ",\n" if $count > 0;
+	print OUT "  ", $row[$count / 256];
+	$bytes_out += 2;
+    }
+    print OUT "\n};\n\n";
+
+    printf OUT "/* U+E0000 through U+%04X */\n", $last;
+    print OUT "static const gint16 type_table_part2[768] = {\n";
+    for ($count = 0xE0000; $count <= $last; $count += 256)
+    {
+	print OUT ",\n" if $count > 0xE0000;
 	print OUT "  ", $row[$count / 256];
 	$bytes_out += 2;
     }
@@ -552,17 +624,28 @@ sub print_tables
     #
 
     $table_index = 0;
-    printf OUT "static const unsigned short attr_data[][256] = {\n";
+    printf OUT "static const gunichar attr_data[][256] = {\n";
     for ($count = 0; $count <= $last; $count += 256)
     {
-	$row[$count / 256] = &print_row ($count, 2, \&fetch_attr);
+	$row[$count / 256] = &print_row ($count, 4, \&fetch_attr);
     }
     printf OUT "\n};\n\n";
 
-    print OUT "static const short attr_table[256] = {\n";
-    for ($count = 0; $count <= $last; $count += 256)
+    printf OUT "/* U+0000 through U+%04X */\n", $last_part1;
+    print OUT "static const gint16 attr_table_part1[$pages_before_e0000] = {\n";
+    for ($count = 0; $count <= $last_part1; $count += 256)
     {
 	print OUT ",\n" if $count > 0;
+	print OUT "  ", $row[$count / 256];
+	$bytes_out += 2;
+    }
+    print OUT "\n};\n\n";
+
+    printf OUT "/* U+E0000 through U+%04X */\n", $last;
+    print OUT "static const gint16 attr_table_part2[768] = {\n";
+    for ($count = 0xE0000; $count <= $last; $count += 256)
+    {
+	print OUT ",\n" if $count > 0xE0000;
 	print OUT "  ", $row[$count / 256];
 	$bytes_out += 2;
     }
@@ -572,8 +655,7 @@ sub print_tables
     # print title case table
     #
 
-    # FIXME: type.
-    print OUT "static const unsigned short title_table[][3] = {\n";
+    print OUT "static const gunichar title_table[][3] = {\n";
     my ($item);
     my ($first) = 1;
     foreach $item (sort keys %title_to_lower)
@@ -582,7 +664,7 @@ sub print_tables
 	    unless $first;
 	$first = 0;
 	printf OUT "  { 0x%04x, 0x%04x, 0x%04x }", $item, $title_to_upper{$item}, $title_to_lower{$item};
-	$bytes_out += 6;
+	$bytes_out += 12;
     }
     print OUT "\n};\n\n";
 
@@ -591,6 +673,21 @@ sub print_tables
     #
     &output_special_case_table (\*OUT);
     &output_casefold_table (\*OUT);
+
+    print OUT "static const struct {\n";
+    print OUT "    gunichar ch;\n";
+    print OUT "    gunichar mirrored_ch;\n";
+    print OUT "} bidi_mirroring_table[] =\n";
+    print OUT "{\n";
+    $first = 1;
+    foreach $item (@bidimirror)
+    {
+        print OUT ",\n" unless $first;
+        $first = 0;
+        printf OUT "  { 0x%04x, 0x%04x }", $item->[0], $item->[1];
+        $bytes_out += 8;
+    }
+    print OUT "\n};\n\n";
 
     print OUT "#endif /* CHARTABLES_H */\n";
 
@@ -665,6 +762,40 @@ sub print_row
     return sprintf "%d /* page %d */", $table_index++, $start / 256;
 }
 
+sub escape
+{
+    my ($string) = @_;
+
+    $string =~ s/(\C)/sprintf "\\x%02x",ord($1)/eg;
+
+    return $string;
+}
+
+# Returns the offset of $decomp in the offset string. Updates the
+# referenced variables as appropriate.
+sub handle_decomp ($$$$)
+{
+    my ($decomp, $decomp_offsets_ref, $decomp_string_ref, $decomp_string_offset_ref) = @_;
+    my $offset = "G_UNICODE_NOT_PRESENT_OFFSET";
+
+    if (defined $decomp)
+    {
+        if (defined $decomp_offsets_ref->{$decomp})
+        {
+            $offset = $decomp_offsets_ref->{$decomp};
+        }
+        else
+        {
+            $offset = ${$decomp_string_offset_ref};
+            $decomp_offsets_ref->{$decomp} = $offset;
+            ${$decomp_string_ref} .= "\n  \"" . &escape ($decomp) . "\\0\" /* offset ${$decomp_string_offset_ref} */";
+            ${$decomp_string_offset_ref} += &length_in_bytes ($decomp) + 1;
+        }
+    }
+
+    return $offset;
+}
+
 # Generate the character decomposition header.
 sub print_decomp
 {
@@ -683,19 +814,26 @@ sub print_decomp
 
     printf OUT "#define G_UNICODE_LAST_CHAR 0x%04x\n\n", $last;
 
-    printf OUT "#define G_UNICODE_MAX_TABLE_INDEX 1000\n\n";
+    printf OUT "#define G_UNICODE_MAX_TABLE_INDEX (0x110000 / 256)\n\n";
+
+    my $last_part1 = ($pages_before_e0000 * 256) - 1;
+    printf OUT "#define G_UNICODE_LAST_CHAR_PART1 0x%04X\n\n", $last_part1;
+    printf OUT "#define G_UNICODE_LAST_PAGE_PART1 %d\n\n", $pages_before_e0000 - 1;
+
+    $NOT_PRESENT_OFFSET = 65535;
+    print OUT "#define G_UNICODE_NOT_PRESENT_OFFSET $NOT_PRESENT_OFFSET\n\n";
 
     my ($count, @row);
     $table_index = 0;
-    printf OUT "static const unsigned char cclass_data[][256] = {\n";
+    printf OUT "static const guchar cclass_data[][256] = {\n";
     for ($count = 0; $count <= $last; $count += 256)
     {
 	$row[$count / 256] = &print_row ($count, 1, \&fetch_cclass);
     }
     printf OUT "\n};\n\n";
 
-    print OUT "static const short combining_class_table[256] = {\n";
-    for ($count = 0; $count <= $last; $count += 256)
+    print OUT "static const gint16 combining_class_table_part1[$pages_before_e0000] = {\n";
+    for ($count = 0; $count <= $last_part1; $count += 256)
     {
 	print OUT ",\n" if $count > 0;
 	print OUT "  ", $row[$count / 256];
@@ -703,12 +841,19 @@ sub print_decomp
     }
     print OUT "\n};\n\n";
 
+    print OUT "static const gint16 combining_class_table_part2[768] = {\n";
+    for ($count = 0xE0000; $count <= $last; $count += 256)
+    {
+	print OUT ",\n" if $count > 0xE0000;
+	print OUT "  ", $row[$count / 256];
+	$bytes_out += 2;
+    }
+    print OUT "\n};\n\n";
+
     print OUT "typedef struct\n{\n";
-    # FIXME: type.
-    print OUT "  unsigned short ch;\n";
-    print OUT "  unsigned char canon_offset;\n";
-    print OUT "  unsigned char compat_offset;\n";
-    print OUT "  unsigned short expansion_offset;\n";
+    print OUT "  gunichar ch;\n";
+    print OUT "  guint16 canon_offset;\n";
+    print OUT "  guint16 compat_offset;\n";
     print OUT "} decomposition;\n\n";
 
     print OUT "static const decomposition decomp_table[] =\n{\n";
@@ -736,40 +881,19 @@ sub print_decomp
 		undef $compat_decomp; 
 	    }
 
-	    my $string = "";
-	    my $canon_offset = 0xff;
-	    my $compat_offset = 0xff;
-	    
-	    if (defined $canon_decomp) {
-		$canon_offset = 0;
-		$string .= $canon_decomp;
-	    }
-	    if (defined $compat_decomp) {
-		if (defined $canon_decomp) {
-		    $string .= "\\x00\\x00";
-		}
-		$compat_offset = (length $string) / 4;
-		$string .= $compat_decomp;
-	    }
+	    my $canon_offset = handle_decomp ($canon_decomp, \%decomp_offsets, \$decomp_string, \$decomp_string_offset);
+	    my $compat_offset = handle_decomp ($compat_decomp, \%decomp_offsets, \$decomp_string, \$decomp_string_offset);
 
-            if (!defined($decomp_offsets{$string})) {
-                $decomp_offsets{$string} = $decomp_string_offset;
-                $decomp_string .= "\n  \"".$string."\\0\\0\" /* offset ".
-                    $decomp_string_offset." */";
-                $decomp_string_offset += ((length $string) / 4) + 2;
-	    
-                $bytes_out += (length $string) / 4 + 2; # "\x20"
-            }
-	    
-            printf OUT qq(  { 0x%04x, %u, %u, %d }), 
-                $count, $canon_offset, $compat_offset, $decomp_offsets{$string};
-	    $bytes_out += 6;
+            die if $decomp_string_offset > $NOT_PRESENT_OFFSET;
 
+            printf OUT qq(  { 0x%04x, $canon_offset, $compat_offset }), $count;
+	    $bytes_out += 8;
 	}
     }
     print OUT "\n};\n\n";
+    $bytes_out += $decomp_string_offset + 1;
 
-    printf OUT "static const unsigned char decomp_expansion_string[] = %s;\n\n", $decomp_string;
+    printf OUT "static const gchar decomp_expansion_string[] = %s;\n\n", $decomp_string;
 
     print OUT "#endif /* DECOMP_H */\n";
 
@@ -795,26 +919,42 @@ sub print_line_break
 
     print OUT "#define G_UNICODE_DATA_VERSION \"$ARGV[0]\"\n\n";
 
-    printf OUT "#define G_UNICODE_LAST_CHAR 0x%04x\n\n", $last;
+    printf OUT "#define G_UNICODE_LAST_CHAR 0x%04X\n\n", $last;
 
-    printf OUT "#define G_UNICODE_MAX_TABLE_INDEX 1000\n\n";
+    printf OUT "#define G_UNICODE_MAX_TABLE_INDEX 10000\n\n";
+
+    my $last_part1 = ($pages_before_e0000 * 256) - 1;
+    printf OUT "/* the last code point that should be looked up in break_property_table_part1 */\n";
+    printf OUT "#define G_UNICODE_LAST_CHAR_PART1 0x%04X\n\n", $last_part1;
 
     $table_index = 0;
-    printf OUT "static const char break_property_data[][256] = {\n";
+    printf OUT "static const gint8 break_property_data[][256] = {\n";
     for ($count = 0; $count <= $last; $count += 256)
     {
 	$row[$count / 256] = &print_row ($count, 1, \&fetch_break_type);
     }
     printf OUT "\n};\n\n";
 
-    print OUT "static const short break_property_table[256] = {\n";
-    for ($count = 0; $count <= $last; $count += 256)
+    printf OUT "/* U+0000 through U+%04X */\n", $last_part1;
+    print OUT "static const gint16 break_property_table_part1[$pages_before_e0000] = {\n";
+    for ($count = 0; $count <= $last_part1; $count += 256)
     {
 	print OUT ",\n" if $count > 0;
 	print OUT "  ", $row[$count / 256];
 	$bytes_out += 2;
     }
     print OUT "\n};\n\n";
+
+    printf OUT "/* U+E0000 through U+%04X */\n", $last;
+    print OUT "static const gint16 break_property_table_part2[768] = {\n";
+    for ($count = 0xE0000; $count <= $last; $count += 256)
+    {
+	print OUT ",\n" if $count > 0xE0000;
+	print OUT "  ", $row[$count / 256];
+	$bytes_out += 2;
+    }
+    print OUT "\n};\n\n";
+
 
     print OUT "#endif /* BREAKTABLES_H */\n";
 
@@ -869,7 +1009,7 @@ sub make_decomp
     my $result = "";
     foreach $iter (&expand_decomp ($code, $compat))
     {
-	$result .= sprintf "\\x%02x\\x%02x", $iter / 256, $iter & 0xff;
+	$result .= pack ("U", $iter);  # to utf-8
     }
 
     $result;
@@ -887,21 +1027,17 @@ sub add_special_case
 
 
     for $value (@values) {
-	$result .= sprintf ("\\x%02x\\x%02x", $value / 256, $value & 0xff);
+	$result .= pack ("U", $value);  # to utf-8
     }
-
-    $result .= "\\0";
     
-    if (2 * @values + 2 > $special_case_len) {
-	$special_case_len = 2 * @values + 2;
-    }
+    push @special_case_offsets, $special_case_offset;
 
-    push @special_cases, $result;
+    # We encode special cases up in the 0x1000000 space
+    $value[$code] = 0x1000000 + $special_case_offset;
 
-    #
-    # We encode special cases in the surrogate pair space
-    #
-    $value[$code] = 0xD800 + scalar(@special_cases) - 1;
+    $special_case_offset += 1 + &length_in_bytes ($result);
+
+    push @special_cases, &escape ($result);
 }
 
 sub output_special_case_table
@@ -914,13 +1050,15 @@ sub output_special_case_table
  * First, the best single character mapping to lowercase if Lu, 
  * and to uppercase if Ll, followed by the output mapping for the two cases 
  * other than the case of the codepoint, in the order [Ll],[Lu],[Lt],
- * separated and terminated by a double NUL.
+ * encoded in UTF-8, separated and terminated by a null character.
  */
-static const unsigned char special_case_table[][$special_case_len] = {
+static const gchar special_case_table[] = {
 EOT
 
+    my $i = 0;
     for $case (@special_cases) {
-	print $out qq( "$case",\n);
+	print $out qq( "$case\\0" /* offset ${special_case_offsets[$i]} */\n);
+        $i++;
     }
 
     print $out <<EOT;
@@ -928,7 +1066,7 @@ EOT
 
 EOT
 
-    print STDERR "Generated ", ($special_case_len * scalar @special_cases), " bytes in special case table\n";
+    print STDERR "Generated " . ($special_case_offset + 1) . " bytes in special case table\n";
 }
 
 sub enumerate_ordered
@@ -961,16 +1099,22 @@ sub output_composition_table
     # decompositions. At the same time, record
     # the first and second character of each decomposition
     
-    for $code (keys %compositions) {
+    for $code (keys %compositions) 
+    {
 	@values = map { hex ($_) } split /\s+/, $compositions{$code};
+
+        # non-starters
 	if ($cclass[$values[0]]) {
 	    delete $compositions{$code};
 	    next;
 	}
+
+        # single-character decompositions
 	if (@values == 1) {
 	    delete $compositions{$code};
 	    next;
 	}
+
 	if (@values != 2) {
 	    die "$code has more than two elements in its decomposition!\n";
 	}
@@ -982,10 +1126,10 @@ sub output_composition_table
 	}
     }
 
-    # Assign integer indicices, removing singletons
+    # Assign integer indices, removing singletons
     my $n_first = enumerate_ordered (\%first);
 
-    # Now record the second character if each (non-singleton) decomposition
+    # Now record the second character of each (non-singleton) decomposition
     for $code (keys %compositions) {
 	@values = map { hex ($_) } split /\s+/, $compositions{$code};
 
@@ -1027,7 +1171,6 @@ sub output_composition_table
     my %vals;
     
     open OUT, ">gunicomp.h" or die "Cannot open gunicomp.h: $!\n";
-    printf OUT "#include \"internal.h\"\n";
     
     # Assign values in lookup table for all code points involved
     
@@ -1065,39 +1208,46 @@ sub output_composition_table
 
     my @row;						  
     $table_index = 0;
-    printf OUT "static const int compose_data[][256] = {\n";
+    printf OUT "static const guint16 compose_data[][256] = {\n";
     for (my $count = 0; $count <= $last; $count += 256)
     {
 	$row[$count / 256] = &print_row ($count, 2, sub { exists $vals{$_[0]} ? $vals{$_[0]} : 0; });
     }
     printf OUT "\n};\n\n";
 
-    print OUT "static const short compose_table[256] = {\n";
+    print OUT "static const gint16 compose_table[256] = {\n";
     for (my $count = 0; $count <= $last; $count += 256)
     {
 	print OUT ",\n" if $count > 0;
 	print OUT "  ", $row[$count / 256];
-	$bytes_out += 4;
     }
     print OUT "\n};\n\n";
 
+    $bytes_out += 256 * 2;
+
     # Output first singletons
 
-    print OUT "static const uint32_t compose_first_single[][2] = {\n";
+    print OUT "static const guint16 compose_first_single[][2] = {\n";
     $i = 0;				     
     for $record (@first_singletons) {
+        if ($record->[1] > 0xFFFF or $record->[2] > 0xFFFF) {
+            die "time to switch compose_first_single to gunichar" ;
+        }
 	print OUT ",\n" if $i++ > 0;
 	printf OUT " { %#06x, %#06x }", $record->[1], $record->[2];
     }
     print OUT "\n};\n";
 				     
-    $bytes_out += @first_singletons * 4;				     
+    $bytes_out += @first_singletons * 4;
 		  
     # Output second singletons
 
-    print OUT "static const uint32_t compose_second_single[][2] = {\n";
+    print OUT "static const guint16 compose_second_single[][2] = {\n";
     $i = 0;				     
     for $record (@second_singletons) {
+        if ($record->[1] > 0xFFFF or $record->[2] > 0xFFFF) {
+            die "time to switch compose_second_single to gunichar";
+        }
 	print OUT ",\n" if $i++ > 0;
 	printf OUT " { %#06x, %#06x }", $record->[1], $record->[2];
     }
@@ -1108,7 +1258,7 @@ sub output_composition_table
     # Output array of composition pairs
 
     print OUT <<EOT;
-static const int compose_array[$n_first][$n_second] = {
+static const guint16 compose_array[$n_first][$n_second] = {
 EOT
 			
     for (my $i = 0; $i < $n_first; $i++) {
@@ -1117,7 +1267,10 @@ EOT
 	for (my $j = 0; $j < $n_second; $j++) {
 	    print OUT ", " if $j;
 	    if (exists $reverse{"$i|$j"}) {
-		printf OUT "%#06x", $reverse{"$i|$j"};
+                if ($reverse{"$i|$j"} > 0xFFFF) {
+                    die "time to switch compose_array to gunichar" ;
+                }
+		printf OUT "0x%04x", $reverse{"$i|$j"};
 	    } else {
 		print OUT "     0";
             }
@@ -1151,10 +1304,16 @@ EOT
 
    @casefold = sort { $a->[0] <=> $b->[0] } @casefold; 
     
-   for $case (@casefold) {
+   for $case (@casefold) 
+   {
        $code = $case->[0];
        $string = $case->[1];
-       print $out sprintf(qq({ %#04x, "$string" },\n), $code);
+
+       if ($code > 0xFFFF) {
+           die "time to switch casefold_table to gunichar" ;
+       }
+
+       print $out sprintf(qq(  { 0x%04x, "$string" },\n), $code);
     
    }
 
