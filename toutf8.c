@@ -56,8 +56,15 @@ stringprep_locale_charset_slow ()
 
 static const char *stringprep_locale_charset_cache = NULL;
 
+/**
+ * stringprep_locale_charset:
+ *
+ * Return value: Return the character set used by the system locale.
+ *   It will never return NULL, but use "ASCII" as a fallback.
+ *
+ **/
 const char *
-stringprep_locale_charset ()
+stringprep_locale_charset (void)
 {
   if (!stringprep_locale_charset_cache)
     stringprep_locale_charset_cache = stringprep_locale_charset_slow ();
@@ -65,6 +72,18 @@ stringprep_locale_charset ()
   return stringprep_locale_charset_cache;
 }
 
+/**
+ * stringprep_convert:
+ * @str: input zero-terminated string.
+ * @to_codeset: name of destination character set.
+ * @from_codeset: name of origin character set, as used by @str.
+ *
+ * Convert the string from one character set to another using the
+ * system's iconv() function.
+ *
+ * Return value: Returns newly allocated zero-terminated string which
+ *   is @str transcoded into to_codeset.
+ **/
 char *
 stringprep_convert (const char *str,
 		    const char *to_codeset, const char *from_codeset)
@@ -166,6 +185,16 @@ stringprep_convert (const char *str,
 
 #endif
 
+/**
+ * stringprep_locale_to_utf8:
+ * @str: input zero terminated string.
+ *
+ * Convert string encoded in the locale's character set into UTF-8 by
+ * using stringprep_convert().
+ *
+ * Return value: Returns newly allocated zero-terminated string which
+ *   is @str transcoded into UTF-8.
+ **/
 char *
 stringprep_locale_to_utf8 (const char *str)
 {
