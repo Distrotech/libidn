@@ -174,10 +174,10 @@ extern "C"
 
   /* API */
 
-  extern int stringprep_4i (uint32_t *ucs4, size_t *len, size_t maxucs4len,
+  extern int stringprep_4i (uint32_t * ucs4, size_t * len, size_t maxucs4len,
 			    Stringprep_profile_flags flags,
 			    Stringprep_profile * profile);
-  extern int stringprep_4zi (uint32_t *ucs4, size_t maxucs4len,
+  extern int stringprep_4zi (uint32_t * ucs4, size_t maxucs4len,
 			     Stringprep_profile_flags flags,
 			     Stringprep_profile * profile);
   extern int stringprep (char *in, size_t maxlen,

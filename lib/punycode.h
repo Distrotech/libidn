@@ -94,8 +94,7 @@ extern "C"
   extern int punycode_encode (size_t input_length,
 			      const punycode_uint input[],
 			      const unsigned char case_flags[],
-			      size_t *output_length,
-			      char output[]);
+			      size_t * output_length, char output[]);
 
 /*
     punycode_encode() converts a sequence of code points (presumed to be
@@ -154,7 +153,7 @@ extern "C"
 
   extern int punycode_decode (size_t input_length,
 			      const char input[],
-			      size_t *output_length,
+			      size_t * output_length,
 			      punycode_uint output[],
 			      unsigned char case_flags[]);
 

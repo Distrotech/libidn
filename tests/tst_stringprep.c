@@ -65,7 +65,7 @@ escapeprint (char *str, int len)
       if ((i + 1) % 16 == 0 && (i + 1) < len)
 	printf ("'\n\t'");
     }
-  printf("\n");
+  printf ("\n");
 }
 
 static void
@@ -82,7 +82,7 @@ hexprint (char *str, int len)
       if ((i + 1) % 16 == 0 && i + 1 < len)
 	printf ("\n\t;; ");
     }
-  printf("\n");
+  printf ("\n");
 }
 
 static void
@@ -106,7 +106,7 @@ binprint (char *str, int len)
       if ((i + 1) % 6 == 0 && i + 1 < len)
 	printf ("\n\t;; ");
     }
-  printf("\n");
+  printf ("\n");
 }
 
 struct stringprep
