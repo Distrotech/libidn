@@ -25,7 +25,7 @@
 
 static int
 stringprep_find_character_in_table (long ucs4,
-				    Stringprep_table_element *table)
+				    Stringprep_table_element * table)
 {
   int i;
 
@@ -41,7 +41,7 @@ static int
 stringprep_find_string_in_table (long *ucs4,
 				 int ucs4len,
 				 int *tablepos,
-				 Stringprep_table_element *table)
+				 Stringprep_table_element * table)
 {
   int j, pos;
 
@@ -60,7 +60,7 @@ static int
 stringprep_apply_table_to_string (long *ucs4,
 				  int *ucs4len,
 				  int maxucs4len,
-				  Stringprep_table_element *table)
+				  Stringprep_table_element * table)
 {
   int i;
   int pos, maplen;
@@ -116,7 +116,7 @@ stringprep (char *in, int maxlen, int flags, Stringprep_profile * profile)
 #if DBG
   {
     int j;
-    printf("\t;;    in: ");
+    printf ("\t;;    in: ");
     for (j = 0; j < ucs4len; j++)
       printf ("U+%06x ", ucs4[j]);
     printf ("\n");
@@ -128,7 +128,7 @@ stringprep (char *in, int maxlen, int flags, Stringprep_profile * profile)
       switch (profile[i].operation)
 	{
 	case STRINGPREP_NFKC:
-	  if (UNAPPLICAPLEFLAGS(flags, profile[i].flags))
+	  if (UNAPPLICAPLEFLAGS (flags, profile[i].flags))
 	    break;
 	  if (flags & STRINGPREP_NO_NFKC && !profile[i].flags)
 	    {
@@ -163,7 +163,7 @@ stringprep (char *in, int maxlen, int flags, Stringprep_profile * profile)
 	  break;
 
 	case STRINGPREP_UNASSIGNED_TABLE:
-	  if (UNAPPLICAPLEFLAGS(flags, profile[i].flags))
+	  if (UNAPPLICAPLEFLAGS (flags, profile[i].flags))
 	    break;
 	  if (flags & STRINGPREP_NO_UNASSIGNED)
 	    if (stringprep_find_string_in_table
@@ -175,7 +175,7 @@ stringprep (char *in, int maxlen, int flags, Stringprep_profile * profile)
 	  break;
 
 	case STRINGPREP_MAP_TABLE:
-	  if (UNAPPLICAPLEFLAGS(flags, profile[i].flags))
+	  if (UNAPPLICAPLEFLAGS (flags, profile[i].flags))
 	    break;
 	  rc = stringprep_apply_table_to_string
 	    (ucs4, &ucs4len, maxucs4len, profile[i].table);
@@ -236,7 +236,7 @@ stringprep (char *in, int maxlen, int flags, Stringprep_profile * profile)
 	      if (!(stringprep_find_character_in_table
 		    (ucs4[0], profile[contains_ral].table) != -1 &&
 		    stringprep_find_character_in_table
-		    (ucs4[ucs4len-1], profile[contains_ral].table) != -1))
+		    (ucs4[ucs4len - 1], profile[contains_ral].table) != -1))
 		{
 		  rc = STRINGPREP_BIDI_LEADTRAIL_NOT_RAL;
 		  goto done;
@@ -252,7 +252,7 @@ stringprep (char *in, int maxlen, int flags, Stringprep_profile * profile)
 #if DBG
       {
 	int j;
-	printf("\t;; %5s: ", profile[i].name ? profile[i].name : "<NONAME>");
+	printf ("\t;; %5s: ", profile[i].name ? profile[i].name : "<NONAME>");
 	for (j = 0; j < ucs4len; j++)
 	  printf ("U+%06x ", ucs4[j]);
 	printf ("\n");
