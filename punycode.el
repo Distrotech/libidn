@@ -1,7 +1,7 @@
 ;;; punycode.el --- An ASCII compatible Unicode encoding format.
 
 ;; Copyright (C) 2003  Simon Josefsson
-;; Keywords: punycode, idna, idn
+;; Keywords: punycode, idna, idn, unicode, encoding
 
 ;; This file is part of GNU Libidn.
 
