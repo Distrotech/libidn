@@ -27,9 +27,6 @@ EXTRA_DIST = gdoc libidn.html libidn.ps libidn.pdf lgpl.texi	\
 	$(libidn_html_auto_deps)
 
 info_TEXINFOS = libidn.texi
-pdf_TEXINFOS = libidn.texi
-ps_TEXINFOS = libidn.texi
-
 libidn_TEXINFOS = fdl.texi $(gdoc_TEXINFOS)
 
 libidn.html: libidn.texi $(libidn_TEXINFOS)
