@@ -1,4 +1,5 @@
 Libidn README-alpha -- Important introductory notes for alpha releases.
+Copyright (C) 2002, 2003 Simon Josefsson
 See the end for copying conditions.
 
 Libidn is unstable.  You should expect it to not work.  You should
@@ -15,9 +16,14 @@ in-place.
 
 It will not become stable without help.  Donate time or money.
 
-----------------------------------------------------------------------
-Copyright (C) 2002 Simon Josefsson
+To compile from CVS, you need perl, texinfo, GTK-DOC, autoconf 2.5+
+and automake 1.7+. Build configure and Makefiles using:
 
+  $ ./autogen.sh
+
+Then run ./configure as usual.
+
+----------------------------------------------------------------------
 Copying and distribution of this file, with or without modification,
 are permitted in any medium without royalty provided the copyright
 notice and this notice are preserved.
