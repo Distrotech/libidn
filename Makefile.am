@@ -22,8 +22,7 @@ SUBDIRS = gl lib po src doc tests examples java
 ACLOCAL_AMFLAGS = -I m4 -I gl/m4
 DISTCHECK_CONFIGURE_FLAGS = --enable-gtk-doc
 
-EXTRA_DIST = FAQ libidn.pc.in \
-	libc/README libc/getaddrinfo-idn.txt libc/example.c \
+EXTRA_DIST = FAQ libc/README libc/getaddrinfo-idn.txt libc/example.c \
 	contrib/README contrib/idn-python/README contrib/idn-python/Makefile \
 	contrib/idn-python/idn.c contrib/idn-python/test.py \
 	contrib/web/idn.php \
