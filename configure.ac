@@ -20,6 +20,7 @@ AC_PROG_LIBTOOL
 AC_PROG_CC
 AM_MISSING_PROG(PERL, perl, $missing_dir)
 AM_ICONV
+AM_WITH_DMALLOC
 
 # Checks for header files.
 AC_HEADER_STDC

@@ -64,6 +64,10 @@
 # include <strings.h>
 #endif
 
+#if WITH_DMALLOC
+#include <dmalloc.h>
+#endif
+
 #include "stringprep.h"
 #include "stringprep_generic.h"
 
