@@ -460,6 +460,8 @@ g_ucs4_to_utf8 (const gunichar * str,
     }
 
   result = g_malloc (result_length + 1);
+  if (!result)
+    return NULL;
   p = result;
 
   i = 0;
