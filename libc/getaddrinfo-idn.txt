@@ -21,16 +21,20 @@ See http://josefsson.org/libidn/ for more information.
 Alternative Approaches
 ----------------------
 
-There are implementation that modify gethostbyname() to accept Unicode
-strings, and even implementations that assume gethostbyname, on the
-client host, send Unicode strings out to the DNS server, and perform
-the IDN-conversion on the local DNS-server.
+There are implementation that modify gethostbyname() to accept UTF-8
+strings and perform the IDNA ToASCII operation within gethostbyname().
+
+There are even implementations that assume gethostbyname (on the
+client host) perform no validation of the string and will send UTF-8
+strings out to the DNS server, and perform the IDN-conversion on the
+DNS server.
 
 Some doubts can be raised whether this is an approach that is likely
 to be standardized.  It also lack in functionality: it only provide
 black-box ToASCII functionality.  The application cannot extract the
 output from the ToASCII operation.  More important, there is no way to
-perform a ToUnicode operation that applications may want to use.
+perform a ToUnicode operation that applications may want to use for
+display purposes.
 
 See also the thread rooted in <iluel7n6bmu.fsf@latte.josefsson.org>
 posted to libc-alpha@sources.redhat.com on 08 Jan 2003.
