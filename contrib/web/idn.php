@@ -29,7 +29,13 @@
     <h2>Input</h2>
     <form>
 
-      <input type=text name=data size=40 value="<?php print $data ? $data : "räksmörgås.josefsson.org" ?>"><br>
+      <p>The string must be in <?php print $charset ? $charset :
+	"ISO-8859-1" ?>, if you wish to use another charset, select it
+	below and reload page:<br>
+
+      <input type=text name=data size=40 value="<?php print $data ?
+	$data : "räksmörgås.josefsson.org" ?>"><br>
+
       <input type=radio name=mode value=stringprep <?php if ($mode == "stringprep") { print "checked"; } ?>>Prepare string using profile: <select name=profile>
 	<option <?php if ($profile == "Nameprep" || !$profile) { print "selected"; } ?>>Nameprep
 	<option <?php if ($profile == "generic") { print "selected"; } ?>>generic
@@ -51,7 +57,7 @@
       <input type=checkbox name=usestd3asciirules <?php if ($usestd3asciirules) { print "checked"; } ?>>UseSTD3ASCIIRules<br>
       <input type=checkbox name=debug <?php if ($debug) { print "checked"; } ?>>Debug<br>
 
-      Force charset to: <select name=charset>
+      Use specified charset for next reload: <select name=charset>
 	<option <?php if ($charset == "ANSI_X3.4-1968") { print "selected"; } ?>>ANSI_X3.4-1968
 	<option <?php if ($charset == "ANSI_X3.110-1983") { print "SELECTED"; } ?>>ANSI_X3.110-1983
 	<option <?php if ($charset == "ANSI_X3.4-1968") { print "SELECTED"; } ?>>ANSI_X3.4-1968
