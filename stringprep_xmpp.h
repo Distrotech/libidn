@@ -19,29 +19,6 @@
  *
  */
 
-#ifndef _STRINGPREP_XMPP_H
-#define _STRINGPREP_XMPP_H
-
-#ifdef __cplusplus
-extern "C"
-{
-#if 0				/* keep Emacsens's auto-indent happy */
-}
-#endif
-#endif
+/* This file is obsolete and will be removed in the future. */
 
 #include <stringprep.h>
-
-extern Stringprep_profile stringprep_xmpp_nodeprep[];
-extern Stringprep_profile stringprep_xmpp_resourceprep[];
-extern Stringprep_table_element stringprep_xmpp_nodeprep_prohibit[];
-
-#define stringprep_xmpp_nodeprep(in, maxlen) \
-	stringprep(in, maxlen, 0, stringprep_xmpp_nodeprep)
-#define stringprep_xmpp_resourceprep(in, maxlen) \
-	stringprep(in, maxlen, 0, stringprep_xmpp_resourceprep)
-
-#ifdef __cplusplus
-}
-#endif
-#endif /* _STRINGPREP_XMPP_H */

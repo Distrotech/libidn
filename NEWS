@@ -4,6 +4,15 @@ See the end for copying conditions.
 
 * Version 0.1.12 (unreleased)
 
+** stringprep_*.h are deprecated and will be removed in the future.
+All symbols have been moved to stringprep.h.  The reasons are that (1)
+the files typically only defined one CPP macro and exported a symbol
+definition, which is wasteful as it generates too much work in the
+manual, and (2) using one header file for all profiles allows easier
+access to all stringprep profiles during runtime.  Note that the files
+are still installed, but they only #include stringprep.h now, for
+backwards compatibility.
+
 ** GNU Libc add-on build instructions updated to GNU Libc 2.3.2.
 
 ** SASLprep stringprep profile added.

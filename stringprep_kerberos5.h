@@ -19,25 +19,6 @@
  *
  */
 
-#ifndef _STRINGPREP_KERBEROS5_H
-#define _STRINGPREP_KERBEROS5_H
-
-#ifdef __cplusplus
-extern "C"
-{
-#if 0				/* keep Emacsens's auto-indent happy */
-}
-#endif
-#endif
+/* This file is obsolete and will be removed in the future. */
 
 #include <stringprep.h>
-
-extern Stringprep_profile stringprep_kerberos5[];
-
-#define stringprep_kerberos5(in, maxlen) \
-	stringprep(in, maxlen, 0, stringprep_kerberos5)
-
-#ifdef __cplusplus
-}
-#endif
-#endif /* _STRINGPREP_KERBEROS5_H */

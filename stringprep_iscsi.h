@@ -19,25 +19,6 @@
  *
  */
 
-#ifndef _STRINGPREP_ISCSI_H
-#define _STRINGPREP_ISCSI_H
-
-#ifdef __cplusplus
-extern "C"
-{
-#if 0				/* keep Emacsens's auto-indent happy */
-}
-#endif
-#endif
+/* This file is obsolete and will be removed in the future. */
 
 #include <stringprep.h>
-
-extern Stringprep_profile stringprep_iscsi[];
-
-#define stringprep_iscsi(in, maxlen) \
-	stringprep(in, maxlen, 0, stringprep_iscsi)
-
-#ifdef __cplusplus
-}
-#endif
-#endif /* _STRINGPREP_ISCSI_H */

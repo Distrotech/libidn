@@ -19,28 +19,6 @@
  *
  */
 
-#ifndef _STRINGPREP_NAMEPREP_H
-#define _STRINGPREP_NAMEPREP_H
-
-#ifdef __cplusplus
-extern "C"
-{
-#if 0				/* keep Emacsens's auto-indent happy */
-}
-#endif
-#endif
+/* This file is obsolete and will be removed in the future. */
 
 #include <stringprep.h>
-
-extern Stringprep_profile stringprep_nameprep[];
-
-#define stringprep_nameprep(in, maxlen) \
-	stringprep(in, maxlen, 0, stringprep_nameprep)
-
-#define stringprep_nameprep_no_unassigned(in, maxlen) \
-  stringprep(in, maxlen, STRINGPREP_NO_UNASSIGNED, stringprep_nameprep)
-
-#ifdef __cplusplus
-}
-#endif
-#endif /* _STRINGPREP_NAMEPREP_H */

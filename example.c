@@ -22,7 +22,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <stringprep_nameprep.h>
+#include <stringprep.h>
 
 /*
  * Compiling using libtool and pkg-config is recommended:

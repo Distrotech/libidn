@@ -19,9 +19,7 @@
  *
  */
 
-#include "stringprep_generic.h"
-#include "stringprep_nameprep.h"
-#include "stringprep_kerberos5.h"
+#include "internal.h"
 
 Stringprep_profile stringprep_generic[] = {
   /* 1) Map -- For each character in the input, check if it has a

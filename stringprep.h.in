@@ -92,7 +92,62 @@ extern "C"
   typedef struct Stringprep_table Stringprep_profile;
 
 /* Profiles */
+  extern Stringprep_table_element stringprep_generic_A_1[];
+  extern Stringprep_table_element stringprep_generic_B_1[];
+  extern Stringprep_table_element stringprep_generic_B_2[];
+  extern Stringprep_table_element stringprep_generic_B_3[];
+  extern Stringprep_table_element stringprep_generic_C_1_1[];
+  extern Stringprep_table_element stringprep_generic_C_1_2[];
+  extern Stringprep_table_element stringprep_generic_C_2_1[];
+  extern Stringprep_table_element stringprep_generic_C_2_2[];
+  extern Stringprep_table_element stringprep_generic_C_3[];
+  extern Stringprep_table_element stringprep_generic_C_4[];
+  extern Stringprep_table_element stringprep_generic_C_5[];
+  extern Stringprep_table_element stringprep_generic_C_6[];
+  extern Stringprep_table_element stringprep_generic_C_7[];
+  extern Stringprep_table_element stringprep_generic_C_8[];
+  extern Stringprep_table_element stringprep_generic_C_9[];
+  extern Stringprep_table_element stringprep_generic_D_1[];
+  extern Stringprep_table_element stringprep_generic_D_2[];
+
+  extern Stringprep_profile stringprep_generic[];
+
+#define stringprep_generic(in, maxlen)		\
+  stringprep(in, maxlen, 0, stringprep_generic)
+
+  extern Stringprep_profile stringprep_nameprep[];
+
+#define stringprep_nameprep(in, maxlen)			\
+  stringprep(in, maxlen, 0, stringprep_nameprep)
+
+#define stringprep_nameprep_no_unassigned(in, maxlen)			\
+  stringprep(in, maxlen, STRINGPREP_NO_UNASSIGNED, stringprep_nameprep)
+
   extern Stringprep_profile stringprep_saslprep[];
+
+  extern Stringprep_profile stringprep_kerberos5[];
+
+#define stringprep_kerberos5(in, maxlen)		\
+  stringprep(in, maxlen, 0, stringprep_kerberos5)
+
+  extern Stringprep_profile stringprep_xmpp_nodeprep[];
+  extern Stringprep_profile stringprep_xmpp_resourceprep[];
+  extern Stringprep_table_element stringprep_xmpp_nodeprep_prohibit[];
+
+#define stringprep_xmpp_nodeprep(in, maxlen)		\
+  stringprep(in, maxlen, 0, stringprep_xmpp_nodeprep)
+#define stringprep_xmpp_resourceprep(in, maxlen)		\
+  stringprep(in, maxlen, 0, stringprep_xmpp_resourceprep)
+
+  extern Stringprep_profile stringprep_plain[];
+
+#define stringprep_plain(in, maxlen)		\
+  stringprep(in, maxlen, 0, stringprep_plain)
+
+  extern Stringprep_profile stringprep_iscsi[];
+
+#define stringprep_iscsi(in, maxlen)		\
+  stringprep(in, maxlen, 0, stringprep_iscsi)
 
 /* API */
 

@@ -19,43 +19,6 @@
  *
  */
 
-#ifndef _STRINGPREP_GENERIC_H
-#define _STRINGPREP_GENERIC_H
-
-#ifdef __cplusplus
-extern "C"
-{
-#if 0				/* keep Emacsens's auto-indent happy */
-}
-#endif
-#endif
+/* This file is obsolete and will be removed in the future. */
 
 #include <stringprep.h>
-
-extern Stringprep_table_element stringprep_generic_A_1[];
-extern Stringprep_table_element stringprep_generic_B_1[];
-extern Stringprep_table_element stringprep_generic_B_2[];
-extern Stringprep_table_element stringprep_generic_B_3[];
-extern Stringprep_table_element stringprep_generic_C_1_1[];
-extern Stringprep_table_element stringprep_generic_C_1_2[];
-extern Stringprep_table_element stringprep_generic_C_2_1[];
-extern Stringprep_table_element stringprep_generic_C_2_2[];
-extern Stringprep_table_element stringprep_generic_C_3[];
-extern Stringprep_table_element stringprep_generic_C_4[];
-extern Stringprep_table_element stringprep_generic_C_5[];
-extern Stringprep_table_element stringprep_generic_C_6[];
-extern Stringprep_table_element stringprep_generic_C_7[];
-extern Stringprep_table_element stringprep_generic_C_8[];
-extern Stringprep_table_element stringprep_generic_C_9[];
-extern Stringprep_table_element stringprep_generic_D_1[];
-extern Stringprep_table_element stringprep_generic_D_2[];
-
-extern Stringprep_profile stringprep_generic[];
-
-#define stringprep_generic(in, maxlen) \
-	stringprep(in, maxlen, 0, stringprep_generic)
-
-#ifdef __cplusplus
-}
-#endif
-#endif /* _STRINGPREP_GENERIC_H */

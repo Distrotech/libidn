@@ -19,16 +19,13 @@
 
 EXTRA_DIST = dummy.c libidn-docs.tmpl $(HTML_OBJECTS) $(IMAGES)
 
-HTML_OBJECTS = index.html c4.html libidn-idna.html libidn-punycode.html \
-	libidn-stringprep-generic.html libidn-stringprep.html \
-	libidn-stringprep-kerberos5.html libidn-stringprep-nameprep.html \
-	libidn-stringprep-xmpp.html libidn-stringprep-plain.html \
-	libidn-stringprep-iscsi.html
+HTML_OBJECTS = index.html c4.html \
+	libidn-idna.html libidn-punycode.html libidn-stringprep.html
 IMAGES = home.png left.png right.png up.png
 
 MODULE = libidn
 HIGNORE = config.h gunibreak.h gunicomp.h gunidecomp.h \
-	netdb.h getopt.h internal.h
+	netdb.h getopt.h internal.h stringprep_*.h idn_cmd.h
 
 scan.stamp: $(top_srcdir)/*.c $(top_srcdir)/*.h
 	$(GTKDOC_SCAN) --module=$(MODULE) --source-dir=$(top_srcdir) \

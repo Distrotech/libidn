@@ -82,12 +82,6 @@
 #endif /* _LIBC */
 
 #include "stringprep.h"
-#include "stringprep_generic.h"
-#include "stringprep_iscsi.h"
-#include "stringprep_kerberos5.h"
-#include "stringprep_nameprep.h"
-#include "stringprep_plain.h"
-#include "stringprep_xmpp.h"
 #include "punycode.h"
 #include "idna.h"
 
