@@ -17,6 +17,8 @@
 # License along with Libidn; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
 
+SUBDIRS = reference
+
 EXTRA_DIST = libidn.pc.in iconv.m4 strdup.c memset.c \
 	gen-stringprep-tables.pl rfc3454.txt \
 	gen-unicode-tables.pl UnicodeData-3.2.0.txt LineBreak-3.2.0.txt \

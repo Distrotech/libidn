@@ -1,0 +1,23 @@
+<!doctype book PUBLIC "-//Davenport//DTD DocBook V3.0//EN" [
+<!ENTITY libidn-punycode SYSTEM "sgml/punycode.sgml">
+<!ENTITY libidn-stringprep-generic SYSTEM "sgml/stringprep_generic.sgml">
+<!ENTITY libidn-stringprep-kerberos5 SYSTEM "sgml/stringprep_kerberos5.sgml">
+<!ENTITY libidn-stringprep-nameprep SYSTEM "sgml/stringprep_nameprep.sgml">
+<!ENTITY libidn-stringprep SYSTEM "sgml/stringprep.sgml">
+<!ENTITY libidn-idna SYSTEM "sgml/idna.sgml">
+]>
+<book id="index">
+  <bookinfo>
+    <title>GNU Libidn API Reference Manual</title>
+  </bookinfo>
+
+  <chapter>
+    <title>GNU Libidn API Reference Manual</title>
+    &libidn-punycode;
+    &libidn-stringprep-generic;
+    &libidn-stringprep-kerberos5;
+    &libidn-stringprep-nameprep;
+    &libidn-stringprep;
+    &libidn-idna;
+  </chapter>
+</book>
