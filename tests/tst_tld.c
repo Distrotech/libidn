@@ -155,7 +155,7 @@ main (int argc, char *argv[])
 	  if (debug)
 	    printf ("ERROR\n");
 	}
-      else if (rc != TLD_SUCCESS)
+      else if (rc == TLD_ILLEGAL)
 	{
 	  if (debug)
 	    printf ("returned errpos %d expected errpos %d\n",
@@ -169,8 +169,7 @@ main (int argc, char *argv[])
 		printf ("ERROR\n");
 	    }
 	}
-
-      if (debug)
+      else if (debug)
 	printf ("OK\n");
     }
 
