@@ -1,3 +1,98 @@
+2003-01-15 19:39  Simon Josefsson <simon@josefsson.org>
+
+	* toutf8.c:
+
+	Fix functions on bad platforms.  
+
+2003-01-15 19:36  Simon Josefsson <simon@josefsson.org>
+
+	* stringprep.c:
+
+	Add comment.  
+
+2003-01-15 19:35  Simon Josefsson <simon@josefsson.org>
+
+	* tst_idna.c:
+
+	Test step 5 in ToASCII.  
+
+2003-01-15 19:35  Simon Josefsson <simon@josefsson.org>
+
+	* idna.c, idna.h:
+
+	Fix ToASCII().  
+
+2003-01-15 17:48  Simon Josefsson <simon@josefsson.org>
+
+	* libidn.texi:
+
+	Fix copyright.  
+
+2003-01-15 17:47  Simon Josefsson <simon@josefsson.org>
+
+	* libidn.texi:
+
+	Fix dir entry.  
+
+2003-01-15 17:35  Simon Josefsson <simon@josefsson.org>
+
+	* Makefile.am:
+
+	Use automake's ps and pdf texinfo targets.  Remove txt texinfo
+	target.  
+
+2003-01-15 17:15  Simon Josefsson <simon@josefsson.org>
+
+	* Makefile.am:
+
+	EXTRA_DIST lgplg.texi.  Disable GTK-DOC for distcheck builds
+	(doesn't work).  
+
+2003-01-15 17:14  Simon Josefsson <simon@josefsson.org>
+
+	* reference/Makefile.am:
+
+	Add uninstall target.  Fix distcheck builds.  
+
+2003-01-15 15:01  Simon Josefsson <simon@josefsson.org>
+
+	* lgpl.texi, libidn.texi:
+
+	Add acknowledgements, lgpl.  
+
+2003-01-15 14:46  Simon Josefsson <simon@josefsson.org>
+
+	* Makefile.am, configure.ac, example.c, example2.c, idna.c, idna.h,
+	libidn.texi, nfkc.c, profiles.c, punycode.c, punycode.h,
+	stringprep.c, stringprep.h.in, toutf8.c, tst_idna.c, tst_nfkc.c,
+	tst_punycode.c, tst_stringprep.c, version.c:
+
+	Comment cleanup.  
+
+2003-01-15 12:43  Simon Josefsson <simon@josefsson.org>
+
+	* Makefile.am, reference/dummy.c:
+
+	Improve texinfo manual.  
+
+2003-01-15 12:42  Simon Josefsson <simon@josefsson.org>
+
+	* stringprep.c:
+
+	Add doc.  
+
+2003-01-15 12:42  Simon Josefsson <simon@josefsson.org>
+
+	* libidn.texi:
+
+	Add.  
+
+2003-01-15 12:42  Simon Josefsson <simon@josefsson.org>
+
+	* README:
+
+	Remove API documentation.  
+
 2003-01-15 12:05  Simon Josefsson <simon@josefsson.org>
 
 	* NEWS, configure.ac:
