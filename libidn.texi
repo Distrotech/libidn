@@ -376,7 +376,7 @@ functionality will want idna.h instead though.
 This header file uses the same namespace as the main stringprep.h
 header file.
 
-@item stringprep_nameprep.h
+@item stringprep_plain.h
 
 The entry point to the SASL ANONYMOUS (``plain'') profile of
 stringprep.
