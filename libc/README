@@ -9,33 +9,23 @@ instructions.  Note that you should not run configure in Libidn.
 
 $ tar xfz glibc-2.3.2.tar.gz  # and glibc-linuxthreads if you need it
 
-2) Unpack Libidn inside the Libc directory:
+2) Unpack Libidn:
 
-$ cd glibc-2.3.2
-$ tar xfz ~/libidn-0.1.12.tar.gz
-$ mv libidn-0.1.12 libidn
+$ tar xfz ~/libidn-0.2.4.tar.gz
 
-3) Set up Libidn for building as a Libc add-on:
+3) Set up the Libidn add-on inside the Libc directory:
 
-$ cp libidn/libc/Makefile libidn/libc/configure libidn/libc/Versions libidn/
-$ cp libidn/libc/getaddrinfo.c sysdeps/posix/
-$ cp libidn/libc/netdb.h resolv/
-$ echo > libidn/libidn.texi
-
-pi) If you are using libidn from CVS build some files at this point:
-
-$ perl gen-unicode-tables.pl -decomp 3.2 UnicodeData-3.2.0.txt \
-       LineBreak-3.2.0.txt SpecialCasing-3.2.0.txt CaseFolding-3.2.0.txt \
-       CompositionExclusions-3.2.0.txt
-$ perl gen-stringprep-tables.pl rfc3454.txt
-$ cp stringprep.h.in stringprep.h
+$ cp -r libidn-0.2.4/libc glibc-2.3.2/libidn
+$ cp libidn-0.2.4/libc/{Makefile,configure,Versions} glibc-2.3.2/libidn/
+$ cp libidn-0.2.4/lib/*.{c,h} glibc-2.3.2/libidn/
+$ cp libidn-0.2.4/libc/getaddrinfo.c glibc-2.3.2/sysdeps/posix/
+$ cp libidn-0.2.4/libc/netdb.h glibc-2.3.2/resolv/
 
 4) Configure and build Libc with the Libidn add-on:
 
-$ cd ../..
 $ mkdir glibc-2.3.2-obj
 $ cd glibc-2.3.2-obj
-$ ../glibc-2.3.2-obj/configure --enable-add-ons=linuxthreads,libidn \
+$ ../glibc-2.3.2/configure --enable-add-ons=linuxthreads,libidn \
 	--prefix=/usr/local/glibc
 $ make install
 
