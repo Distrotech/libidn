@@ -16,10 +16,10 @@ $ tar xfz ~/libidn-0.1.5.tar.gz
 3) Set up Libidn for building as a Libc add-on:
 
 $ cd libidn-0.1.5
-$ mv -f libc/Makefile .
-$ mv -f libc/configure .
-$ mv -f libc/getaddrinfo.c ../sysdeps/posix/
-$ mv -f libc/netdb.h ../resolv
+$ cp libc/Makefile .
+$ cp libc/configure .
+$ cp libc/getaddrinfo.c ../sysdeps/posix/
+$ cp libc/netdb.h ../resolv
 
 pi) If you are using libidn from CVS you must build some files manually:
 
