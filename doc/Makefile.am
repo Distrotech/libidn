@@ -53,7 +53,10 @@ idn.1: $(top_srcdir)/src/idn.c $(top_srcdir)/src/idn.ggo \
 
 # GDOC
 
-GDOC_SRC = $(top_srcdir)/lib/*.c
+GDOC_SRC = $(top_srcdir)/lib/idna.c $(top_srcdir)/lib/nfkc.c	\
+	$(top_srcdir)/lib/pr29.c $(top_srcdir)/lib/punycode.c	\
+	$(top_srcdir)/lib/stringprep.c $(top_srcdir)/lib/tld.c	\
+	$(top_srcdir)/lib/toutf8.c $(top_srcdir)/lib/version.c
 GDOC_TEXI_PREFIX = texi/
 GDOC_MAN_PREFIX = man/
 GDOC_MAN_EXTRA_ARGS = -module $(PACKAGE) -sourceversion $(VERSION) \
