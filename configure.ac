@@ -33,7 +33,6 @@ AC_SUBST(LT_AGE)
 
 AM_INIT_AUTOMAKE(gnits)
 AM_CONFIG_HEADER(config.h)
-AC_CONFIG_AUX_DIR(.)
 
 # Checks for programs.
 AC_PROG_LIBTOOL
