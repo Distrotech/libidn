@@ -1,3 +1,90 @@
+2004-04-29  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Version 0.4.4.
+
+2004-04-29  Simon Josefsson <simon@josefsson.org>
+
+	* po/da.po, po/de.po, po/fr.po, po/nl.po, po/pl.po, po/ro.po,
+	po/sr.po, po/sv.po: Generated.
+
+2004-04-29  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2004-04-29  Simon Josefsson <simon@josefsson.org>
+
+	* THANKS, NEWS: Add.
+
+2004-04-29  Simon Josefsson <simon@josefsson.org>
+
+	* tests/Makefile.am: Use -no-install to avoid libtool wrapper
+	script, tiny patch from Joe Orton <jorton@redhat.com>.
+
+2004-04-29  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2004-04-29  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2004-04-29  Simon Josefsson <simon@josefsson.org>
+
+	* tests/tst_stringprep.c: Add iSCSI test vectors to catch recent
+	bugs.
+
+2004-04-29  Simon Josefsson <simon@josefsson.org>
+
+	* lib/profiles.c:
+	(stringprep_iscsi_prohibit): For start==0, use end!=1.
+
+2004-04-29  Simon Josefsson <simon@josefsson.org>
+
+	* lib/profiles.c:
+	(stringprep_iscsi): Add C_1_1, C_2_1, and C_7 (after reading newly
+	published RFC 3722).
+
+2004-04-24  Simon Josefsson <simon@josefsson.org>
+
+	* THANKS, NEWS: Add.
+
+2004-04-24  Simon Josefsson <simon@josefsson.org>
+
+	* po/LINGUAS, po/ro.po: Add, by Laurentiu Buzdugan <lbuz@rolix.org>
+	via translation project.
+
+2004-04-23  Simon Josefsson <simon@josefsson.org>
+
+	* lib/toutf8.c: Rename variable to avoid silly shadowing warnings.
+
+2004-04-23  Simon Josefsson <simon@josefsson.org>
+
+	* tests/Makefile.am: Move utils.c and utils.h into a separate
+	library.
+
+2004-04-23  Simon Josefsson <simon@josefsson.org>
+
+	* tests/Makefile.am, tests/tst_idna.c, tests/tst_idna2.c,
+	tests/tst_nfkc.c, tests/tst_punycode.c, tests/tst_stringprep.c,
+	tests/tst_tld.c, tests/utils.c, tests/utils.h: Split out common
+	stuff into utils.c and utils.h.
+
+2004-04-23  Simon Josefsson <simon@josefsson.org>
+
+	* tests/tst_nfkc.c: Fix warnings.
+
+2004-04-22  Simon Josefsson <simon@josefsson.org>
+
+	* configure.ac: Require modern autoconf.
+
+2004-04-22  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS, configure.ac: Bump versions.
+
+2004-04-22  Simon Josefsson <simon@josefsson.org>
+
+	* lib/toutf8.c: Indent.
+
 2004-04-22  Simon Josefsson <simon@josefsson.org>
 
 	* po/da.po, po/de.po, po/fr.po, po/nl.po, po/pl.po, po/sr.po,
