@@ -1544,13 +1544,12 @@ ToUnicode operation computed on the input @var{string}.
 @chapter Acknowledgements
 
 The punycode code was taken from the IETF IDN Punycode specification,
-by Adam M. Costello.
-
-Some functions (see nfkc.c and toutf8.c) has been borrowed from GLib
-downloaded from www.gtk.org.
+by Adam M. Costello.  The TLD code was contributed by Thomas Jacob.
+Some functions for dealing with Unicode (see nfkc.c and toutf8.c) has
+been borrowed from GLib downloaded from www.gtk.org.
 
 Several people reported bugs, sent patches or suggested improvements,
-see the file THANKS.
+see the file THANKS in the top-level directory of the source code.
 
 @node Concept Index
 @unnumbered Concept Index
