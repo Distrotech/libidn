@@ -301,7 +301,7 @@ main (int argc, char *argv[])
 	    }
 	  free(q);
 
-	  rc = idna_to_unicode_4z4z (p, &q,
+	  rc = idna_to_unicode_8z4z (p, &q,
 				     (args_info.allow_unassigned_given ?
 				      IDNA_ALLOW_UNASSIGNED : 0) |
 				     (args_info.usestd3asciirules_given ?

@@ -39,7 +39,7 @@ fail (const char *format, ...)
 }
 
 static void
-ucs4print (unsigned long *str, ssize_t len)
+ucs4print (uint32_t *str, ssize_t len)
 {
   int i;
 
@@ -59,7 +59,7 @@ struct punycode
 {
   char *name;
   size_t inlen;
-  unsigned long in[100];
+  uint32_t in[100];
   char *out;
   int rc;
 } punycode[] =
