@@ -215,7 +215,7 @@ main (int argc, char *argv[])
 		fprintf (stderr, _("input[%d] = U+%04x\n"), i, q[i]);
 	    }
 
-	  len2 = BUFSIZ;
+	  len2 = BUFSIZ - 1;
 	  rc = punycode_encode (len, q, NULL, &len2, readbuf);
 	  free (q);
 	  if (rc != PUNYCODE_SUCCESS)
