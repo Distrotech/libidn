@@ -1,3 +1,109 @@
+2003-02-26  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Version 0.1.11.
+
+2003-02-26  Simon Josefsson <simon@josefsson.org>
+
+	* Makefile.am: Distcheck fixes.
+
+2003-02-26  Simon Josefsson <simon@josefsson.org>
+
+	* libidn.texi: Document Emacs API.
+
+2003-02-26  Simon Josefsson <simon@josefsson.org>
+
+	* configure.ac: Bump versions.  Look for help2man.
+
+2003-02-26  Simon Josefsson <simon@josefsson.org>
+
+	* Makefile.am: Build idn.1 man page.
+
+2003-02-26  Simon Josefsson <simon@josefsson.org>
+
+	* libidn.texi: Document idn.
+
+2003-02-26  Simon Josefsson <simon@josefsson.org>
+
+	* idna.el: Mention todo.
+
+2003-02-26  Simon Josefsson <simon@josefsson.org>
+
+	* Makefile.am: Build idna.el.
+
+2003-02-26  Simon Josefsson <simon@josefsson.org>
+
+	* idna.el: Elisp interface for IDNA.
+
+2003-02-26  Simon Josefsson <simon@josefsson.org>
+
+	* punycode.el: Add keywords.
+
+2003-02-26  Simon Josefsson <simon@josefsson.org>
+
+	* punycode.el: Fix doc.
+
+2003-02-26  Simon Josefsson <simon@josefsson.org>
+
+	* configure.ac: Add automake elisp check.
+
+2003-02-26  Simon Josefsson <simon@josefsson.org>
+
+	* Makefile.am: Add punycode.el.
+
+2003-02-26  Simon Josefsson <simon@josefsson.org>
+
+	* punycode.el: Elisp interface for punycode.
+
+2003-02-26  Simon Josefsson <simon@josefsson.org>
+
+	* Makefile.am: Fix gengetopt invocation.
+
+2003-02-26  Simon Josefsson <simon@josefsson.org>
+
+	* idn.c: Print help on usage error.  Minor cleanup.
+
+2003-02-26  Simon Josefsson <simon@josefsson.org>
+
+	* idn.ggo.in: Fix package/version name.
+
+2003-02-26  Simon Josefsson <simon@josefsson.org>
+
+	* idn.ggo.in: Shorten line <80ch.
+
+2003-02-26  Simon Josefsson <simon@josefsson.org>
+
+	* getopt.c, getopt.h, getopt1.c: Add.
+
+2003-02-26  Simon Josefsson <simon@josefsson.org>
+
+	* configure.ac: Link with getopt if system doesn't have
+	getopt_long().  Build idn.ggo.
+
+2003-02-26  Simon Josefsson <simon@josefsson.org>
+
+	* Makefile.am: Build idn.
+
+2003-02-26  Simon Josefsson <simon@josefsson.org>
+
+	* idn.ggo.in: Add command line option specification for idn.c.
+
+2003-02-26  Simon Josefsson <simon@josefsson.org>
+
+	* idn.c: Add command line interface to library.
+
+2003-02-25  Simon Josefsson <simon@josefsson.org>
+
+	* draft-ietf-xmpp-nodeprep-01.txt,
+	draft-ietf-xmpp-resourceprep-01.txt: Add.
+
+2003-02-21  Simon Josefsson <simon@josefsson.org>
+
+	* profiles.c: NFKC XMPP resourceprep.
+
+2003-02-21  Simon Josefsson <simon@josefsson.org>
+
+	* profiles.c: NFKC XMPP nodeprep.
+
 2003-02-21  Simon Josefsson <simon@josefsson.org>
 
 	* NEWS: Version 0.1.10.
