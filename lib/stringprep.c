@@ -357,35 +357,32 @@ stringprep (char *in,
       maxucs4len = ucs4len + adducs4len;
       ucs4 = realloc (ucs4, maxucs4len * sizeof (uint32_t));
       if (!ucs4)
-	{
-	  rc = STRINGPREP_MALLOC_ERROR;
-	  goto done;
-	}
+	return STRINGPREP_MALLOC_ERROR;
 
       rc = stringprep_4i (ucs4, &ucs4len, maxucs4len, flags, profile);
       adducs4len += 50;
     }
   while (rc == STRINGPREP_TOO_SMALL_BUFFER);
   if (rc != STRINGPREP_OK)
-    goto done;
+    {
+      free (ucs4);
+      return rc;
+    }
 
   utf8 = stringprep_ucs4_to_utf8 (ucs4, ucs4len, 0, 0);
+  if (!utf8)
+    return STRINGPREP_MALLOC_ERROR;
+
   if (strlen (utf8) >= maxlen)
     {
-      rc = STRINGPREP_TOO_SMALL_BUFFER;
-      goto done;
+      free (utf8);
+      free (ucs4);
+      return STRINGPREP_TOO_SMALL_BUFFER;
     }
 
   strcpy (in, utf8);		/* flawfinder: ignore */
 
-  rc = STRINGPREP_OK;
-
- done:
-  if (utf8)
-    free (utf8);
-  if (ucs4)
-    free (ucs4);
-  return rc;
+  return STRINGPREP_OK;
 }
 
 /**
