@@ -8,7 +8,9 @@ See the end for copying conditions.
 
 ** Fixed debug information in 'idn'.
 
-** Internal improvements, leading to reduced heap memory usage.
+** Internal improvements.
+Leads to reduced heap memory usage.  Simplified inter-dependency among
+files in lib/* to make it easier to copy them into your project.
 
 ** API and ABI is backwards compatible with the previous version.
 stringprep_4i: NEW.
