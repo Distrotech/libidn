@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libidn 0.4.8\n"
 "Report-Msgid-Bugs-To: bug-libidn@gnu.org\n"
-"POT-Creation-Date: 2004-10-02 21:50+0200\n"
+"POT-Creation-Date: 2004-10-04 16:12+0200\n"
 "PO-Revision-Date: 2004-06-12 16:25+0100\n"
 "Last-Translator: Edmund GRIMLEY EVANS <edmundo@rano.org>\n"
 "Language-Team: Esperanto <translation-team-eo@lists.sourceforge.net>\n"
@@ -157,81 +157,81 @@ msgstr ""
 msgid "Input error"
 msgstr ""
 
-#: src/idn.c:126 src/idn.c:184 src/idn.c:261 src/idn.c:332
+#: src/idn.c:126 src/idn.c:186 src/idn.c:267 src/idn.c:341
 #, fuzzy, c-format
 msgid "Could not convert from %s to UTF-8."
 msgstr "%s: ne povis konverti de %s al UTF-8.\n"
 
-#: src/idn.c:133 src/idn.c:156 src/idn.c:190 src/idn.c:389
+#: src/idn.c:134 src/idn.c:158 src/idn.c:193 src/idn.c:402
 #, fuzzy
 msgid "Could not convert from UTF-8 to UCS-4."
 msgstr "%s: ne povis konverti de UTF-8 al UCS-4.\n"
 
-#: src/idn.c:140 src/idn.c:196 src/idn.c:273 src/idn.c:346
+#: src/idn.c:141 src/idn.c:199 src/idn.c:280 src/idn.c:356
 #, c-format
 msgid "input[%d] = U+%04x\n"
 msgstr "enigo[%d] = U+%04x\n"
 
-#: src/idn.c:149
+#: src/idn.c:150
 #, c-format
 msgid "stringprep_profile: %s"
 msgstr ""
 
-#: src/idn.c:163 src/idn.c:237 src/idn.c:320 src/idn.c:363
+#: src/idn.c:165 src/idn.c:242 src/idn.c:329 src/idn.c:374
 #, c-format
 msgid "output[%d] = U+%04x\n"
 msgstr "eligo[%d] = U+%04x\n"
 
-#: src/idn.c:170 src/idn.c:209 src/idn.c:249 src/idn.c:394
+#: src/idn.c:172 src/idn.c:213 src/idn.c:255 src/idn.c:407
 #, fuzzy, c-format
 msgid "Could not convert from UTF-8 to %s."
 msgstr "%s: ne povis konverti de UTF-8 al %s.\n"
 
-#: src/idn.c:203
+#: src/idn.c:206
 #, c-format
 msgid "punycode_encode: %s"
 msgstr ""
 
-#: src/idn.c:224
+#: src/idn.c:228
 msgid "malloc"
 msgstr ""
 
-#: src/idn.c:230
+#: src/idn.c:234
 #, c-format
 msgid "punycode_decode: %s"
 msgstr ""
 
-#: src/idn.c:244 src/idn.c:267 src/idn.c:339
+#: src/idn.c:250 src/idn.c:274 src/idn.c:349
 #, fuzzy
 msgid "Could not convert from UCS-4 to UTF-8."
 msgstr "%s: ne povis konverti de UCS-4 al UTF-8.\n"
 
-#: src/idn.c:283
+#: src/idn.c:290
 #, c-format
 msgid "idna_to_ascii_4z: %s"
 msgstr ""
 
-#: src/idn.c:296
+#: src/idn.c:304
 #, fuzzy, c-format
 msgid "idna_to_unicode_8z4z (TLD): %s"
 msgstr "%s: idna_to_unicode_8z4z() malsukcesis kun eraro %d.\n"
 
-#: src/idn.c:303
+#: src/idn.c:311
 #, c-format
 msgid "tld[%d] = U+%04x\n"
 msgstr "tld[%d] = U+%04x\n"
 
-#: src/idn.c:309 src/idn.c:375
+#: src/idn.c:317 src/idn.c:386
 #, c-format
 msgid "tld_check_4z (position %d): %s"
 msgstr ""
 
-#: src/idn.c:312 src/idn.c:381
+#: src/idn.c:320 src/idn.c:392
 #, c-format
 msgid "tld_check_4z: %s"
 msgstr ""
 
-#: src/idn.c:357
+#: src/idn.c:367
 #, fuzzy, c-format
 msgid "idna_to_unicode_8z4z: %s"
 msgstr "%s: idna_to_unicode_8z4z() malsukcesis kun eraro %d.\n"
