@@ -1,0 +1,8 @@
+.deps
+.libs
+Makefile
+Makefile.in
+tst_idna
+tst_nfkc
+tst_punycode
+tst_stringprep

@@ -1,0 +1,8 @@
+.deps
+.libs
+Makefile
+Makefile.in
+idn
+idn.ggo
+idn_cmd.c
+idn_cmd.h

@@ -6,4 +6,7 @@ gunibreak.h
 gunicomp.h
 gunidecomp.h
 idn-int.h
+libidn.la
 *.lo
+stringprep.h
+stringprep_generic.c
