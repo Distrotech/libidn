@@ -249,7 +249,16 @@ const struct stringprep strprep[] = {
   {"SASL ANONYMOUS plain mechanism",
    "simon@josefsson.org", "simon@josefsson.org", "plain"},
   {"iSCSI profile", "Example-Name", "example-name", "iSCSI"},
-  {"SASL profile", "Example\xC2\xA0" "Name", "Example Name", "SASLprep"}
+  {"SASL profile", "Example\xC2\xA0" "Name", "Example Name", "SASLprep"},
+  /* SASLprep test vectors. */
+  {"SASLprep 1 SOFT HYPHEN mapped to nothing", "x\xC2\xADy", "xy", "SASLprep"},
+  {"SASLprep 2 no transformation", "user", "user", "SASLprep"},
+  {"SASLprep 3 case preserved, will not match #2", "USER", "USER", "SASLprep"},
+  {"SASLprep 4 output is NFKC", "\xE2\x85\xA3", "IV", "SASLprep"},
+  {"SASLprep 5 Error - prohibited character", "\x07", NULL, "SASLprep",
+   0, STRINGPREP_CONTAINS_PROHIBITED},
+  {"SASLprep 6 Error - bidirectional check", "\xD8\xA7" "1", NULL, "SASLprep",
+   0, STRINGPREP_BIDI_LEADTRAIL_NOT_RAL}
 };
 
 int
