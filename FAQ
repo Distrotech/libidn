@@ -5,7 +5,7 @@ See the end for copying conditions.
 Q#1: Why doesn't Libidn use a separate library for the Unicode
      operations?
 
-A#1: Separate libraries (Glib, QT, libiconv, icu) seldom mark the
+A#1: Separate libraries (Glib, QT, libiconv) seldom mark the
      Unicode tables with the corresponding Unicode version they
      implement, nor do they provide a interface where a specific
      version can be requested.  This violates the stringprep
