@@ -1,5 +1,13 @@
 2003-02-12  Simon Josefsson <simon@josefsson.org>
 
+	* Makefile.am: Improve release target.
+
+2003-02-12  Simon Josefsson <simon@josefsson.org>
+
+	* Makefile.am: Add release target.
+
+2003-02-12  Simon Josefsson <simon@josefsson.org>
+
 	* NEWS, configure.ac: Version 0.1.7.
 
 2003-02-12  Simon Josefsson <simon@josefsson.org>
