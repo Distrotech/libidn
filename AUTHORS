@@ -1,11 +1,11 @@
-Libstringprep AUTHORS -- information about the authors
+Libidn AUTHORS -- Information about the authors.
 See the end for copying conditions.
 
 Simon Josefsson <simon@josefsson.org>
-Designed and implemented libstringprep.
+Designed and implemented libidn.
 
 -----BEGIN PGP PUBLIC KEY BLOCK-----
-Comment: This key is used to sign libstringprep releases.
+Comment: This key is used to sign libidn releases.
 
 mKsEPNUHKwEFALqJSBHn6Qk5ex138kwymxA3idCFoTi5Q6mVooEVVaYVfeDG+5uV
 T5rhTFDfDcT9SO0eIlfKOraSRnVEHyDDH2PAgJFxyneFELcmLUQ66D+m8z+ziGro
