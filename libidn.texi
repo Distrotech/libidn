@@ -81,7 +81,9 @@ Appendices
 
 Indices
 
-* Index::
+* Concept Index::
+* Function and Variable Index::
+
 @end menu
 
 
@@ -646,24 +648,6 @@ compatible names to internationalized domain names.
 @end example
 
 @c **********************************************************
-@c *******************  Acknowledgements  *******************
-@c **********************************************************
-@node Acknowledgements
-@chapter Acknowledgements
-
-Simon Josefsson created the library autumn 2002 when he really should
-have been studying mathematics.
-
-The punycode code was taken from the IETF IDN Punycode specification,
-by Adam M. Costello.
-
-Some functions (see nfkc.c and toutf8.c) has been borrowed from GLib
-downloaded from www.gtk.org.
-
-Several people reported bugs, sent patches or suggested improvements,
-see the file THANKS.
-
-@c **********************************************************
 @c *********************  Invoking idn  *********************
 @c **********************************************************
 @node Invoking idn
@@ -798,6 +782,24 @@ Returns a possibly multibyte string which is the output of the IDNA
 ToUnicode operation computed on the input @var{string}.
 @end defun
 
+@c **********************************************************
+@c *******************  Acknowledgements  *******************
+@c **********************************************************
+@node Acknowledgements
+@chapter Acknowledgements
+
+Simon Josefsson created the library autumn 2002 when he really should
+have been studying mathematics.
+
+The punycode code was taken from the IETF IDN Punycode specification,
+by Adam M. Costello.
+
+Some functions (see nfkc.c and toutf8.c) has been borrowed from GLib
+downloaded from www.gtk.org.
+
+Several people reported bugs, sent patches or suggested improvements,
+see the file THANKS.
+
 @include lgpl.texi
 
 @node Copying This Manual
@@ -809,11 +811,14 @@ ToUnicode operation computed on the input @var{string}.
 
 @include fdl.texi
 
-
-@node Index
-@unnumbered Index
+@node Concept Index
+@unnumbered Concept Index
 
 @printindex cp
 
-@bye
+@node Function and Variable Index
+@unnumbered Function and Variable Index
 
+@printindex fn
+
+@bye
