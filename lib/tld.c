@@ -227,7 +227,7 @@ _tld_checkchar (uint32_t ch, const Tld_table * tld)
       (ch >= 0x30 && ch <= 0x39) || ch == 0x2D || DOTP (ch))
     return TLD_SUCCESS;
 
-  s = *tld->valid;
+  s = tld->valid;
   e = s + tld->nvalid;
   while (s < e)
     {
