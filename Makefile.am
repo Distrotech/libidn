@@ -17,7 +17,7 @@
 # License along with Libstringprep; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
 
-EXTRA_DIST = libstringprep.pc.in iconv.m4 \
+EXTRA_DIST = libstringprep.pc.in iconv.m4 strdup.c \
 	gen-stringprep-tables.pl draft-hoffman-stringprep-07.txt \
 	gen-unicode-tables.pl UnicodeData-3.2.0.txt LineBreak-3.2.0.txt SpecialCasing-3.2.0.txt CaseFolding-3.2.0.txt CompositionExclusions-3.2.0.txt
 
@@ -32,6 +32,7 @@ include_HEADERS = stringprep.h stringprep_generic.h stringprep_nameprep.h \
 libstringprep_la_SOURCES = gunicomp.h gunidecomp.h \
 	stringprep.c nfkc.c version.c toutf8.c \
 	stringprep_generic.c profiles.c
+libstringprep_la_LIBADD = @LTLIBOBJS@
 libstringprep_la_LDFLAGS = -version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE)
 
 nfkc.c: gunicomp.h gunidecomp.h
