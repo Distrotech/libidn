@@ -151,16 +151,16 @@ static const char *const g_utf8_skip = utf8_skip_data;
  *
  * Return value: the resulting character
  **/
-unsigned long
+uint32_t
 stringprep_utf8_to_unichar (const char *p)
 {
   int i, mask = 0, len;
-  unsigned long result;
+  uint32_t result;
   unsigned char c = (unsigned char) *p;
 
   UTF8_COMPUTE (c, mask, len);
   if (len == -1)
-    return (unsigned long) -1;
+    return (uint32_t) -1;
   UTF8_GET (result, p, i, mask, len);
 
   return result;
@@ -185,7 +185,7 @@ stringprep_utf8_to_unichar (const char *p)
  * manual for more information.
  **/
 static void
-g_unicode_canonical_ordering (unsigned long *string, size_t len)
+g_unicode_canonical_ordering (uint32_t *string, size_t len)
 {
   size_t i;
   int swap = 1;
@@ -204,7 +204,7 @@ g_unicode_canonical_ordering (unsigned long *string, size_t len)
 	      /* Percolate item leftward through string.  */
 	      for (j = i; j > 0; --j)
 		{
-		  unsigned long t;
+		  uint32_t t;
 		  if (COMBINING_CLASS (string[j]) <= next)
 		    break;
 		  t = string[j + 1];
@@ -222,7 +222,7 @@ g_unicode_canonical_ordering (unsigned long *string, size_t len)
 }
 
 static const unsigned char *
-find_decomposition (unsigned long ch, int compat)
+find_decomposition (uint32_t ch, int compat)
 {
   int start = 0;
   int end = sizeof (decomp_table) / sizeof ((decomp_table)[0]);
@@ -274,7 +274,7 @@ find_decomposition (unsigned long ch, int compat)
      (((Char) > (G_UNICODE_LAST_CHAR)) ? 0 : CI((Char) >> 8, (Char) & 0xff))
 
 static int
-combine (unsigned long a, unsigned long b, unsigned long *result)
+combine (uint32_t a, uint32_t b, uint32_t *result)
 {
   int index_a, index_b;
 
@@ -309,7 +309,7 @@ combine (unsigned long a, unsigned long b, unsigned long *result)
       && index_b >= COMPOSE_SECOND_START
       && index_b < COMPOSE_SECOND_SINGLE_START)
     {
-      unsigned long res =
+      uint32_t res =
 	compose_array[index_a - COMPOSE_FIRST_START][index_b -
 						     COMPOSE_SECOND_START];
 
@@ -323,11 +323,11 @@ combine (unsigned long a, unsigned long b, unsigned long *result)
   return 0;
 }
 
-static unsigned long *
+static uint32_t *
 _g_utf8_normalize_wc (const char *str, ssize_t max_len, GNormalizeMode mode)
 {
   size_t n_wc;
-  unsigned long *wc_buffer;
+  uint32_t *wc_buffer;
   const char *p;
   size_t last_start;
   int do_compat = (mode == G_NORMALIZE_NFKC || mode == G_NORMALIZE_NFKD);
@@ -337,7 +337,7 @@ _g_utf8_normalize_wc (const char *str, ssize_t max_len, GNormalizeMode mode)
   p = str;
   while ((max_len < 0 || p < str + max_len) && *p)
     {
-      unsigned long wc = stringprep_utf8_to_unichar (p);
+      uint32_t wc = stringprep_utf8_to_unichar (p);
 
       const unsigned char *decomp = find_decomposition (wc, do_compat);
 
@@ -355,14 +355,14 @@ _g_utf8_normalize_wc (const char *str, ssize_t max_len, GNormalizeMode mode)
       p = g_utf8_next_char (p);
     }
 
-  wc_buffer = malloc (sizeof (unsigned long) * (n_wc + 1));
+  wc_buffer = malloc (sizeof (uint32_t) * (n_wc + 1));
 
   last_start = 0;
   n_wc = 0;
   p = str;
   while ((max_len < 0 || p < str + max_len) && *p)
     {
-      unsigned long wc = stringprep_utf8_to_unichar (p);
+      uint32_t wc = stringprep_utf8_to_unichar (p);
       const unsigned char *decomp;
       int cc;
       size_t old_n_wc = n_wc;
@@ -458,7 +458,7 @@ _g_utf8_normalize_wc (const char *str, ssize_t max_len, GNormalizeMode mode)
  * Return value: number of bytes written
  **/
 int
-stringprep_unichar_to_utf8 (unsigned long c, char *outbuf)
+stringprep_unichar_to_utf8 (uint32_t c, char *outbuf)
 {
   int len = 0;
   int first;
@@ -523,11 +523,11 @@ stringprep_unichar_to_utf8 (unsigned long c, char *outbuf)
  * Return value: a pointer to a newly allocated UCS-4 string.
  *               This value must be freed with free().
  **/
-unsigned long *
-stringprep_utf8_to_ucs4 (const char *str, ssize_t len, size_t *items_written)
+uint32_t *
+stringprep_utf8_to_ucs4 (const char *str, ssize_t len, size_t * items_written)
 {
   int j, charlen;
-  unsigned long *result;
+  uint32_t *result;
   int n_chars, i;
   const char *p;
 
@@ -550,12 +550,12 @@ stringprep_utf8_to_ucs4 (const char *str, ssize_t len, size_t *items_written)
 	}
     }
 
-  result = malloc (sizeof (unsigned long) * (n_chars + 1));
+  result = malloc (sizeof (uint32_t) * (n_chars + 1));
 
   p = str;
   for (i = 0; i < n_chars; i++)
     {
-      unsigned long wc = ((const unsigned char *) p)[0];
+      uint32_t wc = ((const unsigned char *) p)[0];
 
       if (wc < 0x80)
 	{
@@ -627,8 +627,8 @@ stringprep_utf8_to_ucs4 (const char *str, ssize_t len, size_t *items_written)
  *               @error set.
  **/
 char *
-stringprep_ucs4_to_utf8 (const unsigned long *str, ssize_t len,
-			 size_t *items_read, size_t *items_written)
+stringprep_ucs4_to_utf8 (const uint32_t *str, ssize_t len,
+			 size_t * items_read, size_t * items_written)
 {
   int result_length;
   char *result = NULL;
@@ -710,7 +710,7 @@ err_out:
 static char *
 g_utf8_normalize (const char *str, ssize_t len, GNormalizeMode mode)
 {
-  unsigned long *result_wc = _g_utf8_normalize_wc (str, len, mode);
+  uint32_t *result_wc = _g_utf8_normalize_wc (str, len, mode);
   char *result;
 
   result = stringprep_ucs4_to_utf8 (result_wc, -1, NULL, NULL);
@@ -760,11 +760,11 @@ stringprep_utf8_nfkc_normalize (const char *str, ssize_t len)
  * Return value: a newly allocated Unicode string, that is the NFKC
  *   normalized form of @str.
  **/
-unsigned long *
-stringprep_ucs4_nfkc_normalize (unsigned long *str, ssize_t len)
+uint32_t *
+stringprep_ucs4_nfkc_normalize (uint32_t *str, ssize_t len)
 {
   char *p;
-  unsigned long *result_wc;
+  uint32_t *result_wc;
 
   p = stringprep_ucs4_to_utf8 (str, len, 0, 0);
   result_wc = _g_utf8_normalize_wc (p, -1, G_NORMALIZE_NFKC);
