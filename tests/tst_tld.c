@@ -96,7 +96,7 @@ main (int argc, char *argv[])
 {
   size_t i;
   const Tld_table *tldtable;
-  int errpos;
+  size_t errpos;
   int rc;
 
   do
