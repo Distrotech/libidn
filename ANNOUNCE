@@ -1,25 +1,24 @@
 Libidn ANNOUNCE -- Overview to attract interest.
 See the end for copying conditions.
 
-Libidn is an implementation of the Stringprep/Nameprep, Punycode and
-IDNA specifications defined by the Internationalized Domain Names IETF
-working group to implement internationalized domain names.  It is
-licensed under the GNU Lesser General Public License.
+Libidn is an implementation of the Stringprep (Nameprep profile),
+Punycode and IDNA specifications defined by the IETF Internationalized
+Domain Names working group to implement internationalized domain
+names.  It is licensed under the GNU Lesser General Public License.
 
-The library contains a generic Stringprep implementation (with Unicode
-3.2 NFKC normalization, table mapping of characters, and the
-Bidirectional Character handling), and currently two Stringprep
-profiles; Nameprep (for IDN) and Kerberos5.  The library also
-implements Punycode, and the low-level IDNA operations.  A high-level
-API for handling internationalized domain names is being developed.
+The library contains a generic Stringprep implementation (including
+Unicode 3.2 NFKC normalization, table mapping of characters, and
+Bidirectional Character handling), two Stringprep profiles; Nameprep
+(for IDN) and Kerberos5, as well as a Punycode and IDNA.
 
 The Stringprep API consists of two main functions, one for converting
 data from the system's native representation into UTF-8, and one
 function to perform the Stringprep processing.  Each stringprep
-profile has a corresponding CPP macro.  Adding a new Stringprep for
-your application is straightforward. The Punycode API consists of one
-encoding function and one decoding function.  The IDNA API consists of
-the ToASCII and ToUnicode functions.
+profile has a corresponding CPP macro.  Adding a new Stringprep
+profile for your application within the API is straightforward.  The
+Punycode API consists of one encoding function and one decoding
+function.  The IDNA API consists of the ToASCII and ToUnicode
+functions.
 
 The library is currently used by forthcoming SASL and Kerberos
 libraries to process user names and passwords before they are input to
@@ -27,18 +26,20 @@ cryptographic operations.  It is also used by experimental code for
 domain name related purposes.
 
 Libidn is developed for the GNU/Linux system, but runs on over 20 Unix
-platforms (including Linux, Solaris, IRIX, AIX, and Tru64) and
-Windows.
+platforms (including Solaris, IRIX, AIX, and Tru64) and Windows.
 
 The project page of the library is available at:
-http://www.josefsson.org/libstringprep/
+http://josefsson.org/libidn/
 
 For more information see:
 http://www.ietf.org/html.charters/idn-charter.html
 http://www.ietf.org/internet-drafts/draft-hoffman-stringprep-07.txt
+http://www.ietf.org/internet-drafts/draft-ietf-idn-punycode-03.txt
+http://www.ietf.org/internet-drafts/draft-ietf-idn-nameprep-11.txt
+http://www.ietf.org/internet-drafts/draft-ietf-idn-idna-14.txt
 http://www.i-d-n.net/
 
-Further information including paid contract development:
+Further information and paid contract development:
 Simon Josefsson <simon@josefsson.org>
 
 ----------------------------------------------------------------------
