@@ -1,3 +1,250 @@
+2003-08-26  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Version 0.2.3.
+
+2003-08-26  Simon Josefsson <simon@josefsson.org>
+
+	* Makefile.am: Replace release target with Makefile.maint etc.
+
+2003-08-26  Simon Josefsson <simon@josefsson.org>
+
+	* .prev-version, GNUmakefile, Makefile.cfg, Makefile.maint,
+	announce-gen: Add.
+
+2003-08-25  Simon Josefsson <simon@josefsson.org>
+
+	* examples/example3.c: Doc fix.
+
+2003-08-25  Simon Josefsson <simon@josefsson.org>
+
+	* THANKS, NEWS: Add.
+
+2003-08-25  Simon Josefsson <simon@josefsson.org>
+
+	* examples/example4.c: Really call ToUnicode instead of ToASCII.
+	Reported by Trond Haugen <trond.haugen@uninett.no>.
+
+2003-08-21  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi: Add port.
+
+2003-08-21  Simon Josefsson <simon@josefsson.org>
+
+	* gl/Makefile.am: Dist getopt.h.
+
+2003-08-21  Simon Josefsson <simon@josefsson.org>
+
+	* src/Makefile.am: Link with gl stuff.
+
+2003-08-20  Simon Josefsson <simon@josefsson.org>
+
+	* lib/toutf8.c: Fix warning message.
+
+2003-08-20  Simon Josefsson <simon@josefsson.org>
+
+	* configure.ac: Group portability stuff together.
+
+2003-08-20  Simon Josefsson <simon@josefsson.org>
+
+	* src/Makefile.am, tests/Makefile.am: Fix -I paths.
+
+2003-08-20  Simon Josefsson <simon@josefsson.org>
+
+	* lib/Makefile.am: Distcheck fixes.
+
+2003-08-20  Simon Josefsson <simon@josefsson.org>
+
+	* examples/Makefile.am: Fix paths.
+
+2003-08-20  Simon Josefsson <simon@josefsson.org>
+
+	* reference/Makefile.am: Fix paths (for distcheck).
+
+2003-08-20  Simon Josefsson <simon@josefsson.org>
+
+	* Makefile.am: Fix directory build order, for gtk-doc.
+
+2003-08-20  Simon Josefsson <simon@josefsson.org>
+
+	* reference/Makefile.am: Update paths to source code.
+
+2003-08-20  Simon Josefsson <simon@josefsson.org>
+
+	* lib/Makefile.am, lib/idna.c, lib/obsolete.c: Move obsolete
+	functions into separate file.
+
+2003-08-20  Simon Josefsson <simon@josefsson.org>
+
+	* lib/Makefile.am: Fixes.
+
+2003-08-20  Simon Josefsson <simon@josefsson.org>
+
+	* Makefile.am: Build doc after src, for help2man on idn.
+
+2003-08-20  Simon Josefsson <simon@josefsson.org>
+
+	* lib/Makefile.am: Add EXTRA_DISTs.
+
+2003-08-20  Simon Josefsson <simon@josefsson.org>
+
+	* Makefile.am: Add gl, lib, src, tests and examples to SUBDIRS.
+	Add gl/m4 to ACLOCAL_AMFLAGS.  Remove rules that are moved into
+	lib/, src/, tests/ and examples/.
+
+2003-08-20  Simon Josefsson <simon@josefsson.org>
+
+	* configure.ac: Split up files into sub-directories.
+
+2003-08-20  Simon Josefsson <simon@josefsson.org>
+
+	* gdoc: Move gdoc to doc/.
+
+2003-08-20  Simon Josefsson <simon@josefsson.org>
+
+	* CaseFolding-3.2.0.txt, CompositionExclusions-3.2.0.txt,
+	LineBreak-3.2.0.txt, SpecialCasing-3.2.0.txt,
+	draft-ietf-ips-iscsi-string-prep-04.txt,
+	draft-ietf-ips-iscsi-string-prep-05.txt,
+	draft-ietf-krb-wg-utf8-profile-01.txt,
+	draft-ietf-ldapbis-dn-11.txt, draft-ietf-ldapbis-strprep-00.txt,
+	draft-ietf-ldapbis-strprep-01.txt, draft-ietf-sasl-anon-00.txt,
+	draft-ietf-sasl-saslprep-00.txt, draft-ietf-sasl-saslprep-01.txt,
+	draft-ietf-sasl-saslprep-02.txt, draft-ietf-xmpp-nodeprep-01.txt,
+	draft-ietf-xmpp-nodeprep-02.txt, draft-ietf-xmpp-nodeprep-03.txt,
+	draft-ietf-xmpp-resourceprep-01.txt,
+	draft-ietf-xmpp-resourceprep-02.txt,
+	draft-ietf-xmpp-resourceprep-03.txt,
+	draft-josefsson-idn-test-vectors-00.txt,
+	draft-zeilenga-ldapbis-strmatch-02.txt,
+	draft-zeilenga-ldapbis-strprep-00.txt, rfc3454.txt, rfc3490.txt,
+	rfc3491.txt, rfc3492.txt, UnicodeData-3.2.0.txt, doc/Makefile.am,
+	doc/gdoc, doc/specifications/CaseFolding-3.2.0.txt,
+	doc/specifications/CompositionExclusions-3.2.0.txt,
+	doc/specifications/LineBreak-3.2.0.txt,
+	doc/specifications/Makefile.am,
+	doc/specifications/SpecialCasing-3.2.0.txt,
+	doc/specifications/UnicodeData-3.2.0.txt,
+	doc/specifications/draft-ietf-ips-iscsi-string-prep-04.txt,
+	doc/specifications/draft-ietf-ips-iscsi-string-prep-05.txt,
+	doc/specifications/draft-ietf-krb-wg-utf8-profile-01.txt,
+	doc/specifications/draft-ietf-ldapbis-dn-11.txt,
+	doc/specifications/draft-ietf-ldapbis-strprep-00.txt,
+	doc/specifications/draft-ietf-ldapbis-strprep-01.txt,
+	doc/specifications/draft-ietf-sasl-anon-00.txt,
+	doc/specifications/draft-ietf-sasl-saslprep-00.txt,
+	doc/specifications/draft-ietf-sasl-saslprep-01.txt,
+	doc/specifications/draft-ietf-sasl-saslprep-02.txt,
+	doc/specifications/draft-ietf-xmpp-nodeprep-01.txt,
+	doc/specifications/draft-ietf-xmpp-nodeprep-02.txt,
+	doc/specifications/draft-ietf-xmpp-nodeprep-03.txt,
+	doc/specifications/draft-ietf-xmpp-resourceprep-01.txt,
+	doc/specifications/draft-ietf-xmpp-resourceprep-02.txt,
+	doc/specifications/draft-ietf-xmpp-resourceprep-03.txt,
+	doc/specifications/draft-josefsson-idn-test-vectors-00.txt,
+	doc/specifications/draft-zeilenga-ldapbis-strmatch-02.txt,
+	doc/specifications/draft-zeilenga-ldapbis-strprep-00.txt,
+	doc/specifications/rfc3454.txt, doc/specifications/rfc3490.txt,
+	doc/specifications/rfc3491.txt, doc/specifications/rfc3492.txt:
+	Move documentation and specifications into doc/ and
+	doc/specifications/.
+
+2003-08-20  Simon Josefsson <simon@josefsson.org>
+
+	* getopt.c, getopt.h, getopt1.c, memset.c, strdup.c,
+	gl/Makefile.am, gl/getopt.c, gl/getopt.h, gl/getopt1.c,
+	gl/memset.c, gl/strdup.c, gl/m4/Makefile.am, gl/m4/memset.m4,
+	gl/m4/onceonly_2_57.m4, gl/m4/strdup.m4: Move portability utilities
+	into gl/.
+
+2003-08-20  Simon Josefsson <simon@josefsson.org>
+
+	* gen-stringprep-tables.pl, gen-unicode-tables.pl, idna.c, idna.h,
+	internal.h, nfkc.c, profiles.c, punycode.c, punycode.h,
+	stringprep.c, stringprep.h.in, stringprep_generic.h,
+	stringprep_iscsi.h, stringprep_kerberos5.h, stringprep_nameprep.h,
+	stringprep_plain.h, stringprep_xmpp.h, toutf8.c, version.c,
+	lib/Makefile.am, lib/gen-stringprep-tables.pl,
+	lib/gen-unicode-tables.pl, lib/idna.c, lib/idna.h, lib/internal.h,
+	lib/nfkc.c, lib/profiles.c, lib/punycode.c, lib/punycode.h,
+	lib/stringprep.c, lib/stringprep.h.in, lib/stringprep_generic.h,
+	lib/stringprep_iscsi.h, lib/stringprep_kerberos5.h,
+	lib/stringprep_nameprep.h, lib/stringprep_plain.h,
+	lib/stringprep_xmpp.h, lib/toutf8.c, lib/version.c: Move library
+	into lib/.
+
+2003-08-20  Simon Josefsson <simon@josefsson.org>
+
+	* tst_idna.c, tst_nfkc.c, tst_punycode.c, tst_stringprep.c,
+	tests/Makefile.am, tests/tst_idna.c, tests/tst_nfkc.c,
+	tests/tst_punycode.c, tests/tst_stringprep.c: Move tests into
+	tests/.
+
+2003-08-20  Simon Josefsson <simon@josefsson.org>
+
+	* idn.c, idn.ggo.in, idna.el, punycode.el, src/Makefile.am,
+	src/idn.c, src/idn.ggo.in, src/idna.el, src/punycode.el: Move
+	applications into src/.
+
+2003-08-20  Simon Josefsson <simon@josefsson.org>
+
+	* example.c, example2.c, example3.c, example4.c,
+	examples/Makefile.am, examples/example.c, examples/example2.c,
+	examples/example3.c, examples/example4.c: Move examples into
+	examples/.
+
+2003-08-13  Simon Josefsson <simon@josefsson.org>
+
+	* TODO: Add.
+
+2003-08-13  Simon Josefsson <simon@josefsson.org>
+
+	* nfkc.c: Fix doc.
+
+2003-08-13  Simon Josefsson <simon@josefsson.org>
+
+	* tst_idna.c: Remove unused function.
+
+2003-08-13  Simon Josefsson <simon@josefsson.org>
+
+	* idn.c: Fix warnings.
+
+2003-08-13  Simon Josefsson <simon@josefsson.org>
+
+	* configure.ac: Bump versions.
+
+2003-08-13  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi, reference/dummy.c, NEWS: Add.
+
+2003-08-13  Simon Josefsson <simon@josefsson.org>
+
+	* idna.h, idna.c: Use enum types where appropriate.
+
+2003-08-13  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi: Doc fixes.
+
+2003-08-13  Simon Josefsson <simon@josefsson.org>
+
+	* stringprep.h.in: Fix.
+
+2003-08-13  Simon Josefsson <simon@josefsson.org>
+
+	* stringprep.c: Use enum/size_t/ssize_t where appropriate.  Doc
+	fix.
+
+2003-08-13  Simon Josefsson <simon@josefsson.org>
+
+	* stringprep.h.in: Replace int with proper enum, where appropriate.
+
+2003-08-13  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi: Typo.
+
+2003-08-13  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi: Add FreeBSD 4.8.
+
 2003-08-13  Simon Josefsson <simon@josefsson.org>
 
 	* NEWS: Version 0.2.2.
@@ -29,15 +276,15 @@
 2003-08-13  Simon Josefsson <simon@josefsson.org>
 
 	* punycode.c: Revert to RFC code: use punycode_uint and enum
-	  punycode_status.  However, we do continue to use size_t to
-	  promote use of sizeof() by application writers.  We return
-	  punycode_bad_input if a size_t value exceeds the largest
-	  punycode_uint, since the code presumably cannot handle that.	If
-	  size_t is smaller than punycode_uint, it seems unlikely that an
-	  application could be able to pass a string that is longer than
-	  SIZE_MAX anyway, but should it happen the worst that occur is
-	  that the punycode code will only see the beginning of the string,
-	  which isn't unreasonable on a platform with a small SIZE_MAX.
+	punycode_status.  However, we do continue to use size_t to promote
+	use of sizeof() by application writers.  We return
+	punycode_bad_input if a size_t value exceeds the largest
+	punycode_uint, since the code presumably cannot handle that.  If
+	size_t is smaller than punycode_uint, it seems unlikely that an
+	application could be able to pass a string that is longer than
+	SIZE_MAX anyway, but should it happen the worst that occur is that
+	the punycode code will only see the beginning of the string, which
+	isn't unreasonable on a platform with a small SIZE_MAX.
 
 2003-08-13  Simon Josefsson <simon@josefsson.org>
 
@@ -45,7 +292,8 @@
 
 2003-08-08  Simon Josefsson <simon@josefsson.org>
 
-	* toutf8.c: (stringprep_locale_charset): Improve docstring.
+	* toutf8.c:
+	(stringprep_locale_charset): Improve docstring.
 
 2003-08-01  Simon Josefsson <simon@josefsson.org>
 
@@ -62,7 +310,7 @@
 2003-07-31  Simon Josefsson <simon@josefsson.org>
 
 	* idn.c: Encode -u output in locale charset, suggested by Adam M.
-	  Costello.
+	Costello.
 
 2003-07-11  Simon Josefsson <simon@josefsson.org>
 
@@ -83,8 +331,8 @@
 2003-07-11  Simon Josefsson <simon@josefsson.org>
 
 	* configure.ac, Makefile.am, strdup.c, m4/memset.m4,
-	  m4/onceonly_2_57.m4, m4/strdup.m4: Replace AC_REPLACE_OBJ with
-	  gnulib.
+	m4/onceonly_2_57.m4, m4/strdup.m4: Replace AC_REPLACE_OBJ with
+	gnulib.
 
 2003-07-11  Simon Josefsson <simon@josefsson.org>
 
@@ -97,7 +345,7 @@
 2003-07-11  Simon Josefsson <simon@josefsson.org>
 
 	* Makefile.am: Use BUILT_SOURCES for idn_cmd.* and idn-int.h, and
-	  don't include idn-int.h in the distribution.
+	don't include idn-int.h in the distribution.
 
 2003-07-08  Simon Josefsson <simon@josefsson.org>
 
@@ -110,7 +358,7 @@
 2003-07-06  Simon Josefsson <simon@josefsson.org>
 
 	* ANNOUNCE, doc/libidn.texi: Don't use () when talking about the
-	  name of a function.
+	name of a function.
 
 2003-07-04  Simon Josefsson <simon@josefsson.org>
 
@@ -143,7 +391,7 @@
 2003-07-04  Simon Josefsson <simon@josefsson.org>
 
 	* idna.c: Handle empty labels, tiny patch based on suggestion by
-	  Marcos Sanz/Denic <sanz@denic.de>.
+	Marcos Sanz/Denic <sanz@denic.de>.
 
 2003-07-02  Simon Josefsson <simon@josefsson.org>
 
@@ -167,13 +415,14 @@
 
 2003-07-02  Simon Josefsson <simon@josefsson.org>
 
-	* toutf8.c: (stringprep_convert): Use ICONV_CONST.  Tiny patch
-	  suggested by Robert Norris <rob@cataclysm.cx>.
+	* toutf8.c:
+	(stringprep_convert): Use ICONV_CONST.  Tiny patch suggested by
+	Robert Norris <rob@cataclysm.cx>.
 
 2003-07-02  Simon Josefsson <simon@josefsson.org>
 
 	* draft-ietf-ldapbis-dn-11.txt, draft-ietf-ldapbis-strprep-01.txt:
-	  Add.
+	Add.
 
 2003-06-24  Simon Josefsson <simon@josefsson.org>
 
@@ -182,7 +431,7 @@
 2003-06-24  Simon Josefsson <simon@josefsson.org>
 
 	* Makefile.am: Don't distclean idn_cmd.*, just maintainer-clean
-	  them.
+	them.
 
 2003-06-19  Simon Josefsson <simon@josefsson.org>
 
@@ -227,7 +476,7 @@
 2003-06-19  Simon Josefsson <simon@josefsson.org>
 
 	* punycode.c, punycode.h, doc/libidn.texi: GTK-DOC doesn't like
-	  enum return types.
+	enum return types.
 
 2003-06-19  Simon Josefsson <simon@josefsson.org>
 
@@ -244,7 +493,7 @@
 2003-06-19  Simon Josefsson <simon@josefsson.org>
 
 	* Makefile.am, tst_oidna.c: Remove obsolete test (we break
-	  backwards compatibility).
+	backwards compatibility).
 
 2003-06-19  Simon Josefsson <simon@josefsson.org>
 
@@ -253,7 +502,7 @@
 2003-06-18  Simon Josefsson <simon@josefsson.org>
 
 	* idn.c, idna.c, nfkc.c, profiles.c, stringprep.c, toutf8.c,
-	  tst_idna.c, tst_oidna.c, tst_stringprep.c: Indent.
+	tst_idna.c, tst_oidna.c, tst_stringprep.c: Indent.
 
 2003-06-18  Simon Josefsson <simon@josefsson.org>
 
@@ -270,7 +519,7 @@
 2003-06-18  Simon Josefsson <simon@josefsson.org>
 
 	* Makefile.am, tst_opunycode.c, tst_ostringprep.c: Not needed (new
-	  API backwards compatible).
+	API backwards compatible).
 
 2003-06-18  Simon Josefsson <simon@josefsson.org>
 
@@ -307,10 +556,10 @@
 2003-06-18  Simon Josefsson <simon@josefsson.org>
 
 	* idna.c: Use uint32_t instead of unsigned long.  New functions
-	  idna_to_ascii_4i, idna_to_unicode_44i, idna_to_ascii_4z,
-	  idna_to_ascii_8z, idna_to_ascii_lz, idna_to_unicode_4z4z,
-	  idna_to_unicode_8z4z, idna_to_unicode_8z8z, idna_to_unicode_8zlz,
-	  idna_to_unicode_lzlz.
+	idna_to_ascii_4i, idna_to_unicode_44i, idna_to_ascii_4z,
+	idna_to_ascii_8z, idna_to_ascii_lz, idna_to_unicode_4z4z,
+	idna_to_unicode_8z4z, idna_to_unicode_8z8z, idna_to_unicode_8zlz,
+	idna_to_unicode_lzlz.
 
 2003-06-18  Simon Josefsson <simon@josefsson.org>
 
@@ -323,7 +572,7 @@
 2003-06-18  Simon Josefsson <simon@josefsson.org>
 
 	* idna.h: Include stddef.h and idn-int.h.  Add IDNA flags.  Add new
-	  IDNA entry points.
+	IDNA entry points.
 
 2003-06-18  Simon Josefsson <simon@josefsson.org>
 
@@ -340,7 +589,7 @@
 2003-06-18  Simon Josefsson <simon@josefsson.org>
 
 	* stringprep.h.in: Change unsigned long to uint32_t.  Fix enum
-	  definitions.
+	definitions.
 
 2003-06-18  Simon Josefsson <simon@josefsson.org>
 
@@ -349,7 +598,7 @@
 2003-06-18  Simon Josefsson <simon@josefsson.org>
 
 	* tst_oidna.c, tst_opunycode.c, tst_ostringprep.c: Add old API
-	  tests.
+	tests.
 
 2003-06-18  Simon Josefsson <simon@josefsson.org>
 
@@ -358,8 +607,8 @@
 2003-06-18  Simon Josefsson <simon@josefsson.org>
 
 	* fdl.texi, lgpl.texi, Makefile.am, configure.ac, libidn.texi,
-	  doc/Makefile.am, doc/fdl.texi, doc/lgpl.texi, doc/libidn.texi:
-	  Move manual to doc/.
+	doc/Makefile.am, doc/fdl.texi, doc/lgpl.texi, doc/libidn.texi: Move
+	manual to doc/.
 
 2003-06-18  Simon Josefsson <simon@josefsson.org>
 
@@ -372,30 +621,30 @@
 2003-06-18  Simon Josefsson <simon@josefsson.org>
 
 	* Makefile.am: Get m4's from m4/.  Add tst_o*'s.  Regenerate
-	  ChangeLog only for releases.
+	ChangeLog only for releases.
 
 2003-06-18  Simon Josefsson <simon@josefsson.org>
 
 	* gen-unicode-tables.pl: Include internal.h for uint32_t and use
-	  it.
+	it.
 
 2003-06-18  Simon Josefsson <simon@josefsson.org>
 
 	* punycode.c: Change unsigned long to uint32_t.  Use enum
-	  punycode_status return type.	Sync with RFC (after indent).
+	punycode_status return type.  Sync with RFC (after indent).
 
 2003-06-18  Simon Josefsson <simon@josefsson.org>
 
 	* punycode.h: Include stddef and idn-int.h.  Add RFC compatibility
-	  enum punycode_status elements.  Change return type to enum
-	  punycode_status.  Use uint32_t instead of unsigned long.
+	enum punycode_status elements.  Change return type to enum
+	punycode_status.  Use uint32_t instead of unsigned long.
 
 2003-06-18  Simon Josefsson <simon@josefsson.org>
 
 	* Makefile.am, configure.ac, iconv.m4,
-	  m4/ac_compile_check_sizeof.m4, m4/ax_create_stdint_h.m4,
-	  m4/iconv.m4: New idn-int.h for portable fixed size integers.
-	  Create m4/ and move iconv.m4 to it.
+	m4/ac_compile_check_sizeof.m4, m4/ax_create_stdint_h.m4,
+	m4/iconv.m4: New idn-int.h for portable fixed size integers.
+	Create m4/ and move iconv.m4 to it.
 
 2003-06-12  Simon Josefsson <simon@josefsson.org>
 
@@ -416,7 +665,7 @@
 2003-06-07  Simon Josefsson <simon@josefsson.org>
 
 	* tst_stringprep.c, stringprep.c, tst_idna.c: Remove DRAFT stuff
-	  (moved to separate branch).
+	(moved to separate branch).
 
 2003-06-07  Simon Josefsson <simon@josefsson.org>
 
@@ -425,12 +674,12 @@
 2003-06-07  Simon Josefsson <simon@josefsson.org>
 
 	* idna.c: Handle non-zero terminated inputs.  Tiny patch suggested
-	  by Thiago Macieira.
+	by Thiago Macieira.
 
 2003-06-07  Simon Josefsson <simon@josefsson.org>
 
 	* draft-ietf-xmpp-nodeprep-03.txt,
-	  draft-ietf-xmpp-resourceprep-03.txt: Add.
+	draft-ietf-xmpp-resourceprep-03.txt: Add.
 
 2003-06-04  Simon Josefsson <simon@josefsson.org>
 
@@ -471,17 +720,17 @@
 2003-05-09  Simon Josefsson <simon@josefsson.org>
 
 	* punycode.el: Use process-environment instead of utility env.
-	  Default values of punycode-program, punycode-to-ascii-parameters,
-	  punycode-to-unicode-parameters changed, and punycode-environment
-	  added.  Use separate error strings.  Handle when idn is not
-	  installed.
+	Default values of punycode-program, punycode-to-ascii-parameters,
+	punycode-to-unicode-parameters changed, and punycode-environment
+	added.  Use separate error strings.  Handle when idn is not
+	installed.
 
 2003-05-09  Simon Josefsson <simon@josefsson.org>
 
 	* idna.el: Use process-environment instead of utility env.  Default
-	  values of idna-program, idna-to-ascii-parameters,
-	  idna-to-unicode-parameters changed, and idna-environment added.
-	  Use separate error strings.
+	values of idna-program, idna-to-ascii-parameters,
+	idna-to-unicode-parameters changed, and idna-environment added.  Use
+	separate error strings.
 
 2003-05-09  Simon Josefsson <simon@josefsson.org>
 
@@ -498,7 +747,7 @@
 2003-05-06  Simon Josefsson <simon@josefsson.org>
 
 	* draft-ietf-ldapbis-dn-10.txt, draft-ietf-sasl-saslprep-01.txt,
-	  draft-zeilenga-ldapbis-strprep-00.txt: Add.
+	draft-zeilenga-ldapbis-strprep-00.txt: Add.
 
 2003-04-23  Simon Josefsson <simon@josefsson.org>
 
@@ -511,7 +760,7 @@
 2003-04-23  Simon Josefsson <simon@josefsson.org>
 
 	* draft-ietf-xmpp-nodeprep-02.txt,
-	  draft-ietf-xmpp-resourceprep-02.txt: Add.
+	draft-ietf-xmpp-resourceprep-02.txt: Add.
 
 2003-04-20  Simon Josefsson <simon@josefsson.org>
 
@@ -620,12 +869,12 @@
 2003-03-12  Simon Josefsson <simon@josefsson.org>
 
 	* Makefile.am: Ignore errors instead of using missing for
-	  gengetopt.
+	gengetopt.
 
 2003-03-12  Simon Josefsson <simon@josefsson.org>
 
 	* configure.ac: Ignore errors instead of using missing for
-	  gengetopt.  Bump version.
+	gengetopt.  Bump version.
 
 2003-03-12  Simon Josefsson <simon@josefsson.org>
 
@@ -654,8 +903,8 @@
 2003-03-08  Simon Josefsson <simon@josefsson.org>
 
 	* draft-ietf-idn-idna-14.txt, draft-ietf-idn-nameprep-11.txt,
-	  draft-ietf-idn-punycode-03.txt, rfc3490.txt, rfc3491.txt,
-	  rfc3492.txt: Replace drafts with RFCs.
+	draft-ietf-idn-punycode-03.txt, rfc3490.txt, rfc3491.txt,
+	rfc3492.txt: Replace drafts with RFCs.
 
 2003-03-07  Simon Josefsson <simon@josefsson.org>
 
@@ -675,7 +924,7 @@
 
 2003-03-07  Simon Josefsson <simon@josefsson.org>
 
-	* README: Add.	Move todo list to TODO.
+	* README: Add.  Move todo list to TODO.
 
 2003-03-07  Simon Josefsson <simon@josefsson.org>
 
@@ -708,7 +957,7 @@
 2003-03-06  Simon Josefsson <simon@josefsson.org>
 
 	* draft-ietf-ips-iscsi-string-prep-03.txt,
-	  draft-ietf-krb-wg-utf8-profile-00.txt: Remove.
+	draft-ietf-krb-wg-utf8-profile-00.txt: Remove.
 
 2003-03-06  Simon Josefsson <simon@josefsson.org>
 
@@ -733,7 +982,7 @@
 2003-03-06  Simon Josefsson <simon@josefsson.org>
 
 	* draft-ietf-xmpp-nodeprep-00.txt,
-	  draft-ietf-xmpp-resourceprep-00.txt: Remove.
+	draft-ietf-xmpp-resourceprep-00.txt: Remove.
 
 2003-03-06  Simon Josefsson <simon@josefsson.org>
 
@@ -746,7 +995,7 @@
 2003-03-06  Simon Josefsson <simon@josefsson.org>
 
 	* profiles.c, stringprep.c, stringprep.h.in, tst_stringprep.c: Add
-	  stringprep_profile().
+	stringprep_profile().
 
 2003-03-06  Simon Josefsson <simon@josefsson.org>
 
@@ -755,15 +1004,15 @@
 2003-03-06  Simon Josefsson <simon@josefsson.org>
 
 	* NEWS, example.c, internal.h, profiles.c, stringprep.h.in,
-	  stringprep_generic.h, stringprep_iscsi.h, stringprep_kerberos5.h,
-	  stringprep_nameprep.h, stringprep_plain.h, stringprep_xmpp.h,
-	  reference/Makefile.am, reference/libidn-docs.tmpl: Deprecate
-	  stringprep_*.h.
+	stringprep_generic.h, stringprep_iscsi.h, stringprep_kerberos5.h,
+	stringprep_nameprep.h, stringprep_plain.h, stringprep_xmpp.h,
+	reference/Makefile.am, reference/libidn-docs.tmpl: Deprecate
+	stringprep_*.h.
 
 2003-03-06  Simon Josefsson <simon@josefsson.org>
 
 	* draft-ietf-ips-iscsi-string-prep-04.txt,
-	  draft-ietf-krb-wg-utf8-profile-01.txt: Add.
+	draft-ietf-krb-wg-utf8-profile-01.txt: Add.
 
 2003-03-04  Simon Josefsson <simon@josefsson.org>
 
@@ -792,7 +1041,7 @@
 2003-03-01  Simon Josefsson <simon@josefsson.org>
 
 	* libc/README, libc/Versions, libc/getaddrinfo.c, libc/libc.patch:
-	  Update to libc 2.3.2.
+	Update to libc 2.3.2.
 
 2003-02-28  Simon Josefsson <simon@josefsson.org>
 
@@ -868,7 +1117,7 @@
 
 2003-02-26  Simon Josefsson <simon@josefsson.org>
 
-	* configure.ac: Bump versions.	Look for help2man.
+	* configure.ac: Bump versions.  Look for help2man.
 
 2003-02-26  Simon Josefsson <simon@josefsson.org>
 
@@ -933,7 +1182,7 @@
 2003-02-26  Simon Josefsson <simon@josefsson.org>
 
 	* configure.ac: Link with getopt if system doesn't have
-	  getopt_long().  Build idn.ggo.
+	getopt_long().  Build idn.ggo.
 
 2003-02-26  Simon Josefsson <simon@josefsson.org>
 
@@ -950,7 +1199,7 @@
 2003-02-25  Simon Josefsson <simon@josefsson.org>
 
 	* draft-ietf-xmpp-nodeprep-01.txt,
-	  draft-ietf-xmpp-resourceprep-01.txt: Add.
+	draft-ietf-xmpp-resourceprep-01.txt: Add.
 
 2003-02-21  Simon Josefsson <simon@josefsson.org>
 
@@ -975,8 +1224,8 @@
 2003-02-21  Simon Josefsson <simon@josefsson.org>
 
 	* NEWS, idna.c, idna.h: Deprecate idna_*_to_ace() and
-	  idna_*ace_to_*().  Add idna_to_ascii_from_*() and
-	  idna_to_unicode_*_from_*().
+	idna_*ace_to_*().  Add idna_to_ascii_from_*() and
+	idna_to_unicode_*_from_*().
 
 2003-02-21  Simon Josefsson <simon@josefsson.org>
 
@@ -989,8 +1238,8 @@
 2003-02-21  Simon Josefsson <simon@josefsson.org>
 
 	* ANNOUNCE, Makefile.am, README, internal.h, libidn.texi,
-	  profiles.c, stringprep_iscsi.h, tst_stringprep.c,
-	  reference/dummy.c, reference/libidn-docs.tmpl: Add iSCSI profile.
+	profiles.c, stringprep_iscsi.h, tst_stringprep.c,
+	reference/dummy.c, reference/libidn-docs.tmpl: Add iSCSI profile.
 
 2003-02-21  Simon Josefsson <simon@josefsson.org>
 
@@ -1083,7 +1332,7 @@
 2003-02-20  Simon Josefsson <simon@josefsson.org>
 
 	* profiles.c: Add stringprep_plain for SASL ANONYMOUS plain
-	  profile.
+	profile.
 
 2003-02-20  Simon Josefsson <simon@josefsson.org>
 
@@ -1104,7 +1353,7 @@
 2003-02-19  Simon Josefsson <simon@josefsson.org>
 
 	* profiles.c: Don't normalize or map ASCII space for XMPP nodeprep.
-	  Tiny patch from Travis Shirk <TShirk@jabber.com>.
+	Tiny patch from Travis Shirk <TShirk@jabber.com>.
 
 2003-02-18  Simon Josefsson <simon@josefsson.org>
 
@@ -1145,7 +1394,7 @@
 2003-02-14  Simon Josefsson <simon@josefsson.org>
 
 	* stringprep.c, stringprep.h.in: Change STRINGPREP_MAX_MAP_CHARS to
-	  4 to waste less space.
+	4 to waste less space.
 
 2003-02-14  Simon Josefsson <simon@josefsson.org>
 
@@ -1178,7 +1427,7 @@
 2003-02-13  Simon Josefsson <simon@josefsson.org>
 
 	* configure.ac, Makefile.am: Condition GTK-DOC and disable by
-	  default.
+	default.
 
 2003-02-13  Simon Josefsson <simon@josefsson.org>
 
@@ -1187,8 +1436,8 @@
 2003-02-13  Simon Josefsson <simon@josefsson.org>
 
 	* reference/Makefile.am, reference/libidn-docs.sgml,
-	  reference/libidn-docs.tmpl, reference/libidn.types: Cleanup
-	  gtk-doc build.
+	reference/libidn-docs.tmpl, reference/libidn.types: Cleanup gtk-doc
+	build.
 
 2003-02-13  Simon Josefsson <simon@josefsson.org>
 
@@ -1205,14 +1454,14 @@
 2003-02-13  Simon Josefsson <simon@josefsson.org>
 
 	* example.c, example2.c, gen-unicode-tables.pl, idna.c, internal.h,
-	  nfkc.c, punycode.c, stringprep.c, stringprep.h.in, toutf8.c,
-	  tst_idna.c, tst_nfkc.c, tst_punycode.c, tst_stringprep.c: Fix
-	  CFLAGS warnings.
+	nfkc.c, punycode.c, stringprep.c, stringprep.h.in, toutf8.c,
+	tst_idna.c, tst_nfkc.c, tst_punycode.c, tst_stringprep.c: Fix
+	CFLAGS warnings.
 
 2003-02-13  Simon Josefsson <simon@josefsson.org>
 
-	* example3.c, example4.c: Fix CFLAGS warnings.	Use official IDNA
-	  ACE prefix.
+	* example3.c, example4.c: Fix CFLAGS warnings.  Use official IDNA
+	ACE prefix.
 
 2003-02-12  Simon Josefsson <simon@josefsson.org>
 
@@ -1221,7 +1470,7 @@
 2003-02-12  Simon Josefsson <simon@josefsson.org>
 
 	* profiles.c: Don't optimize prohibited output tables (better trace
-	  logs).
+	logs).
 
 2003-02-12  Simon Josefsson <simon@josefsson.org>
 
@@ -1330,8 +1579,8 @@
 2003-02-07  Simon Josefsson <simon@josefsson.org>
 
 	* Makefile.am, draft-ietf-xmpp-nodeprep-00.txt,
-	  draft-ietf-xmpp-resourceprep-00.txt, internal.h, profiles.c,
-	  stringprep_xmpp.h, tst_stringprep.c: Support XMPP.
+	draft-ietf-xmpp-resourceprep-00.txt, internal.h, profiles.c,
+	stringprep_xmpp.h, tst_stringprep.c: Support XMPP.
 
 2003-02-07  Simon Josefsson <simon@josefsson.org>
 
@@ -1344,7 +1593,7 @@
 2003-02-07  Simon Josefsson <simon@josefsson.org>
 
 	* stringprep_kerberos5.h, stringprep_nameprep.h,
-	  stringprep_generic.h: Name fix.
+	stringprep_generic.h: Name fix.
 
 2003-02-05  Simon Josefsson <simon@josefsson.org>
 
@@ -1361,7 +1610,7 @@
 2003-01-31  Simon Josefsson <simon@josefsson.org>
 
 	* example3.c, example4.c, idna.c, stringprep.c, toutf8.c,
-	  tst_idna.c, tst_punycode.c: Indent.
+	tst_idna.c, tst_punycode.c: Indent.
 
 2003-01-30  Simon Josefsson <simon@josefsson.org>
 
@@ -1406,18 +1655,18 @@
 2003-01-28  Simon Josefsson <simon@josefsson.org>
 
 	* NEWS, libc/Makefile, libc/README, libc/Versions, libc/configure,
-	  libc/example.c, libc/getaddrinfo.c, libc/libc.patch,
-	  libc/netdb.h: Libidn as libc add-on.
+	libc/example.c, libc/getaddrinfo.c, libc/libc.patch, libc/netdb.h:
+	Libidn as libc add-on.
 
 2003-01-28  Simon Josefsson <simon@josefsson.org>
 
 	* idna.c, idna.h: Return new error code IDNA_ICONV_ERROR instead of
-	  crashing when character set conversion fails.
+	crashing when character set conversion fails.
 
 2003-01-28  Simon Josefsson <simon@josefsson.org>
 
 	* toutf8.c: Fix prototype.  Move unused parameter unless
-	  LOCALE_WORKS.
+	LOCALE_WORKS.
 
 2003-01-28  Simon Josefsson <simon@josefsson.org>
 
@@ -1434,7 +1683,7 @@
 2003-01-27  Simon Josefsson <simon@josefsson.org>
 
 	* idna.c: Fix possible memory corruption.  Noncopyrightable patch
-	  from Waldo Bastian <bastian@kde.org>.
+	from Waldo Bastian <bastian@kde.org>.
 
 2003-01-20  Simon Josefsson <simon@josefsson.org>
 
@@ -1475,17 +1724,17 @@
 2003-01-15  Simon Josefsson <simon@josefsson.org>
 
 	* Makefile.am: Use automake's ps and pdf texinfo targets.  Remove
-	  txt texinfo target.
+	txt texinfo target.
 
 2003-01-15  Simon Josefsson <simon@josefsson.org>
 
 	* Makefile.am: EXTRA_DIST lgplg.texi.  Disable GTK-DOC for
-	  distcheck builds (doesn't work).
+	distcheck builds (doesn't work).
 
 2003-01-15  Simon Josefsson <simon@josefsson.org>
 
-	* reference/Makefile.am: Add uninstall target.	Fix distcheck
-	  builds.
+	* reference/Makefile.am: Add uninstall target.  Fix distcheck
+	builds.
 
 2003-01-15  Simon Josefsson <simon@josefsson.org>
 
@@ -1494,9 +1743,9 @@
 2003-01-15  Simon Josefsson <simon@josefsson.org>
 
 	* Makefile.am, configure.ac, example.c, example2.c, idna.c, idna.h,
-	  libidn.texi, nfkc.c, profiles.c, punycode.c, punycode.h,
-	  stringprep.c, stringprep.h.in, toutf8.c, tst_idna.c, tst_nfkc.c,
-	  tst_punycode.c, tst_stringprep.c, version.c: Comment cleanup.
+	libidn.texi, nfkc.c, profiles.c, punycode.c, punycode.h,
+	stringprep.c, stringprep.h.in, toutf8.c, tst_idna.c, tst_nfkc.c,
+	tst_punycode.c, tst_stringprep.c, version.c: Comment cleanup.
 
 2003-01-15  Simon Josefsson <simon@josefsson.org>
 
@@ -1545,7 +1794,7 @@
 2003-01-08  Simon Josefsson <simon@josefsson.org>
 
 	* Makefile.am, example3.c, example4.c, idna.c, idna.h,
-	  stringprep.h.in, toutf8.c: IDNA high-level API.
+	stringprep.h.in, toutf8.c: IDNA high-level API.
 
 2003-01-08  Simon Josefsson <simon@josefsson.org>
 
@@ -1586,7 +1835,7 @@
 2003-01-08  Simon Josefsson <simon@josefsson.org>
 
 	* reference/dummy.c, reference/Makefile.am: Dummy GTK-DOC C file
-	  with documentation for #define macros.
+	with documentation for #define macros.
 
 2003-01-08  Simon Josefsson <simon@josefsson.org>
 
@@ -1603,8 +1852,8 @@
 2003-01-08  Simon Josefsson <simon@josefsson.org>
 
 	* Makefile.am, configure.ac, reference/Makefile.am,
-	  reference/libidn-docs.sgml, reference/libidn.types: Add API
-	  Reference Manual.
+	reference/libidn-docs.sgml, reference/libidn.types: Add API
+	Reference Manual.
 
 2003-01-05  Simon Josefsson <simon@josefsson.org>
 
@@ -1665,7 +1914,7 @@
 2003-01-03  Simon Josefsson <simon@josefsson.org>
 
 	* README, idna.c, idna.h, internal.h, tst_idna.c: Add unfinished
-	  old IDNA stuff.
+	old IDNA stuff.
 
 2003-01-03  Simon Josefsson <simon@josefsson.org>
 
@@ -1674,7 +1923,7 @@
 2003-01-03  Simon Josefsson <simon@josefsson.org>
 
 	* THANKS, draft-ietf-idn-idna-14.txt,
-	  draft-ietf-idn-nameprep-11.txt: Add.
+	draft-ietf-idn-nameprep-11.txt: Add.
 
 2003-01-03  Simon Josefsson <simon@josefsson.org>
 
@@ -1687,13 +1936,13 @@
 2003-01-03  Simon Josefsson <simon@josefsson.org>
 
 	* libidn.pc.in, libstringprep.pc.in: Rename libstringprep.pc.in to
-	  libidn.pc.in.
+	libidn.pc.in.
 
 2003-01-02  Simon Josefsson <simon@josefsson.org>
 
 	* Makefile.am, draft-hoffman-stringprep-07.txt,
-	  gen-stringprep-tables.pl, rfc3454.txt: Use rfc3454.txt instead of
-	  draft-hoffman-stringprep-07.txt.
+	gen-stringprep-tables.pl, rfc3454.txt: Use rfc3454.txt instead of
+	draft-hoffman-stringprep-07.txt.
 
 2002-12-27  Simon Josefsson <simon@josefsson.org>
 
@@ -1726,10 +1975,10 @@
 2002-12-19  Simon Josefsson <simon@josefsson.org>
 
 	* Makefile.am, NEWS, configure.ac, draft-ietf-idn-punycode-03.txt,
-	  example.c, example2.c, internal.h, nfkc.c, punycode.c,
-	  punycode.h, stringprep.c, stringprep.h.in, tst_punycode.c: Add
-	  punycode.  Use "unsigned long" for Unicode code points.  Copying
-	  condition fixes.  Fixes.
+	example.c, example2.c, internal.h, nfkc.c, punycode.c, punycode.h,
+	stringprep.c, stringprep.h.in, tst_punycode.c: Add punycode.  Use
+	"unsigned long" for Unicode code points.  Copying condition fixes.
+	Fixes.
 
 2002-12-14  Simon Josefsson <simon@josefsson.org>
 
@@ -1742,10 +1991,10 @@
 2002-12-13  Simon Josefsson <simon@josefsson.org>
 
 	* AUTHORS, Makefile.am, NEWS, README, THANKS, configure.ac,
-	  internal.h, libstringprep.pc.in, strdup.c, stringprep.c,
-	  stringprep_generic.h, stringprep_kerberos5.h,
-	  stringprep_nameprep.h, toutf8.c, tst_nfkc.c, tst_stringprep.c:
-	  Portability fixes.
+	internal.h, libstringprep.pc.in, strdup.c, stringprep.c,
+	stringprep_generic.h, stringprep_kerberos5.h,
+	stringprep_nameprep.h, toutf8.c, tst_nfkc.c, tst_stringprep.c:
+	Portability fixes.
 
 2002-12-13  Simon Josefsson <simon@josefsson.org>
 
@@ -1773,8 +2022,8 @@
 
 2002-12-09  Simon Josefsson <simon@josefsson.org>
 
-	* configure.ac, internal.h, stringprep.c: Use dmalloc.	Fix memory
-	  leak when bidi fails.
+	* configure.ac, internal.h, stringprep.c: Use dmalloc.  Fix memory
+	leak when bidi fails.
 
 2002-12-09  Simon Josefsson <simon@josefsson.org>
 
@@ -1807,7 +2056,7 @@
 2002-12-07  Simon Josefsson <simon@josefsson.org>
 
 	* stringprep.c: Fix printf() format warnings.  Fix bidi table for
-	  loop (affected only nameprep).
+	loop (affected only nameprep).
 
 2002-12-07  Simon Josefsson <simon@josefsson.org>
 
@@ -1832,19 +2081,19 @@
 2002-12-07  Simon Josefsson <simon@josefsson.org>
 
 	* profiles.c, stringprep.c, stringprep.h.in, tst_stringprep.c:
-	  Fixes.
+	Fixes.
 
 2002-12-07  Simon Josefsson <simon@josefsson.org>
 
 	* profiles.c, stringprep.c, tst_stringprep.c: Fix bidi code and add
-	  self tests.
+	self tests.
 
 2002-12-07  Simon Josefsson <simon@josefsson.org>
 
 	* gen-stringprep-tables.pl, profiles.c, stringprep.c,
-	  stringprep.h.in, stringprep_generic.h, stringprep_kerberos5.h,
-	  stringprep_nameprep.h, tst_stringprep.c: Clean up internal
-	  profiling definitions.
+	stringprep.h.in, stringprep_generic.h, stringprep_kerberos5.h,
+	stringprep_nameprep.h, tst_stringprep.c: Clean up internal
+	profiling definitions.
 
 2002-12-06  Simon Josefsson <simon@josefsson.org>
 
@@ -1857,8 +2106,8 @@
 2002-12-06  Simon Josefsson <simon@josefsson.org>
 
 	* NEWS, README, profiles.c, stringprep.c, stringprep.h.in,
-	  stringprep_nameprep.h, tst_stringprep.c: Add unassigned code
-	  point handling, and self test.
+	stringprep_nameprep.h, tst_stringprep.c: Add unassigned code point
+	handling, and self test.
 
 2002-12-06  Simon Josefsson <simon@josefsson.org>
 
@@ -1879,8 +2128,8 @@
 2002-12-03  Simon Josefsson <simon@josefsson.org>
 
 	* internal.h, nfkc.c, stringprep.c, toutf8.c, tst_nfkc.c,
-	  tst_stringprep.c, version.c: Simplify the #include-mess. (NULL
-	  wasn't found on alpha-unknown-netbsd1.6)
+	tst_stringprep.c, version.c: Simplify the #include-mess. (NULL
+	wasn't found on alpha-unknown-netbsd1.6)
 
 2002-11-30  Simon Josefsson <simon@josefsson.org>
 
@@ -1893,8 +2142,8 @@
 2002-11-30  Simon Josefsson <simon@josefsson.org>
 
 	* Makefile.am, configure.ac, strdup.c: Add replacement strdup.c for
-	  system's without it.	Increment shared library version.  Trim
-	  autoconf tests.
+	system's without it.  Increment shared library version.  Trim
+	autoconf tests.
 
 2002-11-30  Simon Josefsson <simon@josefsson.org>
 
@@ -1911,15 +2160,15 @@
 2002-11-30  Simon Josefsson <simon@josefsson.org>
 
 	* Makefile.am, example.c, nfkc.c, stringprep.h.in,
-	  tst_stringprep.c: Export stringprep_utf8_to_unichar.
+	tst_stringprep.c: Export stringprep_utf8_to_unichar.
 
-	  Rename stringprep_utf8_to_ucs4_fast to stringprep_utf8_to_ucs4 to
-	  clean up API (old entry maintained for binary backwards
-	  compatibility though).
+	Rename stringprep_utf8_to_ucs4_fast to stringprep_utf8_to_ucs4 to
+	clean up API (old entry maintained for binary backwards
+	compatibility though).
 
-	  Indent.
+	Indent.
 
-	  Add sign make target.
+	Add sign make target.
 
 2002-11-29  Simon Josefsson <simon@josefsson.org>
 
@@ -1976,26 +2225,26 @@
 2002-11-06  Simon Josefsson <simon@josefsson.org>
 
 	* Makefile.am, NEWS, README, THANKS, configure.ac, example.c,
-	  iconv.m4, libstringprep.pc.in, profiles.c, stringprep.h.in,
-	  stringprep_generic.h, stringprep_kerberos5.h,
-	  stringprep_nameprep.h, toutf8.c: Add example.  Add toutf8.c.
-	  Check if OS has locale functions.  Add -R to pkg-config info
-	  file.  Moved profile variables to profile.c from header files.
+	iconv.m4, libstringprep.pc.in, profiles.c, stringprep.h.in,
+	stringprep_generic.h, stringprep_kerberos5.h,
+	stringprep_nameprep.h, toutf8.c: Add example.  Add toutf8.c.  Check
+	if OS has locale functions.  Add -R to pkg-config info file.  Moved
+	profile variables to profile.c from header files.
 
 2002-11-05  Simon Josefsson <simon@josefsson.org>
 
 	* AUTHORS, COPYING.LIB, CaseFolding-3.2.0.txt,
-	  CompositionExclusions-3.2.0.txt, LineBreak-3.2.0.txt,
-	  Makefile.am, NEWS, README, SpecialCasing-3.2.0.txt, THANKS,
-	  UnicodeData-3.2.0.txt, configure.ac,
-	  draft-hoffman-stringprep-07.txt, gen-stringprep-tables.pl,
-	  gen-unicode-tables.pl, libstringprep.pc.in, nfkc.c, stringprep.c,
-	  stringprep.h.in, stringprep_generic.h, stringprep_kerberos5.h,
-	  stringprep_nameprep.h, tst_stringprep.c, version.c: Initial
-	  version.
+	CompositionExclusions-3.2.0.txt, LineBreak-3.2.0.txt, Makefile.am,
+	NEWS, README, SpecialCasing-3.2.0.txt, THANKS,
+	UnicodeData-3.2.0.txt, configure.ac,
+	draft-hoffman-stringprep-07.txt, gen-stringprep-tables.pl,
+	gen-unicode-tables.pl, libstringprep.pc.in, nfkc.c, stringprep.c,
+	stringprep.h.in, stringprep_generic.h, stringprep_kerberos5.h,
+	stringprep_nameprep.h, tst_stringprep.c, version.c: Initial
+	version.
 
-----------------------------------------------------------------------
-  Copyright 2002, 2003  Simon Josefsson
- Copying and distribution of this file, with or without modification,
- are permitted in any medium without royalty provided the copyright
- notice and this notice are preserved.
+	----------------------------------------------------------------------
+	Copyright 2002, 2003  Simon Josefsson
+	Copying and distribution of this file, with or without modification,
+	are permitted in any medium without royalty provided the copyright
+	notice and this notice are preserved.
