@@ -188,7 +188,7 @@ int
 punycode_encode (size_t input_length,
 		 const punycode_uint input[],
 		 const unsigned char case_flags[],
-		 size_t *output_length, char output[])
+		 size_t * output_length, char output[])
 {
   punycode_uint input_len, n, delta, h, b, bias, j, m, q, k, t;
   size_t out, max_out;

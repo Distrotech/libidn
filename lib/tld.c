@@ -74,7 +74,7 @@ tld_gettld_4i (const uint32_t * in, size_t inlen, char **out)
 	*opos = *ipos > 0x5A ? *ipos : *ipos + 0x20;
       *opos = 0;
       *out = out_s;
-	  return TLD_SUCCESS;
+      return TLD_SUCCESS;
     }
 
   return TLD_NOTLD;
@@ -171,8 +171,7 @@ tld_check_4it (const uint32_t * in, size_t inlen, size_t * errpos,
  * general failure conditions.
  */
 int
-tld_check_4zt (const uint32_t * in, size_t * errpos,
-	       const Tld_table * tld)
+tld_check_4zt (const uint32_t * in, size_t * errpos, const Tld_table * tld)
 {
   const uint32_t *ipos = in;
 
@@ -221,12 +220,12 @@ tld_check_4i (const uint32_t * in, size_t inlen, size_t * errpos,
   rc = tld_gettld_4i (in, inlen, &domain);
 
   if (rc != TLD_SUCCESS)
-  {
-    if (rc == TLD_NOTLD) /* No TLD, say OK */
-	  return TLD_SUCCESS;
-	else
-      return rc;
-  }
+    {
+      if (rc == TLD_NOTLD)	/* No TLD, say OK */
+	return TLD_SUCCESS;
+      else
+	return rc;
+    }
 
   /* Retrieve appropriate data structure. */
   tld = tld_finddomain (domain, xtra_tlds);
@@ -293,8 +292,7 @@ tld_check_4z (const uint32_t * in, size_t * errpos,
  * general failure conditions.
  */
 int
-tld_check_8z (const char *in, size_t * errpos,
-	      const Tld_table ** xtra_tlds)
+tld_check_8z (const char *in, size_t * errpos, const Tld_table ** xtra_tlds)
 {
   uint32_t *iucs;
   size_t ilen;
@@ -338,8 +336,7 @@ tld_check_8z (const char *in, size_t * errpos,
  * general failure conditions.
  */
 int
-tld_check_lz (const char *in, size_t * errpos,
-	      const Tld_table ** xtra_tlds)
+tld_check_lz (const char *in, size_t * errpos, const Tld_table ** xtra_tlds)
 {
   char *utf8;
   int rc;
@@ -386,8 +383,7 @@ tld_checkchar (uint32_t ch, const Tld_table * tld)
 
   /* Check for [-a-z0-9.]. */
   if ((ch >= 0x61 && ch <= 0x7A) ||
-      (ch >= 0x30 && ch <= 0x39) ||
-      ch == 0x2D || DOTP (ch))
+      (ch >= 0x30 && ch <= 0x39) || ch == 0x2D || DOTP (ch))
     return TLD_SUCCESS;
 
   /* FIXME: replace searches by bsearch like stuff. */

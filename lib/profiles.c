@@ -23,14 +23,14 @@
 
 const Stringprep_profiles stringprep_profiles[] = {
   {"Nameprep", stringprep_nameprep},
-  {"KRBprep", stringprep_kerberos5},
+  {"KRBprep", stringprep_kerberos5}, /* Deprecate? */
   {"Nodeprep", stringprep_xmpp_nodeprep},
   {"Resourceprep", stringprep_xmpp_resourceprep},
   {"plain", stringprep_plain},	/* sasl-anon-00. */
   {"trace", stringprep_trace},	/* sasl-anon-01,02. */
   {"SASLprep", stringprep_saslprep},
-  {"ISCSIprep", stringprep_iscsi}, /* Obsolete. */
-  {"iSCSI", stringprep_iscsi}, /* IANA. */
+  {"ISCSIprep", stringprep_iscsi},	/* Obsolete. */
+  {"iSCSI", stringprep_iscsi},	/* IANA. */
   {NULL, NULL}
 };
 

@@ -47,9 +47,9 @@ extern "C"
   /* List valid code points in a TLD. */
   struct Tld_table
   {
-    char *name;				/* TLD name, e.g., "no". */
-    char *version;			/* Version string from TLD file. */
-    size_t nvalid;			/* Number of entries in data. */
+    char *name;			/* TLD name, e.g., "no". */
+    char *version;		/* Version string from TLD file. */
+    size_t nvalid;		/* Number of entries in data. */
     const Tld_table_element *valid;	/* Sorted array of valid code points. */
   };
   typedef struct Tld_table Tld_table;
@@ -59,14 +59,14 @@ extern "C"
 
   /* Error codes. */
   typedef enum
-    {
-      TLD_SUCCESS = 0,
-      TLD_ILLEGAL = 1,		/* Illegal character found. */
-      TLD_NODATA = 2,		/* Char, domain or inlen = 0. */
-      TLD_MALLOC_ERROR = 3,
-      TLD_ICONV_ERROR = 4,
-      TLD_NOTLD = 5
-    } Tld_rc;
+  {
+    TLD_SUCCESS = 0,
+    TLD_ILLEGAL = 1,		/* Illegal character found. */
+    TLD_NODATA = 2,		/* Char, domain or inlen = 0. */
+    TLD_MALLOC_ERROR = 3,
+    TLD_ICONV_ERROR = 4,
+    TLD_NOTLD = 5
+  } Tld_rc;
 
   /* Return structure corresponding to the named tld, first looking
    * thru xtra_tlds then thru built-in list, or NULL if not found. */

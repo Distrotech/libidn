@@ -424,8 +424,7 @@ stringprep (char *in,
 int
 stringprep_profile (const char *in,
 		    char **out,
-		    const char *profile,
-		    Stringprep_profile_flags flags)
+		    const char *profile, Stringprep_profile_flags flags)
 {
   const Stringprep_profiles *p;
   char *str = NULL;
