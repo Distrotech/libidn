@@ -4,6 +4,8 @@ See the end for copying conditions.
 
 * Version 0.1.9 (unreleased)
 
+** SASL ANONYMOUS "plain" stringprep profile added.
+
 ** XMPP nodeprep profile fixed.
 
 ** No API or ABI changes.
