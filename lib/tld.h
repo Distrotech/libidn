@@ -39,8 +39,8 @@ extern "C"
   /* Interval of valid code points in the TLD. */
   struct Tld_table_element
   {
-    uint32_t start;
-    uint32_t end;
+    uint32_t start;		/* Start of range. */
+    uint32_t end;		/* End of range, end == start if single. */
   };
   typedef struct Tld_table_element Tld_table_element;
 
