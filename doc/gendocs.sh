@@ -26,11 +26,11 @@
 prog="`basename \"$0\"`"
 srcdir=`pwd`
 
-scripturl="http://savannah.gnu.org/cgi-bin/viewcvs/libidn/libidn/doc/gendocs.sh"
-templateurl="http://savannah.gnu.org/cgi-bin/viewcvs/libidn/libidn/doc/gendocs_template"
+scripturl="http://savannah.gnu.org/cgi-bin/viewcvs/texinfo/texinfo/util/gendocs.sh"
+templateurl="http://savannah.gnu.org/cgi-bin/viewcvs/texinfo/texinfo/util/gendocs_template"
 
 : ${MAKEINFO="makeinfo"}
-: ${TEXI2DVI="texi2dvi"}
+: ${TEXI2DVI="texi2dvi -t @finalout"}
 : ${DVIPS="dvips"}
 : ${DOCBOOK2TXT="docbook2txt"}
 : ${DOCBOOK2HTML="docbook2html"}
@@ -52,6 +52,8 @@ For more information about these matters, see the files named COPYING."
 usage="Usage: $prog [OPTION]... PACKAGE MANUAL-TITLE
 
 Generate various output formats from PACKAGE.texinfo (or .texi or .txi) source.
+See the GNU Maintainers document for a more extensive discussion:
+  http://www.gnu.org/prep/maintain_toc.html
 
 Options:
   -o OUTDIR   write files into OUTDIR, instead of manual/.
@@ -69,8 +71,7 @@ Typical sequence:
 
 Output will be in a new subdirectory \"manual\" (by default, use -o OUTDIR
 to override).  Move all the new files into your web CVS tree, as
-explained in the Web Pages node of maintain.texi:
-http://www.gnu.org/prep/maintain_toc.html
+explained in the Web Pages node of maintain.texi.
 
 MANUAL-TITLE is included as part of the HTML <title> of the overall
 manual/index.html file.  It should include the name of the package being
