@@ -20,6 +20,8 @@
 DIST_SUBDIRS = reference
 SUBDIRS = @GTKDOC@
 
+ACLOCAL_AMFLAGS = -I .
+
 EXTRA_DIST = libidn.pc.in iconv.m4 strdup.c memset.c \
 	gen-stringprep-tables.pl rfc3454.txt \
 	gen-unicode-tables.pl UnicodeData-3.2.0.txt LineBreak-3.2.0.txt \
@@ -30,7 +32,10 @@ EXTRA_DIST = libidn.pc.in iconv.m4 strdup.c memset.c \
 	libc/example.c libc/getaddrinfo.c libc/libc.patch libc/netdb.h \
 	contrib/README \
 	contrib/idn-python/README contrib/idn-python/Makefile \
-	contrib/idn-python/idn.c contrib/idn-python/test.py
+	contrib/idn-python/idn.c contrib/idn-python/test.py \
+	getopt.h getopt.c getopt1.c
+
+# Library
 
 pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = libidn.pc
@@ -48,6 +53,40 @@ libidn_la_SOURCES = gunicomp.h gunidecomp.h internal.h \
 	idna.h idna.c
 libidn_la_LIBADD = @LTLIBOBJS@ @LTLIBICONV@
 libidn_la_LDFLAGS = -version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE)
+
+nfkc.c: gunicomp.h gunidecomp.h
+
+gunicomp.h gunidecomp.h: gen-unicode-tables.pl UnicodeData-3.2.0.txt LineBreak-3.2.0.txt SpecialCasing-3.2.0.txt CaseFolding-3.2.0.txt CompositionExclusions-3.2.0.txt
+	$(PERL) $(srcdir)/gen-unicode-tables.pl -decomp 3.2 UnicodeData-3.2.0.txt LineBreak-3.2.0.txt SpecialCasing-3.2.0.txt CaseFolding-3.2.0.txt CompositionExclusions-3.2.0.txt
+
+stringprep_generic.c: rfc3454.txt gen-stringprep-tables.pl
+	$(PERL) $(srcdir)/gen-stringprep-tables.pl rfc3454.txt
+
+# Applications
+
+bin_PROGRAMS = idn
+
+idn_SOURCES = idn.c idn_cmd.c idn_cmd.h
+idn_LDADD = @LIBOBJS@ libidn.la
+
+idn_cmd.c idn_cmd.h: idn.ggo
+	gengetopt --input idn.ggo --file-name idn_cmd --unamed-opts
+
+# Test suite
+
+tests = tst_stringprep tst_nfkc tst_punycode tst_idna
+
+check_PROGRAMS = $(tests)
+
+TESTS = $(tests)
+
+INCLUDES = -I$(top_srcdir)
+LDADD = libidn.la
+
+noinst_PROGRAMS = $(tests) example example2 example3 example4
+
+# Documentation
+
 info_TEXINFOS = libidn.texi
 pdf_TEXINFOS = libidn.texi
 ps_TEXINFOS = libidn.texi
@@ -75,26 +114,7 @@ libidn-api-punycode.texi: punycode.c
 libidn-api-idna.texi: idna.c
 	$(PERL) $(srcdir)/gdoc -texinfo $^ > $@
 
-nfkc.c: gunicomp.h gunidecomp.h
-
-gunicomp.h gunidecomp.h: gen-unicode-tables.pl UnicodeData-3.2.0.txt LineBreak-3.2.0.txt SpecialCasing-3.2.0.txt CaseFolding-3.2.0.txt CompositionExclusions-3.2.0.txt
-	$(PERL) $(srcdir)/gen-unicode-tables.pl -decomp 3.2 UnicodeData-3.2.0.txt LineBreak-3.2.0.txt SpecialCasing-3.2.0.txt CaseFolding-3.2.0.txt CompositionExclusions-3.2.0.txt
-
-stringprep_generic.c: rfc3454.txt gen-stringprep-tables.pl
-	$(PERL) $(srcdir)/gen-stringprep-tables.pl rfc3454.txt
-
-tests = tst_stringprep tst_nfkc tst_punycode tst_idna
-
-check_PROGRAMS = $(tests)
-
-TESTS = $(tests)
-
-INCLUDES = -I$(top_srcdir)
-LDADD = libidn.la
-
-noinst_PROGRAMS = $(tests) example example2 example3 example4
-
-ACLOCAL_AMFLAGS = -I .
+# Maintainer targets
 
 .PHONY: ChangeLog
 ChangeLog:
@@ -120,6 +140,8 @@ release:
 	gpg --verify $(distdir).tar.gz.asc
 	scp $(distdir).tar.gz* gnudist.gnu.org:~alpha/gnu/$(PACKAGE)/
 	test -d $(htmldir) && cp -v $(PACKAGE).{ps,pdf,html} $(htmldir)/
-	test -d $(htmldir)/reference && cp -v reference/*.html $(htmldir)/reference/
-	test -d $(htmldir) && cd $(htmldir) && cvs commit -m "Update." $(PACKAGE).{ps,pdf,html} reference/*.html
+	test -d $(htmldir)/reference && \
+		cp -v reference/*.html $(htmldir)/reference/
+	test -d $(htmldir) && cd $(htmldir) && cvs commit -m "Update." \
+		$(PACKAGE).{ps,pdf,html} reference/*.html
 	cvs rtag $(tag) $(PACKAGE)
