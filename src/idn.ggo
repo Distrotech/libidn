@@ -16,9 +16,6 @@
 # License along with GNU Libidn; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
 
-package "idn"
-version "(@PACKAGE@) @VERSION@"
-
 purpose "Command line interface to the internationalized domain name library.
 
 Valid stringprep profiles are 'Nameprep', 'KRBprep', 'Nodeprep',
