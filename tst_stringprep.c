@@ -20,7 +20,6 @@
  */
 
 #include "internal.h"
-#include <stringprep_nameprep.h>
 
 static int debug = 0;
 static int error_count = 0;
