@@ -10,13 +10,8 @@ under the GNU General Public License.  See INSTALL for installation
 instructions, and doc/libidn.* for the manual in various formats
 (including Info, HTML, PostScript, and PDF).
 
-If you are in a position to support the development financially,
-contact the author or donate via PayPal to one of the author's email
-addresses.  Donations will be used to conduct a security audit, unless
-specific requests for other directions are made.  Indicate if you wish
-to be acknowledged as a donor, otherwise donations are anonymous.
-Other ways to help the effort is to improve the software, proof read
-the manual and report bugs.
+Libidn will not be stable without your help.  Report bugs, proof read
+the manual, or make a monetary donation.
 
 For more information, see <http://josefsson.org/libidn/>.
 
