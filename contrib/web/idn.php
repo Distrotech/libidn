@@ -9,8 +9,8 @@
 
     <h1>Try GNU Libidn</h1>
 
-    <p>This page enable you to try the Punycode encode and decode and
-    IDNA ToASCII and ToUnicode operations of <a
+    <p>This page enable you to try the Punycode encode/decode and IDNA
+    ToASCII/ToUnicode operations of <a
     href="http://www.gnu.org/software/libidn/">GNU Libidn</a>. Note
     that libidn contains more than this, for example a generic
     stringprep implementation with support for several stringprep
