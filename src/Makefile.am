@@ -31,9 +31,10 @@ idn_LDADD = ../lib/libidn.la $(LTLIBOBJS)
 idn.c: $(BUILT_SOURCES)
 
 $(BUILT_SOURCES): idn.ggo
-	gengetopt --input $^ --file-name idn_cmd || \
+	gengetopt --unamed-opts --input $^ --file-name idn_cmd || \
 		test -f idn_cmd.h -a -f idn_cmd.c || \
 		cp $(srcdir)/idn_cmd.h $(srcdir)/idn_cmd.h .
+	perl -pi -e 's/\[FILES\]/\[STRINGS\]/g' idn_cmd.c
 
 # Maintainer targets
 

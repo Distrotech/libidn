@@ -46,6 +46,7 @@ main (int argc, char *argv[])
   char readbuf[BUFSIZ];
   char *p, *r;
   uint32_t *q;
+  unsigned cmdn = 0;
   int rc;
 
   if (cmdline_parser (argc, argv, &args_info) != 0)
@@ -72,7 +73,12 @@ main (int argc, char *argv[])
 
   do
     {
-      if (fgets (readbuf, BUFSIZ, stdin) == NULL)
+      if (cmdn < args_info.inputs_num)
+	{
+	  strncpy(readbuf, args_info.inputs[cmdn++], BUFSIZ - 1);
+	  readbuf[BUFSIZ-1] = '\0';
+	}
+      else if (fgets (readbuf, BUFSIZ, stdin) == NULL)
 	{
 	  sprintf (readbuf, "%s: fgets() failed: ", argv[0]);
 	  if (!feof (stdin))
@@ -384,7 +390,8 @@ main (int argc, char *argv[])
 	}
 
     }
-  while (!feof (stdin) && !ferror (stdin));
+  while (!feof (stdin) && !ferror (stdin) && (args_info.inputs_num == 0 ||
+					      cmdn < args_info.inputs_num));
 
   return 0;
 }
