@@ -2,7 +2,7 @@
 
   <head>
     <title>Try GNU Libidn</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <meta http-equiv="Content-Type" content="text/html; charset="<?php print $charset ? $charset : "ISO-8859-1" ?>" />
   </head>
 
   <body>
@@ -26,7 +26,7 @@
       <input type=radio name=mode value=tounicode <?php if ($mode == "tounicode") { print "checked"; } ?>>IDNA ToUnicode<br>
       <input type=checkbox name=allowunassigned <?php if ($allowunassigned) { print "checked"; } ?>>Allow Unassigned<br>
       <input type=checkbox name=usestd3asciirules <?php if ($usestd3asciirules) { print "checked"; } ?>>UseSTD3ASCIIRules<br>
-      Force input charset to: <select name=charset>
+      Force charset to: <select name=charset>
 	<option <?php if ($charset == "ANSI_X3.4-1968") { print "selected"; } ?>>ANSI_X3.4-1968
 	<option <?php if ($charset == "ANSI_X3.110-1983") { print "SELECTED"; } ?>>ANSI_X3.110-1983
 	<option <?php if ($charset == "ANSI_X3.4-1968") { print "SELECTED"; } ?>>ANSI_X3.4-1968
