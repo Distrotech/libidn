@@ -17,7 +17,7 @@ securely in-place.
 It will not become stable without help.  Donate time or money.
 
 To compile from CVS, you may need recent versions of perl, texinfo (>=
-4.7), gengetopt (>= 2.10), cvs2cl, help2man, autoconf (>= 2.59),
+4.7), gengetopt (>= 2.12rc5), cvs2cl, help2man, autoconf (>= 2.59),
 automake (>= 1.8), libtool (>= 1.5.2), gtk-doc, doxygen.
 
 Bootstrap the build environment using:
