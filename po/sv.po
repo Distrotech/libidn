@@ -1,0 +1,25 @@
+# Swedish translations for libidn package
+# Svenska översättningar för paket libidn.
+# Copyright (C) 2004 Simon Josefsson
+# This file is distributed under the same license as the libidn package.
+# Simon Josefsson <jas@extundo.com>, 2004.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: libidn 0.4.1\n"
+"Report-Msgid-Bugs-To: bug-libidn@gnu.org\n"
+"POT-Creation-Date: 2004-03-08 22:52+0100\n"
+"PO-Revision-Date: 2004-03-08 22:54+0100\n"
+"Last-Translator: Simon Josefsson <jas@extundo.com>\n"
+"Language-Team: Swedish <sv@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: src/idn.c:97
+#, c-format
+msgid ""
+"Type each input string on a line by itself, terminated by a newline "
+"character.\n"
+msgstr "Mata in en sträng per rad."
