@@ -52,26 +52,27 @@ release_archive_dir ?= ../release
 # Checks that don't require cvs.
 # Run `changelog-check' last, as previous test may reveal problems requiring
 # new ChangeLog entries.
-local-check = 
-#  po-check copyright-check writable-files m4-check author_mark_check \
-#  changelog-check syntax-check makefile_path_separator_check \
-#  makefile-check
+local-check = \
+  po-check copyright-check writable-files m4-check author_mark_check \
+  changelog-check syntax-check makefile_path_separator_check \
+  makefile-check
 .PHONY: $(local-check)
 
 # Make sure C source files in src/ don't include xalloc.h directly,
 # since they all already include it via sys2.h.
 # It's not a big deal -- just aesthetics.
 .PHONY: $(syntax-check-rules)
-syntax-check-rules = 
-#  sc_cast_of_argument_to_free \
-#  sc_cast_of_x_alloc_return_value \
-#  sc_changelog \
-#  sc_error_exit_success \
-#  sc_space_tab \
-#  sc_sun_os_names \
+syntax-check-rules = \
+  sc_cast_of_argument_to_free \
+  sc_cast_of_x_alloc_return_value \
+  sc_changelog \
+  sc_error_exit_success \
+  sc_unmarked_diagnostics \
+  sc_xalloc_h_in_src
+
 #  sc_system_h_headers \
-#  sc_unmarked_diagnostics \
-#  sc_xalloc_h_in_src
+#  sc_sun_os_names 
+#  sc_space_tab 
 
 syntax-check: $(syntax-check-rules)
 #	@grep -E '#  *include <(limits|std(def|arg|bool))\.h>'		\
@@ -301,7 +302,7 @@ maintainer-distcheck: changelog-check
 # Tag before making distribution.  Also, don't make a distribution if
 # checks fail.  Also, make sure the NEWS file is up-to-date.
 # FIXME: use dist-hook/my-dist like distcheck-hook/my-distcheck.
-cvs-dist: $(local-check) maintainer-distcheck
+cvs-dist: $(local-check) cvs-check maintainer-distcheck
 	$(CVS) tag -c $(this-cvs-tag)
 	$(MAKE) dist
 
