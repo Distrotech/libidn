@@ -32,6 +32,30 @@
 
 /**
  * tld_get_table:
+ * @tld: TLD name (e.g. "com") as zero terminated ASCII byte string.
+ * @tables: Zero terminated array of info-structures for TLDs.
+ *
+ * Return value: Return structure corresponding to TLD @tld by going
+ * thru @tables, or return %NULL if no such structure is found.
+ */
+const Tld_table *
+tld_get_table (const char *tld, const Tld_table ** tables)
+{
+  const Tld_table **tldtable = NULL;
+
+  if (!tld || !tables)
+    return NULL;
+
+  for (tldtable = tables; *tldtable; tldtable++)
+    if (!strcmp ((*tldtable)->name, tld))
+      return *tldtable;
+
+  return NULL;
+}
+
+
+/**
+ * tld_get_default_table:
  * @tld_str: TLD name (e.g. "com") as zero terminated ASCII byte string.
  * @overrides: Additional well-formed info-structures for TLDs, or %NULL
  * to only use library deault tables.
@@ -41,23 +65,20 @@
  * such structure found.
  */
 const Tld_table *
-tld_get_table (const char *tld_str, const Tld_table ** overrides)
+tld_default_table (const char *tld, const Tld_table ** overrides)
 {
-  const Tld_table **tld = NULL;
+  const Tld_table *tldtable = NULL;
 
-  if (!tld_str)
+  if (!tld)
     return NULL;
 
   if (overrides)
-    for (tld = overrides; *tld; tld++)
-      if (!strcmp ((*tld)->name, tld_str))
-	return *tld;
+    tldtable = tld_get_table (tld, overrides);
 
-  for (tld = tld_tables; *tld; tld++)
-    if (!strcmp ((*tld)->name, tld_str))
-      return *tld;
+  if (!tldtable)
+    tldtable = tld_get_table (tld, tld_tables);
 
-  return NULL;
+  return tldtable;
 }
 
 #define DOTP(c) ((c) == 0x002E || (c) == 0x3002 ||	\
@@ -298,7 +319,7 @@ tld_check_4i (const uint32_t * in, size_t inlen, size_t * errpos,
     }
 
   /* Retrieve appropriate data structure. */
-  tld = tld_get_table (domain, overrides);
+  tld = tld_default_table (domain, overrides);
   free (domain);
 
   return tld_check_4ti (in, inlen, errpos, tld);

@@ -72,11 +72,17 @@ extern "C"
   int tld_get_4i (const uint32_t * in, size_t inlen, char **out);
   int tld_get_4z (const uint32_t * in, char **out);
 
-  /* Return structure corresponding to the named tld, first looking
+  /* Return structure corresponding to the named TLD from specified
+   * list of TLD tables, or return NULL if no matching TLD can be
+   * found. */
+  const Tld_table *tld_get_table (const char *tld,
+				  const Tld_table ** tables);
+
+  /* Return structure corresponding to the named TLD, first looking
    * thru overrides then thru built-in list, or return NULL if no
    * matching TLD can be found. */
-  const Tld_table *tld_get_table (const char *tld_str,
-				  const Tld_table ** overrides);
+  const Tld_table *tld_default_table (const char *tld,
+				      const Tld_table ** overrides);
 
   /* Check NAMEPREPPED domain name for valid characters as defined by
    * the relevant registering body + [a-z0-9.-] return Tld_rc,
@@ -87,8 +93,8 @@ extern "C"
 		     const Tld_table * tld);
 
   /* Utility interfaces that uses tld_get_* to find TLD of string,
-     then tld_get_table_* with xtra_tlds to find proper TLD table for
-     the TLD string, and then hands over to tld_check_4t*. */
+     then tld_default_table_* with overrides to find proper TLD table
+     for the TLD string, and then hands over to tld_check_4t*. */
   int tld_check_4i (const uint32_t * in, size_t inlen, size_t * errpos,
 		    const Tld_table ** overrides);
   int tld_check_4z (const uint32_t * in, size_t * errpos,
