@@ -85,7 +85,7 @@ AM_MISSING_PROG(DOCBOOK2PS, docbook2ps, $missing_dir)
 
 AC_CONFIG_FILES([Makefile libidn.pc doc/reference/Makefile \
 		lib/stringprep.h src/idn.ggo \
-		contrib/doxygen/Doxyfile m4/Makefile \
+		contrib/doxygen/Doxyfile
 		doc/Makefile doc/specifications/Makefile \
 		lib/Makefile src/Makefile tests/Makefile examples/Makefile])
 AC_OUTPUT
