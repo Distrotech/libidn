@@ -6,6 +6,8 @@ The idn-python/ sub-directory contains a Python interface for Libidn,
 contributed by Stephane Bortzmeyer <bortzmeyer@nic.fr>.  It is
 licensed under the same licence as Libidn itself.
 
+The web/ sub-directory contains a online libidn interface in PHP.
+
 ----------------------------------------------------------------------
 Copying and distribution of this file, with or without modification,
 are permitted in any medium without royalty provided the copyright
