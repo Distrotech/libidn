@@ -3,6 +3,7 @@
 Makefile
 Makefile.in
 tst_idna
+tst_idna2
 tst_nfkc
 tst_punycode
 tst_stringprep
