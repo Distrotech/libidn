@@ -71,24 +71,24 @@ extern "C"
 #include <idn-int.h>		/* uint32_t */
 
   enum punycode_status
-    {
-      PUNYCODE_SUCCESS = 0,
-      PUNYCODE_BAD_INPUT,		/* Input is invalid.                       */
-      PUNYCODE_BIG_OUTPUT,	/* Output would exceed the space provided. */
-      PUNYCODE_OVERFLOW,		/* Input needs wider integers to process.  */
-      /* For compatibility with RFC: */
-      punycode_success = PUNYCODE_SUCCESS,
-      punycode_bad_input = PUNYCODE_BAD_INPUT,
-      punycode_big_output = PUNYCODE_BIG_OUTPUT,
-      punycode_overflow = PUNYCODE_OVERFLOW
-    };
+  {
+    PUNYCODE_SUCCESS = 0,
+    PUNYCODE_BAD_INPUT,		/* Input is invalid.                       */
+    PUNYCODE_BIG_OUTPUT,	/* Output would exceed the space provided. */
+    PUNYCODE_OVERFLOW,		/* Input needs wider integers to process.  */
+    /* For compatibility with RFC: */
+    punycode_success = PUNYCODE_SUCCESS,
+    punycode_bad_input = PUNYCODE_BAD_INPUT,
+    punycode_big_output = PUNYCODE_BIG_OUTPUT,
+    punycode_overflow = PUNYCODE_OVERFLOW
+  };
 
   typedef uint32_t punycode_uint;
 
   enum punycode_status punycode_encode (size_t input_length,
 					const punycode_uint input[],
 					const unsigned char case_flags[],
-					size_t *output_length,
+					size_t * output_length,
 					char output[]);
 
   /* punycode_encode() converts Unicode to Punycode.  The input     */
@@ -118,7 +118,7 @@ extern "C"
 
   enum punycode_status punycode_decode (size_t input_length,
 					const char input[],
-					size_t *output_length,
+					size_t * output_length,
 					punycode_uint output[],
 					unsigned char case_flags[]);
 
