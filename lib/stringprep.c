@@ -30,7 +30,7 @@
 
 static ssize_t
 stringprep_find_character_in_table (uint32_t ucs4,
-				    Stringprep_table_element * table)
+				    const Stringprep_table_element * table)
 {
   ssize_t i;
 
@@ -46,7 +46,7 @@ static ssize_t
 stringprep_find_string_in_table (uint32_t * ucs4,
 				 size_t ucs4len,
 				 size_t * tablepos,
-				 Stringprep_table_element * table)
+				 const Stringprep_table_element * table)
 {
   size_t j;
   ssize_t pos;
@@ -66,7 +66,7 @@ static int
 stringprep_apply_table_to_string (uint32_t * ucs4,
 				  size_t * ucs4len,
 				  size_t maxucs4len,
-				  Stringprep_table_element * table)
+				  const Stringprep_table_element * table)
 {
   ssize_t pos;
   size_t i, maplen;
@@ -127,7 +127,8 @@ stringprep_apply_table_to_string (uint32_t * ucs4,
  **/
 int
 stringprep_4i (uint32_t * ucs4, size_t * len, size_t maxucs4len,
-	       Stringprep_profile_flags flags, Stringprep_profile * profile)
+	       Stringprep_profile_flags flags,
+	       const Stringprep_profile * profile)
 {
   size_t i, j;
   ssize_t k;
@@ -265,7 +266,7 @@ stringprep_4i (uint32_t * ucs4, size_t * len, size_t maxucs4len,
 static int
 stringprep_4zi_1 (uint32_t * ucs4, size_t ucs4len, size_t maxucs4len,
 		  Stringprep_profile_flags flags,
-		  Stringprep_profile * profile)
+		  const Stringprep_profile * profile)
 {
   int rc;
 
@@ -306,7 +307,8 @@ stringprep_4zi_1 (uint32_t * ucs4, size_t ucs4len, size_t maxucs4len,
  **/
 int
 stringprep_4zi (uint32_t * ucs4, size_t maxucs4len,
-		Stringprep_profile_flags flags, Stringprep_profile * profile)
+		Stringprep_profile_flags flags,
+		const Stringprep_profile * profile)
 {
   size_t ucs4len;
 
@@ -346,7 +348,8 @@ stringprep_4zi (uint32_t * ucs4, size_t maxucs4len,
 int
 stringprep (char *in,
 	    size_t maxlen,
-	    Stringprep_profile_flags flags, Stringprep_profile * profile)
+	    Stringprep_profile_flags flags,
+	    const Stringprep_profile * profile)
 {
   int rc;
   char *utf8 = NULL;
@@ -418,7 +421,9 @@ stringprep (char *in,
  **/
 int
 stringprep_profile (const char *in,
-		    char **out, char *profile, Stringprep_profile_flags flags)
+		    char **out,
+		    const char *profile,
+		    Stringprep_profile_flags flags)
 {
   const Stringprep_profiles *p;
   char *str = NULL;
