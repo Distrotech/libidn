@@ -206,6 +206,12 @@ GCC 2.96 and GNU Make. @code{alphaev6-unknown-linux-gnu},
 
 GCC 3.0 and GNU Make. @code{ia64-unknown-linux-gnu}.
 
+@item SuSE Linux
+@cindex SuSE Linux
+
+GCC 3.2.2 and GNU Make.  @code{x86_64-unknown-linux-gnu} (AMD64
+Opteron ``Melody'').
+
 @item RedHat Linux 7.2
 @cindex RedHat
 
