@@ -2,6 +2,33 @@ Libidn NEWS -- History of user-visible changes.                 -*- outline -*-
 Copyright (C) 2002, 2003 Simon Josefsson
 See the end for copying conditions.
 
+* Version 0.2.0 (unreleased)
+
+** Unicode code point data types reverted to uint32_t.
+A header file "idn-int.h" is generated and installed to make sure the
+"uint32_t" data type is available on all platforms.  The reason for
+this change is that on 64-bit platforms, the application was required
+to convert 32 bit integers (which is how Unicode code points are
+typically represented) into 64 bit integers before calling libidn
+functions.
+
+** New idna_*() functions have improved flags handling.
+The allowunassigned and usestd3asciirules parameters were collapsed
+into a flags parameter, that can take on the IDNA_ALLOW_UNASSIGNED and
+IDNA_USE_STD3_ASCII_RULES values.  This allows for easier extensions
+to support, e.g., Unicode 4.0 or RFC 952 ASCII rules checking.  Note
+that the old entry points are unmodified, and new entry points with
+this modification were added.
+
+** API and ABI is not backwards compatible.
+In punycode.h and stringprep.h the "unsigned long" data type was
+changed into "uint32_t", which cause a API and ABI missmatch on
+platforms where the size of "unsigned long" is not 32 bits.  For 32
+bit platforms, the API and ABI is backwards compatible though.  For
+idna.h, the old entry points that used "unsigned long" still exist,
+and new entry points that uses "uint32_t" was added.  The so version
+has been increased so the 64 bit platforms doesn't become confused.
+
 * Version 0.1.15 (released 2003-06-07)
 
 ** Bugfixes.
