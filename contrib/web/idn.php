@@ -9,12 +9,9 @@
 
     <h1>Try GNU Libidn</h1>
 
-    <p>This page enable you to try the Punycode encode/decode and IDNA
-    ToASCII/ToUnicode operations of <a
-    href="http://www.gnu.org/software/libidn/">GNU Libidn</a>. Note
-    that libidn contains more than this, for example a generic
-    stringprep implementation with support for several stringprep
-    profiles.
+    <p>This page enable you to try the string preparation, punycode
+    encode/decode and ToASCII/ToUnicode operations of <a
+    href="http://www.gnu.org/software/libidn/">GNU Libidn</a>.
 
     <p>Report problems to <A
     HREF="mailto:bug-libidn@gnu.org">bug-libidn@gnu.org</A>, but first
@@ -26,6 +23,16 @@
     <h2>Input</h2>
     <form>
       <input type=text name=data size=40 value="<?php print $data ? $data : "räksmörgås.josefsson.org" ?>"><br>
+      <input type=radio name=mode value=stringprep <?php if ($mode == "stringprep") { print "checked"; } ?>>Prepare string using profile: <select name=profile>
+	<option <?php if ($profile == "Nameprep" || !$profile) { print "selected"; } ?>>Nameprep
+	<option <?php if ($profile == "generic") { print "selected"; } ?>>generic
+	<option <?php if ($profile == "KRBprep") { print "selected"; } ?>>KRBprep
+	<option <?php if ($profile == "Nodeprep") { print "selected"; } ?>>Nodeprep
+	<option <?php if ($profile == "Resourceprep") { print "selected"; } ?>>Resourceprep
+	<option <?php if ($profile == "plain") { print "selected"; } ?>>plain
+	<option <?php if ($profile == "SASLprep") { print "selected"; } ?>>SASLprep
+	<option <?php if ($profile == "ISCSIprep") { print "selected"; } ?>>ISCSIprep
+      </select><br>
       <input type=radio name=mode value=punyencode <?php if ($mode == "punyencode") { print "checked"; } ?>>Punycode encode<br>
       <input type=radio name=mode value=punydecode <?php if ($mode == "punydecode") { print "checked"; } ?>> Punycode decode<br>
       <input type=radio name=mode value=toascii <?php if ($mode == "toascii" || !$mode) { print "checked"; } ?>>IDNA ToASCII<br>
@@ -243,7 +250,7 @@
      print "$ CHARSET=" .  escapeshellarg($charset) . "; export CHARSET\n";
      putenv("CHARSET=" . escapeshellarg($charset));
    }
-   $cmd = "echo " . escapeshellarg( $data ? $data : "räksmörgås.josefsson.org") . " | /usr/local/bin/idn --debug" . ($allowunassigned ? " --allow-unassigned" : "") . ($usestd3asciirules ? " --usestd3asciirules" : "") . ($mode == "punydecode" ? " --punycode-decode" : "") . ($mode == "punyencode" ? " --punycode-encode" : "") . ($mode == "toascii" || !$mode ? " --idna-to-ascii" : "") . ($mode == "tounicode" ? " --idna-to-unicode" : "") . " 2>&1";
+   $cmd = "echo " . escapeshellarg( $data ? $data : "räksmörgås.josefsson.org") . " | /usr/local/bin/idn --debug" . ($allowunassigned ? " --allow-unassigned" : "") . ($usestd3asciirules ? " --usestd3asciirules" : "") . ($mode == "stringprep" ? " --stringprep" : "") . ($mode == "punydecode" ? " --punycode-decode" : "") . ($mode == "punyencode" ? " --punycode-encode" : "") . ($mode == "toascii" || !$mode ? " --idna-to-ascii" : "") . ($mode == "tounicode" ? " --idna-to-unicode" : "") . ($mode == "stringprep" ? " --profile $profile" : ""). " 2>&1";
    $h = popen($cmd, "r");
    while($s = fgets($h, 1024)) { $out .= $s; };
    pclose($h);
