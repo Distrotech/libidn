@@ -52,19 +52,24 @@
 (defgroup idna nil
   "Internationalizing Domain Names in Applications.")
 
-(defcustom idna-program "env CHARSET=UTF-8 idn"
+(defcustom idna-program "idn"
   "Name of the GNU Libidn \"idn\" application."
   :type 'string
   :group 'idna)
 
-(defcustom idna-to-ascii-parameters "--quiet --idna-to-ascii"
-  "Parameters passed to `idna-program' to invoke IDNA ToASCII mode."
-  :type 'string
+(defcustom idna-environment '("CHARSET=UTF-8")
+  "List of environment variable definitions prepended to `process-environment'."
+  :type '(repeat string)
   :group 'idna)
 
-(defcustom idna-to-unicode-parameters "--quiet --idna-to-unicode"
+(defcustom idna-to-ascii-parameters '("--quiet" "--idna-to-ascii")
+  "Parameters passed to `idna-program' to invoke IDNA ToASCII mode."
+  :type '(repeat string)
+  :group 'idna)
+
+(defcustom idna-to-unicode-parameters '("--quiet" "--idna-to-unicode")
   "Parameters passed `idna-program' to invoke IDNA ToUnicode mode."
-  :type 'string
+  :type '(repeat string)
   :group 'idna)
 
 ;; Internal process handling:
@@ -95,10 +100,10 @@
 	    (kill-process idna-to-ascii-process)
 	  (error)))
     (when (setq idna-to-ascii-process
-		(start-process "idna" nil
-			       shell-file-name shell-command-switch
-			       (concat idna-program " "
-				       idna-to-ascii-parameters)))
+		(let ((process-environment (append process-environment
+						   idna-environment)))
+		  (apply 'start-process "idna" nil idna-program
+			 idna-to-ascii-parameters)))
       (set-process-filter idna-to-ascii-process 'idna-to-ascii-filter)
       (set-process-coding-system idna-to-ascii-process 'utf-8 'utf-8)
       (process-kill-without-query idna-to-ascii-process))
@@ -130,10 +135,10 @@
 	    (kill-process idna-to-unicode-process)
 	  (error)))
     (when (setq idna-to-unicode-process
-		(start-process "idna" nil
-			       shell-file-name shell-command-switch
-			       (concat idna-program " "
-				       idna-to-unicode-parameters)))
+		(let ((process-environment (append process-environment
+						   idna-environment)))
+		  (apply 'start-process "idna" nil idna-program
+			 idna-to-unicode-parameters)))
       (set-process-filter idna-to-unicode-process 'idna-to-unicode-filter)
       (set-process-coding-system idna-to-unicode-process 'utf-8 'utf-8)
       (process-kill-without-query idna-to-unicode-process))
@@ -148,7 +153,7 @@ input to UTF-8."
   (let ((proc (idna-to-ascii-process))
 	string)
     (if (null proc)
-	(error "Cannot start idn application")
+	(error "Cannot start idn application (to-ascii)")
       (idna-to-ascii-response-clear)
       (process-send-string proc (concat str "\n"))
       (setq string (idna-to-ascii-response))
@@ -162,7 +167,7 @@ It is computed by the IDNA ToUnicode operation."
   (let ((proc (idna-to-unicode-process))
 	string)
     (if (null proc)
-	(error "Cannot start idn application")
+	(error "Cannot start idn application (to-unicode)")
       (idna-to-unicode-response-clear)
       (process-send-string proc (concat str "\n"))
       (setq string (idna-to-unicode-response))
