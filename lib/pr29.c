@@ -1180,7 +1180,7 @@ static Pr29 pr29[] = {
   { NULL, NULL }
 };
 
-size_t
+static size_t
 first_column (uint32_t c)
 {
   size_t i, j;
@@ -1193,7 +1193,7 @@ first_column (uint32_t c)
   return 0;
 }
 
-int
+static int
 in_last_column_row (uint32_t c, size_t row)
 {
   size_t i;
@@ -1205,7 +1205,7 @@ in_last_column_row (uint32_t c, size_t row)
   return 0;
 }
 
-size_t
+static size_t
 combinationclass (uint32_t c)
 {
   size_t i;
