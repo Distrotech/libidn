@@ -1184,6 +1184,11 @@ From a design point of view, you can regard the @acronym{TLD} tables
 for IDN as the ``localization'' step that come after the
 ``internationalization'' step provided by the IETF standards.
 
+The TLD functionality rely on up-to-date tables.  The latest version
+of Libidn aim to provide these, but tables with unclear copying
+conditions, or generally experimental tables, are not included.  Some
+such tables can be found at @url{http://tldchk.berlios.de}.
+
 @section Header file @code{tld.h}
 
 To use the functions explained in this chapter, you need to include
