@@ -80,7 +80,7 @@ main (int argc, char *argv[])
       (args_info.idna_to_unicode_given ? 1 : 0) != 1)
     {
       fprintf (stderr,
-	       "%s: Only one of -s, -e, -d, -a or -u can be specified.\n",
+	       _("%s: Only one of -s, -e, -d, -a or -u can be specified.\n"),
 	       argv[0]);
       cmdline_parser_print_help ();
       return 1;
@@ -90,7 +90,7 @@ main (int argc, char *argv[])
     fprintf (stderr, "%s %s\n" GREETING, PACKAGE, VERSION);
 
   if (args_info.debug_given)
-    fprintf (stderr, "system locale uses charset `%s'.\n",
+    fprintf (stderr, _("System locale uses charset `%s'.\n"),
 	     stringprep_locale_charset ());
 
   if (!args_info.quiet_given && args_info.inputs_num == 0)
@@ -106,7 +106,7 @@ main (int argc, char *argv[])
 	}
       else if (fgets (readbuf, BUFSIZ, stdin) == NULL)
 	{
-	  sprintf (readbuf, "%s: fgets() failed: ", argv[0]);
+	  sprintf (readbuf, _("%s: fgets() failed: "), argv[0]);
 	  if (!feof (stdin))
 	    perror (readbuf);
 	  return 1;
@@ -120,7 +120,7 @@ main (int argc, char *argv[])
 	  p = stringprep_locale_to_utf8 (readbuf);
 	  if (!p)
 	    {
-	      fprintf (stderr, "%s: could not convert from %s to UTF-8.\n",
+	      fprintf (stderr, _("%s: could not convert from %s to UTF-8.\n"),
 		       argv[0], stringprep_locale_charset ());
 	      return 1;
 	    }
@@ -129,7 +129,8 @@ main (int argc, char *argv[])
 	  if (!q)
 	    {
 	      free (p);
-	      fprintf (stderr, "%s: could not convert from UTF-8 to UCS-4.\n",
+	      fprintf (stderr,
+		       _("%s: could not convert from UTF-8 to UCS-4.\n"),
 		       argv[0]);
 	      return 1;
 	    }
@@ -138,7 +139,7 @@ main (int argc, char *argv[])
 	    {
 	      size_t i;
 	      for (i = 0; q[i]; i++)
-		fprintf (stderr, "input[%d] = U+%04x\n", i, q[i]);
+		fprintf (stderr, _("input[%d] = U+%04x\n"), i, q[i]);
 	    }
 	  free (q);
 
@@ -149,7 +150,7 @@ main (int argc, char *argv[])
 	  if (rc != STRINGPREP_OK)
 	    {
 	      fprintf (stderr,
-		       "%s: stringprep_profile() failed with error %d.\n",
+		       _("%s: stringprep_profile() failed with error %d.\n"),
 		       argv[0], rc);
 	      return 1;
 	    }
@@ -158,7 +159,8 @@ main (int argc, char *argv[])
 	  if (!q)
 	    {
 	      free (r);
-	      fprintf (stderr, "%s: could not convert from UTF-8 to UCS-4.\n",
+	      fprintf (stderr,
+		       _("%s: could not convert from UTF-8 to UCS-4.\n"),
 		       argv[0]);
 	      return 1;
 	    }
@@ -167,7 +169,7 @@ main (int argc, char *argv[])
 	    {
 	      size_t i;
 	      for (i = 0; q[i]; i++)
-		fprintf (stderr, "output[%d] = U+%04x\n", i, q[i]);
+		fprintf (stderr, _("output[%d] = U+%04x\n"), i, q[i]);
 	    }
 	  free (q);
 
@@ -175,7 +177,7 @@ main (int argc, char *argv[])
 	  free (r);
 	  if (!p)
 	    {
-	      fprintf (stderr, "%s: could not convert from UTF-8 to %s.\n",
+	      fprintf (stderr, _("%s: could not convert from UTF-8 to %s.\n"),
 		       argv[0], stringprep_locale_charset ());
 	      return 1;
 	    }
@@ -192,7 +194,7 @@ main (int argc, char *argv[])
 	  p = stringprep_locale_to_utf8 (readbuf);
 	  if (!p)
 	    {
-	      fprintf (stderr, "%s: could not convert from %s to UTF-8.\n",
+	      fprintf (stderr, _("%s: could not convert from %s to UTF-8.\n"),
 		       argv[0], stringprep_locale_charset ());
 	      return 1;
 	    }
@@ -201,7 +203,8 @@ main (int argc, char *argv[])
 	  free (p);
 	  if (!q)
 	    {
-	      fprintf (stderr, "%s: could not convert from UTF-8 to UCS-4.\n",
+	      fprintf (stderr,
+		       _("%s: could not convert from UTF-8 to UCS-4.\n"),
 		       argv[0]);
 	      return 1;
 	    }
@@ -210,7 +213,7 @@ main (int argc, char *argv[])
 	    {
 	      size_t i;
 	      for (i = 0; i < len; i++)
-		fprintf (stderr, "input[%d] = U+%04x\n", i, q[i]);
+		fprintf (stderr, _("input[%d] = U+%04x\n"), i, q[i]);
 	    }
 
 	  len2 = BUFSIZ;
@@ -219,7 +222,7 @@ main (int argc, char *argv[])
 	  if (rc != PUNYCODE_SUCCESS)
 	    {
 	      fprintf (stderr,
-		       "%s: punycode_encode() failed with error %d.\n",
+		       _("%s: punycode_encode() failed with error %d.\n"),
 		       argv[0], rc);
 	      return 1;
 	    }
@@ -229,7 +232,7 @@ main (int argc, char *argv[])
 	  p = stringprep_utf8_to_locale (readbuf);
 	  if (!p)
 	    {
-	      fprintf (stderr, "%s: could not convert from UTF-8 to %s.\n",
+	      fprintf (stderr, _("%s: could not convert from UTF-8 to %s.\n"),
 		       argv[0], stringprep_locale_charset ());
 	      return 1;
 	    }
@@ -247,7 +250,7 @@ main (int argc, char *argv[])
 	  q = (uint32_t *) malloc (len * sizeof (q[0]));
 	  if (!q)
 	    {
-	      sprintf (readbuf, "%s: malloc() failed: ", argv[0]);
+	      sprintf (readbuf, _("%s: malloc() failed: "), argv[0]);
 	      perror (readbuf);
 	      return 1;
 
@@ -258,7 +261,7 @@ main (int argc, char *argv[])
 	    {
 	      free (q);
 	      fprintf (stderr,
-		       "%s: punycode_decode() failed with error %d.\n",
+		       _("%s: punycode_decode() failed with error %d.\n"),
 		       argv[0], rc);
 	      return 1;
 	    }
@@ -267,7 +270,7 @@ main (int argc, char *argv[])
 	    {
 	      size_t i;
 	      for (i = 0; i < len; i++)
-		fprintf (stderr, "output[%d] = U+%04x\n", i, q[i]);
+		fprintf (stderr, _("output[%d] = U+%04x\n"), i, q[i]);
 	    }
 
 	  q[len] = 0;
@@ -275,7 +278,8 @@ main (int argc, char *argv[])
 	  free (q);
 	  if (!r)
 	    {
-	      fprintf (stderr, "%s: could not convert from UCS-4 to UTF-8.\n",
+	      fprintf (stderr,
+		       _("%s: could not convert from UCS-4 to UTF-8.\n"),
 		       argv[0]);
 	      return 1;
 	    }
@@ -284,7 +288,7 @@ main (int argc, char *argv[])
 	  free (r);
 	  if (!r)
 	    {
-	      fprintf (stderr, "%s: could not convert from UTF-8 to %s.\n",
+	      fprintf (stderr, _("%s: could not convert from UTF-8 to %s.\n"),
 		       argv[0], stringprep_locale_charset ());
 	      return 1;
 	    }
@@ -299,7 +303,7 @@ main (int argc, char *argv[])
 	  p = stringprep_locale_to_utf8 (readbuf);
 	  if (!p)
 	    {
-	      fprintf (stderr, "%s: could not convert from %s to UTF-8.\n",
+	      fprintf (stderr, _("%s: could not convert from %s to UTF-8.\n"),
 		       argv[0], stringprep_locale_charset ());
 	      return 1;
 	    }
@@ -307,7 +311,8 @@ main (int argc, char *argv[])
 	  free (p);
 	  if (!q)
 	    {
-	      fprintf (stderr, "%s: could not convert from UCS-4 to UTF-8.\n",
+	      fprintf (stderr,
+		       _("%s: could not convert from UCS-4 to UTF-8.\n"),
 		       argv[0]);
 	      return 1;
 	    }
@@ -316,7 +321,7 @@ main (int argc, char *argv[])
 	    {
 	      size_t i;
 	      for (i = 0; q[i]; i++)
-		fprintf (stderr, "input[%d] = U+%04x\n", i, q[i]);
+		fprintf (stderr, _("input[%d] = U+%04x\n"), i, q[i]);
 	    }
 
 	  rc = idna_to_ascii_4z (q, &p,
@@ -327,8 +332,8 @@ main (int argc, char *argv[])
 	  free (q);
 	  if (rc != IDNA_SUCCESS)
 	    {
-	      fprintf (stderr, "%s: idna_to_ascii_4z() failed "
-		       "with error %d.\n", argv[0], rc);
+	      fprintf (stderr, _("%s: idna_to_ascii_4z() failed "
+				 "with error %d.\n"), argv[0], rc);
 	      return 1;
 	    }
 
@@ -344,8 +349,8 @@ main (int argc, char *argv[])
 					  IDNA_USE_STD3_ASCII_RULES : 0));
 	      if (rc != IDNA_SUCCESS)
 		{
-		  fprintf (stderr, "%s: TLD idna_to_unicode_8z8z() failed "
-			   "with error %d.\n", argv[0], rc);
+		  fprintf (stderr, _("%s: TLD idna_to_unicode_8z8z() failed "
+				     "with error %d.\n"), argv[0], rc);
 		  return 1;
 		}
 
@@ -353,20 +358,22 @@ main (int argc, char *argv[])
 		{
 		  size_t i;
 		  for (i = 0; q[i]; i++)
-		    fprintf (stderr, "tld[%d] = U+%04x\n", i, q[i]);
+		    fprintf (stderr, _("tld[%d] = U+%04x\n"), i, q[i]);
 		}
 
 	      rc = tld_check_4z (q, &errpos, NULL);
 	      if (rc == TLD_INVALID)
 		{
-		  fprintf (stderr, "%s: string rejected by TLD test "
-			   "(Unicode position %d)\n", argv[0], errpos);
+		  fprintf (stderr, _("%s: string rejected by TLD test "
+				     "(Unicode position %d)\n"), argv[0],
+			   errpos);
 		  free (q);
 		  return 1;
 		}
 	      if (rc != TLD_SUCCESS)
 		{
-		  fprintf (stderr, "%s: tld_check_4z failed with error %d.\n",
+		  fprintf (stderr,
+			   _("%s: tld_check_4z failed with error %d.\n"),
 			   argv[0], rc);
 		  free (q);
 		  return 1;
@@ -380,7 +387,7 @@ main (int argc, char *argv[])
 	    {
 	      size_t i;
 	      for (i = 0; p[i]; i++)
-		fprintf (stderr, "output[%d] = U+%04x\n", i, p[i]);
+		fprintf (stderr, _("output[%d] = U+%04x\n"), i, p[i]);
 	    }
 
 	  fprintf (stdout, "%s\n", p);
@@ -393,7 +400,7 @@ main (int argc, char *argv[])
 	  p = stringprep_locale_to_utf8 (readbuf);
 	  if (!p)
 	    {
-	      fprintf (stderr, "%s: could not convert from %s to UTF-8.\n",
+	      fprintf (stderr, _("%s: could not convert from %s to UTF-8.\n"),
 		       argv[0], stringprep_locale_charset ());
 	      return 1;
 	    }
@@ -402,7 +409,8 @@ main (int argc, char *argv[])
 	  if (!q)
 	    {
 	      free (p);
-	      fprintf (stderr, "%s: could not convert from UCS-4 to UTF-8.\n",
+	      fprintf (stderr,
+		       _("%s: could not convert from UCS-4 to UTF-8.\n"),
 		       argv[0]);
 	      return 1;
 	    }
@@ -411,7 +419,7 @@ main (int argc, char *argv[])
 	    {
 	      size_t i;
 	      for (i = 0; q[i]; i++)
-		fprintf (stderr, "input[%d] = U+%04x\n", i, q[i]);
+		fprintf (stderr, _("input[%d] = U+%04x\n"), i, q[i]);
 	    }
 	  free (q);
 
@@ -423,8 +431,8 @@ main (int argc, char *argv[])
 	  free (p);
 	  if (rc != IDNA_SUCCESS)
 	    {
-	      fprintf (stderr, "%s: idna_to_unicode_8z4z() "
-		       "failed with error %d.\n", argv[0], rc);
+	      fprintf (stderr, _("%s: idna_to_unicode_8z4z() "
+				 "failed with error %d.\n"), argv[0], rc);
 	      return 1;
 	    }
 
@@ -432,7 +440,7 @@ main (int argc, char *argv[])
 	    {
 	      size_t i;
 	      for (i = 0; q[i]; i++)
-		fprintf (stderr, "output[%d] = U+%04x\n", i, q[i]);
+		fprintf (stderr, _("output[%d] = U+%04x\n"), i, q[i]);
 	    }
 
 #ifdef WITH_TLD
@@ -443,14 +451,16 @@ main (int argc, char *argv[])
 	      rc = tld_check_4z (q, &errpos, NULL);
 	      if (rc == TLD_INVALID)
 		{
-		  fprintf (stderr, "%s: string rejected by TLD test "
-			   "(Unicode position %d)\n", argv[0], errpos);
+		  fprintf (stderr, _("%s: string rejected by TLD test "
+				     "(Unicode position %d)\n"), argv[0],
+			   errpos);
 		  free (q);
 		  return 1;
 		}
 	      if (rc != TLD_SUCCESS)
 		{
-		  fprintf (stderr, "%s: tld_check_4z failed with error %d.\n",
+		  fprintf (stderr,
+			   _("%s: tld_check_4z failed with error %d.\n"),
 			   argv[0], rc);
 		  free (q);
 		  return 1;
@@ -462,7 +472,8 @@ main (int argc, char *argv[])
 	  free (q);
 	  if (!r)
 	    {
-	      fprintf (stderr, "%s: could not convert from UTF-8 to UCS-4.\n",
+	      fprintf (stderr,
+		       _("%s: could not convert from UTF-8 to UCS-4.\n"),
 		       argv[0]);
 	      return 1;
 	    }
@@ -471,7 +482,7 @@ main (int argc, char *argv[])
 	  free (r);
 	  if (!r)
 	    {
-	      fprintf (stderr, "%s: could not convert from UTF-8 to %s.\n",
+	      fprintf (stderr, _("%s: could not convert from UTF-8 to %s.\n"),
 		       argv[0], stringprep_locale_charset ());
 	      return 1;
 	    }
