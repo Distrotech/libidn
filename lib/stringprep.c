@@ -654,14 +654,3 @@ stringprep_profile (const char *in,
  * Prepare the input UTF-8 string according to the draft XMPP resource
  * identifier profile.  Returns 0 iff successful, or an error code.
  **/
-
-/**
- * stringprep_generic:
- * @in: input/ouput array with string to prepare.
- * @maxlen: maximum length of input/output array.
- *
- * Prepare the input UTF-8 string according to a hypotetical "generic"
- * stringprep profile. This is mostly used for debugging or when
- * constructing new stringprep profiles. Returns 0 iff successful, or
- * an error code.
- **/
