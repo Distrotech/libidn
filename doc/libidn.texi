@@ -1761,13 +1761,19 @@ in the JDK API.
 @node Acknowledgements
 @chapter Acknowledgements
 
-The punycode code was taken from the IETF IDN Punycode specification,
-by Adam M. Costello.  The TLD code was contributed by Thomas Jacob.
-The Java implementation was contributed by Oliver Hitz.  The Unicode
-tables were provided by Unicode, Inc.  Some functions for dealing with
-Unicode (see nfkc.c and toutf8.c) has been borrowed from GLib
-downloaded from www.gtk.org.  The manual borrowed text from Libgcrypt
-by Werner Koch.
+The punycode implementation was taken from the IETF IDN Punycode
+specification, by Adam M. Costello.  The TLD code was contributed by
+Thomas Jacob.  The Java implementation was contributed by Oliver Hitz.
+The Unicode tables were provided by Unicode, Inc.  Some functions for
+dealing with Unicode (see nfkc.c and toutf8.c) were borrowed from
+GLib, downloaded from @url{http://www.gtk.org/}.  The manual borrowed
+text from Libgcrypt by Werner Koch.
+
+Inspiration for many things that, consciously or not, have gone into
+this package is due to a number of free software package that the
+author has been exposed to.  The author wishes to acknowledge the free
+software community in general, for giving an example on what role
+software development can play in the modern society.
 
 Several people reported bugs, sent patches or suggested improvements,
 see the file THANKS in the top-level directory of the source code.
