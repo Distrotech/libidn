@@ -2,7 +2,7 @@ Libidn NEWS -- History of user-visible changes.                 -*- outline -*-
 Copyright (C) 2002, 2003, 2004 Simon Josefsson
 See the end for copying conditions.
 
-* Version 0.4.7 (unreleased)
+* Version 0.4.7 (released 2004-05-31)
 
 ** The Java port should now be functional, contributed by Oliver Hitz.
 See the new section "Java API" in the manual for more information.
