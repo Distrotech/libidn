@@ -425,9 +425,20 @@ idna_to_ascii_4z (const uint32_t * input, char **output, int flags)
 	   *end != 0x3002 && *end != 0xFF0E && *end != 0xFF61; end++)
 	;
 
-      rc = idna_to_ascii_4i (start, end - start, buf, flags);
-      if (rc != IDNA_SUCCESS)
-	return rc;
+      /* Handle empty labels. The RFC is not clear if we should do
+	 this for all empty label, or just the trailing one.  But if
+	 empty labels are to be rejected, libidn does not seem to be
+	 the best place to enforce such policy. */
+      if (end == start)
+	{
+	  strcpy(buf, out ? "" : ".");
+	}
+      else
+	{
+	  rc = idna_to_ascii_4i (start, end - start, buf, flags);
+	  if (rc != IDNA_SUCCESS)
+	    return rc;
+	}
 
       if (out)
 	{
