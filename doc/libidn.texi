@@ -1203,8 +1203,22 @@ No top-level domain found in domain string.
 
 @section Core Functions
 
-@include texi/tld_finddomain.texi
-@include texi/tld_checkchar.texi
+@include texi/tld_check_4ti.texi
+@include texi/tld_check_4tz.texi
+
+@section Utility Functions
+
+@include texi/tld_get_4i.texi
+@include texi/tld_get_4z.texi
+@include texi/tld_get_table.texi
+@include texi/tld_default_table.texi
+
+@section High-Level Wrapper Functions
+
+@include texi/tld_check_4i.texi
+@include texi/tld_check_4z.texi
+@include texi/tld_check_8z.texi
+@include texi/tld_check_lz.texi
 
 @c **********************************************************
 @c ***********************  Examples  ***********************
