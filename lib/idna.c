@@ -115,10 +115,16 @@ idna_to_ascii_4i (const uint32_t * in, size_t inlen, char *out, int flags)
     len = strlen (p);
     do
       {
+	char *newp;
+
 	len = 2 * len + 10;	/* XXX better guess? */
-	p = realloc (p, len);
-	if (p == NULL)
-	  return IDNA_MALLOC_ERROR;
+	newp = realloc (p, len);
+	if (newp == NULL)
+	  {
+	    free (p);
+	    return IDNA_MALLOC_ERROR;
+	  }
+	p = newp;
 
 	if (flags & IDNA_ALLOW_UNASSIGNED)
 	  rc = stringprep_nameprep (p, len);
@@ -630,9 +636,15 @@ idna_to_unicode_4z4z (const uint32_t * input, uint32_t ** output, int flags)
 
       if (out)
 	{
-	  out = realloc (out, sizeof (out[0]) * (outlen + 1 + buflen + 1));
-	  if (!out)
-	    return IDNA_MALLOC_ERROR;
+	  uint32_t *newp = realloc (out,
+				    sizeof (out[0])
+				    * (outlen + 1 + buflen + 1));
+	  if (!newp)
+	    {
+	      free (out);
+	      return IDNA_MALLOC_ERROR;
+	    }
+	  out = newp;
 	  out[outlen++] = 0x002E;	/* '.' (full stop) */
 	  memcpy (out + outlen, buf, sizeof (buf[0]) * buflen);
 	  outlen += buflen;
