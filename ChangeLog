@@ -1,3 +1,42 @@
+2003-06-07  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Version 0.1.15.
+
+2003-06-07  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2003-06-07  Simon Josefsson <simon@josefsson.org>
+
+	* configure.ac: Bump version.
+
+2003-06-07  Simon Josefsson <simon@josefsson.org>
+
+	* tst_stringprep.c, stringprep.c, tst_idna.c: Remove DRAFT stuff
+	(moved to separate branch).
+
+2003-06-07  Simon Josefsson <simon@josefsson.org>
+
+	* THANKS: Add. Fix.
+
+2003-06-07  Simon Josefsson <simon@josefsson.org>
+
+	* idna.c: Handle non-zero terminated inputs.  Tiny patch suggested
+	by Thiago Macieira.
+
+2003-06-07  Simon Josefsson <simon@josefsson.org>
+
+	* draft-ietf-xmpp-nodeprep-03.txt,
+	draft-ietf-xmpp-resourceprep-03.txt: Add.
+
+2003-06-04  Simon Josefsson <simon@josefsson.org>
+
+	* THANKS: Add.
+
+2003-06-04  Simon Josefsson <simon@josefsson.org>
+
+	* nfkc.c: Check array bounds, tiny patch from Joe Hildebrand.
+
 2003-05-28  Simon Josefsson <simon@josefsson.org>
 
 	* draft-ietf-ldapbis-strprep-00.txt: Add.
