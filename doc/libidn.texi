@@ -1310,14 +1310,12 @@ This example demonstrates how the stringprep functions are used.
 
 @verbatiminclude ../examples/example.c
 
-
 @node Example 2
 @section Example 2
 
 This example demonstrates how the punycode functions are used.
 
 @verbatiminclude ../examples/example2.c
-
 
 @node Example 3
 @section Example 3
@@ -1327,7 +1325,6 @@ internationalized domain names into ASCII compatible names.
 
 @verbatiminclude ../examples/example3.c
 
-
 @node Example 4
 @section Example 4
 
@@ -1335,6 +1332,14 @@ This example demonstrates how the library is used to convert ASCII
 compatible names to internationalized domain names.
 
 @verbatiminclude ../examples/example4.c
+
+@node Example 5
+@section Example 5
+
+This example demonstrates how the library is used to check a string
+for invalid characters within a specific TLD.
+
+@verbatiminclude ../examples/example5.c
 
 @c **********************************************************
 @c *********************  Invoking idn  *********************
