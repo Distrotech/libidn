@@ -1,3 +1,7 @@
+Libidn doc/tld/README -- Notes and definition of the TLD tables.
+Copyright (C) 2004 Free Software Foundation, Inc.
+See the end for copying conditions.
+
 In "defs" create a directory for each top level domain, for which
 you want a domain restriction structure compiled into the library.
 
@@ -24,3 +28,7 @@ Character codes may be specified as single numbers (like 123, 0xff, 0100)
 or inclusive intervals (112-344 0xff-0100) using the usual C decimal, octal
 or hex notations.
 
+----------------------------------------------------------------------
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.
