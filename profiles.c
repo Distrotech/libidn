@@ -195,6 +195,8 @@ Stringprep_table_element stringprep_xmpp_nodeprep_prohibit[] = {
   {0x00003E}
   ,				/* #x3E (>) */
   {0x000040}			/* #x40 (@) */
+  ,
+  {0}
 };
 
 Stringprep_profile stringprep_xmpp_nodeprep[] = {
