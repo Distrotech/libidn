@@ -24,7 +24,7 @@ ACLOCAL_AMFLAGS = -I m4
 EXTRA_DIST = FAQ libidn.pc.in \
 	libc/README libc/Makefile libc/Versions libc/Banner libc/configure \
 	libc/example.c libc/getaddrinfo.c libc/libc.patch libc/netdb.h \
-	libc/getaddrinfo-idn.txt \
+	libc/getaddrinfo-idn.txt libc/idn-stub.c libc/libidn.texi \
 	contrib/README contrib/idn-python/README contrib/idn-python/Makefile \
 	contrib/idn-python/idn.c contrib/idn-python/test.py \
 	contrib/web/idn.php \
