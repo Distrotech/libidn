@@ -1,5 +1,5 @@
 /* profiles.c	Definitions of stringprep profiles.
- * Copyright (C) 2002, 2003  Simon Josefsson
+ * Copyright (C) 2002, 2003, 2004  Simon Josefsson
  *
  * This file is part of GNU Libidn.
  *
@@ -26,10 +26,11 @@ const Stringprep_profiles stringprep_profiles[] = {
   {"KRBprep", stringprep_kerberos5},
   {"Nodeprep", stringprep_xmpp_nodeprep},
   {"Resourceprep", stringprep_xmpp_resourceprep},
-  {"plain", stringprep_plain},	/* sasl-anon-00 */
-  {"trace", stringprep_trace},	/* sasl-anon-01,02 */
+  {"plain", stringprep_plain},	/* sasl-anon-00. */
+  {"trace", stringprep_trace},	/* sasl-anon-01,02. */
   {"SASLprep", stringprep_saslprep},
-  {"ISCSIprep", stringprep_iscsi},
+  {"ISCSIprep", stringprep_iscsi}, /* Obsolete. */
+  {"iSCSI", stringprep_iscsi}, /* IANA. */
   {NULL, NULL}
 };
 
