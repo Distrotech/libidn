@@ -56,7 +56,7 @@ tld_get_table (const char *tld, const Tld_table ** tables)
 
 /**
  * tld_default_table:
- * @tld_str: TLD name (e.g. "com") as zero terminated ASCII byte string.
+ * @tld: TLD name (e.g. "com") as zero terminated ASCII byte string.
  * @overrides: Additional well-formed info-structures for TLDs, or %NULL
  * to only use library deault tables.
  *
