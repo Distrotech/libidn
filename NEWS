@@ -14,6 +14,8 @@ files in lib/* to make it easier to copy them into your project.
 
 ** Debugging stringprep profile 'generic' removed.
 
+** Punycode implementation updated to rfc3492bis-00.
+
 ** API and ABI is backwards compatible with the previous version.
 stringprep_4i: NEW.
 stringprep_4zi: NEW.
