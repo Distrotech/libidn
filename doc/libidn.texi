@@ -82,6 +82,7 @@ Indices
 
 Appendices
 
+* PR29 discussion::             Implementation aspects of the PR29 flaw.
 * Library Copying::		How you can copy and share GNU Libidn.
 * Copying This Manual::		How you can copy and share this manual.
 
@@ -1202,8 +1203,9 @@ exhibit this problem, and none of them are expected to occur in
 natural languages (due to different linguistic uses of the involved
 characters).
 
-A full discussion of the problem may be found at
-@url{http://www.unicode.org/review/pr-29.html}.
+A full discussion of the problem may be found at:
+
+@url{http://www.unicode.org/review/pr-29.html}
 
 The PR29 functions below allow you to detect the problem sequence.  So
 when would you want to use these functions?  For most applications,
@@ -1219,6 +1221,9 @@ approach of rejecting the strings is recommended.  If this approach is
 not used, you should instead verify that all parts of your system,
 that process the tokens and passwords, use a NFKC implementation that
 produce the same output for the same input.
+
+Technically inclined readers may be interested in knowing more about
+the implementation aspects of the PR29 flaw. @xref{PR29 discussion}.
 
 @section Header file @code{pr29.h}
 
@@ -1817,6 +1822,116 @@ Version 0.5.0 released on 2004-06-26.
 @unnumbered Function and Variable Index
 
 @printindex fn
+
+@node PR29 discussion
+@appendix PR29 discussion
+
+If you wish to experiment with a modified Unicode NFKC implementation
+according to the PR29 proposal, you may find the following bug report
+useful.  However, I have not verified that the suggested modifications
+are correct.  For reference, I'm including my response to the report
+as well.
+
+@verbatim
+From: Rick McGowan <rick@unicode.org>
+Subject: Possible bug and status of PR 29 change(s)
+To: bug-libidn@gnu.org
+Date: Wed, 27 Oct 2004 14:49:17 -0700
+
+Hello. On behalf of the Unicode Consortium editorial committee, I would  
+like to find out more information about the PR 29 fixes, if any, and  
+functions in Libidn. Your implementation was listed in the text of PR29 as  
+needing investigation, so I am following up on several implementations.
+
+The UTC has accepted the proposed fix to D2 as outlined in PR29, and a new  
+draft of UAX #15 has been issued.
+
+I have looked at Libidn 0.5.8 (today), and there may still be a possible  
+bug in NFKC.java and nfkc.c.
+
+------------------------------------------------------
+
+1. In NFKC.java, this line in canonicalOrdering():
+
+      if (i > 0 && (last_cc == 0 || last_cc != cc)) {
+
+should perhaps be changed to:
+
+      if (i > 0 && (last_cc == 0 || last_cc < cc)) {
+
+but I'm not sure of the sense of this comparison.
+
+------------------------------------------------------
+
+2. In nfkc.c, function _g_utf8_normalize_wc() has this code:
+
+	  if (i > 0 &&
+	      (last_cc == 0 || last_cc != cc) &&
+	      combine (wc_buffer[last_start], wc_buffer[i],
+		       &wc_buffer[last_start]))
+	    {
+
+This appears to have the same bug as the current Python implementation (in  
+Python 2.3.4). The code should be checking, as per new rule D2 UAX #15  
+update, that the next combining character is the same or HIGHER than the  
+current one. It now checks to see if it's non-zero and not equal.
+
+The above line(s) should perhaps be changed to:
+
+	  if (i > 0 &&
+	      (last_cc == 0 || last_cc < cc) &&
+	      combine (wc_buffer[last_start], wc_buffer[i],
+		       &wc_buffer[last_start]))
+	    {
+
+but I'm not sure of the sense of the comparison (< or > or <=?) here.
+
+In the text of PR29, I will be marking Libidn as "needs change" and adding  
+the version number that I checked. If any further change is made, please  
+let me know the release version, and I'll update again.
+
+Regards,
+	Rick McGowan
+@end verbatim
+
+@verbatim
+From: Simon Josefsson <jas@extundo.com>
+Subject: Re: Possible bug and status of PR 29 change(s)
+To: Rick McGowan <rick@unicode.org>
+Cc: bug-libidn@gnu.org
+Date: Thu, 28 Oct 2004 09:47:47 +0200
+
+Rick McGowan <rick@unicode.org> writes:
+
+> Hello. On behalf of the Unicode Consortium editorial committee, I would  
+> like to find out more information about the PR 29 fixes, if any, and  
+> functions in Libidn. Your implementation was listed in the text of PR29 as  
+> needing investigation, so I am following up on several implementations.
+>
+> The UTC has accepted the proposed fix to D2 as outlined in PR29, and a new  
+> draft of UAX #15 has been issued.
+>
+> I have looked at Libidn 0.5.8 (today), and there may still be a possible  
+> bug in NFKC.java and nfkc.c.
+
+Hello Rick.
+
+I believe the current behavior is intentional.  Libidn do not aim to
+implement latest-and-greatest NFKC, it aim to implement the NFKC
+functionality required for StringPrep and IDN.  As you may know,
+StringPrep/IDN reference Unicode 3.2.0, and explicitly says any later
+changes (which I consider PR29 as) do not apply.
+
+In fact, I believe that would I incorporate the changes suggested in
+PR29, I would in fact be violating the IDN specifications.
+
+Thanks for looking into the code and finding the place where the
+change could be made.  I'll see if I can mention this in the manual
+somewhere, for technically interested readers.
+
+Regards,
+Simon
+@end verbatim
 
 @include lgpl.texi
 
