@@ -43,16 +43,18 @@ escapeprint (char *str, int len)
 {
   int i;
 
-  printf ("\t;; `");
+  printf ("`");
   for (i = 0; i < len; i++)
     {
       if (((str[i] & 0xFF) >= 'A' && (str[i] & 0xFF) <= 'Z') ||
 	  ((str[i] & 0xFF) >= 'a' && (str[i] & 0xFF) <= 'z') ||
 	  ((str[i] & 0xFF) >= '0' && (str[i] & 0xFF) <= '9')
-	  || (str[i] & 0xFF) == '.')
+	  || (str[i] & 0xFF) == ' ' || (str[i] & 0xFF) == '.')
 	printf ("%c", (str[i] & 0xFF));
       else
 	printf ("\\x%02x", (str[i] & 0xFF));
+      if ((i+1)%16 == 0 && (i+1) < len)
+	printf("'\n\t'");
     }
   printf ("' (length %d bytes)\n", len);
 }
@@ -98,6 +100,7 @@ binprint (char *str, int len)
 
 struct stringprep
 {
+  char *comment;
   char *in;
   int flags;
   char *out;
@@ -106,92 +109,256 @@ struct stringprep
 }
 strprep[] =
 {
-  /* map to nothing U+00AD */
   {
-  "foo\xC2\xAD" "bar", 0, "foobar", stringprep_generic}
+    "Map to nothing",
+    "foo\xC2\xAD\xCD\x8F\xE1\xA0\x86\xE1\xA0\x8B"
+    "bar""\xE2\x80\x8B\xE2\x81\xA0""baz\xEF\xB8\x80\xEF\xB8\x88"
+    "\xEF\xB8\x8F\xEF\xBB\xBF", 0, "foobarbaz", stringprep_nameprep
+  },
+  {
+    "Case folding ASCII U+0043 U+0041 U+0046 U+0045",
+    "CAFE", 0, "cafe", stringprep_nameprep
+  },
+  {
+    "Case folding 8bit U+00DF (german sharp s)",
+    "\xC3\xDF", 0, "ss", stringprep_nameprep
+  },
+  {
+    "Case folding U+0130 (turkish capital I with dot)",
+    "\xC4\xB0", 0, "i\xcc\x87", stringprep_nameprep
+  },
+  {
+    "Case folding multibyte U+0143 U+037A",
+    "\xC5\x83\xCD\xBA", 0, "\xC5\x84 \xCE\xB9", stringprep_nameprep
+  },
+  {
+    "Case folding U+2121 U+33C6 U+1D7BB",
+    "\xE2\x84\xA1\xE3\x8F\x86\xF0\x9D\x9E\xBB", 0,
+    "telc\xE2\x88\x95""kg\xCF\x83", stringprep_nameprep
+  },
+  {
+    "Normalization of U+006a U+030c U+00A0 U+00AA",
+    "\x6A\xCC\x8C\xC2\xA0\xC2\xAA", 0, "\xC7\xB0 a", stringprep_nameprep
+  },
+  {
+    "Case folding U+1FB7 and normalization",
+    "\xE1\xBE\xB7", 0, "\xE1\xBE\xB6\xCE\xB9", stringprep_nameprep
+  },
+  {
+    "Self-reverting case folding U+01F0 and normalization",
+    "\xC7\xF0", 0, "\xC7\xB0", stringprep_nameprep
+  },
+  {
+    "Self-reverting case folding U+0390 and normalization",
+    "\xCE\x90", 0, "\xCE\x90", stringprep_nameprep
+  },
+  {
+    "Self-reverting case folding U+03B0 and normalization",
+    "\xCE\xB0", 0, "\xCE\xB0", stringprep_nameprep
+  },
+  {
+    "Self-reverting case folding U+1E96 and normalization",
+    "\xE1\xBA\x96", 0, "\xE1\xBA\x96", stringprep_nameprep
+  },
+  {
+    "Self-reverting case folding U+1F56 and normalization",
+    "\xE1\xBD\x96", 0, "\xE1\xBD\x96", stringprep_nameprep
+  },
+  {
+    "ASCII space character U+0020",
+    "\x20", 0, "\x20", stringprep_nameprep
+  },
+  {
+    "Non-ASCII 8bit space character U+00A0",
+    "\xC2\xA0", 0, "\x20", stringprep_nameprep
+  },
+  {
+    "Non-ASCII multibyte space character U+1680",
+    "\xE1\x9A\x80", 0, "\x20", stringprep_nameprep,
+    STRINGPREP_CONTAINS_PROHIBITED
+  },
+  {
+    "Non-ASCII multibyte space character U+2000",
+    "\xE2\x80\x80", 0, "\x20", stringprep_nameprep
+  },
+  {
+    "Zero Width Space U+200b",
+    "\xE2\x80\x8b", 0, "", stringprep_nameprep
+  },
+  {
+    "Non-ASCII multibyte space character U+3000",
+    "\xE3\x80\x80", 0, "\x20", stringprep_nameprep
+  },
+  {
+    "ASCII control characters U+0010 U+007F",
+    "\x10\x7F", 0, "\x10\x7F", stringprep_nameprep
+  },
+  {
+    "Non-ASCII 8bit control character U+0085",
+    "\xC2\x85", 0, NULL, stringprep_nameprep,
+    STRINGPREP_CONTAINS_PROHIBITED
+  },
+  {
+    "Non-ASCII multibyte control character U+180E",
+    "\xE1\xA0\x8E", 0, NULL, stringprep_nameprep,
+    STRINGPREP_CONTAINS_PROHIBITED
+  },
+  {
+    "Zero Width No-Break Space U+FEFF",
+    "\xEF\xBB\xBF", 0, "", stringprep_nameprep
+  },
+  {
+    "Non-ASCII control character U+1D175",
+    "\xF0\x9D\x85\xB5", 0, NULL, stringprep_nameprep,
+    STRINGPREP_CONTAINS_PROHIBITED
+  },
+  {
+    "Plane 0 private use character U+F123",
+    "\xEF\x84\xA3", 0, NULL, stringprep_nameprep,
+    STRINGPREP_CONTAINS_PROHIBITED
+  },
+  {
+    "Plane 15 private use character U+F1234",
+    "\xF3\xB1\x88\xB4", 0, NULL, stringprep_nameprep,
+    STRINGPREP_CONTAINS_PROHIBITED
+  },
+  {
+    "Plane 16 private use character U+10F234",
+    "\xF4\x8F\x88\xB4", 0, NULL, stringprep_nameprep,
+    STRINGPREP_CONTAINS_PROHIBITED
+  },
+  {
+    "Non-character code point U+8FFFE",
+    "\xF2\x8F\xBF\xBE", 0, NULL, stringprep_nameprep,
+    STRINGPREP_CONTAINS_PROHIBITED
+  },
+  {
+    "Non-character code point U+10FFFF",
+    "\xF4\x8F\xBF\xBF", 0, NULL, stringprep_nameprep,
+    STRINGPREP_CONTAINS_PROHIBITED
+  },
+  {
+    "Surrogate code U+DF42",
+    "\xED\xBD\x82", 0, NULL, stringprep_nameprep,
+    STRINGPREP_CONTAINS_PROHIBITED
+  },
+  {
+    "Non-plain text character U+FFFD",
+    "\xEF\xBF\xBD", 0, NULL, stringprep_nameprep,
+    STRINGPREP_CONTAINS_PROHIBITED
+  },
+  {
+    "Ideographic description character U+2FF5",
+    "\xE2\xBF\xB5", 0, NULL, stringprep_nameprep,
+    STRINGPREP_CONTAINS_PROHIBITED
+  },
+  {
+    "Display property character U+0341",
+    "\xCD\x81", 0, "\xCC\x81", stringprep_nameprep
+  },
+  {
+    "Left-to-right mark U+200E",
+    "\xE2\x80\x8E", 0, "\xCC\x81", stringprep_nameprep,
+    STRINGPREP_CONTAINS_PROHIBITED
+  },
+  {
+    "Deprecated U+202A",
+    "\xE2\x80\xAA", 0, "\xCC\x81", stringprep_nameprep,
+    STRINGPREP_CONTAINS_PROHIBITED
+  },
+  {
+    "Language tagging character U+E0001",
+    "\xF3\xA0\x80\x81", 0, "\xCC\x81", stringprep_nameprep,
+    STRINGPREP_CONTAINS_PROHIBITED
+  },
+  {
+    "Language tagging character U+E0042",
+    "\xF3\xA0\x81\x82", 0, "\xCC\x81", stringprep_nameprep,
+    STRINGPREP_CONTAINS_PROHIBITED
+  },
+  {
+    "Bidi: RandALCat character U+05BE and LCat characters",
+    "foo\xD6\xBE""bar", 0, NULL, stringprep_nameprep,
+    STRINGPREP_BIDI_BOTH_L_AND_RAL
+  },
+  {
+    "Bidi: RandALCat character U+FD50 and LCat characters",
+    "foo\xEF\xB5\x90""bar", 0, NULL, stringprep_nameprep,
+    STRINGPREP_BIDI_BOTH_L_AND_RAL
+  },
+  {
+    "Bidi: RandALCat character U+FB38 and LCat characters",
+    "foo\xEF\xB9\xB6""bar", 0, "foo \xd9\x8e""bar", stringprep_nameprep
+  },
+  { "Bidi: RandALCat without trailing RandALCat U+0627 U+0031",
+    "\xD8\xA7\x31", 0, NULL, stringprep_nameprep,
+    STRINGPREP_BIDI_LEADTRAIL_NOT_RAL}
   ,
-    /* map case_nfkc + normalization: */
   {
-  "\xC2\xB5", 0, "\xCE\xBC", stringprep_generic}
-  ,
-    /* case_nonfkc: */
+    "Bidi: RandALCat character U+0627 U+0031 U+0628",
+    "\xD8\xA7\x31\xD8\xA8", 0, "\xD8\xA7\x31\xD8\xA8", stringprep_nameprep
+  },
   {
+    "Unassigned code point U+E0002",
+    "\xF3\xA0\x80\x82", STRINGPREP_NO_UNASSIGNED, NULL, stringprep_nameprep,
+    STRINGPREP_CONTAINS_UNASSIGNED
+  },
+  {
+    "Larger test (shrinking)",
+    "X\xC2\xAD\xC3\xDF\xC4\xB0\xE2\x84\xA1\x6a\xcc\x8c\xc2\xa0\xc2"
+    "\xaa\xce\xb0\xe2\x80\x80", 0, "xssi\xcc\x87""tel\xc7\xb0 a\xce\xb0 ",
+    stringprep_nameprep
+  },
+  {
+    "Larger test (expanding)",
+    "X\xC3\xDF\xe3\x8c\x96\xC4\xB0\xE2\x84\xA1\xE2\x92\x9F\xE3\x8c\x80",
+    0, "xss\xe3\x82\xad\xe3\x83\xad\xe3\x83\xa1\xe3\x83\xbc\xe3\x83\x88"
+    "\xe3\x83\xab""i\xcc\x87""tel\x28""d\x29\xe3\x82\xa2\xe3\x83\x91"
+    "\xe3\x83\xbc\xe3\x83\x88", stringprep_nameprep
+  },
+#if !DBG
+  { "Test of prohibited ASCII character U+0020",
+    "\x20", 0, NULL, stringprep_generic, STRINGPREP_CONTAINS_PROHIBITED
+  },
+  {
+    "Test of NFKC U+00A0 and prohibited character U+0020",
+    "\xC2\xA0", 0, NULL, stringprep_generic, STRINGPREP_CONTAINS_PROHIBITED
+  },
+  { "Case map + normalization",
+    "\xC2\xB5", 0, "\xCE\xBC", stringprep_generic},
+  /* The rest are rather non-interesting, but no point in removing
+     working test cases... */
+  { "case_nonfkc",
   "\xC2\xB5", STRINGPREP_NO_NFKC, "\xCE\xBC", stringprep_generic}
   ,
-  {
-  "\xC2\xAA", 0, "\x61", stringprep_generic}
+  { "NFKC test",
+  "\xC2\xAA", 0, "\x61", stringprep_generic},
+  { "nameprep, exposed a bug in libstringprep 0.0.5",
+    "\xC2\xAA\x0A", 0, "\x61\x0A", stringprep_nameprep},
+  { "unassigned code point U+0221",
+    "\xC8\xA1", 0, "\xC8\xA1", stringprep_generic},
+  { "Unassigned code point U+0221",
+    "\xC8\xA1", STRINGPREP_NO_UNASSIGNED, NULL, stringprep_generic,
+    STRINGPREP_CONTAINS_UNASSIGNED},
+  { "Unassigned code point U+0236",
+    "\xC8\xB6", 0, "\xC8\xB6", stringprep_generic},
+  { "unassigned code point U+0236",
+    "\xC8\xB6", STRINGPREP_NO_UNASSIGNED, NULL, stringprep_generic,
+    STRINGPREP_CONTAINS_UNASSIGNED},
+  { "bidi both RandALCat and LCat  U+0627 U+00AA U+0628",
+    "\xD8\xA7\xC2\xAA\xD8\xA8", 0, NULL, stringprep_generic,
+    STRINGPREP_BIDI_BOTH_L_AND_RAL}
   ,
-    /* nameprep, exposed a bug in libstringprep 0.0.5 */
-  {
-  "\xC2\xAA\x0A", 0, "\x61\x0A", stringprep_nameprep}
-  ,
-    /* unassigned code point U+0221: */
-  {
-  "\xC8\xA1", 0, "\xC8\xA1", stringprep_generic}
-  ,
-    /* unassigned code point U+0221: */
-  {
-  "\xC8\xA1", STRINGPREP_NO_UNASSIGNED, NULL, stringprep_generic,
-      STRINGPREP_CONTAINS_UNASSIGNED}
-  ,
-    /* unassigned code point U+0236: */
-  {
-  "\xC8\xB6", 0, "\xC8\xB6", stringprep_generic}
-  ,
-    /* unassigned code point U+0236: */
-  {
-  "\xC8\xB6", STRINGPREP_NO_UNASSIGNED, NULL, stringprep_generic,
-      STRINGPREP_CONTAINS_UNASSIGNED}
-  ,
-    /* prohibited ASCII character U+0020: */
-  {
-  "\x20", 0, NULL, stringprep_generic, STRINGPREP_CONTAINS_PROHIBITED}
-  ,
-    /* prohibited character U+00A0: */
-  {
-  "\xC2\xA0", 0, NULL, stringprep_generic, STRINGPREP_CONTAINS_PROHIBITED}
-  ,
-    /* prohibited non-character U+10FFFE: */
-  {
-  "\xF4\x8F\xBF\xBE", 0, NULL, stringprep_generic,
-      STRINGPREP_CONTAINS_PROHIBITED}
-  ,
-    /* prohibited surrogate character U+D801: */
-  {
-  "\xED\xA0\x81", 0, NULL, stringprep_generic,
-      STRINGPREP_CONTAINS_PROHIBITED}
-  ,
-    /* bidi RandALCat without trailing RandALCat <U+0627><U+0031>: */
-  {
-  "\xD8\xA7\x31", 0, NULL, stringprep_generic,
-      STRINGPREP_BIDI_LEADTRAIL_NOT_RAL}
-  ,
-    /* bidi RandALCat correct  <U+0627><U+0031><U+0628>: */
-  {
-  "\xD8\xA7\x31\xD8\xA8", 0, "\xD8\xA7\x31\xD8\xA8", stringprep_generic}
-  ,
-    /* bidi both RandALCat and LCat  <U+0627><U+00AA><U+0628>: */
-  {
-  "\xD8\xA7\xC2\xAA\xD8\xA8", 0, NULL, stringprep_generic,
-      STRINGPREP_BIDI_BOTH_L_AND_RAL}
-  ,
-    /* case mapping (this triggered a bug in 0.0.5) */
-  {
-  "CAFE", 0, "cafe", stringprep_generic}
-  ,
-    /* XMPP node profile prohibited output: */
-  {
-  "foo@bar", 0, NULL, stringprep_xmpp_nodeprep,
+  { "XMPP node profile prohibited output",
+    "foo@bar", 0, NULL, stringprep_xmpp_nodeprep,
       STRINGPREP_CONTAINS_PROHIBITED},
-    /* XMPP resource profile on same string should work though: */
-  {
-  "foo@bar", 0, "foo@bar", stringprep_xmpp_resourceprep},
-    /* XMPP node profile output */
-  {
-  "\xC2\xAA", 0, "\x61", stringprep_xmpp_nodeprep},
-    /* XMPP resource profile output */
-  {
-  "\xC2\xAA", 0, "\x61", stringprep_xmpp_nodeprep}
+  { "XMPP resource profile on same string should work though",
+    "foo@bar", 0, "foo@bar", stringprep_xmpp_resourceprep},
+  { "XMPP node profile output",
+    "\xC2\xAA", 0, "\x61", stringprep_xmpp_nodeprep},
+  { "XMPP resource profile output",
+    "\xC2\xAA", 0, "\x61", stringprep_xmpp_nodeprep}
+#endif
 };
 
 int
@@ -226,6 +393,14 @@ main (int argc, char *argv[])
 
   for (i = 0; i < sizeof (strprep) / sizeof (strprep[0]); i++)
     {
+#if DBG
+      printf("<section title=\"%s.\">\n", strprep[i].comment);
+      printf("\n");
+      printf("<figure>\n");
+      printf("<artwork>\n");
+      printf ("in: ");
+      escapeprint (strprep[i].in, strlen (strprep[i].in));
+#endif
       if (debug)
 	printf ("STRINGPREP entry %d\n", i);
 
@@ -235,7 +410,7 @@ main (int argc, char *argv[])
 	{
 	  printf ("flags: %d\n", strprep[i].flags);
 
-	  printf ("in:\n");
+	  printf ("in: ");
 	  escapeprint (strprep[i].in, strlen (strprep[i].in));
 	  hexprint (strprep[i].in, strlen (strprep[i].in));
 	  puts ("");
@@ -252,16 +427,21 @@ main (int argc, char *argv[])
 	  continue;
 	}
 
+#if DBG
+      printf ("out: ");
+      escapeprint (p, strlen (p));
+#endif
+
       if (debug && rc == STRINGPREP_OK)
 	{
-	  printf ("out:\n");
+	  printf ("out: ");
 	  escapeprint (p, strlen (p));
 	  hexprint (p, strlen (p));
 	  puts ("");
 	  binprint (p, strlen (p));
 	  puts ("");
 
-	  printf ("expected out:\n");
+	  printf ("expected out: ");
 	  escapeprint (strprep[i].out, strlen (strprep[i].out));
 	  hexprint (strprep[i].out, strlen (strprep[i].out));
 	  puts ("");
@@ -284,14 +464,21 @@ main (int argc, char *argv[])
 	    printf ("OK\n\n");
 	}
       else if (debug)
-	printf ("OK\n\n");
+	  printf ("OK\n\n");
+
+#if DBG
+      printf("</artwork>\n");
+      printf("</figure>\n");
+      printf("\n");
+      printf("</section>\n");
+#endif
     }
 
   free (p);
 
 #if 0
   memset (p, 0, 10);
-  stringprep_unichar_to_utf8 (0x0628, p);
+  stringprep_unichar_to_utf8 (0x3316, p);
   hexprint (p, strlen (p));
   puts ("");
 #endif
