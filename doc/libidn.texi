@@ -299,20 +299,22 @@ it to the author.
 @node Commercial Support
 @section Commercial Support
 
-Commercial support is available for users of GNU Libidn.  Examples of
-what kind of support can be purchased include:
+Commercial support is available for users of GNU Libidn.  The kind of
+support that can be purchased may include:
 
 @itemize
 
-@item Implement new features
+@item Implement new features.
 Such as country code specific profiling to support a restricted subset
 of Unicode.
 
-@item Port Libidn to new platforms
+@item Port Libidn to new platforms.
 This could include porting Libidn to an embedded platforms that may
 need memory or size optimization.
 
 @item Remote helpdesk support for programming API questions.
+
+@item On-site education of IDN and Libidn.
 
 @end itemize
 
@@ -638,7 +640,7 @@ suggestions in the previous section are not the entire story.  There
 are a few methods to detect and incorporate Libidn into your Autoconf
 based package.
 
-@subsubsection Autoconf test via @samp{pkg-config}
+@subsection Autoconf test via @samp{pkg-config}
 
 If your audience is a typical GNU/Linux desktop, you can often assume
 they have the @samp{pkg-config} tool installed, in which you can use
@@ -666,7 +668,7 @@ AC_MSG_CHECKING([if Libidn should be used])
 AC_MSG_RESULT($libidn)
 @end example
 
-@subsubsection Standalone Autoconf test
+@subsection Standalone Autoconf test
 
 The following illustrate a standalone autconf test, that work
 regardless of if your project Libtool (@pxref{top, GNU Libtool,,
@@ -1674,6 +1676,8 @@ section describes the API.  Currently the IDNA API always set the
 flag, in the future there may be functionality to specify these flags
 via the API.
 
+@section Punycode Emacs API
+
 @defvar punycode-program
 Name of the GNU Libidn @file{idn} application.  The default is
 @samp{idn}.  This variable can be customized.
@@ -1707,6 +1711,8 @@ Returns a possibly multibyte string which is the decoding of the
 @var{string} which is a punycode encoded string.
 @end defun
 
+@section IDNA Emacs API
+
 @defvar idna-program
 Name of the GNU Libidn @file{idn} application.  The default is
 @samp{idn}.  This variable can be customized.
@@ -1720,14 +1726,14 @@ This variable can be customized.
 
 @defvar idna-to-ascii-parameters
 List of parameters passed to @var{idna-program} to invoke IDNA ToASCII
-mode.  The default is @samp{("--quiet" "--idna-to-ascii")}.  This
-variable can be customized.
+mode.  The default is @samp{("--quiet" "--idna-to-ascii"
+"--usestd3asciirules")}.  This variable can be customized.
 @end defvar
 
 @defvar idna-to-unicode-parameters
 Parameters passed @var{idna-program} to invoke IDNA ToUnicode mode.
-The default is @samp{("--quiet" "--idna-to-unicode")}.  This variable
-can be customized.
+The default is @samp{("--quiet" "--idna-to-unicode"
+"--usestd3asciirules")}.  This variable can be customized.
 @end defvar
 
 @defun idna-to-ascii string
