@@ -21,6 +21,10 @@ expressed as single numbers (like 123, 0xff, 0100) or inclusive
 intervals (112-344 0xff-0100) using the usual C decimal, octal or hex
 notations.
 
+Each TLD file must contain one line on the format 'tld XX'.  The XX
+should be the TLD name that the file defines.  This is the string that
+is used in the generated C source code.
+
 If definitions are shared among several TLDs or are constructed from
 standard Unicode blocks, put the building blocks in a file of its own
 and include it using 'include FILENAME' on a line by itself.
