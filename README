@@ -3,9 +3,10 @@ Copyright (C) 2002, 2003 Simon Josefsson
 See the end for copying conditions.
 
 Libidn is a package for internationalized string handling based on the
-stringprep, punycode and IDNA specifications.  It is licensed under
-the LGPL, see COPYING.LIB.  See ANNOUNCE for an overview, INSTALL for
-installation instructions, and libidn.{info,ps,pdf} for the manual.
+Stringprep, Punycode and IDNA specifications.  It is licensed under
+the GNU Lesser General Public License license, see COPYING.LIB.  See
+ANNOUNCE for an overview, INSTALL for installation instructions, and
+libidn.{info,ps,pdf} for the manual.
 
 If you are in a position to support the development financially,
 contact the author or donate via PayPal to one of the author's email
