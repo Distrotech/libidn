@@ -353,6 +353,7 @@ main (int argc, char *argv[])
 	char *x;
 	l = stringprep_utf8_to_ucs4 (strprep[i].in, -1, NULL);
 	x = stringprep_ucs4_to_utf8 (l, -1, NULL, NULL);
+	free (l);
 
 	if (strcmp (strprep[i].in, x) != 0)
 	  {
@@ -368,6 +369,8 @@ main (int argc, char *argv[])
 		puts ("");
 	      }
 	  }
+
+	free (x);
       }
       rc = stringprep_profile (strprep[i].in, &p,
 			       strprep[i].profile ?
