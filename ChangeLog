@@ -1,3 +1,151 @@
+2004-10-02  Simon Josefsson <simon@josefsson.org>
+
+	* po/da.po, po/de.po, po/eo.po, po/fr.po, po/nl.po, po/pl.po,
+	po/ro.po, po/sr.po, po/sv.po: Generated.
+
+2004-10-02  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Version 0.5.6.
+
+2004-10-02  Simon Josefsson <simon@josefsson.org>
+
+	* examples/example.c, examples/example3.c, examples/example4.c,
+	examples/example5.c: Use *strerror.
+
+2004-10-02  Simon Josefsson <simon@josefsson.org>
+
+	* Makefile.am, examples/Makefile.am: Fix indent.
+
+2004-10-02  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS, libidn.fms: Fix.
+
+2004-10-02  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Reorder.
+
+2004-10-02  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Fix.
+
+2004-10-02  Simon Josefsson <simon@josefsson.org>
+
+	* lib/Makefile.am: Don't link with gnulib.
+
+2004-10-02  Simon Josefsson <simon@josefsson.org>
+
+	* lib/toutf8.c: Revert, don't use strdup.
+
+2004-10-02  Simon Josefsson <simon@josefsson.org>
+
+	* lib/strerror-idna.c: Simplify translation strings.
+
+2004-10-02  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2004-10-02  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Fix.
+
+2004-10-02  Simon Josefsson <simon@josefsson.org>
+
+	* src/idn.c: Typo.
+
+2004-10-02  Simon Josefsson <simon@josefsson.org>
+
+	* lib/idna.h, lib/pr29.c, lib/pr29.h, lib/profiles.c, lib/toutf8.c,
+	src/idn.c, tests/tst_pr29.c, tests/tst_stringprep.c: Indent.
+
+2004-10-02  Simon Josefsson <simon@josefsson.org>
+
+	* src/idn.c: Use error.
+
+2004-10-02  Simon Josefsson <simon@josefsson.org>
+
+	* configure.ac, gl/Makefile.am, gl/error.c, gl/error.h,
+	gl/m4/error.m4, gl/m4/gnulib.m4, gl/m4/strerror_r.m4: Add error
+	from gnulib (slightly modified to avoid unlocked-io.h).
+
+2004-10-02  Simon Josefsson <simon@josefsson.org>
+
+	* tests/Makefile.am, tests/tst_strerror.c: Add.
+
+2004-10-02  Simon Josefsson <simon@josefsson.org>
+
+	* lib/Makefile.am:
+	(DEFS): Add LOCALEDIR.
+
+2004-10-02  Simon Josefsson <simon@josefsson.org>
+
+	* lib/strerror-idna.c, lib/strerror-pr29.c,
+	lib/strerror-punycode.c, lib/strerror-stringprep.c,
+	lib/strerror-tld.c: Setup gettext properly.
+
+2004-10-02  Simon Josefsson <simon@josefsson.org>
+
+	* po/POTFILES.in: Add.
+
+2004-10-02  Simon Josefsson <simon@josefsson.org>
+
+	* src/Makefile.am: Fix.
+
+2004-10-02  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS, doc/Makefile.am, doc/libidn.texi, lib/Makefile.am,
+	lib/idna.h, lib/pr29.h, lib/punycode.h, lib/strerror-idna.c,
+	lib/strerror-pr29.c, lib/strerror-punycode.c,
+	lib/strerror-stringprep.c, lib/strerror-tld.c, lib/stringprep.h.in,
+	lib/tld.c, lib/tld.h, src/idn.c: Add idna_strerror, pr29_strerror,
+	punycode_strerror, stringprep_strerror, and tld_strerror, suggested
+	by Daniel Stenberg <daniel@haxx.se>.  Make idn.c use them.  Rename
+	TLD_NOTLD to TLD_NO_TLD.
+
+2004-09-29  Simon Josefsson <simon@josefsson.org>
+
+	* gl/Makefile.am, gl/dummy.c, gl/m4/gnulib.m4: Update.
+
+2004-09-29  Simon Josefsson <simon@josefsson.org>
+
+	* gl/Makefile.am, gl/m4/gnulib.m4: Update.
+
+2004-09-29  Simon Josefsson <simon@josefsson.org>
+
+	* gl/Makefile.am, gl/dummy.c, gl/getopt.c, gl/getopt1.c,
+	gl/getopt_.h, gl/getopt_int.h, gl/gettext.h, gl/strdup.c,
+	gl/strdup.h, gl/m4/codeset.m4, gl/m4/gettext.m4, gl/m4/glibc21.m4,
+	gl/m4/gnulib.m4, gl/m4/iconv.m4, gl/m4/intdiv0.m4, gl/m4/intmax.m4,
+	gl/m4/inttypes-pri.m4, gl/m4/inttypes.m4, gl/m4/inttypes_h.m4,
+	gl/m4/isc-posix.m4, gl/m4/lcmessage.m4, gl/m4/lib-ld.m4,
+	gl/m4/lib-link.m4, gl/m4/lib-prefix.m4, gl/m4/longdouble.m4,
+	gl/m4/longlong.m4, gl/m4/nls.m4, gl/m4/po.m4,
+	gl/m4/printf-posix.m4, gl/m4/progtest.m4, gl/m4/signed.m4,
+	gl/m4/size_max.m4, gl/m4/stdint_h.m4, gl/m4/strdup.m4,
+	gl/m4/uintmax_t.m4, gl/m4/ulonglong.m4, gl/m4/wchar_t.m4,
+	gl/m4/wint_t.m4, gl/m4/xsize.m4, src/gettext.h: Use new GNULib.
+
+2004-09-29  Simon Josefsson <simon@josefsson.org>
+
+	* configure.ac: Specify gl_LGPL for new gnulib-tool.
+
+2004-09-26  Simon Josefsson <simon@josefsson.org>
+
+	* configure.ac: Bump versions.
+
+2004-09-26  Simon Josefsson <simon@josefsson.org>
+
+	* Makefile.am, NEWS, configure.ac, gl/Makefile.am, gl/dummy.c,
+	gl/getopt.c, gl/getopt1.c, gl/getopt_.h, gl/getopt_int.h,
+	gl/strdup.c, gl/strdup.h, gl/m4/getopt.m4, gl/m4/gnulib.m4,
+	gl/m4/onceonly_2_57.m4, gl/m4/strdup.m4, lib/Makefile.am,
+	lib/toutf8.c, src/Makefile.am, src/getopt.c, src/getopt1.c,
+	src/getopt_.h, src/getopt_int.h, tests/Makefile.am: Use Lesser
+	GNULib.
+
+2004-09-13  Simon Josefsson <simon@josefsson.org>
+
+	* libidn.fms: Add.
+
 2004-09-13  Simon Josefsson <simon@josefsson.org>
 
 	* doc/reference/Makefile.am: Clean more.
@@ -3313,7 +3461,10 @@
 
 2003-09-12  Simon Josefsson <simon@josefsson.org>
 
-	* src/Makefile.am, Makefile.am: Remove gl/.
+	* src/Makefile.am, gl/Makefile.am, gl/getopt.c, gl/getopt.h,
+	gl/getopt1.c, gl/memset.c, gl/strdup.c, gl/m4/Makefile.am,
+	gl/m4/memset.m4, gl/m4/onceonly_2_57.m4, gl/m4/strdup.m4,
+	Makefile.am: Remove gl/.
 
 2003-09-12  Simon Josefsson <simon@josefsson.org>
 
@@ -3327,6 +3478,10 @@
 2003-09-12  Simon Josefsson <simon@josefsson.org>
 
 	* doc/libidn.texi: Ported to Mac OS X / Darwin.
+
+2003-09-12  Simon Josefsson <simon@josefsson.org>
+
+	* gl/Makefile.am: Use libtool.
 
 2003-09-12  Simon Josefsson <simon@josefsson.org>
 
@@ -3395,7 +3550,8 @@
 
 2003-08-26  Simon Josefsson <simon@josefsson.org>
 
-	* Makefile.am, lib/Makefile.am: Use $() instead of @@.
+	* Makefile.am, gl/Makefile.am, lib/Makefile.am: Use $() instead of
+	@@.
 
 2003-08-26  Simon Josefsson <simon@josefsson.org>
 
@@ -3458,6 +3614,10 @@
 2003-08-21  Simon Josefsson <simon@josefsson.org>
 
 	* doc/libidn.texi: Add port.
+
+2003-08-21  Simon Josefsson <simon@josefsson.org>
+
+	* gl/Makefile.am: Dist getopt.h.
 
 2003-08-21  Simon Josefsson <simon@josefsson.org>
 
@@ -3528,8 +3688,11 @@
 
 2003-08-20  Simon Josefsson <simon@josefsson.org>
 
-	* getopt.c, getopt.h, getopt1.c, memset.c, strdup.c: Move
-	portability utilities into gl/.
+	* getopt.c, getopt.h, getopt1.c, memset.c, strdup.c,
+	gl/Makefile.am, gl/getopt.c, gl/getopt.h, gl/getopt1.c,
+	gl/memset.c, gl/strdup.c, gl/m4/Makefile.am, gl/m4/memset.m4,
+	gl/m4/onceonly_2_57.m4, gl/m4/strdup.m4: Move portability utilities
+	into gl/.
 
 2003-08-20  Simon Josefsson <simon@josefsson.org>
 
