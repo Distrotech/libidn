@@ -49,4 +49,6 @@ ChangeLog:
 	cat .cvscopying >> ChangeLog
 
 indent:
-	indent $(SOURCES)
+	(cd lib && make indent)
+	(cd src && make indent)
+	(cd tests && make indent)
