@@ -51,8 +51,9 @@ AC_CHECK_HEADERS(sys/types.h string.h strings.h memory.h unistd.h errno.h)
 AC_TYPE_SIZE_T
 AX_CREATE_STDINT_H(idn-int.h)
 
-# Checks for library functions.
-AC_REPLACE_FUNCS(memset strdup)
+# For gnulib stuff.
+gl_FUNC_MEMSET
+gl_FUNC_STRDUP
 
 # Check if locale stuff works
 AC_CACHE_CHECK([if setlocale() and nl_langinfo() works],

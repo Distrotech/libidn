@@ -46,10 +46,9 @@ __strdup (const char *s)
 
   return (char *) memcpy (new, s, len);
 }
-
 #ifdef libc_hidden_def
 libc_hidden_def (__strdup)
 #endif
 #ifdef weak_alias
-  weak_alias (__strdup, strdup)
+weak_alias (__strdup, strdup)
 #endif

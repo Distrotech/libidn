@@ -61,7 +61,7 @@ libidn_la_SOURCES = gunicomp.h gunidecomp.h internal.h \
 	stringprep_generic.c profiles.c \
 	punycode.h punycode.c \
 	idna.h idna.c
-libidn_la_LIBADD = @LTLIBOBJS@ @LTLIBICONV@
+libidn_la_LIBADD = @LTLIBICONV@
 libidn_la_LDFLAGS = -version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE)
 
 nfkc.c: gunicomp.h gunidecomp.h
