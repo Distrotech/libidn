@@ -1,4 +1,4 @@
-/* tst_punycode.c	Self tests for punycode.
+/* tst_punycode.c --- Self tests for punycode.
  * Copyright (C) 2002, 2003, 2004  Simon Josefsson
  *
  * This file is part of GNU Libidn.

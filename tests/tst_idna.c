@@ -1,4 +1,4 @@
-/* tst_idna.c	Self tests for idna_to_ascii().
+/* tst_idna.c --- Self tests for idna_to_ascii().
  * Copyright (C) 2002, 2003, 2004  Simon Josefsson
  *
  * This file is part of GNU Libidn.

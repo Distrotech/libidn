@@ -1,4 +1,4 @@
-/* tst_stringprep.c	Self tests for stringprep().
+/* tst_stringprep.c --- Self tests for stringprep().
  * Copyright (C) 2002, 2003, 2004  Simon Josefsson
  *
  * This file is part of GNU Libidn.

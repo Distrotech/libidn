@@ -1,4 +1,4 @@
-/* example.c	Example code showing how to use IDN enabled getaddrinfo().
+/* example.c --- Example code showing how to use IDN enabled getaddrinfo().
  * Copyright (C) 2003, 2004  Simon Josefsson
  *
  * This file is part of GNU Libidn.

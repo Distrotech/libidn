@@ -1,4 +1,4 @@
-/* example2.c	Example code showing how to use punycode.
+/* example2.c --- Example code showing how to use punycode.
  * Copyright (C) 2002, 2003, 2004  Simon Josefsson
  * Copyright (C) 2002  Adam M. Costello
  *
