@@ -36,7 +36,8 @@ extern const Tld_table *_tld_tables[];
 /**
  * tld_get_table:
  * @tld: TLD name (e.g. "com") as zero terminated ASCII byte string.
- * @tables: Zero terminated array of info-structures for TLDs.
+ * @tables: Zero terminated array of #Tld_table info-structures for
+ *   TLDs.
  *
  * Get the TLD table for a named TLD by searching through the given
  * TLD table array.
@@ -62,8 +63,9 @@ tld_get_table (const char *tld, const Tld_table ** tables)
 /**
  * tld_default_table:
  * @tld: TLD name (e.g. "com") as zero terminated ASCII byte string.
- * @overrides: Additional well-formed info-structures for TLDs, or %NULL
- *   to only use library deault tables.
+ * @overrides: Additional zero terminated array of #Tld_table
+ *   info-structures for TLDs, or %NULL to only use library deault
+ *   tables.
  *
  * Get the TLD table for a named TLD, using the internal defaults,
  * possibly overrided by the (optional) supplied tables.
@@ -205,7 +207,7 @@ tld_get_z (const char *in, char **out)
 /*
  * tld_checkchar:
  * @ch: 32 bit unicode character to check.
- * @tld: Tld_table data structure to check @ch against
+ * @tld: A #Tld_table data structure to check @ch against.
  *
  * Verify if @ch is either in [a-z0-9-.] or mentioned as a valid
  * character in @tld.
@@ -246,11 +248,11 @@ _tld_checkchar (uint32_t ch, const Tld_table * tld)
 /**
  * tld_check_4t
  * @in: Array of unicode code points to process. Does not need to be
- * zero terminated.
+ *   zero terminated.
  * @inlen: Number of unicode code points.
  * @errpos: Position of offending character is returned here.
- * @tld: Data structure representing the restrictions for
- * which the input should be tested.
+ * @tld: A #Tld_table data structure representing the restrictions for
+ *   which the input should be tested.
  *
  * Test each of the code points in @in for whether or not
  * they are allowed by the data structure in @tld, return
@@ -291,8 +293,8 @@ tld_check_4t (const uint32_t * in, size_t inlen, size_t * errpos,
  * tld_check_4tz
  * @in: Zero terminated array of unicode code points to process.
  * @errpos: Position of offending character is returned here.
- * @tld: Data structure representing the restrictions for
- * which the input should be tested.
+ * @tld: A #Tld_table data structure representing the restrictions for
+ *   which the input should be tested.
  *
  * Test each of the code points in @in for whether or not
  * they are allowed by the data structure in @tld, return
@@ -321,11 +323,11 @@ tld_check_4tz (const uint32_t * in, size_t * errpos, const Tld_table * tld)
 /**
  * tld_check_4
  * @in: Array of unicode code points to process. Does not need to be
- * zero terminated.
+ *   zero terminated.
  * @inlen: Number of unicode code points.
  * @errpos: Position of offending character is returned here.
- * @overrides: An array of additional domain restriction structures
- *  that complement and supersede the built-in information.
+ * @overrides: A #Tld_table array of additional domain restriction
+ *  structures that complement and supersede the built-in information.
  *
  * Test each of the code points in @in for whether or not they are
  * allowed by the information in @overrides or by the built-in TLD
@@ -374,8 +376,8 @@ tld_check_4 (const uint32_t * in, size_t inlen, size_t * errpos,
  * tld_check_4z
  * @in: Zero-terminated array of unicode code points to process.
  * @errpos: Position of offending character is returned here.
- * @overrides: An array of additional domain restriction structures
- * that complement and supersede the built-in information.
+ * @overrides: A #Tld_table array of additional domain restriction
+ *   structures that complement and supersede the built-in information.
  *
  * Test each of the code points in @in for whether or not they are
  * allowed by the information in @overrides or by the built-in TLD
@@ -410,8 +412,8 @@ tld_check_4z (const uint32_t * in, size_t * errpos,
  * tld_check_8z
  * @in: Zero-terminated UTF8 string to process.
  * @errpos: Position of offending character is returned here.
- * @overrides: An array of additional domain restriction structures
- * that complement and supersede the built-in information.
+ * @overrides: A #Tld_table array of additional domain restriction
+ *   structures that complement and supersede the built-in information.
  *
  * Test each of the characters in @in for whether or not they are
  * allowed by the information in @overrides or by the built-in TLD
@@ -455,8 +457,8 @@ tld_check_8z (const char *in, size_t * errpos, const Tld_table ** overrides)
  * tld_check_lz
  * @in: Zero-terminated string in the current locales encoding to process.
  * @errpos: Position of offending character is returned here.
- * @overrides: An array of additional domain restriction structures
- * that complement and supersede the built-in information.
+ * @overrides: A #Tld_table array of additional domain restriction
+ *   structures that complement and supersede the built-in information.
  *
  * Test each of the characters in @in for whether or not they are
  * allowed by the information in @overrides or by the built-in TLD

@@ -107,10 +107,10 @@ stringprep_apply_table_to_string (uint32_t * ucs4,
  * stringprep_4i:
  * @ucs4: input/output array with string to prepare.
  * @len: on input, length of input array with Unicode code points,
- *          on exit, length of output array with Unicode code points.
+ *   on exit, length of output array with Unicode code points.
  * @maxucs4len: maximum length of input/output array.
- * @flags: stringprep profile flags, or 0.
- * @profile: pointer to stringprep profile to use.
+ * @flags: a #Stringprep_profile_flags value, or 0.
+ * @profile: pointer to #Stringprep_profile to use.
  *
  * Prepare the input UCS-4 string according to the stringprep profile,
  * and write back the result to the input string.
@@ -124,14 +124,15 @@ stringprep_apply_table_to_string (uint32_t * ucs4,
  * indicate how large the buffer holding the string is.  This function
  * will not read or write to code points outside that size.
  *
- * The @flags are one of Stringprep_profile_flags, or 0.
+ * The @flags are one of #Stringprep_profile_flags values, or 0.
  *
- * The @profile contain the instructions to perform.  Your application
- * can define new profiles, possibly re-using the generic stringprep
- * tables that always will be part of the library, or use one of the
- * currently supported profiles.
+ * The @profile contain the #Stringprep_profile instructions to
+ * perform.  Your application can define new profiles, possibly
+ * re-using the generic stringprep tables that always will be part of
+ * the library, or use one of the currently supported profiles.
  *
- * Return value: Returns %STRINGPREP_OK iff successful, or an error code.
+ * Return value: Returns %STRINGPREP_OK iff successful, or an
+ *   #Stringprep_rc error code.
  **/
 int
 stringprep_4i (uint32_t * ucs4, size_t * len, size_t maxucs4len,
@@ -294,8 +295,8 @@ stringprep_4zi_1 (uint32_t * ucs4, size_t ucs4len, size_t maxucs4len,
  * stringprep_4zi:
  * @ucs4: input/output array with zero terminated string to prepare.
  * @maxucs4len: maximum length of input/output array.
- * @flags: stringprep profile flags, or 0.
- * @profile: pointer to stringprep profile to use.
+ * @flags: a #Stringprep_profile_flags value, or 0.
+ * @profile: pointer to #Stringprep_profile to use.
  *
  * Prepare the input zero terminated UCS-4 string according to the
  * stringprep profile, and write back the result to the input string.
@@ -304,14 +305,15 @@ stringprep_4zi_1 (uint32_t * ucs4, size_t ucs4len, size_t maxucs4len,
  * indicate how large the buffer holding the string is.  This function
  * will not read or write to code points outside that size.
  *
- * The @flags are one of Stringprep_profile_flags, or 0.
+ * The @flags are one of #Stringprep_profile_flags values, or 0.
  *
- * The @profile contain the instructions to perform.  Your application
- * can define new profiles, possibly re-using the generic stringprep
- * tables that always will be part of the library, or use one of the
- * currently supported profiles.
+ * The @profile contain the #Stringprep_profile instructions to
+ * perform.  Your application can define new profiles, possibly
+ * re-using the generic stringprep tables that always will be part of
+ * the library, or use one of the currently supported profiles.
  *
- * Return value: Returns %STRINGPREP_OK iff successful, or an error code.
+ * Return value: Returns %STRINGPREP_OK iff successful, or an
+ *   #Stringprep_rc error code.
  **/
 int
 stringprep_4zi (uint32_t * ucs4, size_t maxucs4len,
@@ -330,8 +332,8 @@ stringprep_4zi (uint32_t * ucs4, size_t maxucs4len,
  * stringprep:
  * @in: input/ouput array with string to prepare.
  * @maxlen: maximum length of input/output array.
- * @flags: stringprep profile flags, or 0.
- * @profile: pointer to stringprep profile to use.
+ * @flags: a #Stringprep_profile_flags value, or 0.
+ * @profile: pointer to #Stringprep_profile to use.
  *
  * Prepare the input zero terminated UTF-8 string according to the
  * stringprep profile, and write back the result to the input string.
@@ -344,12 +346,12 @@ stringprep_4zi (uint32_t * ucs4, size_t maxucs4len,
  * indicate how large the buffer holding the string is.  This function
  * will not read or write to characters outside that size.
  *
- * The @flags are one of Stringprep_profile_flags, or 0.
+ * The @flags are one of #Stringprep_profile_flags values, or 0.
  *
- * The @profile contain the instructions to perform.  Your application
- * can define new profiles, possibly re-using the generic stringprep
- * tables that always will be part of the library, or use one of the
- * currently supported profiles.
+ * The @profile contain the #Stringprep_profile instructions to
+ * perform.  Your application can define new profiles, possibly
+ * re-using the generic stringprep tables that always will be part of
+ * the library, or use one of the currently supported profiles.
  *
  * Return value: Returns %STRINGPREP_OK iff successful, or an error code.
  **/
@@ -413,7 +415,7 @@ stringprep (char *in,
  * @in: input array with UTF-8 string to prepare.
  * @out: output variable with pointer to newly allocate string.
  * @profile: name of stringprep profile to use.
- * @flags: stringprep profile flags, or 0.
+ * @flags: a #Stringprep_profile_flags value, or 0.
  *
  * Prepare the input zero terminated UTF-8 string according to the
  * stringprep profile, and return the result in a newly allocated
@@ -425,7 +427,7 @@ stringprep (char *in,
  *
  * The output @out variable must be deallocated by the caller.
  *
- * The @flags are one of Stringprep_profile_flags, or 0.
+ * The @flags are one of #Stringprep_profile_flags values, or 0.
  *
  * The @profile specifies the name of the stringprep profile to use.
  * It must be one of the internally supported stringprep profiles.

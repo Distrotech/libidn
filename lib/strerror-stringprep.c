@@ -26,7 +26,7 @@
 
 /**
  * stringprep_strerror:
- * @rc: stringprep return code
+ * @rc: a #Stringprep_rc return code.
  *
  * Convert a return code integer to a text string.  This string can be
  * used to output a diagnostic message to the user.
@@ -59,7 +59,7 @@
  *   usually a fatal error.
  *
  * Return value: Returns a pointer to a statically allocated string
- * containing a description of the error with the return code @rc.
+ *   containing a description of the error with the return code @rc.
  **/
 const char *
 stringprep_strerror (Stringprep_rc rc)
