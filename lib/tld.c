@@ -377,7 +377,7 @@ tld_check_lz (const char *in, size_t * errpos,
 int
 tld_checkchar (uint32_t ch, const Tld_table * tld)
 {
-  const uint32_t *p;
+  const Tld_table_element *p;
   size_t i;
   int found = 0;
 
@@ -392,8 +392,8 @@ tld_checkchar (uint32_t ch, const Tld_table * tld)
 
   /* FIXME: replace searches by bsearch like stuff. */
 
-  for (p = tld->data, i = 0; i < tld->ndata; i++, p++)
-    if (ch >= *p && ch <= *p)
+  for (p = tld->valid, i = 0; i < tld->nvalid; i++, p++)
+    if (ch >= p->start && ch <= p->end)
       return TLD_SUCCESS;
 
   return TLD_ILLEGAL;
