@@ -80,8 +80,8 @@ stringprep_apply_table_to_string (long *ucs4,
 	return STRINGPREP_TOO_SMALL_BUFFER;
 
       memmove (&ucs4[pos + maplen], &ucs4[pos + 1],
-	       *ucs4len * sizeof (uint32_t) - (&ucs4[pos + 1] - ucs4));
-      memcpy (&ucs4[pos], table[i].map, sizeof (uint32_t) * maplen);
+	       *ucs4len * sizeof (long) - (&ucs4[pos + 1] - ucs4));
+      memcpy (&ucs4[pos], table[i].map, sizeof (long) * maplen);
       *ucs4len = *ucs4len - 1 + maplen;
     }
 
