@@ -402,10 +402,13 @@ to be mentioned here, contact the author (@pxref{Bug Reports}).
 @cindex Installation
 @cindex Download
 
-The package can be downloaded from several places, including
-@url{http://josefsson.org/libidn/releases/}.  The latest version is
-stored in a file, e.g., @samp{libidn-@value{VERSION}.tar.gz} where the
-@samp{@value{VERSION}} indicate the highest version number.
+The package can be downloaded from several places, including:
+
+@url{http://josefsson.org/libidn/releases/}
+
+The latest version is stored in a file, e.g.,
+@samp{gsasl-@value{VERSION}.tar.gz} where the @samp{@value{VERSION}}
+value is the highest version number in the directory.
 
 The package is then extracted, configured and built like many other
 packages that use Autoconf.  For detailed information on configuring
@@ -438,6 +441,11 @@ table.
 @item --enable-java
 Build the Java port into a *.JAR file.  @xref{Java API}, for more
 information.
+
+@item --disable-tld
+Disable the TLD module.  This would typically only be useful if you
+are building on a memory restricted platforms.  @xref{TLD Functions},
+for more information.
 
 @end table
 
@@ -847,67 +855,6 @@ and by necessity tied to the implementation, we do not document them
 here.  Look into the @file{stringprep.h} header file, and the
 @file{profiles.c} source code for the details.
 
-@section Return Codes
-
-All functions return a code of the @code{Stringprep_rc}
-enumerated type:
-
-@deftypevr {Return code} {Stringprep_rc} {STRINGPREP_OK = 0}
-Successful operation.  This value is guaranteed to always be zero, the
-remaining ones are only guaranteed to hold non-zero values, for
-logical comparison purposes.
-@end deftypevr
-
-@deftypevr {Return code} {Stringprep_rc} {STRINGPREP_CONTAINS_UNASSIGNED}
-String contain unassigned Unicode code points, which is forbidden by
-the profile.
-@end deftypevr
-
-@deftypevr {Return code} {Stringprep_rc} {STRINGPREP_CONTAINS_PROHIBITED}
-String contain code points prohibited by the profile.
-@end deftypevr
-
-@deftypevr {Return code} {Stringprep_rc} {STRINGPREP_BIDI_BOTH_L_AND_RAL}
-String contain code points with conflicting bidirection category.
-@end deftypevr
-
-@deftypevr {Return code} {Stringprep_rc} {STRINGPREP_BIDI_LEADTRAIL_NOT_RAL}
-Leading and trailing character in string not of proper bidirectional
-category.
-@end deftypevr
-
-@deftypevr {Return code} {Stringprep_rc} {STRINGPREP_BIDI_CONTAINS_PROHIBITED}
-Contains prohibited code points detected by bidirectional code.
-@end deftypevr
-
-@deftypevr {Return code} {Stringprep_rc} {STRINGPREP_TOO_SMALL_BUFFER}
-Buffer handed to function was too small.  This usually indicate a
-problem in the calling application.
-@end deftypevr
-
-@deftypevr {Return code} {Stringprep_rc} {STRINGPREP_PROFILE_ERROR}
-The stringprep profile was inconsistent.  This usually indicate an
-internal error in the library.
-@end deftypevr
-
-@deftypevr {Return code} {Stringprep_rc} {STRINGPREP_FLAG_ERROR}
-The supplied flag conflicted with profile.  This usually indicate a
-problem in the calling application.
-@end deftypevr
-
-@deftypevr {Return code} {Stringprep_rc} {STRINGPREP_UNKNOWN_PROFILE}
-The supplied profile name was not known to the library.
-@end deftypevr
-
-@deftypevr {Return code} {Stringprep_rc} {STRINGPREP_NFKC_FAILED}
-The Unicode NFKC operation failed.  This usually indicate an internal
-error in the library.
-@end deftypevr
-
-@deftypevr {Return code} {Stringprep_rc} {STRINGPREP_MALLOC_ERROR}
-The @code{malloc} was out of memory.  This is usually a fatal error.
-@end deftypevr
-
 @section Control Flags
 
 @deftypevr {Stringprep flags} {Stringprep_profile_flags} {STRINGPREP_NO_NFKC}
@@ -933,6 +880,10 @@ characters according to profile.
 @include texi/stringprep_4zi.texi
 @include texi/stringprep.texi
 @include texi/stringprep_profile.texi
+
+@section Error Handling
+
+@include texi/stringprep_strerror.texi
 
 @section Stringprep Profile Macros
 
@@ -1014,29 +965,6 @@ the file @file{punycode.h} using:
 #include <punycode.h>
 @end example
 
-@section Return Codes
-
-All functions return a code of the @code{Punycode_status} enumerated
-type:
-
-@deftypevr {Return code} {Punycode_status} {PUNYCODE_SUCCESS = 0}
-Successful operation.  This value is guaranteed to always be zero, the
-remaining ones are only guaranteed to hold non-zero values, for
-logical comparison purposes.
-@end deftypevr
-
-@deftypevr {Return code} {Punycode_status} {PUNYCODE_BAD_INPUT}
-Input is invalid.
-@end deftypevr
-
-@deftypevr {Return code} {Punycode_status} {PUNYCODE_BIG_OUTPUT}
-Output would exceed the space provided.
-@end deftypevr
-
-@deftypevr {Return code} {Punycode_status} {PUNYCODE_OVERFLOW}
-Input needs wider integers to process.
-@end deftypevr
-
 @section Unicode Code Point Data Type
 
 The punycode function uses a special type to denote Unicode code
@@ -1059,6 +987,10 @@ The functions provided are the following two entry points:
 
 @include texi/punycode_encode.texi
 @include texi/punycode_decode.texi
+
+@section Error Handling
+
+@include texi/punycode_strerror.texi
 
 @c **********************************************************
 @c ********************* IDNA Functions *********************
@@ -1086,63 +1018,6 @@ the file @file{idna.h} using:
 @example
 #include <idna.h>
 @end example
-
-@section Return Codes
-
-All functions return a exit code:
-
-@deftypevr {Return code} {Idna_rc} {IDNA_SUCCESS = 0}
-Successful operation.  This value is guaranteed to always be zero, the
-remaining ones are only guaranteed to hold non-zero values, for
-logical comparison purposes.
-@end deftypevr
-
-@deftypevr {Return code} {Idna_rc} IDNA_STRINGPREP_ERROR
-Error during string preparation.
-@end deftypevr
-
-@deftypevr {Return code} {Idna_rc} IDNA_PUNYCODE_ERROR
-Error during punycode operation.
-@end deftypevr
-
-@deftypevr {Return code} {Idna_rc} IDNA_CONTAINS_NON_LDH
-For IDNA_USE_STD3_ASCII_RULES, indicate that the string contains
-non-LDH ASCII characters.
-@end deftypevr
-
-@deftypevr {Return code} {Idna_rc} IDNA_CONTAINS_MINUS
-For IDNA_USE_STD3_ASCII_RULES, indicate that the string contains a
-leading or trailing hyphen-minus (U+002D).
-@end deftypevr
-
-@deftypevr {Return code} {Idna_rc} IDNA_INVALID_LENGTH
-The final output string is not within the (inclusive) range 1 to 63
-characters.
-@end deftypevr
-
-@deftypevr {Return code} {Idna_rc} IDNA_NO_ACE_PREFIX
-The string does not contain the ACE prefix (for ToUnicode).
-@end deftypevr
-
-@deftypevr {Return code} {Idna_rc} IDNA_ROUNDTRIP_VERIFY_ERROR
-The ToASCII operation on output string does not equal the input.
-@end deftypevr
-
-@deftypevr {Return code} {Idna_rc} IDNA_CONTAINS_ACE_PREFIX
-The input contains the ACE prefix (for ToASCII).
-@end deftypevr
-
-@deftypevr {Return code} {Idna_rc} IDNA_ICONV_ERROR
-Could not convert string in locale encoding.
-@end deftypevr
-
-@deftypevr {Return code} {Idna_rc} IDNA_MALLOC_ERROR
-Could not allocate buffer (this is typically a fatal error).
-@end deftypevr
-
-@deftypevr {Return code} {Idna_rc} IDNA_DLOPEN_ERROR
-Could not dlopen libcidn DSO (only used internally in libc).
-@end deftypevr
 
 @section Control Flags
 
@@ -1200,6 +1075,9 @@ The functions provided are the following entry points:
 @include texi/idna_to_unicode_8zlz.texi
 @include texi/idna_to_unicode_lzlz.texi
 
+@section Error Handling
+
+@include texi/idna_strerror.texi
 
 @c **********************************************************
 @c ********************** TLD Functions *********************
@@ -1239,36 +1117,6 @@ the file @file{tld.h} using:
 @example
 #include <tld.h>
 @end example
-
-@section Return Codes
-
-Most functions return a exit code:
-
-@deftypevr {Return code} {Tld_rc} {TLD_SUCCESS = 0}
-Successful operation.  This value is guaranteed to always be zero, the
-remaining ones are only guaranteed to hold non-zero values, for
-logical comparison purposes.
-@end deftypevr
-
-@deftypevr {Return code} {Tld_rc} TLD_INVALID
-Invalid character found.
-@end deftypevr
-
-@deftypevr {Return code} {Tld_rc} TLD_NODATA
-No input data was provided.
-@end deftypevr
-
-@deftypevr {Return code} {Tld_rc} TLD_MALLOC_ERROR
-Error during memory allocation.
-@end deftypevr
-
-@deftypevr {Return code} {Tld_rc} TLD_ICONV_ERROR
-Error during iconv string conversion.
-@end deftypevr
-
-@deftypevr {Return code} {Tld_rc} TLD_NOTLD
-No top-level domain found in domain string.
-@end deftypevr
 
 @c @section Data Types
 @c
@@ -1330,6 +1178,10 @@ No top-level domain found in domain string.
 @include texi/tld_check_8z.texi
 @include texi/tld_check_lz.texi
 
+@section Error Handling
+
+@include texi/tld_strerror.texi
+
 @c **********************************************************
 @c ********************** PR29 Functions ********************
 @c **********************************************************
@@ -1377,25 +1229,6 @@ the file @file{pr29.h} using:
 #include <pr29.h>
 @end example
 
-@section Return Codes
-
-Most functions return a exit code:
-
-@deftypevr {Return code} {Pr29_rc} {PR29_SUCCESS = 0}
-Successful operation.  This value is guaranteed to always be zero, the
-remaining ones are only guaranteed to hold non-zero values, for
-logical comparison purposes.
-@end deftypevr
-
-@deftypevr {Return code} {Pr29_rc} PR29_PROBLEM
-A problem sequence was encountered.
-@end deftypevr
-
-@deftypevr {Return code} {Pr29_rc} PR29_STRINGPREP_ERROR
-The character set conversion failed (only for @code{pr29_8} and
-@code{pr29_8z}).
-@end deftypevr
-
 @section Core Functions
 
 @include texi/pr29_4.texi
@@ -1404,6 +1237,10 @@ The character set conversion failed (only for @code{pr29_8} and
 
 @include texi/pr29_4z.texi
 @include texi/pr29_8z.texi
+
+@section Error Handling
+
+@include texi/pr29_strerror.texi
 
 @c **********************************************************
 @c ***********************  Examples  ***********************

@@ -20,18 +20,18 @@
  */
 
 #ifndef PR29_H
-#define PR29_H
+# define PR29_H
 
-#ifdef __cplusplus
+# ifdef __cplusplus
 extern "C"
 {
-#endif
+# endif
 
   /* Get size_t. */
-#include <stdlib.h>
+# include <stdlib.h>
 
   /* Get uint32_t. */
-#include <idn-int.h>
+# include <idn-int.h>
 
   /* Error codes. */
   typedef enum
@@ -41,11 +41,13 @@ extern "C"
       PR29_STRINGPREP_ERROR = 2   /* Charset conversion failed (p29_8*). */
     } Pr29_rc;
 
+  extern const char *pr29_strerror (Pr29_rc rc);
+
   extern int pr29_4 (const uint32_t *in, size_t len);
   extern int pr29_4z (const uint32_t *in);
   extern int pr29_8z (const char *in);
 
-#ifdef __cplusplus
+# ifdef __cplusplus
 }
-#endif
+# endif
 #endif				/* PR29_H */

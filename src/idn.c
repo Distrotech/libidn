@@ -148,9 +148,8 @@ main (int argc, char *argv[])
 	  free (p);
 	  if (rc != STRINGPREP_OK)
 	    {
-	      fprintf (stderr,
-		       _("%s: stringprep_profile() failed with error %d.\n"),
-		       argv[0], rc);
+	      fprintf (stderr, _("%s: stringprep_profile: %s\n"),
+		       argv[0], stringprep_strerror (rc));
 	      return 1;
 	    }
 
@@ -220,9 +219,8 @@ main (int argc, char *argv[])
 	  free (q);
 	  if (rc != PUNYCODE_SUCCESS)
 	    {
-	      fprintf (stderr,
-		       _("%s: punycode_encode() failed with error %d.\n"),
-		       argv[0], rc);
+	      fprintf (stderr, _("%s: punycode_encode: %s\n"),
+		       argv[0], punycode_strerror (rc));
 	      return 1;
 	    }
 
@@ -259,9 +257,8 @@ main (int argc, char *argv[])
 	  if (rc != PUNYCODE_SUCCESS)
 	    {
 	      free (q);
-	      fprintf (stderr,
-		       _("%s: punycode_decode() failed with error %d.\n"),
-		       argv[0], rc);
+	      fprintf (stderr, _("%s: punycode_decode: %s\n"),
+		       argv[0], punycode_strerror (rc));
 	      return 1;
 	    }
 
@@ -331,8 +328,8 @@ main (int argc, char *argv[])
 	  free (q);
 	  if (rc != IDNA_SUCCESS)
 	    {
-	      fprintf (stderr, _("%s: idna_to_ascii_4z() failed "
-				 "with error %d.\n"), argv[0], rc);
+	      fprintf (stderr, _("%s: idna_to_ascii_4z: %s\n"),
+		       argv[0], idna_strerror (rc));
 	      return 1;
 	    }
 
@@ -348,8 +345,8 @@ main (int argc, char *argv[])
 					  IDNA_USE_STD3_ASCII_RULES : 0));
 	      if (rc != IDNA_SUCCESS)
 		{
-		  fprintf (stderr, _("%s: TLD idna_to_unicode_8z8z() failed "
-				     "with error %d.\n"), argv[0], rc);
+		  fprintf (stderr, _("%s: idna_to_unicode_8z4z (TLD): %s\n"),
+			   argv[0], idna_strerror (rc));
 		  return 1;
 		}
 
@@ -363,17 +360,15 @@ main (int argc, char *argv[])
 	      rc = tld_check_4z (q, &errpos, NULL);
 	      if (rc == TLD_INVALID)
 		{
-		  fprintf (stderr, _("%s: string rejected by TLD test "
-				     "(Unicode position %d)\n"), argv[0],
-			   errpos);
+		  fprintf (stderr, _("%s: tld_check_4z (position %d): %s\n"),
+			   argv[0], errpos, tld_strerror (rc));
 		  free (q);
 		  return 1;
 		}
 	      if (rc != TLD_SUCCESS)
 		{
-		  fprintf (stderr,
-			   _("%s: tld_check_4z failed with error %d.\n"),
-			   argv[0], rc);
+		  fprintf (stderr, _("%s: tld_check_4z: %s\n"),
+			   argv[0], tld_strerror (rc));
 		  free (q);
 		  return 1;
 		}
@@ -430,8 +425,8 @@ main (int argc, char *argv[])
 	  free (p);
 	  if (rc != IDNA_SUCCESS)
 	    {
-	      fprintf (stderr, _("%s: idna_to_unicode_8z4z() "
-				 "failed with error %d.\n"), argv[0], rc);
+	      fprintf (stderr, _("%s: idna_to_unicode_8z4z: %s\n"),
+		       argv[0], idna_strerror (rc));
 	      return 1;
 	    }
 
@@ -450,17 +445,15 @@ main (int argc, char *argv[])
 	      rc = tld_check_4z (q, &errpos, NULL);
 	      if (rc == TLD_INVALID)
 		{
-		  fprintf (stderr, _("%s: string rejected by TLD test "
-				     "(Unicode position %d)\n"), argv[0],
-			   errpos);
+		  fprintf (stderr, _("%s: tld_check_4z (position %d): %s\n"),
+			   argv[0], errpos, tld_strerror (rc));
 		  free (q);
 		  return 1;
 		}
 	      if (rc != TLD_SUCCESS)
 		{
-		  fprintf (stderr,
-			   _("%s: tld_check_4z failed with error %d.\n"),
-			   argv[0], rc);
+		  fprintf (stderr, _("%s: tld_check_4z: %s\n"),
+			   argv[0], tld_strerror (rc));
 		  free (q);
 		  return 1;
 		}

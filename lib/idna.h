@@ -1,4 +1,4 @@
-/* idna.h	Declarations for IDNA.
+/* idna.h --- Declarations for Internationalized Domain Name in Applications.
  * Copyright (C) 2002, 2003, 2004  Simon Josefsson
  *
  * This file is part of GNU Libidn.
@@ -20,15 +20,15 @@
  */
 
 #ifndef _IDNA_H
-#define _IDNA_H
+# define _IDNA_H
 
-#ifdef __cplusplus
+# ifdef __cplusplus
 extern "C"
 {
-#endif
+# endif
 
-#include <stddef.h>		/* size_t */
-#include <idn-int.h>		/* uint32_t */
+# include <stddef.h>		/* size_t */
+# include <idn-int.h>		/* uint32_t */
 
   /* Error codes. */
   typedef enum
@@ -57,9 +57,11 @@ extern "C"
     IDNA_USE_STD3_ASCII_RULES = 0x0002
   } Idna_flags;
 
-#ifndef IDNA_ACE_PREFIX
-#define IDNA_ACE_PREFIX "xn--"
-#endif
+# ifndef IDNA_ACE_PREFIX
+#  define IDNA_ACE_PREFIX "xn--"
+# endif
+
+  extern const char *idna_strerror (Idna_rc rc);
 
   /* Core functions */
   extern int idna_to_ascii_4i (const uint32_t * in, size_t inlen,
@@ -92,7 +94,7 @@ extern "C"
   extern int idna_to_unicode_lzlz (const char *input,
 				   char **output, int flags);
 
-#ifdef __cplusplus
+# ifdef __cplusplus
 }
-#endif
-#endif				/* _PUNYCODE_H */
+# endif
+#endif /* _IDNA_H */

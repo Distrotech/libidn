@@ -1,5 +1,5 @@
-/* punycode.h	Declarations for punycode functions.
- * Copyright (C) 2002, 2003  Simon Josefsson
+/* punycode.h --- Declarations for punycode functions.
+ * Copyright (C) 2002, 2003, 2004  Simon Josefsson
  *
  * This file is part of GNU Libidn.
  *
@@ -85,6 +85,8 @@ extern "C"
     PUNYCODE_BIG_OUTPUT = punycode_big_output,
     PUNYCODE_OVERFLOW = punycode_overflow
   } Punycode_status;
+
+  extern const char *punycode_strerror (Punycode_status rc);
 
 /* punycode_uint needs to be unsigned and needs to be */
 /* at least 26 bits wide.                             */

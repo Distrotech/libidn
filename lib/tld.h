@@ -62,8 +62,12 @@ extern "C"
     TLD_NODATA = 2,		/* Char, domain or inlen = 0. */
     TLD_MALLOC_ERROR = 3,
     TLD_ICONV_ERROR = 4,
-    TLD_NOTLD = 5
+    TLD_NO_TLD = 5,
+    /* Workaround typo in earlier versions. */
+    TLD_NOTLD = TLD_NO_TLD
   } Tld_rc;
+
+  extern const char *tld_strerror (Tld_rc rc);
 
   /* Extract TLD, as ASCII string, of UCS4 domain name into "out". */
   int tld_get_4 (const uint32_t * in, size_t inlen, char **out);

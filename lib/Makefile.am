@@ -40,7 +40,9 @@ libidn_la_SOURCES = gunibreak.h gunicomp.h gunidecomp.h \
 	punycode.h punycode.c \
 	idna.h idna.c \
 	pr29.h pr29.c \
-	idn-free.h idn-free.c
+	idn-free.h idn-free.c \
+	strerror-idna.c strerror-pr29.c strerror-punycode.c \
+	strerror-stringprep.c strerror-tld.c
 if TLD
 libidn_la_SOURCES += tld.h tld.c tlds.c
 endif

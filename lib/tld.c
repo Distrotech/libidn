@@ -139,7 +139,7 @@ tld_get_4 (const uint32_t * in, size_t inlen, char **out)
       return TLD_SUCCESS;
     }
 
-  return TLD_NOTLD;
+  return TLD_NO_TLD;
 }
 
 /**
@@ -357,7 +357,7 @@ tld_check_4 (const uint32_t * in, size_t inlen, size_t * errpos,
 
   if (rc != TLD_SUCCESS)
     {
-      if (rc == TLD_NOTLD)	/* No TLD, say OK */
+      if (rc == TLD_NO_TLD)	/* No TLD, say OK */
 	return TLD_SUCCESS;
       else
 	return rc;
@@ -498,13 +498,13 @@ tld_check_lz (const char *in, size_t * errpos, const Tld_table ** overrides)
 /**
  * Tld_rc:
  * @TLD_SUCCESS: Successful operation.  This value is guaranteed to
- * always be zero, the remaining ones are only guaranteed to hold
- * non-zero values, for logical comparison purposes.
+ *   always be zero, the remaining ones are only guaranteed to hold
+ *   non-zero values, for logical comparison purposes.
  * @TLD_INVALID: Invalid character found.
  * @TLD_NODATA: No input data was provided.
  * @TLD_MALLOC_ERROR: Error during memory allocation.
  * @TLD_ICONV_ERROR: Error during iconv string conversion.
- * @TLD_NOTLD: No top-level domain found in domain string.
+ * @TLD_NO_TLD: No top-level domain found in domain string.
  *
  * Enumerated return codes of the TLD checking functions.
  * The value 0 is guaranteed to always correspond to success.

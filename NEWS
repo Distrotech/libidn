@@ -7,6 +7,17 @@ See the end for copying conditions.
 ** Now using Lesser GNULib for portability code.
 This means the code now use strdup, which improve readability.
 
+** Added functions to convert return codes to human readable text.
+
+** API and ABI is backwards compatible with the previous version.
+idna_strerror: ADD.
+pr29_strerror: ADD.
+punycode_strerror: ADD.
+stringprep_strerror: ADD.
+tld_strerror: ADD.
+TLD_NO_TLD: ADD.  Replaces TLD_NOTLD.
+TLD_NOTLD: DEPRECATED.  Use TLD_NO_TLD instead.
+
 * Version 0.5.5 (released 2004-09-13)
 
 ** Hide accidentally exported variable g_utf8_skip, by marking it as static.
