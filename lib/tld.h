@@ -82,7 +82,7 @@ extern "C"
 				      const Tld_table ** overrides);
 
   /* Check NAMEPREPPED domain name for valid characters as defined by
-   * the relevant registering body (plus [a-z0-9.-]), if error is
+   * the relevant registering body (plus [a-z0-9.-]).  If error is
    * TLD_INVALID, set errpos to position of offending character. */
   int tld_check_4t (const uint32_t * in, size_t inlen, size_t * errpos,
 		    const Tld_table * tld);
@@ -90,8 +90,8 @@ extern "C"
 		     const Tld_table * tld);
 
   /* Utility interfaces that uses tld_get_4* to find TLD of string,
-     then tld_default_table_* (with overrides) to find proper TLD
-     table for the string, and then hands over to tld_check_4t*. */
+     then tld_default_table (with overrides) to find proper TLD table
+     for the string, and then hands over to tld_check_4t*. */
   int tld_check_4 (const uint32_t * in, size_t inlen, size_t * errpos,
 		   const Tld_table ** overrides);
   int tld_check_4z (const uint32_t * in, size_t * errpos,
