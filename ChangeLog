@@ -6,6 +6,37 @@
 
 2005-03-19  Simon Josefsson <simon@josefsson.org>
 
+	* NEWS: Version 0.5.15.
+
+2005-03-19  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Fix.
+
+2005-03-19  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2005-03-19  Simon Josefsson <simon@josefsson.org>
+
+	* lib/iconvme.c: Sync with libc; fix license and fix arithmetic
+	overflow.
+
+2005-03-19  Simon Josefsson <simon@josefsson.org>
+
+	* lib/iconvme.h: Fix license.
+
+2005-03-19  Simon Josefsson <simon@josefsson.org>
+
+	* configure.ac, NEWS: Bump versions.
+
+2005-03-19  Simon Josefsson <simon@josefsson.org>
+
+	* po/da.po, po/de.po, po/eo.po, po/fr.po, po/it.po, po/nl.po,
+	po/pl.po, po/ro.po, po/sr.po, po/sv.po, po/vi.po, po/zh_CN.po:
+	Generated.
+
+2005-03-19  Simon Josefsson <simon@josefsson.org>
+
 	* NEWS: Version 0.5.14.
 
 2005-03-19  Simon Josefsson <simon@josefsson.org>
