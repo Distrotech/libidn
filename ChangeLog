@@ -1,3 +1,14 @@
+2002-11-06 07:15  Simon Josefsson <simon@josefsson.org>
+
+	* Makefile.am, NEWS, README, THANKS, config.rpath, configure.ac,
+	example.c, iconv.m4, libstringprep.pc.in, profiles.c,
+	stringprep.h.in, stringprep_generic.h, stringprep_kerberos5.h,
+	stringprep_nameprep.h, toutf8.c:
+
+	Add example.  Add toutf8.c.  Check if OS has locale functions.  Add
+	-R to pkg-config info file.  Moved profile variables to profile.c
+	from header files.  
+
 2002-11-05 12:53  Simon Josefsson <simon@josefsson.org>
 
 	* AUTHORS, COPYING, CaseFolding-3.2.0.txt,

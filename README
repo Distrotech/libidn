@@ -40,15 +40,15 @@ Function: extern char *stringprep_check_version (char *req_version);
 Libstringprep has at some point in time passed the self tests on the
 following systems, but no guarantees.
 
-  - alphaev67-dec-osf5.0 (Tru64 UNIX C, GNU make)
-  - i686-pc-linux-gnu (Debian Sid)
-  - i686-pc-linux-gnu (RedHat 7.2)
-  - mips-sgi-irix6.5 (MIPS C compiler, GNU make)
-  - rs6000-ibm-aix4.3.2.0 (GCC 2.9-aix43-000718, GNU make)
-  - rs6000-ibm-aix4.3.2.0 (IBM C for AIX compiler, GNU make)
+  - alphaev67-dec-osf5.0 (Tru64 UNIX C, Tru64 make -- iconv failed!)
+  - i686-pc-linux-gnu (Debian Sid, iconv ok)
+  - i686-pc-linux-gnu (RedHat 7.2, iconv ok)
+  - mips-sgi-irix6.5 (MIPS C compiler, IRIX make, iconv ok)
+  - rs6000-ibm-aix4.3.2.0 (GCC 2.9-aix43-000718, GNU make, iconv failed!)
+  - rs6000-ibm-aix4.3.2.0 (IBM C for AIX compiler, AIX make, iconv failed!)
   - sparc-sun-solaris2.6 (Sun WorkShop Compiler C 5.0, non-GNU make)
-  - sparc-sun-solaris2.8 (Sun WorkShop Compiler C 6.0U2, SUN make)
-  - sparc-sun-solaris2.8 (GCC 3.1, GNU make)
+  - sparc-sun-solaris2.8 (Sun WorkShop Compiler C 6.0U2, SUN make, iconv ok)
+  - sparc-sun-solaris2.8 (GCC 3.1, GNU make, iconv ok)
 
 Libstringprep is unstable and in its early steps of development.  You
 should expect it to not work as well as having security problems.
