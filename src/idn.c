@@ -110,6 +110,7 @@ main (int argc, char *argv[])
 	    }
 
 	  p = stringprep_utf8_to_locale (r);
+	  free (r);
 	  if (!p)
 	    {
 	      fprintf (stderr, "%s: could not convert from UTF-8 to %s.\n",
@@ -152,6 +153,7 @@ main (int argc, char *argv[])
 
 	  len2 = BUFSIZ;
 	  rc = punycode_encode (len, q, NULL, &len2, readbuf);
+	  free (q);
 	  if (rc != PUNYCODE_SUCCESS)
 	    {
 	      fprintf (stderr,
@@ -188,6 +190,7 @@ main (int argc, char *argv[])
 	      return 1;
 
 	    }
+
 	  rc = punycode_decode (strlen (readbuf), readbuf, &len, q, NULL);
 	  if (rc != PUNYCODE_SUCCESS)
 	    {
@@ -207,9 +210,9 @@ main (int argc, char *argv[])
 
 	  q[len] = 0;
 	  p = stringprep_ucs4_to_utf8 (q, -1, NULL, NULL);
+	  free (q);
 	  if (!p)
 	    {
-	      free (q);
 	      fprintf (stderr, "%s: could not convert from UCS-4 to UTF-8.\n",
 		       argv[0]);
 	      return 1;
@@ -240,13 +243,14 @@ main (int argc, char *argv[])
 	    }
 
 	  q = stringprep_utf8_to_ucs4 (p, -1, NULL);
+	  free (p);
 	  if (!q)
 	    {
-	      free (p);
 	      fprintf (stderr, "%s: could not convert from UCS-4 to UTF-8.\n",
 		       argv[0]);
 	      return 1;
 	    }
+
 	  if (args_info.debug_given)
 	    {
 	      size_t i;
@@ -289,6 +293,7 @@ main (int argc, char *argv[])
 		       argv[0]);
 	      return 1;
 	    }
+
 	  if (args_info.debug_given)
 	    {
 	      size_t i;
@@ -318,9 +323,9 @@ main (int argc, char *argv[])
 	    }
 
 	  p = stringprep_ucs4_to_utf8 (q, -1, NULL, NULL);
+	  free (q);
 	  if (!p)
 	    {
-	      free (q);
 	      fprintf (stderr, "%s: could not convert from UCS-4 to UTF-8.\n",
 		       argv[0]);
 	      return 1;
