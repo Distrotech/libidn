@@ -1,5 +1,5 @@
 ## Process this file with automake to produce Makefile.in
-# Copyright (C) 2002, 2003 Simon Josefsson.
+# Copyright (C) 2002, 2003, 2004 Simon Josefsson.
 #
 # This file is part of GNU Libidn.
 #
@@ -20,7 +20,7 @@
 AM_CPPFLAGS = -I$(top_srcdir)/lib -I../lib
 LDADD = ../lib/libidn.la
 
-TESTS = tst_stringprep tst_punycode tst_idna tst_idna2 tst_nfkc
+TESTS = tst_stringprep tst_punycode tst_idna tst_idna2 tst_nfkc tst_tld
 check_PROGRAMS = $(TESTS)
 
 # Maintainer targets
