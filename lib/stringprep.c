@@ -89,6 +89,145 @@ stringprep_apply_table_to_string (uint32_t * ucs4,
   ((!INVERTED(profileflags) && !(profileflags & flags) && profileflags) || \
    ( INVERTED(profileflags) && (profileflags & flags)))
 
+int
+stringprep1 (uint32_t *ucs4, size_t *len, size_t maxucs4len,
+	     Stringprep_profile_flags flags, Stringprep_profile * profile)
+{
+  size_t i, j;
+  ssize_t k;
+  int rc;
+  size_t ucs4len = *len;
+
+  for (i = 0; profile[i].operation; i++)
+    {
+      switch (profile[i].operation)
+	{
+	case STRINGPREP_NFKC:
+	  {
+	    uint32_t *q = 0;
+
+	    if (UNAPPLICAPLEFLAGS (flags, profile[i].flags))
+	      break;
+
+	    if (flags & STRINGPREP_NO_NFKC && !profile[i].flags)
+	      /* Profile requires NFKC, but callee asked for no NFKC. */
+	      return STRINGPREP_FLAG_ERROR;
+
+	    q = stringprep_ucs4_nfkc_normalize (ucs4, ucs4len);
+	    if (!q)
+	      return STRINGPREP_NFKC_FAILED;
+
+	    for (ucs4len = 0; q[ucs4len]; ucs4len++)
+	      ;
+
+	    if (ucs4len >= maxucs4len)
+	      {
+		free (q);
+		return STRINGPREP_TOO_SMALL_BUFFER;
+	      }
+
+	    memcpy (ucs4, q, ucs4len * sizeof (ucs4[0]));
+	    ucs4[ucs4len] = 0;
+
+	    free (q);
+	  }
+	  break;
+
+	case STRINGPREP_PROHIBIT_TABLE:
+	  k = stringprep_find_string_in_table (ucs4, ucs4len,
+					       NULL, profile[i].table);
+	  if (k != -1)
+	    return STRINGPREP_CONTAINS_PROHIBITED;
+	  break;
+
+	case STRINGPREP_UNASSIGNED_TABLE:
+	  if (UNAPPLICAPLEFLAGS (flags, profile[i].flags))
+	    break;
+	  if (flags & STRINGPREP_NO_UNASSIGNED)
+	    {
+	      k = stringprep_find_string_in_table
+		(ucs4, ucs4len, NULL, profile[i].table);
+	      if (k != -1)
+		return STRINGPREP_CONTAINS_UNASSIGNED;
+	    }
+	  break;
+
+	case STRINGPREP_MAP_TABLE:
+	  if (UNAPPLICAPLEFLAGS (flags, profile[i].flags))
+	    break;
+	  rc = stringprep_apply_table_to_string
+	    (ucs4, &ucs4len, maxucs4len, profile[i].table, profile[i].name);
+	  if (rc != STRINGPREP_OK)
+	    return rc;
+	  break;
+
+	case STRINGPREP_BIDI_PROHIBIT_TABLE:
+	case STRINGPREP_BIDI_RAL_TABLE:
+	case STRINGPREP_BIDI_L_TABLE:
+	  break;
+
+	case STRINGPREP_BIDI:
+	  {
+	    int done_prohibited = 0;
+	    int done_ral = 0;
+	    int done_l = 0;
+	    int contains_ral = -1;
+	    int contains_l = -1;
+
+	    for (j = 0; profile[j].operation; j++)
+	      if (profile[j].operation == STRINGPREP_BIDI_PROHIBIT_TABLE)
+		{
+		  done_prohibited = 1;
+		  k = stringprep_find_string_in_table (ucs4, ucs4len,
+						       NULL,
+						       profile[j].table);
+		  if (k != -1)
+		    return STRINGPREP_BIDI_CONTAINS_PROHIBITED;
+		}
+	      else if (profile[j].operation == STRINGPREP_BIDI_RAL_TABLE)
+		{
+		  done_ral = 1;
+		  if (stringprep_find_string_in_table
+		      (ucs4, ucs4len, NULL, profile[j].table) != -1)
+		    contains_ral = j;
+		}
+	      else if (profile[j].operation == STRINGPREP_BIDI_L_TABLE)
+		{
+		  done_l = 1;
+		  if (stringprep_find_string_in_table
+		      (ucs4, ucs4len, NULL, profile[j].table) != -1)
+		    contains_l = j;
+		}
+
+	    if (!done_prohibited || !done_ral || !done_l)
+	      return STRINGPREP_PROFILE_ERROR;
+
+	    if (contains_ral != -1 && contains_l != -1)
+	      return STRINGPREP_BIDI_BOTH_L_AND_RAL;
+
+	    if (contains_ral != -1)
+	      {
+		if (!(stringprep_find_character_in_table
+		      (ucs4[0], profile[contains_ral].table) != -1 &&
+		      stringprep_find_character_in_table
+		      (ucs4[ucs4len - 1], profile[contains_ral].table) != -1))
+		  return STRINGPREP_BIDI_LEADTRAIL_NOT_RAL;
+	      }
+	  }
+	  break;
+
+	default:
+	  return STRINGPREP_PROFILE_ERROR;
+	  break;
+	}
+    }
+
+  ucs4[ucs4len] = 0;
+  *len = ucs4len;
+
+  return STRINGPREP_OK;
+}
+
 /**
  * stringprep:
  * @in: input/ouput array with string to prepare.
@@ -121,8 +260,7 @@ stringprep (char *in,
   size_t i, j;
   ssize_t k;
   int rc;
-  char *p = 0;
-  uint32_t *q = 0;
+  char *utf8 = NULL;
   uint32_t *ucs4;
   size_t ucs4len, maxucs4len;
 
@@ -135,165 +273,24 @@ stringprep (char *in,
       goto done;
     }
 
-  for (i = 0; profile[i].operation; i++)
-    {
-      switch (profile[i].operation)
-	{
-	case STRINGPREP_NFKC:
-	  if (UNAPPLICAPLEFLAGS (flags, profile[i].flags))
-	    {
-	      break;
-	    }
+  rc = stringprep1 (ucs4, &ucs4len, maxucs4len, flags, profile);
+  if (rc != STRINGPREP_OK)
+    goto done;
 
-	  if (flags & STRINGPREP_NO_NFKC && !profile[i].flags)
-	    {
-	      /* Profile requires NFKC, but callee asked for no NFKC. */
-	      rc = STRINGPREP_FLAG_ERROR;
-	      goto done;
-	    }
-
-	  q = stringprep_ucs4_nfkc_normalize (ucs4, ucs4len);
-
-	  if (!q)
-	    {
-	      rc = STRINGPREP_NFKC_FAILED;
-	      goto done;
-	    }
-
-	  for (j = 0; q[j]; j++)
-	    ;
-
-	  free (ucs4);
-	  ucs4 = q;
-	  ucs4len = j;
-	  q = 0;
-	  break;
-
-	case STRINGPREP_PROHIBIT_TABLE:
-	  k = stringprep_find_string_in_table (ucs4, ucs4len,
-					       NULL, profile[i].table);
-	  if (k != -1)
-	    {
-	      rc = STRINGPREP_CONTAINS_PROHIBITED;
-	      goto done;
-	    }
-	  break;
-
-	case STRINGPREP_UNASSIGNED_TABLE:
-	  if (UNAPPLICAPLEFLAGS (flags, profile[i].flags))
-	    break;
-	  if (flags & STRINGPREP_NO_UNASSIGNED)
-	    {
-	      k = stringprep_find_string_in_table
-		(ucs4, ucs4len, NULL, profile[i].table);
-	      if (k != -1)
-		{
-		  rc = STRINGPREP_CONTAINS_UNASSIGNED;
-		  goto done;
-		}
-	    }
-	  break;
-
-	case STRINGPREP_MAP_TABLE:
-	  if (UNAPPLICAPLEFLAGS (flags, profile[i].flags))
-	    break;
-	  rc = stringprep_apply_table_to_string
-	    (ucs4, &ucs4len, maxucs4len, profile[i].table, profile[i].name);
-	  if (rc != STRINGPREP_OK)
-	    goto done;
-	  break;
-
-	case STRINGPREP_BIDI_PROHIBIT_TABLE:
-	case STRINGPREP_BIDI_RAL_TABLE:
-	case STRINGPREP_BIDI_L_TABLE:
-	  break;
-
-	case STRINGPREP_BIDI:
-	  {
-	    int done_prohibited = 0;
-	    int done_ral = 0;
-	    int done_l = 0;
-	    int contains_ral = -1;
-	    int contains_l = -1;
-
-	    for (j = 0; profile[j].operation; j++)
-	      if (profile[j].operation == STRINGPREP_BIDI_PROHIBIT_TABLE)
-		{
-		  done_prohibited = 1;
-		  k = stringprep_find_string_in_table (ucs4, ucs4len,
-						       NULL,
-						       profile[j].table);
-		  if (k != -1)
-		    {
-		      rc = STRINGPREP_BIDI_CONTAINS_PROHIBITED;
-		      goto done;
-		    }
-		}
-	      else if (profile[j].operation == STRINGPREP_BIDI_RAL_TABLE)
-		{
-		  done_ral = 1;
-		  if (stringprep_find_string_in_table
-		      (ucs4, ucs4len, NULL, profile[j].table) != -1)
-		    contains_ral = j;
-		}
-	      else if (profile[j].operation == STRINGPREP_BIDI_L_TABLE)
-		{
-		  done_l = 1;
-		  if (stringprep_find_string_in_table
-		      (ucs4, ucs4len, NULL, profile[j].table) != -1)
-		    contains_l = j;
-		}
-
-	    if (!done_prohibited || !done_ral || !done_l)
-	      {
-		rc = STRINGPREP_PROFILE_ERROR;
-		goto done;
-	      }
-
-	    if (contains_ral != -1 && contains_l != -1)
-	      {
-		rc = STRINGPREP_BIDI_BOTH_L_AND_RAL;
-		goto done;
-	      }
-
-	    if (contains_ral != -1)
-	      {
-		if (!(stringprep_find_character_in_table
-		      (ucs4[0], profile[contains_ral].table) != -1 &&
-		      stringprep_find_character_in_table
-		      (ucs4[ucs4len - 1], profile[contains_ral].table) != -1))
-		  {
-		    rc = STRINGPREP_BIDI_LEADTRAIL_NOT_RAL;
-		    goto done;
-		  }
-	      }
-	  }
-	  break;
-
-	default:
-	  rc = STRINGPREP_PROFILE_ERROR;
-	  goto done;
-	  break;
-	}
-    }
-
-  p = stringprep_ucs4_to_utf8 (ucs4, ucs4len, 0, 0);
-
-  if (strlen (p) >= maxlen)
+  utf8 = stringprep_ucs4_to_utf8 (ucs4, -1, 0, 0);
+  if (strlen (utf8) >= maxlen)
     {
       rc = STRINGPREP_TOO_SMALL_BUFFER;
       goto done;
     }
 
-  strcpy (in, p);		/* flawfinder: ignore */
+  strcpy (in, utf8);		/* flawfinder: ignore */
 
   rc = STRINGPREP_OK;
 
-done:
-  if (p)
-    free (p);
-  if (q)
-    free (q);
+ done:
+  if (utf8)
+    free (utf8);
   if (ucs4)
     free (ucs4);
   return rc;
