@@ -1,3 +1,77 @@
+2004-11-21  Simon Josefsson <simon@josefsson.org>
+
+	* po/da.po, po/de.po, po/eo.po, po/fr.po, po/nl.po, po/pl.po,
+	po/ro.po, po/sr.po, po/sv.po: Sync with TP.
+
+2004-11-21  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Version 0.5.11.
+
+2004-11-21  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2004-11-21  Simon Josefsson <simon@josefsson.org>
+
+	* doc/gdoc: Add 'DO NOT MODIFY' warning to generated man pages.
+
+2004-11-21  Simon Josefsson <simon@josefsson.org>
+
+	* THANKS: Add.
+
+2004-11-21  Simon Josefsson <simon@josefsson.org>
+
+	* lib/idna.c: Doc fix.
+
+2004-11-21  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2004-11-21  Simon Josefsson <simon@josefsson.org>
+
+	* lib/toutf8.c, lib/nfkc.c, lib/strerror-punycode.c: Doc fix.
+
+2004-11-21  Simon Josefsson <simon@josefsson.org>
+
+	* lib/idna.c, lib/strerror-idna.c, lib/strerror-stringprep.c,
+	lib/stringprep.c, lib/version.c: Doc fix.
+
+2004-11-21  Simon Josefsson <simon@josefsson.org>
+
+	* lib/strerror-tld.c, lib/tld.c, lib/strerror-pr29.c, lib/pr29.c:
+	Doc fix.
+
+2004-11-21  Simon Josefsson <simon@josefsson.org>
+
+	* doc/gdoc: For man pages, don't use line breaking formatting codes
+	("\n.I foo\n") but rather inline commands ("\fIfoo\fP").
+
+2004-11-21  Simon Josefsson <simon@josefsson.org>
+
+	* lib/punycode.c: Doc fix.
+
+2004-11-21  Simon Josefsson <simon@josefsson.org>
+
+	* doc/gdoc: Skip leading whitespace in function purpose.  Print
+	function purpose in man pages, if available.
+
+2004-11-21  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2004-11-21  Simon Josefsson <simon@josefsson.org>
+
+	* gl/getopt.c, gl/getopt1.c, gl/getopt_.h, gl/getopt_int.h,
+	gl/m4/getopt.m4: Update.
+
+2004-11-16  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS, configure.ac: Bump versions.
+
+2004-11-08  Simon Josefsson <simon@josefsson.org>
+
+	* libidn.fms: Fix.
+
 2004-11-08  Simon Josefsson <simon@josefsson.org>
 
 	* po/da.po, po/de.po, po/eo.po, po/fr.po, po/nl.po, po/pl.po,
