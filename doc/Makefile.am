@@ -17,7 +17,7 @@
 # License along with GNU Libidn; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
 
-SUBDIRS = specifications tld
+SUBDIRS = specifications tld java
 if ENABLE_GTK_DOC
 SUBDIRS += reference
 endif
