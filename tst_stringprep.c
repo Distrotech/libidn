@@ -354,10 +354,8 @@ strprep[] =
       STRINGPREP_CONTAINS_PROHIBITED},
   { "XMPP resource profile on same string should work though",
     "foo@bar", "foo@bar", stringprep_xmpp_resourceprep},
-  { "XMPP node profile output",
-    "\xC2\xAA", "\x61", stringprep_xmpp_nodeprep},
-  { "XMPP resource profile output",
-    "\xC2\xAA", "\x61", stringprep_xmpp_nodeprep}
+  { "SASL ANONYMOUS plain mechanism",
+    "simon@josefsson.org", "simon@josefsson.org", stringprep_plain}
 #endif
 };
 
