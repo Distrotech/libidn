@@ -1,5 +1,5 @@
 /* tst_nfkc.c	Self tests for stringprep_utf8_nfkc_normalize().
- * Copyright (C) 2002, 2003  Simon Josefsson
+ * Copyright (C) 2002, 2003, 2004  Simon Josefsson
  *
  * This file is part of GNU Libidn.
  *
@@ -48,72 +48,74 @@ fail (const char *format, ...)
 }
 
 static void
-escapeprint (char *str, int len)
+escapeprint (const char *str, int len)
 {
   int i;
 
-  printf ("\t ;; `");
+  printf (" (length %d bytes):\n\t", len);
   for (i = 0; i < len; i++)
     {
-      str[i] = str[i] & 0xFF;
-      if ((str[i] >= 'A' && str[i] <= 'Z') ||
-	  (str[i] >= 'a' && str[i] <= 'z') ||
-	  (str[i] >= '0' && str[i] <= '9') || str[i] == '.')
-	printf ("%c", str[i]);
+      if (((str[i] & 0xFF) >= 'A' && (str[i] & 0xFF) <= 'Z') ||
+	  ((str[i] & 0xFF) >= 'a' && (str[i] & 0xFF) <= 'z') ||
+	  ((str[i] & 0xFF) >= '0' && (str[i] & 0xFF) <= '9')
+	  || (str[i] & 0xFF) == ' ' || (str[i] & 0xFF) == '.')
+	printf ("%c", (str[i] & 0xFF));
       else
-	printf ("\\x%02x", str[i]);
+	printf ("\\x%02X", (str[i] & 0xFF));
+      if ((i + 1) % 16 == 0 && (i + 1) < len)
+	printf ("'\n\t'");
     }
-  printf ("' (length %d bytes)\n", len);
+  printf ("\n");
 }
 
 static void
-hexprint (char *str, int len)
+hexprint (const char *str, int len)
 {
   int i;
 
-  printf ("\t ;; ");
+  printf ("\t;; ");
   for (i = 0; i < len; i++)
     {
-      str[i] = str[i] & 0xFF;
-      printf ("%02x ", str[i]);
+      printf ("%02x ", (str[i] & 0xFF));
       if ((i + 1) % 8 == 0)
 	printf (" ");
       if ((i + 1) % 16 == 0 && i + 1 < len)
-	printf ("\n\t ;; ");
+	printf ("\n\t;; ");
     }
+  printf ("\n");
 }
 
 static void
-binprint (char *str, int len)
+binprint (const char *str, int len)
 {
   int i;
 
-  printf ("\t ;; ");
+  printf ("\t;; ");
   for (i = 0; i < len; i++)
     {
-      str[i] = str[i] & 0xFF;
       printf ("%d%d%d%d%d%d%d%d ",
-	      str[i] & 0x80 ? 1 : 0,
-	      str[i] & 0x40 ? 1 : 0,
-	      str[i] & 0x20 ? 1 : 0,
-	      str[i] & 0x10 ? 1 : 0,
-	      str[i] & 0x08 ? 1 : 0,
-	      str[i] & 0x04 ? 1 : 0,
-	      str[i] & 0x02 ? 1 : 0, str[i] & 0x01 ? 1 : 0);
+	      (str[i] & 0xFF) & 0x80 ? 1 : 0,
+	      (str[i] & 0xFF) & 0x40 ? 1 : 0,
+	      (str[i] & 0xFF) & 0x20 ? 1 : 0,
+	      (str[i] & 0xFF) & 0x10 ? 1 : 0,
+	      (str[i] & 0xFF) & 0x08 ? 1 : 0,
+	      (str[i] & 0xFF) & 0x04 ? 1 : 0,
+	      (str[i] & 0xFF) & 0x02 ? 1 : 0, (str[i] & 0xFF) & 0x01 ? 1 : 0);
       if ((i + 1) % 3 == 0)
 	printf (" ");
       if ((i + 1) % 6 == 0 && i + 1 < len)
-	printf ("\n\t ;; ");
+	printf ("\n\t;; ");
     }
+  printf ("\n");
 }
 
 struct nfkc
 {
-  char *in;
-  char *out;
+  const char *in;
+  const char *out;
 };
 
-const struct nfkc nfkc[] = {
+static struct nfkc nfkc[] = {
   {"\xC2\xB5", "\xCE\xBC"},
   {"\xC2\xAA", "\x61"}
 };
