@@ -178,7 +178,7 @@ adapt (punycode_uint delta, punycode_uint numpoints, int firsttime)
  *               not punycode_success, then output_size and output
  *               might contain garbage.
  **/
-enum punycode_status
+int
 punycode_encode (size_t input_length,
 		 const punycode_uint input[],
 		 const unsigned char case_flags[],
@@ -314,7 +314,7 @@ punycode_encode (size_t input_length,
  *               because of how the encoding is defined.
  *
  **/
-enum punycode_status
+int
 punycode_decode (size_t input_length,
 		 const char input[],
 		 size_t * output_length,
