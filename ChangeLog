@@ -1,3 +1,79 @@
+2002-11-30 16:16  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS, configure.ac:
+
+	Release 0.0.3.  
+
+2002-11-30 16:14  Simon Josefsson <simon@josefsson.org>
+
+	* Makefile.am, configure.ac, strdup.c:
+
+	Add replacement strdup.c for system's without it.  Increment shared
+	library version.  Trim autoconf tests.  
+
+2002-11-30 16:11  Simon Josefsson <simon@josefsson.org>
+
+	* README:
+
+	Added copying conditions.  Added more API documentation.  
+
+2002-11-30 16:10  Simon Josefsson <simon@josefsson.org>
+
+	* THANKS:
+
+	Add copying conditions.  
+
+2002-11-30 16:10  Simon Josefsson <simon@josefsson.org>
+
+	* AUTHORS:
+
+	Add copying conditions and public key.  
+
+2002-11-30 15:52  Simon Josefsson <simon@josefsson.org>
+
+	* Makefile.am, example.c, nfkc.c, stringprep.h.in,
+	tst_stringprep.c:
+
+	Export stringprep_utf8_to_unichar.  
+	
+	Rename stringprep_utf8_to_ucs4_fast to stringprep_utf8_to_ucs4 to 
+	clean up API (old entry maintained for binary backwards
+	compatibility though).  
+	
+	Indent.  
+	
+	Add sign make target.  
+
+2002-11-29 04:03  Simon Josefsson <simon@josefsson.org>
+
+	* nfkc.c, profiles.c, toutf8.c:
+
+	indent 
+
+2002-11-29 04:02  Simon Josefsson <simon@josefsson.org>
+
+	* stringprep.c:
+
+	improve debugging output 
+
+2002-11-14 09:55  Simon Josefsson <simon@josefsson.org>
+
+	* configure.ac:
+
+	AC_PROG_RANLIB obsoleted by libtool.  
+
+2002-11-07 06:55  Simon Josefsson <simon@josefsson.org>
+
+	* example.c:
+
+	improve comment 
+
+2002-11-07 06:50  Simon Josefsson <simon@josefsson.org>
+
+	* Makefile.am:
+
+	add dependency 
+
 2002-11-07 04:28  Simon Josefsson <simon@josefsson.org>
 
 	* NEWS, configure.ac:
