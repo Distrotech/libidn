@@ -18,11 +18,11 @@ Copyright @copyright{} 2002, 2003 Simon Josefsson.
 @quotation
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.1 or
-any later version published by the Free Software Foundation; with no
-Invariant Sections, with the Front-Cover Texts being ``A GNU Manual,''
-and with the Back-Cover Texts as in (a) below.  A copy of the
-license is included in the section entitled ``GNU Free Documentation
-License.''
+any later version published by the Free Software Foundation; with the
+Invariant Sections including ``Commercial Support'', with the
+Front-Cover Texts being ``A GNU Manual,'' and with the Back-Cover
+Texts as in (a) below.  A copy of the license is included in the
+section entitled ``GNU Free Documentation License.''
 
 (a) The FSF's Back-Cover Text is: ``You have freedom to copy and modify
 this GNU Manual, like GNU software.  Copies published by the Free
@@ -123,7 +123,10 @@ C++, Emacs Lisp, Python and Java.
 * Getting Started::
 * Features::
 * Supported Platforms::
+* Commercial Support::
+* Downloading and Installing::
 * Bug Reports::
+* Contributing::
 @end menu
 
 @node Getting Started
@@ -293,6 +296,73 @@ GCC 3.1 and GNU Make. @code{powerpc-apple-darwin6.5}.
 If you use Libidn on, or port Libidn to, a new platform please report
 it to the author.
 
+@node Commercial Support
+@section Commercial Support
+
+Commercial support is available for users of GNU Libidn.  Examples of
+what kind of support can be purchased include:
+
+@itemize
+
+@item Implement new features
+Such as country code specific profiling to support a restricted subset
+of Unicode.
+
+@item Port Libidn to new platforms
+This could include porting Libidn to an embedded platforms that may
+need memory or size optimization.
+
+@item Remote helpdesk support for programming API questions.
+
+@end itemize
+
+If you are interested, please write to:
+
+@verbatim
+Simon Josefsson Datakonsult
+Drottningholmsv. 70
+112 42 Stockholm
+Sweden
+
+E-mail: simon@josefsson.org
+@end verbatim
+
+If your company provide support related to GNU Libidn and would like
+to be mentioned here, contact the author (@pxref{Bug Reports}).
+
+@node Downloading and Installing
+@section Downloading and Installing
+@cindex Installation
+@cindex Download
+
+The package can be downloaded from several places, including
+@url{http://josefsson.org/libidn/releases/}.  The latest version is
+stored in a file, e.g., @samp{libidn-0.3.42.tar.gz} where the
+@samp{0.3.42} indicate the highest version number.
+
+The package is then extracted, configured and built like many other
+packages that use Autoconf.  For detailed information on configuring
+and building it, refer to the @file{INSTALL} file that is part of the
+distribution archive.
+
+Here is an example terminal session that download, configure, build
+and install the package.  You will need a few basic tools, such as
+@samp{sh}, @samp{make} and @samp{cc}.
+
+@example
+$ wget -q http://josefsson.org/libidn/releases/libidn-0.3.1.tar.gz
+$ tar xfz libidn-0.3.1.tar.gz
+$ cd libidn-0.3.1/
+$ ./configure
+...
+$ make
+...
+$ make install
+...
+@end example
+
+After that Libidn should be properly installed and ready for use.
+
 @node Bug Reports
 @section Bug Reports
 @cindex Reporting Bugs
@@ -335,6 +405,61 @@ Send your bug report to:
 @center @samp{bug-libidn@@gnu.org}
 
 
+@node Contributing
+@section Contributing
+@cindex Contributing
+@cindex Hacking
+
+If you want to submit a patch for inclusion -- from solve a typo you
+discovered, up to adding support for a new feature -- you should
+submit it as a bug report (@pxref{Bug Reports}).  There are some
+things that you can do to increase the chances for it to be included
+in the official package.
+
+Unless your patch is very small (say, under 10 lines) we require that
+you assign the copyright of your work to the Free Software Foundation.
+This is to protect the freedom of the project.  If you have not
+already signed papers, we will send you the necessary information when
+you submit your contribution.
+
+For contributions that doesn't consist of actual programming code, the
+only guidelines are common sense.  Use it.
+
+For code contributions, a number of style guides will help you:
+
+@itemize @bullet
+
+@item Coding Style.
+Follow the GNU Standards document (@pxref{top, GNU Coding Standards,,
+standards}).
+
+If you normally code using another coding standard, there is no
+problem, but you should use @samp{indent} to reformat the code
+(@pxref{top, GNU Indent,, indent}) before submitting your work.
+
+@item Use the unified diff format @samp{diff -u}.
+
+@item Return errors.
+No reason whatsoever should abort the execution of the library.  Even
+memory allocation errors, e.g. when malloc return NULL, should work
+although result in an error code.
+
+@item Design with thread safety in mind.
+Don't use global variables and the like.
+
+@item Avoid using the C math library.
+It causes problems for embedded implementations, and in most
+situations it is very easy to avoid using it.
+
+@item Document your functions.
+Use comments before each function headers, that, if properly
+formatted, are extracted into GTK-DOC web pages.  Don't forget to
+update the Texinfo manual as well.
+
+@item Supply a ChangeLog and NEWS entries, where appropriate.
+
+@end itemize
+
 @c **********************************************************
 @c *******************  Preparation  ************************
 @c **********************************************************
@@ -356,6 +481,7 @@ A faster way to find out how to adapt your application for use with
 * Initialization::
 * Version Check::
 * Building the source::
+* Autoconf tests::
 @end menu
 
 @node Header
@@ -499,6 +625,69 @@ specifying both options to @command{pkg-config}:
 
 @example
 gcc -o foo foo.c `pkg-config libidn --cflags --libs`
+@end example
+
+@node Autoconf tests
+@section Autoconf tests
+@cindex Autoconf tests
+@cindex Configure tests
+
+If you work on a project that uses Autoconf (@pxref{top, GNU
+Autoconf,, autoconf}) to help find installed libraries, the
+suggestions in the previous section are not the entire story.  There
+are a few methods to detect and incorporate Libidn into your Autoconf
+based package.
+
+@subsubsection Autoconf test via @samp{pkg-config}
+
+If your audience is a typical GNU/Linux desktop, you can often assume
+they have the @samp{pkg-config} tool installed, in which you can use
+its Autoconf M4 macro to find and set up your package for use with
+Shishi.  The following illustrate this scenario.
+
+@example
+AC_ARG_ENABLE(idn,
+	AC_HELP_STRING([--disable-idn],
+                       [Don't use Libidn]),
+	libidn=$enableval)
+if test "$libidn" != "no" ; then
+	PKG_CHECK_MODULES(LIBIDN, libidn >= 0.0.0,
+			[libidn=yes],
+                        [libidn=no])
+	if test "$libidn" != "yes" ; then
+		libidn=no
+		AC_MSG_WARN([Libidn not found])
+	else
+		libidn=yes
+		AC_DEFINE(USE_LIBIDN, 1, [Define to 1 if you want Libidn.])
+	fi
+fi
+AC_MSG_CHECKING([if Libidn should be used])
+AC_MSG_RESULT($libidn)
+@end example
+
+@subsubsection Standalone Autoconf test
+
+The following illustrate a standalone autconf test, that work
+regardless of if your project Libtool (@pxref{top, GNU Libtool,,
+libtool}) or not.  It is the most portable solution, and is
+recommended.
+
+@example
+AC_CHECK_HEADER(idna.h,
+	AC_CHECK_LIB(idn, stringprep_check_version,
+		[libidn=yes AC_SUBST(SHISHI_LIBS, -lidn)],
+		libidn=no),
+	kerberos5=no)
+AC_ARG_ENABLE(idn, AC_HELP_STRING([--disable-idn], [Don't use Libidn]),
+	libidn=$enableval)
+if test "$libidn" != "no" ; then
+	AC_DEFINE(USE_LIBIDN, 1, [Define to 1 if you want Libidn.])
+else
+	AC_MSG_WARN([Libidn not found])
+fi
+AC_MSG_CHECKING([if Libidn should be used])
+AC_MSG_RESULT($libidn)
 @end example
 
 @c **********************************************************
