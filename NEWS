@@ -2,7 +2,18 @@ Libidn NEWS -- History of user-visible changes.                 -*- outline -*-
 Copyright (C) 2002, 2003, 2004 Simon Josefsson
 See the end for copying conditions.
 
-* Version 0.3.8 (unreleased)
+* Version 0.4.0 (unreleased)
+
+** Support for TLD restrictions on IDN strings, contributed by Thomas Jacob.
+Many TLDs restrict the set of characters that can be used, from the
+full Unicode 3.2 range that is normally available.  This contribution
+make it possible for you to test strings for TLD conformance locally.
+The code can be disabled by --disable-tld.  If enabled (the default),
+the new API "tld.h" is installed which can be used to check a string
+for conformance to TLD specific rules.  This add a new self test, and
+updates to the manual.  People responsible for maintaining TLD tables
+are hereby encouraged to contribute them (under reasonable licensing
+terms) for inclusion in future versions of Libidn.
 
 * Version 0.3.7 (released 2004-01-22)
 
