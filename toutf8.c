@@ -62,6 +62,21 @@ static const char *stringprep_locale_charset_cache = NULL;
 /**
  * stringprep_locale_charset:
  *
+ * Find out system locale charset.
+ *
+ * Note that this function return what it believe the SYSTEM is using
+ * as a locale, not what locale the program is currently in (modified,
+ * e.g., by a setlocale(LC_CTYPE, "ISO-8859-1")).  The reason is that
+ * data read from argv[], stdin etc comes from the system, and is more
+ * likely to be encoded using the system locale than the program
+ * locale.
+ *
+ * You can set the environment variable CHARSET to override the value
+ * returned.  Note that this function caches the result, so you will
+ * have to modify CHARSET before calling (even indirectly) any
+ * stringprep functions, e.g., by setting it when invoking the
+ * application.
+ *
  * Return value: Return the character set used by the system locale.
  *   It will never return NULL, but use "ASCII" as a fallback.
  **/
