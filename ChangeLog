@@ -1,3 +1,115 @@
+2004-05-21  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Version 0.4.5.
+
+2004-05-21  Simon Josefsson <simon@josefsson.org>
+
+	* po/da.po, po/de.po, po/fr.po, po/nl.po, po/pl.po, po/ro.po,
+	po/sr.po, po/sv.po: Generated.
+
+2004-05-21  Simon Josefsson <simon@josefsson.org>
+
+	* doc/Makefile.am: Bump copyright years on man pages.
+
+2004-05-21  Simon Josefsson <simon@josefsson.org>
+
+	* configure.ac: Bump so version.
+
+2004-05-21  Simon Josefsson <simon@josefsson.org>
+
+	* doc/reference/Makefile.am:
+	(HIGNORE): Add idn-free.h.
+
+2004-05-21  Simon Josefsson <simon@josefsson.org>
+
+	* lib/stringprep.c:
+	(stringprep): Move declaration of temporary variable to start of
+	scope.
+
+2004-05-21  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2004-05-21  Simon Josefsson <simon@josefsson.org>
+
+	* lib/idna.c:
+	(idna_to_unicode_4z4z): There was no double free, remove my
+	modification.
+
+2004-05-21  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2004-05-21  Simon Josefsson <simon@josefsson.org>
+
+	* lib/idna.c:
+	(idna_to_ascii_4i, idna_to_unicode_4z4z): Fix memory leak when
+	memory allocation fails.  From Ulrich Drepper <drepper@redhat.com>,
+	but modified to fix double free and incorrect 'if' condition.
+
+2004-05-21  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2004-05-21  Simon Josefsson <simon@josefsson.org>
+
+	* lib/stringprep.c:
+	(stringprep): Fix memory leak when memory allocation fails.  From
+	Ulrich Drepper <drepper@redhat.com>.
+
+2004-05-21  Simon Josefsson <simon@josefsson.org>
+
+	* lib/idna.c: Doc fix.
+
+2004-05-21  Simon Josefsson <simon@josefsson.org>
+
+	* lib/idna.c: Back port of (some) changes by Ulrich Drepper
+	<drepper@redhat.com>.
+	(idna_to_unicode_internal): Fix memory leaks when memory allocation
+	fails.  Deallocate utf8in on failure.
+	(idna_to_unicode_44i): Don't free, done in idna_to_unicode_internal.
+	(idna_to_ascii_4z): Fix memory leak when memory allocation fails.
+
+2004-05-21  Simon Josefsson <simon@josefsson.org>
+
+	* THANKS, NEWS: Add.
+
+2004-05-21  Simon Josefsson <simon@josefsson.org>
+
+	* lib/Makefile.am, lib/idn-free.c, lib/idn-free.h: Add idn_free,
+	suggested by "Gisle Vanem" <gvanem@broadpark.no>.
+
+2004-04-30  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Fix.
+
+2004-04-30  Simon Josefsson <simon@josefsson.org>
+
+	* lib/idna.c:
+	(idna_to_ascii_lz): Doc fix, reported by Joe Orton
+	<jorton@redhat.com>.
+
+2004-04-30  Simon Josefsson <simon@josefsson.org>
+
+	* tests/tst_nfkc.c: Add NFKC test vectors from pr-29.html.  Fix
+	debug output.
+
+2004-04-30  Simon Josefsson <simon@josefsson.org>
+
+	* tests/utils.c: Fix ucs4print debugging output.
+
+2004-04-29  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2004-04-29  Simon Josefsson <simon@josefsson.org>
+
+	* tests/tst_stringprep.c: Update SASLPrep test vectors.
+
+2004-04-29  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS, configure.ac: Bump versions.
+
 2004-04-29  Simon Josefsson <simon@josefsson.org>
 
 	* NEWS: Version 0.4.4.
