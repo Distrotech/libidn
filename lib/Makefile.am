@@ -48,7 +48,9 @@ if TLD
 libidn_la_SOURCES += tld.h tld.c tlds.c
 endif
 libidn_la_LIBADD = $(LTLIBICONV)
-libidn_la_LDFLAGS = -version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE)
+libidn_la_LDFLAGS = \
+	-export-symbols-regex '^(idn|pr29_|punycode_|stringprep|tld_).*' \
+	-version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE)
 
 nfkc.c: gunibreak.h gunicomp.h gunidecomp.h
 
