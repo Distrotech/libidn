@@ -91,6 +91,9 @@ extern "C"
   };
   typedef struct Stringprep_table Stringprep_profile;
 
+/* Profiles */
+  extern Stringprep_profile stringprep_saslprep[];
+
 /* API */
 
   extern int stringprep (char *in, size_t maxlen, int flags,
