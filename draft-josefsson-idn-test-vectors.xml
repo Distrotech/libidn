@@ -26,10 +26,7 @@
 
 <abstract>
 
-<t>This document contains test vectors for Nameprep and IDNA.  The
-majority of the test vectors are derived in order to cover various
-corner cases in the specifications, but some anticipated typical data
-from the real world are also included.</t>
+<t>This document contains test vectors for Nameprep and IDNA.</t>
 
 </abstract>
 
@@ -40,14 +37,14 @@ from the real world are also included.</t>
 <section title="Introduction">
 
 <t>The Nameprep and IDNA specifications lack thorough examples that
-would aid in implementing them.  This document can act as a complement
-to those specifications.</t>
+would have aided in implementing them.  This document act as a
+complement to those specifications providing such examples.</t>
 
 <t>It should be pointed out that this document is not normative, and
-thus any errors here should not be treated as gospel that defines
-Nameprep or IDNA.  When conforming to the specification and generating
-output corresponding to values in this document is in conflict,
-implementations should conform to the specification.</t>
+thus any errors in this document should not be treated as gospel that
+defines Nameprep nor IDNA.  When conforming to the specification and
+generating output corresponding to values in this document is in
+conflict, implementations should conform to the specification.</t>
 
 <t><vspace blankLines="10000" /></t>
 
