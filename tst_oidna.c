@@ -344,7 +344,7 @@ main (int argc, char *argv[])
 	  ucs4print (ucs4label, len);
 	}
 
-      len2 = sizeof (tmp);
+      len2 = sizeof (tmp) / sizeof(tmp[0]);
       rc = idna_to_unicode (ucs4label, len, tmp, &len2,
 			    idna[i].allowunassigned,
 			    idna[i].usestd3asciirules);
