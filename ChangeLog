@@ -1,3 +1,167 @@
+2004-03-20  Simon Josefsson <simon@josefsson.org>
+
+	* po/da.po, po/fr.po, po/pl.po, po/sr.po, po/sv.po: Generated.
+
+2004-03-20  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Version 0.4.2.
+
+2004-03-20  Simon Josefsson <simon@josefsson.org>
+
+	* configure.ac: Inform about Java.
+
+2004-03-20  Simon Josefsson <simon@josefsson.org>
+
+	* libc/getaddrinfo-idn.txt: Update.
+
+2004-03-20  Simon Josefsson <simon@josefsson.org>
+
+	* Makefile.am, libc/Banner, libc/Makefile, libc/README,
+	libc/Versions, libc/configure, libc/getaddrinfo.c, libc/idn-stub.c,
+	libc/libc.patch, libc/libidn.texi, libc/netdb.h: Remove most of
+	libc stuff (has been integrated in libc CVS).
+
+2004-03-20  Simon Josefsson <simon@josefsson.org>
+
+	* README, java/Makefile.am: Fix.
+
+2004-03-20  Simon Josefsson <simon@josefsson.org>
+
+	* COPYING: Add.
+
+2004-03-20  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi, NEWS: Fix.
+
+2004-03-20  Simon Josefsson <simon@josefsson.org>
+
+	* THANKS, AUTHORS: Add.
+
+2004-03-20  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2004-03-20  Simon Josefsson <simon@josefsson.org>
+
+	* java/Makefile.am, java/gnu/inet/encoding/Makefile.am,
+	java/gnu/inet/encoding/Punycode.java,
+	java/gnu/inet/encoding/PunycodeException.java: Fix.
+
+2004-03-19  Simon Josefsson <simon@josefsson.org>
+
+	* m4/ac_prog_jar.m4, m4/ac_prog_javac.m4,
+	m4/ac_prog_javac_works.m4: Add, from GNU Autoconf Macro Archive.
+
+2004-03-19  Simon Josefsson <simon@josefsson.org>
+
+	* java/gnu/inet/encoding/PunycodeException.java: Add, from Oliver
+	Hitz <oliver@net-track.ch>.
+
+2004-03-19  Simon Josefsson <simon@josefsson.org>
+
+	* java/gnu/inet/encoding/Makefile.am:
+	(noinst_JAVA): Only include Punycode*.java for now.
+
+2004-03-19  Simon Josefsson <simon@josefsson.org>
+
+	* Makefile.am, configure.ac, java/Makefile.am,
+	java/gnu/Makefile.am, java/gnu/inet/Makefile.am,
+	java/gnu/inet/encoding/Makefile.am,
+	java/gnu/inet/encoding/Punycode.java: Add infrastructure for Java
+	code, and add Punycode, from Oliver Hitz <oliver@net-track.ch>.
+
+2004-03-16  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2004-03-16  Simon Josefsson <simon@josefsson.org>
+
+	* THANKS: Add.
+
+2004-03-16  Simon Josefsson <simon@josefsson.org>
+
+	* po/LINGUAS, po/da.po: Add, from Morten Bo Johansen
+	<mojo@mbjnet.dk> via Translation Project.
+
+2004-03-14  Simon Josefsson <simon@josefsson.org>
+
+	* po/pl.po: Update.
+
+2004-03-14  Simon Josefsson <simon@josefsson.org>
+
+	* po/LINGUAS: Add.
+
+2004-03-14  Simon Josefsson <simon@josefsson.org>
+
+	* THANKS: Fix.
+
+2004-03-14  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi, THANKS: Ack Unicode, Inc.
+
+2004-03-14  Simon Josefsson <simon@josefsson.org>
+
+	* THANKS, NEWS: Add.
+
+2004-03-14  Simon Josefsson <simon@josefsson.org>
+
+	* po/fr.po, po/LINGUAS: Add, from Michel Robitaille
+	<robitail@IRO.UMontreal.CA> via Translation Project.
+
+2004-03-14  Simon Josefsson <simon@josefsson.org>
+
+	* THANKS, NEWS: Add.
+
+2004-03-14  Simon Josefsson <simon@josefsson.org>
+
+	* po/LINGUAS, po/sr.po: Add, from Aleksandar Jelenak
+	<jelenak@netlinkplus.net> via Translation Project.
+
+2004-03-13  Simon Josefsson <simon@josefsson.org>
+
+	* doc/tld/no.tld: Add URLs.
+
+2004-03-13  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2004-03-13  Simon Josefsson <simon@josefsson.org>
+
+	* doc/tld/Makefile.am: Add no.tld.
+
+2004-03-13  Simon Josefsson <simon@josefsson.org>
+
+	* doc/tld/no.tld: Add, from Thomas Jacob <jacob@internet24.de>.
+
+2004-03-13  Simon Josefsson <simon@josefsson.org>
+
+	* po/sv.po: Fix.
+
+2004-03-13  Simon Josefsson <simon@josefsson.org>
+
+	* src/idn.ggo, doc/libidn.texi: Add.
+
+2004-03-10  Simon Josefsson <simon@josefsson.org>
+
+	* THANKS: Fix.
+
+2004-03-10  Simon Josefsson <simon@josefsson.org>
+
+	* THANKS, NEWS: Add.
+
+2004-03-10  Simon Josefsson <simon@josefsson.org>
+
+	* po/LINGUAS, po/pl.po: Add Polish translation, from Jakub Bogusz
+	<qboosh@pld-linux.org>.
+
+2004-03-09  Simon Josefsson <simon@josefsson.org>
+
+	* Makefile.am: Build lib/ before po/.
+
+2004-03-09  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS, configure.ac: Bump versions.
+
 2004-03-08  Simon Josefsson <simon@josefsson.org>
 
 	* po/sv.po: Generated.
