@@ -18,7 +18,9 @@
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
 
 if JAVA
-AllNames.html packages.html tree.html:
-	cd $(top_srcdir)/java
-	$(JAVADOC) -d $(top_builddir)/doc/java gnu/inet/encoding/*.java
+all:
+	cd ../../java && make javadoc
+
+clean-local:
+	rm -f *.html
 endif
