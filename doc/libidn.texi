@@ -66,6 +66,7 @@ section entitled "GNU Free Documentation License".
 * Stringprep Functions::	Stringprep functions.
 * Punycode Functions::		Punycode functions.
 * IDNA Functions::		IDNA functions.
+* TLD Functions::		TLD functions.
 * Examples::                    Demonstrate how to use the library.
 * Invoking idn::		Command line interface to the library.
 * Emacs API::                   Emacs Lisp API for Libidn.
@@ -94,9 +95,12 @@ package is available under the GNU Lesser General Public License.
 
 The library contains a generic Stringprep implementation that does
 Unicode 3.2 NFKC normalization, mapping and prohibitation of
-characters, and bidirectional character handling.  Profiles for iSCSI,
-Kerberos 5, Nameprep, SASL and XMPP are included.  Punycode and ASCII
-Compatible Encoding (ACE) via IDNA are supported.
+characters, and bidirectional character handling.  Profiles for
+Nameprep, iSCSI, SASL and XMPP are included.  Punycode and ASCII
+Compatible Encoding (ACE) via IDNA are supported.  A mechanism to
+define TLD specific inclusion tables, and to compare strings against
+those tables, is included.  Default tables for some TLDs are also
+included.
 
 The Stringprep API consists of two main functions, one for converting
 data from the system's native representation into UTF-8, and one
@@ -105,7 +109,11 @@ Stringprep profile for your application within the API is
 straightforward.  The Punycode API consists of one encoding function
 and one decoding function.  The IDNA API consists of the ToASCII and
 ToUnicode functions, as well as an high-level interface for converting
-entire domain names to and from the ACE encoded form.
+entire domain names to and from the ACE encoded form.  The TLD API
+consists of one function to look up the correct TLD table to use from
+a string, and a function to compare a single character against a TLD
+table, and some utility functions to operate on entire strings in one
+operation.
 
 The library is used by, e.g., GNU SASL and Shishi to process user
 names and passwords.  Libidn can be built into GNU Libc to enable a
@@ -171,11 +179,11 @@ The following illustration show the components that make up Libidn,
 and how your application relates to the library.  In the illustration,
 various components are shown as boxes.  You see the generic StringPrep
 component, the various StringPrep profiles including Nameprep, the
-Punycode component, and the IDNA component.  The arrows indicate
-aggregation, e.g., IDNA uses Punycode and Nameprep, and in turn
-Nameprep uses the generic StringPrep interface.  The interfaces to all
-components are available for applications, no component within the
-library is hidden from the application.
+Punycode component, the IDNA component, and the TLD component.  The
+arrows indicate aggregation, e.g., IDNA uses Punycode and Nameprep,
+and in turn Nameprep uses the generic StringPrep interface.  The
+interfaces to all components are available for applications, no
+component within the library is hidden from the application.
 
 @image{components}
 
@@ -685,7 +693,7 @@ AC_CHECK_HEADER(idna.h,
 	AC_CHECK_LIB(idn, stringprep_check_version,
 		[libidn=yes AC_SUBST(SHISHI_LIBS, -lidn)],
 		libidn=no),
-	kerberos5=no)
+	libidn=no)
 AC_ARG_ENABLE(idn, AC_HELP_STRING([--disable-idn], [Don't use Libidn]),
 	libidn=$enableval)
 if test "$libidn" != "no" ; then
@@ -876,16 +884,6 @@ true AllowUnassigned.  Returns 0 iff successful, or an error code.
 
 Prepare the input UTF-8 string according to the draft iSCSI stringprep
 profile.  Returns 0 iff successful, or an error code.
-@end deftypefun
-
-@deftypefun {int} stringprep_kerberos5 (char * @var{in}, int @var{maxlen})
-
-@var{in}:  input/ouput array with string to prepare.
-
-@var{maxlen}: maximum length of input/output array.
-
-Prepare the input UTF-8 string according to the draft Kerberos5
-stringprep profile.  Returns 0 iff successful, or an error code.
 @end deftypefun
 
 @deftypefun {int} stringprep_plain (char * @var{in}, int @var{maxlen})
@@ -1127,6 +1125,74 @@ The functions provided are the following entry points:
 @include texi/idna_to_unicode_8zlz.texi
 @include texi/idna_to_unicode_lzlz.texi
 
+
+@c **********************************************************
+@c ********************** TLD Functions *********************
+@c **********************************************************
+@node TLD Functions
+@chapter TLD Functions
+@cindex TLD Functions
+
+Several entities that manage Top Level Domains (@acronym{TLD}s) have
+published tables with characters they accept within the domain.  The
+reason may be to reduce complexity, and to protect themselves future
+changes in the IDN or Unicode specifications.  Libidn implement an
+infrastructure for defining and checking strings against such tables.
+Libidn also try to ship a default table that includes information from
+the @acronym{TLD}s we have managed to tables from.  Because these
+tables are even less static than Unicode or StringPrep table, it is
+likely that they will have to be updated from time to time.  The
+interface provide a ``version'' field for each @acronym{TLD} table,
+which can be compared for equality to guarantee the same operation
+over time.
+
+From a design point of view, you can regard the @acronym{TLD} tables
+for IDN as the ``localization'' step that come after
+``internationalization'' step that came with the IETF standards.
+
+@section Header file @code{tld.h}
+
+To use the functions explained in this chapter, you need to include
+the file @file{tld.h} using:
+
+@example
+#include <tld.h>
+@end example
+
+@section Return Codes
+
+All functions return a exit code:
+
+@deftypevr {Return code} {Idna_rc} {IDNA_SUCCESS = 0}
+Successful operation.  This value is guaranteed to always be zero, the
+remaining ones are only guaranteed to hold non-zero values, for
+logical comparison purposes.
+@end deftypevr
+
+@deftypevr {Return code} {Idna_rc} TLD_ILLEGAL
+Illegal character found.
+@end deftypevr
+
+@deftypevr {Return code} {Idna_rc} TLD_NODATA
+No input data was provided.
+@end deftypevr
+
+@deftypevr {Return code} {Idna_rc} TLD_MALLOC_ERROR
+Error during memory allocation.
+@end deftypevr
+
+@deftypevr {Return code} {Idna_rc} TLD_ICONV_ERROR
+Error during iconv string conversion.
+@end deftypevr
+
+@deftypevr {Return code} {Idna_rc} TLD_NOTLD
+No top-level domain found in domain string.
+@end deftypevr
+
+@section Core Functions
+
+@include texi/tld_finddomain.texi
+@include texi/tld_checkchar.texi
 
 @c **********************************************************
 @c ***********************  Examples  ***********************
