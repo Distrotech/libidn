@@ -66,8 +66,7 @@ static int
 stringprep_apply_table_to_string (uint32_t * ucs4,
 				  size_t * ucs4len,
 				  size_t maxucs4len,
-				  Stringprep_table_element * table,
-				  const char *tablename)
+				  Stringprep_table_element * table)
 {
   ssize_t pos;
   size_t i, maplen;
@@ -192,7 +191,7 @@ stringprep_4i (uint32_t * ucs4, size_t * len, size_t maxucs4len,
 	  if (UNAPPLICAPLEFLAGS (flags, profile[i].flags))
 	    break;
 	  rc = stringprep_apply_table_to_string
-	    (ucs4, &ucs4len, maxucs4len, profile[i].table, profile[i].name);
+	    (ucs4, &ucs4len, maxucs4len, profile[i].table);
 	  if (rc != STRINGPREP_OK)
 	    return rc;
 	  break;
