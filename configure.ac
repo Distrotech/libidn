@@ -99,7 +99,7 @@ AM_CONDITIONAL(JAVA, test "$enable_java" != "no")
 AC_MSG_CHECKING([if implementation in Java should be built])
 AC_MSG_RESULT($enable_java)
 
-AC_CONFIG_FILES([Makefile libidn.pc doc/reference/Makefile \
+AC_CONFIG_FILES([Makefile libidn.pc doc/reference/Makefile doc/java/Makefile \
 		lib/stringprep.h contrib/doxygen/Doxyfile \
 		doc/Makefile doc/specifications/Makefile doc/tld/Makefile \
 		lib/Makefile src/Makefile tests/Makefile examples/Makefile \
