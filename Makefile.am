@@ -27,6 +27,7 @@ EXTRA_DIST = Makefile.cfg Makefile.maint GNUmakefile \
 	FAQ libidn.pc.in \
 	libc/README libc/Makefile libc/Versions libc/Banner libc/configure \
 	libc/example.c libc/getaddrinfo.c libc/libc.patch libc/netdb.h \
+	libc/getaddrinfo-idn.txt \
 	contrib/README contrib/idn-python/README contrib/idn-python/Makefile \
 	contrib/idn-python/idn.c contrib/idn-python/test.py \
 	contrib/web/idn.php \
