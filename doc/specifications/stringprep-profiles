@@ -1,12 +1,12 @@
 
 Stringprep Profiles - per [RFC3454]
 
-(last updated 2003-11-24)
+(last updated 28 April 2004)
 
 Profile Name                  Version      Reference
 ----------------------------  -----------  ---------
 Nameprep                      1 - Current  [RFC3491] 
-iSCSI                         1 - Current  [RFC-ietf-ips-iscsi-string-prep-06.txt]
+iSCSI                         1 - Current  [RFC3722]
 
 
 References
@@ -19,9 +19,8 @@ References
             Profile for Internationalized Domain Names", RFC 3491,
             March 2003.
 
-[RFC-ietf-ips-iscsi-string-prep-06.txt]
-            M. Bakke, "String Profile for iSCSI Names", RFC XXXX,
-            Month Year.
+[RFC3722]   M. Bakke, "String Profile for iSCSI Names", RFC 3722,
+            April 2004.
 
 (registry created 2003-01-02)
 
