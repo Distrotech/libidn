@@ -160,28 +160,38 @@ tld_get_4z (const uint32_t * in, char **out)
 }
 
 /**
- * tld_get_8z:
- * @in: Zero terminated UTF-8 string to process.
+ * tld_get_z:
+ * @in: Zero terminated character array to process.
  * @out: Zero terminated ascii result string pointer.
  *
  * Isolate the top-level domain of @in and return it as an ASCII
- * string in @out.
+ * string in @out.  The input string @in may be UTF-8, ISO-8859-1 or
+ * any ASCII compatible character encoding.
  *
  * Return value: Returns %TLD_SUCCESS on success, the corresponding
  * error code otherwise.
  */
 int
-tld_get_8z (const char * in, char **out)
+tld_get_z (const char * in, char **out)
 {
   uint32_t *iucs;
-  size_t ilen;
+  size_t i, ilen;
+  int rc;
 
-  iucs = stringprep_utf8_to_ucs4 (in, -1, &ilen);
+  ilen = strlen (in);
+  iucs = malloc (ilen);
 
   if (!iucs)
     return TLD_MALLOC_ERROR;
 
-  return tld_get_4 (iucs, ilen, out);
+  for (i = 0; i < ilen; i++)
+    iucs[i] = in[i];
+
+  rc = tld_get_4 (iucs, ilen, out);
+
+  free (iucs);
+
+  return rc;
 }
 
 /*
