@@ -1,3 +1,28 @@
+2003-01-08 12:52  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS, configure.ac:
+
+	Release 0.1.2.  
+
+2003-01-08 12:50  Simon Josefsson <simon@josefsson.org>
+
+	* example4.c, reference/tmpl/idna.sgml:
+
+	Fix.  
+
+2003-01-08 12:48  Simon Josefsson <simon@josefsson.org>
+
+	* Makefile.am, example3.c, example4.c, idna.c, idna.h,
+	stringprep.h.in, toutf8.c:
+
+	IDNA high-level API.  
+
+2003-01-08 12:47  Simon Josefsson <simon@josefsson.org>
+
+	* reference/tmpl/: idna.sgml, stringprep.sgml:
+
+	Add.  
+
 2003-01-08 06:52  Simon Josefsson <simon@josefsson.org>
 
 	* NEWS, configure.ac:
