@@ -27,6 +27,7 @@ gunibreak.h
 gunicomp.h
 gunidecomp.h
 idn
+idn.1
 idn.ggo
 idn_cmd.c
 idn_cmd.h
