@@ -226,7 +226,8 @@ purpose.</t>
 
 <note title="Acknowledgments">
 <t>Some IDNA test vectors were borrowed from Punycode <xref
-target="RFC3492" />.</t>
+target="RFC3492" />.  Several people pointed out invalid UTF-8
+encodings used in earlier versions of the draft.</t>
 </note>
 
 <section title="Nameprep test vectors in C syntax">
