@@ -27,7 +27,7 @@ const Stringprep_profiles stringprep_profiles[] = {
   {"Nodeprep", stringprep_xmpp_nodeprep},
   {"Resourceprep", stringprep_xmpp_resourceprep},
   {"plain", stringprep_plain},	/* sasl-anon-00. */
-  {"trace", stringprep_trace},	/* sasl-anon-01,02. */
+  {"trace", stringprep_trace},	/* sasl-anon-01,02,03. */
   {"SASLprep", stringprep_saslprep},
   {"ISCSIprep", stringprep_iscsi},	/* Obsolete. */
   {"iSCSI", stringprep_iscsi},	/* IANA. */
