@@ -2,6 +2,16 @@ Libidn NEWS -- History of user-visible changes.                 -*- outline -*-
 Copyright (C) 2002, 2003 Simon Josefsson
 See the end for copying conditions.
 
+* Version 0.2.1 (unreleased)
+
+** Don't reject zero-length trailing labels as in, e.g., "www.example.org.".
+The IDNA RFC is not clear on this topic, zero-length labels in general
+are forbidden by the ToASCII algorithm in section 4.1 step 8, but the
+terminology section define, inside a parenthesis, that the zero-length
+root label is in fact not considered a label at all in IDNA.
+
+** Bug fixes.
+
 * Version 0.2.0 (released 2003-06-19)
 
 ** Unicode code point data is now uint32_t, defined in "idn-int.h".
