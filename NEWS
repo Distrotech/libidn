@@ -4,6 +4,8 @@ See the end for copying conditions.
 
 * Version 0.1.12 (unreleased)
 
+** GNU Libc add-on build instructions updated to GNU Libc 2.3.2.
+
 ** SASLprep stringprep profile added.
 
 ** API and ABI is backwards compatible with the previous version.
