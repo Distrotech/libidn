@@ -24,10 +24,13 @@ dist_lisp_DATA = punycode.el idna.el
 bin_PROGRAMS = idn
 
 BUILT_SOURCES = idn_cmd.c idn_cmd.h
-idn_SOURCES = idn.c $(BUILT_SOURCES) idn.ggo
+idn_SOURCES = idn.c gettext.h $(BUILT_SOURCES) idn.ggo
 EXTRA_DIST = getopt.h
 DISTCLEANFILES = $(BUILT_SOURCES)
 idn_LDADD = ../lib/libidn.la $(LTLIBOBJS)
+
+localedir = $(datadir)/locale
+DEFS = -DLOCALEDIR=\"$(localedir)\" @DEFS@
 
 idn.c: $(BUILT_SOURCES)
 
