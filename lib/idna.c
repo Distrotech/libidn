@@ -725,6 +725,26 @@ idna_to_unicode_lzlz (const char *input, char **output, int flags)
 
 /**
  * Idna_rc:
+ * @IDNA_SUCCESS: Successful operation.  This value is guaranteed to
+ *   always be zero, the remaining ones are only guaranteed to hold
+ *   non-zero values, for logical comparison purposes.
+ * @IDNA_STRINGPREP_ERROR:  Error during string preparation.
+ * @IDNA_PUNYCODE_ERROR: Error during punycode operation.
+ * @IDNA_CONTAINS_LDH: For IDNA_USE_STD3_ASCII_RULES, indicate that
+ *   the string contains LDH ASCII characters.
+ * @IDNA_CONTAINS_MINUS: For IDNA_USE_STD3_ASCII_RULES, indicate that
+ *   the string contains a leading or trailing hyphen-minus (U+002D).
+ * @IDNA_INVALID_LENGTH: The final output string is not within the
+ *   (inclusive) range 1 to 63 characters.
+ * @IDNA_NO_ACE_PREFIX: The string does not contain the ACE prefix
+ *   (for ToUnicode).
+ * @IDNA_ROUNDTRIP_VERIFY_ERROR: The ToASCII operation on output
+ *   string does not equal the input.
+ * @IDNA_CONTAINS_ACE_PREFIX: The input contains the ACE prefix (for
+ *   ToASCII).
+ * @IDNA_ICONV_ERROR: Could not convert string in locale encoding.
+ * @IDNA_MALLOC_ERROR: Could not allocate buffer (this is typically a
+ *   fatal error).
  *
  * Enumerated return codes of idna_to_ascii_4i(),
  * idna_to_unicode_44i() functions (and functions derived from those
