@@ -1,4 +1,13 @@
 /**
+ * STRINGPREP_VERSION
+ *
+ * String defined via CPP denoting the header file version number.
+ * Used together with stringprep_check_version() to verify header file
+ * and run-time library consistency.
+ */
+#define STRINGPREP_VERSION "@PACKAGE_VERSION@"
+
+/**
  * stringprep_nameprep:
  * @in: input/ouput array with string to prepare.
  * @maxlen: maximum length of input/output array.
