@@ -1,3 +1,134 @@
+2003-02-20  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Version 0.1.9.
+
+2003-02-20  Simon Josefsson <simon@josefsson.org>
+
+	* reference/libidn-docs.tmpl: Include stringprep_plain.sgml.
+
+2003-02-20  Simon Josefsson <simon@josefsson.org>
+
+	* reference/Makefile.am: Add libidn-stringprep-plain.html.
+
+2003-02-20  Simon Josefsson <simon@josefsson.org>
+
+	* libidn.texi: Fix last commit.
+
+2003-02-20  Simon Josefsson <simon@josefsson.org>
+
+	* libidn.texi: Mention stringprep_plain.h.
+
+2003-02-20  Simon Josefsson <simon@josefsson.org>
+
+	* reference/dummy.c: Add stringprep_plain.
+
+2003-02-20  Simon Josefsson <simon@josefsson.org>
+
+	* profiles.c: Don't case fold XMPP resources.
+
+2003-02-20  Simon Josefsson <simon@josefsson.org>
+
+	* profiles.c: Really fix XMPP definition.
+
+2003-02-20  Simon Josefsson <simon@josefsson.org>
+
+	* Makefile.am: Add stringprep_plain.h.
+
+2003-02-20  Simon Josefsson <simon@josefsson.org>
+
+	* configure.ac: Bump versions.
+
+2003-02-20  Simon Josefsson <simon@josefsson.org>
+
+	* libidn.texi: Sync ANNOUNCE.
+
+2003-02-20  Simon Josefsson <simon@josefsson.org>
+
+	* ANNOUNCE: Mention SASL "plain".
+
+2003-02-20  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2003-02-20  Simon Josefsson <simon@josefsson.org>
+
+	* tst_stringprep.c: Remove broken XMPP tests.  Add SASL test.
+
+2003-02-20  Simon Josefsson <simon@josefsson.org>
+
+	* draft-ietf-sasl-anon-00.txt: Add.
+
+2003-02-20  Simon Josefsson <simon@josefsson.org>
+
+	* internal.h: Include stringprep_plain.h.
+
+2003-02-20  Simon Josefsson <simon@josefsson.org>
+
+	* profiles.c: Add stringprep_plain for SASL ANONYMOUS plain
+	profile.
+
+2003-02-20  Simon Josefsson <simon@josefsson.org>
+
+	* profiles.c: Fix XMPP definition.
+
+2003-02-20  Simon Josefsson <simon@josefsson.org>
+
+	* stringprep_plain.h: New file.
+
+2003-02-19  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2003-02-19  Simon Josefsson <simon@josefsson.org>
+
+	* THANKS: Add.
+
+2003-02-19  Simon Josefsson <simon@josefsson.org>
+
+	* profiles.c: Don't normalize or map ASCII space for XMPP nodeprep.
+	Tiny patch from Travis Shirk <TShirk@jabber.com>.
+
+2003-02-18  Simon Josefsson <simon@josefsson.org>
+
+	* README: Add.
+
+2003-02-15  Simon Josefsson <simon@josefsson.org>
+
+	* idna.c: Make sure decoded punycode data is zero terminated.
+
+2003-02-15  Simon Josefsson <simon@josefsson.org>
+
+	* tst_idna.c: Fix memory leak.
+
+2003-02-15  Simon Josefsson <simon@josefsson.org>
+
+	* idna.c: Fix memory leaks.  Waste less memory.
+
+2003-02-15  Simon Josefsson <simon@josefsson.org>
+
+	* idna.c: Fix memory leak.
+
+2003-02-14  Simon Josefsson <simon@josefsson.org>
+
+	* tst_stringprep.c: Fix.
+
+2003-02-14  Simon Josefsson <simon@josefsson.org>
+
+	* nfkc.c: Fix typo.
+
+2003-02-14  Simon Josefsson <simon@josefsson.org>
+
+	* stringprep.c: Fix maplen calculation.
+
+2003-02-14  Simon Josefsson <simon@josefsson.org>
+
+	* stringprep.c: Fix gcc warnings.
+
+2003-02-14  Simon Josefsson <simon@josefsson.org>
+
+	* stringprep.c, stringprep.h.in: Change STRINGPREP_MAX_MAP_CHARS to
+	4 to waste less space.
+
 2003-02-14  Simon Josefsson <simon@josefsson.org>
 
 	* NEWS: Version 0.1.8.
