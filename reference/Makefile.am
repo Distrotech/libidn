@@ -22,7 +22,8 @@ EXTRA_DIST = dummy.c libidn-docs.tmpl $(HTML_OBJECTS) $(IMAGES)
 HTML_OBJECTS = index.html c4.html libidn-idna.html libidn-punycode.html \
 	libidn-stringprep-generic.html libidn-stringprep.html \
 	libidn-stringprep-kerberos5.html libidn-stringprep-nameprep.html \
-	libidn-stringprep-xmpp.html libidn-stringprep-plain.html
+	libidn-stringprep-xmpp.html libidn-stringprep-plain.html \
+	libidn-stringprep-iscsi.html
 IMAGES = home.png left.png right.png up.png
 
 MODULE = libidn
