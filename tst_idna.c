@@ -224,7 +224,7 @@ int
 main (int argc, char *argv[])
 {
   char label[100];
-  unsigned long *ucs4label;
+  unsigned long *ucs4label = NULL;
   unsigned long tmp[100];
   size_t len, len2, i;
   int rc;
@@ -289,6 +289,9 @@ main (int argc, char *argv[])
 	}
       else if (debug)
 	printf ("OK\n");
+
+      if (ucs4label)
+	free(ucs4label);
 
       ucs4label = stringprep_utf8_to_ucs4 (idna[i].out, -1, &len);
 
