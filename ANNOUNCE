@@ -4,30 +4,27 @@ See the end for copying conditions.
 
 GNU Libidn is an implementation of the Stringprep, Punycode and IDNA
 specifications defined by the IETF Internationalized Domain Names
-(IDN) working group, used for internationalized domain names.  It is
-available under the GNU Lesser General Public License.  Currently the
-iSCSI, Kerberos 5, Nameprep, SASL and XMPP Stringprep profiles are
-supported.
+(IDN) working group, used for internationalized domain names.  The
+package is available under the GNU Lesser General Public License.
 
-The library contains a generic Stringprep implementation (including
-Unicode 3.2 NFKC normalization, table mapping of characters, and
-Bidirectional Character handling), a few Stringprep profiles, and an
-implementation of the functionality defined by Punycode and IDNA.
+The library contains a generic Stringprep implementation that does
+Unicode 3.2 NFKC normalization, mapping and prohibitation of
+characters, and bidirectional character handling.  Profiles for iSCSI,
+Kerberos 5, Nameprep, SASL and XMPP are included.  Punycode and ASCII
+Compatible Encoding (ACE) via IDNA are supported.
 
 The Stringprep API consists of two main functions, one for converting
 data from the system's native representation into UTF-8, and one
-function to perform the Stringprep processing.  Each stringprep
-profile has a corresponding CPP macro.  Adding a new Stringprep
-profile for your application within the API is straightforward.  The
-Punycode API consists of one encoding function and one decoding
-function.  The IDNA API consists of the ToASCII and ToUnicode
-functions, as well as an high-level interface for converting entire
-domain names to and from the ACE encoded form.
+function to perform the Stringprep processing.  Adding a new
+Stringprep profile for your application within the API is
+straightforward.  The Punycode API consists of one encoding function
+and one decoding function.  The IDNA API consists of the ToASCII and
+ToUnicode functions, as well as an high-level interface for converting
+entire domain names to and from the ACE encoded form.
 
-The library is used by forthcoming network applications to process
-user names and passwords before they are input to cryptographic
-operations.  Libidn can be built into GNU Libc to enable a new
-getaddrinfo() flag for system-wide IDN processing.
+The library is used by, e.g., GNU SASL and Shishi to process user
+names and passwords.  Libidn can be built into GNU Libc to enable a
+new system-wide getaddrinfo() flag for IDN processing.
 
 GNU Libidn is developed for the GNU/Linux system, but runs on over 20
 Unix platforms (including Solaris, IRIX, AIX, and Tru64) and Windows.
@@ -44,7 +41,12 @@ http://www.ietf.org/rfc/rfc3454.txt (stringprep specification)
 http://www.ietf.org/internet-drafts/draft-ietf-idn-punycode-03.txt
 http://www.ietf.org/internet-drafts/draft-ietf-idn-nameprep-11.txt
 http://www.ietf.org/internet-drafts/draft-ietf-idn-idna-14.txt
-http://www.i-d-n.net/
+http://www.ietf.org/internet-drafts/draft-ietf-ips-iscsi-string-prep-04.txt
+http://www.ietf.org/internet-drafts/draft-ietf-krb-wg-utf8-profile-01.txt
+http://www.ietf.org/internet-drafts/draft-ietf-sasl-anon-00.txt
+http://www.ietf.org/internet-drafts/draft-ietf-sasl-saslprep-00.txt
+http://www.ietf.org/internet-drafts/draft-ietf-xmpp-nodeprep-01.txt
+http://www.ietf.org/internet-drafts/draft-ietf-xmpp-resourceprep-01.txt
 
 Further information and paid contract development:
 Simon Josefsson <simon@josefsson.org>
