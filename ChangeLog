@@ -1,3 +1,66 @@
+2004-12-04  Simon Josefsson <simon@josefsson.org>
+
+	* po/da.po, po/de.po, po/eo.po, po/fr.po, po/nl.po, po/pl.po,
+	po/ro.po, po/sr.po, po/sv.po: Generated.
+
+2004-12-04  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Version 0.5.12.
+
+2004-12-04  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2004-12-04  Simon Josefsson <simon@josefsson.org>
+
+	* gl/getopt_.h, gl/m4/getopt.m4: Update.
+
+2004-12-01  Simon Josefsson <simon@josefsson.org>
+
+	* java/gnu/inet/encoding/Stringprep.java: Doc fix, from Oliver Hitz
+	<oliver@net-track.ch>.
+
+2004-11-29  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi: More PR29.
+
+2004-11-23  Simon Josefsson <simon@josefsson.org>
+
+	* configure.ac: Bump versions.
+
+2004-11-23  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2004-11-22  Simon Josefsson <simon@josefsson.org>
+
+	* THANKS: Add.
+
+2004-11-22  Simon Josefsson <simon@josefsson.org>
+
+	* java/gnu/inet/encoding/Stringprep.java: Fixed two bugs:
+	allowUnassigned not respected properly, buggy prohibited code points
+	check.  Argument checks added.  RFC3920 nodeprep and resourceprep
+	added, suggested by Matt Tucker.  Convenience methods with
+	allowUnassigned set to false added.  From Oliver Hitz
+	<oliver@net-track.ch>.
+
+2004-11-22  Simon Josefsson <simon@josefsson.org>
+
+	* java/gnu/inet/encoding/RFC3454.java,
+	java/misc/GenerateRFC3454.java: Add table C.1.1 and C.2.1, from
+	Oliver Hitz <oliver@net-track.ch>.
+
+2004-11-21  Simon Josefsson <simon@josefsson.org>
+
+	* doc/gdoc: Make sure all man pages follow 'foo -- purpose of foo'
+	format, even if there is no purpose description available, from
+	Shishi.
+
+2004-11-21  Simon Josefsson <simon@josefsson.org>
+
+	* libidn.fms: Add.
+
 2004-11-21  Simon Josefsson <simon@josefsson.org>
 
 	* po/da.po, po/de.po, po/eo.po, po/fr.po, po/nl.po, po/pl.po,
