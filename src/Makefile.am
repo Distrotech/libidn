@@ -21,10 +21,7 @@ INCLUDES = -I$(top_srcdir)/lib -I../lib
 
 bin_PROGRAMS = idn
 
-# Change to 'dist_lisp_DATA = punycode.el idna.el' once we use automake > 1.7.
-dist_lisp_LISP = punycode.el idna.el
-ELCFILES=
-elc-stamp:
+dist_lisp_DATA = punycode.el idna.el
 
 BUILT_SOURCES = idn_cmd.c idn_cmd.h
 idn_SOURCES = idn.c $(BUILT_SOURCES)
