@@ -37,7 +37,7 @@ Makefile.gdoc: $(top_builddir)/configure Makefile.am Makefile.gdoci $(GDOC_SRC)
 	    echo "gdoc_MANS += $(GDOC_MAN_PREFIX)$$function.3" >> Makefile.gdoc; \
 	    echo "$(GDOC_MAN_PREFIX)$$function.3: $$file" >> Makefile.gdoc; \
 	    echo 'TABmkdir -p `dirname $$@`' | sed "s/TAB/\t/" >> Makefile.gdoc; \
-	    echo 'TAB$$(PERL) $$(top_srcdir)/doc/gdoc -man -function'" $$function"' $$< > $$@' | sed "s/TAB/\t/" >> Makefile.gdoc; \
+	    echo 'TAB$$(PERL) $$(top_srcdir)/doc/gdoc -man -module $$(PACKAGE) -sourceversion $$(VERSION) -bugsto $$(PACKAGE_BUGREPORT) -includefuncprefix -seeinfo $$(PACKAGE) -copyright "2002, 2003 Simon Josefsson" -verbatimcopying -function'" $$function"' $$< > $$@' | sed "s/TAB/\t/" >> Makefile.gdoc; \
 	    echo >> Makefile.gdoc; \
 	    echo >> Makefile.gdoc; \
 	  done; \
