@@ -1,3 +1,8 @@
+# Copyright (C) 2003 Stephane Bortzmeyer <bortzmeyer@nic.fr> / AFNIC
+# Copying and distribution of this file, with or without modification,
+# are permitted in any medium without royalty provided the copyright
+# notice and this notice are preserved.
+ 
 # Variant table for the French language
 # See Internet-Draft draft-hoffman-idn-reg-00
 #
@@ -6,9 +11,6 @@
 # This table is built by starting from the characters that are
 # actually used in French.
 # The encoding is ISO-8859-1 (Latin-1)
-
-# Stephane Bortzmeyer <bortzmeyer@nic.fr>
-# $Id$
 
 # a-z
 # a and its variants : à â
