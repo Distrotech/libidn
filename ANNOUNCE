@@ -16,9 +16,9 @@ is currently used by forthcoming SASL and Kerberos libraries to
 process user names and passwords before they are input to
 cryptographic operations.  No domain name related application use it.
 
-The library has been tested on several different Unix systems
-(including Linux, Solaris, IRIX, AIX, and Tru64).  It was designed to
-be ported easily to Windows as well.
+Libstringprep is developed for the GNU/Linux system, but runs on over
+20 Unix platforms (including Linux, Solaris, IRIX, AIX, and Tru64) and
+Windows.
 
 The project page of the library is available at:
 http://www.josefsson.org/libstringprep/
