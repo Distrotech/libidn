@@ -1,3 +1,59 @@
+2002-12-07 04:38  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS:
+
+	Release 0.0.5.  
+
+2002-12-07 04:38  Simon Josefsson <simon@josefsson.org>
+
+	* Makefile.am, configure.ac:
+
+	Add memset.c, an AC_LIBOBJ.  
+
+2002-12-07 04:35  Simon Josefsson <simon@josefsson.org>
+
+	* memset.c:
+
+	An AC_LIBOBJ, from gnulib.  
+
+2002-12-07 04:31  Simon Josefsson <simon@josefsson.org>
+
+	* profiles.c, stringprep.c, stringprep.h.in:
+
+	Indent.  
+
+2002-12-07 04:30  Simon Josefsson <simon@josefsson.org>
+
+	* README:
+
+	Use new types.  
+
+2002-12-07 04:22  Simon Josefsson <simon@josefsson.org>
+
+	* profiles.c, stringprep.c, stringprep.h.in, tst_stringprep.c:
+
+	Fixes.  
+
+2002-12-07 04:11  Simon Josefsson <simon@josefsson.org>
+
+	* profiles.c, stringprep.c, tst_stringprep.c:
+
+	Fix bidi code and add self tests.  
+
+2002-12-07 03:30  Simon Josefsson <simon@josefsson.org>
+
+	* gen-stringprep-tables.pl, profiles.c, stringprep.c,
+	stringprep.h.in, stringprep_generic.h, stringprep_kerberos5.h,
+	stringprep_nameprep.h, tst_stringprep.c:
+
+	Clean up internal profiling definitions.  
+
+2002-12-06 05:25  Simon Josefsson <simon@josefsson.org>
+
+	* example.c:
+
+	Fix typo.  
+
 2002-12-06 04:33  Simon Josefsson <simon@josefsson.org>
 
 	* configure.ac:
