@@ -14,8 +14,8 @@ exec_prefix=@exec_prefix@
 libdir=@libdir@
 includedir=@includedir@
 
-Name: Libstringprep
-Description: Library for IETF stringprep text processing.
+Name: Libidn
+Description: IETF stringprep, nameprep, punycode, IDNA text processing.
 Version: @VERSION@
-Libs: -L${libdir} -R${libdir} -lstringprep
+Libs: -L${libdir} -R${libdir} -lidn
 Cflags: -I${includedir}
