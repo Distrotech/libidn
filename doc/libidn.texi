@@ -1217,6 +1217,10 @@ struct Tld_table_element
 @};
 typedef struct Tld_table_element Tld_table_element;
 @end example
+This @code{struct} contain the @var{start} and @var{end} positions
+(inclusive) of a range.  If the range is a single (i.e., starts and
+ends in the same character), then set @var{end} to the same as
+@var{start}.  This structure is normally used as an array.
 @end deftp
 
 @deftp {Data type} {Tld_table} @var{name} @var{version} @var{nvalid} @var{valid}
