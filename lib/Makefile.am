@@ -1,5 +1,5 @@
 ## Process this file with automake to produce Makefile.in
-# Copyright (C) 2002, 2003, 2004 Simon Josefsson.
+# Copyright (C) 2002, 2003, 2004, 2005 Simon Josefsson.
 # Copyright (C) 2004 Free Software Foundation, Inc.
 #
 # This file is part of GNU Libidn.
@@ -47,7 +47,7 @@ libidn_la_SOURCES = gunibreak.h gunicomp.h gunidecomp.h \
 if TLD
 libidn_la_SOURCES += tld.h tld.c tlds.c
 endif
-libidn_la_LIBADD = $(LTLIBICONV)
+libidn_la_LIBADD = ../gl/libgnu.la $(LTLIBICONV)
 libidn_la_LDFLAGS = \
 	-export-symbols-regex '^(idn|pr29_|punycode_|stringprep|tld_).*' \
 	-version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE)
