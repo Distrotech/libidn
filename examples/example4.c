@@ -1,4 +1,4 @@
-/* example4.c	Example code showing how to use Libidn.
+/* example4.c	Example ToUnicode() code showing how to use Libidn.
  * Copyright (C) 2002, 2003  Simon Josefsson
  *
  * This file is part of GNU Libidn.
@@ -23,7 +23,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stringprep.h>		/* stringprep_locale_charset() */
-#include <idna.h>		/* idna_to_ascii_lz() */
+#include <idna.h>		/* idna_to_unicode_lzlz() */
 
 /*
  * Compiling using libtool and pkg-config is recommended:
@@ -56,7 +56,7 @@ main (int argc, char *argv[])
     printf ("%02x ", buf[i] & 0xFF);
   printf ("\n");
 
-  rc = idna_to_ascii_lz (buf, &p, 0);
+  rc = idna_to_unicode_lzlz (buf, &p, 0);
   if (rc != IDNA_SUCCESS)
     {
       printf ("ToUnicode() failed... %d\n", rc);
