@@ -55,6 +55,7 @@ Generate various output formats from PACKAGE.texinfo (or .texi or .txi) source.
 
 Options:
   -o OUTDIR   write files into OUTDIR, instead of manual/.
+  --docbook   convert to DocBook too (xml, txt, html, pdf and ps).
   --help      display this help and exit successfully.
   --version   display version information and exit successfully.
 
@@ -104,6 +105,7 @@ while test $# -gt 0; do
     --help) echo "$usage"; exit 0;;
     --version) echo "$version"; exit 0;;
     -o) shift; outdir=$1;;
+    --docbook) docbook=yes;;
     -*)
       echo "$0: Unknown or ambiguous option \`$1'." >&2
       echo "$0: Try \`--help' for more information." >&2
@@ -207,41 +209,43 @@ srcfiles=`ls *.texinfo *.texi *.txi 2>/dev/null`
 tar czfh $outdir/$PACKAGE.texi.tar.gz $srcfiles
 texi_tgz_size="`calcsize $outdir/$PACKAGE.texi.tar.gz`"
 
-echo Generating docbook XML...
-${MAKEINFO} -o - --docbook $srcfile > ${srcdir}/$PACKAGE-db.xml
-docbook_xml_size="`calcsize $PACKAGE-db.xml`"
-gzip -f -9 -c $PACKAGE-db.xml >$outdir/$PACKAGE-db.xml.gz
-docbook_xml_gz_size="`calcsize $outdir/$PACKAGE-db.xml.gz`"
-mv $PACKAGE-db.xml $outdir/
+if test -n "$docbook"; then
+  echo Generating docbook XML...
+  ${MAKEINFO} -o - --docbook $srcfile > ${srcdir}/$PACKAGE-db.xml
+  docbook_xml_size="`calcsize $PACKAGE-db.xml`"
+  gzip -f -9 -c $PACKAGE-db.xml >$outdir/$PACKAGE-db.xml.gz
+  docbook_xml_gz_size="`calcsize $outdir/$PACKAGE-db.xml.gz`"
+  mv $PACKAGE-db.xml $outdir/
 
-echo Generating docbook HTML...
-split_html_db_dir=html_node_db
-${DOCBOOK2HTML} -o $split_html_db_dir ${outdir}/$PACKAGE-db.xml
-(
-  cd ${split_html_db_dir} || exit 1
-  tar -czf ../$outdir/${PACKAGE}_html_node_db.tar.gz -- *.html
-)
-html_node_db_tgz_size="`calcsize $outdir/${PACKAGE}_html_node_db.tar.gz`"
-rm -f $outdir/html_node_db/*.html
-mkdir -p $outdir/html_node_db
-mv ${split_html_db_dir}/*.html $outdir/html_node_db/
-rmdir ${split_html_db_dir}
+  echo Generating docbook HTML...
+  split_html_db_dir=html_node_db
+  ${DOCBOOK2HTML} -o $split_html_db_dir ${outdir}/$PACKAGE-db.xml
+  (
+    cd ${split_html_db_dir} || exit 1
+    tar -czf ../$outdir/${PACKAGE}_html_node_db.tar.gz -- *.html
+  )
+  html_node_db_tgz_size="`calcsize $outdir/${PACKAGE}_html_node_db.tar.gz`"
+  rm -f $outdir/html_node_db/*.html
+  mkdir -p $outdir/html_node_db
+  mv ${split_html_db_dir}/*.html $outdir/html_node_db/
+  rmdir ${split_html_db_dir}
 
-echo Generating docbook ASCII...
-${DOCBOOK2TXT} ${outdir}/$PACKAGE-db.xml
-docbook_ascii_size="`calcsize $PACKAGE-db.txt`"
-mv $PACKAGE-db.txt $outdir/
+  echo Generating docbook ASCII...
+  ${DOCBOOK2TXT} ${outdir}/$PACKAGE-db.xml
+  docbook_ascii_size="`calcsize $PACKAGE-db.txt`"
+  mv $PACKAGE-db.txt $outdir/
 
-echo Generating docbook PS...
-${DOCBOOK2PS} ${outdir}/$PACKAGE-db.xml
-gzip -f -9 -c $PACKAGE-db.ps >$outdir/$PACKAGE-db.ps.gz
-docbook_ps_gz_size="`calcsize $outdir/$PACKAGE-db.ps.gz`"
-mv $PACKAGE-db.ps $outdir/
+  echo Generating docbook PS...
+  ${DOCBOOK2PS} ${outdir}/$PACKAGE-db.xml
+  gzip -f -9 -c $PACKAGE-db.ps >$outdir/$PACKAGE-db.ps.gz
+  docbook_ps_gz_size="`calcsize $outdir/$PACKAGE-db.ps.gz`"
+  mv $PACKAGE-db.ps $outdir/
 
-echo Generating docbook PDF...
-${DOCBOOK2PDF} ${outdir}/$PACKAGE-db.xml
-docbook_pdf_size="`calcsize $PACKAGE-db.pdf`"
-mv $PACKAGE-db.pdf $outdir/
+  echo Generating docbook PDF...
+  ${DOCBOOK2PDF} ${outdir}/$PACKAGE-db.xml
+  docbook_pdf_size="`calcsize $PACKAGE-db.pdf`"
+  mv $PACKAGE-db.pdf $outdir/
+fi
 
 echo Writing index file...
 curdate="`date '+%B %d, %Y'`"
