@@ -239,12 +239,16 @@ step8:
   return IDNA_SUCCESS;
 }
 
+/* ToUnicode().  May realloc() utf8in. */
 static int
-idna_to_unicode_internal (char *utf8in, size_t utf8len,
-			  uint32_t * out, size_t * outlen, int flags)
+idna_to_unicode_internal (char *utf8in,
+			  uint32_t * out, size_t * outlen,
+			  int flags)
 {
   int rc;
   char tmpout[64];
+  size_t utf8len = strlen (utf8in) + 1;
+  size_t addlen = 0;
 
   /*
    * 1. If all code points in the sequence are in the ASCII range (0..7F)
@@ -269,11 +273,18 @@ idna_to_unicode_internal (char *utf8in, size_t utf8len,
    * affect the overall behavior of ToUnicode, but it is not
    * necessary.) The AllowUnassigned flag is used in [NAMEPREP].
    */
-
-  if (flags & IDNA_ALLOW_UNASSIGNED)
-    rc = stringprep_nameprep (utf8in, utf8len);
-  else
-    rc = stringprep_nameprep_no_unassigned (utf8in, utf8len);
+  do
+    {
+      utf8in = realloc (utf8in, utf8len + addlen);
+      if (!utf8in)
+	return IDNA_MALLOC_ERROR;
+      if (flags & IDNA_ALLOW_UNASSIGNED)
+	rc = stringprep_nameprep (utf8in, utf8len + addlen);
+      else
+	rc = stringprep_nameprep_no_unassigned (utf8in, utf8len + addlen);
+      addlen += 1;
+    }
+  while (rc == STRINGPREP_TOO_SMALL_BUFFER);
 
   if (rc != STRINGPREP_OK)
     return IDNA_STRINGPREP_ERROR;
@@ -372,11 +383,7 @@ idna_to_unicode_44i (const uint32_t * in, size_t inlen,
   if (p == NULL)
     return IDNA_MALLOC_ERROR;
 
-  p = realloc (p, BUFSIZ);
-  if (p == NULL)
-    return IDNA_MALLOC_ERROR;
-
-  rc = idna_to_unicode_internal (p, BUFSIZ, out, outlen, flags);
+  rc = idna_to_unicode_internal (p, out, outlen, flags);
   if (rc != IDNA_SUCCESS)
     {
       memcpy (out, in, sizeof (in[0]) * (inlen < outlensave ?
