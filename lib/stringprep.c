@@ -89,7 +89,7 @@ stringprep_apply_table_to_string (uint32_t * ucs4,
   ((!INVERTED(profileflags) && !(profileflags & flags) && profileflags) || \
    ( INVERTED(profileflags) && (profileflags & flags)))
 
-int
+static int
 stringprep1 (uint32_t *ucs4, size_t *len, size_t maxucs4len,
 	     Stringprep_profile_flags flags, Stringprep_profile * profile)
 {
