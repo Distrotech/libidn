@@ -1,5 +1,3 @@
 Makefile
 Makefile.in
-Punycode.class
-PunycodeException.class
-classnoinst.stamp
+*.class
