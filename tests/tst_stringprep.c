@@ -174,8 +174,10 @@ const struct stringprep strprep[] = {
   {"iSCSI 1", "Example-Name", "example-name", "iSCSI"},
   {"iSCSI 2", "O+o", NULL, "iSCSI", 0, STRINGPREP_CONTAINS_PROHIBITED},
   {"iSCSI 3", "\x01", NULL, "iSCSI", 0, STRINGPREP_CONTAINS_PROHIBITED},
-  {"iSCSI 4", "\xE3\x80\x82", NULL, "iSCSI", 0, STRINGPREP_CONTAINS_PROHIBITED},
-  {"iSCSI 5", "\xE2\xBF\xB5", NULL, "iSCSI", 0, STRINGPREP_CONTAINS_PROHIBITED},
+  {"iSCSI 4", "\xE3\x80\x82", NULL, "iSCSI", 0,
+   STRINGPREP_CONTAINS_PROHIBITED},
+  {"iSCSI 5", "\xE2\xBF\xB5", NULL, "iSCSI", 0,
+   STRINGPREP_CONTAINS_PROHIBITED},
   {"SASL profile", "Example\xC2\xA0" "Name", "Example Name", "SASLprep"},
   /* SASL trace */
   {"SASL ANONYMOUS plain mechanism", "simon@josefsson.org",
@@ -183,7 +185,8 @@ const struct stringprep strprep[] = {
   {"SASLprep 1 old", "x\xC2\xADy", "xy", "SASLprep"},
   {"SASLprep 4 old", "\xE2\x85\xA3", "IV", "SASLprep"},
   /* SASLprep test vectors. */
-  {"SASLprep 1 SOFT HYPHEN mapped to nothing", "I\xC2\xADX", "IX", "SASLprep"},
+  {"SASLprep 1 SOFT HYPHEN mapped to nothing", "I\xC2\xADX", "IX",
+   "SASLprep"},
   {"SASLprep 2 no transformation", "user", "user", "SASLprep"},
   {"SASLprep 3 case preserved, will not match #2", "USER", "USER",
    "SASLprep"},

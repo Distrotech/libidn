@@ -227,8 +227,7 @@ main (int argc, char *argv[])
 	  if (rc != PUNYCODE_SUCCESS)
 	    {
 	      free (q);
-	      error (1, 0, _("punycode_decode: %s"),
-		     punycode_strerror (rc));
+	      error (1, 0, _("punycode_decode: %s"), punycode_strerror (rc));
 	    }
 
 	  if (args_info.debug_given)

@@ -176,7 +176,7 @@ const Stringprep_profile stringprep_trace[] = {
 const Stringprep_table_element stringprep_iscsi_prohibit[] = {
   /* NB, since start == 0, we must have that end != 0 for the
      end-of-table logic to work. */
-  {0x0000, 1},		/* [ASCII CONTROL CHARACTERS and SPACE through ,] */
+  {0x0000, 1},			/* [ASCII CONTROL CHARACTERS and SPACE through ,] */
   {0x0001},
   {0x0002},
   {0x0003},

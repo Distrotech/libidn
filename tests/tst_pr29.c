@@ -43,45 +43,45 @@ struct tv
 
 static const struct tv tv[] = {
   {
-    "Problem Sequence A",
-    3,
-    {0x1100, 0x0300, 0x1161, 0},
-    PR29_PROBLEM},
+   "Problem Sequence A",
+   3,
+   {0x1100, 0x0300, 0x1161, 0},
+   PR29_PROBLEM},
   {
-    "Test Case",
-    3,
-    {0x0B47, 0x0300, 0x0B3E, 0},
-    PR29_PROBLEM},
+   "Test Case",
+   3,
+   {0x0B47, 0x0300, 0x0B3E, 0},
+   PR29_PROBLEM},
   {
-    "Instability Example",
-    3,
-    {0x1100, 0x0300, 0x1161, 0x0323, 0},
-    PR29_PROBLEM},
+   "Instability Example",
+   3,
+   {0x1100, 0x0300, 0x1161, 0x0323, 0},
+   PR29_PROBLEM},
   {
-    "Not a problem sequence 1",
-    3,
-    {0x1100, 0x1161, 0x0300, 0},
-    PR29_SUCCESS},
+   "Not a problem sequence 1",
+   3,
+   {0x1100, 0x1161, 0x0300, 0},
+   PR29_SUCCESS},
   {
-    "Not a problem sequence 2",
-    3,
-    {0x0300, 0x1100, 0x1161, 0},
-    PR29_SUCCESS},
+   "Not a problem sequence 2",
+   3,
+   {0x0300, 0x1100, 0x1161, 0},
+   PR29_SUCCESS},
   {
-    "Not a problem sequence 3",
-    3,
-    {0x1161, 0x1100, 0x0300, 0},
-    PR29_SUCCESS},
+   "Not a problem sequence 3",
+   3,
+   {0x1161, 0x1100, 0x0300, 0},
+   PR29_SUCCESS},
   {
-    "Not a problem sequence 4",
-    3,
-    {0x1161, 0x0300, 0x1100, 0},
-    PR29_SUCCESS},
+   "Not a problem sequence 4",
+   3,
+   {0x1161, 0x0300, 0x1100, 0},
+   PR29_SUCCESS},
   {
-    "Not a problem sequence 5",
-    3,
-    {0x1100, 0x00AA, 0x1161, 0},
-    PR29_SUCCESS}
+   "Not a problem sequence 5",
+   3,
+   {0x1100, 0x00AA, 0x1161, 0},
+   PR29_SUCCESS}
 };
 
 void

@@ -159,7 +159,7 @@ again:
 	    dest = newdest;
 
 	    outp = dest + used;
-	    outbytes_remaining = outbuf_size - used - 1; /* -1 for NUL */
+	    outbytes_remaining = outbuf_size - used - 1;	/* -1 for NUL */
 
 	    goto again;
 	  }
@@ -180,7 +180,7 @@ again:
   if (*p != '\0')
     have_error = 1;
 
- out:
+out:
   iconv_close (cd);
 
   if (have_error)

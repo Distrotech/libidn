@@ -35,16 +35,16 @@ extern "C"
 
   /* Error codes. */
   typedef enum
-    {
-      PR29_SUCCESS = 0,
-      PR29_PROBLEM = 1,		  /* String is a problem sequence. */
-      PR29_STRINGPREP_ERROR = 2   /* Charset conversion failed (p29_8*). */
-    } Pr29_rc;
+  {
+    PR29_SUCCESS = 0,
+    PR29_PROBLEM = 1,		/* String is a problem sequence. */
+    PR29_STRINGPREP_ERROR = 2	/* Charset conversion failed (p29_8*). */
+  } Pr29_rc;
 
   extern const char *pr29_strerror (Pr29_rc rc);
 
-  extern int pr29_4 (const uint32_t *in, size_t len);
-  extern int pr29_4z (const uint32_t *in);
+  extern int pr29_4 (const uint32_t * in, size_t len);
+  extern int pr29_4z (const uint32_t * in);
   extern int pr29_8z (const char *in);
 
 # ifdef __cplusplus
