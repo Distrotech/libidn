@@ -4,6 +4,10 @@ See the end for copying conditions.
 
 * Version 0.2.4 (unreleased)
 
+** Ported to Mac OS X.
+
+** Gnulib code removed, we now assume a C89 compatible environment.
+
 ** Building libidn as a libc add-on now works again.
 
 ** Man pages for all public API functions are included.
