@@ -8,6 +8,8 @@ See the end for copying conditions.
 
 ** Fixed debug information in 'idn'.
 
+** Internal improvements, leading to reduced heap memory usage.
+
 ** API and ABI is backwards compatible with the previous version.
 stringprep_4i: NEW.
 stringprep_4zi: NEW.
