@@ -2,7 +2,7 @@ Libidn NEWS -- History of user-visible changes.                 -*- outline -*-
 Copyright (C) 2002, 2003, 2004 Simon Josefsson
 See the end for copying conditions.
 
-* Version 0.5.6 (unreleased)
+* Version 0.5.6 (released 2004-10-02)
 
 ** Added functions to convert return codes to human readable text.
 
