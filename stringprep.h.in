@@ -29,11 +29,12 @@ extern "C"
 
 #include <stddef.h>		/* size_t */
 #include <unistd.h>		/* ssize_t */
+#include <idn-int.h>		/* uint32_t */
 
 #define STRINGPREP_VERSION "@PACKAGE_VERSION@"
 
 /* Error codes. */
-  enum
+  enum Stringprep_rc
   {
     STRINGPREP_OK = 0,
     /* Stringprep errors. */
@@ -50,18 +51,18 @@ extern "C"
     /* Internal errors. */
     STRINGPREP_NFKC_FAILED = 200,
     STRINGPREP_MALLOC_ERROR = 201
-  } Stringprep_rc;
+  };
 
 /* Flags used when calling stringprep(). */
-  enum
+  enum Stringprep_profile_flags
   {
     STRINGPREP_NO_NFKC = 1,
     STRINGPREP_NO_BIDI = 2,
     STRINGPREP_NO_UNASSIGNED = 4
-  } Stringprep_profile_flags;
+  };
 
 /* Steps in a stringprep profile. */
-  enum
+  enum Stringprep_profile_steps
   {
     STRINGPREP_NFKC = 1,
     STRINGPREP_BIDI = 2,
@@ -71,15 +72,15 @@ extern "C"
     STRINGPREP_BIDI_PROHIBIT_TABLE = 6,
     STRINGPREP_BIDI_RAL_TABLE = 7,
     STRINGPREP_BIDI_L_TABLE = 8
-  } Stringprep_profile_steps;
+  };
 
 #define STRINGPREP_MAX_MAP_CHARS 4
 
   struct Stringprep_table_element
   {
-    unsigned long start;
-    unsigned long end;				/* 0 if only one character */
-    unsigned long map[STRINGPREP_MAX_MAP_CHARS];/* NULL if end is not 0 */
+    uint32_t start;
+    uint32_t end;				/* 0 if only one character */
+    uint32_t map[STRINGPREP_MAX_MAP_CHARS];/* NULL if end is not 0 */
   };
   typedef struct Stringprep_table_element Stringprep_table_element;
 
@@ -171,18 +172,18 @@ extern "C"
 
 /* Utility */
 
-  extern int stringprep_unichar_to_utf8 (unsigned long c, char *outbuf);
-  extern unsigned long stringprep_utf8_to_unichar (const char *p);
+  extern int stringprep_unichar_to_utf8 (uint32_t c, char *outbuf);
+  extern uint32_t stringprep_utf8_to_unichar (const char *p);
 
-  extern unsigned long *stringprep_utf8_to_ucs4 (const char *str, ssize_t len,
-						 size_t *items_written);
-  extern char *stringprep_ucs4_to_utf8 (const unsigned long *str, ssize_t len,
+  extern uint32_t *stringprep_utf8_to_ucs4 (const char *str, ssize_t len,
+					    size_t *items_written);
+  extern char *stringprep_ucs4_to_utf8 (const uint32_t *str, ssize_t len,
 					size_t *items_read,
 					size_t *items_written);
 
   extern char *stringprep_utf8_nfkc_normalize (const char *str, ssize_t len);
-  extern unsigned long *stringprep_ucs4_nfkc_normalize (unsigned long *str,
-							ssize_t len);
+  extern uint32_t *stringprep_ucs4_nfkc_normalize (uint32_t *str,
+						   ssize_t len);
 
   extern const char *stringprep_locale_charset (void);
   extern char *stringprep_convert (const char *str,
