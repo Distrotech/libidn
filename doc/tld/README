@@ -14,7 +14,8 @@ it will be incorporated in the library.
 
 The format for the files are as follows.  Empty lines or those
 starting with '#' are ignored.  It is highly recommended to discuss
-the TLD in comments, to give the URL to the source of the table etc.
+matters in a comment; to give the URL to the source of the table,
+mention the copyright and copying conditions of the tables, etc.
 Normal lines consist of valid Unicode code points for the TLD,
 expressed as single numbers (like 123, 0xff, 0100) or inclusive
 intervals (112-344 0xff-0100) using the usual C decimal, octal or hex
