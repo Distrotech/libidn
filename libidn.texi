@@ -788,9 +788,6 @@ ToUnicode operation computed on the input @var{string}.
 @node Acknowledgements
 @chapter Acknowledgements
 
-Simon Josefsson created the library autumn 2002 when he really should
-have been studying mathematics.
-
 The punycode code was taken from the IETF IDN Punycode specification,
 by Adam M. Costello.
 
