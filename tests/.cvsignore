@@ -8,3 +8,4 @@ tst_nfkc
 tst_punycode
 tst_stringprep
 tst_tld
+utils.lo
