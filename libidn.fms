@@ -1,0 +1,12 @@
+Project: libidn
+Release-Focus: Minor bugfixes
+Home-Page-URL: http://www.gnu.org/software/libidn/
+Gzipped-Tar-URL: http://josefsson.org/libidn/releases/
+Changelog-URL: http://josefsson.org/cgi-bin/viewcvs.cgi/libidn/ChangeLog?rev=HEAD&content-type=text/vnd.viewcvs-markup
+RPM-URL: http://rpmfind.net/linux/rpm2html/search.php?query=libidn
+Debian-URL: http://packages.debian.org/testing/libs/libidn11.html
+OSX-URL: http://fink.sourceforge.net/pdb/package.php/libidn
+BSD-Port-URL: http://www.freshports.org/devel/libidn/
+CVS-URL: http://josefsson.org/cgi-bin/viewcvs.cgi/libidn/
+Mirror-Site-URL: http://josefsson.org/libidn
+Demo-URL: http://josefsson.org/idn.php
