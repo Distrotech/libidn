@@ -20,15 +20,16 @@ dnl Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
 
 AC_INIT(libidn, 0.3.3, bug-libidn@gnu.org)
 
-# Interfaces removed:    CURRENT++, AGE=0, REVISION=0
-# Interfaces added:      CURRENT++, AGE++, REVISION=0
-# No interfaces changed:                   REVISION++
+# Library code modified:                              REVISION++
+# Interfaces changed/added/removed:   CURRENT++       REVISION=0
+# Interfaces added:                             AGE++
+# Interfaces removed:                           AGE=0
 LT_CURRENT=11
-LT_AGE=0
-LT_REVISION=3
+LT_REVISION=0
+LT_AGE=3
 AC_SUBST(LT_CURRENT)
-AC_SUBST(LT_AGE)
 AC_SUBST(LT_REVISION)
+AC_SUBST(LT_AGE)
 
 AM_INIT_AUTOMAKE(gnits)
 AM_CONFIG_HEADER(config.h)
