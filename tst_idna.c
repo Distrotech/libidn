@@ -39,6 +39,27 @@ fail (const char *format, ...)
 }
 
 static void
+escapeprint (char *str, int len)
+{
+  int i;
+
+  printf ("(length %d bytes):\n", len);
+  printf ("\t'");
+  for (i = 0; i < len; i++)
+    {
+      if (((str[i] & 0xFF) >= 'A' && (str[i] & 0xFF) <= 'Z') ||
+	  ((str[i] & 0xFF) >= 'a' && (str[i] & 0xFF) <= 'z') ||
+	  ((str[i] & 0xFF) >= '0' && (str[i] & 0xFF) <= '9')
+	  || (str[i] & 0xFF) == ' ' || (str[i] & 0xFF) == '.')
+	printf ("%c", (str[i] & 0xFF));
+      else
+	printf ("\\x%02X", (str[i] & 0xFF));
+      if ((i+1)%16 == 0 && (i+1) < len)
+	printf("'\n\t'");
+    }
+}
+
+static void
 ucs4print (unsigned long *str, ssize_t len)
 {
   int i;
@@ -46,7 +67,7 @@ ucs4print (unsigned long *str, ssize_t len)
   printf ("\t;; ");
   for (i = 0; len >= 0 ? i < len : str[i]; i++)
     {
-      printf ("U+%04lux ", str[i]);
+      printf ("U+%04lu ", str[i] & 0xFFFF);
       if ((i + 1) % 4 == 0)
 	printf (" ");
       if ((i + 1) % 8 == 0 && i + 1 < len)
@@ -68,7 +89,7 @@ struct idna
 } idna[] =
 {
   {
-    "(A) Arabic (Egyptian)", 17,
+    "Arabic (Egyptian)", 17,
     {
   0x0644, 0x064A, 0x0647, 0x0645, 0x0627, 0x0628, 0x062A, 0x0643,
 	0x0644, 0x0645, 0x0648, 0x0634, 0x0639, 0x0631, 0x0628, 0x064A,
@@ -76,19 +97,23 @@ struct idna
       IDNA_ACE_PREFIX "egbpdaj6bu4bxfgehfvwxn", 0, 0, IDNA_SUCCESS,
       IDNA_SUCCESS},
   {
-    "(B) Chinese (simplified)", 9,
+    "Chinese (simplified)", 9,
     {
   0x4ED6, 0x4EEC, 0x4E3A, 0x4EC0, 0x4E48, 0x4E0D, 0x8BF4, 0x4E2D, 0x6587},
       IDNA_ACE_PREFIX "ihqwcrb4cv8a8dqg056pqjye", 0, 0, IDNA_SUCCESS,
       IDNA_SUCCESS},
   {
-    "(C) Chinese (traditional)", 9,
+    "Chinese (traditional)", 9,
     {
   0x4ED6, 0x5011, 0x7232, 0x4EC0, 0x9EBD, 0x4E0D, 0x8AAA, 0x4E2D, 0x6587},
       IDNA_ACE_PREFIX "ihqwctvzc91f659drss3x8bo0yb", 0, 0, IDNA_SUCCESS,
       IDNA_SUCCESS},
   {
-    "(D) Czech: Pro<ccaron>prost<ecaron>nemluv<iacute><ccaron>esky", 22,
+    "Czech"
+#if !defined(DRAFT)
+    ": Pro[CCARON]prost[ECARON]nemluv[IACUTE][CCARON]esky"
+#endif
+    , 22,
     {
   0x0050, 0x0072, 0x006F, 0x010D, 0x0070, 0x0072, 0x006F, 0x0073,
 	0x0074, 0x011B, 0x006E, 0x0065, 0x006D, 0x006C, 0x0075, 0x0076,
@@ -96,7 +121,7 @@ struct idna
       IDNA_ACE_PREFIX "Proprostnemluvesky-uyb24dma41a", 0, 0, IDNA_SUCCESS,
       IDNA_SUCCESS},
   {
-    "(E) Hebrew:", 22,
+    "Hebrew", 22,
     {
   0x05DC, 0x05DE, 0x05D4, 0x05D4, 0x05DD, 0x05E4, 0x05E9, 0x05D5,
 	0x05D8, 0x05DC, 0x05D0, 0x05DE, 0x05D3, 0x05D1, 0x05E8, 0x05D9,
@@ -104,7 +129,7 @@ struct idna
       IDNA_ACE_PREFIX "4dbcagdahymbxekheh6e0a7fei0b", 0, 0, IDNA_SUCCESS,
       IDNA_SUCCESS},
   {
-    "(F) Hindi (Devanagari):", 30,
+    "Hindi (Devanagari)", 30,
     {
   0x092F, 0x0939, 0x0932, 0x094B, 0x0917, 0x0939, 0x093F, 0x0928,
 	0x094D, 0x0926, 0x0940, 0x0915, 0x094D, 0x092F, 0x094B, 0x0902,
@@ -113,15 +138,16 @@ struct idna
       IDNA_ACE_PREFIX "i1baa7eci9glrd9b2ae1bj0hfcgg6iyaf8o0a1dig0cd", 0, 0,
       IDNA_SUCCESS},
   {
-    "(G) Japanese (kanji and hiragana):", 18,
+    "Japanese (kanji and hiragana)", 18,
     {
   0x306A, 0x305C, 0x307F, 0x3093, 0x306A, 0x65E5, 0x672C, 0x8A9E,
 	0x3092, 0x8A71, 0x3057, 0x3066, 0x304F, 0x308C, 0x306A, 0x3044,
 	0x306E, 0x304B},
       IDNA_ACE_PREFIX "n8jok5ay5dzabd5bym9f0cm5685rrjetr6pdxa", 0, 0,
       IDNA_SUCCESS},
+#if !defined(DRAFT)
   {
-    "(H) Korean (Hangul syllables):", 24,
+    "Korean (Hangul syllables)", 24,
     {
   0xC138, 0xACC4, 0xC758, 0xBAA8, 0xB4E0, 0xC0AC, 0xB78C, 0xB4E4,
 	0xC774, 0xD55C, 0xAD6D, 0xC5B4, 0xB97C, 0xC774, 0xD574, 0xD55C,
@@ -130,8 +156,9 @@ struct idna
       "30a5jpsd879ccm6fea98c", 0, 0, IDNA_PUNYCODE_ERROR,
       IDNA_PUNYCODE_ERROR},
     /* too long output */
+#endif
   {
-    "(I) Russian (Cyrillic):", 28,
+    "Russian (Cyrillic)", 28,
     {
   0x043F, 0x043E, 0x0447, 0x0435, 0x043C, 0x0443, 0x0436, 0x0435,
 	0x043E, 0x043D, 0x0438, 0x043D, 0x0435, 0x0433, 0x043E, 0x0432,
@@ -140,7 +167,11 @@ struct idna
       IDNA_ACE_PREFIX "b1abfaaepdrnnbgefbadotcwatmq2g4l", 0, 0,
       IDNA_SUCCESS, IDNA_SUCCESS},
   {
-    "(J) Spanish: Porqu<eacute>nopuedensimplementehablarenEspa<ntilde>ol", 40,
+    "Spanish"
+#if !defined(DRAFT)
+    ": Porqu[EACUTE]nopuedensimplementehablarenEspa[NTILDE]ol"
+#endif
+    , 40,
     {
   0x0050, 0x006F, 0x0072, 0x0071, 0x0075, 0x00E9, 0x006E, 0x006F,
 	0x0070, 0x0075, 0x0065, 0x0064, 0x0065, 0x006E, 0x0073, 0x0069,
@@ -150,7 +181,7 @@ struct idna
       IDNA_ACE_PREFIX "PorqunopuedensimplementehablarenEspaol-fmd56a", 0, 0,
       IDNA_SUCCESS},
   {
-    "(K) Vietnamese:", 31,
+    "Vietnamese", 31,
     {
   0x0054, 0x1EA1, 0x0069, 0x0073, 0x0061, 0x006F, 0x0068, 0x1ECD,
 	0x006B, 0x0068, 0x00F4, 0x006E, 0x0067, 0x0074, 0x0068, 0x1EC3,
@@ -159,13 +190,21 @@ struct idna
       IDNA_ACE_PREFIX "TisaohkhngthchnitingVit-kjcr8268qyxafd2f1b9g", 0, 0,
       IDNA_SUCCESS},
   {
-    "(L) 3<nen>B<gumi><kinpachi><sensei>", 8,
+    "Japanese"
+#if !defined(DRAFT)
+    "3[NEN]B[GUMI][KINPACHI][SENSEI]"
+#endif
+    , 8,
     {
   0x0033, 0x5E74, 0x0042, 0x7D44, 0x91D1, 0x516B, 0x5148, 0x751F},
       IDNA_ACE_PREFIX "3B-ww4c5e180e575a65lsy2b", 0, 0, IDNA_SUCCESS,
       IDNA_SUCCESS},
   {
-    "(M) <amuro><namie>-with-SUPER-MONKEYS", 24,
+    "Japanese"
+#if !defined(DRAFT)
+    "[AMURO][NAMIE]-with-SUPER-MONKEYS"
+#endif
+    , 24,
     {
   0x5B89, 0x5BA4, 0x5948, 0x7F8E, 0x6075, 0x002D, 0x0077, 0x0069,
 	0x0074, 0x0068, 0x002D, 0x0053, 0x0055, 0x0050, 0x0045, 0x0052,
@@ -173,7 +212,11 @@ struct idna
       IDNA_ACE_PREFIX "-with-SUPER-MONKEYS-pc58ag80a8qai00g7n9n", 0, 0,
       IDNA_SUCCESS},
   {
-    "(N) Hello-Another-Way-<sorezore><no><basho>", 25,
+    "Japanese"
+#if !defined(DRAFT)
+    "Hello-Another-Way-[SOREZORE][NO][BASHO]"
+#endif
+    , 25,
     {
   0x0048, 0x0065, 0x006C, 0x006C, 0x006F, 0x002D, 0x0041, 0x006E,
 	0x006F, 0x0074, 0x0068, 0x0065, 0x0072, 0x002D, 0x0057, 0x0061,
@@ -182,28 +225,61 @@ struct idna
       IDNA_ACE_PREFIX "Hello-Another-Way--fc4qua05auwb3674vfr0b", 0, 0,
       IDNA_SUCCESS},
   {
-    "(O) <hitotsu><yane><no><shita>2", 8,
+    "Japanese"
+#if !defined(DRAFT)
+    "[HITOTSU][YANE][NO][SHITA]2"
+#endif
+    , 8,
     {
   0x3072, 0x3068, 0x3064, 0x5C4B, 0x6839, 0x306E, 0x4E0B, 0x0032},
       IDNA_ACE_PREFIX "2-u9tlzr9756bt3uc0v", 0, 0, IDNA_SUCCESS,
       IDNA_SUCCESS},
   {
-    "(P) Maji<de>Koi<suru>5<byou><mae>", 13,
+    "Japanese"
+#if !defined(DRAFT)
+    "Maji[DE]Koi[SURU]5[BYOU][MAE]"
+#endif
+    , 13,
     {
   0x004D, 0x0061, 0x006A, 0x0069, 0x3067, 0x004B, 0x006F, 0x0069,
 	0x3059, 0x308B, 0x0035, 0x79D2, 0x524D},
       IDNA_ACE_PREFIX "MajiKoi5-783gue6qz075azm5e", 0, 0, IDNA_SUCCESS,
       IDNA_SUCCESS},
   {
-    "(Q) <pafii>de<runba>", 9,
+    "Japanese"
+#if !defined(DRAFT)
+    "[PAFII]de[RUNBA]"
+#endif
+    , 9,
     {
   0x30D1, 0x30D5, 0x30A3, 0x30FC, 0x0064, 0x0065, 0x30EB, 0x30F3, 0x30D0},
       IDNA_ACE_PREFIX "de-jg4avhby1noc0d", 0, 0, IDNA_SUCCESS, IDNA_SUCCESS},
   {
-    "(R) <sono><supiido><de>", 7,
+    "Japanese"
+#if !defined(DRAFT)
+    "[SONO][SUPIIDO][DE]"
+#endif
+    , 7,
     {
   0x305D, 0x306E, 0x30B9, 0x30D4, 0x30FC, 0x30C9, 0x3067},
       IDNA_ACE_PREFIX "d9juau41awczczp", 0, 0, IDNA_SUCCESS, IDNA_SUCCESS},
+  {
+    "Greek", 8,
+    {0x03b5, 0x03bb, 0x03bb, 0x03b7, 0x03bd, 0x03b9, 0x03ba, 0x03ac},
+    IDNA_ACE_PREFIX "hxargifdar", 0, 0, IDNA_SUCCESS, IDNA_SUCCESS},
+  {
+    "Maltese (Malti)", 10,
+    {0x0062, 0x006f, 0x006e, 0x0121, 0x0075, 0x0073, 0x0061, 0x0127,
+     0x0127, 0x0061},
+    IDNA_ACE_PREFIX "bonusaa-5bb1da", 0, 0, IDNA_SUCCESS, IDNA_SUCCESS},
+  {
+    "Russian (Cyrillic)", 28,
+    {0x043f, 0x043e, 0x0447, 0x0435, 0x043c, 0x0443, 0x0436, 0x0435,
+     0x043e, 0x043d, 0x0438, 0x043d, 0x0435, 0x0433, 0x043e, 0x0432,
+     0x043e, 0x0440, 0x044f, 0x0442, 0x043f, 0x043e, 0x0440, 0x0443,
+     0x0441, 0x0441, 0x043a, 0x0438},
+    IDNA_ACE_PREFIX "b1abfaaepdrnnbgefbadotcwatmq2g4l", 0, 0,
+    IDNA_SUCCESS, IDNA_SUCCESS},
 #if 0
   {
     "(S) -> $1.00 <-", 11,
@@ -212,12 +288,14 @@ struct idna
 	0x0020, 0x003C, 0x002D},
       IDNA_ACE_PREFIX "-> $1.00 <--", 0, 0, IDNA_SUCCESS, IDNA_SUCCESS},
 #endif
+#if !defined(DRAFT)
   {				/* XXX depends on IDNA_ACE_PREFIX */
     "ToASCII() with ACE prefix", 4 + 3,
     { 'x', 'n', '-', '-', 'f', 'o', 0x3067},
       IDNA_ACE_PREFIX "too long too long too long too long too long too "
       "long too long too long too long too long ", 0, 0,
       IDNA_CONTAINS_ACE_PREFIX, IDNA_PUNYCODE_ERROR}
+#endif
 };
 
 int
@@ -248,6 +326,31 @@ main (int argc, char *argv[])
 
   for (i = 0; i < sizeof (idna) / sizeof (idna[0]); i++)
     {
+#ifdef DRAFT
+      printf("<section title=\"%s.\">\n", idna[i].name);
+      printf("\n");
+      printf("<figure>\n");
+      printf("<artwork>\n");
+      { char *p;
+	int j;
+	size_t t;
+	p = stringprep_ucs4_to_utf8(idna[i].in, idna[i].inlen, NULL, &t);
+	printf ("in ");
+	escapeprint(p, strlen(p));
+	printf ("\n");
+	free(p);
+
+	printf ("input (length %d):\n\t", t);
+	for (j = 0; j < idna[i].inlen; j++)
+	  {
+	    printf ("U+%04lx ", idna[i].in[j]);
+	    if ((j+1)%8 == 0)
+	      printf("\n\t");
+	  }
+	printf ("\n");
+      }
+#endif
+
       if (debug)
 	printf ("IDNA entry %d: %s\n", i, idna[i].name);
 
@@ -266,6 +369,11 @@ main (int argc, char *argv[])
 	    printf ("FATAL\n");
 	  continue;
 	}
+
+#ifdef DRAFT
+      if (rc == IDNA_SUCCESS)
+	printf ("\nout: %s\n", label);
+#endif
 
       if (debug && rc == IDNA_SUCCESS)
 	{
@@ -338,6 +446,12 @@ main (int argc, char *argv[])
       else if (debug)
 	printf ("OK\n\n");
 
+#ifdef DRAFT
+      printf("</artwork>\n");
+      printf("</figure>\n");
+      printf("\n");
+      printf("</section>\n");
+#endif
     }
 
   if (ucs4label)
