@@ -8,8 +8,8 @@ The Unicode tables were provided by Unicode, Inc.  Some functions for
 dealing with Unicode (see nfkc.c and toutf8.c) has been borrowed from
 GLib downloaded from www.gtk.org.
 
-Suggestions, bug reports, patches, test vectors or other contributions
-were also received from or written by:
+Suggestions, bug reports, patches, translations, test vectors or other
+contributions were also received from or written by:
 
 Waldo Bastian
 Jakub Bogusz
