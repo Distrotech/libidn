@@ -22,7 +22,7 @@
 	</address>
 </author>
 	
-<date month="March" year="2003"/>
+<date month="February" year="2003"/>
 
 <abstract>
 
@@ -48,6 +48,8 @@ thus any errors here should not be treated as gospel that defines
 Nameprep or IDNA.  When conforming to the specification and generating
 output corresponding to values in this document is in conflict,
 implementations should conform to the specification.</t>
+
+<t><vspace blankLines="10000" /></t>
 
 </section>
 
@@ -156,6 +158,8 @@ with the '#' character.</t>
 
 </artwork>
 </figure>
+
+<t><vspace blankLines="10000" /></t>
 
 </section>
 
