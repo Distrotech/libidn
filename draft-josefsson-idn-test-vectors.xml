@@ -13,11 +13,6 @@
 <author initials="S." surname="Josefsson" fullname="Simon Josefsson">
 	<organization></organization>
 	<address>
-		<postal>
-			<street>Drottningholmsv. 70</street>
-			<city>Stockholm</city> <code>112 42</code>
-			<country>Sweden</country>
-		</postal>
 		<email>simon@josefsson.org</email>
 	</address>
 </author>
@@ -152,7 +147,6 @@ with the '#' character.</t>
 
    out: xn--hello-another-way--fc4qua05auwb3674vfr0b
 
-
 </artwork>
 </figure>
 
@@ -166,9 +160,49 @@ with the '#' character.</t>
 
 </section>
 
-<section title="IDNA Test Vectors">
+<section title="IDNA ToASCII Test Vectors">
 
 <?rfc include="bar"?>
+
+</section>
+
+<section title="IDNA ToUnicode Test Vectors">
+
+
+</section>
+
+<section title="Auxiliary Test Vectors">
+
+<t>These test vectors do not test Nameprep nor IDNA proper, rather
+they test the UTF-8 handling of software.  Instead of outputting the
+indicated Unicode code point, they should raise an error that the
+input was invalid.</t>
+
+<section title="Incorrect UTF-8 encoding of U+00DF">
+
+<figure>
+<artwork>
+in (length 2 bytes):
+	\xC3\xDF
+output (length 1):
+	U+00df 
+</artwork>
+</figure>
+
+</section>
+
+<section title="Incorrect UTF-8 encoding of U+01F0">
+
+<figure>
+<artwork>
+in (length 2 bytes):
+	\xC7\xF0
+output (length 1):
+	U+01f0 
+</artwork>
+</figure>
+
+</section>
 
 </section>
 
