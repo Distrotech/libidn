@@ -1,8 +1,8 @@
-/* tldchk.h·  Declarations for TLD restriction checking
- * 
- * Author  Thomas Jacob, Internet24.de
- * 
- * Copyright (C) 2003,2004  Free Software Foundation, Inc.
+/* tld.h --- Declarations for TLD restriction checking.
+ * Copyright (C) 2004  Simon Josefsson.
+ * Copyright (C) 2003, 2004  Free Software Foundation, Inc.
+ *
+ * Author: Thomas Jacob, Internet24.de
  *
  * This file is part of GNU Libidn.
  *
@@ -22,53 +22,52 @@
  *
  */
 
-#ifndef _TLDCHK_H
-#define _TLDCHK_H
+#ifndef _TLD_H
+#define _TLD_H
 
 #ifdef __cplusplus
 extern "C"
 {
 #endif
 
+  /* Get size_t. */
 #include <stdlib.h>
+
+  /* Get uint32_t. */
 #include <idn-int.h>
 
-/* Domain restriction structure. */
-  struct TLDCHK_domain
+  /* Domain restriction structure. */
+  struct Tld_table
   {
-    char *name;
-	int vermaj;   /* Major and minor version number of information */
-	int vermin;
-    size_t num_singles;		/* Number of entries in singles */
-    size_t num_intervals;	/* Number of double entries in intervals */
-    const uint32_t *singles;	/* Sorted array of legal single chars. */
-    const uint32_t *intervals;	/* Sorted array of legal char intervals. */
+    char *name;			/* TLD name, e.g., "no". */
+    char *version;		/* Version string from TLD file. */
+    size_t ndata;		/* Number of entries in data. */
+    const uint32_t *data;	/* Sorted array of code points. */
   };
-  typedef struct TLDCHK_domain TLDCHK_domain;
+  typedef struct Tld_table Tld_table;
 
-/* Array of built-in domain restriction structures. */
-  extern const TLDCHK_domain *tldchk_domains[];
+  /* Array of built-in domain restriction structures. */
+  extern const Tld_table *tld_table[];
 
-/* Error codes. */
+  /* Error codes. */
   typedef enum
-  {
-    TLDCHK_SUCCESS = 0,
-    TLDCHK_ILLEGAL = 1,		/* Illegal character found. */
-    TLDCHK_NODATA = 2,		/* Char, domain or inlen = 0. */
-    TLDCHK_MALLOC_ERROR = 3,
-    TLDCHK_ICONV_ERROR = 4,
-	TLDCHK_NOTLD = 5
-  } Tldchk_rc;
+    {
+      TLD_SUCCESS = 0,
+      TLD_ILLEGAL = 1,		/* Illegal character found. */
+      TLD_NODATA = 2,		/* Char, domain or inlen = 0. */
+      TLD_MALLOC_ERROR = 3,
+      TLD_ICONV_ERROR = 4,
+      TLD_NOTLD = 5
+    } Tld_rc;
 
-/* Determine TLD of UCS4 DNS name and return in out. */
+  /* Determine TLD of UCS4 DNS name and return in out. */
   int tld_gettld_4i (const uint32_t * in, size_t inlen, char **out);
   int tld_gettld_4z (const uint32_t * in, char **out);
 
-/* Check >!nameprepped!< domain name for valid characters as
- * defined by the relevant registering body + [a-z0-9.-]
- * return Tldchk_rc, position of offending character in
- * errpos if TLDCHK_ILLEGAL.
- */
+  /* Check >!nameprepped!< domain name for valid characters as defined
+   * by the relevant registering body + [a-z0-9.-] return Tldchk_rc,
+   * position of offending character in errpos if TLDCHK_ILLEGAL.
+   */
   int tld_check_4it (const uint32_t * in, size_t inlen, size_t * errpos,
 		     const TLDCHK_domain * tld);
   int tld_check_4iz (const uint32_t * in, size_t * errpos,
@@ -83,20 +82,18 @@ extern "C"
   int tld_check_lz (const char *in, size_t * errpos,
 		    const TLDCHK_domain ** xtra_tlds);
 
-/* Verify if ch is either in [a-z0-9-.] or mentioned
- * as a legal character in tld and return TLDCHK_SUCCESS/ILLEGAL
- * respectively.
- */
-  int tld_checkchar (uint32_t ch, const TLDCHK_domain * tld);
+  /* Verify if ch is either in [a-z0-9-.] or mentioned as a legal
+   * character in tld and return TLDCHK_SUCCESS/ILLEGAL respectively.
+   */
+  int tld_checkchar (uint32_t ch, const Tld_table * tld);
 
-/* Return structure corresponding to the named tld, first looking thru
- * xtra_tlds then thru built-in list, or NULL if not found.
- */
-  const TLDCHK_domain *tld_finddomain (char *tld_str,
-				       const TLDCHK_domain ** xtra_tlds);
-
+  /* Return structure corresponding to the named tld, first looking
+   * thru xtra_tlds then thru built-in list, or NULL if not found.
+   */
+  const Tld_table *tld_finddomain (const char *tld_str,
+				   const Tld_table ** xtra_tlds);
 
 #ifdef __cplusplus
 }
 #endif
-#endif				/* _TLDCHK_H */
+#endif				/* _TLD_H */
