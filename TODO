@@ -12,6 +12,7 @@ duplication can be avoided.
   - Port applications to use libidn.
   - Include more stringprep profiles.
   - Improve IDN tool.
+  - Reimplement punycode without string length restrictions.
 
 ----------------------------------------------------------------------
 Copying and distribution of this file, with or without modification,
