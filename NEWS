@@ -13,6 +13,8 @@ change may require you to invoke setlocale() in your application,
 which is (should be) required for non-ASCII to work anyway.  Based on
 discussion with Ulrich Drepper.
 
+** The command-line utility now invoke setlocale (LC_ALL, "") at startup.
+
 ** Fixed SASLprep tables to prohibit non-ASCII space in output.
 Non-ASCII space has always been mapped to ASCII space, so it is not
 clear this really have any effect, but the specification require it.
