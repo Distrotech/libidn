@@ -58,6 +58,16 @@
       C++, Emacs Lisp, Python and Java.
     </para>
 
+    <para>The internal layout of the library, and how your application
+      interact with the various parts of the library, are shown in
+      <xref linkend="components"/>.
+    </para>
+
+    <figure id="components">
+      <title>Components of Libidn</title>
+      <graphic fileref="components.png" format="PNG"></graphic>
+    </figure>
+
     <xi:include href="xml/idna.xml"/>
     <xi:include href="xml/pr29.xml"/>
     <xi:include href="xml/punycode.xml"/>
