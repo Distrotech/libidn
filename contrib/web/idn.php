@@ -51,11 +51,11 @@ if (!$charset) {
 
       <select name=profile>
 	<option <?php if ($profile == "Nameprep" || !$profile) { print "selected"; } ?>>Nameprep
-	<option <?php if ($profile == "generic") { print "selected"; } ?>>generic
 	<option <?php if ($profile == "KRBprep") { print "selected"; } ?>>KRBprep
 	<option <?php if ($profile == "Nodeprep") { print "selected"; } ?>>Nodeprep
 	<option <?php if ($profile == "Resourceprep") { print "selected"; } ?>>Resourceprep
 	<option <?php if ($profile == "plain") { print "selected"; } ?>>plain
+	<option <?php if ($profile == "trace") { print "selected"; } ?>>trace
 	<option <?php if ($profile == "SASLprep") { print "selected"; } ?>>SASLprep
 	<option <?php if ($profile == "ISCSIprep") { print "selected"; } ?>>ISCSIprep
       </select><br>
