@@ -21,12 +21,6 @@
 
 #include "internal.h"
 
-/**
- * IDNA_ACE_PREFIX
- *
- * The IANA allocated prefix to use for IDNA. "xn--"
- */
-
 /* Core functions */
 
 /**
@@ -722,3 +716,9 @@ idna_to_unicode_lzlz (const char *input, char **output, int flags)
 
   return rc;
 }
+
+/**
+ * IDNA_ACE_PREFIX
+ *
+ * The IANA allocated prefix to use for IDNA. "xn--"
+ */
