@@ -7,6 +7,7 @@ See the end for copying conditions.
 ** Added more SASLPrep and NFKC test vectors.
 
 ** API and ABI is backwards compatible with the previous version.
+idn_free: ADD.  Wrapper around system `free', see new section in manual.
 
 * Version 0.4.4 (released 2004-04-29)
 
