@@ -96,6 +96,12 @@ AM_MISSING_PROG(GTKDOC_MKDB, gtkdoc-mkdb, $missing_dir)
 AM_MISSING_PROG(GTKDOC_MKHTML, gtkdoc-mkhtml, $missing_dir)
 AM_MISSING_PROG(GTKDOC_FIXXREF, gtkdoc-fixxref, $missing_dir)
 
+# Docbook
+AM_MISSING_PROG(DOCBOOK2HTML, docbook2html, $missing_dir)
+AM_MISSING_PROG(DOCBOOK2TXT, docbook2txt, $missing_dir)
+AM_MISSING_PROG(DOCBOOK2PDF, docbook2pdf, $missing_dir)
+AM_MISSING_PROG(DOCBOOK2PS, docbook2ps, $missing_dir)
+
 AC_CONFIG_FILES([Makefile libidn.pc reference/Makefile \
 		lib/stringprep.h src/idn.ggo \
 		contrib/doxygen/Doxyfile m4/Makefile \
