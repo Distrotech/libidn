@@ -1,3 +1,71 @@
+2004-06-26  Simon Josefsson <simon@josefsson.org>
+
+	* po/da.po, po/de.po, po/eo.po, po/fr.po, po/nl.po, po/pl.po,
+	po/ro.po, po/sr.po, po/sv.po: Generated.
+
+2004-06-26  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Version 0.5.0.
+
+2004-06-26  Simon Josefsson <simon@josefsson.org>
+
+	* lib/pr29.c: Fix.
+
+2004-06-26  Simon Josefsson <simon@josefsson.org>
+
+	* doc/reference/Makefile.am: Fix.
+
+2004-06-26  Simon Josefsson <simon@josefsson.org>
+
+	* doc/reference/Makefile.am:
+	(HTML_OBJECTS): Add libidn-pr29.html.
+
+2004-06-26  Simon Josefsson <simon@josefsson.org>
+
+	* doc/reference/libidn-docs.tmpl: Add PR29.
+
+2004-06-26  Simon Josefsson <simon@josefsson.org>
+
+	* lib/pr29.c: Add doc.
+
+2004-06-26  Simon Josefsson <simon@josefsson.org>
+
+	* doc/Makefile.am: Don't use wildcards for GDOC_SRC.
+
+2004-06-26  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS, configure.ac: Bump versions.
+
+2004-06-26  Simon Josefsson <simon@josefsson.org>
+
+	* lib/pr29.c: Use 'static'.
+
+2004-06-26  Simon Josefsson <simon@josefsson.org>
+
+	* lib/pr29.h: Typo.
+
+2004-06-26  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS, doc/libidn.texi, lib/Makefile.am, lib/pr29.c, lib/pr29.h,
+	tests/Makefile.am, tests/tst_pr29.c: Add PR29 functions.
+
+2004-06-12  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2004-06-12  Simon Josefsson <simon@josefsson.org>
+
+	* po/LINGUAS, po/eo.po: Add Esperanto translation, from Edmund
+	GRIMLEY EVANS <edmundo@rano.org>, via the translation project.
+
+2004-06-11  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS, configure.ac: Bump versions.
+
+2004-06-11  Simon Josefsson <simon@josefsson.org>
+
+	* Makefile.am: Fix release target.
+
 2004-06-11  Simon Josefsson <simon@josefsson.org>
 
 	* po/da.po, po/de.po, po/fr.po, po/nl.po, po/pl.po, po/ro.po,
