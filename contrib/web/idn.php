@@ -14,19 +14,20 @@ if (!$charset) {
 
     <h1>Try GNU Libidn</h1>
 
-    <p>This page enable you to try the string preparation, punycode
+    <p>This page allows you to try the string preparation, punycode
     encode/decode and ToASCII/ToUnicode operations of <a
-    href="http://www.gnu.org/software/libidn/">GNU Libidn</a>.
-
-    <p>Report problems to <A
-    HREF="mailto:bug-libidn@gnu.org">bug-libidn@gnu.org</A>.
+    href="http://www.gnu.org/software/libidn/">GNU Libidn</a>.  If you
+    encounter a problem with this page, report a thorough analyse of
+    it to <A HREF="mailto:bug-libidn@gnu.org">bug-libidn@gnu.org</A>.
 
 <?php if (!$lastcharset && !$mode) { ?>
 
-    <p>This page uses the Unicode repertoire encoded using UTF-8 by
-    default.  If you are using software that cannot handle this, you
-    must select another charset below.  ISO-8859-1 is often a safer
-    choice.  I am sorry for the inconvenience.
+    <p>This page ignores any Accept-Charset headers sent by your
+    browser.  Instead, the Unicode repertoire encoded as UTF-8 is
+    used.  If you are using software that cannot handle this, you must
+    select another MIME charset below.  BIG5, ISO-2022-JP-2,
+    ISO-8859-1, and KOI-8 are popular choices.  I am sorry for the
+    inconvenience.
 
 <?php } ?>
 
@@ -36,9 +37,9 @@ if (!$charset) {
 
       <p>The following string must only contain characters that your
       browser is able to represent in <?php print $charset; ?> when
-      submitting this form. If you wish to use characters from another
-      charset you must select it below, submit the form and wait for a
-      new page, and then enter your string.<br>
+      submitting this form.  If you wish to another charset you must
+      select it below, submit the form and wait for a new page, and
+      then enter your string.<br>
 
       <input type=text name=data size=40 value="<?php print $data ?>"><br>
 
@@ -65,7 +66,7 @@ if (!$charset) {
       <input type=checkbox name=usestd3asciirules <?php if ($usestd3asciirules) { print "checked"; } ?>>UseSTD3ASCIIRules<br>
       <input type=checkbox name=debug <?php if ($debug) { print "checked"; } ?>>Debug<br>
 
-      Change charset of page to: <select name=charset>
+      Change MIME charset of page to: <select name=charset>
 
 <option <?php if ($charset == "ASCII") { print "selected"; } ?>>ASCII
 <option <?php if ($charset == "ASMO_449") { print "selected"; } ?>>ASMO_449
