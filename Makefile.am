@@ -40,7 +40,7 @@ gunicomp.h gunidecomp.h: gen-unicode-tables.pl UnicodeData-3.2.0.txt LineBreak-3
 stringprep_generic.c: draft-hoffman-stringprep-07.txt gen-stringprep-tables.pl 
 	$(PERL) $(srcdir)/gen-stringprep-tables.pl $<
 
-check_PROGRAMS = tst_stringprep
+check_PROGRAMS = tst_stringprep tst_nfkc
 
 TESTS = $(check_PROGRAMS)
 

@@ -24,6 +24,7 @@ stringprep.h
 stringprep.lo
 stringprep_generic.c
 stringprep_generic.lo
+tst_nfkc
 tst_stringprep
 toutf8.lo
 version.lo

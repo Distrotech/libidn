@@ -1,4 +1,4 @@
-/* tst_stringprep.c	libstringprep self tests for stringprep_stringprep()
+/* tst_nfkc.c	libstringprep self tests for stringprep_utf8_nfkc_normalize()
  * Copyright (C) 2002  Simon Josefsson
  *
  * This file is part of libstringprep.
@@ -47,7 +47,7 @@
 #endif
 
 #include <stringprep.h>
-#include <stringprep_generic.h>
+
 
 static int debug = 0;
 static int error_count = 0;
@@ -126,29 +126,25 @@ binprint (char *str, int len)
     }
 }
 
-struct stringprep
+struct nfkc
 {
   char *in;
-  int flags;
   char *out;
-  stringprep_profile *profile;
 }
-strprep[] =
+nfkc[] =
 {
-  /* nothing */
-  { "foo\xC2\xAD" "bar", 0, "foobar",  stringprep_generic },
-  /* case_nfkc + normalization: */
-  { "\xC2\xB5", 0, "\xCE\xBC",  stringprep_generic },
-  /* case_nonfkc: */
-  { "\xC2\xB5", STRINGPREP_NO_NFKC, "\xCE\xBC",  stringprep_generic },
-  { "\xC2\xAA", 0, "\x61", stringprep_generic }
+  {
+  "\xC2\xB5", "\xCE\xBC"}
+  ,
+  {
+  "\xC2\xAA", "\x61"}
 };
 
 int
 main (int argc, char *argv[])
 {
-  char *p;
-  int rc, i;
+  char *out;
+  int i;
 
   do
     if (strcmp (argv[argc - 1], "-v") == 0 ||
@@ -167,52 +163,52 @@ main (int argc, char *argv[])
       }
   while (argc-- > 1);
 
-  p = malloc(BUFSIZ);
-  if (p == NULL)
-    fail ("malloc() returned NULL\n");
 
-  for (i = 0; i < sizeof (strprep) / sizeof (strprep[0]); i++)
+
+
+
+  for (i = 0; i < sizeof (nfkc) / sizeof (nfkc[0]); i++)
     {
       if (debug)
-	printf ("STRINGPREP entry %d\n", i);
+	printf ("NFKC entry %d\n", i);
 
-      strcpy(p, strprep[i].in);
 
-      rc = stringprep (p, BUFSIZ, strprep[i].flags, strprep[i].profile);
-      if (rc != STRINGPREP_OK)
+
+      out = stringprep_utf8_nfkc_normalize (nfkc[i].in, strlen (nfkc[i].in));
+      if (out == NULL)
 	{
-	  fail ("stringprep() entry %d failed: %d\n", i, rc);
+	  fail ("NFKC entry %d failed fatally\n", i);
 	  continue;
 	}
 
       if (debug)
 	{
 	  printf ("in:\n");
-	  escapeprint (strprep[i].in, strlen (strprep[i].in));
-	  hexprint (strprep[i].in, strlen (strprep[i].in));
+	  escapeprint (nfkc[i].in, strlen (nfkc[i].in));
+	  hexprint (nfkc[i].in, strlen (nfkc[i].in));
 	  puts ("");
-	  binprint (strprep[i].in, strlen (strprep[i].in));
+	  binprint (nfkc[i].in, strlen (nfkc[i].in));
 	  puts ("");
 
 	  printf ("out:\n");
-	  escapeprint (p, strlen (p));
-	  hexprint (p, strlen (p));
+	  escapeprint (out, strlen (out));
+	  hexprint (out, strlen (out));
 	  puts ("");
-	  binprint (p, strlen (p));
+	  binprint (out, strlen (out));
 	  puts ("");
 
 	  printf ("expected out:\n");
-	  escapeprint (strprep[i].out, strlen (strprep[i].out));
-	  hexprint (strprep[i].out, strlen (strprep[i].out));
+	  escapeprint (nfkc[i].out, strlen (nfkc[i].out));
+	  hexprint (nfkc[i].out, strlen (nfkc[i].out));
 	  puts ("");
-	  binprint (strprep[i].out, strlen (strprep[i].out));
+	  binprint (nfkc[i].out, strlen (nfkc[i].out));
 	  puts ("");
 	}
 
-      if (strlen (strprep[i].out) != strlen (p) ||
-	  memcmp (strprep[i].out, p, strlen (p)) != 0)
+      if (strlen (nfkc[i].out) != strlen (out) ||
+	  memcmp (nfkc[i].out, out, strlen (out)) != 0)
 	{
-	  fail ("stringprep() entry %d failed\n", i);
+	  fail ("NFKC entry %d failed\n", i);
 	  if (debug)
 	    printf ("ERROR\n");
 	}
@@ -220,10 +216,10 @@ main (int argc, char *argv[])
 	printf ("OK\n");
     }
 
-  free(p);
+
 
   if (debug)
-    printf ("Stringprep self tests done with %d errors\n", error_count);
+    printf ("NFKC self tests done with %d errors\n", error_count);
 
   return error_count ? 1 : 0;
 }
