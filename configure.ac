@@ -24,9 +24,9 @@ AC_INIT([libidn], [0.4.5], [bug-libidn@gnu.org])
 # Interfaces changed/added/removed:   CURRENT++       REVISION=0
 # Interfaces added:                             AGE++
 # Interfaces removed:                           AGE=0
-LT_CURRENT=13
-LT_REVISION=11
-LT_AGE=2
+LT_CURRENT=14
+LT_REVISION=0
+LT_AGE=3
 AC_SUBST(LT_CURRENT)
 AC_SUBST(LT_REVISION)
 AC_SUBST(LT_AGE)
