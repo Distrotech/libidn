@@ -103,7 +103,7 @@ main (int argc, char **argv)
 {
   int status;
   int r;
-  unsigned int input_length, output_length, j;
+  size_t input_length, output_length, j;
   unsigned char case_flags[unicode_max_length];
 
   if (argc != 2)
