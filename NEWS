@@ -6,6 +6,10 @@ See the end for copying conditions.
 
 ** The command line parameter '--' idiom is documented.
 
+** The iSCSI stringprep profile now recognized as "iSCSI".
+The earlier name "ISCSIprep" is still recognized, for backwards
+compatibility.
+
 ** DocBook manuals no longer included (the tools are too unstable).
 
 * Version 0.3.6 (released 2004-01-06)
