@@ -2,7 +2,7 @@
 
   <head>
     <title>Try GNU Libidn</title>
-    <meta http-equiv="Content-Type" content="text/html; charset="<?php print $charset ? $charset : "ISO-8859-1" ?>" />
+    <meta http-equiv="Content-Type" content="text/html; charset=<?php print $charset ? $charset : "ISO-8859-1" ?>" />
   </head>
 
   <body>
@@ -247,6 +247,36 @@
 </pre>
 
     <hr>
-    <address>Simon Josefsson</address>
+    <h2>Error codes</h2>
+
+<pre>
+
+  enum
+  {
+    PUNYCODE_SUCCESS = 0,
+    PUNYCODE_BAD_INPUT,		/* Input is invalid.                       */
+    PUNYCODE_BIG_OUTPUT,	/* Output would exceed the space provided. */
+    PUNYCODE_OVERFLOW		/* Input needs wider integers to process.  */
+  };
+
+  /* Error codes. */
+  enum
+  {
+    IDNA_SUCCESS = 0,
+    IDNA_STRINGPREP_ERROR = 1,
+    IDNA_PUNYCODE_ERROR = 2,
+    IDNA_CONTAINS_LDH = 3,
+    IDNA_CONTAINS_MINUS = 4,
+    IDNA_INVALID_LENGTH = 5,
+    IDNA_NO_ACE_PREFIX = 6,
+    IDNA_ROUNDTRIP_VERIFY_ERROR = 7,
+    IDNA_CONTAINS_ACE_PREFIX = 8,
+    IDNA_ICONV_ERROR = 9,
+    /* Internal errors. */
+    IDNA_MALLOC_ERROR = 201
+  };
+</pre>
+
+    <hr>
   </body>
 </html>
