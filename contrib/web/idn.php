@@ -16,7 +16,7 @@
     stringprep implementation with support for several stringprep
     profiles.
 
-    <p>Report bugs to <A
+    <p>Report problems to <A
     HREF="mailto:bug-libidn@gnu.org">bug-libidn@gnu.org</A>, but first
     please make sure your browser really is encoding the data you type
     in the charset you select.  If not, incorrect output or an error
