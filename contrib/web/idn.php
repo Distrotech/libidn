@@ -38,9 +38,9 @@ if (!$charset) {
     <h2>Input</h2>
     <form>
 
-      <p>The following string must be in <?php print $charset; ?>, if
+      <p>The following string must be in <?php print $charset; ?>. If
 	you wish to use another charset you must select it below,
-	submit the form, and start over.<br>
+	submit the form, and then enter your string.<br>
 
       <input type=text name=data size=40 value="<?php print $data ?>"><br>
 
