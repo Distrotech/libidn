@@ -19,8 +19,6 @@
 
 SUBDIRS = gnu . misc
 
-EXTRA_DIST = README.html README.UNICODE
-
 if JAVA
 libidn_jardir = $(datadir)/java
 libidn_jar_DATA = libidn.jar
