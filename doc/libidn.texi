@@ -1301,6 +1301,7 @@ be used when writing your own application.
 * Example 2::		Example using punycode.
 * Example 3::		Example using IDNA ToASCII.
 * Example 4::		Example using IDNA ToUnicode.
+* Example 5::		Example using TLD checking.
 @end menu
 
 @node Example 1
