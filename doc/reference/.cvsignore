@@ -14,6 +14,7 @@ libidn.hierarchy
 libidn.interfaces
 libidn.prerequisites
 libidn.signals
+libidn.types
 scan-build.stamp
 sgml-build.stamp
 sgml.stamp
