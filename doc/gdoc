@@ -157,7 +157,7 @@ $blankline_sgml = "</para><para>\n";
 
 # these are pretty rough
 %highlights_man = ( "\\s*" .$type_constant . "\\s*", "\\n.I \\\"\$1\\\"\\n",
-		    $type_func, "\\n.B \\\"\$1\\\"\\n",
+		    $type_func . "\\s*", "\\n.B \\\"\$1\\\"\\n",
 		    $type_struct . "\\s*", "\\n.I \\\"\$1\\\"\\n",
 		    $type_param."([\.\, ]*)\n?", "\\n.I \\\"\$1\$2\\\"\\n" );
 $blankline_man = "";
