@@ -13,12 +13,10 @@ These processing rules are intended for XMPP node identifiers only,
 and not for arbitrary text.
 </para>
 
-
 <!-- ##### SECTION See_Also ##### -->
 <para>
 
 </para>
-
 
 <!-- ##### MACRO stringprep_xmpp_nodeprep ##### -->
 <para>
