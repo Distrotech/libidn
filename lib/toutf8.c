@@ -105,13 +105,12 @@ stringprep_convert (const char *str,
   iconv_t cd;
   char *dest;
   char *outp;
-  char *p, *startp;
+  ICONV_CONST char *p;
   size_t inbytes_remaining;
   size_t outbytes_remaining;
   size_t err;
   size_t outbuf_size;
   int have_error = 0;
-  int len;
 
   if (strcmp (to_codeset, from_codeset) == 0)
     {
@@ -119,8 +118,7 @@ stringprep_convert (const char *str,
       p = malloc (strlen (str) + 1);
       if (!p)
 	return NULL;
-      strcpy (p, str);
-      return p;
+      return strcpy (p, str);
     }
 
   cd = iconv_open (to_codeset, from_codeset);
@@ -128,17 +126,16 @@ stringprep_convert (const char *str,
   if (cd == (iconv_t) - 1)
     return NULL;
 
-  p = (char *) malloc (strlen (str) + 1);
-  strcpy (p, str);
-  if (p == NULL)
-    return NULL;
-  len = strlen (p);
-  startp = p;
-  inbytes_remaining = len;
-  outbuf_size = len + 1;	/* + 1 for nul in case len == 1 */
+  p = (ICONV_CONST char *) str;
 
-  outbytes_remaining = outbuf_size - 1;	/* -1 for nul */
+  inbytes_remaining = strlen (p);
+  /* Guess the maximum length the output string can have.  */
+  outbuf_size = (inbytes_remaining + 1) * 5;
+
   outp = dest = malloc (outbuf_size);
+  if (dest == NULL)
+    goto out;
+  outbytes_remaining = outbuf_size - 1;	/* -1 for NUL */
 
 again:
 
@@ -156,12 +153,19 @@ again:
 	case E2BIG:
 	  {
 	    size_t used = outp - dest;
+	    char *newdest;
 
 	    outbuf_size *= 2;
-	    dest = realloc (dest, outbuf_size);
+	    newdest = realloc (dest, outbuf_size);
+	    if (newdest == NULL)
+	      {
+		have_error = 1;
+		goto out;
+	      }
+	    dest = newdest;
 
 	    outp = dest + used;
-	    outbytes_remaining = outbuf_size - used - 1;	/* -1 for nul */
+	    outbytes_remaining = outbuf_size - used - 1; /* -1 for NUL */
 
 	    goto again;
 	  }
@@ -179,12 +183,10 @@ again:
 
   *outp = '\0';
 
-  if ((p - startp) != len)
+  if (*p != '\0')
     have_error = 1;
 
-
-  free (startp);
-
+ out:
   iconv_close (cd);
 
   if (have_error)
