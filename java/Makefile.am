@@ -41,7 +41,8 @@ libidn-@VERSION@.jar:
 
 INSTALL_TARGETS += install-jar
 install-jar:
-	ln -sf libidn-@VERSION@.jar $(libidn_jardir)/libidn.jar
+	install -d -m 755 $(DESTDIR)$(libidn_jardir)
+	ln -sf libidn-@VERSION@.jar $(DESTDIR)$(libidn_jardir)/libidn.jar
 
 clean-local:
 	rm -f $(libidn_jar_DATA)
