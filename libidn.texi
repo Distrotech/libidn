@@ -33,6 +33,11 @@ Software Foundation raise funds for GNU development.''
 * libidn: (libidn).	Internationalized string processing library.
 @end direntry
 
+@dircategory GNU utilities
+@direntry
+* idn: (libidn)Invoking idn.		Command line interface to GNU Libidn.
+@end direntry
+
 @titlepage
 @title GNU Libidn
 @subtitle for version @value{VERSION}, @value{UPDATED}
@@ -59,6 +64,8 @@ Software Foundation raise funds for GNU development.''
 * IDNA Functions::		IDNA functions.
 * Examples::                    Demonstrate how to use the library.
 * Acknowledgements::            Whom to blame.
+
+* Invoking idn::		Command line interface to the library.
 
 Appendices
 
@@ -648,6 +655,79 @@ downloaded from www.gtk.org.
 
 Several people reported bugs, sent patches or suggested improvements,
 see the file THANKS.
+
+@c **********************************************************
+@c *********************  Invoking idn  *********************
+@c **********************************************************
+@node Invoking idn
+@chapter Invoking idn
+
+@pindex idn
+@cindex invoking @command{idn}
+@cindex command line
+
+@majorheading Name
+
+GNU Libidn (idn) -- Internationalized Domain Names command line tool
+
+@majorheading Description
+@code{idn} is a utility part of GNU Libidn.  It allows encoding and
+decoding of punycode data and IDNA ToASCII and ToUnicode operations to
+be performed on the command line, without the need to write a program
+that uses libidn.
+
+Data is read, line by line, from the standard input, and one of the
+operations indicated by command parameters are performed and the
+output is printed to standard output.  If any errors are encountered,
+the execution of the applications is aborted.
+
+@majorheading Options
+@code{idn} recognizes these commands:
+
+@verbatim
+       -h  --help
+              Print help and exit
+
+       -V  --version
+              Print version and exit
+
+       -e  --punycode-encode
+              Encode UTF-8 to Punycode
+
+       -d  --punycode-decode
+              Decode Punycode to UTF-8
+
+       -a  --idna-to-ascii
+              Convert UTF-8 to ACE according to IDNA
+
+       -u  --idna-to-unicode
+              Convert ACE to UTF-8 according to IDNA
+
+       --allow-unassigned
+              Toggle IDNA AllowUnassigned flag (default=off)
+
+       --usestd3asciirules
+              Toggle IDNA UseSTD3ASCIIRules flag (default=off)
+
+       --debug
+              Print debugging information (default=off)
+
+       --quiet
+              Don't print the welcome greeting (default=off)
+@end verbatim
+
+@majorheading Environment Variables
+
+The @var{CHARSET} environment variable can be used to override what
+character set to be used for decoding incoming data on the standard
+input, and to encode data to the standard output.  If your system is
+set up correctly, the application will guess which character set is
+used automatically.  Example usage:
+
+@verbatim
+$ CHARSET=ISO-8859-1 idn --punycode-encode
+...
+@end verbatim
 
 @include lgpl.texi
 
