@@ -4,9 +4,9 @@ See the end for copying conditions.
 
 * Version 0.5.6 (unreleased)
 
-** Now using GNULib for portability code.
-This means the code now use strdup, which improve readability.  See
-<http://www.gnu.org/software/gnulib/> for more information on GNULib.
+** Now using GNULib in application front end (src/) for portability code.
+See <http://www.gnu.org/software/gnulib/> for more information on
+GNULib.  This should make the code easier to read and maintain.
 
 ** Added functions to convert return codes to human readable text.
 
