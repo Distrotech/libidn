@@ -88,14 +88,14 @@ extern "C"
   {
     Stringprep_profile_steps operation;
     Stringprep_profile_flags flags;
-    Stringprep_table_element *table;
+    const Stringprep_table_element *table;
   };
   typedef struct Stringprep_table Stringprep_profile;
 
   struct Stringprep_profiles
   {
     char *name;
-    Stringprep_profile *tables;
+    const Stringprep_profile *tables;
   };
   typedef struct Stringprep_profiles Stringprep_profiles;
 
@@ -168,17 +168,17 @@ extern "C"
 
   extern int stringprep_4i (uint32_t * ucs4, size_t * len, size_t maxucs4len,
 			    Stringprep_profile_flags flags,
-			    Stringprep_profile * profile);
+			    const Stringprep_profile * profile);
   extern int stringprep_4zi (uint32_t * ucs4, size_t maxucs4len,
 			     Stringprep_profile_flags flags,
-			     Stringprep_profile * profile);
+			     const Stringprep_profile * profile);
   extern int stringprep (char *in, size_t maxlen,
 			 Stringprep_profile_flags flags,
-			 Stringprep_profile * profile);
+			 const Stringprep_profile * profile);
 
   extern int stringprep_profile (const char *in,
 				 char **out,
-				 char *profile,
+				 const char *profile,
 				 Stringprep_profile_flags flags);
 
   extern const char *stringprep_check_version (const char *req_version);
