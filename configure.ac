@@ -19,7 +19,6 @@ dnl License along with GNU Libidn; if not, write to the Free Software
 dnl Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
 
 AC_INIT(libidn, 0.2.3, bug-libidn@gnu.org)
-AC_CONFIG_SRCDIR(stringprep.h.in)
 
 # Interfaces removed:    CURRENT++, AGE=0, REVISION=0
 # Interfaces added:      CURRENT++, AGE++, REVISION=0
@@ -49,7 +48,7 @@ AC_CHECK_HEADERS(sys/types.h string.h strings.h memory.h unistd.h errno.h)
 
 # Checks for typedefs, structures, and compiler characteristics.
 AC_TYPE_SIZE_T
-AX_CREATE_STDINT_H(idn-int.h)
+AX_CREATE_STDINT_H(lib/idn-int.h)
 
 # For gnulib stuff.
 gl_FUNC_MEMSET
@@ -101,6 +100,10 @@ AM_MISSING_PROG(GTKDOC_MKDB, gtkdoc-mkdb, $missing_dir)
 AM_MISSING_PROG(GTKDOC_MKHTML, gtkdoc-mkhtml, $missing_dir)
 AM_MISSING_PROG(GTKDOC_FIXXREF, gtkdoc-fixxref, $missing_dir)
 
-AC_CONFIG_FILES([Makefile libidn.pc stringprep.h reference/Makefile idn.ggo \
-		contrib/doxygen/Doxyfile doc/Makefile m4/Makefile])
+AC_CONFIG_FILES([Makefile libidn.pc reference/Makefile \
+		lib/stringprep.h src/idn.ggo \
+		gl/Makefile gl/m4/Makefile \
+		contrib/doxygen/Doxyfile m4/Makefile \
+		doc/Makefile doc/specifications/Makefile \
+		lib/Makefile src/Makefile tests/Makefile examples/Makefile])
 AC_OUTPUT
