@@ -109,7 +109,7 @@ htmldir = ../www-$(PACKAGE)
 tag = $(PACKAGE)-`echo $(VERSION) | sed 's/\./-/g'`
 
 release:
-	cvs upd -p -r libidn-0-1-0 NEWS > /dev/null
+	cvs upd -p -r HEAD NEWS > /dev/null
 	if cvs upd -p -r $(tag) NEWS > /dev/null; then false else true; fi
 	rm -f ChangeLog && cvs upd ChangeLog
 	cvs commit
