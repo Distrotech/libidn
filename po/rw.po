@@ -1,233 +1,268 @@
-# Simplified Chinese translation for libidn
+# Kinyarwanda translations for libidn package.
 # Copyright (C) 2005 Free Software Foundation, Inc.
 # This file is distributed under the same license as the libidn package.
-# Meng Jie <zuxyhere@eastday.com>, 2005.
+# Steve Murphy <murf@e-tools.com>, 2005.
+# Steve performed initial rough translation from compendium built from translations provided by the following translators:
+# Philibert Ndandali  <ndandali@yahoo.fr>, 2005.
+# Viateur MUGENZI <muvia1@yahoo.fr>, 2005.
+# Noëlla Mupole <s24211045@tuks.co.za>, 2005.
+# Carole Karema <karemacarole@hotmail.com>, 2005.
+# JEAN BAPTISTE NGENDAHAYO <ngenda_denis@yahoo.co.uk>, 2005.
+# Augustin KIBERWA  <akiberwa@yahoo.co.uk>, 2005.
+# Donatien NSENGIYUMVA <ndonatienuk@yahoo.co.uk>, 2005.
+# Antoine Bigirimana <antoine@e-tools.com>, 2005.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: libidn 0.5.12\n"
+"Project-Id-Version: libidn 0.5.6\n"
 "Report-Msgid-Bugs-To: bug-libidn@gnu.org\n"
-"POT-Creation-Date: 2004-12-04 02:28+0100\n"
-"PO-Revision-Date: 2005-03-12 18:48+0800\n"
-"Last-Translator: Meng Jie <zuxyhere@eastday.com>\n"
-"Language-Team: Chinese (simplified) <i18n-translation@lists.linux.net.cn>\n"
+"POT-Creation-Date: 2004-10-02 21:50+0200\n"
+"PO-Revision-Date: 2005-04-04 10:55-0700\n"
+"Last-Translator: Steven Michael Murphy <murf@e-tools.com>\n"
+"Language-Team: Kinyarwanda <translation-team-rw@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Poedit-Language: Chinese\n"
-"X-Poedit-Country: CHINA\n"
-"X-Poedit-SourceCharset: iso-8859-1\n"
-"X-Poedit-Basepath: d:\\msys\\source\\libidn-0.5.9\n"
 
 #: lib/strerror-idna.c:70 lib/strerror-pr29.c:54 lib/strerror-punycode.c:54
 #: lib/strerror-stringprep.c:74 lib/strerror-tld.c:56
 msgid "Success"
-msgstr "成功"
+msgstr "Ibyatunganye"
 
 #: lib/strerror-idna.c:74 lib/strerror-pr29.c:62
+#, fuzzy
 msgid "String preparation failed"
-msgstr "预备字符串失败"
+msgstr "Byanze"
 
 #: lib/strerror-idna.c:78
+#, fuzzy
 msgid "Punycode failed"
-msgstr "Punycode 失败"
+msgstr "Byanze"
 
 #: lib/strerror-idna.c:82
+#, fuzzy
 msgid "Non-digit/letter/hyphen in input"
-msgstr "输入中出现非数字/字母/连字符"
+msgstr "Ibaruwa... in Iyinjiza"
 
 #: lib/strerror-idna.c:86
+#, fuzzy
 msgid "Forbidden leading or trailing minus sign (`-')"
-msgstr "不能使用‘-’作为起始或终止符"
+msgstr "Nyobora Cyangwa IKIMENYETSO"
 
 #: lib/strerror-idna.c:90
+#, fuzzy
 msgid "Output would be too large or too small"
-msgstr "输出太大或太小"
+msgstr "Binini Cyangwa Gitoya"
 
 #: lib/strerror-idna.c:94
+#, fuzzy
 msgid "Input does not start with ACE prefix (`xn--')"
-msgstr "输入未以 ACE 前缀(‘xn--’)开头"
+msgstr "OYA Gutangira Na: Imbanziriza"
 
 #: lib/strerror-idna.c:98
+#, fuzzy
 msgid "String not idempotent under ToASCII"
-msgstr "ToASCII 中字符串不是幂等的"
+msgstr "OYA"
 
 #: lib/strerror-idna.c:102
+#, fuzzy
 msgid "Input already contain ACE prefix (`xn--')"
-msgstr "输入已经包含 ACE前缀(‘xn--’)"
+msgstr "Imbanziriza"
 
 #: lib/strerror-idna.c:106 lib/strerror-tld.c:72
+#, fuzzy
 msgid "System iconv failed"
-msgstr "系统 iconv 失败"
+msgstr "Byanze"
 
 #: lib/strerror-idna.c:110 lib/strerror-stringprep.c:118 lib/strerror-tld.c:68
+#, fuzzy
 msgid "Cannot allocate memory"
-msgstr "无法分配内存"
+msgstr "Ububiko"
 
 #: lib/strerror-idna.c:114
+#, fuzzy
 msgid "System dlopen failed"
-msgstr "系统 dlopen 失败"
+msgstr "Byanze"
 
 #: lib/strerror-idna.c:118 lib/strerror-pr29.c:66 lib/strerror-punycode.c:70
 #: lib/strerror-stringprep.c:122 lib/strerror-tld.c:80
 msgid "Unknown error"
-msgstr "未知错误"
+msgstr "Ikosa itazwi"
 
 #: lib/strerror-pr29.c:58
+#, fuzzy
 msgid "String not idempotent under Unicode NFKC normalization"
-msgstr "Unicode NFKC 正规化过程中字符串不是幂等的"
+msgstr "OYA"
 
 #: lib/strerror-punycode.c:58
 msgid "Invalid input"
-msgstr "无效输入"
+msgstr "ibinjizwa bitemewe"
 
 #: lib/strerror-punycode.c:62 lib/strerror-stringprep.c:98
+#, fuzzy
 msgid "Output would exceed the buffer space provided"
-msgstr "输入将溢出所提供的缓冲区"
+msgstr "i Umwanya"
 
 #: lib/strerror-punycode.c:66
+#, fuzzy
 msgid "String size limit exceeded"
-msgstr "字符串大小越界"
+msgstr "Ingano"
 
 #: lib/strerror-stringprep.c:78
+#, fuzzy
 msgid "Forbidden unassigned code points in input"
-msgstr "输入中不能出现未赋值的代码点"
+msgstr "ITEGEKONGENGA Utudomo in Iyinjiza"
 
 #: lib/strerror-stringprep.c:82
+#, fuzzy
 msgid "Prohibited code points in input"
-msgstr "输入中不能出现代码点"
+msgstr "ITEGEKONGENGA Utudomo in Iyinjiza"
 
 #: lib/strerror-stringprep.c:86
+#, fuzzy
 msgid "Conflicting bidirectional properties in input"
-msgstr "输入中出现相互冲突的双向属性"
+msgstr "Indangakintu... in Iyinjiza"
 
 #: lib/strerror-stringprep.c:90
+#, fuzzy
 msgid "Malformed bidirectional string"
-msgstr "双向字符串格式错误"
+msgstr "Ikurikiranyanyuguti"
 
 #: lib/strerror-stringprep.c:94
+#, fuzzy
 msgid "Prohibited bidirectional code points in input"
-msgstr "输入中不能出现双向的代码点"
+msgstr "ITEGEKONGENGA Utudomo in Iyinjiza"
 
 #: lib/strerror-stringprep.c:102
+#, fuzzy
 msgid "Error in stringprep profile definition"
-msgstr "Stringpref 配置文件定义出错"
+msgstr "in Ibijyana Insobanuro"
 
 #: lib/strerror-stringprep.c:106
+#, fuzzy
 msgid "Flag conflict with profile"
-msgstr "标识与配置文件冲突"
+msgstr "Na: Ibijyana"
 
 #: lib/strerror-stringprep.c:110
+#, fuzzy
 msgid "Unknown profile"
-msgstr "未知的配置文件"
+msgstr "Ibijyana"
 
 #: lib/strerror-stringprep.c:114
+#, fuzzy
 msgid "Unicode normalization failed (internal error)"
-msgstr "Unicode 正规化失败(内部错误)"
+msgstr "Byanze By'imbere Ikosa"
 
 #: lib/strerror-tld.c:60
+#, fuzzy
 msgid "Code points prohibited by top-level domain"
-msgstr "顶级域不接受代码点"
+msgstr "Utudomo ku Hejuru: urwego Urwego"
 
 #: lib/strerror-tld.c:64
+#, fuzzy
 msgid "Missing input"
-msgstr "输入缺失"
+msgstr "Iyinjiza"
 
 #: lib/strerror-tld.c:76
+#, fuzzy
 msgid "No top-level domain found in input"
-msgstr "输入中未发现顶级域"
+msgstr "Hejuru: urwego Urwego Byabonetse in Iyinjiza"
 
 #: src/idn.c:89
+#, fuzzy
 msgid "Only one of -s, -e, -d, -a or -u can be specified."
-msgstr "只能指定 -s，-e，-d，-a 或 -u 中的一个。"
+msgstr "Bya S E D a Cyangwa u"
 
 #: src/idn.c:98
 #, c-format
 msgid "Charset `%s'.\n"
-msgstr "字符集‘%s’。\n"
+msgstr ""
 
 #: src/idn.c:101
-#, c-format
+#, fuzzy, c-format
 msgid "Type each input string on a line by itself, terminated by a newline character.\n"
-msgstr "输入时，每个字符串单占一行。\n"
+msgstr "Iyinjiza Ikurikiranyanyuguti ku a Umurongo ku ku a Inyuguti"
 
 #: src/idn.c:116
+#, fuzzy
 msgid "Input error"
-msgstr "输入错误"
+msgstr "Ikosa"
 
-#: src/idn.c:126 src/idn.c:186 src/idn.c:267 src/idn.c:341
-#, c-format
+#: src/idn.c:126 src/idn.c:184 src/idn.c:261 src/idn.c:332
+#, fuzzy, c-format
 msgid "Could not convert from %s to UTF-8."
-msgstr "无法将 %s 转为 UTF-8"
+msgstr "OYA GUHINDURA Bivuye Kuri 8"
 
-#: src/idn.c:134 src/idn.c:158 src/idn.c:193 src/idn.c:402
+#: src/idn.c:133 src/idn.c:156 src/idn.c:190 src/idn.c:389
+#, fuzzy
 msgid "Could not convert from UTF-8 to UCS-4."
-msgstr "无法将 UTF-8 转为 UCS-4。"
+msgstr "OYA GUHINDURA Bivuye 8 Kuri 4."
 
-#: src/idn.c:141 src/idn.c:199 src/idn.c:280 src/idn.c:356
-#, c-format
+#: src/idn.c:140 src/idn.c:196 src/idn.c:273 src/idn.c:346
+#, fuzzy, c-format
 msgid "input[%d] = U+%04x\n"
-msgstr "输入[%d] = U+%04x\n"
+msgstr "Iyinjiza U"
 
-#: src/idn.c:150
+#: src/idn.c:149
 #, c-format
 msgid "stringprep_profile: %s"
-msgstr "stringprep_profile：%s"
+msgstr ""
 
-#: src/idn.c:165 src/idn.c:242 src/idn.c:329 src/idn.c:374
-#, c-format
+#: src/idn.c:163 src/idn.c:237 src/idn.c:320 src/idn.c:363
+#, fuzzy, c-format
 msgid "output[%d] = U+%04x\n"
-msgstr "输出[%d] = U+%04x\n"
+msgstr "Ibisohoka U"
 
-#: src/idn.c:172 src/idn.c:213 src/idn.c:255 src/idn.c:407
-#, c-format
+#: src/idn.c:170 src/idn.c:209 src/idn.c:249 src/idn.c:394
+#, fuzzy, c-format
 msgid "Could not convert from UTF-8 to %s."
-msgstr "无法将 UTF-8 转为 %s。"
+msgstr "OYA GUHINDURA Bivuye 8 Kuri"
 
-#: src/idn.c:206
+#: src/idn.c:203
 #, c-format
 msgid "punycode_encode: %s"
-msgstr "punycode_encode：%s"
+msgstr ""
 
-#: src/idn.c:228
+#: src/idn.c:224
 msgid "malloc"
-msgstr "malloc"
+msgstr ""
 
-#: src/idn.c:234
+#: src/idn.c:230
 #, c-format
 msgid "punycode_decode: %s"
-msgstr "punycode_decode: %s"
+msgstr ""
 
-#: src/idn.c:250 src/idn.c:274 src/idn.c:349
+#: src/idn.c:244 src/idn.c:267 src/idn.c:339
+#, fuzzy
 msgid "Could not convert from UCS-4 to UTF-8."
-msgstr "无法将 UCS-4 转为 UTF-8。"
+msgstr "OYA GUHINDURA Bivuye 4. Kuri 8"
 
-#: src/idn.c:290
+#: src/idn.c:283
 #, c-format
 msgid "idna_to_ascii_4z: %s"
-msgstr "idna_to_ascii_4z：%s"
+msgstr ""
 
-#: src/idn.c:304
+#: src/idn.c:296
 #, c-format
 msgid "idna_to_unicode_8z4z (TLD): %s"
-msgstr "idna_to_unicode_8z4z (TLD)：%s"
+msgstr ""
 
-#: src/idn.c:311
-#, c-format
+#: src/idn.c:303
+#, fuzzy, c-format
 msgid "tld[%d] = U+%04x\n"
-msgstr "tld[%d] = U+%04x\n"
+msgstr "U"
 
-#: src/idn.c:317 src/idn.c:386
-#, c-format
+#: src/idn.c:309 src/idn.c:375
+#, fuzzy, c-format
 msgid "tld_check_4z (position %d): %s"
-msgstr "tld_check_4z (position %d)：%s"
+msgstr "Ibirindiro"
 
-#: src/idn.c:320 src/idn.c:392
+#: src/idn.c:312 src/idn.c:381
 #, c-format
 msgid "tld_check_4z: %s"
-msgstr "tld_check_4z：%s"
+msgstr ""
 
-#: src/idn.c:367
+#: src/idn.c:357
 #, c-format
 msgid "idna_to_unicode_8z4z: %s"
-msgstr "idna_to_unicode_8z4z：%s"
+msgstr ""
