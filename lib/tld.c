@@ -181,7 +181,7 @@ tld_get_z (const char *in, char **out)
   int rc;
 
   ilen = strlen (in);
-  iucs = calloc (ilen, sizeof(uint32_t));
+  iucs = calloc (ilen, sizeof (*iucs));
 
   if (!iucs)
     return TLD_MALLOC_ERROR;
