@@ -174,7 +174,7 @@ stringprep_utf8_to_unichar (const char *p)
 #define COMBINING_CLASS(Char) \
      (((Char) > (G_UNICODE_LAST_CHAR)) ? 0 : CC((Char) >> 8, (Char) & 0xff))
 
-/**
+/*
  * g_unicode_canonical_ordering:
  * @string: a UCS-4 encoded string.
  * @len: the maximum length of @string to use.
@@ -521,7 +521,7 @@ stringprep_unichar_to_utf8 (unsigned long c, char *outbuf)
  * This function does no error checking on the input.
  *
  * Return value: a pointer to a newly allocated UCS-4 string.
- *               This value must be freed with g_free().
+ *               This value must be freed with free().
  **/
 unsigned long *
 stringprep_utf8_to_ucs4 (const char *str, int len, int *items_written)
@@ -622,7 +622,7 @@ stringprep_utf8_to_ucs4 (const char *str, int len, int *items_written)
  * to UTF-8. The result will be terminated with a 0 byte.
  *
  * Return value: a pointer to a newly allocated UTF-8 string.
- *               This value must be freed with g_free(). If an
+ *               This value must be freed with free(). If an
  *               error occurs, %NULL will be returned and
  *               @error set.
  **/
@@ -671,7 +671,7 @@ err_out:
   return result;
 }
 
-/**
+/*
  * g_utf8_normalize:
  * @str: a UTF-8 encoded string.
  * @len: length of @str, in bytes, or -1 if @str is nul-terminated.
