@@ -87,7 +87,7 @@ noinst_PROGRAMS = $(tests) example example2 example3 example4
 
 # Lisp interface
 
-lisp_LISP = punycode.el
+lisp_LISP = punycode.el idna.el
 ELCFILES =
 
 # Documentation
