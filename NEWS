@@ -1,8 +1,20 @@
-Libstringprep NEWS -- history of user-visible changes.         -*- outline -*-
-Copyright (C) 2002 Simon Josefsson
+Libstringprep NEWS -- history of user-visible changes.          -*- outline -*-
 See the end for copying conditions.
 
 Please send libstringprep bug reports to bug-libstringprep@josefsson.org.
+
+* Version 0.0.3.
+
+** Exported utility function `stringprep_utf8_to_unichar', complementary
+to existing `stringprep_unichar_to_utf8'.
+
+** Renamed `stringprep_utf8_to_ucs4_fast' to `stringprep_utf8_to_ucs4' to
+clean up API. The old entry point is maintained for binary backwards
+compatibility though.
+
+** The distribution is from now on signed using GnuPG.
+
+** Bug fixes.
 
 * Version 0.0.2
 

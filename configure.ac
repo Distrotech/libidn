@@ -1,5 +1,5 @@
 dnl Process this file with autoconf to produce a configure script.
-AC_INIT(libstringprep, 0.0.2, bug-libstringprep@josefsson.org)
+AC_INIT(libstringprep, 0.0.3, bug-libstringprep@josefsson.org)
 AC_CONFIG_SRCDIR(stringprep.h.in)
 
 # Interfaces removed:    CURRENT++, AGE=0, REVISION=0
