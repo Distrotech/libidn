@@ -62,6 +62,8 @@ idna_strerror (Idna_rc rc)
 {
   const char *p;
 
+  bindtextdomain (PACKAGE, LOCALEDIR);
+
   switch (rc)
     {
     case IDNA_SUCCESS:

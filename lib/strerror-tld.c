@@ -48,6 +48,8 @@ tld_strerror (Tld_rc rc)
 {
   const char *p;
 
+  bindtextdomain (PACKAGE, LOCALEDIR);
+
   switch (rc)
     {
     case TLD_SUCCESS:

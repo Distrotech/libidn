@@ -66,6 +66,8 @@ stringprep_strerror (Stringprep_rc rc)
 {
   const char *p;
 
+  bindtextdomain (PACKAGE, LOCALEDIR);
+
   switch (rc)
     {
     case STRINGPREP_OK:

@@ -46,6 +46,8 @@ punycode_strerror (Punycode_status rc)
 {
   const char *p;
 
+  bindtextdomain (PACKAGE, LOCALEDIR);
+
   switch (rc)
     {
     case PUNYCODE_SUCCESS:

@@ -46,6 +46,8 @@ pr29_strerror (Pr29_rc rc)
 {
   const char *p;
 
+  bindtextdomain (PACKAGE, LOCALEDIR);
+
   switch (rc)
     {
     case PR29_SUCCESS:
