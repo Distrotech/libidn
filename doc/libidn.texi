@@ -1189,10 +1189,13 @@ strings, encoding and decoding of punycode data, and IDNA
 ToASCII/ToUnicode operations to be performed on the command line,
 without the need to write a program that uses libidn.
 
-Data is read, line by line, from the standard input, and one of the
-operations indicated by command parameters are performed and the
-output is printed to standard output.  If any errors are encountered,
-the execution of the applications is aborted.
+If strings are specified on the command line, they are used as input
+and the computed output is printed to standard output @code{stdout}.
+If no strings are specified on the command line, the program read
+data, line by line, from the standard input @code{stdin}, and print
+the computed output to standard output.  What processing is performed
+(e.g., ToASCII, Punycode encode) is indicated by options.  If any
+errors are encountered, the execution of the applications is aborted.
 
 @majorheading Options
 @code{idn} recognizes these commands:
@@ -1229,10 +1232,11 @@ the execution of the applications is aborted.
 @majorheading Environment Variables
 
 The @var{CHARSET} environment variable can be used to override what
-character set to be used for decoding incoming data on the standard
-input, and to encode data to the standard output.  If your system is
-set up correctly, the application will guess which character set is
-used automatically.  Example usage:
+character set to be used for decoding incoming data (i.e., on the
+command line or on the standard input stream), and to encode data to
+the standard output.  If your system is set up correctly, however, the
+application will guess which character set is used automatically.
+Example usage:
 
 @verbatim
 $ CHARSET=ISO-8859-1 idn --punycode-encode
