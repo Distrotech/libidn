@@ -111,14 +111,11 @@ struct nfkc
 {
   char *in;
   char *out;
-}
-nfkc[] =
-{
-  {
-  "\xC2\xB5", "\xCE\xBC"}
-  ,
-  {
-  "\xC2\xAA", "\x61"}
+};
+
+const struct nfkc nfkc[] = {
+  {"\xC2\xB5", "\xCE\xBC"},
+  {"\xC2\xAA", "\x61"}
 };
 
 int
