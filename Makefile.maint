@@ -502,4 +502,4 @@ alpha beta major: $(local-check)
 	-cp -v reference/*.html $(htmldir)/reference/
 	-cd $(htmldir) && \
 		cvs commit -m "Update." \
-			$(PACKAGE).{ps,pdf,html} reference/*.html doxygen/*
+			$(PACKAGE).{ps,pdf,html} reference/*.html doxygen/
