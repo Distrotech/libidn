@@ -4,7 +4,7 @@ See the end for copying conditions.
 
 * Version 0.3.3 (unreleased)
 
-** Fixed list of Stringprep profiles in 'idn --help'.
+** Fixed list of Stringprep profiles in 'idn --help' and 'idn.php'.
 
 ** Fixed debug information in 'idn'.
 
