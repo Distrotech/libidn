@@ -33,11 +33,11 @@
 
 #include "idn_cmd.h"
 
-#define GREETING "Copyright 2002, 2003 Simon Josefsson.\n"\
-	"GNU Libidn comes with NO WARRANTY, to the extent permitted by law.\n"\
-	"You may redistribute copies of GNU Libidn under the terms of\n"\
-	"the GNU Lesser General Public License.  For more information\n"\
-	"about these matters, see the file named COPYING.LIB.\n"\
+#define GREETING "Copyright 2002, 2003 Simon Josefsson.\n"		\
+  "GNU Libidn comes with NO WARRANTY, to the extent permitted by law.\n" \
+  "You may redistribute copies of GNU Libidn under the terms of\n"	\
+  "the GNU Lesser General Public License.  For more information\n"	\
+  "about these matters, see the file named COPYING.LIB.\n"
 
 int
 main (int argc, char *argv[])
