@@ -1204,11 +1204,12 @@ A unsigned integer that hold Unicode code points.
 
 @section Core Functions
 
-Note that the current implementation return @code{PUNYCODE_BAD_INPUT}
-if the @code{input_length} exceed 4294967295 characters.  This
-restriction may be removed in the future.  Meanwhile applications are
-encouraged to not depend on this problem, and use @code{sizeof} to
-initialize @code{input_length} and @code{output_length}.
+Note that the current implementation will fail if the
+@code{input_length} exceed 4294967295 (the size of
+@code{punycode_uint}).  This restriction may be removed in the future.
+Meanwhile applications are encouraged to not depend on this problem,
+and use @code{sizeof} to initialize @code{input_length} and
+@code{output_length}.
 
 The functions provided are the following two entry points:
 
