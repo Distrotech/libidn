@@ -3,10 +3,10 @@ Copyright (C) 2002, 2003, 2004 Simon Josefsson
 See the end for copying conditions.
 
 The punycode code was taken from the IETF IDN Punycode specification,
-by Adam M. Costello.
-
-Some functions (see nfkc.c and toutf8.c) has been borrowed from GLib
-downloaded from www.gtk.org.
+by Adam M. Costello.  The TLD code was contributed by Thomas Jacob.
+The Unicode tables were provided by Unicode, Inc.  Some functions for
+dealing with Unicode (see nfkc.c and toutf8.c) has been borrowed from
+GLib downloaded from www.gtk.org.
 
 Suggestions, bug reports, patches, test vectors or other contributions
 were also received from or written by:
