@@ -289,6 +289,7 @@
     <ul>
 	<li><a href="http://josefsson.org/idn.php?data=r%E4ksm%F6rg%E5s.josefsson.org&mode=toascii&charset=ISO-8859-1">ISO-8859-1 example</a>
 	<li><a href="http://josefsson.org/idn.php?data=%E2%82%ACcu&mode=toascii&charset=UTF-8">UTF-8 Euro example</a>
+	<li><a href="http://josefsson.org/idn.php?data=%A4cu&mode=toascii&charset=ISO-8859-15">ISO-8859-15 Euro example (same as previous)</a>
 	<li><a href="http://josefsson.org/idn.php?data=%B0%C2%BC%BC%C6%E0%C8%FE%B7%C3-with-SUPER-MONKEYS&mode=toascii&charset=EUC-JP">EUC-JP example</a>
 	<li><a href="http://josefsson.org/idn.php?data=%B9%CC%BC%FA&mode=toascii&charset=EUC-KR">EUC-KR example</a>
 	<li><a href="http://josefsson.org/idn.php?data=%D9%84%D9%8A%D9%87%D9%85%D8%A7%D8%A8%D8%AA%D9%83%D9%84%D9%85%D9%88%D8%B4%D8%B9%D8%B1%D8%A8%D9%8A%D8%9F&mode=toascii&charset=UTF-8">UTF-8 Arabic (Egyptian)</a>
