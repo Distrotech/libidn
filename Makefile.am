@@ -85,6 +85,11 @@ LDADD = libidn.la
 
 noinst_PROGRAMS = $(tests) example example2 example3 example4
 
+# Lisp interface
+
+lisp_LISP = punycode.el
+ELCFILES =
+
 # Documentation
 
 info_TEXINFOS = libidn.texi
