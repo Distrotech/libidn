@@ -9,9 +9,9 @@ BSD-Port-URL: http://www.freshports.org/devel/libidn/
 CVS-URL: http://josefsson.org/cgi-bin/viewcvs.cgi/libidn/
 Mirror-Site-URL: http://josefsson.org/libidn
 Demo-URL: http://josefsson.org/idn.php
-Version: 0.5.8
+Version: 0.5.9
 Release-Focus: Minor bugfixes
 
-The file BidiMirroring-3.2.0.txt is now included, to allow rebuilding
-after 'make distclean'.  Generated files now have consistent 'DO NOT
-EDIT!' comments.
+Reference API manual now available in DevHelp format.  Update of
+gnulib files to fix potential problem in getopt on BSD.  Documentation
+improvements.
