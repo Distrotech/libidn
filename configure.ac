@@ -76,12 +76,6 @@ fi
 # Check for gtk-doc.
 GTK_DOC_CHECK(1.1)
 
-# Docbook
-AM_MISSING_PROG(DOCBOOK2HTML, docbook2html, $missing_dir)
-AM_MISSING_PROG(DOCBOOK2TXT, docbook2txt, $missing_dir)
-AM_MISSING_PROG(DOCBOOK2PDF, docbook2pdf, $missing_dir)
-AM_MISSING_PROG(DOCBOOK2PS, docbook2ps, $missing_dir)
-
 AC_CONFIG_FILES([Makefile libidn.pc doc/reference/Makefile \
 		lib/stringprep.h contrib/doxygen/Doxyfile \
 		doc/Makefile doc/specifications/Makefile \

@@ -22,8 +22,7 @@ if ENABLE_GTK_DOC
 SUBDIRS += reference
 endif
 
-EXTRA_DIST = gdoc libidn.html libidn.ps libidn.pdf lgpl.texi	\
-	libidn-db.xml libidn-db.txt libidn-db.pdf libidn-db.ps
+EXTRA_DIST = gdoc libidn.html libidn.ps libidn.pdf lgpl.texi
 
 info_TEXINFOS = libidn.texi
 libidn_TEXINFOS = fdl.texi $(gdoc_TEXINFOS)
@@ -49,17 +48,3 @@ GDOC_MAN_EXTRA_ARGS = -module $(PACKAGE) -sourceversion $(VERSION) \
 	-bugsto $(PACKAGE_BUGREPORT) -includefuncprefix -seeinfo $(PACKAGE) \
 	-copyright "2002, 2003 Simon Josefsson" -verbatimcopying
 include $(srcdir)/Makefile.gdoci
-
-# DocBook
-
-libidn-db.xml: libidn.texi $(libidn_TEXINFOS)
-	$(MAKEINFO) --docbook --output $@ libidn.texi
-
-libidn-db.txt: libidn-db.xml
-	$(DOCBOOK2TXT) $^
-
-libidn-db.pdf: libidn-db.xml
-	$(DOCBOOK2PDF) $^
-
-libidn-db.ps: libidn-db.xml
-	$(DOCBOOK2PS) $^
