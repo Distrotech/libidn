@@ -1,5 +1,13 @@
 2003-02-11  Simon Josefsson <simon@josefsson.org>
 
+	* Makefile.am: Add upload target.
+
+2003-02-11  Simon Josefsson <simon@josefsson.org>
+
+	* tst_idna.c: Use new IDNA ACE prefix.
+
+2003-02-11  Simon Josefsson <simon@josefsson.org>
+
 	* NEWS, configure.ac: Version 0.1.6.
 
 2003-02-11  Simon Josefsson <simon@josefsson.org>
