@@ -20,8 +20,5 @@
 INCLUDES = -I$(top_srcdir)/lib -I../lib
 LDADD = ../lib/libidn.la
 
-tests = tst_stringprep tst_punycode tst_idna tst_nfkc
-
-check_PROGRAMS = $(tests)
-
-TESTS = $(tests)
+TESTS = tst_stringprep tst_punycode tst_idna tst_nfkc
+check_PROGRAMS = $(TESTS)
