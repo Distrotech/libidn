@@ -200,7 +200,7 @@ main (int argc, char *argv[])
 	  rc = punycode_encode (len, q, NULL, &len2, readbuf);
 	  free (q);
 	  if (rc != PUNYCODE_SUCCESS)
-	    error (1, 0, _("punycode_encode: %s\n"), punycode_strerror (rc));
+	    error (1, 0, _("punycode_encode: %s"), punycode_strerror (rc));
 
 	  readbuf[len2] = '\0';
 
