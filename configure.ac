@@ -47,6 +47,19 @@ AM_MISSING_PROG(HELP2MAN, help2man, $missing_dir)
 AM_ICONV
 AM_PATH_LISPDIR
 
+if test "$am_cv_func_iconv" != "yes"; then
+  AC_MSG_NOTICE([
+***
+
+Your system does not have iconv().  The iconv() function is not
+strictly required by the source code.  However, that may change in
+the future, unless you report that this may be a problem for you.
+
+Please report this to $PACKAGE_BUGREPORT.
+
+***])
+fi
+
 # Checks for header files.
 AC_HEADER_STDC
 AC_CHECK_HEADERS(unistd.h errno.h)
