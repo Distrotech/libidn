@@ -2,6 +2,12 @@ Libidn NEWS -- History of user-visible changes.                 -*- outline -*-
 Copyright (C) 2002, 2003 Simon Josefsson
 See the end for copying conditions.
 
+* Version 0.1.15 (unreleased)
+
+** Bugfixes.
+
+** API and ABI is backwards compatible with the previous version.
+
 * Version 0.1.14 (released 2003-05-10)
 
 ** Experimental documentation generation in contrib/doxygen/.
