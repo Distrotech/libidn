@@ -72,10 +72,11 @@ extern "C"
   int tld_get_4i (const uint32_t * in, size_t inlen, char **out);
   int tld_get_4z (const uint32_t * in, char **out);
 
-  /* Return structure corresponding to the named tld, first looking
-   * thru xtra_tlds then thru built-in list, or NULL if not found. */
+  /* Return structure corresponding to the named TLD, by going though
+     overrides (or, if NULL, the default tld_tables), or return NULL
+     if no matching TLD table can be found. */
   const Tld_table *tld_get_table (const char *tld_str,
-				  const Tld_table ** xtra_tlds);
+				  const Tld_table ** overrides);
 
   /* Check NAMEPREPPED domain name for valid characters as defined by
    * the relevant registering body + [a-z0-9.-] return Tld_rc,
