@@ -33,6 +33,10 @@ EXTRA_DIST = FAQ libidn.pc.in iconv.m4 \
 	contrib/README contrib/idn-python/README contrib/idn-python/Makefile \
 	contrib/idn-python/idn.c contrib/idn-python/test.py \
 	contrib/web/idn.php \
+	contrib/java/README contrib/java/autogen.sh \
+	contrib/java/configure.ac contrib/java/Makefile.am \
+	contrib/java/ExampleIDNA.java contrib/java/IDNA.java \
+	contrib/java/IDNA.c \
 	getopt.h getopt.c getopt1.c strdup.c memset.c
 
 clean-local:
