@@ -48,7 +48,7 @@ libidn_TEXINFOS = fdl.texi $(libidn_texi_auto_deps) \
 	example.c.texi example2.c.texi example3.c.texi example4.c.texi
 
 libidn.html: libidn.texi $(libidn_TEXINFOS)
-	$(MAKEINFO) --html --no-split --number-sections $^
+	$(MAKEINFO) --html --no-split --number-sections libidn.texi
 
 %.c.texi: ../examples/%.c
 	sed -e 's/{/@{/g' -e 's/}/@}/g' < $< > $@
@@ -61,7 +61,7 @@ libidn-api-version.texi: $(top_srcdir)/lib/version.c
 # DocBook
 
 libidn-db.xml: libidn.texi $(libidn_TEXINFOS)
-	$(MAKEINFO) --docbook --output $@ $^
+	$(MAKEINFO) --docbook --output $@ libidn.texi
 
 libidn-db.html: libidn-db.xml
 	$(DOCBOOK2HTML) -o html $^
