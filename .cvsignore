@@ -1,5 +1,6 @@
 .deps
 .libs
+ABOUT-NLS
 INSTALL
 Makefile
 Makefile.in
