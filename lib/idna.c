@@ -21,6 +21,12 @@
 
 #include "internal.h"
 
+/**
+ * IDNA_ACE_PREFIX
+ *
+ * The IANA allocated prefix to use for IDNA. "xn--"
+ */
+
 /* Core functions */
 
 /**
