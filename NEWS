@@ -2,6 +2,8 @@ Libidn NEWS -- History of user-visible changes.                 -*- outline -*-
 Copyright (C) 2002, 2003 Simon Josefsson
 See the end for copying conditions.
 
+* Version 0.3.4 (unreleased)
+
 * Version 0.3.3 (released 2003-10-18)
 
 ** Fixed list of Stringprep profiles in 'idn --help' and 'idn.php'.
