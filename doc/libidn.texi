@@ -565,6 +565,17 @@ other symbols.  In addition the same name prefixes with one prepended
 underscore are reserved for internal use and should never be used by
 an application.
 
+@item tld.h
+
+The entry point to the TLD functions.  Normal applications are not
+expected to need this functionality, but it is present for
+applications that are used by TLDs to validate customer input.
+
+The name space of the TLD part of Libidn is @code{tld_*} for function
+names, @code{Tld_*} for data types and @code{TLD_*} for other symbols.
+In addition the same name prefixes with one prepended underscore are
+reserved for internal use and should never be used by an application.
+
 @end table
 
 @node Initialization
