@@ -1,3 +1,124 @@
+2003-05-10  Simon Josefsson <simon@josefsson.org>
+
+	* idna.el, punycode.el: Bind process-environment correctly.
+
+2003-05-09  Simon Josefsson <simon@josefsson.org>
+
+	* Makefile.am: Copy doxygen docs.
+
+2003-05-09  Simon Josefsson <simon@josefsson.org>
+
+	* draft-ietf-ldapbis-dn-10.txt: Unrealted, mistakenly added.
+
+2003-05-09  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2003-05-09  Simon Josefsson <simon@josefsson.org>
+
+	* punycode.el: Use process-environment instead of utility env. 
+	Default values of punycode-program, punycode-to-ascii-parameters,
+	punycode-to-unicode-parameters changed, and punycode-environment
+	added.	Use separate error strings.  Handle when idn is not
+	installed.
+
+2003-05-09  Simon Josefsson <simon@josefsson.org>
+
+	* idna.el: Use process-environment instead of utility env.  Default
+	values of idna-program, idna-to-ascii-parameters,
+	idna-to-unicode-parameters changed, and idna-environment added. 
+	Use separate error strings.
+
+2003-05-09  Simon Josefsson <simon@josefsson.org>
+
+	* libidn.texi: Update Emacs Lisp API.  Fix toc.
+
+2003-05-09  Simon Josefsson <simon@josefsson.org>
+
+	* THANKS: Add.
+
+2003-05-07  Simon Josefsson <simon@josefsson.org>
+
+	* idna.el: Handle when idn is not installed.
+
+2003-05-06  Simon Josefsson <simon@josefsson.org>
+
+	* draft-ietf-ldapbis-dn-10.txt, draft-ietf-sasl-saslprep-01.txt,
+	draft-zeilenga-ldapbis-strprep-00.txt: Add.
+
+2003-04-23  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2003-04-23  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Fix NEWS entry of last release (API/ABI compatibility).
+
+2003-04-23  Simon Josefsson <simon@josefsson.org>
+
+	* draft-ietf-xmpp-nodeprep-02.txt,
+	draft-ietf-xmpp-resourceprep-02.txt: Add.
+
+2003-04-20  Simon Josefsson <simon@josefsson.org>
+
+	* draft-josefsson-idn-test-vectors-00.txt: Add.
+
+2003-04-16  Simon Josefsson <simon@josefsson.org>
+
+	* ANNOUNCE: Mention devices it runs on.
+
+2003-03-28  Simon Josefsson <simon@josefsson.org>
+
+	* tst_stringprep.c: Fix bad UTF-8.  Self test for bad UTF-8.
+
+2003-03-27  Simon Josefsson <simon@josefsson.org>
+
+	* tst_idna.c, tst_stringprep.c: Fix -DDRAFT output.
+
+2003-03-26  Simon Josefsson <simon@josefsson.org>
+
+	* Makefile.am: Dist contrib/doxygen/.
+
+2003-03-26  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Mention doxygen.
+
+2003-03-26  Simon Josefsson <simon@josefsson.org>
+
+	* configure.ac: Build contrib/doxygen/Doxyfile.
+
+2003-03-26  Simon Josefsson <simon@josefsson.org>
+
+	* gdoc: Add -doxygen.
+
+2003-03-26  Simon Josefsson <simon@josefsson.org>
+
+	* internal.h: Add \mainpage for doxygen.
+
+2003-03-23  Simon Josefsson <simon@josefsson.org>
+
+	* FAQ: Fix.
+
+2003-03-23  Simon Josefsson <simon@josefsson.org>
+
+	* configure.ac: Bump versions.
+
+2003-03-23  Simon Josefsson <simon@josefsson.org>
+
+	* Makefile.am: Ignore draft.*xml in ChangeLog.
+
+2003-03-23  Simon Josefsson <simon@josefsson.org>
+
+	* idn.c: Fix debug prints.
+
+2003-03-22  Simon Josefsson <simon@josefsson.org>
+
+	* stringprep.c, tst_stringprep.c: Fixes for -DDRAFT.
+
+2003-03-22  Simon Josefsson <simon@josefsson.org>
+
+	* tst_idna.c: Support -DDRAFT.
+
 2003-03-13  Simon Josefsson <simon@josefsson.org>
 
 	* NEWS: Version 0.1.13.
@@ -642,10 +763,6 @@
 2003-02-12  Simon Josefsson <simon@josefsson.org>
 
 	* tst_stringprep.c: Cleanups for including as appendix in draft.
-
-2003-02-12  Simon Josefsson <simon@josefsson.org>
-
-	* draft-josefsson-idn-test-vectors.xml: Add preliminary version.
 
 2003-02-12  Simon Josefsson <simon@josefsson.org>
 
