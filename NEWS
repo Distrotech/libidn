@@ -2,7 +2,7 @@ Libidn NEWS -- History of user-visible changes.                 -*- outline -*-
 Copyright (C) 2002, 2003 Simon Josefsson
 See the end for copying conditions.
 
-* Version 0.2.0 (unreleased)
+* Version 0.2.0 (released 2003-06-19)
 
 ** Unicode code point data is now uint32_t, defined in "idn-int.h".
 A header file "idn-int.h" is generated and installed to make sure the
