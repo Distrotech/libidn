@@ -19,7 +19,20 @@
  *
  */
 
-#include "internal.h"
+#if HAVE_CONFIG_H
+# include "config.h"
+#endif
+
+#if STDC_HEADERS
+# include <stdlib.h>
+# include <string.h>
+#endif
+
+#include <stringprep.h>
+#include <punycode.h>
+
+/* Get specification. */
+#include "idna.h"
 
 #define DOTP(c) ((c) == 0x002E || (c) == 0x3002 ||	\
 		 (c) == 0xFF0E || (c) == 0xFF61)
@@ -242,8 +255,7 @@ step8:
 /* ToUnicode().  May realloc() utf8in. */
 static int
 idna_to_unicode_internal (char *utf8in,
-			  uint32_t * out, size_t * outlen,
-			  int flags)
+			  uint32_t * out, size_t * outlen, int flags)
 {
   int rc;
   char tmpout[64];
