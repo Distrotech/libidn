@@ -16,6 +16,8 @@ unnecessarily complex.  Only few applications, such as web browsers
 and mail clients, will need to do this in the future, to provide good
 user interfaces for internationalization.
 
+See http://josefsson.org/libidn/ for more information.
+
 Alternative Approaches
 ----------------------
 
@@ -76,9 +78,11 @@ Feedback
 --------
 
 This document is a work-in-progress and the details may change.
-Contact me at simon@josefsson.org.
+Contact me at simon@josefsson.org to discuss changes.
 
 ----------------------------------------------------------------------
-Copying and distribution of this file, with or without modification,
-are permitted in any medium without royalty provided the copyright
-notice and this notice are preserved.
+Permission is granted to anyone to make or distribute verbatim copies
+of this document, in any medium, provided that the copyright notice
+and permission notice are preserved, and that the distributor grants
+the recipient permission for further redistribution as permitted by
+this notice.  Modified versions may not be made.
