@@ -113,7 +113,13 @@ stringprep_convert (const char *str,
   int have_error = 0;
 
   if (strcmp (to_codeset, from_codeset) == 0)
-    return strdup (str);
+    {
+      char *q;
+      q = malloc (strlen (str) + 1);
+      if (!q)
+	return NULL;
+      return strcpy (q, str);
+    }
 
   cd = iconv_open (to_codeset, from_codeset);
 
