@@ -19,12 +19,7 @@
  *
  */
 
-#include <stdio.h>
-#include <unistd.h>
-
-#include <stringprep.h>
-#include <punycode.h>
-#include <idna.h>
+#include "internal.h"
 
 #include "idn_cmd.h"
 
@@ -182,7 +177,7 @@ main (int argc, char *argv[])
 
       if (args_info.punycode_decode_given)
 	{
-	  size_t len, len2;
+	  size_t len;
 
 	  len = BUFSIZ;
 	  q = (uint32_t *) malloc (len * sizeof (q[0]));
