@@ -256,7 +256,7 @@
      print "$ CHARSET=" .  escapeshellarg($charset) . "; export CHARSET\n";
      putenv("CHARSET=" . escapeshellarg($charset));
    }
-   $cmd = "echo " . escapeshellarg( $data ? $data : "räksmörgås.josefsson.org") . " | /usr/local/bin/idn" . ($debug ? " --debug" : "") . ($allowunassigned ? " --allow-unassigned" : "") . ($usestd3asciirules ? " --usestd3asciirules" : "") . ($mode == "stringprep" ? " --stringprep" : "") . ($mode == "punydecode" ? " --punycode-decode" : "") . ($mode == "punyencode" ? " --punycode-encode" : "") . ($mode == "toascii" || !$mode ? " --idna-to-ascii" : "") . ($mode == "tounicode" ? " --idna-to-unicode" : "") . ($mode == "stringprep" ? " --profile $profile" : ""). " 2>&1";
+   $cmd = "echo " . escapeshellarg( $data ? $data : "räksmörgås.josefsson.org") . " | /usr/local/bin/idn" . ($debug ? " --debug" : "") . ($allowunassigned ? " --allow-unassigned" : "") . ($usestd3asciirules ? " --usestd3asciirules" : "") . ($mode == "stringprep" ? " --stringprep" : "") . ($mode == "stringprep" ? " --profile " . escapeshellarg($profile) : "") . ($mode == "punydecode" ? " --punycode-decode" : "") . ($mode == "punyencode" ? " --punycode-encode" : "") . ($mode == "toascii" || !$mode ? " --idna-to-ascii" : "") . ($mode == "tounicode" ? " --idna-to-unicode" : "") . " 2>&1";
    $h = popen($cmd, "r");
    while($s = fgets($h, 1024)) { $out .= $s; };
    pclose($h);
