@@ -1,6 +1,6 @@
 dnl Process this file with autoconf to produce a configure script.
 
-dnl Copyright (C) 2002 Simon Josefsson.
+dnl Copyright (C) 2002, 2003 Simon Josefsson.
 dnl
 dnl This file is part of GNU Libidn.
 dnl
@@ -18,15 +18,15 @@ dnl You should have received a copy of the GNU Lesser General Public
 dnl License along with GNU Libidn; if not, write to the Free Software
 dnl Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
 
-AC_INIT(libidn, 0.1.5, bug-libidn@gnu.org)
+AC_INIT(libidn, 0.1.6, bug-libidn@gnu.org)
 AC_CONFIG_SRCDIR(stringprep.h.in)
 
 # Interfaces removed:    CURRENT++, AGE=0, REVISION=0
 # Interfaces added:      CURRENT++, AGE++, REVISION=0
 # No interfaces changed:                   REVISION++
-LT_CURRENT=7
-LT_AGE=1
-LT_REVISION=3
+LT_CURRENT=8
+LT_AGE=2
+LT_REVISION=0
 AC_SUBST(LT_CURRENT)
 AC_SUBST(LT_AGE)
 AC_SUBST(LT_REVISION)
