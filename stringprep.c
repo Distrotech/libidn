@@ -203,7 +203,7 @@ stringprep (char *in, int maxlen, int flags, Stringprep_profile * profile)
 		  done_prohibited = 1;
 		  if (stringprep_find_string_in_table
 		      (ucs4, ucs4len, NULL, profile[j].table) != -1)
-		    return STRINGPREP_CONTAINS_BIDI_PROHIBITED;
+		    return STRINGPREP_BIDI_CONTAINS_PROHIBITED;
 		}
 	      else if (profile[j].operation == STRINGPREP_BIDI_RAL_TABLE)
 		{

@@ -160,7 +160,11 @@ strprep[] =
     STRINGPREP_BIDI_LEADTRAIL_NOT_RAL},
   /* bidi RandALCat correct  <U+0627><U+0031><U+0628>: */
   {
-    "\xD8\xA7\x31\xD8\xA8", 0, "\xD8\xA7\x31\xD8\xA8", stringprep_generic}
+    "\xD8\xA7\x31\xD8\xA8", 0, "\xD8\xA7\x31\xD8\xA8", stringprep_generic},
+  /* bidi both RandALCat and LCat  <U+0627><U+00AA><U+0628>: */
+  {
+    "\xD8\xA7\xC2\xAA\xD8\xA8", 0, NULL, stringprep_generic,
+    STRINGPREP_BIDI_BOTH_L_AND_RAL}
 };
 
 int
