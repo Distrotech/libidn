@@ -8,6 +8,10 @@ See the end for copying conditions.
 
 ** Fixed support for Hangul Syllables during Unicode NFKC normalization.
 
+** Fixed Unicode NFKC normalization of (some) BMP code points.
+This was done by syncing the NFKC code with latest GLIB, and may have
+fixed other bugs in the earlier versions of the updated functions.
+
 ** Added more IDNA test vectors.
 
 ** Emacs Lisp IDNA implementation now set the UseSTD3ASCIIRules flag.
