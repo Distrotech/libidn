@@ -19,7 +19,7 @@
 
 EXTRA_DIST = README
 
-INCLUDES = -I$(top_srcdir)/lib -I../lib
+AM_CPPFLAGS = -I$(top_srcdir)/lib -I../lib
 LDADD = ../lib/libidn.la
 
 noinst_PROGRAMS = example example2 example3 example4

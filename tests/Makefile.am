@@ -17,7 +17,7 @@
 # License along with GNU Libidn; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
 
-INCLUDES = -I$(top_srcdir)/lib -I../lib
+AM_CPPFLAGS = -I$(top_srcdir)/lib -I../lib
 LDADD = ../lib/libidn.la
 
 TESTS = tst_stringprep tst_punycode tst_idna tst_idna2 tst_nfkc

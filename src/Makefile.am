@@ -17,8 +17,6 @@
 # License along with GNU Libidn; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
 
-INCLUDES = -I$(top_srcdir)/lib -I../lib
-
 bin_PROGRAMS = idn
 
 dist_lisp_DATA = punycode.el idna.el
@@ -27,6 +25,7 @@ BUILT_SOURCES = idn_cmd.c idn_cmd.h
 idn_SOURCES = idn.c $(BUILT_SOURCES)
 EXTRA_DIST = getopt.h
 DISTCLEANFILES = $(BUILT_SOURCES)
+idn_CPPFLAGS = -I$(top_srcdir)/lib -I../lib
 idn_LDADD = ../lib/libidn.la $(LTLIBOBJS)
 
 idn.c: $(BUILT_SOURCES)
