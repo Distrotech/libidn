@@ -279,9 +279,7 @@ tld_check_4t (const uint32_t * in, size_t inlen, size_t * errpos,
       if (rc != TLD_SUCCESS)
 	{
 	  if (errpos)
-	    {
-	      *errpos = ipos - in;
-	    }
+	    *errpos = ipos - in;
 	  return rc;
 	}
       ipos++;
