@@ -1,3 +1,177 @@
+2003-12-15  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Version 0.3.5.
+
+2003-12-15  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi: Use @finalout.
+
+2003-12-15  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2003-12-15  Simon Josefsson <simon@josefsson.org>
+
+	* doc/Makefile.am: Remove DocBook HTML targets (I'm tired of
+	updating the random filenames in the Makefile).
+
+2003-12-15  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi: Set charset cookie.  Use @section instead of
+	@majorheading for DocBook.  Add real examples to idn section.
+
+2003-12-15  Simon Josefsson <simon@josefsson.org>
+
+	* doc/gendocs.sh: Sync with Texinfo CVS.
+
+2003-12-15  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2003-12-15  Simon Josefsson <simon@josefsson.org>
+
+	* doc/Makefile.am: Update DocBook HTML target.
+
+2003-12-11  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS, THANKS, doc/libidn.texi, lib/idna.c, lib/idna.h: Rename
+	IDNA_CONTAINS_LDH to IDNA_CONTAINS_NON_LDH.  Reported by Graydon
+	Hoare <graydon@redhat.com>.
+
+2003-12-10  Simon Josefsson <simon@josefsson.org>
+
+	* configure.ac: Check for autoconf 2.59 and automake 1.8.
+
+2003-12-10  Simon Josefsson <simon@josefsson.org>
+
+	* README-alpha: Mention versions.
+
+2003-12-04  Simon Josefsson <simon@josefsson.org>
+
+	* README: Fix.
+
+2003-11-27  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2003-11-27  Simon Josefsson <simon@josefsson.org>
+
+	* configure.ac, src/Makefile.am, src/idn.ggo, src/idn.ggo.in:
+	Simplify gengetopt building.  Use AM_CPPFLAGS, not *_CPPFLAGS.
+
+2003-11-27  Simon Josefsson <simon@josefsson.org>
+
+	* src/idn.c: Print instructions.  Suggested by Kai Schaetzl
+	<kai@conactive.com>.
+
+2003-11-26  Simon Josefsson <simon@josefsson.org>
+
+	* libc/getaddrinfo-idn.txt: Typo.
+
+2003-11-26  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2003-11-26  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi: Update Invoking idn.
+
+2003-11-26  Simon Josefsson <simon@josefsson.org>
+
+	* src/idn.c, src/idn.ggo.in: Make -a the default.
+
+2003-11-26  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi: Update Invoking idn.
+
+2003-11-26  Simon Josefsson <simon@josefsson.org>
+
+	* THANKS: Add.
+
+2003-11-26  Simon Josefsson <simon@josefsson.org>
+
+	* src/Makefile.am, src/idn.c: Support strings passed on command
+	line instead of on stdin.  Suggested by Kai Schaetzl
+	<kai@conactive.com>.
+
+2003-11-26  Simon Josefsson <simon@josefsson.org>
+
+	* libc/getaddrinfo-idn.txt: Add todo.
+
+2003-11-25  Simon Josefsson <simon@josefsson.org>
+
+	* configure.ac: Disable fortran etc libtool checks.
+
+2003-11-23  Simon Josefsson <simon@josefsson.org>
+
+	* doc/gendocs.sh: Add --docbook.
+
+2003-11-23  Simon Josefsson <simon@josefsson.org>
+
+	* doc/gendocs.sh: Sync with texinfo.
+
+2003-11-20  Simon Josefsson <simon@josefsson.org>
+
+	* src/idn.c: Fix GREETING.
+
+2003-11-11  Simon Josefsson <simon@josefsson.org>
+
+	* doc/gdoc: TeX improvements.  From Nikos Mavroyanopoulos
+	<nmav@gnutls.org>.
+
+2003-11-11  Simon Josefsson <simon@josefsson.org>
+
+	* doc/Makefile.am: Use AM_MAKEINFOHTMLFLAGS (with CVS automake)
+	instead of explicit libidn.html target.
+
+2003-11-09  Simon Josefsson <simon@josefsson.org>
+
+	* doc/Makefile.am: Update DocBook HTML destinations.
+
+2003-11-09  Simon Josefsson <simon@josefsson.org>
+
+	* doc/Makefile.am: Remove unused ps_TEXINFOS and pdf_TEXINFOS.
+
+2003-11-09  Simon Josefsson <simon@josefsson.org>
+
+	* doc/Makefile.am: Remove example source code to texinfo conversion
+	(@verbatiminclude is used directly on the source code instead).
+
+2003-11-09  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi: Use @verbatiminclude for examples.
+
+2003-11-09  Simon Josefsson <simon@josefsson.org>
+
+	* examples/Makefile.am, src/Makefile.am, tests/Makefile.am: Use
+	*_CPPFLAGS instead of obsolete INCLUDES.
+
+2003-11-09  Simon Josefsson <simon@josefsson.org>
+
+	* configure.ac: Replace AM_CONFIG_HEADER with AC_CONFIG_HEADERS.
+
+2003-11-09  Simon Josefsson <simon@josefsson.org>
+
+	* configure.ac: Autoupdate suggested changes: quote AC_INIT
+	parameters, and replace AC_TRY_RUN with AC_RUN_IFELSE.
+
+2003-11-09  Simon Josefsson <simon@josefsson.org>
+
+	* src/Makefile.am: Use automake 1.7a idiom for elisp files.
+
+2003-11-09  Simon Josefsson <simon@josefsson.org>
+
+	* Makefile.am, configure.ac, m4/Makefile.am: Remove m4/ as it is
+	not needed with automake 1.7a.
+
+2003-11-09  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS, configure.ac: Bump versions.
+
+2003-11-09  Simon Josefsson <simon@josefsson.org>
+
+	* Makefile.maint: Use proper -o directory for gendocs.sh.
+
 2003-11-09  Simon Josefsson <simon@josefsson.org>
 
 	* NEWS: Version 0.3.4.
