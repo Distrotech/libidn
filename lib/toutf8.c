@@ -1,5 +1,5 @@
 /* toutf8.c	Convert strings from system locale into UTF-8.
- * Copyright (C) 2002, 2003  Simon Josefsson
+ * Copyright (C) 2002, 2003, 2004  Simon Josefsson
  *
  * This file is part of GNU Libidn.
  *
@@ -26,6 +26,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <errno.h>
 
 #include "stringprep.h"
 
@@ -33,10 +34,6 @@
 # define HAVE_ICONV 1
 # define LOCALE_WORKS 1
 # define ICONV_CONST
-#endif
-
-#if defined(HAVE_ERRNO_H) || defined(_LIBC)
-# include <errno.h>
 #endif
 
 #ifdef HAVE_ICONV
