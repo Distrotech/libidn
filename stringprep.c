@@ -113,7 +113,7 @@ stringprep (char *in, int maxlen, int flags, stringprep_profile * profile)
   int ucs4len;
   int maxucs4len;
 
-  ucs4 = stringprep_utf8_to_ucs4_fast (in, -1, &ucs4len);
+  ucs4 = stringprep_utf8_to_ucs4 (in, -1, &ucs4len);
   maxucs4len = 4 * ucs4len + 10;
   ucs4 = realloc (ucs4, 1 + maxucs4len * sizeof (long));
   if (!ucs4)
