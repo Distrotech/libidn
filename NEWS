@@ -5,6 +5,10 @@ See the end for copying conditions.
 * Version 0.1.14 (unreleased)
 
 ** Experimental documentation generation in contrib/doxygen/.
+Simply invoke "doxygen" in that directory and it should build the
+documentation.
+
+** Lisp API bug fixes.
 
 ** API and ABI is backwards compatible with the previous version.
 
