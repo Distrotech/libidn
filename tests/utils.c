@@ -115,7 +115,7 @@ ucs4print (const uint32_t * str, size_t len)
   printf ("\t;; ");
   for (i = 0; i < len; i++)
     {
-      printf ("U+%04ux ", str[i]);
+      printf ("U+%04x ", str[i]);
       if ((i + 1) % 4 == 0)
 	printf (" ");
       if ((i + 1) % 8 == 0 && i + 1 < len)
