@@ -2,6 +2,12 @@ Libidn NEWS -- History of user-visible changes.                 -*- outline -*-
 Copyright (C) 2002, 2003 Simon Josefsson
 See the end for copying conditions.
 
+* Version 0.1.12 (unreleased)
+
+** SASLprep stringprep profile added.
+
+** API and ABI is backwards compatible with the previous version.
+
 * Version 0.1.11 (released 2003-02-26)
 
 ** Command line application "idn" is included.
@@ -10,6 +16,8 @@ encoding/decoding and IDNA ToASCII/ToUnicode on the command line.
 
 ** Emacs Lisp interface for punycode and IDNA included.
 See punycode.el and idna.el.
+
+** API and ABI is backwards compatible with the previous version.
 
 * Version 0.1.10 (released 2003-02-21)
 
