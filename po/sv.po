@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libidn 0.4.1\n"
 "Report-Msgid-Bugs-To: bug-libidn@gnu.org\n"
-"POT-Creation-Date: 2004-03-08 23:54+0100\n"
-"PO-Revision-Date: 2004-03-08 23:17+0100\n"
+"POT-Creation-Date: 2004-03-10 22:49+0100\n"
+"PO-Revision-Date: 2004-03-13 20:28+0100\n"
 "Last-Translator: Simon Josefsson <jas@extundo.com>\n"
 "Language-Team: Swedish <sv@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -25,7 +25,7 @@ msgstr "%s: Bara en av -s, -e, -d, -a eller -u kan anges.\n"
 #: src/idn.c:93
 #, c-format
 msgid "Charset `%s'.\n"
-msgstr ""
+msgstr "Teckenuppsättning `%s'.\n"
 
 #: src/idn.c:96
 #, c-format
@@ -52,7 +52,7 @@ msgstr "%s: kunde inte konvertera från UTF-8 till UCS-4.\n"
 #: src/idn.c:141 src/idn.c:215 src/idn.c:323 src/idn.c:421
 #, c-format
 msgid "input[%d] = U+%04x\n"
-msgstr ""
+msgstr "in[%d] = U+%04x\n"
 
 #: src/idn.c:152
 #, c-format
@@ -62,7 +62,7 @@ msgstr "%s: stringprep_profile() misslyckades med fel %d.\n"
 #: src/idn.c:171 src/idn.c:272 src/idn.c:389 src/idn.c:442
 #, c-format
 msgid "output[%d] = U+%04x\n"
-msgstr ""
+msgstr "ut[%d] = U+%04x\n"
 
 #: src/idn.c:179 src/idn.c:234 src/idn.c:290 src/idn.c:484
 #, c-format
@@ -102,7 +102,7 @@ msgstr "%s: TLD idna_to_unicode_8z8z() misslyckades med fel %d.\n"
 #: src/idn.c:360
 #, c-format
 msgid "tld[%d] = U+%04x\n"
-msgstr ""
+msgstr "tld[%d] = U+%04x\n"
 
 #: src/idn.c:366 src/idn.c:453
 #, c-format
