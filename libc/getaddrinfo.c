@@ -490,7 +490,7 @@ gaih_inet (const char *name, const struct gaih_service *service,
       if (req->ai_flags & AI_IDN)
 	{
 	  char *p;
-	  rc = idna_locale_to_ace (name, &p);
+	  rc = idna_to_ascii_lz (name, &p, 0);
 	  if (rc != IDNA_SUCCESS)
 	    return -EAI_IDN_ENCODE;
 	  name = p; /* XXX memory leak */
