@@ -41,9 +41,6 @@ EXTRA_DIST = FAQ libidn.pc.in \
 	contrib/doxygen/gdoc2doxygen \
 	getopt.h getopt.c getopt1.c strdup.c memset.c
 
-MAINTAINERCLEANFILES = idn_cmd.c idn_cmd.h
-DISTCLEANFILES = idn-int.h
-
 # Library
 
 pkgconfigdir = $(libdir)/pkgconfig
@@ -53,7 +50,11 @@ lib_LTLIBRARIES = libidn.la
 
 include_HEADERS = stringprep.h stringprep_generic.h stringprep_nameprep.h \
 	stringprep_kerberos5.h stringprep_xmpp.h stringprep_plain.h \
-	stringprep_iscsi.h idna.h punycode.h idn-int.h
+	stringprep_iscsi.h idna.h punycode.h
+
+idn_int = idn-int.h
+BUILT_SOURCES = $(idn_int)
+DISTCLEANFILES = $(idn_int)
 
 libidn_la_SOURCES = gunicomp.h gunidecomp.h internal.h \
 	stringprep.c nfkc.c version.c toutf8.c \
@@ -75,12 +76,14 @@ stringprep_generic.c: rfc3454.txt gen-stringprep-tables.pl
 
 bin_PROGRAMS = idn
 
-idn_SOURCES = idn.c idn_cmd.c idn_cmd.h
+idn_cmd = idn_cmd.c idn_cmd.h
+idn_SOURCES = idn.c $(idn_cmd)
+BUILT_SOURCES += $(idn_cmd)
 idn_LDADD = @LIBOBJS@ libidn.la
 
-idn.c: idn_cmd.c idn_cmd.h
+idn.c: $(idn_cmd)
 
-idn_cmd.c idn_cmd.h: idn.ggo
+$(idn_cmd): idn.ggo
 	-gengetopt --input $^ --file-name $(srcdir)/idn_cmd
 
 # Test suite
