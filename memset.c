@@ -1,26 +1,32 @@
-/* memset.c -- set an area of memory to a given value
-   Copyright (C) 1991 Free Software Foundation, Inc.
+/* memset.h	Compatibility memset for systems that lack it.
+ * Copyright (C) 2002, 2003  Simon Josefsson
+ *
+ * This file is part of GNU Libidn.
+ *
+ * GNU Libidn is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 2.1 of the License, or (at your option) any later version.
+ *
+ * GNU Libidn is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with GNU Libidn; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ *
+ */
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2, or (at your option)
-   any later version.
+#include <idn-int.h>
 
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY; without even the implied warranty of
-   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-   GNU General Public License for more details.
-
-   You should have received a copy of the GNU General Public License
-   along with this program; if not, write to the Free Software Foundation,
-   Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.  */
-
-char *
-memset (char *str, int c, unsigned int len)
+void *memset (void *s, int c, size_t n)
 {
-  register char *st = str;
+  size_t i;
 
-  while (len-- > 0)
-    *st++ = c;
-  return str;
+  for (i = 0; i < n; i++)
+    (uint8_t *s)s[i] = (uint8_t)c;
+
+  return s;
 }
