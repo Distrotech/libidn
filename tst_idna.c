@@ -340,6 +340,9 @@ main (int argc, char *argv[])
 
     }
 
+  if (ucs4label)
+    free(ucs4label);
+
   if (debug)
     printf ("IDNA self tests done with %d errors\n", error_count);
 
