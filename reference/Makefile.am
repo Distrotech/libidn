@@ -37,7 +37,8 @@ IGNORE_HFILES=config.h \
 	gunibreak.h \
 	gunicomp.h \
 	gunidecomp.h \
-	internal.h
+	internal.h \
+	libc/netdb.h
 
 # Images to copy into HTML directory.
 HTML_IMAGES =
