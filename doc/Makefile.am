@@ -17,7 +17,7 @@
 # License along with GNU Libidn; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
 
-EXTRA_DIST = FAQ libidn.html libidn.ps libidn.pdf lgpl.texi
+EXTRA_DIST = libidn.html libidn.ps libidn.pdf lgpl.texi
 
 dist_man_MANS = idn.1
 
