@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libidn 0.4.1\n"
 "Report-Msgid-Bugs-To: bug-libidn@gnu.org\n"
-"POT-Creation-Date: 2004-03-08 23:54+0100\n"
+"POT-Creation-Date: 2004-09-13 18:58+0200\n"
 "PO-Revision-Date: 2004-03-28 20:30+0100\n"
 "Last-Translator: Roland Illig <roland.illig@gmx.de>\n"
 "Language-Team: German <de@li.org>\n"
@@ -18,7 +18,8 @@ msgstr ""
 #: src/idn.c:83
 #, c-format
 msgid "%s: Only one of -s, -e, -d, -a or -u can be specified.\n"
-msgstr "%s: Nur eins von »-s«, »-e«, »-d«, »-a« oder »-u« kann angegeben werden.\n"
+msgstr ""
+"%s: Nur eins von »-s«, »-e«, »-d«, »-a« oder »-u« kann angegeben werden.\n"
 
 #: src/idn.c:93
 #, c-format
@@ -27,8 +28,12 @@ msgstr "Zeichensatz »%s«.\n"
 
 #: src/idn.c:96
 #, c-format
-msgid "Type each input string on a line by itself, terminated by a newline character.\n"
-msgstr "Geben Sie jede Eingabezeichenkette in einer eigenen Zeile ein, durch einen Zeilenumbruch abgeschlossen.\n"
+msgid ""
+"Type each input string on a line by itself, terminated by a newline "
+"character.\n"
+msgstr ""
+"Geben Sie jede Eingabezeichenkette in einer eigenen Zeile ein, durch einen "
+"Zeilenumbruch abgeschlossen.\n"
 
 #: src/idn.c:108
 #, c-format
