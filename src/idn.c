@@ -378,7 +378,7 @@ main (int argc, char *argv[])
 		  return 1;
 		}
 
-	      free (r);
+	      free (q);
 	    }
 #endif
 
