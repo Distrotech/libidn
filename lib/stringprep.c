@@ -376,7 +376,10 @@ stringprep (char *in,
 
   utf8 = stringprep_ucs4_to_utf8 (ucs4, ucs4len, 0, 0);
   if (!utf8)
-    return STRINGPREP_MALLOC_ERROR;
+    {
+      free (ucs4);
+      return STRINGPREP_MALLOC_ERROR;
+    }
 
   if (strlen (utf8) >= maxlen)
     {
