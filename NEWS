@@ -11,7 +11,11 @@ See the end for copying conditions.
 ** Added more SASLPrep and NFKC test vectors.
 
 ** API and ABI is backwards compatible with the previous version.
-idn_free: ADD.  Wrapper around system `free', see new section in manual.
+idn_free: ADD.  Wrapper around system `free'.
+idn-free.h: ADD.  Prototype for `idn_free'.
+                See idn-free.h for discussion.  The interface is
+                currently not documented.  Comments and feedback is
+                appreciated.
 
 * Version 0.4.4 (released 2004-04-29)
 
