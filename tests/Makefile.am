@@ -18,9 +18,10 @@
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
 
 AM_CPPFLAGS = -I$(top_srcdir)/lib -I../lib
-LDADD = ../lib/libidn.la utils.lo
+LDADD = ../lib/libidn.la libutils.la
 
-EXTRA_DIST = utils.h
+noinst_LTLIBRARIES = libutils.la
+libutils_la_SOURCES = utils.h utils.c
 
 TESTS = tst_stringprep tst_punycode tst_idna tst_idna2 tst_nfkc
 if TLD
