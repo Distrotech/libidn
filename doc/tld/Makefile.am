@@ -1,5 +1,6 @@
 ## Process this file with automake to produce Makefile.in
-# Copyright (C) 2004   Free Software Foundation, Inc
+# Copyright (C) 2004  Simon Josefsson.
+# Copyright (C) 2004  Free Software Foundation, Inc
 #
 # This file is part of GNU Libidn.
 #
@@ -17,8 +18,4 @@
 # License along with GNU Libidn; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
 
-EXTRA_DIST = defs templates README
-
-dist-hook:
-	rm -rf `find $(distdir) -name CVS`
-
+EXTRA_DIST = README fr.tld
