@@ -101,5 +101,5 @@ AM_MISSING_PROG(GTKDOC_MKHTML, gtkdoc-mkhtml, $missing_dir)
 AM_MISSING_PROG(GTKDOC_FIXXREF, gtkdoc-fixxref, $missing_dir)
 
 AC_CONFIG_FILES([Makefile libidn.pc stringprep.h reference/Makefile idn.ggo \
-		contrib/doxygen/Doxyfile])
+		contrib/doxygen/Doxyfile doc/Makefile])
 AC_OUTPUT

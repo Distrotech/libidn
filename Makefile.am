@@ -17,8 +17,8 @@
 # License along with GNU Libidn; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
 
-DIST_SUBDIRS = reference
-SUBDIRS = @GTKDOC@
+DIST_SUBDIRS = doc reference
+SUBDIRS = doc @GTKDOC@
 
 ACLOCAL_AMFLAGS = -I m4
 
@@ -28,7 +28,6 @@ EXTRA_DIST = FAQ libidn.pc.in \
 	gen-unicode-tables.pl UnicodeData-3.2.0.txt LineBreak-3.2.0.txt \
 	SpecialCasing-3.2.0.txt CaseFolding-3.2.0.txt \
 	CompositionExclusions-3.2.0.txt \
-	libidn.html libidn.ps libidn.pdf lgpl.texi \
 	libc/README libc/Makefile libc/Versions libc/configure \
 	libc/example.c libc/getaddrinfo.c libc/libc.patch libc/netdb.h \
 	contrib/README contrib/idn-python/README contrib/idn-python/Makefile \
@@ -84,12 +83,6 @@ idn.c: idn_cmd.c idn_cmd.h
 idn_cmd.c idn_cmd.h: idn.ggo
 	-gengetopt --input $^ --file-name idn_cmd
 
-dist_man_MANS = idn.1
-
-idn.1: idn.c
-	$(HELP2MAN) --name="Internationalized Domain Names command line tool" \
-		--output=$@ $(top_builddir)/idn
-
 # Test suite
 
 tests = tst_stringprep tst_punycode tst_idna tst_nfkc \
@@ -109,21 +102,6 @@ noinst_PROGRAMS = $(tests) example example2 example3 example4
 dist_lisp_LISP = punycode.el idna.el
 ELCFILES=
 elc-stamp:
-
-# Documentation
-
-info_TEXINFOS = libidn.texi
-pdf_TEXINFOS = libidn.texi
-ps_TEXINFOS = libidn.texi
-
-libidn.html: libidn.texi
-	$(MAKEINFO) --html --no-split --number-sections $^
-
-libidn_TEXINFOS = fdl.texi \
-	example.c.texi example2.c.texi example3.c.texi example4.c.texi
-
-%.c.texi: %.c
-	sed -e 's/{/@{/g' -e 's/}/@}/g' < $< > $@
 
 # Maintainer targets
 
