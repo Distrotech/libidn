@@ -10,6 +10,8 @@ See the end for copying conditions.
 
 ** Added more SASLPrep and NFKC test vectors.
 
+** Automake 1.8.4 is used.
+
 ** API and ABI is backwards compatible with the previous version.
 idn_free: ADD.  Wrapper around system `free'.
 idn-free.h: ADD.  Prototype for `idn_free'.
