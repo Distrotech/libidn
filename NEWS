@@ -2,7 +2,7 @@ Libidn NEWS -- History of user-visible changes.                 -*- outline -*-
 Copyright (C) 2002, 2003, 2004 Simon Josefsson
 See the end for copying conditions.
 
-* Version 0.5.1 (unreleased)
+* Version 0.5.1 (released 2004-07-09)
 
 ** Cross compile builds should work.
 It should work for any sane cross compile target, but the only tested
