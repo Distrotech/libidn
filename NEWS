@@ -4,6 +4,12 @@ See the end for copying conditions.
 
 * Version 0.1.10 (unreleased)
 
+** idna_*_to_ace() and idna_*ace_to_*() are deprecated in favor of
+** idna_to_ascii_from_*() and idna_to_unicode_*_from_*() respectively.
+The reason was that the old interfaces did not accept the
+AllowUnassigned and UseSTD3ASCIIRules flags.  Note that the old
+functions are not removed, but will be in the future.
+
 ** IPS iSCSI stringprep profile added.
 
 ** A new contrib/ directory added.

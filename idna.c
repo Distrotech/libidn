@@ -27,8 +27,8 @@
  * @inlen: length of input array with unicode code points.
  * @out: output zero terminated string that must have room for at
  *       least 63 characters plus the terminating zero.
- * @allowunassigned: boolean value as per IDNA specification.
- * @usestd3asciirules: boolean value as per IDNA specification.
+ * @allowunassigned: whether to allow unassigned code points.
+ * @usestd3asciirules: whether to check input for STD3 compliance.
  *
  * The ToASCII operation takes a sequence of Unicode code points that make
  * up one label and transforms it into a sequence of code points in the
@@ -333,8 +333,8 @@ step3:
  * @out: output array with unicode code points.
  * @outlen: on input, maximum size of output array with unicode code points,
  *          on exit, actual size of output array with unicode code points.
- * @allowunassigned: boolean value as per IDNA specification.
- * @usestd3asciirules: boolean value as per IDNA specification.
+ * @allowunassigned: whether to allow unassigned code points.
+ * @usestd3asciirules: whether to check input for STD3 compliance.
  *
  * The ToUnicode operation takes a sequence of Unicode code points
  * that make up one label and returns a sequence of Unicode code
@@ -395,19 +395,21 @@ idna_to_unicode (const unsigned long *in, size_t inlen,
 }
 
 /**
- * idna_ucs4_to_ace:
+ * idna_to_ascii_from_ucs4:
  * @input: zero terminated input Unicode string.
  * @output: pointer to newly allocated output string.
+ * @allowunassigned: whether to allow unassigned code points.
+ * @usestd3asciirules: whether to check input for STD3 compliance.
  *
- * Convert UCS-4 domain name to ASCII string.  The AllowUnassigned
- * flag is false and std3asciirules flag is false.  The domain name
- * may contain several labels, separated by dots.  The output buffer
- * must be deallocated by the caller.
+ * Convert UCS-4 domain name to ASCII string.  The domain name may
+ * contain several labels, separated by dots.  The output buffer must
+ * be deallocated by the caller.
  *
  * Return value: Returns IDNA_SUCCESS on success, or error code.
  **/
 int
-idna_ucs4_to_ace (const unsigned long *input, char **output)
+idna_to_ascii_from_ucs4 (const unsigned long *input, char **output,
+			 int allowunassigned, int usestd3asciirules)
 {
   const unsigned long *start = input;
   const unsigned long *end = input;
@@ -430,7 +432,8 @@ idna_ucs4_to_ace (const unsigned long *input, char **output)
 	   *end != 0x3002 && *end != 0xFF0E && *end != 0xFF61; end++)
 	;
 
-      rc = idna_to_ascii (start, end - start, buf, 0, 0);
+      rc = idna_to_ascii (start, end - start, buf,
+			  allowunassigned, usestd3asciirules);
       if (rc != IDNA_SUCCESS)
 	return rc;
 
@@ -459,19 +462,42 @@ idna_ucs4_to_ace (const unsigned long *input, char **output)
 }
 
 /**
- * idna_utf8_to_ace:
- * @input: zero terminated input UTF-8 string.
+ * idna_ucs4_to_ace:
+ * @input: zero terminated input Unicode string.
  * @output: pointer to newly allocated output string.
  *
- * Convert UTF-8 domain name to ASCII string.  The AllowUnassigned
+ * Convert UCS-4 domain name to ASCII string.  The AllowUnassigned
  * flag is false and std3asciirules flag is false.  The domain name
  * may contain several labels, separated by dots.  The output buffer
  * must be deallocated by the caller.
  *
+ * This function is deprecated in favor of idna_to_ascii_from_ucs4()
+ * and will be removed in future versions.
+ *
  * Return value: Returns IDNA_SUCCESS on success, or error code.
  **/
 int
-idna_utf8_to_ace (const char *input, char **output)
+idna_ucs4_to_ace (const unsigned long *input, char **output)
+{
+  return idna_to_ascii_from_ucs4 (input, output, 0, 0);
+}
+
+/**
+ * idna_to_ascii_from_utf8:
+ * @input: zero terminated input UTF-8 string.
+ * @output: pointer to newly allocated output string.
+ * @allowunassigned: whether to allow unassigned code points.
+ * @usestd3asciirules: whether to check input for STD3 compliance.
+ *
+ * Convert UTF-8 domain name to ASCII string.  The domain name may
+ * contain several labels, separated by dots.  The output buffer must
+ * be deallocated by the caller.
+ *
+ * Return value: Returns IDNA_SUCCESS on success, or error code.
+ **/
+int
+idna_to_ascii_from_utf8 (const char *input, char **output,
+			 int allowunassigned, int usestd3asciirules)
 {
   unsigned long *ucs4;
   size_t ucs4len;
@@ -481,8 +507,61 @@ idna_utf8_to_ace (const char *input, char **output)
   if (!ucs4)
     return IDNA_ICONV_ERROR;
 
-  rc = idna_ucs4_to_ace (ucs4, output);
+  rc = idna_to_ascii_from_ucs4 (ucs4, output,
+				allowunassigned, usestd3asciirules);
   free (ucs4);
+
+  return rc;
+}
+
+/**
+ * idna_utf8_to_ace:
+ * @input: zero terminated input UTF-8 string.
+ * @output: pointer to newly allocated output string.
+ *
+ * Convert UTF-8 domain name to ASCII string.  The AllowUnassigned
+ * flag is false and std3asciirules flag is false.  The domain name
+ * may contain several labels, separated by dots.  The output buffer
+ * must be deallocated by the caller.
+ *
+ * This function is deprecated in favor of idna_to_ascii_from_ucs4()
+ * and will be removed in future versions.
+ *
+ * Return value: Returns IDNA_SUCCESS on success, or error code.
+ **/
+int
+idna_utf8_to_ace (const char *input, char **output)
+{
+  return idna_to_ascii_from_utf8 (input, output, 0, 0);
+}
+
+/**
+ * idna_to_ascii_from_locale:
+ * @input: zero terminated input UTF-8 string.
+ * @output: pointer to newly allocated output string.
+ * @allowunassigned: whether to allow unassigned code points.
+ * @usestd3asciirules: whether to check input for STD3 compliance.
+ *
+ * Convert domain name in the locale's encoding to ASCII string.  The
+ * domain name may contain several labels, separated by dots.  The
+ * output buffer must be deallocated by the caller.
+ *
+ * Return value: Returns IDNA_SUCCESS on success, or error code.
+ **/
+int
+idna_to_ascii_from_locale (const char *input, char **output,
+			   int allowunassigned, int usestd3asciirules)
+{
+  char *utf8;
+  int rc;
+
+  utf8 = stringprep_locale_to_utf8 (input);
+  if (!utf8)
+    return IDNA_ICONV_ERROR;
+
+  rc = idna_to_ascii_from_utf8 (utf8, output,
+				allowunassigned, usestd3asciirules);
+  free (utf8);
 
   return rc;
 }
@@ -497,45 +576,35 @@ idna_utf8_to_ace (const char *input, char **output)
  * The domain name may contain several labels, separated by dots.  The
  * output buffer must be deallocated by the caller.
  *
+ * This function is deprecated in favor of idna_to_ascii_from_ucs4()
+ * and will be removed in future versions.
+ *
  * Return value: Returns IDNA_SUCCESS on success, or error code.
  **/
 int
 idna_locale_to_ace (const char *input, char **output)
 {
-  char *utf8;
-  int rc;
-
-  utf8 = stringprep_locale_to_utf8 (input);
-  if (!utf8)
-    return IDNA_ICONV_ERROR;
-
-  rc = idna_utf8_to_ace (utf8, output);
-  free (utf8);
-
-  return rc;
+  return idna_to_ascii_from_locale (input, output, 0, 0);
 }
 
-/* Transforms an (possibly) ACE domain name into Unicode. Every label
-   which is not ACE will be output inchanged so you can safely use
-   this routine.  The output will be encoded in UTF-8. The output must
-   be allocated and freed by you. The returned int is a status
-   code. */
-
 /**
- * idna_ucs4ace_to_ucs4:
+ * idna_to_unicode_ucs4_from_ucs4:
  * @input: zero-terminated Unicode string.
  * @output: pointer to newly allocated output Unicode string.
+ * @allowunassigned: whether to allow unassigned code points.
+ * @usestd3asciirules: whether to check input for STD3 compliance.
  *
  * Convert possibly ACE encoded domain name in UCS-4 format into a
- * UCS-4 string.  The AllowUnassigned flag is false and std3asciirules
- * flag is false.  The domain name may contain several labels,
+ * UCS-4 string.  The domain name may contain several labels,
  * separated by dots.  The output buffer must be deallocated by the
  * caller.
  *
  * Return value: Returns IDNA_SUCCESS on success, or error code.
  **/
 int
-idna_ucs4ace_to_ucs4 (const unsigned long *input, unsigned long **output)
+idna_to_unicode_ucs4_from_ucs4 (const unsigned long *input,
+				unsigned long **output,
+				int allowunassigned, int usestd3asciirules)
 {
   const unsigned long *start = input;
   const unsigned long *end = input;
@@ -565,7 +634,8 @@ idna_ucs4ace_to_ucs4 (const unsigned long *input, unsigned long **output)
       if (!buf)
 	return IDNA_MALLOC_ERROR;
 
-      rc = idna_to_unicode (start, end - start, buf, &buflen, 0, 0);
+      rc = idna_to_unicode (start, end - start, buf, &buflen,
+			    allowunassigned, usestd3asciirules);
       /* don't check rc as per specification! */
 
       if (out)
@@ -596,6 +666,62 @@ idna_ucs4ace_to_ucs4 (const unsigned long *input, unsigned long **output)
 }
 
 /**
+ * idna_ucs4ace_to_ucs4:
+ * @input: zero-terminated Unicode string.
+ * @output: pointer to newly allocated output Unicode string.
+ *
+ * Convert possibly ACE encoded domain name in UCS-4 format into a
+ * UCS-4 string.  The AllowUnassigned flag is false and std3asciirules
+ * flag is false.  The domain name may contain several labels,
+ * separated by dots.  The output buffer must be deallocated by the
+ * caller.
+ *
+ * This function is deprecated in favor of
+ * idna_to_unicode_ucs4_from_ucs4() and will be removed in future
+ * versions.
+ *
+ * Return value: Returns IDNA_SUCCESS on success, or error code.
+ **/
+int
+idna_ucs4ace_to_ucs4 (const unsigned long *input, unsigned long **output)
+{
+  return idna_to_unicode_ucs4_from_ucs4 (input, output, 0, 0);
+}
+
+/**
+ * idna_to_unicode_ucs4_from_utf8:
+ * @input: zero-terminated UTF-8 string.
+ * @output: pointer to newly allocated output Unicode string.
+ * @allowunassigned: whether to allow unassigned code points.
+ * @usestd3asciirules: whether to check input for STD3 compliance.
+ *
+ * Convert possibly ACE encoded domain name in UTF-8 format into a
+ * UCS-4 string.  The domain name may contain several labels,
+ * separated by dots.  The output buffer must be deallocated by the
+ * caller.
+ *
+ * Return value: Returns IDNA_SUCCESS on success, or error code.
+ **/
+int
+idna_to_unicode_ucs4_from_utf8 (const char *input, unsigned long **output,
+				int allowunassigned, int usestd3asciirules)
+{
+  unsigned long *ucs4;
+  size_t ucs4len;
+  int rc;
+
+  ucs4 = stringprep_utf8_to_ucs4 (input, -1, &ucs4len);
+  if (!ucs4)
+    return IDNA_ICONV_ERROR;
+
+  rc = idna_to_unicode_ucs4_from_ucs4 (ucs4, output,
+				       allowunassigned, usestd3asciirules);
+  free (ucs4);
+
+  return rc;
+}
+
+/**
  * idna_utf8ace_to_ucs4:
  * @input: zero-terminated UTF-8 string.
  * @output: pointer to newly allocated output Unicode string.
@@ -606,21 +732,46 @@ idna_ucs4ace_to_ucs4 (const unsigned long *input, unsigned long **output)
  * separated by dots.  The output buffer must be deallocated by the
  * caller.
  *
+ * This function is deprecated in favor of
+ * idna_to_unicode_ucs4_from_utf8() and will be removed in future
+ * versions.
+ *
  * Return value: Returns IDNA_SUCCESS on success, or error code.
  **/
 int
 idna_utf8ace_to_ucs4 (const char *input, unsigned long **output)
 {
+  return idna_to_unicode_ucs4_from_utf8 (input, output, 0, 0);
+}
+
+/**
+ * idna_to_unicode_utf8_from_utf8:
+ * @input: zero-terminated UTF-8 string.
+ * @output: pointer to newly allocated output UTF-8 string.
+ * @allowunassigned: whether to allow unassigned code points.
+ * @usestd3asciirules: whether to check input for STD3 compliance.
+ *
+ * Convert possibly ACE encoded domain name in UTF-8 format into a
+ * UTF-8 string.  The domain name may contain several labels,
+ * separated by dots.  The output buffer must be deallocated by the
+ * caller.
+ *
+ * Return value: Returns IDNA_SUCCESS on success, or error code.
+ **/
+int
+idna_to_unicode_utf8_from_utf8 (const char *input, char **output,
+				int allowunassigned, int usestd3asciirules)
+{
   unsigned long *ucs4;
-  size_t ucs4len;
   int rc;
 
-  ucs4 = stringprep_utf8_to_ucs4 (input, -1, &ucs4len);
-  if (!ucs4)
-    return IDNA_ICONV_ERROR;
-
-  rc = idna_ucs4ace_to_ucs4 (ucs4, output);
+  rc = idna_to_unicode_ucs4_from_utf8 (input, &ucs4,
+				       allowunassigned, usestd3asciirules);
+  *output = stringprep_ucs4_to_utf8 (ucs4, -1, NULL, NULL);
   free (ucs4);
+
+  if (!*output)
+    return IDNA_ICONV_ERROR;
 
   return rc;
 }
@@ -636,17 +787,44 @@ idna_utf8ace_to_ucs4 (const char *input, unsigned long **output)
  * separated by dots.  The output buffer must be deallocated by the
  * caller.
  *
+ * This function is deprecated in favor of
+ * idna_to_unicode_utf8_from_utf8() and will be removed in future
+ * versions.
+ *
  * Return value: Returns IDNA_SUCCESS on success, or error code.
  **/
 int
 idna_utf8ace_to_utf8 (const char *input, char **output)
 {
-  unsigned long *ucs4;
+  return idna_to_unicode_utf8_from_utf8 (input, output, 0, 0);
+}
+
+/**
+ * idna_to_unicode_utf8_from_locale:
+ * @input: zero-terminated UTF-8 string.
+ * @output: pointer to newly allocated output string encoded in the
+ *   current locale's character set.
+ * @allowunassigned: whether to allow unassigned code points.
+ * @usestd3asciirules: whether to check input for STD3 compliance.
+ *
+ * Convert possibly ACE encoded domain name in UTF-8 format into a
+ * string encoded in the current locale's character set.  The
+ * The domain name may contain several labels, separated by dots.  The
+ * output buffer must be deallocated by the caller.
+ *
+ * Return value: Returns IDNA_SUCCESS on success, or error code.
+ **/
+int
+idna_to_unicode_locale_from_utf8 (const char *input, char **output,
+				  int allowunassigned, int usestd3asciirules)
+{
+  char *utf8;
   int rc;
 
-  rc = idna_utf8ace_to_ucs4 (input, &ucs4);
-  *output = stringprep_ucs4_to_utf8 (ucs4, -1, NULL, NULL);
-  free (ucs4);
+  rc = idna_to_unicode_utf8_from_utf8 (input, &utf8,
+				       allowunassigned, usestd3asciirules);
+  *output = stringprep_utf8_to_locale (utf8);
+  free (utf8);
 
   if (!*output)
     return IDNA_ICONV_ERROR;
@@ -666,20 +844,48 @@ idna_utf8ace_to_utf8 (const char *input, char **output)
  * The domain name may contain several labels, separated by dots.  The
  * output buffer must be deallocated by the caller.
  *
+ * This function is deprecated in favor of idna_to_ascii_from_ucs4()
+ * and will be removed in future versions.
+ *
  * Return value: Returns IDNA_SUCCESS on success, or error code.
  **/
 int
 idna_utf8ace_to_locale (const char *input, char **output)
 {
+  return idna_to_unicode_locale_from_utf8 (input, output, 0, 0);
+}
+
+/**
+ * idna_to_unicode_locale_from_locale:
+ * @input: zero-terminated string encoded in the current locale's
+ *   character set.
+ * @output: pointer to newly allocated output string encoded in the
+ *   current locale's character set.
+ * @allowunassigned: whether to allow unassigned code points.
+ * @usestd3asciirules: whether to check input for STD3 compliance.
+ *
+ * Convert possibly ACE encoded domain name in the locale's character
+ * set into a string encoded in the current locale's character set.
+ * The domain name may contain several labels, separated by dots.  The
+ * output buffer must be deallocated by the caller.
+ *
+ * Return value: Returns IDNA_SUCCESS on success, or error code.
+ **/
+int
+idna_to_unicode_locale_from_locale (const char *input, char **output,
+				    int allowunassigned,
+				    int usestd3asciirules)
+{
   char *utf8;
   int rc;
 
-  rc = idna_utf8ace_to_utf8 (input, &utf8);
-  *output = stringprep_utf8_to_locale (utf8);
-  free (utf8);
-
-  if (!*output)
+  utf8 = stringprep_locale_to_utf8 (input);
+  if (!utf8)
     return IDNA_ICONV_ERROR;
+
+  rc = idna_to_unicode_locale_from_utf8 (utf8, output,
+					 allowunassigned, usestd3asciirules);
+  free (utf8);
 
   return rc;
 }
@@ -697,20 +903,13 @@ idna_utf8ace_to_locale (const char *input, char **output)
  * The domain name may contain several labels, separated by dots.  The
  * output buffer must be deallocated by the caller.
  *
+ * This function is deprecated in favor of idna_to_ascii_from_ucs4()
+ * and will be removed in future versions.
+ *
  * Return value: Returns IDNA_SUCCESS on success, or error code.
  **/
 int
 idna_localeace_to_locale (const char *input, char **output)
 {
-  char *utf8;
-  int rc;
-
-  utf8 = stringprep_locale_to_utf8 (input);
-  if (!utf8)
-    return IDNA_ICONV_ERROR;
-
-  rc = idna_utf8ace_to_locale (utf8, output);
-  free (utf8);
-
-  return rc;
+  return idna_to_unicode_locale_from_locale (input, output, 0, 0);
 }

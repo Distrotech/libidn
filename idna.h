@@ -48,23 +48,71 @@ extern "C"
 #define IDNA_ACE_PREFIX "xn--"
 #endif
 
-  int idna_to_ascii (const unsigned long *in, size_t inlen,
-		     char *out, int allowunassigned, int usestd3asciirules);
+  extern int idna_to_ascii (const unsigned long *in,
+			    size_t inlen,
+			    char *out,
+			    int allowunassigned,
+			    int usestd3asciirules);
 
-  int idna_to_unicode (const unsigned long *in, size_t inlen,
-		       unsigned long *out, size_t * outlen,
-		       int allowunassigned, int usestd3asciirules);
+  extern int idna_to_ascii_from_ucs4 (const unsigned long *input,
+				      char **output,
+				      int allowunassigned,
+				      int usestd3asciirules);
 
-  int idna_ucs4_to_ace (const unsigned long *input, char **output);
-  int idna_utf8_to_ace (const char *input, char **output);
-  int idna_locale_to_ace (const char *input, char **output);
+  extern int idna_to_ascii_from_utf8 (const char *input,
+				      char **output,
+				      int allowunassigned,
+				      int usestd3asciirules);
 
-  int idna_ucs4ace_to_ucs4 (const unsigned long *input,
-			    unsigned long **output);
-  int idna_utf8ace_to_ucs4 (const char *input, unsigned long **output);
-  int idna_utf8ace_to_utf8 (const char *input, char **output);
-  int idna_utf8ace_to_locale (const char *input, char **output);
-  int idna_localeace_to_locale (const char *input, char **output);
+  extern int idna_to_ascii_from_locale (const char *input,
+					char **output,
+					int allowunassigned,
+					int usestd3asciirules);
+
+  extern int idna_to_unicode (const unsigned long *in,
+			      size_t inlen,
+			      unsigned long *out,
+			      size_t * outlen,
+			      int allowunassigned,
+			      int usestd3asciirules);
+
+  extern int idna_to_unicode_ucs4_from_ucs4 (const unsigned long *input,
+					     unsigned long **output,
+					     int allowunassigned,
+					     int usestd3asciirules);
+
+  extern int idna_to_unicode_ucs4_from_utf8 (const char *input,
+					     unsigned long **output,
+					     int allowunassigned,
+					     int usestd3asciirules);
+
+  extern int idna_to_unicode_utf8_from_utf8 (const char *input,
+					     char **output,
+					     int allowunassigned,
+					     int usestd3asciirules);
+
+  extern int idna_to_unicode_locale_from_utf8 (const char *input,
+					       char **output,
+					       int allowunassigned,
+					       int usestd3asciirules);
+
+  extern int idna_to_unicode_locale_from_locale (const char *input,
+						 char **output,
+						 int allowunassigned,
+						 int usestd3asciirules);
+
+  /* Deprecated interfaces */
+
+  extern int idna_ucs4_to_ace (const unsigned long *input, char **output);
+  extern int idna_utf8_to_ace (const char *input, char **output);
+  extern int idna_locale_to_ace (const char *input, char **output);
+
+  extern int idna_ucs4ace_to_ucs4 (const unsigned long *input,
+				   unsigned long **output);
+  extern int idna_utf8ace_to_ucs4 (const char *input, unsigned long **output);
+  extern int idna_utf8ace_to_utf8 (const char *input, char **output);
+  extern int idna_utf8ace_to_locale (const char *input, char **output);
+  extern int idna_localeace_to_locale (const char *input, char **output);
 
 #ifdef __cplusplus
 }
