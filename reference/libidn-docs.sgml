@@ -15,17 +15,18 @@
     <title>GNU Libidn API Reference Manual</title>
 
     <para>
-GNU Libidn is an implementation of the Stringprep (with the Nameprep
-and Kerberos 5 profiles), Punycode and IDNA specifications defined by
-the IETF Internationalized Domain Names (IDN) working group, used for
-internationalized domain names.  It is licensed under the GNU Lesser
-General Public License.
+GNU Libidn is an implementation of the Stringprep, Punycode and IDNA
+specifications defined by the IETF Internationalized Domain Names
+(IDN) working group, used for internationalized domain names.
+Currently the Nameprep, Kerberos 5 and XMPP Stringprep profiles are
+supported.  It is available under the GNU Lesser General Public
+License.
     </para>
     <para>
 The library contains a generic Stringprep implementation (including
 Unicode 3.2 NFKC normalization, table mapping of characters, and
-Bidirectional Character handling), two Stringprep profiles; Nameprep
-(for IDN) and Kerberos5, as well as a Punycode and IDNA.
+Bidirectional Character handling), a few Stringprep profiles, and an
+implementation of the functionality defined by Punycode and IDNA.
     </para>
     <para>
 The Stringprep API consists of two main functions, one for converting
@@ -35,13 +36,14 @@ profile has a corresponding CPP macro.  Adding a new Stringprep
 profile for your application within the API is straightforward.  The
 Punycode API consists of one encoding function and one decoding
 function.  The IDNA API consists of the ToASCII and ToUnicode
-functions.
+functions, as well as an high-level interface for converting entire
+domain names to and from the ACE encoded form.
     </para>
     <para>
-The library is currently used by forthcoming SASL and Kerberos
-libraries to process user names and passwords before they are input to
-cryptographic operations.  It is also used by experimental code for
-domain name related purposes.
+The library is used by forthcoming network applications to process
+user names and passwords before they are input to cryptographic
+operations.  Libidn can be built into GNU Libc to enables a new flag
+to getaddrinfo() for system-wide IDN processing.
     </para>
     <para>
 GNU Libidn is developed for the GNU/Linux system, but runs on over 20
