@@ -42,7 +42,7 @@ EXTRA_DIST = FAQ libidn.pc.in \
 	getopt.h getopt.c getopt1.c strdup.c memset.c
 
 clean-local:
-	rm -f idn_cmd.c idn_cmd.h
+	rm -f idn_cmd.c idn_cmd.h idn-int.h
 
 # Library
 
