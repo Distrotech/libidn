@@ -1,5 +1,9 @@
 2003-05-10  Simon Josefsson <simon@josefsson.org>
 
+	* NEWS: Version 0.1.14.
+
+2003-05-10  Simon Josefsson <simon@josefsson.org>
+
 	* idna.el, punycode.el: Bind process-environment correctly.
 
 2003-05-09  Simon Josefsson <simon@josefsson.org>
