@@ -116,6 +116,6 @@ release:
 	gpg --verify $(distdir).tar.gz.asc
 	scp $(distdir).tar.gz* gnudist.gnu.org:~alpha/gnu/$(PACKAGE)/
 	test -d $(htmldir) && cp -v $(PACKAGE).{ps,pdf,html} $(htmldir)/
-	test -d $(htmldir)/reference && cp -v reference/html/*.html $(htmldir)/reference/
+	test -d $(htmldir)/reference && cp -v reference/*.html $(htmldir)/reference/
 	test -d $(htmldir) && cd $(htmldir) && cvs commit -m "Update." $(PACKAGE).{ps,pdf,html} reference/*.html
 	cvs rtag $(tag) $(PACKAGE)
