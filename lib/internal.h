@@ -56,10 +56,6 @@
 #  include <errno.h>
 # endif
 
-# if defined(WITH_DMALLOC) && WITH_DMALLOC
-#  include <dmalloc.h>
-# endif
-
 #endif /* _LIBC */
 
 #include "stringprep.h"
