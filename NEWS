@@ -12,6 +12,8 @@ root label is in fact not considered a label at all in IDNA.
 
 ** Bug fixes.
 
+** API and ABI is backwards compatible with the previous version.
+
 * Version 0.2.0 (released 2003-06-19)
 
 ** Unicode code point data is now uint32_t, defined in "idn-int.h".
