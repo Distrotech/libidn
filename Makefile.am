@@ -81,7 +81,7 @@ idn_LDADD = @LIBOBJS@ libidn.la
 idn.c: idn_cmd.c idn_cmd.h
 
 idn_cmd.c idn_cmd.h: idn.ggo
-	-gengetopt --input $< --file-name idn_cmd
+	-gengetopt --input $^ --file-name idn_cmd
 
 dist_man_MANS = idn.1
 
@@ -115,7 +115,7 @@ pdf_TEXINFOS = libidn.texi
 ps_TEXINFOS = libidn.texi
 
 libidn.html: libidn.texi
-	$(MAKEINFO) --html --no-split --number-sections $<
+	$(MAKEINFO) --html --no-split --number-sections $^
 
 libidn_TEXINFOS = fdl.texi \
 	example.c.texi example2.c.texi example3.c.texi example4.c.texi \
