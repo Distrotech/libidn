@@ -46,13 +46,13 @@ ucs4print (unsigned long *str, ssize_t len)
   printf ("\t;; ");
   for (i = 0; len >= 0 ? i < len : str[i]; i++)
     {
-      printf ("U+%04x ", str[i]);
+      printf ("U+%04lux ", str[i]);
       if ((i + 1) % 4 == 0)
 	printf (" ");
       if ((i + 1) % 8 == 0 && i + 1 < len)
 	printf ("\n\t;; ");
     }
-  puts("");
+  puts ("");
 }
 
 struct punycode
@@ -215,6 +215,7 @@ int
 main (int argc, char *argv[])
 {
   char *p;
+  unsigned long *q;
   int rc, i;
   size_t outlen;
 
@@ -235,8 +236,12 @@ main (int argc, char *argv[])
       }
   while (argc-- > 1);
 
-  p = malloc (BUFSIZ);
+  p = malloc (sizeof(*p) * BUFSIZ);
   if (p == NULL)
+    fail ("malloc() returned NULL\n");
+
+  q = malloc (sizeof(*q) * BUFSIZ);
+  if (q == NULL)
     fail ("malloc() returned NULL\n");
 
   for (i = 0; i < sizeof (punycode) / sizeof (punycode[0]); i++)
@@ -247,7 +252,7 @@ main (int argc, char *argv[])
       if (debug)
 	{
 	  printf ("in:\n");
-	  ucs4print(punycode[i].in, punycode[i].inlen);
+	  ucs4print (punycode[i].in, punycode[i].inlen);
 	}
 
       outlen = BUFSIZ;
@@ -255,7 +260,7 @@ main (int argc, char *argv[])
 			    NULL, &outlen, p);
       if (rc != punycode[i].rc)
 	{
-	  fail ("punycode() entry %d failed: %d\n", i, rc);
+	  fail ("punycode_encode() entry %d failed: %d\n", i, rc);
 	  if (debug)
 	    printf ("FATAL\n");
 	  continue;
@@ -286,8 +291,50 @@ main (int argc, char *argv[])
 	}
       else if (debug)
 	printf ("OK\n\n");
+
+      if (debug)
+	{
+	  printf ("in: %s\n", punycode[i].out);
+	}
+
+      outlen = BUFSIZ;
+      rc = punycode_decode (strlen(punycode[i].out), punycode[i].out,
+			    &outlen, q, NULL);
+      if (rc != punycode[i].rc)
+	{
+	  fail ("punycode() entry %d failed: %d\n", i, rc);
+	  if (debug)
+	    printf ("FATAL\n");
+	  continue;
+	}
+
+      if (debug && rc == PUNYCODE_SUCCESS)
+	{
+	  printf ("computed out:\n");
+	  ucs4print (q, outlen);
+	  printf ("expected out:\n");
+	  ucs4print (punycode[i].in, punycode[i].inlen);
+	}
+      else if (debug)
+	printf ("returned %d expected %d\n", rc, punycode[i].rc);
+
+      if (rc == PUNYCODE_SUCCESS)
+	{
+	  if (punycode[i].inlen != outlen ||
+	      memcmp (punycode[i].in, q, outlen) != 0)
+	    {
+	      fail ("punycode_decode() entry %d failed\n", i);
+	      if (debug)
+		printf ("ERROR\n");
+	    }
+	  else if (debug)
+	    printf ("OK\n\n");
+	}
+      else if (debug)
+	printf ("OK\n\n");
     }
 
+  free (q);
   free (p);
 
   if (debug)
