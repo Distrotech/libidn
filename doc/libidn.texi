@@ -169,13 +169,13 @@ It should work on all Unix like operating systems, including Windows.
 
 The following illustration show the components that make up Libidn,
 and how your application relates to the library.  In the illustration,
-various components are rendered as boxes.  You see the generic
-StringPrep component, the various StringPrep profiles including
-Nameprep, the Punycode component, and the IDNA component.  The arrows
-indicate aggregation, e.g., the IDNA operation uses the Punycode and
-Nameprep, where Nameprep uses the generic StringPrep interface.  The
-interfaces to all components are available for applications, no
-components within the library is hidden from the application.
+various components are shown as boxes.  You see the generic StringPrep
+component, the various StringPrep profiles including Nameprep, the
+Punycode component, and the IDNA component.  The arrows indicate
+aggregation, e.g., IDNA uses Punycode and Nameprep, and in turn
+Nameprep uses the generic StringPrep interface.  The interfaces to all
+components are available for applications, no component within the
+library is hidden from the application.
 
 @image{components}
 
