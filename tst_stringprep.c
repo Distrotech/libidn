@@ -136,12 +136,19 @@ struct stringprep
 strprep[] =
 {
   /* nothing */
-  { "foo\xC2\xAD" "bar", 0, "foobar",  stringprep_generic },
-  /* case_nfkc + normalization: */
-  { "\xC2\xB5", 0, "\xCE\xBC",  stringprep_generic },
-  /* case_nonfkc: */
-  { "\xC2\xB5", STRINGPREP_NO_NFKC, "\xCE\xBC",  stringprep_generic },
-  { "\xC2\xAA", 0, "\x61", stringprep_generic }
+  {
+  "foo\xC2\xAD" "bar", 0, "foobar", stringprep_generic}
+  ,
+    /* case_nfkc + normalization: */
+  {
+  "\xC2\xB5", 0, "\xCE\xBC", stringprep_generic}
+  ,
+    /* case_nonfkc: */
+  {
+  "\xC2\xB5", STRINGPREP_NO_NFKC, "\xCE\xBC", stringprep_generic}
+  ,
+  {
+  "\xC2\xAA", 0, "\x61", stringprep_generic}
 };
 
 int
@@ -167,7 +174,7 @@ main (int argc, char *argv[])
       }
   while (argc-- > 1);
 
-  p = malloc(BUFSIZ);
+  p = malloc (BUFSIZ);
   if (p == NULL)
     fail ("malloc() returned NULL\n");
 
@@ -176,7 +183,7 @@ main (int argc, char *argv[])
       if (debug)
 	printf ("STRINGPREP entry %d\n", i);
 
-      strcpy(p, strprep[i].in);
+      strcpy (p, strprep[i].in);
 
       rc = stringprep (p, BUFSIZ, strprep[i].flags, strprep[i].profile);
       if (rc != STRINGPREP_OK)
@@ -220,7 +227,7 @@ main (int argc, char *argv[])
 	printf ("OK\n");
     }
 
-  free(p);
+  free (p);
 
   if (debug)
     printf ("Stringprep self tests done with %d errors\n", error_count);

@@ -146,19 +146,17 @@ static const char *const g_utf8_skip = utf8_skip_data;
 #define g_utf8_next_char(p) (char *)((p) + g_utf8_skip[*(unsigned char *)(p)])
 
 /**
- * g_utf8_get_char:
+ * stringprep_utf8_to_unichar:
  * @p: a pointer to Unicode character encoded as UTF-8
- * 
+ *
  * Converts a sequence of bytes encoded as UTF-8 to a Unicode character.
  * If @p does not point to a valid UTF-8 encoded character, results are
- * undefined. If you are not sure that the bytes are complete
- * valid Unicode characters, you should use g_utf8_get_char_validated()
- * instead.
- * 
+ * undefined.
+ *
  * Return value: the resulting character
  **/
-static long
-g_utf8_get_char (const char *p)
+long
+stringprep_utf8_to_unichar (const char *p)
 {
   int i, mask = 0, len;
   long result;
@@ -185,10 +183,10 @@ g_utf8_get_char (const char *p)
  * @string: a UCS-4 encoded string.
  * @len: the maximum length of @string to use.
  *
- * Computes the canonical ordering of a string in-place.  
- * This rearranges decomposed characters in the string 
- * according to their combining classes.  See the Unicode 
- * manual for more information. 
+ * Computes the canonical ordering of a string in-place.
+ * This rearranges decomposed characters in the string
+ * according to their combining classes.  See the Unicode
+ * manual for more information.
  **/
 static void
 g_unicode_canonical_ordering (long *string, size_t len)
@@ -343,7 +341,7 @@ _g_utf8_normalize_wc (const char *str, int max_len, GNormalizeMode mode)
   p = str;
   while ((max_len < 0 || p < str + max_len) && *p)
     {
-      long wc = g_utf8_get_char (p);
+      long wc = stringprep_utf8_to_unichar (p);
 
       const unsigned char *decomp = find_decomposition (wc, do_compat);
 
@@ -368,7 +366,7 @@ _g_utf8_normalize_wc (const char *str, int max_len, GNormalizeMode mode)
   p = str;
   while ((max_len < 0 || p < str + max_len) && *p)
     {
-      long wc = g_utf8_get_char (p);
+      long wc = stringprep_utf8_to_unichar (p);
       const unsigned char *decomp;
       int cc;
       size_t old_n_wc = n_wc;
@@ -458,9 +456,9 @@ _g_utf8_normalize_wc (const char *str, int max_len, GNormalizeMode mode)
  * @outbuf: output buffer, must have at least 6 bytes of space.
  *       If %NULL, the length will be computed and returned
  *       and nothing will be written to @outbuf.
- * 
+ *
  * Converts a single character to UTF-8.
- * 
+ *
  * Return value: number of bytes written
  **/
 int
@@ -515,7 +513,7 @@ stringprep_unichar_to_utf8 (long c, char *outbuf)
 }
 
 /**
- * stringgprep_utf8_to_ucs4_fast:
+ * stringgprep_utf8_to_ucs4:
  * @str: a UTF-8 encoded string
  * @len: the maximum length of @str to use. If @len < 0, then
  *       the string is nul-terminated.
@@ -524,14 +522,13 @@ stringprep_unichar_to_utf8 (long c, char *outbuf)
  *
  * Convert a string from UTF-8 to a 32-bit fixed width
  * representation as UCS-4, assuming valid UTF-8 input.
- * This function is roughly twice as fast as g_utf8_to_ucs4()
- * but does no error checking on the input.
- * 
+ * This function does no error checking on the input.
+ *
  * Return value: a pointer to a newly allocated UCS-4 string.
  *               This value must be freed with g_free().
  **/
 long *
-stringprep_utf8_to_ucs4_fast (const char *str, int len, int *items_written)
+stringprep_utf8_to_ucs4 (const char *str, int len, int *items_written)
 {
   int j, charlen;
   long *result;
@@ -615,6 +612,15 @@ stringprep_utf8_to_ucs4_fast (const char *str, int len, int *items_written)
   return result;
 }
 
+/* This one is kept around for binary backwards compatibility with
+   library version CURRENT=1. */
+long *
+stringprep_utf8_to_ucs4_fast (const char *str, int len, int *items_written)
+{
+  return stringprep_utf8_to_ucs4 (str, len, items_written);
+
+}
+
 /**
  * g_ucs4_to_utf8:
  * @str: a UCS-4 encoded string
@@ -623,14 +629,14 @@ stringprep_utf8_to_ucs4_fast (const char *str, int len, int *items_written)
  * @items_read: location to store number of characters read read, or %NULL.
  * @items_written: location to store number of bytes written or %NULL.
  *                 The value here stored does not include the trailing 0
- *                 byte. 
+ *                 byte.
  * @error: location to store the error occuring, or %NULL to ignore
  *         errors. Any of the errors in #GConvertError other than
  *         %G_CONVERT_ERROR_NO_CONVERSION may occur.
  *
  * Convert a string from a 32-bit fixed width representation as UCS-4.
  * to UTF-8. The result will be terminated with a 0 byte.
- * 
+ *
  * Return value: a pointer to a newly allocated UTF-8 string.
  *               This value must be freed with g_free(). If an
  *               error occurs, %NULL will be returned and
@@ -686,7 +692,7 @@ err_out:
  * @str: a UTF-8 encoded string.
  * @len: length of @str, in bytes, or -1 if @str is nul-terminated.
  * @mode: the type of normalization to perform.
- * 
+ *
  * Converts a string into canonical form, standardizing
  * such issues as whether a character with an accent
  * is represented as a base character and combining
@@ -713,8 +719,8 @@ err_out:
  * useful if you intend to convert the string to
  * a legacy encoding or pass it to a system with
  * less capable Unicode handling.
- * 
- * Return value: a newly allocated string, that is the 
+ *
+ * Return value: a newly allocated string, that is the
  *   normalized form of @str.
  **/
 static char *

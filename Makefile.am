@@ -59,3 +59,8 @@ ChangeLog:
 
 indent:
 	indent $(libstringprep_la_SOURCES)
+
+sign: $(distdir).tar.gz
+	rm -f $(distdir).tar.gz.asc
+	gpg -a --sign --detach $(distdir).tar.gz
+	gpg --verify $(distdir).tar.gz.asc

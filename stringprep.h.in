@@ -44,7 +44,7 @@ enum {
   STRINGPREP_UTF8_TOO_LARGE
 };
 
-enum { 
+enum {
   /* Flags in API */
   STRINGPREP_NO_NFKC = (1<<1),
   STRINGPREP_NO_BIDI = (1<<2),
@@ -81,7 +81,7 @@ typedef struct stringprep_table stringprep_profile;
 
 /* API */
 
-extern int stringprep (char *in, int maxlen, int flags, 
+extern int stringprep (char *in, int maxlen, int flags,
 		       stringprep_profile * profile);
 
 extern const char *stringprep_check_version (const char *req_version);
@@ -89,12 +89,16 @@ extern const char *stringprep_check_version (const char *req_version);
 /* Utility */
 
 extern int stringprep_unichar_to_utf8 (long c, char *outbuf);
+extern long stringprep_utf8_to_unichar (const char *p);
+
+extern long *stringprep_utf8_to_ucs4 (const char *str, int  len,
+				      int *items_written);
+extern char *stringprep_ucs4_to_utf8 (const long * str, int len,
+				      int * items_read, int * items_written);
+
 extern char *stringprep_utf8_nfkc_normalize (const char *str, int len);
 extern long *stringprep_ucs4_nfkc_normalize (long *str, int len);
-extern long *stringprep_utf8_to_ucs4_fast (const char *str,
-					   int  len, int *items_written);
-extern char *stringprep_ucs4_to_utf8 (const long * str, int len, 
-				      int * items_read, int * items_written);
+
 extern const char *stringprep_locale_charset ();
 extern char *stringprep_convert (const char *str,
 				 const char *to_codeset,
