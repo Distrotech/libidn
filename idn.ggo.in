@@ -10,4 +10,4 @@ option "idna-to-unicode" u "Convert ACE to UTF-8 according to IDNA" no
 option "allow-unassigned" - "Toggle IDNA AllowUnassigned flag" flag off
 option "usestd3asciirules" - "Toggle IDNA UseSTD3ASCIIRules flag" flag off
 option "debug" - "Print debugging information" flag off
-option "quiet" - "Don't print the normal GNU Libidn welcome" flag off
+option "quiet" - "Don't print the welcome greeting" flag off
