@@ -17,8 +17,11 @@
 # License along with GNU Libidn; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
 
-DIST_SUBDIRS = m4 lib src doc reference tests examples
-SUBDIRS = . m4 lib src doc $(GTKDOC) tests examples
+SUBDIRS = m4 lib src doc tests examples
+
+if ENABLE_GTK_DOC
+SUBDIRS += reference
+endif
 
 ACLOCAL_AMFLAGS = -I m4
 
