@@ -174,7 +174,7 @@ tld_get_4z (const uint32_t * in, char **out)
  * error code otherwise.
  */
 int
-tld_get_z (const char * in, char **out)
+tld_get_z (const char *in, char **out)
 {
   uint32_t *iucs;
   size_t i, ilen;
@@ -334,7 +334,7 @@ tld_check_4tz (const uint32_t * in, size_t * errpos, const Tld_table * tld)
  */
 int
 tld_check_4 (const uint32_t * in, size_t inlen, size_t * errpos,
-	      const Tld_table ** overrides)
+	     const Tld_table ** overrides)
 {
   const uint32_t *ipos;
   const Tld_table *tld;
