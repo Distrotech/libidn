@@ -1,10 +1,10 @@
-Libstringprep README -- important introductory notes
+Libidn README -- important introductory notes
 See the end for copying conditions.
 
-Libstringprep is an implementation of the IETF stringprep
+Libidn is an implementation of the IETF stringprep
 specification, licensed under the LGPL.
 
-Libstringprep is unstable and in its early steps of development.  You
+Libidn is unstable and in its early steps of development.  You
 should expect it to not work as well as having security problems.
 
 Currently the API include the following definitions and functions:
@@ -92,7 +92,7 @@ Function: char *stringprep_locale_to_utf8 (const char *str);
 
      Convert strings between character sets.
 
-Libstringprep has at some point in time passed the self tests on the
+Libidn has at some point in time passed the self tests on the
 following systems, but no guarantees.
 
   - alphaev67-dec-osf5.0 (Tru64 UNIX C, Tru64 make -- iconv failed!)
@@ -110,7 +110,7 @@ Things left to do below.  If you like to start working on anything,
 please let me know so work duplication can be avoided.
 
   - Optimize it, the table searching is slow (but does it matter?).
-  - Port applications to use libstringprep.
+  - Port applications to use libidn.
   - Include tables for more stringprep profiles.
   - Add texi documentation.
   - Implement rest of IDN?  Possibly separate project.
@@ -122,9 +122,9 @@ be added either) and this package must know the Unicode version used.
 Secondly, GLIB requires some things (e.g., threads) that would make
 this package less portable.
 
-For more information see <URL:http://josefsson.org/libstringprep/>.
+For more information see <URL:http://josefsson.org/libidn/>.
 
-Send all bug reports by electronic mail to bug-libstringprep@josefsson.org.
+Send all bug reports by electronic mail to bug-libidn@josefsson.org.
 
 ----------------------------------------------------------------------
 Copyright (C) 2002 Simon Josefsson
