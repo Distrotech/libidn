@@ -140,6 +140,9 @@ C++, Emacs Lisp, Python and Java.
 
 This manual documents the library programming interface.  All
 functions and data types provided by the library are explained.
+Included are also examples, and documentation for the command line
+tool @file{idn} that provide a quick interface to the library.  The
+Emacs Lisp bindings for the library is also discussed.
 
 The reader is assumed to possess basic familiarity with
 internationalization concepts and network programming in C or C++.
