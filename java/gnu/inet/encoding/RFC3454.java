@@ -3791,6 +3791,10 @@ public class RFC3454
     "\uFF5A",
   };
 
+  final static char[] C11 = new char[] {
+    '\u0020',
+  };
+
   final static char[] C12 = new char[] {
     '\u00A0',
     '\u1680',
@@ -3809,6 +3813,11 @@ public class RFC3454
     '\u202F',
     '\u205F',
     '\u3000',
+  };
+
+  final static char[][] C21 = new char[][] {
+    new char[] { '\u0000', '\u001F' },
+    new char[] { '\u007F' },
   };
 
   final static char[][] C22 = new char[][] {

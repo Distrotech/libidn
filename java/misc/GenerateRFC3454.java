@@ -121,8 +121,12 @@ public class GenerateRFC3454
 	} else if ("B.3".equals(t)) {
 	  w.println("  final static char[] B3search = new char[] {\n"+o1.toString()+"  };\n");
 	  w.println("  final static String[] B3replace = new String[] {\n"+o2.toString()+"  };\n");
+	} else if ("C.1.1".equals(t)) {
+	  w.println("  final static char[] C11 = new char[] {\n"+o1.toString()+"  };\n");
 	} else if ("C.1.2".equals(t)) {
 	  w.println("  final static char[] C12 = new char[] {\n"+o1.toString()+"  };\n");
+	} else if ("C.2.1".equals(t)) {
+	  w.println("  final static char[][] C21 = new char[][] {\n"+o1.toString()+"  };\n");
 	} else if ("C.2.2".equals(t)) {
 	  w.println("  final static char[][] C22 = new char[][] {\n"+o1.toString()+"  };\n");
 	} else if ("C.3".equals(t)) {
@@ -190,9 +194,11 @@ public class GenerateRFC3454
 	      o2.append("    null,\n");
 	    }
 	  }
+	} else if ("C.1.1".equals(t)) {
+	  o1.append("    '\\u"+l+"',\n");
 	} else if ("C.1.2".equals(t)) {
 	  o1.append("    '\\u"+l+"',\n");
-	} else if ("C.2.2".equals(t) || "C.3".equals(t) || "C.4".equals(t) || "C.5".equals(t) || "C.6".equals(t) || "C.7".equals(t) || "C.8".equals(t) || "D.1".equals(t) || "D.2".equals(t)) {
+	} else if ("C.2.1".equals(t) || "C.2.2".equals(t) || "C.3".equals(t) || "C.4".equals(t) || "C.5".equals(t) || "C.6".equals(t) || "C.7".equals(t) || "C.8".equals(t) || "D.1".equals(t) || "D.2".equals(t)) {
 	  if (4 == l.length()) {
 	    o1.append("    new char[] { '\\u"+l+"' },\n");
 	  } else if (9 == l.length()) {
