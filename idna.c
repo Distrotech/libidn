@@ -425,11 +425,10 @@ idna_to_ascii_4z (const uint32_t * input, char **output, int flags)
 	   *end != 0x3002 && *end != 0xFF0E && *end != 0xFF61; end++)
 	;
 
-      /* Handle empty labels. The RFC is not clear if we should do
-	 this for all empty label, or just the trailing one.  But if
-	 empty labels are to be rejected, libidn does not seem to be
-	 the best place to enforce such policy. */
-      if (end == start)
+      /* Handle empty trailing labels. The RFC is not clear on this,
+	 the text that mandate this behaviour inside a parenthesis in
+	 the terminology section. */
+      if (end == start && *end == '\0')
 	{
 	  strcpy(buf, out ? "" : ".");
 	}
