@@ -1256,7 +1256,7 @@ You may redistribute copies of GNU Libidn under the terms of
 the GNU Lesser General Public License.  For more information
 about these matters, see the file named COPYING.LIB.
 Type each input string on a line by itself, terminated by a newline character.
-räksmörgås
+r@"aksm@"org@aa{}s
 xn--rksmrgs-5wao1o
 jas@@latte:~$
 @end example
@@ -1265,7 +1265,7 @@ Reading input from command line, and disabling copyright and license
 information:
 
 @example
-jas@@latte:~$ idn --quiet räksmörgås blåbærgrød
+jas@@latte:~$ idn --quiet r@"aksm@"org@aa{}s bl@aa{}b@ae{}rgr@o{}d
 xn--rksmrgs-5wao1o
 xn--blbrgrd-fxak7p
 jas@@latte:~$
@@ -1274,8 +1274,8 @@ jas@@latte:~$
 Accessing a specific StringPrep profile directly:
 
 @example
-jas@@latte:~$ idn --quiet --profile=SASLprep --stringprep teßtª
-teßta
+jas@@latte:~$ idn --quiet --profile=SASLprep --stringprep te@ss{}tª
+te@ss{}ta
 jas@@latte:~$
 @end example
 
@@ -1332,7 +1332,7 @@ sequences.
 jas@@latte:~$ idn --quiet --debug ""
 system locale uses charset `ISO-8859-1'.
  
-jas@@latte:~$ CHARSET=UTF-8 idn --quiet --debug räksmörgås
+jas@@latte:~$ CHARSET=UTF-8 idn --quiet --debug r@"aksm@"org@aa{}s
 system locale uses charset `UTF-8'.
 input[0] = U+0072
 input[1] = U+4af3
