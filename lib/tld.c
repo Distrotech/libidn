@@ -341,7 +341,6 @@ int
 tld_check_4 (const uint32_t * in, size_t inlen, size_t * errpos,
 	     const Tld_table ** overrides)
 {
-  const uint32_t *ipos;
   const Tld_table *tld;
   char *domain;
   int rc;
