@@ -26,6 +26,7 @@
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
+#include <locale.h>		/* setlocale() */
 
 /*
  * Compiling against IDN enabled Libc:
@@ -49,6 +50,8 @@ main(int argc, char *argv[])
   struct addrinfo hints;
   struct addrinfo *res = NULL;
   int rc;
+
+  setlocale (LC_ALL, "");
 
   //printf("locale charset `%s'\n", stringprep_locale_charset());
 
