@@ -106,3 +106,7 @@ sign: $(distdir).tar.gz
 	rm -f $(distdir).tar.gz.asc
 	gpg -a --sign --detach $(distdir).tar.gz
 	gpg --verify $(distdir).tar.gz.asc
+
+upload: sign
+	scp $(distdir).tar.gz $(distdir).tar.gz.asc \
+		gnudist.gnu.org:~alpha/gnu/libidn/
