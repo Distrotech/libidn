@@ -127,7 +127,7 @@ release:
 	gpg -a --sign --detach $(distdir).tar.gz
 	gpg --verify $(distdir).tar.gz.asc
 	scp $(distdir).tar.gz* gnudist.gnu.org:~alpha/gnu/$(PACKAGE)/
-	test -d $(htmldir) && cp -v $(PACKAGE).{ps,pdf,html} $(htmldir)/
+	test -d $(htmldir) && cp -v doc/$(PACKAGE).{ps,pdf,html} $(htmldir)/
 	test -d $(htmldir)/reference && \
 		cp -v reference/*.html $(htmldir)/reference/
 	test -d $(htmldir)/doxygen && test -d contrib/doxygen/html && \
