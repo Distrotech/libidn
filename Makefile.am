@@ -29,7 +29,7 @@ lib_LTLIBRARIES = libstringprep.la
 include_HEADERS = stringprep.h stringprep_generic.h stringprep_nameprep.h \
 	stringprep_kerberos5.h
 
-libstringprep_la_SOURCES = gunicomp.h gunidecomp.h \
+libstringprep_la_SOURCES = gunicomp.h gunidecomp.h internal.h \
 	stringprep.c nfkc.c version.c toutf8.c \
 	stringprep_generic.c profiles.c
 libstringprep_la_LIBADD = @LTLIBOBJS@
