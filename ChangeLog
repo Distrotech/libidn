@@ -1,3 +1,78 @@
+2003-01-28  Simon Josefsson <simon@josefsson.org>
+
+	* configure.ac:
+
+	Release 0.1.5.  
+
+2003-01-28  Simon Josefsson <simon@josefsson.org>
+
+	* Makefile.am:
+
+	Dist libc/*.  
+
+2003-01-28  Simon Josefsson <simon@josefsson.org>
+
+	* reference/Makefile.am:
+
+	Ignore netdb.h.  
+
+2003-01-28  Simon Josefsson <simon@josefsson.org>
+
+	* libc/: README, README:
+
+	Fix.  
+
+2003-01-28  Simon Josefsson <simon@josefsson.org>
+
+	* libc/README:
+
+	Add.  
+
+2003-01-28  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS, libc/Makefile, libc/README, libc/Versions, libc/configure,
+	libc/example.c, libc/getaddrinfo.c, libc/libc.patch, libc/netdb.h:
+
+	Libidn as libc add-on.  
+
+2003-01-28  Simon Josefsson <simon@josefsson.org>
+
+	* idna.c, idna.h:
+
+	Return new error code IDNA_ICONV_ERROR instead of crashing when 
+	character set conversion fails.  
+
+2003-01-28  Simon Josefsson <simon@josefsson.org>
+
+	* toutf8.c:
+
+	Fix prototype.  Move unused parameter unless LOCALE_WORKS.  
+
+2003-01-28  Simon Josefsson <simon@josefsson.org>
+
+	* internal.h:
+
+	Work from within GNU Libc.  
+
+2003-01-27  Simon Josefsson <simon@josefsson.org>
+
+	* THANKS:
+
+	Add ack.  
+
+2003-01-27  Simon Josefsson <simon@josefsson.org>
+
+	* libidn.texi:
+
+	Point to THANKS for more acks.  
+
+2003-01-27  Simon Josefsson <simon@josefsson.org>
+
+	* idna.c:
+
+	Fix possible memory corruption.  Noncopyrightable patch from Waldo 
+	Bastian <bastian@kde.org>.  
+
 2003-01-20  Simon Josefsson <simon@josefsson.org>
 
 	* configure.ac:
