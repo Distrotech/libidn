@@ -1,4 +1,4 @@
-\input texinfo   @c -*-texinfo-*-
+\input texinfo   @c -*- mode: texinfo; coding: iso-8859-1; -*-
 @c Copyright (C) 2002, 2003 Simon Josefsson
 @c This file is part of GNU Libidn.
 @c See below for copying conditions.
@@ -1179,11 +1179,11 @@ compatible names to internationalized domain names.
 @cindex invoking @command{idn}
 @cindex command line
 
-@majorheading Name
+@section Name
 
 GNU Libidn (idn) -- Internationalized Domain Names command line tool
 
-@majorheading Description
+@section Description
 @code{idn} allows internationalized string preparation
 (@samp{stringprep}), encoding and decoding of punycode data, and IDNA
 ToASCII/ToUnicode operations to be performed on the command line.
@@ -1196,7 +1196,7 @@ the computed output to standard output.  What processing is performed
 (e.g., ToASCII, or Punycode encode) is indicated by options.  If any
 errors are encountered, the execution of the applications is aborted.
 
-@majorheading Options
+@section Options
 @code{idn} recognizes these commands:
 
 @verbatim
@@ -1228,7 +1228,7 @@ errors are encountered, the execution of the applications is aborted.
       --quiet              Silent operation  (default=off)
 @end verbatim
 
-@majorheading Environment Variables
+@section Environment Variables
 
 The @var{CHARSET} environment variable can be used to override what
 character set to be used for decoding incoming data (i.e., on the
@@ -1237,10 +1237,46 @@ the standard output.  If your system is set up correctly, however, the
 application will guess which character set is used automatically.
 Example usage:
 
-@verbatim
+@example
 $ CHARSET=ISO-8859-1 idn --punycode-encode
 ...
-@end verbatim
+@end example
+
+@section Examples
+
+Standard usage, reading input from standard input:
+
+@example
+jas@@latte:~$ idn
+libidn 0.3.5
+Copyright 2002, 2003 Simon Josefsson.
+GNU Libidn comes with NO WARRANTY, to the extent permitted by law.
+You may redistribute copies of GNU Libidn under the terms of
+the GNU Lesser General Public License.  For more information
+about these matters, see the file named COPYING.LIB.
+Type each input string on a line by itself, terminated by a newline character.
+räksmörgås
+xn--rksmrgs-5wao1o
+jas@@latte:~$
+@end example
+
+Reading input from command line, and disabling copyright and license
+information:
+
+@example
+jas@@latte:~$ idn --quiet räksmörgås blåbærgrød
+xn--rksmrgs-5wao1o
+xn--blbrgrd-fxak7p
+jas@@latte:~$
+@end example
+
+Accessing a specific StringPrep profile directly:
+
+@example
+jas@@latte:~$ idn --quiet --profile=SASLprep --stringprep teßtª
+teßta
+jas@@latte:~$
+@end example
 
 @node Emacs API
 @chapter Emacs API
