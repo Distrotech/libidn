@@ -78,6 +78,14 @@ extern "C"
     PUNYCODE_OVERFLOW,		/* Input needs wider integers to process.  */
   } Punycode_status;
 
+  /* For RFC compatibility. */
+  enum punycode_status {
+    punycode_success = PUNYCODE_SUCCESS,
+    punycode_bad_input = PUNYCODE_BAD_INPUT,
+    punycode_big_output = PUNYCODE_BIG_OUTPUT,
+    punycode_overflow = PUNYCODE_OVERFLOW
+  };
+
   typedef uint32_t punycode_uint;
 
   int punycode_encode (size_t input_length,
