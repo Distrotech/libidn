@@ -179,6 +179,11 @@ GCC 2.95.4 and GNU Make. This is the main development platform.
 @code{hppa64-unknown-linux-gnu}, @code{i686-pc-linux-gnu},
 @code{ia64-unknown-linux-gnu}.
 
+@item Debian GNU/Linux 2.1
+@cindex Debian
+
+GCC 2.95.1 and GNU Make. @code{armv4l-unknown-linux-gnu}.
+
 @item Tru64 UNIX
 @cindex Tru64
 
