@@ -1,8 +1,8 @@
 #!/usr/bin/perl
 
+## Copyright (c) 2002, 2003 Simon Josefsson: -texinfo, -doxygen  ##
 ## Copyright (c) 1998 Michael Zucchi, All Rights Reserved        ##
 ##                    hacked to allow -tex option --nmav         ##
-##                    hacked to allow -texinfo option --jas      ##
 ##                                                               ##
 ## This software falls under the GNU Public License. Please read ##
 ##              the COPYING file for more information            ##
@@ -13,6 +13,10 @@
 #
 # This program is modified by Nikos Mavroyanopoulos, for the gnutls
 # project.
+
+# The -doxygen parameter isn't used now (see gdoc2doxygen in libidn
+# for an alternative solution), but I kept it in case I want to use it
+# in the future.
 
 # Note: This only supports 'c'.
 
@@ -140,9 +144,16 @@ $blankline_man = "";
 		     $type_param, "\$1" );
 $blankline_text = "";
 
+$bs="\\";
+%highlights_doxygen = ( $type_constant, "\${bs}var \$1",
+			$type_func, "\${bs}fn \$1",
+			$type_struct, "\${bs}typedef \$1",
+			$type_param, "\${bs}param \$1" );
+$blankline_doxygen = "\\n";
+
 
 sub usage {
-    print "Usage: $0 [ -v ] [ -docbook | -html | -text | -man | -tex | -texinfo ]\n";
+    print "Usage: $0 [ -v ] [ -docbook | -html | -text | -man | -tex | -texinfo | -doxygen ]\n";
     print "         [ -function funcname [ -function funcname ...] ]\n";
     print "         c source file(s) > outputfile\n";
     exit 1;
@@ -185,6 +196,10 @@ while ($ARGV[0] =~ m/^-(.*)/) {
 	$output_mode = "sgml";
 	%highlights = %highlights_sgml;
 	$blankline = $blankline_sgml;
+    } elsif ($cmd eq "-doxygen") {
+	$output_mode = "doxygen";
+	%highlights = %highlights_doxygen;
+	$blankline = $blankline_doxygen;
     } elsif ($cmd eq "-module") { # not needed for sgml, inherits from calling document
 	$modulename = shift @ARGV;
     } elsif ($cmd eq "-function") { # to only output specific functions
@@ -254,6 +269,37 @@ sub output_highlight {
 	}
 	print "\n";
     }
+}
+
+# output in doxygen
+sub output_doxygen {
+    my %args = %{$_[0]};
+    my ($parameter, $section);
+    my $count;
+
+    print "/* \\fn ";
+    print $args{'functiontype'} . " " . $args{'function'} . " (";
+    $count = 0;
+    foreach $parameter (@{$args{'parameterlist'}}) {
+	print $args{'parametertypes'}{$parameter}." ".$parameter."";
+	if ($count != $#{$args{'parameterlist'}}) {
+	    $count++;
+	    print ", ";
+	}
+    }
+    print ")\n *\n * ";
+    foreach $parameter (@{$args{'parameterlist'}}) {
+	if ($args{'parameters'}{$parameter}) {
+	    print "\\param ".$parameter." ";
+	    output_highlight($args{'parameters'}{$parameter});
+	    print "\n * ";
+	}
+    }
+    foreach $section (@{$args{'sectionlist'}}) {
+	output_highlight($args{'sections'}{$section});
+	print "\n * ";
+    }
+    print " */\n\n";
 }
 
 # output in texinfo
@@ -717,7 +763,7 @@ foreach $file (@ARGV) {
 		}
 	    } else {
 		# i dont know - bad line?  ignore.
-		print STDERR "WARNING($lineno): bad line: $_"; 
+		print STDERR "WARNING($lineno): bad line: $_";
 	    }
 	} elsif ($state == 3) {	# scanning for function { (end of prototype)
 	    if (m#\s*/\*\s+MACDOC\s*#io) {
