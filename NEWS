@@ -11,6 +11,8 @@ The allowUnassigned flag is now respected properly.  The prohibited
 code points check now works.  Arguments are now checked.  Convenience
 method with allowUnassigned set to false was added.
 
+** Update getopt from gnulib.
+
 ** API and ABI is backwards compatible with the previous version.
 
 * Version 0.5.11 (released 2004-11-21)
