@@ -299,9 +299,9 @@
 	<li><a href="http://josefsson.org/idn.php?data=%D0%CF%DE%C5%CD%D5%D6%C5%CF%CE%C9%CE%C5%C7%CF%D7%CF%D2%D1%D4%D0%CF%D2%D5%D3%D3%CB%C9&mode=toascii&charset=KOI8-R">KOI8-R Russian Cyrillic (same as previous)</a>
 	<li><a href="http://josefsson.org/idn.php?data=T%E1%BA%A1isaoh%E1%BB%8Dkh%C3%B4ngth%E1%BB%83ch%E1%BB%89n%C3%B3iti%E1%BA%BFngVi%E1%BB%87t&mode=toascii&charset=UTF-8">UTF-8 Vietnamese</a>
 	<li><a href="http://josefsson.org/idn.php?data=%E3%81%B2%E3%81%A8%E3%81%A4%E5%B1%8B%E6%A0%B9%E3%81%AE%E4%B8%8B2&mode=toascii&charset=UTF-8">UTF-8 Japanese</a>
-	<li><a href="http://josefsson.org/idn.php?data=%A4%D2%A4%C8%A4%C4%B2%B0%BA%AC%A4%CE%B2%BC2&mode=toascii&charset=EUC-JP">EUC-JP Japanese (same as previous</a>
+	<li><a href="http://josefsson.org/idn.php?data=%A4%D2%A4%C8%A4%C4%B2%B0%BA%AC%A4%CE%B2%BC2&mode=toascii&charset=EUC-JP">EUC-JP Japanese (same as previous)</a>
 	<li><a href="http://josefsson.org/idn.php?data=Pro%C4%8Dprost%C4%9Bnemluv%C3%AD%C4%8Desky&mode=toascii&charset=UTF-8">UTF-8 Czech</a>
-	<li><a href="http://josefsson.org/idn.php?data=Pro%E8prost%ECnemluv%ED%E8esky&mode=toascii&charset=ISO-8859-2">ISO-8859-2 Czech</a>
+	<li><a href="http://josefsson.org/idn.php?data=Pro%E8prost%ECnemluv%ED%E8esky&mode=toascii&charset=ISO-8859-2">ISO-8859-2 Czech (same as previous)</a>
 	<li><a href="http://josefsson.org/idn.php?data=%E0%A4%AF%E0%A4%B9%E0%A4%B2%E0%A5%8B%E0%A4%97%E0%A4%B9%E0%A4%BF%E0%A4%A8%E0%A5%8D%E0%A4%A6%E0%A5%80%E0%A4%95%E0%A5%8D%E0%A4%AF%E0%A5%8B%E0%A4%82%E0%A4%A8%E0%A4%B9%E0%A5%80%E0%A4%82%E0%A4%AC%E0%A5%8B%E0%A4%B2%E0%A4%B8%E0%A4%95%E0%A4%A4%E0%A5%87%E0%A4%B9%E0%A5%88%E0%A4%82&mode=toascii&charset=UTF-8">UTF-8 Hindi Devanagari</a>
     </ul>
 
