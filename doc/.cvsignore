@@ -1,6 +1,6 @@
 Makefile
-Makefile.in
 Makefile.gdoc
+Makefile.in
 example.c.texi
 example2.c.texi
 example3.c.texi
@@ -31,16 +31,9 @@ libidn.tps
 libidn.txt
 libidn.vr
 libidn.vrs
+man
 mdate-sh
 stamp-*
+texi
 texinfo.tex
 version.texi
-idna-core.api.texi
-idna-toascii.api.texi
-idna-tounicode.api.texi
-nfkc-basic.api.texi
-nfkc-main.api.texi
-punycode.api.texi
-stringprep.api.texi
-toutf8.api.texi
-version.api.texi
