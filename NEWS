@@ -6,6 +6,8 @@ See the end for copying conditions.
 
 ** Fixed list of Stringprep profiles in 'idn --help'.
 
+** Fixed debug information in 'idn'.
+
 ** API and ABI is backwards compatible with the previous version.
 
 * Version 0.3.2 (released 2003-10-07)
