@@ -51,6 +51,9 @@ idn.1: $(top_srcdir)/src/idn.c
 GDOC_SRC = $(top_srcdir)/lib/*.c
 GDOC_TEXI_PREFIX = texi/
 GDOC_MAN_PREFIX = man/
+GDOC_MAN_EXTRA_ARGS = -module $(PACKAGE) -sourceversion $(VERSION) \
+	-bugsto $(PACKAGE_BUGREPORT) -includefuncprefix -seeinfo $(PACKAGE) \
+	-copyright "2002, 2003 Simon Josefsson" -verbatimcopying
 include $(srcdir)/Makefile.gdoci
 
 # DocBook
