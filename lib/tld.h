@@ -68,14 +68,22 @@ extern "C"
       TLD_NOTLD = 5
     } Tld_rc;
 
+  /* Return structure corresponding to the named tld, first looking
+   * thru xtra_tlds then thru built-in list, or NULL if not found. */
+  const Tld_table *tld_finddomain (const char *tld_str,
+				   const Tld_table ** xtra_tlds);
+
+  /* Verify if ch is either in [a-z0-9-.] or mentioned as a legal
+   * character in tld and return TLD_SUCCESS/ILLEGAL respectively. */
+  int tld_checkchar (uint32_t ch, const Tld_table * tld);
+
   /* Determine TLD of UCS4 DNS name and return in out. */
   int tld_gettld_4i (const uint32_t * in, size_t inlen, char **out);
   int tld_gettld_4z (const uint32_t * in, char **out);
 
-  /* Check >!nameprepped!< domain name for valid characters as defined
-   * by the relevant registering body + [a-z0-9.-] return Tldchk_rc,
-   * position of offending character in errpos if TLDCHK_ILLEGAL.
-   */
+  /* Check NAMEPREPPED domain name for valid characters as defined by
+   * the relevant registering body + [a-z0-9.-] return Tld_rc,
+   * position of offending character in errpos if TLD_ILLEGAL. */
   int tld_check_4it (const uint32_t * in, size_t inlen, size_t * errpos,
 		     const Tld_table * tld);
   int tld_check_4iz (const uint32_t * in, size_t * errpos,
@@ -89,17 +97,6 @@ extern "C"
 		    const Tld_table ** xtra_tlds);
   int tld_check_lz (const char *in, size_t * errpos,
 		    const Tld_table ** xtra_tlds);
-
-  /* Verify if ch is either in [a-z0-9-.] or mentioned as a legal
-   * character in tld and return TLDCHK_SUCCESS/ILLEGAL respectively.
-   */
-  int tld_checkchar (uint32_t ch, const Tld_table * tld);
-
-  /* Return structure corresponding to the named tld, first looking
-   * thru xtra_tlds then thru built-in list, or NULL if not found.
-   */
-  const Tld_table *tld_finddomain (const char *tld_str,
-				   const Tld_table ** xtra_tlds);
 
 #ifdef __cplusplus
 }
