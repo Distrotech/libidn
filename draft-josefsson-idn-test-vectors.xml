@@ -3,9 +3,7 @@
 
 <?rfc compact="yes"?>
 <?rfc toc="yes"?>
-
 <rfc category="info" ipr="full2026"
-     maillist=""
      docName="draft-josefsson-idn-test-vectors">
 
 <front>
@@ -13,7 +11,7 @@
 <title>Nameprep and IDNA Test Vectors</title>
 
 <author initials="S." surname="Josefsson" fullname="Simon Josefsson">
-	<organization>Extundo</organization>
+	<organization></organization>
 	<address>
 		<postal>
 			<street>Drottningholmsv. 70</street>
@@ -24,16 +22,14 @@
 	</address>
 </author>
 	
-<date month="February" year="2003"/>
+<date month="March" year="2003"/>
 
 <abstract>
 
 <t>This document contains test vectors for Nameprep and IDNA.  The
-majority of test vectors are derived in order to cover various corner
-cases in the specifications, but some anticipated typical data from
-the real world are also included.  The aim is to promote
-interoperability and standards compliance in deployed
-implementations.</t>
+majority of the test vectors are derived in order to cover various
+corner cases in the specifications, but some anticipated typical data
+from the real world are also included.</t>
 
 </abstract>
 
@@ -44,14 +40,14 @@ implementations.</t>
 <section title="Introduction">
 
 <t>The Nameprep and IDNA specifications lack thorough examples that
-would aid in implementing them.  This document is a complement to
-those specifications.</t>
+would aid in implementing them.  This document can act as a complement
+to those specifications.</t>
 
 <t>It should be pointed out that this document is not normative, and
-hence any errors here should not be treated as gospel defining
-Nameprep nor IDNA.  When conforming to the specification and
-generating output corresponding to values in this document is in
-conflict, implementations must conform to the specification.</t>
+thus any errors here should not be treated as gospel that defines
+Nameprep or IDNA.  When conforming to the specification and generating
+output corresponding to values in this document is in conflict,
+implementations should conform to the specification.</t>
 
 </section>
 
@@ -127,8 +123,13 @@ out: `foobar' (length 6 bytes)
 
 <section title="Security Considerations">
 
-<t>The security considerations of Nameprep and IDNA are discussed in
-those specifications.</t>
+<t>The security considerations from Nameprep and IDNA are inherited,
+see each respective document.  These test vectors are not believed to
+introduce new security considerations nor disrupt the operation of the
+Internet, but may expose security weaknesses in existing
+implementations.  Any such incident should not be regarded as a
+problem with this document, though, but rather taken as evidence that
+this document served any purpose.</t>
 
 </section>
 
@@ -136,17 +137,16 @@ those specifications.</t>
 
 <back>
 
+<!--
 <note title="Acknowledgments">
-
 <t>TBA</t>
-
 </note>
+-->
 
-<section title="Test vector in C syntax">
+<section title="Nameprep test vectors in C syntax">
 
 <t>In order to avoid having implementators type in the test vectors
-above, a C structure with the data is provided.  While it is specific
-for one implementation, it should be trivial to adopt for any package.</t>
+above, a C structure with the data is provided.</t>
 
 <t>The comment field is the section titles used in this document.  The
 in field contains UTF-8 encoded strings.  The out field contains
@@ -165,7 +165,7 @@ struct stringprep
   char *comment;
   char *in;
   char *out;
-  Stringprep_profile *profile;
+  char *profile;
   int flags;
   int rc;
 }
@@ -236,7 +236,7 @@ strprep[] =
   },
   {
     "Non-ASCII multibyte space character U+1680",
-    "\xE1\x9A\x80", NULL, stringprep_nameprep, 0,
+    "\xE1\x9A\x80", NULL, "Nameprep", 0,
     STRINGPREP_CONTAINS_PROHIBITED
   },
   {
@@ -257,12 +257,12 @@ strprep[] =
   },
   {
     "Non-ASCII 8bit control character U+0085",
-    "\xC2\x85", NULL, stringprep_nameprep, 0,
+    "\xC2\x85", NULL, "Nameprep", 0,
     STRINGPREP_CONTAINS_PROHIBITED
   },
   {
     "Non-ASCII multibyte control character U+180E",
-    "\xE1\xA0\x8E", NULL, stringprep_nameprep, 0,
+    "\xE1\xA0\x8E", NULL, "Nameprep", 0,
     STRINGPREP_CONTAINS_PROHIBITED
   },
   {
@@ -271,47 +271,47 @@ strprep[] =
   },
   {
     "Non-ASCII control character U+1D175",
-    "\xF0\x9D\x85\xB5", NULL, stringprep_nameprep, 0,
+    "\xF0\x9D\x85\xB5", NULL, "Nameprep", 0,
     STRINGPREP_CONTAINS_PROHIBITED
   },
   {
     "Plane 0 private use character U+F123",
-    "\xEF\x84\xA3", NULL, stringprep_nameprep, 0,
+    "\xEF\x84\xA3", NULL, "Nameprep", 0,
     STRINGPREP_CONTAINS_PROHIBITED
   },
   {
     "Plane 15 private use character U+F1234",
-    "\xF3\xB1\x88\xB4", NULL, stringprep_nameprep, 0,
+    "\xF3\xB1\x88\xB4", NULL, "Nameprep", 0,
     STRINGPREP_CONTAINS_PROHIBITED
   },
   {
     "Plane 16 private use character U+10F234",
-    "\xF4\x8F\x88\xB4", NULL, stringprep_nameprep, 0,
+    "\xF4\x8F\x88\xB4", NULL, "Nameprep", 0,
     STRINGPREP_CONTAINS_PROHIBITED
   },
   {
     "Non-character code point U+8FFFE",
-    "\xF2\x8F\xBF\xBE", NULL, stringprep_nameprep, 0,
+    "\xF2\x8F\xBF\xBE", NULL, "Nameprep", 0,
     STRINGPREP_CONTAINS_PROHIBITED
   },
   {
     "Non-character code point U+10FFFF",
-    "\xF4\x8F\xBF\xBF", NULL, stringprep_nameprep, 0,
+    "\xF4\x8F\xBF\xBF", NULL, "Nameprep", 0,
     STRINGPREP_CONTAINS_PROHIBITED
   },
   {
     "Surrogate code U+DF42",
-    "\xED\xBD\x82", NULL, stringprep_nameprep, 0,
+    "\xED\xBD\x82", NULL, "Nameprep", 0,
     STRINGPREP_CONTAINS_PROHIBITED
   },
   {
     "Non-plain text character U+FFFD",
-    "\xEF\xBF\xBD", NULL, stringprep_nameprep, 0,
+    "\xEF\xBF\xBD", NULL, "Nameprep", 0,
     STRINGPREP_CONTAINS_PROHIBITED
   },
   {
     "Ideographic description character U+2FF5",
-    "\xE2\xBF\xB5", NULL, stringprep_nameprep, 0,
+    "\xE2\xBF\xB5", NULL, "Nameprep", 0,
     STRINGPREP_CONTAINS_PROHIBITED
   },
   {
@@ -320,32 +320,32 @@ strprep[] =
   },
   {
     "Left-to-right mark U+200E",
-    "\xE2\x80\x8E", "\xCC\x81", stringprep_nameprep, 0,
+    "\xE2\x80\x8E", "\xCC\x81", "Nameprep", 0,
     STRINGPREP_CONTAINS_PROHIBITED
   },
   {
     "Deprecated U+202A",
-    "\xE2\x80\xAA", "\xCC\x81", stringprep_nameprep, 0,
+    "\xE2\x80\xAA", "\xCC\x81", "Nameprep", 0,
     STRINGPREP_CONTAINS_PROHIBITED
   },
   {
     "Language tagging character U+E0001",
-    "\xF3\xA0\x80\x81", "\xCC\x81", stringprep_nameprep, 0,
+    "\xF3\xA0\x80\x81", "\xCC\x81", "Nameprep", 0,
     STRINGPREP_CONTAINS_PROHIBITED
   },
   {
     "Language tagging character U+E0042",
-    "\xF3\xA0\x81\x82", NULL, stringprep_nameprep, 0,
+    "\xF3\xA0\x81\x82", NULL, "Nameprep", 0,
     STRINGPREP_CONTAINS_PROHIBITED
   },
   {
     "Bidi: RandALCat character U+05BE and LCat characters",
-    "foo\xD6\xBE""bar", NULL, stringprep_nameprep, 0,
+    "foo\xD6\xBE""bar", NULL, "Nameprep", 0,
     STRINGPREP_BIDI_BOTH_L_AND_RAL
   },
   {
     "Bidi: RandALCat character U+FD50 and LCat characters",
-    "foo\xEF\xB5\x90""bar", NULL, stringprep_nameprep, 0,
+    "foo\xEF\xB5\x90""bar", NULL, "Nameprep", 0,
     STRINGPREP_BIDI_BOTH_L_AND_RAL
   },
   {
@@ -353,7 +353,7 @@ strprep[] =
     "foo\xEF\xB9\xB6""bar", "foo \xd9\x8e""bar"
   },
   { "Bidi: RandALCat without trailing RandALCat U+0627 U+0031",
-    "\xD8\xA7\x31", NULL, stringprep_nameprep, 0,
+    "\xD8\xA7\x31", NULL, "Nameprep", 0,
     STRINGPREP_BIDI_LEADTRAIL_NOT_RAL}
   ,
   {
@@ -362,14 +362,14 @@ strprep[] =
   },
   {
     "Unassigned code point U+E0002",
-    "\xF3\xA0\x80\x82", NULL, stringprep_nameprep, STRINGPREP_NO_UNASSIGNED,
+    "\xF3\xA0\x80\x82", NULL, "Nameprep", STRINGPREP_NO_UNASSIGNED,
     STRINGPREP_CONTAINS_UNASSIGNED
   },
   {
     "Larger test (shrinking)",
     "X\xC2\xAD\xC3\xDF\xC4\xB0\xE2\x84\xA1\x6a\xcc\x8c\xc2\xa0\xc2"
     "\xaa\xce\xb0\xe2\x80\x80", "xssi\xcc\x87""tel\xc7\xb0 a\xce\xb0 ",
-    stringprep_nameprep
+    "Nameprep"
   },
   {
     "Larger test (expanding)",
@@ -385,11 +385,14 @@ strprep[] =
 </section>
 
 <references title="Normative References">
-   <?rfc include="reference.RFC.3454.xml"?>
+   <?rfc include="reference.RFC.3491.xml"?>
+   <?rfc include="reference.RFC.3490.xml"?>
 </references>
 
+<!--
 <references title="Informative References">
 </references>
+-->
 
 </back>
 
