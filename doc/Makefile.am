@@ -34,7 +34,8 @@ AM_MAKEINFOHTMLFLAGS = --no-split --number-sections --css-include=texinfo.css
 dist_man_MANS = idn.1 $(gdoc_MANS)
 MAINTAINERCLEANFILES = $(dist_man_MANS)
 
-idn.1: $(top_srcdir)/src/idn.c
+idn.1: $(top_srcdir)/src/idn.c $(top_srcdir)/src/idn.ggo \
+		$(top_srcdir)/configure.ac
 	$(HELP2MAN) \
 		--name="Internationalized Domain Names command line tool" \
 		--output=$@ $(top_builddir)/src/idn
