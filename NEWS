@@ -4,6 +4,14 @@ See the end for copying conditions.
 
 * Version 0.5.15 (unreleased)
 
+** Improvements to code to convert data between character sets.
+First, the license template was changed to the LGPL, from the GPL
+template that was mistakenly used in the previous two releases.
+Secondly, document here that cleaning up this code has solved memory
+allocation and arithmetic overflow problems.
+
+** API and ABI is backwards compatible with the previous version.
+
 * Version 0.5.14 (released 2005-03-19)
 
 ** Building for srcdir != objdir from CVS now work, thanks to Linus Nordberg.
