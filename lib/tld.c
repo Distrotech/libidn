@@ -38,6 +38,9 @@ extern const Tld_table *_tld_tables[];
  * @tld: TLD name (e.g. "com") as zero terminated ASCII byte string.
  * @tables: Zero terminated array of info-structures for TLDs.
  *
+ * Get the TLD table for a named TLD by searching through the given
+ * TLD table array.
+ *
  * Return value: Return structure corresponding to TLD @tld by going
  * thru @tables, or return %NULL if no such structure is found.
  */
@@ -61,6 +64,9 @@ tld_get_table (const char *tld, const Tld_table ** tables)
  * @tld: TLD name (e.g. "com") as zero terminated ASCII byte string.
  * @overrides: Additional well-formed info-structures for TLDs, or %NULL
  * to only use library deault tables.
+ *
+ * Get the TLD table for a named TLD, using the internal defaults,
+ * possibly overrided by the (optional) supplied tables.
  *
  * Return value: Return structure corresponding to TLD @tld_str, first
  * looking through @overrides then thru built-in list, or %NULL if no
