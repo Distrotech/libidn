@@ -1159,8 +1159,8 @@ for each @acronym{TLD} table, which can be compared for equality to
 guarantee the same operation over time.
 
 From a design point of view, you can regard the @acronym{TLD} tables
-for IDN as the ``localization'' step that come after
-``internationalization'' step that came with the IETF standards.
+for IDN as the ``localization'' step that come after the
+``internationalization'' step provided by the IETF standards.
 
 @section Header file @code{tld.h}
 
