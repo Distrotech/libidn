@@ -83,12 +83,22 @@ main (int argc, char *argv[])
 	      return 1;
 	    }
 
+	  q = stringprep_utf8_to_ucs4 (p, -1, NULL);
+	  if (!q)
+	    {
+	      free (p);
+	      fprintf (stderr, "%s: could not convert from UTF-8 to UCS-4.\n",
+		       argv[0]);
+	      return 1;
+	    }
+
 	  if (args_info.debug_given)
 	    {
 	      size_t i;
-	      for (i = 0; p[i]; i++)
-		fprintf (stderr, "input[%d] = U+%0.4x\n", i, p[i] & 0xFF);
+	      for (i = 0; q[i]; i++)
+		fprintf (stderr, "input[%d] = U+%0.4x\n", i, q[i]);
 	    }
+	  free (q);
 
 	  rc = stringprep_profile (p, &r,
 				   args_info.profile_given ?
@@ -270,6 +280,14 @@ main (int argc, char *argv[])
 		       "with error %d.\n", argv[0], rc);
 	      return 1;
 	    }
+
+	  if (args_info.debug_given)
+	    {
+	      size_t i;
+	      for (i = 0; r[i]; i++)
+		fprintf (stderr, "output[%d] = U+%0.4x\n", i, r[i]);
+	    }
+
 	  fprintf (stdout, "%s\n", r);
 
 	  free (r);
@@ -326,7 +344,7 @@ main (int argc, char *argv[])
 	  free (q);
 	  if (!p)
 	    {
-	      fprintf (stderr, "%s: could not convert from UCS-4 to UTF-8.\n",
+	      fprintf (stderr, "%s: could not convert from UTF-8 to UCS-4.\n",
 		       argv[0]);
 	      return 1;
 	    }
