@@ -1,13 +1,12 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
 <?php
 if (!$charset) {
-	$data = "räksmörgås.josefsson.org"; 
-	$charset = "ISO-8859-1";
+	$data = "rÃ¤ksmÃ¶rgÃ¥s.josefsson.org";
+	$charset = "UTF-8";
 } ?>
 <html>
   <head>
-    <meta http-equiv='Content-Type'
-          content='text/html; charset="<?php print $charset ?>"'>
+    <meta http-equiv="Content-Type" content="text/html; charset=<?php print $charset ?>">
     <title>Try GNU Libidn</title>
   </head>
 
@@ -20,25 +19,32 @@ if (!$charset) {
     href="http://www.gnu.org/software/libidn/">GNU Libidn</a>.
 
     <p>Report problems to <A
-    HREF="mailto:bug-libidn@gnu.org">bug-libidn@gnu.org</A>, but first
-    please make sure your browser really is encoding the data you type
-    in the charset used for this page (i.e., <?php print $charset;
-    ?>).  If not, incorrect output or an error is the proper response.
+    HREF="mailto:bug-libidn@gnu.org">bug-libidn@gnu.org</A>.
 
-    <p>As it happens, this page may also be a good test of your
-    browser.  Mozilla 1.2.1 in Debian unstable works.  This file was
-    originally written in HTML 2.0 with the i18n extensions (RFC 2070,
-    META HTTP-EQUIV), but now tagged as HTML 3.2 since the i18n
-    doctype isn't widely implemented.
+    <p>This page may also be a good test of your browser.  Mozilla
+    1.2.1 in Debian unstable works.  This file was originally written
+    in HTML 2.0 with the i18n extensions (RFC 2070, META HTTP-EQUIV),
+    but now tagged as HTML 3.2 since the i18n doctype isn't widely
+    implemented.
+
+<?php if (!$lastcharset && !$mode) { ?>
+
+    <p>This page uses the Unicode repertoire encoded using UTF-8 by
+    default.  If you are using software that cannot handle this, you
+    must select another charset below.  ISO-8859-1 is often a safer
+    choice.  I am sorry for the inconvenience.
+
+<?php } ?>
 
     <hr>
     <h2>Input</h2>
     <form>
 
-      <p>The following string must be in <?php print $charset; ?>. If
-	you wish to use another charset you must select it below,
-	submit the form and wait for a new page, and then enter your
-	string.<br>
+      <p>The following string must only contain characters that can be
+      represented in <?php print $charset; ?>. If you wish to use
+      characters from another charset you must select it below, submit
+      the form and wait for a new page, and then enter your
+      string.<br>
 
       <input type=text name=data size=40 value="<?php print $data ?>"><br>
 
@@ -67,7 +73,7 @@ if (!$charset) {
 
       Change charset of page to: <select name=charset>
 
-<option <?php if ($charset == "ANSI_X3.110") { print "selected"; } ?>>ANSI_X3.110
+<option <?php if ($charset == "ASCII") { print "selected"; } ?>>ASCII
 <option <?php if ($charset == "ASMO_449") { print "selected"; } ?>>ASMO_449
 <option <?php if ($charset == "BIG5") { print "selected"; } ?>>BIG5
 <option <?php if ($charset == "BIG5HKSCS") { print "selected"; } ?>>BIG5HKSCS
@@ -306,7 +312,7 @@ if (!$charset) {
 	<li><a href="http://josefsson.org/idn.php?data=t%D5isaoh%F7kh%F4ngth%ACch%EFn%F3iti%AAngvi%AEt&amp;mode=toascii&amp;charset=VISCII">VISCII Vietnamese (same as previous)</a>
 	<li><a href="http://josefsson.org/idn.php?data=%E3%81%B2%E3%81%A8%E3%81%A4%E5%B1%8B%E6%A0%B9%E3%81%AE%E4%B8%8B2&amp;mode=toascii&amp;charset=UTF-8">UTF-8 Japanese</a>
 	<li><a href="http://josefsson.org/idn.php?data=%A4%D2%A4%C8%A4%C4%B2%B0%BA%AC%A4%CE%B2%BC2&amp;mode=toascii&amp;charset=EUC-JP">EUC-JP Japanese (same as previous)</a>
-	<li><a href="http://josefsson.org/idn.php?data=%82%D0%82%C6%82%C2%89%AE%8D%AA%82%CC%89%BA2&amp;mode=toascii&amp;charset=SHIFT_JIS">SHIFT_JIS Japanese (same as previous)</a>
+	<li><a href="http://josefsson.org/idn.php?data=%82%D0%82%C6%82%C2%89%AE%8D%AA%82%CC%89%BA2&amp;mode=toascii&amp;charset=SJIS">SHIFT_JIS Japanese (same as previous)</a>
 	<li><a href="http://josefsson.org/idn.php?data=Pro%C4%8Dprost%C4%9Bnemluv%C3%AD%C4%8Desky&amp;mode=toascii&amp;charset=UTF-8">UTF-8 Czech</a>
 	<li><a href="http://josefsson.org/idn.php?data=Pro%E8prost%ECnemluv%ED%E8esky&amp;mode=toascii&amp;charset=ISO-8859-2">ISO-8859-2 Czech (same as previous)</a>
 	<li><a href="http://josefsson.org/idn.php?data=%E0%A4%AF%E0%A4%B9%E0%A4%B2%E0%A5%8B%E0%A4%97%E0%A4%B9%E0%A4%BF%E0%A4%A8%E0%A5%8D%E0%A4%A6%E0%A5%80%E0%A4%95%E0%A5%8D%E0%A4%AF%E0%A5%8B%E0%A4%82%E0%A4%A8%E0%A4%B9%E0%A5%80%E0%A4%82%E0%A4%AC%E0%A5%8B%E0%A4%B2%E0%A4%B8%E0%A4%95%E0%A4%A4%E0%A5%87%E0%A4%B9%E0%A5%88%E0%A4%82&amp;mode=toascii&amp;charset=UTF-8">UTF-8 Hindi Devanagari</a>
