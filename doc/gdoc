@@ -326,7 +326,7 @@ sub output_texinfo {
     my $count;
 
     print "\@deftypefun {" . $args{'functiontype'} . "} ";
-    print "\@code{".$args{'function'}."} ";
+    print "{".$args{'function'}."} ";
     print "(";
     $count = 0;
     foreach $parameter (@{$args{'parameterlist'}}) {
