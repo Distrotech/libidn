@@ -76,25 +76,7 @@ if test "$ac_cv_locale_works" = "yes"; then
 fi
 
 # Check for gtk-doc.
-AC_ARG_WITH(html-dir, AC_HELP_STRING([--with-html-dir=PATH], [path to installed docs]))
-if test "x$with_html_dir" = "x" ; then
-  HTML_DIR='${datadir}/gtk-doc/html'
-else
-  HTML_DIR=$with_html_dir
-fi
-AC_SUBST(HTML_DIR)
-AC_ARG_ENABLE(gtk-doc,
-	AC_HELP_STRING([--enable-gtk-doc], [Build API reference using GTK-DOC]),
-	enable_gtk_doc="$enableval")
-if test "$enable_gtk_doc" = "yes"; then
-	GTKDOC=reference
-fi
-AC_SUBST(GTKDOC)
-AM_MISSING_PROG(GTKDOC_SCAN, gtkdoc-scan, $missing_dir)
-AM_MISSING_PROG(GTKDOC_MKTMPL, gtkdoc-mktmpl, $missing_dir)
-AM_MISSING_PROG(GTKDOC_MKDB, gtkdoc-mkdb, $missing_dir)
-AM_MISSING_PROG(GTKDOC_MKHTML, gtkdoc-mkhtml, $missing_dir)
-AM_MISSING_PROG(GTKDOC_FIXXREF, gtkdoc-fixxref, $missing_dir)
+GTK_DOC_CHECK(1.1)
 
 # Docbook
 AM_MISSING_PROG(DOCBOOK2HTML, docbook2html, $missing_dir)
