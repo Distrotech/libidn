@@ -1,3 +1,6 @@
+*** Note that as of version 2.3 Python has native IDN support, see
+*** <http://www.python.org/doc/2.3.2/lib/module-encodings.idna.html>.
+
 This is a Python interface over Simon Josefsson's libidn
 <URL:http://josefsson.org/libidn/>.
 
@@ -18,5 +21,3 @@ print idn.idn2ace(ustring.encode("UTF-8"))
 
 ------------------
 Stephane Bortzmeyer <bortzmeyer@nic.fr>
-
-$Id$
