@@ -755,7 +755,7 @@ stringprep_utf8_nfkc_normalize (const char *str, ssize_t len)
  * @len: length of @str array, or -1 if @str is nul-terminated.
  *
  * Converts UCS4 string into UTF-8 and runs
- * stringprep_utf4_nfkc_normalize().
+ * stringprep_utf8_nfkc_normalize().
  *
  * Return value: a newly allocated Unicode string, that is the NFKC
  *   normalized form of @str.
