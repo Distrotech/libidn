@@ -8,8 +8,8 @@ by Adam M. Costello.
 Some functions (see nfkc.c and toutf8.c) has been borrowed from GLib
 downloaded from www.gtk.org.
 
-Bug reports, patches and/or suggestions were also received from or
-written by:
+Bug reports, patches, test vectors and/or suggestions were also
+received from or written by:
 
 Waldo Bastian
 Stephane Bortzmeyer
@@ -17,6 +17,7 @@ Adam M. Costello
 Gerrit P. Haase
 Trond Haugen
 Joe Hildebrand
+Paul Hoffman via JDNA during IDNConnect
 Marco d'Itri
 Seungho Lee
 Noah Levitt
