@@ -152,7 +152,7 @@ input to UTF-8."
       (idna-to-ascii-response-clear)
       (process-send-string proc (concat str "\n"))
       (setq string (idna-to-ascii-response))
-      (if (string= (substring string (1- (length string))) "\n")
+      (if (and string (string= (substring string (1- (length string))) "\n"))
 	  (substring string 0 (1- (length string)))
 	string))))
 
@@ -166,7 +166,7 @@ It is computed by the IDNA ToUnicode operation."
       (idna-to-unicode-response-clear)
       (process-send-string proc (concat str "\n"))
       (setq string (idna-to-unicode-response))
-      (if (string= (substring string (1- (length string))) "\n")
+      (if (and string (string= (substring string (1- (length string))) "\n"))
 	  (substring string 0 (1- (length string)))
 	string))))
 
