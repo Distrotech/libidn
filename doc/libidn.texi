@@ -1715,7 +1715,7 @@ the two files UnicodeData.txt and CompositionExclusions.txt of version
 Unicode version 3.2 is to be used, not the latest version.
 
 The Unicode data files can be found at
-@url{http://www.unicode.org/Public/}.  </p>
+@url{http://www.unicode.org/Public/}.
 
 Invoke the program as follows:
 
@@ -1738,12 +1738,12 @@ The test vectors can be found at the Libidn homepage,
 To test the tranformation manually, use:
 
 @example
-$ java -cp .:../libidn.jar TestIDNA -a &lt;string to test&gt;
-Input: &lt;string to test&gt;
-Output: &lt;toASCII(string to test)&gt;
-$ java -cp .:../libidn.jar TestIDNA -u &lt;string to test&gt;
-Input: &lt;string to test&gt;
-Output: &lt;toUnicode(string to test)&gt;
+$ java -cp .:../libidn.jar TestIDNA -a <string to test>
+Input: <string to test>
+Output: <toASCII(string to test)>
+$ java -cp .:../libidn.jar TestIDNA -u <string to test>
+Input: <string to test>
+Output: <toUnicode(string to test)>
 @end example
 
 To test against draft-josefsson-idn-test-vectors.html, use:
@@ -1761,9 +1761,9 @@ or against the NormalizationTest.txt file from the Unicode data files.
 To test the normalization manually, use:
 
 @example
-$ java -cp .:../libidn.jar TestNFKC &lt;string to test&gt;
-Input: &lt;string to test&gt;
-Output: &lt;nfkc version of the string to test&gt;
+$ java -cp .:../libidn.jar TestNFKC <string to test>
+Input: <string to test>
+Output: <nfkc version of the string to test>
 @end example
 
 To test against NormalizationTest.txt:
