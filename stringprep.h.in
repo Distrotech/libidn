@@ -46,7 +46,7 @@ extern "C"
     /* Internal errors. */
     STRINGPREP_NFKC_FAILED = 200,
     STRINGPREP_MALLOC_ERROR = 201
-  };
+  } Stringprep_rc;
 
 /* Flags used when calling stringprep(). */
   enum
@@ -54,7 +54,7 @@ extern "C"
     STRINGPREP_NO_NFKC = 1,
     STRINGPREP_NO_BIDI = 2,
     STRINGPREP_NO_UNASSIGNED = 4
-  };
+  } Stringprep_profile_flags;
 
 /* Steps in a stringprep profile. */
   enum
@@ -67,7 +67,7 @@ extern "C"
     STRINGPREP_BIDI_PROHIBIT_TABLE = 6,
     STRINGPREP_BIDI_RAL_TABLE = 7,
     STRINGPREP_BIDI_L_TABLE = 8
-  };
+  } Stringprep_profile_steps;
 
 #define STRINGPREP_MAX_MAP_CHARS 5
 
@@ -109,7 +109,7 @@ extern "C"
   extern unsigned long *stringprep_ucs4_nfkc_normalize (unsigned long *str,
 							int len);
 
-  extern const char *stringprep_locale_charset ();
+  extern const char *stringprep_locale_charset (void);
   extern char *stringprep_convert (const char *str,
 				   const char *to_codeset,
 				   const char *from_codeset);
