@@ -19,6 +19,8 @@
 
 SUBDIRS = gnu . misc
 
+INSTALL_TARGETS =
+
 if JAVA
 libidn_jardir = $(datadir)/java
 dist_libidn_jar_DATA = libidn-@VERSION@.jar
@@ -37,7 +39,8 @@ libidn-@VERSION@.jar:
 		gnu/inet/encoding/Stringprep.class		\
 		gnu/inet/encoding/StringprepException.class
 
-install-data-local:
+INSTALL_TARGETS += install-jar
+install-jar:
 	ln -sf libidn-@VERSION@.jar $(libidn_jardir)/libidn.jar
 
 clean-local:
@@ -48,3 +51,5 @@ clean-local:
 javadoc:
 	cd $(srcdir) && $(JAVADOC) -d ../doc/java gnu/inet/encoding/*.java
 endif
+
+install-data-local: $(INSTALL_TARGETS)
