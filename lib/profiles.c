@@ -34,7 +34,7 @@ Stringprep_profiles stringprep_profiles[] = {
   ,
   {"plain", stringprep_plain} /* sasl-anon-00 */
   ,
-  {"trace", stringprep_trace} /* sasl-anon-01 */
+  {"trace", stringprep_trace} /* sasl-anon-01,02 */
   ,
   {"SASLprep", stringprep_saslprep}
   ,
