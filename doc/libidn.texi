@@ -270,11 +270,12 @@ GCC 2.95.3 and GNU Make. @code{alpha-unknown-netbsd1.6},
 GCC 2.95.3 and GNU Make. @code{alpha-unknown-openbsd3.1},
 @code{i386-unknown-openbsd3.1}.
 
-@item FreeBSD 4.7
+@item FreeBSD 4.7 and 4.8
 @cindex FreeBSD
 
 GCC 2.95.4 and GNU Make. @code{alpha-unknown-freebsd4.7},
-@code{i386-unknown-freebsd4.7}.
+@code{alpha-unknown-freebsd4.8}, @code{i386-unknown-freebsd4.7},
+@code{i386-unknown-freebsd4.8}.
 
 @end enumerate
 
