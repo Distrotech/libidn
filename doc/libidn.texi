@@ -70,6 +70,7 @@ section entitled "GNU Free Documentation License".
 * Examples::                    Demonstrate how to use the library.
 * Invoking idn::		Command line interface to the library.
 * Emacs API::                   Emacs Lisp API for Libidn.
+* Java API::                    Notes on the Java port of Libidn.
 * Acknowledgements::            Whom to blame.
 
 Indices
@@ -123,7 +124,8 @@ new system-wide getaddrinfo flag for IDN processing.
 Libidn is developed for the GNU/Linux system, but runs on over 20 Unix
 platforms (including Solaris, IRIX, AIX, and Tru64) and Windows.
 Libidn is written in C and (parts of) the API is accessible from C,
-C++, Emacs Lisp, Python and Java.
+C++, Emacs Lisp, Python and Java.  An experimental native Java API is
+also available.
 
 @menu
 * Getting Started::
@@ -413,6 +415,20 @@ $ make install
 @end example
 
 After that Libidn should be properly installed and ready for use.
+
+A few @code{configure} options may be relevant, summarized in the
+table.
+
+@table @code
+
+@item --enable-java
+Build the Java port into a *.JAR file.  @xref{Java API}, for more
+information.
+
+@end table
+
+For the complete list, refer to the output from @code{configure
+--help}.
 
 @node Bug Reports
 @section Bug Reports
@@ -1646,6 +1662,149 @@ the input to UTF-8.
 Returns a possibly multibyte string which is the output of the IDNA
 ToUnicode operation computed on the input @var{string}.
 @end defun
+
+@node Java API
+@chapter Java API
+
+Libidn has been ported to the Java programming language, and as a
+consequence most of the API is available to native Java applications.
+This section contain notes on this support, complete documentation is
+pending.
+
+@section Overview
+
+This package provides a Java implementation of the Internationalized
+Domain Names in Applications (IDNA) standard. It is written entirely
+in Java and does not require any additional libraries to be set up.
+
+The gnu.inet.encoding.IDNA class offers two public functions, toASCII
+and toUnicode which can be used as follows:
+
+@example
+gnu.inet.encoding.IDNA.toASCII("bl@"ods.z@"ug");
+gnu.inet.encoding.IDNA.toUnicode("xn--blds-6qa.xn--zg-xka");
+@end example
+
+@section Miscellaneous Programs
+
+The @file{misc/} directory contains several programs that are related
+to the Java part of GNU Libidn, but that don't need to be included in
+the main source tree.
+
+@subsection GenerateRFC3454
+
+This program parses RFC3454 and creates the RFC3454.java program that
+is required during the StringPrep phase.
+
+The RFC can be found at various locations, for example at
+@url{http://www.ietf.org/rfc/rfc3454.txt}.
+
+Invoke the program as follows:
+
+@example
+$ java GenerateRFC3454
+Creating RFC3454.java... Ok.
+@end example
+
+@subsection GenerateNFKC
+
+The GenerateNFKC program parses the Unicode character database file
+and generates all the tables required for NFKC. This program requires
+the two files UnicodeData.txt and CompositionExclusions.txt of version
+3.2 of the Unicode files. Note that RFC3454 (Stringprep) defines that
+Unicode version 3.2 is to be used, not the latest version.
+
+The Unicode data files can be found at
+@url{http://www.unicode.org/Public/}.  </p>
+
+Invoke the program as follows:
+
+@example
+$ java GenerateNFKC
+Creating CombiningClass.java... Ok.
+Creating DecompositionKeys.java... Ok.
+Creating DecompositionMappings.java... Ok.
+Creating Composition.java... Ok.
+@end example
+
+@subsection TestIDNA
+
+The TestIDNA program allows to test the IDNA implementation manually
+or against Simon Josefsson's test vectors.
+
+The test vectors can be found at the Libidn homepage,
+@url{http://www.gnu.org/software/libidn/}.
+
+To test the tranformation manually, use:
+
+@example
+$ java -cp .:../libidn.jar TestIDNA -a &lt;string to test&gt;
+Input: &lt;string to test&gt;
+Output: &lt;toASCII(string to test)&gt;
+$ java -cp .:../libidn.jar TestIDNA -u &lt;string to test&gt;
+Input: &lt;string to test&gt;
+Output: &lt;toUnicode(string to test)&gt;
+@end example
+
+To test against draft-josefsson-idn-test-vectors.html, use:
+
+@example
+$ java -cp .:../libidn.jar TestIDNA -t
+No errors detected!
+@end example
+
+@subsection TestNFKC
+
+The TestNFKC program allows to test the NFKC implementation manually
+or against the NormalizationTest.txt file from the Unicode data files.
+
+To test the normalization manually, use:
+
+@example
+$ java -cp .:../libidn.jar TestNFKC &lt;string to test&gt;
+Input: &lt;string to test&gt;
+Output: &lt;nfkc version of the string to test&gt;
+@end example
+
+To test against NormalizationTest.txt:
+
+@example
+$ java -cp .:../libidn.jar TestNFKC
+No errors detected!
+@end example
+
+@section Possible Problems
+
+Beware of Bugs: This Java API needs a lot more testing, especially
+with "exotic" character sets. While it works for me, it may not work
+for you.
+
+Encoding of your Java sources: If you are using non-ASCII characters
+in your Java source code, make sure javac compiles your programs with
+the correct encoding. If necessary specify the encoding using the
+-encoding parameter.
+
+Java Unicode handling: Java 1.4 only handles 16-bit Unicode code
+points (i.e. characters in the Basic Multilingual Plane), this
+implementation therefore ignores all references to so-called
+Supplementary Characters (U+10000 to U+10FFFF). Starting from Java
+1.5, these characters will also be supported by Java, but this will
+require changes to this library.  See also the next section.
+
+@section A Note on Java and Unicode:
+
+This library uses Java's builtin 'char' datatype. Up to Java 1.4, this
+datatype only supports 16-bit Unicode code points, also called the
+Basic Multilingual Plane. For this reason, this library doesn't work
+for Supplementary Characters (i.e. characters from U+10000 to
+U+10FFFF). All references to such characters are silently ignored.
+
+Starting from Java 1.5, also Supplementary Characters will be
+supported. However, this will require changes in the present version
+of the library. Java 1.5 is currently in beta status.
+
+For more information refer to the documentation of java.lang.Character
+in the JDK API.
 
 @c **********************************************************
 @c *******************  Acknowledgements  *******************
