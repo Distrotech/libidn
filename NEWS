@@ -2,9 +2,14 @@ Libidn NEWS -- History of user-visible changes.                 -*- outline -*-
 Copyright (C) 2002, 2003 Simon Josefsson
 See the end for copying conditions.
 
-* Version 0.1.8 (unreleased)
+* Version 0.1.8 (released 2003-02-14)
 
-** Type of string length variables is now (s)size_t.
+** Portability fixes.
+This includes not building the API Reference Manual with GTK-DOC by
+default, if you want it use configure parameter --enable-gtk-doc after
+making sure your gtkdoc-mkdb accept the --tmpl-dir parameter.
+
+** The type for string length variables is now (s)size_t.
 Unfortunately this means binary shared library binary backwards
 compatible is lost.
 
