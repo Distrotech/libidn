@@ -524,7 +524,7 @@ idna_to_ascii_from_utf8 (const char *input, char **output,
  * may contain several labels, separated by dots.  The output buffer
  * must be deallocated by the caller.
  *
- * This function is deprecated in favor of idna_to_ascii_from_ucs4()
+ * This function is deprecated in favor of idna_to_ascii_from_utf8()
  * and will be removed in future versions.
  *
  * Return value: Returns IDNA_SUCCESS on success, or error code.
@@ -576,7 +576,7 @@ idna_to_ascii_from_locale (const char *input, char **output,
  * The domain name may contain several labels, separated by dots.  The
  * output buffer must be deallocated by the caller.
  *
- * This function is deprecated in favor of idna_to_ascii_from_ucs4()
+ * This function is deprecated in favor of idna_to_ascii_from_locale()
  * and will be removed in future versions.
  *
  * Return value: Returns IDNA_SUCCESS on success, or error code.
@@ -800,7 +800,7 @@ idna_utf8ace_to_utf8 (const char *input, char **output)
 }
 
 /**
- * idna_to_unicode_utf8_from_locale:
+ * idna_to_unicode_locale_from_utf8:
  * @input: zero-terminated UTF-8 string.
  * @output: pointer to newly allocated output string encoded in the
  *   current locale's character set.
@@ -844,8 +844,9 @@ idna_to_unicode_locale_from_utf8 (const char *input, char **output,
  * The domain name may contain several labels, separated by dots.  The
  * output buffer must be deallocated by the caller.
  *
- * This function is deprecated in favor of idna_to_ascii_from_ucs4()
- * and will be removed in future versions.
+ * This function is deprecated in favor of
+ * idna_to_unicode_locale_from_utf8() and will be removed in future
+ * versions.
  *
  * Return value: Returns IDNA_SUCCESS on success, or error code.
  **/
@@ -903,8 +904,9 @@ idna_to_unicode_locale_from_locale (const char *input, char **output,
  * The domain name may contain several labels, separated by dots.  The
  * output buffer must be deallocated by the caller.
  *
- * This function is deprecated in favor of idna_to_ascii_from_ucs4()
- * and will be removed in future versions.
+ * This function is deprecated in favor of
+ * idna_to_unicode_locale_from_locale() and will be removed in future
+ * versions.
  *
  * Return value: Returns IDNA_SUCCESS on success, or error code.
  **/
