@@ -1,3 +1,67 @@
+2004-01-06  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Version 0.3.6.
+
+2004-01-06  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi: Fix license header.
+
+2004-01-06  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2004-01-01  Simon Josefsson <simon@josefsson.org>
+
+	* configure.ac, m4/ax_create_stdint_h.m4: Fix, to use ax_...
+	verbatim from upstream.
+
+2004-01-01  Simon Josefsson <simon@josefsson.org>
+
+	* m4/ac_compile_check_sizeof.m4: Remove (not used by ax_... any
+	more).
+
+2004-01-01  Simon Josefsson <simon@josefsson.org>
+
+	* m4/ax_create_stdint_h.m4: Apply local fixes.
+
+2004-01-01  Simon Josefsson <simon@josefsson.org>
+
+	* m4/ax_create_stdint_h.m4: Sync with upstream version 1.4.
+
+2003-12-30  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2003-12-30  Simon Josefsson <simon@josefsson.org>
+
+	* configure.ac: Allow autoconf 2.57.
+
+2003-12-18  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi: Encode file in ASCII.
+
+2003-12-16  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi: Replace non-ASCII with Texinfo accents.
+
+2003-12-16  Simon Josefsson <simon@josefsson.org>
+
+	* THANKS, doc/libidn.texi: Add Troubleshooting discussion for idn
+	tool.  Suggested by "Jan-Hendrik Heuing" <jh@netfielders.de> and Kai
+	Schaetzl <kai@conactive.com>.
+
+2003-12-15  Simon Josefsson <simon@josefsson.org>
+
+	* ANNOUNCE: Remove (see doc/libidn.texi instead).
+
+2003-12-15  Simon Josefsson <simon@josefsson.org>
+
+	* README: Fix.
+
+2003-12-15  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS, configure.ac: Bump versions.
+
 2003-12-15  Simon Josefsson <simon@josefsson.org>
 
 	* NEWS: Version 0.3.5.
