@@ -19,7 +19,7 @@
 
 SUBDIRS = specifications tld java
 if ENABLE_GTK_DOC
-SUBDIRS += reference
+SUBDIRS += . reference
 endif
 
 EXTRA_DIST = gdoc libidn.html libidn.ps libidn.pdf lgpl.texi texinfo.css \
