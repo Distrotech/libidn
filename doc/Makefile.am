@@ -28,7 +28,7 @@ EXTRA_DIST = gdoc libidn.html libidn.ps libidn.pdf lgpl.texi	\
 info_TEXINFOS = libidn.texi
 libidn_TEXINFOS = fdl.texi $(gdoc_TEXINFOS)
 
-AM_MAKEINFOHTMLFLAGS = --no-split --number-sections --css-include=libidn.css
+AM_MAKEINFOHTMLFLAGS = --no-split --number-sections --css-include=texinfo.css
 
 # Man pages.
 
