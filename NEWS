@@ -12,9 +12,13 @@ See the end for copying conditions.
 Leads to reduced heap memory usage.  Simplified inter-dependency among
 files in lib/* to make it easier to copy them into your project.
 
+** Debugging stringprep profile 'generic' removed.
+
 ** API and ABI is backwards compatible with the previous version.
 stringprep_4i: NEW.
 stringprep_4zi: NEW.
+stringprep: CHANGED. 'profile' is marked as 'const'.
+stringprep_profile: CHANGED. 'profile' is marked as 'const'.
 
 * Version 0.3.2 (released 2003-10-07)
 
