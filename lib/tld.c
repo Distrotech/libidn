@@ -55,7 +55,7 @@ tld_get_table (const char *tld, const Tld_table ** tables)
 
 
 /**
- * tld_get_default_table:
+ * tld_default_table:
  * @tld_str: TLD name (e.g. "com") as zero terminated ASCII byte string.
  * @overrides: Additional well-formed info-structures for TLDs, or %NULL
  * to only use library deault tables.
@@ -86,8 +86,8 @@ tld_default_table (const char *tld, const Tld_table ** overrides)
 
 /**
  * tld_get_4i:
- * @in: Array of unicode code points to process (Does not need to be
- * zero terminated).
+ * @in: Array of unicode code points to process. Does not need to be
+ * zero terminated.
  * @inlen: Number of unicode code points.
  * @out: Zero terminated ascii result string pointer.
  *
@@ -199,8 +199,8 @@ _tld_checkchar (uint32_t ch, const Tld_table * tld)
 
 /**
  * tld_check_4ti
- * @in: Array of unicode code points to process (Does not need to be
- * zero terminated).
+ * @in: Array of unicode code points to process. Does not need to be
+ * zero terminated.
  * @inlen: Number of unicode code points.
  * @errpos: Position of offending character is returned here.
  * @tld: Data structure representing the restrictions for
@@ -276,8 +276,8 @@ tld_check_4tz (const uint32_t * in, size_t * errpos, const Tld_table * tld)
 
 /**
  * tld_check_4i
- * @in: Array of unicode code points to process (Does not need to be
- * zero terminated).
+ * @in: Array of unicode code points to process. Does not need to be
+ * zero terminated.
  * @inlen: Number of unicode code points.
  * @errpos: Position of offending character is returned here.
  * @overrides: An array of additional domain restriction structures
