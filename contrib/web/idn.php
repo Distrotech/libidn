@@ -21,12 +21,6 @@ if (!$charset) {
     <p>Report problems to <A
     HREF="mailto:bug-libidn@gnu.org">bug-libidn@gnu.org</A>.
 
-    <p>This page may also be a good test of your browser.  Mozilla
-    1.2.1 in Debian unstable works.  This file was originally written
-    in HTML 2.0 with the i18n extensions (RFC 2070, META HTTP-EQUIV),
-    but now tagged as HTML 3.2 since the i18n doctype isn't widely
-    implemented.
-
 <?php if (!$lastcharset && !$mode) { ?>
 
     <p>This page uses the Unicode repertoire encoded using UTF-8 by
@@ -40,11 +34,11 @@ if (!$charset) {
     <h2>Input</h2>
     <form>
 
-      <p>The following string must only contain characters that can be
-      represented in <?php print $charset; ?>. If you wish to use
-      characters from another charset you must select it below, submit
-      the form and wait for a new page, and then enter your
-      string.<br>
+      <p>The following string must only contain characters that your
+      browser is able to represent in <?php print $charset; ?> when
+      submitting this form. If you wish to use characters from another
+      charset you must select it below, submit the form and wait for a
+      new page, and then enter your string.<br>
 
       <input type=text name=data size=40 value="<?php print $data ?>"><br>
 
@@ -97,22 +91,6 @@ if (!$charset) {
 <option <?php if ($charset == "DEC-MCS") { print "selected"; } ?>>DEC-MCS
 <option <?php if ($charset == "DIN_66003") { print "selected"; } ?>>DIN_66003
 <option <?php if ($charset == "DS_2089") { print "selected"; } ?>>DS_2089
-<option <?php if ($charset == "EBCDIC-AT-DE") { print "selected"; } ?>>EBCDIC-AT-DE
-<option <?php if ($charset == "EBCDIC-AT-DE-A") { print "selected"; } ?>>EBCDIC-AT-DE-A
-<option <?php if ($charset == "EBCDIC-CA-FR") { print "selected"; } ?>>EBCDIC-CA-FR
-<option <?php if ($charset == "EBCDIC-DK-NO") { print "selected"; } ?>>EBCDIC-DK-NO
-<option <?php if ($charset == "EBCDIC-DK-NO-A") { print "selected"; } ?>>EBCDIC-DK-NO-A
-<option <?php if ($charset == "EBCDIC-ES") { print "selected"; } ?>>EBCDIC-ES
-<option <?php if ($charset == "EBCDIC-ES-A") { print "selected"; } ?>>EBCDIC-ES-A
-<option <?php if ($charset == "EBCDIC-ES-S") { print "selected"; } ?>>EBCDIC-ES-S
-<option <?php if ($charset == "EBCDIC-FI-SE") { print "selected"; } ?>>EBCDIC-FI-SE
-<option <?php if ($charset == "EBCDIC-FI-SE-A") { print "selected"; } ?>>EBCDIC-FI-SE-A
-<option <?php if ($charset == "EBCDIC-FR") { print "selected"; } ?>>EBCDIC-FR
-<option <?php if ($charset == "EBCDIC-IS-FRISS") { print "selected"; } ?>>EBCDIC-IS-FRISS
-<option <?php if ($charset == "EBCDIC-IT") { print "selected"; } ?>>EBCDIC-IT
-<option <?php if ($charset == "EBCDIC-PT") { print "selected"; } ?>>EBCDIC-PT
-<option <?php if ($charset == "EBCDIC-UK") { print "selected"; } ?>>EBCDIC-UK
-<option <?php if ($charset == "EBCDIC-US") { print "selected"; } ?>>EBCDIC-US
 <option <?php if ($charset == "ECMA-CYRILLIC") { print "selected"; } ?>>ECMA-CYRILLIC
 <option <?php if ($charset == "ES") { print "selected"; } ?>>ES
 <option <?php if ($charset == "ES2") { print "selected"; } ?>>ES2
@@ -257,12 +235,6 @@ if (!$charset) {
 <option <?php if ($charset == "TIS-620") { print "selected"; } ?>>TIS-620
 <option <?php if ($charset == "UHC") { print "selected"; } ?>>UHC
 <option <?php if ($charset == "UTF-8") { print "selected"; } ?>>UTF-8
-<option <?php if ($charset == "UTF-16") { print "selected"; } ?>>UTF-16
-<option <?php if ($charset == "UTF-16BE") { print "selected"; } ?>>UTF-16BE
-<option <?php if ($charset == "UTF-16LE") { print "selected"; } ?>>UTF-16LE
-<option <?php if ($charset == "UTF-32") { print "selected"; } ?>>UTF-32
-<option <?php if ($charset == "UTF-32BE") { print "selected"; } ?>>UTF-32BE
-<option <?php if ($charset == "UTF-32LE") { print "selected"; } ?>>UTF-32LE
 <option <?php if ($charset == "UTF-7") { print "selected"; } ?>>UTF-7
 <option <?php if ($charset == "VISCII") { print "selected"; } ?>>VISCII
 <option <?php if ($charset == "WIN-SAMI-2") { print "selected"; } ?>>WIN-SAMI-2
