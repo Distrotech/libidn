@@ -9,7 +9,9 @@ overview, and libidn.{info,ps,pdf} for the manual.
 Things left to do below.  If you like to start working on anything,
 please let me know so work duplication can be avoided.
 
-  - Optimize stringprep, the table searching is slow (but does it matter?).
+  - Optimize stringprep, the table searching is slow (but does it
+    matter?).  Optimize for speed?  The stringprep tables can be
+    compressed _alot_ (most map entries are simply zeroes).
   - Port applications to use libidn.
   - Include more stringprep profiles.
   - Add IDNA tools
@@ -34,7 +36,17 @@ Q#2: Why do Libidn include several stringprep profiles? They waste space!
 
 A#2: The stringprep profiles included are derived from the generic
      stringprep tables, and doesn't waste more than say a few hundred
-     bytes (see profiles.c).
+     bytes (see profiles.c).  The Unicode normalization tables and the
+     generic stringprep tables are roughly equivalent in size,
+     although the latter tables can surely be compressed much further.
+
+Q#3: I thought GNU was encouraging libraries to be licensed under the GPL?
+
+A#3: The reasoning for this was for libraries that provide unique
+     functionality to encourage more free programs.  Since there are
+     several IDN libraries out there, using the GPL for Libidn would
+     only encourage people not to use Libidn which would not help the
+     spread of free software.
 
 ----------------------------------------------------------------------
 Copying and distribution of this file, with or without modification,
