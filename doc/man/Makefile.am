@@ -43,8 +43,10 @@ $(apis):
 
 .PHONY: update-api
 update-api:
-	(apis=`$(PERL) $(top_srcdir)/doc/gdoc -listfunc \
-			$(top_srcdir)/lib/*.c | \
-		sed 's/$$/.3/g'`; \
-	apis=`echo $$apis`; \
-	perl -pi -e "s/^apis = .*/apis = $$apis/" Makefile.am)
+	(files=`echo $(top_srcdir)/lib/*.c`; \
+	for file in $$files; do \
+		apis=`$(PERL) $(top_srcdir)/doc/gdoc -listfunc $$file | \
+			sed 's/$$/.3/g'`; \
+		apin=`echo $$apin $$apis`; \
+	done; \
+	perl -pi -e "s/^apis = .*/apis = $$apin/" Makefile.am)
