@@ -1,12 +1,12 @@
 dnl Process this file with autoconf to produce a configure script.
-AC_INIT(libstringprep, 0.0.4, bug-libstringprep@josefsson.org)
+AC_INIT(libstringprep, 0.0.5, bug-libstringprep@josefsson.org)
 AC_CONFIG_SRCDIR(stringprep.h.in)
 
 # Interfaces removed:    CURRENT++, AGE=0, REVISION=0
 # Interfaces added:      CURRENT++, AGE++, REVISION=0
 # No interfaces changed:                   REVISION++
-LT_CURRENT=2
-LT_AGE=2
+LT_CURRENT=3
+LT_AGE=3
 LT_REVISION=0
 AC_SUBST(LT_CURRENT)
 AC_SUBST(LT_AGE)
@@ -29,8 +29,7 @@ AC_CHECK_HEADERS(sys/types.h string.h strings.h memory.h unistd.h errno.h)
 AC_TYPE_SIZE_T
 
 # Checks for library functions.
-AC_CHECK_FUNCS([memset strchr])
-AC_REPLACE_FUNCS(strdup)
+AC_REPLACE_FUNCS(memset strdup)
 
 # Check if locale stuff works
 AC_CACHE_CHECK([if setlocale() and nl_langinfo() works],

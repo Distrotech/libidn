@@ -17,7 +17,7 @@
 # License along with Libstringprep; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
 
-EXTRA_DIST = libstringprep.pc.in iconv.m4 strdup.c \
+EXTRA_DIST = libstringprep.pc.in iconv.m4 strdup.c memset.c \
 	gen-stringprep-tables.pl draft-hoffman-stringprep-07.txt \
 	gen-unicode-tables.pl UnicodeData-3.2.0.txt LineBreak-3.2.0.txt \
 	SpecialCasing-3.2.0.txt CaseFolding-3.2.0.txt \
