@@ -137,7 +137,7 @@ libidn-api-idna.texi: idna.c
 ChangeLog:
 	test ! -f .cvsusers || \
 	cvs2cl --FSF --usermap .cvsusers \
-		-I "ChangeLog|.cvsignore|.cvsusers|autogen.sh"
+		-I "ChangeLog|.cvsignore|.cvsusers|autogen.sh|contrib"
 
 indent:
 	indent $(SOURCES)
