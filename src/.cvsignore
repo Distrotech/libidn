@@ -6,3 +6,4 @@ idn
 idn.ggo
 idn_cmd.c
 idn_cmd.h
+getopt.h
