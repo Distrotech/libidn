@@ -1,3 +1,68 @@
+2003-10-07  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Version 0.3.2.
+
+2003-10-07  Simon Josefsson <simon@josefsson.org>
+
+	* Makefile.maint: Remove --rsyncable for now, Debian (stable) gzip
+	do not support it.
+
+2003-10-07  Simon Josefsson <simon@josefsson.org>
+
+	* GNUmakefile: TAR_OPTION crashes tar in Debian, comment out for
+	now.
+
+2003-10-07  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2003-10-07  Simon Josefsson <simon@josefsson.org>
+
+	* lib/nfkc.c: Doc fix.
+
+2003-10-07  Simon Josefsson <simon@josefsson.org>
+
+	* m4/Makefile.am, m4/lib-ld.m4, m4/lib-link.m4, m4/lib-prefix.m4:
+	Add.
+
+2003-10-06  Simon Josefsson <simon@josefsson.org>
+
+	* lib/stringprep.c, lib/stringprep.h.in:
+	(stringprep_profile): Mark 'in' as 'const'.
+
+2003-10-03  Simon Josefsson <simon@josefsson.org>
+
+	* lib/profiles.c: Fix comment.
+
+2003-10-02  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi: Fix.
+
+2003-10-02  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2003-10-02  Simon Josefsson <simon@josefsson.org>
+
+	* lib/profiles.c, lib/stringprep.h.in: Add trace profile (SASL
+	ANONYMOS).
+
+2003-10-02  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS, configure.ac: Bump versions.
+
+2003-10-02  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi: Cosmetic fixes.
+
+2003-10-02  Simon Josefsson <simon@josefsson.org>
+
+	* Makefile.maint: Fix.
+
+2003-10-02  Simon Josefsson <simon@josefsson.org>
+
+	* announce-gen: Perl 5.8.1 fix.
+
 2003-10-02  Simon Josefsson <simon@josefsson.org>
 
 	* NEWS: Version 0.3.1.
