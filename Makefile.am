@@ -17,9 +17,8 @@
 # License along with GNU Libidn; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
 
-DISTCHECK_CONFIGURE_FLAGS = --disable-gtk-doc
-
-SUBDIRS = reference
+DIST_SUBDIRS = reference
+SUBDIRS = @GTKDOC@
 
 EXTRA_DIST = libidn.pc.in iconv.m4 strdup.c memset.c \
 	gen-stringprep-tables.pl rfc3454.txt \

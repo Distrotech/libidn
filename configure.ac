@@ -81,6 +81,13 @@ else
   HTML_DIR=$with_html_dir
 fi
 AC_SUBST(HTML_DIR)
+AC_ARG_ENABLE(gtk-doc,
+	AC_HELP_STRING([--enable-gtk-doc], [Build API reference using GTK-DOC]),
+	enable_gtk_doc="$enableval")
+if test "$enable_gtk_doc" == "yes"; then
+	GTKDOC=reference
+fi
+AC_SUBST(GTKDOC)
 AM_MISSING_PROG(GTKDOC_SCAN, gtkdoc-scan, $missing_dir)
 AM_MISSING_PROG(GTKDOC_MKTMPL, gtkdoc-mktmpl, $missing_dir)
 AM_MISSING_PROG(GTKDOC_MKDB, gtkdoc-mkdb, $missing_dir)
