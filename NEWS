@@ -4,6 +4,10 @@ See the end for copying conditions.
 
 * Version 0.5.1 (unreleased)
 
+** Cross compile builds should work.
+It should work for any sane cross compile target, but the only tested
+platform is uClibc/uClinux on Motorola Coldfire.
+
 ** API and ABI is backwards compatible with the previous version.
 
 * Version 0.5.0 (released 2004-06-26)
