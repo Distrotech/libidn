@@ -1,11 +1,11 @@
-Libstringprep README-alpha -- Important introductory notes for alpha releases.
+Libidn README-alpha -- Important introductory notes for alpha releases.
 See the end for copying conditions.
 
-Libstringprep is unstable.  You should expect it to not work.  You
-should expect it to have security problems.  The API will likely
-change.  This is the development release.  A proper release will be
-made in due time.  Let me repeat that, SHISHI IS MOST LIKELY
-INSECURE. DO NOT USE IN A PRODUCTION ENVIRONMENT!
+Libidn is unstable.  You should expect it to not work.  You should
+expect it to have security problems.  The API will likely change.
+This is the development release.  A proper release will be made in due
+time.  Let me repeat that, LIBIDN IS MOST LIKELY INSECURE. DO NOT USE
+IN A PRODUCTION ENVIRONMENT!
 
 ----------------------------------------------------------------------
 Copyright (C) 2002 Simon Josefsson
