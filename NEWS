@@ -2,6 +2,8 @@ Libidn NEWS -- History of user-visible changes.                 -*- outline -*-
 Copyright (C) 2002, 2003, 2004 Simon Josefsson
 See the end for copying conditions.
 
+* Version 0.4.1 (unreleased)
+
 * Version 0.4.0 (released 2004-02-28)
 
 ** Support for TLD restrictions on IDN strings, contributed by Thomas Jacob.
