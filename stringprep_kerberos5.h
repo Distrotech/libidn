@@ -25,7 +25,7 @@
 #ifdef __cplusplus
 extern "C"
 {
-#if 0 /* keep Emacsens's auto-indent happy */
+#if 0				/* keep Emacsens's auto-indent happy */
 }
 #endif
 #endif
@@ -40,4 +40,4 @@ extern Stringprep_profile stringprep_kerberos5[];
 #ifdef __cplusplus
 }
 #endif
-#endif				/* _STRINGPREP_KERBEROS5_H */
+#endif /* _STRINGPREP_KERBEROS5_H */

@@ -181,7 +181,7 @@ main (int argc, char *argv[])
       else if (debug)
 	printf ("OK\n");
 
-      free(out);
+      free (out);
     }
 
   if (debug)

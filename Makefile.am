@@ -46,14 +46,16 @@ stringprep_generic.c: draft-hoffman-stringprep-07.txt gen-stringprep-tables.pl
 	$(PERL) $(srcdir)/gen-stringprep-tables.pl \
 		draft-hoffman-stringprep-07.txt
 
-check_PROGRAMS = tst_stringprep tst_nfkc
+tests = tst_stringprep tst_nfkc
 
-TESTS = $(check_PROGRAMS)
+check_PROGRAMS = $(tests)
+
+TESTS = $(tests)
 
 INCLUDES = -I$(top_srcdir)
 LDADD = libstringprep.la
 
-noinst_PROGRAMS = $(check_PROGRAMS) example
+noinst_PROGRAMS = $(tests) example
 
 ACLOCAL_AMFLAGS = -I .
 

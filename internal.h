@@ -19,7 +19,6 @@
  *
  */
 
-
 #ifndef _INTERNAL_H
 #define _INTERNAL_H
 

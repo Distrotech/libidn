@@ -33,7 +33,7 @@
 static const char *
 stringprep_locale_charset_slow ()
 {
-  const char *charset = getenv ("CHARSET"); /* flawfinder: ignore */
+  const char *charset = getenv ("CHARSET");	/* flawfinder: ignore */
   char *p;
 
   if (charset && *charset)

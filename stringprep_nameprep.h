@@ -25,7 +25,7 @@
 #ifdef __cplusplus
 extern "C"
 {
-#if 0 /* keep Emacsens's auto-indent happy */
+#if 0				/* keep Emacsens's auto-indent happy */
 }
 #endif
 #endif
@@ -43,4 +43,4 @@ extern Stringprep_profile stringprep_nameprep[];
 #ifdef __cplusplus
 }
 #endif
-#endif				/* _STRINGPREP_NAMEPREP_H */
+#endif /* _STRINGPREP_NAMEPREP_H */

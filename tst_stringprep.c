@@ -122,57 +122,63 @@ strprep[] =
   {
   "\xC2\xAA", 0, "\x61", stringprep_generic}
   ,
-  /* nameprep, exposed a bug in libstringprep 0.0.5 */
+    /* nameprep, exposed a bug in libstringprep 0.0.5 */
   {
-    "\xC2\xAA\x0A", 0, "\x61\x0A", stringprep_nameprep}
+  "\xC2\xAA\x0A", 0, "\x61\x0A", stringprep_nameprep}
   ,
-  /* unassigned code point U+0221: */
+    /* unassigned code point U+0221: */
   {
-    "\xC8\xA1", 0, "\xC8\xA1", stringprep_generic}
+  "\xC8\xA1", 0, "\xC8\xA1", stringprep_generic}
   ,
-  /* unassigned code point U+0221: */
+    /* unassigned code point U+0221: */
   {
-    "\xC8\xA1", STRINGPREP_NO_UNASSIGNED, NULL, stringprep_generic,
-    STRINGPREP_CONTAINS_UNASSIGNED}
+  "\xC8\xA1", STRINGPREP_NO_UNASSIGNED, NULL, stringprep_generic,
+      STRINGPREP_CONTAINS_UNASSIGNED}
   ,
-  /* unassigned code point U+0236: */
+    /* unassigned code point U+0236: */
   {
-    "\xC8\xB6", 0, "\xC8\xB6", stringprep_generic}
+  "\xC8\xB6", 0, "\xC8\xB6", stringprep_generic}
   ,
-  /* unassigned code point U+0236: */
+    /* unassigned code point U+0236: */
   {
-    "\xC8\xB6", STRINGPREP_NO_UNASSIGNED, NULL, stringprep_generic,
-    STRINGPREP_CONTAINS_UNASSIGNED},
-  /* prohibited ASCII character U+0020: */
+  "\xC8\xB6", STRINGPREP_NO_UNASSIGNED, NULL, stringprep_generic,
+      STRINGPREP_CONTAINS_UNASSIGNED}
+  ,
+    /* prohibited ASCII character U+0020: */
   {
-    "\x20", 0, NULL, stringprep_generic,
-    STRINGPREP_CONTAINS_PROHIBITED},
-  /* prohibited character U+00A0: */
+  "\x20", 0, NULL, stringprep_generic, STRINGPREP_CONTAINS_PROHIBITED}
+  ,
+    /* prohibited character U+00A0: */
   {
-    "\xC2\xA0", 0, NULL, stringprep_generic,
-    STRINGPREP_CONTAINS_PROHIBITED},
-  /* prohibited non-character U+10FFFE: */
+  "\xC2\xA0", 0, NULL, stringprep_generic, STRINGPREP_CONTAINS_PROHIBITED}
+  ,
+    /* prohibited non-character U+10FFFE: */
   {
-    "\xF4\x8F\xBF\xBE", 0, NULL, stringprep_generic,
-    STRINGPREP_CONTAINS_PROHIBITED},
-  /* prohibited surrogate character U+D801: */
+  "\xF4\x8F\xBF\xBE", 0, NULL, stringprep_generic,
+      STRINGPREP_CONTAINS_PROHIBITED}
+  ,
+    /* prohibited surrogate character U+D801: */
   {
-    "\xED\xA0\x81", 0, NULL, stringprep_generic,
-    STRINGPREP_CONTAINS_PROHIBITED},
-  /* bidi RandALCat without trailing RandALCat <U+0627><U+0031>: */
+  "\xED\xA0\x81", 0, NULL, stringprep_generic,
+      STRINGPREP_CONTAINS_PROHIBITED}
+  ,
+    /* bidi RandALCat without trailing RandALCat <U+0627><U+0031>: */
   {
-    "\xD8\xA7\x31", 0, NULL, stringprep_generic,
-    STRINGPREP_BIDI_LEADTRAIL_NOT_RAL},
-  /* bidi RandALCat correct  <U+0627><U+0031><U+0628>: */
+  "\xD8\xA7\x31", 0, NULL, stringprep_generic,
+      STRINGPREP_BIDI_LEADTRAIL_NOT_RAL}
+  ,
+    /* bidi RandALCat correct  <U+0627><U+0031><U+0628>: */
   {
-    "\xD8\xA7\x31\xD8\xA8", 0, "\xD8\xA7\x31\xD8\xA8", stringprep_generic},
-  /* bidi both RandALCat and LCat  <U+0627><U+00AA><U+0628>: */
+  "\xD8\xA7\x31\xD8\xA8", 0, "\xD8\xA7\x31\xD8\xA8", stringprep_generic}
+  ,
+    /* bidi both RandALCat and LCat  <U+0627><U+00AA><U+0628>: */
   {
-    "\xD8\xA7\xC2\xAA\xD8\xA8", 0, NULL, stringprep_generic,
-    STRINGPREP_BIDI_BOTH_L_AND_RAL},
-  /* case mapping (this triggered a bug in 0.0.5) */
+  "\xD8\xA7\xC2\xAA\xD8\xA8", 0, NULL, stringprep_generic,
+      STRINGPREP_BIDI_BOTH_L_AND_RAL}
+  ,
+    /* case mapping (this triggered a bug in 0.0.5) */
   {
-    "CAFE", 0, "cafe", stringprep_generic}
+  "CAFE", 0, "cafe", stringprep_generic}
 };
 
 int
@@ -182,7 +188,7 @@ main (int argc, char *argv[])
   int rc, i;
 
   if (!stringprep_check_version (STRINGPREP_VERSION))
-    fail("stringprep_check_version() failed\n");
+    fail ("stringprep_check_version() failed\n");
 
   do
     if (strcmp (argv[argc - 1], "-v") == 0 ||
@@ -250,7 +256,7 @@ main (int argc, char *argv[])
 	  puts ("");
 	}
       else if (debug)
-	printf("returned %d expected %d\n", rc, strprep[i].rc);
+	printf ("returned %d expected %d\n", rc, strprep[i].rc);
 
       if (rc == STRINGPREP_OK)
 	{
@@ -271,9 +277,10 @@ main (int argc, char *argv[])
   free (p);
 
 #if 0
-  memset(p, 0, 10);
+  memset (p, 0, 10);
   stringprep_unichar_to_utf8 (0x0628, p);
-  hexprint (p, strlen (p)); puts("");
+  hexprint (p, strlen (p));
+  puts ("");
 #endif
 
   if (debug)
