@@ -18,6 +18,7 @@ terms) for inclusion in future versions of Libidn.
 ** API and ABI is backwards compatible with the previous version.
 stringprep_kerberos5: Removed macro documentation, as the macro itself
                       is likely to be deprecated in the future.
+tld.h: New header file.
 Tld_table_element:
 Tld_table:
 Tld_rc: Added new data types.
