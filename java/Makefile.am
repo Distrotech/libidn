@@ -37,6 +37,9 @@ libidn-@VERSION@.jar:
 		gnu/inet/encoding/Stringprep.class		\
 		gnu/inet/encoding/StringprepException.class
 
+install-data-local:
+	ln -sf libidn-@VERSION@.jar $(libidn_jardir)/libidn.jar
+
 clean-local:
 	rm -f $(libidn_jar_DATA)
 
