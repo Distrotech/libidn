@@ -1,3 +1,95 @@
+2003-02-14  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Version 0.1.8.
+
+2003-02-14  Simon Josefsson <simon@josefsson.org>
+
+	* Makefile.am: GTK-DOC fix.
+
+2003-02-14  Simon Josefsson <simon@josefsson.org>
+
+	* libidn.texi: Update port status.
+
+2003-02-14  Simon Josefsson <simon@josefsson.org>
+
+	* configure.ac: Use = instead of == as test operator.
+
+2003-02-13  Simon Josefsson <simon@josefsson.org>
+
+	* example2.c, stringprep.c: Use size_t for string lengths.
+
+2003-02-13  Simon Josefsson <simon@josefsson.org>
+
+	* example2.c: Revert missing-noreturn fix.
+
+2003-02-13  Simon Josefsson <simon@josefsson.org>
+
+	* idna.c: Use size_t for string lengths.
+
+2003-02-13  Simon Josefsson <simon@josefsson.org>
+
+	* configure.ac, Makefile.am: Condition GTK-DOC and disable by
+	default.
+
+2003-02-13  Simon Josefsson <simon@josefsson.org>
+
+	* configure.ac: Cleanup gtk-doc build.
+
+2003-02-13  Simon Josefsson <simon@josefsson.org>
+
+	* reference/Makefile.am, reference/libidn-docs.sgml,
+	reference/libidn-docs.tmpl, reference/libidn.types: Cleanup gtk-doc
+	build.
+
+2003-02-13  Simon Josefsson <simon@josefsson.org>
+
+	* profiles.c: Zero terminate XMPP array.
+
+2003-02-13  Simon Josefsson <simon@josefsson.org>
+
+	* configure.ac: Bump version (both shared library and package).
+
+2003-02-13  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2003-02-13  Simon Josefsson <simon@josefsson.org>
+
+	* example.c, example2.c, gen-unicode-tables.pl, idna.c, internal.h,
+	nfkc.c, punycode.c, stringprep.c, stringprep.h.in, toutf8.c,
+	tst_idna.c, tst_nfkc.c, tst_punycode.c, tst_stringprep.c: Fix
+	CFLAGS warnings.
+
+2003-02-13  Simon Josefsson <simon@josefsson.org>
+
+	* example3.c, example4.c: Fix CFLAGS warnings.  Use official IDNA
+	ACE prefix.
+
+2003-02-12  Simon Josefsson <simon@josefsson.org>
+
+	* tst_stringprep.c: Cleanups for including as appendix in draft.
+
+2003-02-12  Simon Josefsson <simon@josefsson.org>
+
+	* draft-josefsson-idn-test-vectors.xml: Add preliminary version.
+
+2003-02-12  Simon Josefsson <simon@josefsson.org>
+
+	* profiles.c: Don't optimize prohibited output tables (better trace
+	logs).
+
+2003-02-12  Simon Josefsson <simon@josefsson.org>
+
+	* tst_stringprep.c: More self tests.  More debug info.
+
+2003-02-12  Simon Josefsson <simon@josefsson.org>
+
+	* stringprep.c: More debug output.
+
+2003-02-12  Simon Josefsson <simon@josefsson.org>
+
+	* idna-ace-prefix.txt: Official results.
+
 2003-02-12  Simon Josefsson <simon@josefsson.org>
 
 	* Makefile.am: Improve release target.
@@ -76,19 +168,11 @@
 
 2003-02-07  Simon Josefsson <simon@josefsson.org>
 
-	* reference/tmpl/stringprep_xmpp.sgml: Generated.
-
-2003-02-07  Simon Josefsson <simon@josefsson.org>
-
 	* reference/dummy.c, libidn.texi: Add XMPP.
 
 2003-02-07  Simon Josefsson <simon@josefsson.org>
 
 	* reference/libidn-docs.sgml: Include xmpp.
-
-2003-02-07  Simon Josefsson <simon@josefsson.org>
-
-	* reference/tmpl/stringprep_xmpp.sgml: Add.
 
 2003-02-07  Simon Josefsson <simon@josefsson.org>
 
@@ -311,16 +395,12 @@
 
 2003-01-08  Simon Josefsson <simon@josefsson.org>
 
-	* example4.c, reference/tmpl/idna.sgml: Fix.
+	* example4.c: Fix.
 
 2003-01-08  Simon Josefsson <simon@josefsson.org>
 
 	* Makefile.am, example3.c, example4.c, idna.c, idna.h,
 	stringprep.h.in, toutf8.c: IDNA high-level API.
-
-2003-01-08  Simon Josefsson <simon@josefsson.org>
-
-	* reference/tmpl/idna.sgml, reference/tmpl/stringprep.sgml: Add.
 
 2003-01-08  Simon Josefsson <simon@josefsson.org>
 
@@ -332,20 +412,7 @@
 
 2003-01-08  Simon Josefsson <simon@josefsson.org>
 
-	* reference/tmpl/idna.sgml, reference/tmpl/punycode.sgml,
-	reference/tmpl/stringprep.sgml,
-	reference/tmpl/stringprep_generic.sgml,
-	reference/tmpl/stringprep_kerberos5.sgml,
-	reference/tmpl/stringprep_nameprep.sgml: Fix.
-
-2003-01-08  Simon Josefsson <simon@josefsson.org>
-
-	* reference/Makefile.am, reference/tmpl/idna.sgml,
-	reference/tmpl/punycode.sgml, reference/tmpl/stringprep.sgml,
-	reference/tmpl/stringprep_generic.sgml,
-	reference/tmpl/stringprep_kerberos5.sgml,
-	reference/tmpl/stringprep_nameprep.sgml: Add templates.  Don't
-	parse internal.h
+	* reference/Makefile.am: Add templates.  Don't parse internal.h
 
 2003-01-08  Simon Josefsson <simon@josefsson.org>
 
