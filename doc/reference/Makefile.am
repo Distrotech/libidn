@@ -1,5 +1,5 @@
 ## Process this file with automake to produce Makefile.in
-# Copyright (C) 2003 Simon Josefsson.
+# Copyright (C) 2003, 2004 Simon Josefsson.
 #
 # This file is part of GNU Libidn.
 #
@@ -18,7 +18,7 @@
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
 
 HIGNORE = gunibreak.h gunicomp.h gunidecomp.h idn-int.h
-HTML_OBJECTS = index.html c4.html \
+HTML_OBJECTS = index.html c4.html libidn-tld.html \
 	libidn-idna.html libidn-punycode.html libidn-stringprep.html
 
 EXTRA_DIST = $(PACKAGE)-docs.tmpl $(HTML_OBJECTS) $(IMAGES)
