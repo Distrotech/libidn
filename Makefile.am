@@ -107,7 +107,7 @@ elc-stamp:
 ChangeLog:
 	test ! -f .cvsusers || \
 	(cvs2cl --FSF --usermap .cvsusers \
-	-I "ChangeLog|.cvsignore|.cvsusers|autogen.sh|contrib|draft.*xml" && \
+	-I "ChangeLog|.cvs|autogen.sh|contrib|draft.*xml" && \
 	cat .cvscopying >> ChangeLog)
 
 indent:
