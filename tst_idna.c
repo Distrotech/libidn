@@ -213,6 +213,13 @@ idna[] =
     0x305D, 0x306E, 0x30B9, 0x30D4, 0x30FC, 0x30C9, 0x3067}
   , IDNA_ACE_PREFIX "d9juau41awczczp", 0, 0, IDNA_SUCCESS, IDNA_SUCCESS}
   ,
+  { /* XXX depends on IDNA_ACE_PREFIX */
+    "ToASCII() with ACE prefix", 6 + 3,
+    {
+      'i', 'e', 's', 'g', '-', '-', 'f', 'o', 0x3067 },
+    IDNA_ACE_PREFIX "too long too long too long too long too long too "
+    "long too long too long too long too long ", 0, 0,
+    IDNA_CONTAINS_ACE_PREFIX, IDNA_PUNYCODE_ERROR}
 #if 0
   {
     "(S) -> $1.00 <-", 11,
@@ -289,10 +296,10 @@ main (int argc, char *argv[])
 		printf ("ERROR\n");
 	    }
 	  else if (debug)
-	    printf ("OK\n\n");
+	    printf ("OK\n");
 	}
       else if (debug)
-	printf ("OK\n\n");
+	printf ("OK\n");
 
       ucs4label = stringprep_utf8_to_ucs4 (idna[i].out, -1, &len);
 
@@ -306,14 +313,6 @@ main (int argc, char *argv[])
       rc = idna_to_unicode (ucs4label, len, tmp, &len2,
 			    idna[i].allowunassigned,
 			    idna[i].usestd3asciirules);
-      if (rc != idna[i].tounicoderc)
-	{
-	  fail ("IDNA entry %d failed: %d\n", i, rc);
-	  if (debug)
-	    printf ("FATAL\n");
-	  continue;
-	}
-
       if (debug)
 	{
 	  printf ("expected out:\n");
@@ -326,6 +325,14 @@ main (int argc, char *argv[])
 	  ucs4print (tmp, len2);
 	}
 
+      if (rc != idna[i].tounicoderc)
+	{
+	  fail ("IDNA entry %d failed: %d\n", i, rc);
+	  if (debug)
+	    printf ("FATAL\n");
+	  continue;
+	}
+
       if ((rc == IDNA_SUCCESS && (len2 != idna[i].inlen ||
 				  memcmp(idna[i].in, tmp, len2) != 0)) ||
 	  (rc != IDNA_SUCCESS && (len2 != len ||
@@ -335,6 +342,8 @@ main (int argc, char *argv[])
 	  if (debug)
 	    printf ("ERROR\n");
 	}
+      else if (debug)
+	printf ("OK\n\n");
 
     }
 
