@@ -4,6 +4,10 @@ See the end for copying conditions.
 
 * Version 0.4.5 (unreleased)
 
+** In IDNA ToUnicode, a `free' on a stale pointer fixed by Ulrich Drepper.
+
+** Several memory leaks fixed by Ulrich Drepper.
+
 ** Added more SASLPrep and NFKC test vectors.
 
 ** API and ABI is backwards compatible with the previous version.
