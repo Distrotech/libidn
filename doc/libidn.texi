@@ -68,6 +68,7 @@ Software Foundation raise funds for GNU development.''
 @menu
 * Introduction::		How to use this manual.
 * Preparation::			What you should do before using the library.
+* Utility Functions::		Unicode transformation utility functions.
 * Stringprep Functions::	Stringprep functions.
 * Punycode Functions::		Punycode functions.
 * IDNA Functions::		IDNA functions.
@@ -562,21 +563,7 @@ compatibility new features may have been introduced but due to problem
 with the dynamic linker an old version is actually used.  So you may
 want to check that the version is okay right after program startup.
 
-@deftypefun {const char *} stringprep_check_version (const char * @var{req_version})
-
-@var{req_version}:  Required version number, or NULL.
-
-Check that the the version of the library is at minimum the requested one
-and return the version string; return NULL if the condition is not
-satisfied.  If a NULL is passed to this function, no check is done,
-but the version string is simply returned.
-
-See @var{STRINGPREP_VERSION} for a suitable @code{req_version} string.
-
- Version string of run-time library, or NULL if the
-run-time library does not meet the required version number.
-
-@end deftypefun
+@include version.api.texi
 
 The normal way to use the function is to put something similar to the
 following first in your @code{main}:
@@ -701,6 +688,38 @@ AC_MSG_RESULT($libidn)
 @end example
 
 @c **********************************************************
+@c ********************  Utility Functions ******************
+@c **********************************************************
+@node Utility Functions
+@chapter Utility Functions
+@cindex Utility Functions
+
+The rest of this library makes extensive use of Unicode characters.
+In order to interface this library with the outside world, your
+application may need to make various Unicode transformations.
+
+@section Header file @code{stringprep.h}
+
+To use the functions explained in this chapter, you need to include
+the file @file{stringprep.h} using:
+
+@example
+#include <stringprep.h>
+@end example
+
+@section Unicode Encoding Transformation
+
+@include nfkc-basic.api.texi
+
+@section Unicode Normalization
+
+@include nfkc-main.api.texi
+
+@section Character Set Conversion
+
+@include toutf8.api.texi
+
+@c **********************************************************
 @c ******************  Stringprep Functions *****************
 @c **********************************************************
 @node Stringprep Functions
@@ -713,6 +732,23 @@ comparison work in ways that make sense for typical users throughout
 the world. The stringprep protocol is useful for protocol identifier
 values, company and personal names, internationalized domain names,
 and other text strings.
+
+@section Header file @code{stringprep.h}
+
+To use the functions explained in this chapter, you need to include
+the file @file{stringprep.h} using:
+
+@example
+#include <stringprep.h>
+@end example
+
+@section Defining A Stringprep Profile
+
+Further types and structures are defined for applications that want to
+specify their own stringprep profile.  As these are fairly obscure,
+and by necessity tied to the implementation, we do not document them
+here.  Look into the @file{stringprep.h} header file, and the
+@file{profiles.c} source code for the details.
 
 @section Return Codes
 
@@ -794,288 +830,9 @@ Make the library return with an error if string contains unassigned
 characters according to profile.
 @end deftypevr
 
-@section Defining A Stringprep Profile
-
-Further types and structures are defined for applications that want to
-specify their own stringprep profile.  As these are fairly obscure,
-and by necessity tied to the implementation, we do not document them
-here.  Look into the @file{stringprep.h} header file, and the
-@file{profiles.c} source code for the details.
-
 @section Core Functions
 
-@deftypefun {int} stringprep (char * @var{in}, size_t @var{maxlen}, int @var{flags}, const Stringprep_profile * @var{profile})
-
-@var{in}: input/ouput array with string to prepare.
-
-@var{maxlen}: maximum length of input/output array.
-
-@var{flags}: stringprep profile flags, or 0.
-
-@var{profile}: pointer to stringprep profile to use.
-
-Prepare the input zero terminated UTF-8 string according to the
-stringprep profile, and write back the result to the input string.
-
-Note that you must convert strings entered in the systems locale into
-UTF-8 before using this function, see
-@code{stringprep_locale_to_utf8}.
-
-Since the stringprep operation can expand the string, @code{maxlen}
-indicate how large the buffer holding the string is.  This function
-will not read or write to characters outside that size.
-
-The @code{flags} are one of Stringprep_profile_flags, or 0.
-
-The @code{profile} contain the instructions to perform.  Your
-application can define new profiles, possibly re-using the generic
-stringprep tables that always will be part of the library, or use one
-of the currently supported profiles.
-
-Returns @code{STRINGPREP_OK} iff successful, or an error code.
-@end deftypefun
-
-@deftypefun int stringprep_4i (uint32_t * @var{ucs4}, size_t *@var{len}, size_t @var{maxucs4len}, Stringprep_profile_flags @var{flags}, const Stringprep_profile *@var{profile})
-
-@var{ucs4}: input/output array with string to prepare.
-
-@var{len}: on input, length of input array with Unicode code points,
-on exit, length of output array with Unicode code points.
-
-@var{maxucs4len}: maximum length of input/output array.
-
-@var{flags}: stringprep profile flags, or 0.
-
-@var{profile}: pointer to stringprep profile to use.
-
-Prepare the input UCS-4 string according to the stringprep profile,
-and write back the result to the input string.
-
-The input is not required to be zero terminated
-(@code{ucs4}[@code{len}] = 0).  The output will not be zero terminated
-unless @code{ucs4}[@code{len}] = 0.  Instead, see
-@code{stringprep_4zi} if your input is zero terminated or if you want
-the output to be.
-
-Since the stringprep operation can expand the string,
-@code{maxucs4len} indicate how large the buffer holding the string is.
-This function will not read or write to code points outside that size.
-
-The @code{flags} are one of Stringprep_profile_flags, or 0.
-
-The @code{profile} contain the instructions to perform.  Your
-application can define new profiles, possibly re-using the generic
-stringprep tables that always will be part of the library, or use one
-of the currently supported profiles.
-
-Returns @code{STRINGPREP_OK} iff successful, or an error code.
-@end deftypefun
-
-@deftypefun int stringprep_4zi (uint32_t * @var{ucs4} size_t @var{maxucs4len}, Stringprep_profile_flags @var{flags}, const Stringprep_profile *@var{profile})
-
-@var{ucs4}: input/output array with string to prepare.
-
-@var{maxucs4len}: maximum length of input/output array.
-
-@var{flags}: stringprep profile flags, or 0.
-
-@var{profile}: pointer to stringprep profile to use.
-
-Prepare the input zero terminated UCS-4 string according to the
-stringprep profile, and write back the result to the input string.
-
-Since the stringprep operation can expand the string,
-@code{maxucs4len} indicate how large the buffer holding the string is.
-This function will not read or write to code points outside that size.
-
-The @code{flags} are one of Stringprep_profile_flags, or 0.
-
-The @code{profile} contain the instructions to perform.  Your
-application can define new profiles, possibly re-using the generic
-stringprep tables that always will be part of the library, or use one
-of the currently supported profiles.
-
-Returns @code{STRINGPREP_OK} iff successful, or an error code.
-@end deftypefun
-
-@deftypefun {int} stringprep_profile (char * @var{in}, char ** @var{out}, const char * @var{profile}, int @var{flags})
-
-@var{in}: input/ouput array with string to prepare.
-
-@var{out}: output variable with newly allocate string.
-
-@var{profile}: name of stringprep profile to use.
-
-@var{flags}: stringprep profile flags, or 0.
-
-Prepare the input zero terminated UTF-8 string according to the
-stringprep profile, and return the result in a newly allocated
-variable.
-
-Note that you must convert strings entered in the systems locale into
-UTF-8 before using this function, see
-@code{stringprep_locale_to_utf8}.
-
-The output @code{out} variable must be deallocated by the caller.
-
-The @code{flags} are one of Stringprep_profile_flags, or 0.
-
-The @code{profile} specifies the name of the stringprep profile to use.
-It must be one of the internally supported stringprep profiles.
-
-Returns @code{STRINGPREP_OK} iff successful, or an error code.
-@end deftypefun
-
-@section Unicode Character Codings
-
-@deftypefun {uint32_t} stringprep_utf8_to_unichar (const char * @var{p})
-
-@var{p}: a pointer to Unicode character encoded as UTF-8
-
-Converts a sequence of bytes encoded as UTF-8 to a Unicode character.
-If @code{p} does not point to a valid UTF-8 encoded character, results
-are undefined.
-
-Returns the resulting character.
-@end deftypefun
-
-@deftypefun {int} stringprep_unichar_to_utf8 (uint32_t @var{c}, char * @var{outbuf})
-
-@var{c}: a ISO10646 character code
-
-@var{outbuf}: output buffer, must have at least 6 bytes of space.  If
-@var{NULL}, the length will be computed and returned and nothing will
-be written to @code{outbuf}.
-
-Converts a single character to UTF-8.
-
-Returns the number of bytes written.
-@end deftypefun
-
-@deftypefun {uint32_t *} stringprep_utf8_to_ucs4 (const char * @var{str}, ssize_t @var{len}, size_t * @var{items_written})
-
-@var{str}: a UTF-8 encoded string
-
-@var{len}: the maximum length of @code{str} to use. If @code{len} < 0,
-then the string is nul-terminated.
-
-@var{items_written}: location to store the number of characters in the
-result, or @var{NULL}.
-
-Convert a string from UTF-8 to a 32-bit fixed width representation as
-UCS-4, assuming valid UTF-8 input.  This function does no error
-checking on the input.
-
-Returns a pointer to a newly allocated UCS-4 string.  This value must
-be freed with @code{free}.
-@end deftypefun
-
-@deftypefun {char *} stringprep_ucs4_to_utf8 (const uint32_t * @var{str}, ssize_t @var{len}, size_t * @var{items_read}, size_t * @var{items_written})
-
-@var{str}: a UCS-4 encoded string
-
-@var{len}: the maximum length of @code{str} to use. If @code{len} < 0,
-then the string is terminated with a 0 character.
-
-@var{items_read}: location to store number of characters read read, or
-@var{NULL}.
-
-@var{items_written}: location to store number of bytes written or
-@var{NULL}.  The value here stored does not include the trailing 0
-byte.
-
-Convert a string from a 32-bit fixed width representation as UCS-4.
-to UTF-8. The result will be terminated with a 0 byte.
-
-Returns a pointer to a newly allocated UTF-8 string.  This value must
-be freed with @code{free}. If an error occurs, @var{NULL} will be
-returned and @code{error} set.
-@end deftypefun
-
-@section Unicode Normalization
-
-@deftypefun {char *} stringprep_utf8_nfkc_normalize (const char * @var{str}, ssize_t @var{len})
-
-@var{str}: a UTF-8 encoded string.
-
-@var{len}: length of @code{str}, in bytes, or -1 if @code{str} is
-nul-terminated.
-
-Converts a string into canonical form, standardizing such issues as
-whether a character with an accent is represented as a base character
-and combining accent or as a single precomposed character.
-
-The normalization mode is NFKC (ALL COMPOSE).  It standardizes
-differences that do not affect the text content, such as the
-above-mentioned accent representation. It standardizes the
-"compatibility" characters in Unicode, such as SUPERSCRIPT THREE to
-the standard forms (in this case DIGIT THREE). Formatting information
-may be lost but for most text operations such characters should be
-considered the same. It returns a result with composed forms rather
-than a maximally decomposed form.
-
-Returns a newly allocated string, that is the NFKC normalized form of
-@code{str}.
-@end deftypefun
-
-@deftypefun {uint32_t *} stringprep_ucs4_nfkc_normalize (uint32_t * @var{str}, ssize_t @var{len})
-
-@var{str}: a Unicode string.
-
-@var{len}: length of @code{str} array, or -1 if @code{str} is
-nul-terminated.
-
-Converts UCS4 string into UTF-8 and runs
-@code{stringprep_utf8_nfkc_normalize}.
-
-Returns a newly allocated Unicode string, that is the NFKC normalized
-form of @code{str}.
-@end deftypefun
-
-@section Character Set Conversion
-
-@deftypefun {const char *} stringprep_locale_charset ( @var{void})
-Return the character set used by the system locale.  It will never
-return NULL, but use "ASCII" as a fallback.
-@end deftypefun
-
-@deftypefun {char *} stringprep_convert (const char * @var{str}, const char * @var{to_codeset}, const char * @var{from_codeset})
-
-@var{str}: input zero-terminated string.
-
-@var{to_codeset}: name of destination character set.
-
-@var{from_codeset}: name of origin character set, as used by
-@code{str}.
-
-Convert the string from one character set to another using the
-system's @code{iconv} function.
-
-Returns newly allocated zero-terminated string which is @code{str}
-transcoded into to_codeset.
-@end deftypefun
-
-@deftypefun {char *} stringprep_locale_to_utf8 (const char * @var{str})
-
-@var{str}: input zero terminated string.
-
-Convert string encoded in the locale's character set into UTF-8 by
-using @code{stringprep_convert}.
-
-Returns newly allocated zero-terminated string which is @code{str}
-transcoded into UTF-8.
-@end deftypefun
-
-@deftypefun {char *} stringprep_utf8_to_locale (const char * @var{str})
-
-@var{str}: input zero terminated string.
-
-Convert string encoded in UTF-8 into the locale's character set by
-using @code{stringprep_convert}.
-
-Returns newly allocated zero-terminated string which is @code{str}
-transcoded into the locale's character set.
-@end deftypefun
+@include stringprep.api.texi
 
 @section Stringprep Profile Macros
 
@@ -1158,6 +915,15 @@ basic code points to uniquely represent any string of code points
 drawn from a larger set. Punycode is an instance of Bootstring that
 uses particular parameter values, appropriate for IDNA.
 
+@section Header file @code{punycode.h}
+
+To use the functions explained in this chapter, you need to include
+the file @file{punycode.h} using:
+
+@example
+#include <punycode.h>
+@end example
+
 @section Return Codes
 
 All functions return a code of the @code{Punycode_status} enumerated
@@ -1201,85 +967,7 @@ and use @code{sizeof} to initialize @code{input_length} and
 
 The functions provided are the following two entry points:
 
-@deftypefun {int} punycode_encode (size_t @var{input_length}, const punycode_uint @var{input}[], const unsigned char @var{case_flags}[], size_t * @var{output_length}, char @var{output}[])
-
-@var{input_length}: The input_length is the number of code points in
-the input.
-
-@var{input}: The input is represented as an array of Unicode code
-points (not code units; surrogate pairs are not allowed).  It must
-contain at least @code{input_length} code points.
-
-@var{case_flags array}: Holds input_length boolean values, where
-nonzero suggests that the corresponding Unicode character be forced to
-uppercase after being decoded (if possible), and zero suggests that it
-be forced to lowercase (if possible).  ASCII code points are encoded
-literally, except that ASCII letters are forced to uppercase or
-lowercase according to the corresponding uppercase flags.  If
-case_flags is a null pointer then ASCII letters are left as they are,
-and other code points are treated as if their uppercase flags were
-zero.
-
-@var{output_length}: The output_length is an in/out argument: the
-caller passes in the maximum number of code points that it can
-receive, and on successful return it will contain the number of code
-points actually output.
-
-@var{output}: The output, must have room for at least
-@code{output_length} code points.  The output will be represented as
-an array of ASCII code points.  The output string is not
-null-terminated; it will contain zeros if and only if the input
-contains zeros.  (Of course the caller can leave room for a terminator
-and add one if needed.)
-
-Converts Unicode to Punycode.
-
-The return value can be any of the punycode_status values defined
-above except @code{PUNYCODE_BAD_INPUT}; if not
-@code{PUNYCODE_SUCCESS}, then output_size and output might contain
-garbage.
-
-@end deftypefun
-
-@deftypefun {int} punycode_decode (size_t @var{input_length}, const char @var{input}[], size_t * @var{output_length}, punycode_uint @var{output}[], unsigned char @var{case_flags}[])
-
-@var{input_length}: The input_length is the number of code points in
-the input.
-
-@var{input}: The input is represented as an array of ASCII code
-points.  It must contain at least @code{input_length} code points.
-
-@var{case_flags array}: The case_flags array needs room for at least
-@code{output_length} values, or it can be a @code{NULL} pointer if the
-case information is not needed.  A nonzero flag suggests that the
-corresponding Unicode character be forced to uppercase by the caller
-(if possible), while zero suggests that it be forced to lowercase (if
-possible).  ASCII code points are output already in the proper case,
-but their flags will be set appropriately so that applying the flags
-would be harmless.
-
-@var{output_length}: The output_length is an in/out argument: the
-caller passes in the maximum number of code points that it can
-receive, and on successful return it will contain the number of code
-points actually output.
-
-@var{output}: The output, must have room for at least
-@code{output_length} code points.  The output will be represented as
-an array of ASCII code points.  The output string is not
-null-terminated; it will contain zeros if and only if the input
-contains zeros.  (Of course the caller can leave room for a terminator
-and add one if needed.)
-
-Converts Punycode to Unicode.
-
-The return value can be any of the punycode_status values defined
-above; if not @code{PUNYCODE_SUCCESS}, then output_length, output, and
-case_flags might contain garbage.  On success, the decoder will never
-need to write an output_length greater than input_length, because of
-how the encoding is defined.
-
-@end deftypefun
-
+@include punycode.api.texi
 
 @c **********************************************************
 @c ********************* IDNA Functions *********************
@@ -1298,6 +986,15 @@ so-called host names today. This backward-compatible representation is
 required in existing protocols like DNS, so that IDNs can be
 introduced with no changes to the existing infrastructure. IDNA is
 only meant for processing domain names, not free text.
+
+@section Header file @code{idna.h}
+
+To use the functions explained in this chapter, you need to include
+the file @file{idna.h} using:
+
+@example
+#include <idna.h>
+@end example
 
 @section Return Codes
 
@@ -1391,207 +1088,15 @@ encoded in the encoding used by the current locale.
 
 The functions provided are the following entry points:
 
-@deftypefun {int} idna_to_ascii_4i (const uint32_t * @var{in}, size_t @var{inlen}, char * @var{out}, {int} @var{flags})
-
-@var{in}: input array with unicode code points.
-
-@var{inlen}: length of input array with unicode code points.
-
-@var{out}: output zero terminated string that must have room for at
-least 63 characters plus the terminating zero.
-
-@var{flags}: IDNA flags, e.g. IDNA_ALLOW_UNASSIGNED.
-
-The ToASCII operation takes a sequence of Unicode code points that
-make up one label and transforms it into a sequence of code points in
-the ASCII range (0..7F). If ToASCII succeeds, the original sequence
-and the resulting sequence are equivalent labels.
-
-It is important to note that the ToASCII operation can fail. ToASCII
-fails if any step of it fails. If any step of the ToASCII operation
-fails on any label in a domain name, that domain name MUST NOT be used
-as an internationalized domain name. The method for deadling with this
-failure is application-specific.
-
-The inputs to ToASCII are a sequence of code points, the
-AllowUnassigned flag, and the UseSTD3ASCIIRules flag. The output of
-ToASCII is either a sequence of ASCII code points or a failure
-condition.
-
-ToASCII never alters a sequence of code points that are all in the
-ASCII range to begin with (although it could fail). Applying the
-ToASCII operation multiple times has exactly the same effect as
-applying it just once.
-
-Returns 0 on success, or an error code.
-@end deftypefun
-
-@deftypefun {int} idna_to_unicode_44i (const uint32_t * @var{in}, size_t @var{inlen}, uint32_t * @var{out}, size_t * @var{outlen}, {int} @var{flags})
-
-@var{in}: input array with unicode code points.
-
-@var{inlen}: length of input array with unicode code points.
-
-@var{out}: output array with unicode code points.
-
-@var{outlen}: on input, maximum size of output array with unicode code
-points, on exit, actual size of output array with unicode code points.
-
-@var{flags}: IDNA flags, e.g. IDNA_ALLOW_UNASSIGNED.
-
-The ToUnicode operation takes a sequence of Unicode code points that
-make up one label and returns a sequence of Unicode code points. If
-the input sequence is a label in ACE form, then the result is an
-equivalent internationalized label that is not in ACE form, otherwise
-the original sequence is returned unaltered.
-
-ToUnicode never fails. If any step fails, then the original input
-sequence is returned immediately in that step.
-
-The ToUnicode output never contains more code points than its input.
-Note that the number of octets needed to represent a sequence of code
-points depends on the particular character encoding used.
-
-The inputs to ToUnicode are a sequence of code points, the
-AllowUnassigned flag, and the UseSTD3ASCIIRules flag. The output of
-ToUnicode is always a sequence of Unicode code points.
-
-Returns error condition, but it must only be used for debugging
-purposes.  The output buffer is always guaranteed to contain the
-correct data according to the specification (sans malloc induced
-errors).  NB!  This means that you normally ignore the return code
-from this function, as checking it means breaking the standard.
-@end deftypefun
+@include idna-core.api.texi
 
 @section Simplified ToASCII Interface
 
-@deftypefun {int} idna_to_ascii_4z (const uint32_t * @var{input}, char ** @var{output}, {int} @var{flags})
-
-@var{input}: zero terminated input Unicode string.
-
-@var{output}: pointer to newly allocated output string.
-
-@var{flags}: IDNA flags, e.g. IDNA_ALLOW_UNASSIGNED.
-
-Convert UCS-4 domain name to ASCII string.  The domain name may
-contain several labels, separated by dots.  The output buffer must be
-deallocated by the caller.
-
-Returns IDNA_SUCCESS on success, or error code.
-@end deftypefun
-
-@deftypefun {int} idna_to_ascii_8z (const char * @var{input}, char ** @var{output}, {int} @var{flags})
-
-@var{input}: zero terminated input UTF-8 string.
-
-@var{output}: pointer to newly allocated output string.
-
-@var{flags}: IDNA flags, e.g. IDNA_ALLOW_UNASSIGNED.
-
-Convert UTF-8 domain name to ASCII string.  The domain name may
-contain several labels, separated by dots.  The output buffer must
-be deallocated by the caller.
-
-Returns IDNA_SUCCESS on success, or error code.
-@end deftypefun
-
-@deftypefun {int} idna_to_ascii_lz (const char * @var{input}, char ** @var{output}, {int} @var{flags})
-
-@var{input}: zero terminated input UTF-8 string.
-
-@var{output}: pointer to newly allocated output string.
-
-@var{flags}: IDNA flags, e.g. IDNA_ALLOW_UNASSIGNED.
-
-Convert domain name in the locale's encoding to ASCII string.  The
-domain name may contain several labels, separated by dots.  The output
-buffer must be deallocated by the caller.
-
-Returns IDNA_SUCCESS on success, or error code.
-@end deftypefun
+@include idna-toascii.api.texi
 
 @section Simplified ToUnicode Interface
 
-@deftypefun {int} idna_to_unicode_4z4z (const uint32_t * @var{input}, uint32_t ** @var{output}, {int} @var{flags})
-
-@var{input}: zero-terminated Unicode string.
-
-@var{output}: pointer to newly allocated output Unicode string.
-
-@var{flags}: IDNA flags, e.g. IDNA_ALLOW_UNASSIGNED.
-
-Convert possibly ACE encoded domain name in UCS-4 format into a UCS-4
-string.  The domain name may contain several labels, separated by
-dots.  The output buffer must be deallocated by the caller.
-
-Returns IDNA_SUCCESS on success, or error code.
-@end deftypefun
-
-@deftypefun {int} idna_to_unicode_8z4z (const char * @var{input}, uint32_t ** @var{output}, {int} @var{flags})
-
-@var{input}: zero-terminated UTF-8 string.
-
-@var{output}: pointer to newly allocated output Unicode string.
-
-@var{flags}: IDNA flags, e.g. IDNA_ALLOW_UNASSIGNED.
-
-Convert possibly ACE encoded domain name in UTF-8 format into a UCS-4
-string.  The domain name may contain several labels, separated by
-dots.  The output buffer must be deallocated by the caller.
-
-Returns IDNA_SUCCESS on success, or error code.
-@end deftypefun
-
-@deftypefun {int} idna_to_unicode_8z8z (const char * @var{input}, char ** @var{output}, {int} @var{flags})
-
-@var{input}: zero-terminated UTF-8 string.
-
-@var{output}: pointer to newly allocated output UTF-8 string.
-
-@var{flags}: IDNA flags, e.g. IDNA_ALLOW_UNASSIGNED.
-
-Convert possibly ACE encoded domain name in UTF-8 format into a UTF-8
-string.  The domain name may contain several labels, separated by
-dots.  The output buffer must be deallocated by the caller.
-
-Returns IDNA_SUCCESS on success, or error code.
-@end deftypefun
-
-@deftypefun {int} idna_to_unicode_8zlz (const char * @var{input}, char ** @var{output}, {int} @var{flags})
-
-@var{input}: zero-terminated UTF-8 string.
-
-@var{output}: pointer to newly allocated output string encoded in the
-current locale's character set.
-
-@var{flags}: IDNA flags, e.g. IDNA_ALLOW_UNASSIGNED.
-
-Convert possibly ACE encoded domain name in UTF-8 format into a string
-encoded in the current locale's character set.  The domain name may
-contain several labels, separated by dots.  The output buffer must be
-deallocated by the caller.
-
-Returns IDNA_SUCCESS on success, or error code.
-@end deftypefun
-
-@deftypefun {int} idna_to_unicode_lzlz (const char * @var{input}, char ** @var{output}, {int} @var{flags})
-
-@var{input}: zero-terminated string encoded in the current locale's
-character set.
-
-@var{output}: pointer to newly allocated output string encoded in the
-current locale's character set.
-
-@var{flags}: IDNA flags, e.g. IDNA_ALLOW_UNASSIGNED.
-
-Convert possibly ACE encoded domain name in the locale's character set
-into a string encoded in the current locale's character set.  The
-domain name may contain several labels, separated by dots.  The output
-buffer must be deallocated by the caller.
-
-Returns IDNA_SUCCESS on success, or error code.
-@end deftypefun
-
+@include idna-tounicode.api.texi
 
 @c **********************************************************
 @c ***********************  Examples  ***********************
