@@ -70,11 +70,9 @@ Software Foundation raise funds for GNU development.''
 * Punycode Functions::		Punycode functions.
 * IDNA Functions::		IDNA functions.
 * Examples::                    Demonstrate how to use the library.
-* Acknowledgements::            Whom to blame.
-
 * Invoking idn::		Command line interface to the library.
-
 * Emacs API::                   Emacs Lisp API for Libidn.
+* Acknowledgements::            Whom to blame.
 
 Indices
 
@@ -699,19 +697,25 @@ section describes the API.
 
 @defvar punycode-program
 Name of the GNU Libidn @file{idn} application.  The default is
-@samp{env CHARSET=UTF-8 idn}.  This variable can be customized.
+@samp{idn}.  This variable can be customized.
+@end defvar
+
+@defvar punycode-environment
+List of environment variable definitions prepended to
+@samp{process-environment}.  The default is @samp{("CHARSET=UTF-8")}.
+This variable can be customized.
 @end defvar
 
 @defvar punycode-encode-parameters
-Parameters passed to @var{punycode-program} to invoke punycode
-encoding mode.  The default is @samp{--quiet --punycode-encode}.  This
-variable can be customized.
+List of parameters passed to @var{punycode-program} to invoke punycode
+encoding mode.  The default is @samp{("--quiet" "--punycode-encode")}.
+This variable can be customized.
 @end defvar
 
 @defvar punycode-decode-parameters
 Parameters passed to @var{punycode-program} to invoke punycode
-decoding mode.  The default is @samp{--quiet --punycode-decode}.  This
-variable can be customized.
+decoding mode.  The default is @samp{("--quiet" "--punycode-decode")}.
+This variable can be customized.
 @end defvar
 
 @defun punycode-encode string
@@ -726,19 +730,25 @@ Returns a possibly multibyte string which is the decoding of the
 
 @defvar idna-program
 Name of the GNU Libidn @file{idn} application.  The default is
-@samp{env CHARSET=UTF-8 idn}.  This variable can be customized.
+@samp{idn}.  This variable can be customized.
+@end defvar
+
+@defvar idna-environment
+List of environment variable definitions prepended to
+@samp{process-environment}.  The default is @samp{("CHARSET=UTF-8")}.
+This variable can be customized.
 @end defvar
 
 @defvar idna-to-ascii-parameters
-Parameters passed to @var{idna-program} to invoke IDNA ToASCII mode.
-The default is @samp{--quiet --idna-to-ascii}.  This variable can be
-customized.
+List of parameters passed to @var{idna-program} to invoke IDNA ToASCII
+mode.  The default is @samp{("--quiet" "--idna-to-ascii")}.  This
+variable can be customized.
 @end defvar
 
 @defvar idna-to-unicode-parameters
 Parameters passed @var{idna-program} to invoke IDNA ToUnicode mode.
-The default is @samp{--quiet --idna-to-unicode}.  This variable can be
-customized.
+The default is @samp{("--quiet" "--idna-to-unicode")}.  This variable
+can be customized.
 @end defvar
 
 @defun idna-to-ascii string
