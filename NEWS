@@ -9,6 +9,8 @@ It is equivalent to the already supported "plain" SASL ANONYMOUS
 stringprep profile, except for the name.
 
 ** API and ABI is backwards compatible with the previous version.
+The 'in' parameter to stringprep_profile was changed from 'char*' to
+'const char*'.
 
 * Version 0.3.1 (released 2003-10-02)
 
