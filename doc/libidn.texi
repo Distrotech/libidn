@@ -13,7 +13,7 @@
 This manual is last updated @value{UPDATED} for version
 @value{VERSION} of GNU Libidn.
 
-Copyright @copyright{} 2002, 2003, 2004 Simon Josefsson.
+Copyright @copyright{} 2002, 2003, 2004, 2005 Simon Josefsson.
 
 @quotation
 Permission is granted to copy, distribute and/or modify this document
@@ -309,6 +309,11 @@ GCC 3.2, GNU make. @code{i686-pc-cygwin}.
 
 HP-UX C compiler and HP Make. @code{ia64-hp-hpux11.22},
 @code{hppa2.0w-hp-hpux11.11}.
+
+@item SUN Solaris 2.7
+@cindex Solaris
+
+GCC 3.0.4 and GNU Make. @code{sparc-sun-solaris2.7}.
 
 @item SUN Solaris 2.8
 @cindex Solaris
