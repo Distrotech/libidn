@@ -1,0 +1,399 @@
+Internet Draft                                              Jeffrey Altman
+draft-ietf-krb-wg-utf8-profile-00.txt                  Columbia University
+February 12, 2002                                 
+Expires in six months                           
+
+        Stringprep Profile for Kerberos UTF-8 Strings
+
+Status of this memo
+
+This document is an Internet-Draft and is in full conformance with all
+provisions of Section 10 of RFC2026.
+
+Internet-Drafts are working documents of the Internet Engineering Task
+Force (IETF), its areas, and its working groups. Note that other groups
+may also distribute working documents as Internet-Drafts.
+
+Internet-Drafts are draft documents valid for a maximum of six months
+and may be updated, replaced, or obsoleted by other documents at any
+time. It is inappropriate to use Internet-Drafts as reference material
+or to cite them other than as "work in progress."
+
+To view the list Internet-Draft Shadow Directories, see
+http://www.ietf.org/shadow.html.
+
+
+Abstract
+
+This document describes how to prepare UTF-8 strings
+in order to increase the likelihood that name input and name comparison
+work in ways that make sense for typical users throughout the world. This
+is a profile of the stringprep protocol developed in the IDN working group.
+
+1. Introduction
+
+This document specifies processing rules that will allow users to enter
+Kerberos Principal Names and input to cryptographic String to Key functions.
+It is a profile of stringprep [STRINGPREP].
+
+This profile defines the following, as required by [STRINGPREP]
+
+- The intended applicability of the profile: internationalized
+host name parts
+
+- The character repertoire that is the input and output to stringprep:
+defined in Section 2
+
+- The list of unassigned code points for the repertoire: defined
+in Appendix F.
+
+- The mappings used: defined in Section 3.
+
+- The Unicode normalization used: defined in Section 4
+
+- The characters that are prohibited as output: Defined in section 5
+
+
+1.2 Terminology
+
+The key words "MUST", "SHALL", "REQUIRED", "SHOULD", "RECOMMENDED", and
+"MAY" in this document are to be interpreted as described in RFC 2119
+[RFC2119].
+
+Examples in this document use the notation for code points and names
+from the Unicode Standard [Unicode3.1] and ISO/IEC 10646 [ISO10646]. For
+example, the letter "a" may be represented as either "U+0061" or "LATIN
+SMALL LETTER A". In the lists of prohibited characters, the "U+" is left
+off to make the lists easier to read. The comments for character ranges
+are shown in square brackets (such as "[SYMBOLS]") and do not come from
+the standards.
+
+
+2. Character Repertoire
+
+Unicode 3.1 [Unicode3.1] is the repertoire used in this profile.
+The reason Unicode 3.1 was chosen instead of a version of
+ISO/IEC 10646 is that ISO/IEC 10646 is expected to be updated soon after
+this document becomes an RFC. Unicode 3.1 has the exact repertoire that
+is expected in the next version of ISO/IEC 10646, and is therefore used
+here.
+
+
+3. Mapping
+
+This profile specifies stringprep mapping using the mapping table
+in Appendix D. That table includes all the steps described in this
+section.
+
+Note that text in this section describe how Appendix D was formed. It is
+there for people who want to understand more, but it should be ignored
+by implementors. Implementations of this profile MUST map based on
+Appendix D, not based on the descriptions in this section of how
+Appendix D was created.
+
+3.1 Mapped out
+
+The following characters are simply deleted from the input (that is,
+they are mapped to nothing) because their presence or absence should not
+make two strings different.
+
+Some characters are only useful in line-based text, and are otherwise
+invisible and ignored.
+
+00AD; SOFT HYPHEN
+1806; MONGOLIAN TODO SOFT HYPHEN
+200B; ZERO WIDTH SPACE
+FEFF; ZERO WIDTH NO-BREAK SPACE
+
+Variation selectors and cursive connectors select different glyphs, but
+do not bear semantics.
+
+180B; MONGOLIAN FREE VARIATION SELECTOR ONE
+180C; MONGOLIAN FREE VARIATION SELECTOR TWO
+180D; MONGOLIAN FREE VARIATION SELECTOR THREE
+200C; ZERO WIDTH NON-JOINER
+200D; ZERO WIDTH JOINER
+
+3.2 Space Character Conversions
+
+The following Unicode spaces are to be mapped to 0020; SPACE:
+ 
+00A0; NO-BREAK SPACE
+2000; EN QUAD
+2001; EM QUAD
+2002; EN SPACE
+2003; EM SPACE
+2004; THREE-PER-EM SPACE
+2005; FOUR-PER-EM SPACE
+2006; SIX-PER-EM SPACE
+2007; FIGURE SPACE
+2008; PUNCTUATION SPACE
+2009; THIN SPACE
+200A; HAIR SPACE
+202F; NARROW NO-BREAK SPACE
+3000; IDEOGRAPHIC SPACE
+
+4. Normalization
+
+This profile specifies using Unicode normalization form KC, as described
+in [UAX15].
+
+NOTE: There was some discussion on the mailing list that would suggest
+that Unicode NFKC does not properly handle the composition of
+normalized Hangul strings.  Following the lead of the IDN working
+group, the Kerberos working group will not attempt to second-guess the
+the authors of Unicode 3.1 Annex 15 (formerly Technical Report 15)
+[UAX15], which specifies the normalization methods, or the Ideographic
+Rappaorteur Group (IRG), which is the formal subgroup of ISO/IEC
+JTC1/SC2/WG2 charged with approving all CJKV elements of the Unicode
+standards.  Such issues are outside the working group's charter and
+its area of expertise.
+
+
+5. Prohibited Output
+
+This profile specifies using the prohibition table in Appendix E.
+
+Note that the subsections below describe how Appendix E was formed. They
+are there for people who want to understand more, but they should be
+ignored by implementors. Implementations of this profile MUST map based
+on Appendix E, not based on the descriptions in this section of how
+Appendix E was created.
+
+The collected lists of prohibited code points can be found in Appendix E
+of this document. The lists in Appendix E MUST be used by implementations
+of this specification. If there are any discrepancies between the lists
+in Appendix E and subsections below, the lists in Appendix E always takes
+precedence.
+
+Some code points listed in one section would also appear in other
+sections. Each code point is only listed once in the tables in Appendix
+E.
+
+
+5.1 Control characters
+
+Control characters (or characters with control function) cannot be seen
+and can cause unpredictable results when displayed.
+
+0000-001F; [CONTROL CHARACTERS]
+007F; DELETE
+0080-009F; [CONTROL CHARACTERS]
+070F; SYRIAC ABBREVIATION MARK
+180E; MONGOLIAN VOWEL SEPARATOR
+2028; LINE SEPARATOR
+2029; PARAGRAPH SEPARATOR
+206A-206F; [CONTROL CHARACTERS]
+FFF9-FFFC; [CONTROL CHARACTERS]
+1D173-1D17A; [MUSICAL CONTROL CHARACTERS]
+
+5.2 Private use and replacement characters
+
+Because private-use characters do not have defined meanings, they are
+prohibited. The private-use characters are:
+
+E000-F8FF; [PRIVATE USE, PLANE 0]
+F0000-FFFFD; [PRIVATE USE, PLANE 15]
+100000-10FFFD; [PRIVATE USE, PLANE 16]
+
+The replacement character (U+FFFD) has no known semantic definition in a
+name, and is often displayed by renderers to indicate "there would be
+some character here, but it cannot be rendered". For example, on a
+computer with no Asian fonts, a name with three ideographs might be
+rendered with three replacement characters.
+
+FFFD; REPLACEMENT CHARACTER
+
+5.3 Non-character code points
+
+Non-character code points are code points that have been allocated in
+ISO/IEC 10646 but are not characters. Because they are already assigned,
+they are guaranteed not to later change into characters.
+
+FDD0-FDEF; [NONCHARACTER CODE POINTS]
+FFFE-FFFF; [NONCHARACTER CODE POINTS]
+1FFFE-1FFFF; [NONCHARACTER CODE POINTS]
+2FFFE-2FFFF; [NONCHARACTER CODE POINTS]
+3FFFE-3FFFF; [NONCHARACTER CODE POINTS]
+4FFFE-4FFFF; [NONCHARACTER CODE POINTS]
+5FFFE-5FFFF; [NONCHARACTER CODE POINTS]
+6FFFE-6FFFF; [NONCHARACTER CODE POINTS]
+7FFFE-7FFFF; [NONCHARACTER CODE POINTS]
+8FFFE-8FFFF; [NONCHARACTER CODE POINTS]
+9FFFE-9FFFF; [NONCHARACTER CODE POINTS]
+AFFFE-AFFFF; [NONCHARACTER CODE POINTS]
+BFFFE-BFFFF; [NONCHARACTER CODE POINTS]
+CFFFE-CFFFF; [NONCHARACTER CODE POINTS]
+DFFFE-DFFFF; [NONCHARACTER CODE POINTS]
+EFFFE-EFFFF; [NONCHARACTER CODE POINTS]
+FFFFE-FFFFF; [NONCHARACTER CODE POINTS]
+10FFFE-10FFFF; [NONCHARACTER CODE POINTS]
+
+The non-character code points are listed the PropList.txt file from the
+Unicode database.
+
+5.4 Surrogate codes
+
+The following code points are permanently reserved for use as surrogate
+code values in the UTF-16 encoding, will never be assigned to
+characters, and are therefore prohibited:
+
+D800-DFFF; [SURROGATE CODES]
+
+5.5 Inappropriate for plain text
+
+The following characters should not appear in regular text.
+
+FFF9; INTERLINEAR ANNOTATION ANCHOR
+FFFA; INTERLINEAR ANNOTATION SEPARATOR
+FFFB; INTERLINEAR ANNOTATION TERMINATOR
+FFFC; OBJECT REPLACEMENT CHARACTER
+
+5.6 Inappropriate for canonical representation
+
+The ideographic description characters allow different sequences of
+characters to be rendered the same way, which makes them inappropriate
+for host names that must have a single canonical representation.
+
+2FF0-2FFB; [IDEOGRAPHIC DESCRIPTION CHARACTERS]
+
+5.7 Change display properties
+
+The following characters, some of which are deprecated in ISO/IEC 10646,
+can cause changes in display or the order in which characters appear
+when rendered.
+
+200E; LEFT-TO-RIGHT MARK
+200F; RIGHT-TO-LEFT MARK
+202A; LEFT-TO-RIGHT EMBEDDING
+202B; RIGHT-TO-LEFT EMBEDDING
+202C; POP DIRECTIONAL FORMATTING
+202D; LEFT-TO-RIGHT OVERRIDE
+202E; RIGHT-TO-LEFT OVERRIDE
+206A; INHIBIT SYMMETRIC SWAPPING
+206B; ACTIVATE SYMMETRIC SWAPPING
+206C; INHIBIT ARABIC FORM SHAPING
+206D; ACTIVATE ARABIC FORM SHAPING
+206E; NATIONAL DIGIT SHAPES
+206F; NOMINAL DIGIT SHAPES
+
+5.8 Tagging characters
+
+The following characters are used for tagging text and are invisible.
+
+E0001; LANGUAGE TAG
+E0020-E007F; [TAGGING CHARACTERS]
+
+
+6. Unassigned Code Points in Internationalized Host Names
+
+This profile lists the unassigned code points for Unicode 3.1 in
+Appendix F. The list in Appendix F MUST be used by implementations of
+this specification. If there are any discrepancies between the list in
+Appendix F and the Unicode 3.1 specification, the list Appendix F always
+takes precedence.
+
+
+7. Security Considerations
+
+ISO/IEC 10646 has many characters that look similar. In many cases,
+users of security protocols might do visual matching, such as when
+comparing the names of trusted third parties. This profile does nothing
+to map similar-looking characters together.
+
+Principal names and passwords are entered by users and used within the
+Kerberos protocol. The
+security of the Internet would be compromised if a user entering a
+single internationalized string could be connected to different servers
+or denied access based on different interpretations of 
+internationalized strings.
+
+8. References
+
+[CharModel] Unicode Technical Report;17, Character Encoding Model.
+<http://www.unicode.org/unicode/reports/tr17/>.
+
+[Glossary] Unicode Glossary, <http://www.unicode.org/glossary/>.
+
+[ISO10646] ISO/IEC 10646-1:2000. International Standard -- Information
+technology -- Universal Multiple-Octet Coded Character Set (UCS) -- Part
+1: Architecture and Basic Multilingual Plane.
+
+[RFC2119] Scott Bradner, "Key words for use in RFCs to Indicate
+Requirement Levels", March 1997, RFC 2119.
+
+[STRINGPREP] Paul Hoffman and Marc Blanchet, "Preparation of
+Internationalized Strings ("stringprep")", draft-hoffman-stringprep,
+work in progress
+
+[Unicode3.1] The Unicode Standard, Version 3.1.0: The Unicode
+Consortium. The Unicode Standard, Version 3.0. Reading, MA,
+Addison-Wesley Developers Press, 2000. ISBN 0-201-61633-5, as amended
+by: Unicode Standard Annex #27: Unicode 3.1
+<http://www.unicode.org/unicode/reports/tr27/tr27-4.html>.
+
+[UAX15] Mark Davis and Martin Duerst. Unicode Standard Annex #15:
+Unicode Normalization Forms, Version 3.1.0.
+<http://www.unicode.org/unicode/reports/tr15/tr15-21.html>
+
+
+A. Acknowledgements
+
+This draft is based upon the work of the IETF IDN Working Group's
+IDN Nameprep design team.
+
+B. IANA Considerations
+
+This is a profile of stringprep. When it becomes an RFC, it
+should be registered in the stringprep profile registry.
+
+C. Author Contact Information
+
+Jeffrey Altman
+jaltman@columbia.edu
+Columbia University
+612 West 115th Street 
+New York NY 10025
+
+
+D. Mapping Tables
+
+The following is the mapping table from Section 3. The table has three
+columns:
+- the character that is mapped from
+- the zero or more characters that it is mapped to
+- the reason for the mapping
+The columns are separated by semicolons. Note that the second column may
+be empty, or it may have one character, or it may have more than one
+character, with each character separated by a space.
+
+----- Start Mapping Table -----
+... to be filled in ...
+----- End Mapping Table -----
+
+
+E. Prohibited Code Point List
+
+----- Start Prohibited Table -----
+... to be filled in ...
+----- End Prohibited Table -----
+
+NOTE WELL: Software that follows this specification that will be used to
+check names before they are put in authoritative name servers MUST add
+all unassigned code pints to the list of characters that are prohibited.
+See Section 6 of [STRINGPREP] for more details.
+
+
+F. Unassigned Code Point List
+
+----- Start Unassigned Table -----
+... to be filled in ...
+----- End Unassigned Table -----
+
+
+
+
+ Jeffrey Altman * Sr.Software Designer      C-Kermit 8.0 available now!!!
+ The Kermit Project @ Columbia University   includes Telnet, FTP and HTTP
+ http://www.kermit-project.org/             secured with Kerberos, SRP, and 
+ kermit-support@columbia.edu                OpenSSL. Interfaces with OpenSSH
