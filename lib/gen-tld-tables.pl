@@ -53,7 +53,7 @@ foreach my $tldfile (@ARGV)
 }
 
 print "/* Main array */\n";
-print "const Tld_table * tld_table[] =\n";
+print "const Tld_table * tld_tables[] =\n";
 print "{\n";
 foreach (@tlds)
 {

@@ -55,7 +55,7 @@ extern "C"
   typedef struct Tld_table Tld_table;
 
   /* Array of built-in domain restriction structures. */
-  extern const Tld_table *tld_table[];
+  extern const Tld_table *tld_tables[];
 
   /* Error codes. */
   typedef enum

@@ -54,7 +54,7 @@ tld_get_table (const char *tld_str, const Tld_table ** xtra_tlds)
 	return *tld;
 
   /* Then search the internal stuff. */
-  for (tld = tld_table; *tld; tld++)
+  for (tld = tld_tables; *tld; tld++)
     if (!strcmp ((*tld)->name, tld_str))
       return *tld;
 
