@@ -17,6 +17,8 @@
 # License along with GNU Libidn; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
 
+EXTRA_DIST = README
+
 INCLUDES = -I$(top_srcdir)/lib -I../lib
 LDADD = -L../lib -lidn
 
