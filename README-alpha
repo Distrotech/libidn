@@ -16,12 +16,14 @@ securely in-place.
 
 It will not become stable without help.  Donate time or money.
 
-To compile from CVS, you need perl, texinfo, gengetopt, autoconf 2.5+
-and automake 1.7+.  Bootstrap the build environment using:
+To compile from CVS, you may need recent versions of perl, texinfo,
+gengetopt, cvs2cl, help2man, autoconf, automake and libtool.
+
+Bootstrap the build environment using:
 
   $ ./autogen.sh
 
-Then run ./configure as usual.
+Then run ./configure and make as usual.
 
 ----------------------------------------------------------------------
 Copying and distribution of this file, with or without modification,
