@@ -1,5 +1,5 @@
 /* example.c	Example code showing how to use IDN enabled getaddrinfo().
- * Copyright (C) 2003  Simon Josefsson
+ * Copyright (C) 2003, 2004  Simon Josefsson
  *
  * This file is part of GNU Libidn.
  *
@@ -30,7 +30,7 @@
 /*
  * Compiling against IDN enabled Libc:
  *
- * $ gcc -o example example.c -L/usr/local/glibc/lib -Wl,-rpath,/usr/local/glibc/lib -nostdinc -I/usr/local/glibc/include -I/usr/include -I/usr/lib/gcc-lib/i386-linux/2.95.4/include
+ * $ gcc -o example example.c -L/usr/local/glibc/lib -Wl,-rpath,/usr/local/glibc/lib -nostdinc -I/usr/local/glibc/include -I/usr/include -I/usr/lib/gcc-lib/i486-linux/3.3.3/include
  * $ CHARSET=iso-8859-1 ./example
  * locale charset `iso-8859-1'
  * gettaddrinfo(räksmörgås.josefsson.org):
@@ -50,7 +50,7 @@ main(int argc, char *argv[])
   struct addrinfo *res = NULL;
   int rc;
 
-  printf("locale charset `%s'\n", stringprep_locale_charset());
+  //printf("locale charset `%s'\n", stringprep_locale_charset());
 
   memset(&hints, 0, sizeof(hints));
   hints.ai_flags = AI_CANONNAME|AI_IDN;

@@ -1,5 +1,5 @@
 Libidn libc/README -- Instructions for building as a GNU Libc add-on.
-Copyright (C) 2003 Simon Josefsson
+Copyright (C) 2003, 2004 Simon Josefsson
 See the end for copying conditions.
 
 GNU Libidn can be built into GNU Libc if you follow these
@@ -11,17 +11,15 @@ $ tar xfz glibc-2.3.2.tar.gz  # and glibc-linuxthreads if you need it
 
 2) Unpack Libidn:
 
-$ tar xfz ~/libidn-0.3.0.tar.gz
+$ tar xfz ~/libidn-0.4.1.tar.gz
 
 3) Set up the Libidn add-on inside the Libc directory:
 
-$ perl -pi -e 's/idn-int.h/stdint.h/' libidn-0.3.0/lib/{idna,stringprep,punycode}.h
-$ cp -r libidn-0.3.0/lib glibc-2.3.2/libidn
-$ ln -sf ../libidn/idna.h glibc-2.3.2/include/
-$ cp libidn-0.3.0/libc/{Makefile,configure,Banner,Versions} glibc-2.3.2/libidn/
-$ cp libidn-0.3.0/libc/getaddrinfo.c glibc-2.3.2/sysdeps/posix/
-$ cp libidn-0.3.0/libc/netdb.h glibc-2.3.2/resolv/
-$ touch glibc-2.3.2/libidn/libidn.texi
+$ perl -pi -e 's/idn-int.h/stdint.h/' libidn-0.4.1/lib/{idna,stringprep,punycode}.h
+$ cp -r libidn-0.4.1/lib glibc-2.3.2/libidn
+$ cp libidn-0.4.1/libc/* glibc-2.3.2/libidn/
+$ cp libidn-0.4.1/libc/getaddrinfo.c glibc-2.3.2/sysdeps/posix/
+$ cp libidn-0.4.1/libc/netdb.h glibc-2.3.2/resolv/
 
 4) Configure and build Libc with the Libidn add-on:
 
