@@ -4,6 +4,10 @@ See the end for copying conditions.
 
 * Version 0.1.12 (unreleased)
 
+** New stringprep API entry point: stringprep_profile().
+It takes a name of the stringprep profile as an argument instead of
+the stringprep table structure.
+
 ** stringprep_*.h are deprecated and will be removed in the future.
 All symbols have been moved to stringprep.h.  The reasons are that (1)
 the files typically only defined one CPP macro and exported a symbol
