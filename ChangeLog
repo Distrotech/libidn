@@ -1,3 +1,140 @@
+2003-03-13  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Version 0.1.13.
+
+2003-03-13  Simon Josefsson <simon@josefsson.org>
+
+	* libidn.texi: Sync ANNOUNCE.
+
+2003-03-13  Simon Josefsson <simon@josefsson.org>
+
+	* configure.ac: Bump so version.
+
+2003-03-13  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2003-03-13  Simon Josefsson <simon@josefsson.org>
+
+	* ANNOUNCE: Add lingos.
+
+2003-03-13  Simon Josefsson <simon@josefsson.org>
+
+	* Makefile.am: Dist Java stuff.
+
+2003-03-13  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Mention Java API.
+
+2003-03-13  Simon Josefsson <simon@josefsson.org>
+
+	* libidn.texi: Tested on more platforms.
+
+2003-03-12  Simon Josefsson <simon@josefsson.org>
+
+	* tst_stringprep.c: Fix mem leak.
+
+2003-03-12  Simon Josefsson <simon@josefsson.org>
+
+	* stringprep.c: Fix mem leak.
+
+2003-03-12  Simon Josefsson <simon@josefsson.org>
+
+	* tst_idna.c: Fix mem leak.
+
+2003-03-12  Simon Josefsson <simon@josefsson.org>
+
+	* Makefile.am: Ignore errors instead of using missing for
+	gengetopt.
+
+2003-03-12  Simon Josefsson <simon@josefsson.org>
+
+	* configure.ac: Ignore errors instead of using missing for
+	gengetopt.  Bump version.
+
+2003-03-12  Simon Josefsson <simon@josefsson.org>
+
+	* libidn.texi: Add platform.
+
+2003-03-12  Simon Josefsson <simon@josefsson.org>
+
+	* ANNOUNCE: Spec update.
+
+2003-03-10  Simon Josefsson <simon@josefsson.org>
+
+	* Makefile.am: Cvs2cl ignore contrib.
+
+2003-03-10  Simon Josefsson <simon@josefsson.org>
+
+	* Makefile.am: Use cvs2cl's new --FSF.
+
+2003-03-08  Simon Josefsson <simon@josefsson.org>
+
+	* punycode.c, punycode.h, example2.c: Sync with RFC.
+
+2003-03-08  Simon Josefsson <simon@josefsson.org>
+
+	* draft-zeilenga-ldapbis-strmatch-02.txt: Add.
+
+2003-03-08  Simon Josefsson <simon@josefsson.org>
+
+	* draft-ietf-idn-idna-14.txt, draft-ietf-idn-nameprep-11.txt,
+	draft-ietf-idn-punycode-03.txt, rfc3490.txt, rfc3491.txt,
+	rfc3492.txt: Replace drafts with RFCs.
+
+2003-03-07  Simon Josefsson <simon@josefsson.org>
+
+	* README-alpha: Mention more prereqs.
+
+2003-03-07  Simon Josefsson <simon@josefsson.org>
+
+	* idna.c: Remove gtk-doc trigger for obsolete functions.
+
+2003-03-07  Simon Josefsson <simon@josefsson.org>
+
+	* libidn.texi: Move appendix last.  Cleanup @copying.
+
+2003-03-07  Simon Josefsson <simon@josefsson.org>
+
+	* Makefile.am: Dist FAQ and contrib/web/idn.php.
+
+2003-03-07  Simon Josefsson <simon@josefsson.org>
+
+	* README: Add.	Move todo list to TODO.
+
+2003-03-07  Simon Josefsson <simon@josefsson.org>
+
+	* TODO: Add, taken from README.
+
+2003-03-06  Simon Josefsson <simon@josefsson.org>
+
+	* libidn.texi: ANNOUNCE sync.
+
+2003-03-06  Simon Josefsson <simon@josefsson.org>
+
+	* ANNOUNCE: Cleanup.
+
+2003-03-06  Simon Josefsson <simon@josefsson.org>
+
+	* FAQ: Update questions and answers.
+
+2003-03-06  Simon Josefsson <simon@josefsson.org>
+
+	* FAQ: Moved faq from file README.
+
+2003-03-06  Simon Josefsson <simon@josefsson.org>
+
+	* README: Move faq to file FAQ.  Add donation info.  Update todo's.
+
+2003-03-06  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add forgotten 0.1.12 items.
+
+2003-03-06  Simon Josefsson <simon@josefsson.org>
+
+	* draft-ietf-ips-iscsi-string-prep-03.txt,
+	draft-ietf-krb-wg-utf8-profile-00.txt: Remove.
+
 2003-03-06  Simon Josefsson <simon@josefsson.org>
 
 	* NEWS: Version 0.1.12.
@@ -13,14 +150,6 @@
 2003-03-06  Simon Josefsson <simon@josefsson.org>
 
 	* libc/README: Fix ace.
-
-2003-03-06  Simon Josefsson <simon@josefsson.org>
-
-	* contrib/web/idn.php: Add errors.
-
-2003-03-06  Simon Josefsson <simon@josefsson.org>
-
-	* contrib/web/idn.php: Support stringprep.
 
 2003-03-06  Simon Josefsson <simon@josefsson.org>
 
@@ -67,71 +196,7 @@
 
 2003-03-02  Simon Josefsson <simon@josefsson.org>
 
-	* contrib/web/idn.php: Fix typo.
-
-2003-03-02  Simon Josefsson <simon@josefsson.org>
-
-	* contrib/web/idn.php: Reorder.  Add errors.
-
-2003-03-02  Simon Josefsson <simon@josefsson.org>
-
-	* contrib/web/idn.php: Fix.
-
-2003-03-02  Simon Josefsson <simon@josefsson.org>
-
-	* contrib/web/idn.php: Add examples.
-
-2003-03-02  Simon Josefsson <simon@josefsson.org>
-
-	* contrib/web/idn.php: Fix ct.  Add example.
-
-2003-03-02  Simon Josefsson <simon@josefsson.org>
-
-	* contrib/web/idn.php: Add example.
-
-2003-03-02  Simon Josefsson <simon@josefsson.org>
-
-	* contrib/web/idn.php: Fix.
-
-2003-03-02  Simon Josefsson <simon@josefsson.org>
-
-	* contrib/web/idn.php: Examples.
-
-2003-03-02  Simon Josefsson <simon@josefsson.org>
-
-	* contrib/web/idn.php: Fix typos.
-
-2003-03-02  Simon Josefsson <simon@josefsson.org>
-
-	* contrib/web/idn.php: Move examples to bottom.
-
-2003-03-02  Simon Josefsson <simon@josefsson.org>
-
-	* contrib/web/idn.php: Add examples.
-
-2003-03-02  Simon Josefsson <simon@josefsson.org>
-
-	* contrib/web/idn.php: Bug reporting.
-
-2003-03-02  Simon Josefsson <simon@josefsson.org>
-
-	* contrib/web/idn.php: Fixes.
-
-2003-03-02  Simon Josefsson <simon@josefsson.org>
-
-	* contrib/web/idn.php: Charset fixes.
-
-2003-03-02  Simon Josefsson <simon@josefsson.org>
-
 	* NEWS: Mention idn.php.
-
-2003-03-02  Simon Josefsson <simon@josefsson.org>
-
-	* contrib/README: Add.
-
-2003-03-02  Simon Josefsson <simon@josefsson.org>
-
-	* contrib/web/idn.php: Add.
 
 2003-03-01  Simon Josefsson <simon@josefsson.org>
 
@@ -151,7 +216,7 @@
 
 2003-03-01  Simon Josefsson <simon@josefsson.org>
 
-	* libc/README, libc/Versions, libc/getaddrinfo.c, libc/libc.patch: 
+	* libc/README, libc/Versions, libc/getaddrinfo.c, libc/libc.patch:
 	Update to libc 2.3.2.
 
 2003-02-28  Simon Josefsson <simon@josefsson.org>
@@ -228,7 +293,7 @@
 
 2003-02-26  Simon Josefsson <simon@josefsson.org>
 
-	* configure.ac: Bump versions.  Look for help2man.
+	* configure.ac: Bump versions.	Look for help2man.
 
 2003-02-26  Simon Josefsson <simon@josefsson.org>
 
@@ -293,7 +358,7 @@
 2003-02-26  Simon Josefsson <simon@josefsson.org>
 
 	* configure.ac: Link with getopt if system doesn't have
-	getopt_long().  Build idn.ggo.
+	getopt_long().	Build idn.ggo.
 
 2003-02-26  Simon Josefsson <simon@josefsson.org>
 
@@ -367,16 +432,6 @@
 2003-02-21  Simon Josefsson <simon@josefsson.org>
 
 	* Makefile.am: Distribute contrib/*.
-
-2003-02-21  Simon Josefsson <simon@josefsson.org>
-
-	* contrib/README: Describe contents of contrib/.
-
-2003-02-21  Simon Josefsson <simon@josefsson.org>
-
-	* contrib/idn-python/Makefile, contrib/idn-python/README,
-	contrib/idn-python/idn.c, contrib/idn-python/test.py: Add Stephane
-	Bortzmeyer's python interface.
 
 2003-02-21  Simon Josefsson <simon@josefsson.org>
 
@@ -474,7 +529,7 @@
 2003-02-19  Simon Josefsson <simon@josefsson.org>
 
 	* profiles.c: Don't normalize or map ASCII space for XMPP nodeprep.
-	Tiny patch from Travis Shirk <TShirk@jabber.com>.
+	 Tiny patch from Travis Shirk <TShirk@jabber.com>.
 
 2003-02-18  Simon Josefsson <simon@josefsson.org>
 
@@ -581,7 +636,7 @@
 
 2003-02-13  Simon Josefsson <simon@josefsson.org>
 
-	* example3.c, example4.c: Fix CFLAGS warnings.  Use official IDNA
+	* example3.c, example4.c: Fix CFLAGS warnings.	Use official IDNA
 	ACE prefix.
 
 2003-02-12  Simon Josefsson <simon@josefsson.org>
@@ -780,7 +835,7 @@
 2003-01-28  Simon Josefsson <simon@josefsson.org>
 
 	* NEWS, libc/Makefile, libc/README, libc/Versions, libc/configure,
-	libc/example.c, libc/getaddrinfo.c, libc/libc.patch, libc/netdb.h: 
+	libc/example.c, libc/getaddrinfo.c, libc/libc.patch, libc/netdb.h:
 	Libidn as libc add-on.
 
 2003-01-28  Simon Josefsson <simon@josefsson.org>
@@ -858,7 +913,7 @@
 
 2003-01-15  Simon Josefsson <simon@josefsson.org>
 
-	* reference/Makefile.am: Add uninstall target.  Fix distcheck
+	* reference/Makefile.am: Add uninstall target.	Fix distcheck
 	builds.
 
 2003-01-15  Simon Josefsson <simon@josefsson.org>
@@ -1102,7 +1157,7 @@
 	* Makefile.am, NEWS, configure.ac, draft-ietf-idn-punycode-03.txt,
 	example.c, example2.c, internal.h, nfkc.c, punycode.c, punycode.h,
 	stringprep.c, stringprep.h.in, tst_punycode.c: Add punycode.  Use
-	"unsigned long" for Unicode code points.  Copying condition fixes.
+	"unsigned long" for Unicode code points.  Copying condition fixes. 
 	Fixes.
 
 2002-12-14  Simon Josefsson <simon@josefsson.org>
@@ -1118,7 +1173,7 @@
 	* AUTHORS, Makefile.am, NEWS, README, THANKS, configure.ac,
 	internal.h, libstringprep.pc.in, strdup.c, stringprep.c,
 	stringprep_generic.h, stringprep_kerberos5.h,
-	stringprep_nameprep.h, toutf8.c, tst_nfkc.c, tst_stringprep.c: 
+	stringprep_nameprep.h, toutf8.c, tst_nfkc.c, tst_stringprep.c:
 	Portability fixes.
 
 2002-12-13  Simon Josefsson <simon@josefsson.org>
@@ -1147,7 +1202,7 @@
 
 2002-12-09  Simon Josefsson <simon@josefsson.org>
 
-	* configure.ac, internal.h, stringprep.c: Use dmalloc.  Fix memory
+	* configure.ac, internal.h, stringprep.c: Use dmalloc.	Fix memory
 	leak when bidi fails.
 
 2002-12-09  Simon Josefsson <simon@josefsson.org>
@@ -1205,7 +1260,7 @@
 
 2002-12-07  Simon Josefsson <simon@josefsson.org>
 
-	* profiles.c, stringprep.c, stringprep.h.in, tst_stringprep.c: 
+	* profiles.c, stringprep.c, stringprep.h.in, tst_stringprep.c:
 	Fixes.
 
 2002-12-07  Simon Josefsson <simon@josefsson.org>
@@ -1255,6 +1310,10 @@
 	* internal.h, nfkc.c, stringprep.c, toutf8.c, tst_nfkc.c,
 	tst_stringprep.c, version.c: Simplify the #include-mess. (NULL
 	wasn't found on alpha-unknown-netbsd1.6)
+
+2002-11-30  Simon Josefsson <simon@josefsson.org>
+
+	* config.rpath: [no log message]
 
 2002-11-30  Simon Josefsson <simon@josefsson.org>
 
