@@ -4,6 +4,10 @@ See the end for copying conditions.
 
 * Version 0.3.2 (unreleased)
 
+** SASL ANONYMOUS stringprep profile "trace" added.
+It is equivalent to the already supported "plain" SASL ANONYMOUS
+stringprep profile, except for the name.
+
 ** API and ABI is backwards compatible with the previous version.
 
 * Version 0.3.1 (released 2003-10-02)
