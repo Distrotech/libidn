@@ -1149,6 +1149,7 @@ static uint32_t pr29_13_1[] = {
   0xD750,		/* LV # Lo       HANGUL SYLLABLE HEU	*/
   0xD76C,		/* LV # Lo       HANGUL SYLLABLE HYI	*/
   0xD788,		/* LV # Lo       HANGUL SYLLABLE HI	*/
+  0
 };
 
 static uint32_t pr29_13_2[] = {
