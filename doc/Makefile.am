@@ -18,6 +18,9 @@
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
 
 SUBDIRS = specifications
+if ENABLE_GTK_DOC
+SUBDIRS += reference
+endif
 
 EXTRA_DIST = gdoc libidn.html libidn.ps libidn.pdf lgpl.texi	\
 	libidn-db.xml libidn-db.txt libidn-db.pdf libidn-db.ps	\
