@@ -1,32 +1,35 @@
 Libidn doc/tld/README -- Notes and definition of the TLD tables.
-Copyright (C) 2004 Free Software Foundation, Inc.
+Copyright (C) 2004  Simon Josefsson
+Copyright (C) 2004  Free Software Foundation, Inc
 See the end for copying conditions.
 
-In "defs" create a directory for each top level domain, for which
-you want a domain restriction structure compiled into the library.
+This directory contain tables that specify which characters are valid
+for each TLD.  Each table is stored in a file XX.tld where XX doesn't
+really matter, but is recommended to be the TLD name.  For example,
+the TLD table for .FR is stored in the file "fr.tld".
 
-Each of these directories must contains a file called "def", detailing the
-unicode values of the legal EXTRA characters (i.e. not a-z0-9.-, that's
-handled internally) AFTER nameprep (e.g. only include lowercase characters
-or comparable local equivalents, see RFC3491). If definitions are shared
-among several TLDs or are constructed from standard unicode blocks,
-putting the building blocks in the directory templates and linking to
-them via the command "#include @templates:filename_from_templates"
-is probably a good idea.
+The library finds all files matching *.tld automatically, so if you
+install a file you only need to remove lib/tlds.c and type 'make' and
+it will be incorporated in the library.
 
-Two mandatory lines must appear in a "def":
+The format for the files are as follows.  Empty lines or those
+starting with '#' are ignored.  It is highly recommended to discuss
+the TLD in comments, to give the URL to the source of the table etc.
+Normal lines consist of valid Unicode code points for the TLD,
+expressed as single numbers (like 123, 0xff, 0100) or inclusive
+intervals (112-344 0xff-0100) using the usual C decimal, octal or hex
+notations.
 
-#source SOURCE_OF_INFORMATION
-#version MAJOR_VERSION.MINOR_VERSION
+If definitions are shared among several TLDs or are constructed from
+standard Unicode blocks, put the building blocks in a file of its own
+and include it using 'include FILENAME' on a line by itself.
 
-e.g.:
-
-#source http://gnu.org/dot.gnu.idntables.html
-#version 3.1415
-
-Character codes may be specified as single numbers (like 123, 0xff, 0100)
-or inclusive intervals (112-344 0xff-0100) using the usual C decimal, octal
-or hex notations.
+All files, even included files, MUST contain a line 'version FOO'
+where FOO is a human readable string that should be possible to use in
+a string comparison to detect when the table has changed.  The version
+number must be changed whenever a backwards incompatible change is
+made to the file.  Don't change the version number just because the
+comments are changed, or there is a new release of the library.
 
 ----------------------------------------------------------------------
 Copying and distribution of this file, with or without modification,
