@@ -289,6 +289,7 @@
     <ul>
 	<li><a href="http://josefsson.org/idn.php?data=r%E4ksm%F6rg%E5s.josefsson.org&mode=toascii&charset=ISO-8859-1">ISO-8859-1 example</a>
 	<li><a href="http://josefsson.org/idn.php?data=r%84ksm%94rg%86s.josefsson.org&mode=toascii&charset=IBM850">IBM850 (aka codepage 850) example (same as previous)</a>
+	<li><a href="http://josefsson.org/idn.php?data=r%C8aksm%C8org%CAas.josefsson.org&mode=toascii&charset=T.61-8BIT">T.61-8BIT example (same as previous)</a>
 	<li><a href="http://josefsson.org/idn.php?data=%E2%82%ACcu&mode=toascii&charset=UTF-8">UTF-8 Euro example</a>
 	<li><a href="http://josefsson.org/idn.php?data=%A4cu&mode=toascii&charset=ISO-8859-15">ISO-8859-15 Euro example (same as previous)</a>
 	<li><a href="http://josefsson.org/idn.php?data=%B0%C2%BC%BC%C6%E0%C8%FE%B7%C3-with-SUPER-MONKEYS&mode=toascii&charset=EUC-JP">EUC-JP example</a>
@@ -297,16 +298,23 @@
 	<li><a href="http://josefsson.org/idn.php?data=%E4%BB%96%E4%BB%AC%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E8%AF%B4%E4%B8%AD%E6%96%87&mode=toascii&charset=UTF-8">UTF-8 Simplified Chinese</a>
 	<li><a href="http://josefsson.org/idn.php?data=%CB%FB%C3%C7%CE%AA%CA%B2%C3%B4%B2%BB%CB%B5%D6%D0%CE%C4&mode=toascii&charset=GB18030">GB18030 Simplified Chinese (same as previous)</a>
 	<li><a href="http://josefsson.org/idn.php?data=%D7%9C%D7%9E%D7%94%D7%94%D7%9D%D7%A4%D7%A9%D7%95%D7%98%D7%9C%D7%90%D7%9E%D7%93%D7%91%D7%A8%D7%99%D7%9D%D7%A2%D7%91%D7%A8%D7%99%D7%AA&mode=toascii&charset=UTF-8">UTF-8 Hebrew</a>
+	<li><a href="http://josefsson.org/idn.php?data=%EC%EE%E4%E4%ED%F4%F9%E5%E8%EC%E0%EE%E3%E1%F8%E9%ED%F2%E1%F8%E9%FA&mode=toascii&charset=ISO-8859-8">ISO-8859-8 Hebrew (same as previous)</a>
 	<li><a href="http://josefsson.org/idn.php?data=%D0%BF%D0%BE%D1%87%D0%B5%D0%BC%D1%83%D0%B6%D0%B5%D0%BE%D0%BD%D0%B8%D0%BD%D0%B5%D0%B3%D0%BE%D0%B2%D0%BE%D1%80%D1%8F%D1%82%D0%BF%D0%BE%D1%80%D1%83%D1%81%D1%81%D0%BA%D0%B8&mode=toascii&charset=UTF-8">UTF-8 Russian (Cyrillic)</a>
 	<li><a href="http://josefsson.org/idn.php?data=%D0%CF%DE%C5%CD%D5%D6%C5%CF%CE%C9%CE%C5%C7%CF%D7%CF%D2%D1%D4%D0%CF%D2%D5%D3%D3%CB%C9&mode=toascii&charset=KOI8-R">KOI8-R Russian Cyrillic (same as previous)</a>
 	<li><a href="http://josefsson.org/idn.php?data=%D0%CF%DE%C5%CD%D5%D6%C5%CF%CE%C9%CE%C5%C7%CF%D7%CF%D2%D1%D4%D0%CF%D2%D5%D3%D3%CB%C9&mode=toascii&charset=ECMA-CYRILLIC">ECMA-CYRILLIC Russian Cyrillic (same as previous)</a>
 	<li><a href="http://josefsson.org/idn.php?data=T%E1%BA%A1isaoh%E1%BB%8Dkh%C3%B4ngth%E1%BB%83ch%E1%BB%89n%C3%B3iti%E1%BA%BFngVi%E1%BB%87t&mode=toascii&charset=UTF-8">UTF-8 Vietnamese</a>
+	<li><a href="http://josefsson.org/idn.php?data=t%D5isaoh%F7kh%F4ngth%ACch%EFn%F3iti%AAngvi%AEt&mode=toascii&charset=VISCII">VISCII Vietnamese (same as previous)</a>
 	<li><a href="http://josefsson.org/idn.php?data=%E3%81%B2%E3%81%A8%E3%81%A4%E5%B1%8B%E6%A0%B9%E3%81%AE%E4%B8%8B2&mode=toascii&charset=UTF-8">UTF-8 Japanese</a>
 	<li><a href="http://josefsson.org/idn.php?data=%A4%D2%A4%C8%A4%C4%B2%B0%BA%AC%A4%CE%B2%BC2&mode=toascii&charset=EUC-JP">EUC-JP Japanese (same as previous)</a>
 	<li><a href="http://josefsson.org/idn.php?data=%82%D0%82%C6%82%C2%89%AE%8D%AA%82%CC%89%BA2&mode=toascii&charset=SHIFT_JIS">SHIFT_JIS Japanese (same as previous)</a>
 	<li><a href="http://josefsson.org/idn.php?data=Pro%C4%8Dprost%C4%9Bnemluv%C3%AD%C4%8Desky&mode=toascii&charset=UTF-8">UTF-8 Czech</a>
 	<li><a href="http://josefsson.org/idn.php?data=Pro%E8prost%ECnemluv%ED%E8esky&mode=toascii&charset=ISO-8859-2">ISO-8859-2 Czech (same as previous)</a>
 	<li><a href="http://josefsson.org/idn.php?data=%E0%A4%AF%E0%A4%B9%E0%A4%B2%E0%A5%8B%E0%A4%97%E0%A4%B9%E0%A4%BF%E0%A4%A8%E0%A5%8D%E0%A4%A6%E0%A5%80%E0%A4%95%E0%A5%8D%E0%A4%AF%E0%A5%8B%E0%A4%82%E0%A4%A8%E0%A4%B9%E0%A5%80%E0%A4%82%E0%A4%AC%E0%A5%8B%E0%A4%B2%E0%A4%B8%E0%A4%95%E0%A4%A4%E0%A5%87%E0%A4%B9%E0%A5%88%E0%A4%82&mode=toascii&charset=UTF-8">UTF-8 Hindi Devanagari</a>
+	<li><a href="http://josefsson.org/idn.php?data=%E0%BA%9E%E0%BA%B2%E0%BA%AA%E0%BA%B2%E0%BA%A5%E0%BA%B2%E0%BA%A7&mode=toascii&charset=UTF-8">UTF-8 Lao</a>
+	<li><a href="http://josefsson.org/idn.php?data=bon%C4%A1usa%C4%A7%C4%A7a&mode=toascii&charset=UTF-8">UTF-8 Maltese Malti</a>
+	<li><a href="http://josefsson.org/idn.php?data=bon%F5usa%B1%B1a&mode=toascii&charset=ISO-8859-3">ISO-8859-3 Maltese Malti (same as previous)</a>
+	<li><a href="http://josefsson.org/idn.php?data=%CE%B5%CE%BB%CE%BB%CE%B7%CE%BD%CE%B9%CE%BA%CE%AC&mode=toascii&charset=UTF-8">UTF-8 Greek</a>
+	<li><a href="http://josefsson.org/idn.php?data=%E5%EB%EB%E7%ED%E9%EA%DC&mode=toascii&charset=ISO-8859-7">ISO-8859-7 Greek</a>
     </ul>
 
     <hr>
