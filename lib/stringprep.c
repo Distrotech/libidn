@@ -104,7 +104,7 @@ stringprep_apply_table_to_string (uint32_t * ucs4,
    ( INVERTED(profileflags) && (profileflags & flags)))
 
 /**
- * stringprep_4i:
+ * stringprep_4i - prepare internationalized string
  * @ucs4: input/output array with string to prepare.
  * @len: on input, length of input array with Unicode code points,
  *   on exit, length of output array with Unicode code points.
@@ -292,7 +292,7 @@ stringprep_4zi_1 (uint32_t * ucs4, size_t ucs4len, size_t maxucs4len,
 }
 
 /**
- * stringprep_4zi:
+ * stringprep_4zi - prepare internationalized string
  * @ucs4: input/output array with zero terminated string to prepare.
  * @maxucs4len: maximum length of input/output array.
  * @flags: a #Stringprep_profile_flags value, or 0.
@@ -329,7 +329,7 @@ stringprep_4zi (uint32_t * ucs4, size_t maxucs4len,
 }
 
 /**
- * stringprep:
+ * stringprep - prepare internationalized string
  * @in: input/ouput array with string to prepare.
  * @maxlen: maximum length of input/output array.
  * @flags: a #Stringprep_profile_flags value, or 0.
@@ -411,7 +411,7 @@ stringprep (char *in,
 }
 
 /**
- * stringprep_profile:
+ * stringprep_profile - prepare internationalized string
  * @in: input array with UTF-8 string to prepare.
  * @out: output variable with pointer to newly allocate string.
  * @profile: name of stringprep profile to use.

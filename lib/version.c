@@ -64,7 +64,7 @@ parse_version_string (const char *s, int *major, int *minor, int *micro)
 }
 
 /**
- * stringprep_check_version
+ * stringprep_check_version - check for library version
  * @req_version: Required version number, or NULL.
  *
  * Check that the the version of the library is at minimum the requested one

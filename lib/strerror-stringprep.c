@@ -25,7 +25,7 @@
 #define _(String) dgettext (PACKAGE, String)
 
 /**
- * stringprep_strerror:
+ * stringprep_strerror - return string describing stringprep error code
  * @rc: a #Stringprep_rc return code.
  *
  * Convert a return code integer to a text string.  This string can be

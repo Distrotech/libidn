@@ -35,7 +35,7 @@
 extern const Tld_table *_tld_tables[];
 
 /**
- * tld_get_table:
+ * tld_get_table - get table for a TLD name in table
  * @tld: TLD name (e.g. "com") as zero terminated ASCII byte string.
  * @tables: Zero terminated array of #Tld_table info-structures for
  *   TLDs.
@@ -62,7 +62,7 @@ tld_get_table (const char *tld, const Tld_table ** tables)
 }
 
 /**
- * tld_default_table:
+ * tld_default_table - get table for a TLD name
  * @tld: TLD name (e.g. "com") as zero terminated ASCII byte string.
  * @overrides: Additional zero terminated array of #Tld_table
  *   info-structures for TLDs, or %NULL to only use library deault
@@ -96,7 +96,7 @@ tld_default_table (const char *tld, const Tld_table ** overrides)
 		 (c) == 0xFF0E || (c) == 0xFF61)
 
 /**
- * tld_get_4:
+ * tld_get_4 - extract top level domain part in input Unicode string
  * @in: Array of unicode code points to process. Does not need to be
  *   zero terminated.
  * @inlen: Number of unicode code points.
@@ -146,7 +146,7 @@ tld_get_4 (const uint32_t * in, size_t inlen, char **out)
 }
 
 /**
- * tld_get_4z:
+ * tld_get_4z - extract top level domain part in input Unicode string
  * @in: Zero terminated array of unicode code points to process.
  * @out: Zero terminated ascii result string pointer.
  *
@@ -171,7 +171,7 @@ tld_get_4z (const uint32_t * in, char **out)
 }
 
 /**
- * tld_get_z:
+ * tld_get_z - extract top level domain part in input string
  * @in: Zero terminated character array to process.
  * @out: Zero terminated ascii result string pointer.
  *
@@ -206,7 +206,7 @@ tld_get_z (const char *in, char **out)
 }
 
 /*
- * tld_checkchar:
+ * tld_checkchar - verify that character is permitted
  * @ch: 32 bit unicode character to check.
  * @tld: A #Tld_table data structure to check @ch against.
  *
@@ -247,7 +247,7 @@ _tld_checkchar (uint32_t ch, const Tld_table * tld)
 }
 
 /**
- * tld_check_4t
+ * tld_check_4t - verify that characters are permitted
  * @in: Array of unicode code points to process. Does not need to be
  *   zero terminated.
  * @inlen: Number of unicode code points.
@@ -291,7 +291,7 @@ tld_check_4t (const uint32_t * in, size_t inlen, size_t * errpos,
 }
 
 /**
- * tld_check_4tz
+ * tld_check_4tz - verify that characters are permitted
  * @in: Zero terminated array of unicode code points to process.
  * @errpos: Position of offending character is returned here.
  * @tld: A #Tld_table data structure representing the restrictions for
@@ -322,7 +322,7 @@ tld_check_4tz (const uint32_t * in, size_t * errpos, const Tld_table * tld)
 }
 
 /**
- * tld_check_4
+ * tld_check_4 - verify that characters are permitted
  * @in: Array of unicode code points to process. Does not need to be
  *   zero terminated.
  * @inlen: Number of unicode code points.
@@ -374,7 +374,7 @@ tld_check_4 (const uint32_t * in, size_t inlen, size_t * errpos,
 }
 
 /**
- * tld_check_4z
+ * tld_check_4z - verify that characters are permitted
  * @in: Zero-terminated array of unicode code points to process.
  * @errpos: Position of offending character is returned here.
  * @overrides: A #Tld_table array of additional domain restriction
@@ -410,7 +410,7 @@ tld_check_4z (const uint32_t * in, size_t * errpos,
 }
 
 /**
- * tld_check_8z
+ * tld_check_8z - verify that characters are permitted
  * @in: Zero-terminated UTF8 string to process.
  * @errpos: Position of offending character is returned here.
  * @overrides: A #Tld_table array of additional domain restriction
@@ -455,7 +455,7 @@ tld_check_8z (const char *in, size_t * errpos, const Tld_table ** overrides)
 }
 
 /**
- * tld_check_lz
+ * tld_check_lz - verify that characters are permitted
  * @in: Zero-terminated string in the current locales encoding to process.
  * @errpos: Position of offending character is returned here.
  * @overrides: A #Tld_table array of additional domain restriction
