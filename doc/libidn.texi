@@ -898,16 +898,17 @@ introduced with no changes to the existing infrastructure. IDNA is
 only meant for processing domain names, not free text.
 
 The idea behind the IDNA function names are as follows: the
-@code{idna_to_ascii_4i} and @code{idna_to_unicode_44i} functions
-are the core IDNA primitives.  The @code{4} indicate that the function
+@code{idna_to_ascii_4i} and @code{idna_to_unicode_44i} functions are
+the core IDNA primitives.  The @code{4} indicate that the function
 takes UCS-4 strings (i.e., Unicode code points encoded in a 32-bit
 unsigned integer type) of the specified length.  The @code{i} indicate
-that the data is written ``inline'' into the buffer, i.e., the caller
-is responsible for allocating (and deallocating) the string, and the
-real output length is written in the output length variable.  The
+that the data is written ``inline'' into the buffer.  This means the
+caller is responsible for allocating (and deallocating) the string,
+and providing the library with the allocated length of the string.
+The output length is written in the output length variable.  The
 remaining functions all contain the @code{z} indicator, which means
-the strings are zero terminated.  All output strings are allocate by
-the library, and must be deallocate by the caller.  The @code{4}
+the strings are zero terminated.  All output strings are allocated by
+the library, and must be deallocated by the caller.  The @code{4}
 indicator again means that the string is UCS-4, the @code{8} means the
 strings are UTF-8 and the @code{l} indicator means the strings are
 encoded in the encoding used by the current locale.
