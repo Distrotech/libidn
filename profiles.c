@@ -428,3 +428,65 @@ Stringprep_profile stringprep_iscsi[] = {
   ,
   {0}
 };
+
+Stringprep_table_element stringprep_saslprep_space_map[] = {
+  { 0x0000A0, 0, { 0x0020 }},               /* 00A0; NO-BREAK SPACE */
+  { 0x001680, 0, { 0x0020 }},             /* 1680; OGHAM SPACE MARK */
+  { 0x002000, 0, { 0x0020 }},                      /* 2000; EN QUAD */
+  { 0x002001, 0, { 0x0020 }},                      /* 2001; EM QUAD */
+  { 0x002002, 0, { 0x0020 }},                     /* 2002; EN SPACE */
+  { 0x002003, 0, { 0x0020 }},                     /* 2003; EM SPACE */
+  { 0x002004, 0, { 0x0020 }},           /* 2004; THREE-PER-EM SPACE */
+  { 0x002005, 0, { 0x0020 }},            /* 2005; FOUR-PER-EM SPACE */
+  { 0x002006, 0, { 0x0020 }},             /* 2006; SIX-PER-EM SPACE */
+  { 0x002007, 0, { 0x0020 }},                 /* 2007; FIGURE SPACE */
+  { 0x002008, 0, { 0x0020 }},            /* 2008; PUNCTUATION SPACE */
+  { 0x002009, 0, { 0x0020 }},                   /* 2009; THIN SPACE */
+  { 0x00200A, 0, { 0x0020 }},                   /* 200A; HAIR SPACE */
+  { 0x00200B, 0, { 0x0020 }},             /* 200B; ZERO WIDTH SPACE */
+  { 0x00202F, 0, { 0x0020 }},        /* 202F; NARROW NO-BREAK SPACE */
+  { 0x00205F, 0, { 0x0020 }},    /* 205F; MEDIUM MATHEMATICAL SPACE */
+  { 0x003000, 0, { 0x0020 }},            /* 3000; IDEOGRAPHIC SPACE */
+  { 0 }
+};
+
+Stringprep_profile stringprep_saslprep[] = {
+  {STRINGPREP_MAP_TABLE, 0, stringprep_saslprep_space_map, "SASL-SPACE-MAP"}
+  ,
+  {STRINGPREP_MAP_TABLE, 0, stringprep_generic_B_1, "B.1"}
+  ,
+  {STRINGPREP_NFKC, 0, 0, "NFKC"}
+  ,
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_2_2, "C.1.2"}
+  ,
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_2_1, "C.2.1"}
+  ,
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_2_2, "C.2.2"}
+  ,
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_3, "C.3"}
+  ,
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_4, "C.4"}
+  ,
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_5, "C.5"}
+  ,
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_6, "C.6"}
+  ,
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_8, "C.8"}
+  ,
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_9, "C.9"}
+  ,
+  {STRINGPREP_BIDI, 0, 0, "BIDI"}
+  ,
+  {STRINGPREP_BIDI_PROHIBIT_TABLE, 0, stringprep_generic_C_8, "C.8"}
+  ,
+  {STRINGPREP_BIDI_RAL_TABLE, ~STRINGPREP_NO_BIDI, stringprep_generic_D_1,
+   "D.1"}
+  ,
+  {STRINGPREP_BIDI_L_TABLE, ~STRINGPREP_NO_BIDI, stringprep_generic_D_2,
+   "D.2"}
+  ,
+  {STRINGPREP_UNASSIGNED_TABLE, ~STRINGPREP_NO_UNASSIGNED,
+   stringprep_generic_A_1, "A.1"}
+  ,
+  {0}
+};
