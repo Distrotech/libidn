@@ -4,7 +4,10 @@ See the end for copying conditions.
 
 * Version 0.5.5 (unreleased)
 
+** Hide accidentally exported variable g_utf8_skip, by marking it as static.
+
 ** API and ABI is backwards compatible with the previous version.
+g_utf8_skip: REMOVED.  (But never meant to be used.)
 
 * Version 0.5.4 (released 2004-08-08)
 
