@@ -53,7 +53,14 @@ AC_CHECK_HEADERS(unistd.h errno.h)
 AX_CREATE_STDINT_H(lib/idn-int.h, sys/types.h)
 
 # Need getopt.
-AC_CHECK_FUNCS(getopt_long,, [AC_LIBOBJ(getopt) AC_LIBOBJ(getopt1)])
+GETOPT_H=
+AC_CHECK_HEADERS([getopt.h], [], [GETOPT_H=getopt.h])
+AC_CHECK_FUNCS([optarg optind opterr optopt \
+                getopt getopt_long getopt_long_only], [],
+  [GETOPT_H=getopt.h; AC_LIBOBJ([getopt]) AC_LIBOBJ([getopt1])
+   AC_DEFINE([getopt], [rpl_getopt],
+     [Define to rpl_getopt if the replacement function should be used])])
+AC_SUBST([GETOPT_H])
 
 # Check if locale stuff works
 AC_CACHE_CHECK([if setlocale() and nl_langinfo() works],

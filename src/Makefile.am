@@ -23,18 +23,26 @@ dist_lisp_DATA = punycode.el idna.el
 
 bin_PROGRAMS = idn
 
-BUILT_SOURCES = idn_cmd.c idn_cmd.h
-idn_SOURCES = idn.c gettext.h $(BUILT_SOURCES) idn.ggo
-EXTRA_DIST = getopt.h
+BUILT_SOURCES = idn_cmd.c idn_cmd.h $(GETOPT_H)
+idn_SOURCES = idn.c gettext.h idn.ggo idn_cmd.c idn_cmd.h
+EXTRA_DIST = getopt_.h getopt_int.h
 DISTCLEANFILES = $(BUILT_SOURCES)
 idn_LDADD = ../lib/libidn.la $(LTLIBINTL) $(LTLIBOBJS)
+
+# We need the following in order to create an <getopt.h> when the system
+# doesn't have one that works with the given compiler.
+all-local $(idn_OBJECTS): $(GETOPT_H)
+getopt.h: getopt_.h
+	cp $(srcdir)/getopt_.h $@-t
+	mv $@-t $@
+MOSTLYCLEANFILES = getopt.h getopt.h-t
 
 localedir = $(datadir)/locale
 DEFS = -DLOCALEDIR=\"$(localedir)\" @DEFS@
 
 idn.c: $(BUILT_SOURCES)
 
-$(BUILT_SOURCES): idn.ggo
+idn_cmd.c idn_cmd.h: idn.ggo
 	gengetopt --unamed-opts --input $^ --file-name idn_cmd || \
 		test -f idn_cmd.h -a -f idn_cmd.c || \
 		cp $(srcdir)/idn_cmd.h $(srcdir)/idn_cmd.h .
