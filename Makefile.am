@@ -19,10 +19,6 @@
 
 SUBDIRS = m4 lib src doc tests examples
 
-if ENABLE_GTK_DOC
-SUBDIRS += reference
-endif
-
 ACLOCAL_AMFLAGS = -I m4
 
 EXTRA_DIST = Makefile.cfg Makefile.maint GNUmakefile \
