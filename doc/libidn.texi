@@ -680,59 +680,58 @@ gcc -o foo foo.c `pkg-config libidn --cflags --libs`
 @cindex Autoconf tests
 @cindex Configure tests
 
-If you work on a project that uses Autoconf (@pxref{top, GNU
-Autoconf,, autoconf}) to help find installed libraries, the
-suggestions in the previous section are not the entire story.  There
-are a few methods to detect and incorporate Libidn into your Autoconf
-based package.
-
-@subsection Autoconf test via @samp{pkg-config}
-
-If your audience is a typical GNU/Linux desktop, you can often assume
-they have the @samp{pkg-config} tool installed, in which you can use
-its Autoconf M4 macro to find and set up your package for use with
-Shishi.  The following illustrate this scenario.
+If your project uses Autoconf (@pxref{top, GNU Autoconf,, autoconf})
+to check for installed libraries, you might find the following snippet
+illustrative.  It add a new @file{configure} parameter
+@code{--with-libidn}, and check for @file{idna.h} and @samp{-lidn}
+(possibly below the directory specified as the optional argument to
+@code{--with-libidn}), and define the @acronym{CPP} symbol
+@code{LIBIDN} if the library is found.  The default behaviour is to
+search for the library and enable the functionality (that is, define
+the symbol) when the library is found, but if you wish to make the
+default behaviour of your package be that Libidn is not used (even if
+it is installed on the system), change @samp{libidn=yes} to
+@samp{libidn=no} on the third line.
 
 @example
-AC_ARG_ENABLE(idn,
-	AC_HELP_STRING([--disable-idn],
-                       [Don't use Libidn]),
-	libidn=$enableval)
+AC_ARG_WITH(idn, AC_HELP_STRING([--with-libidn=[DIR]],
+                                [Support IDN (needs GNU Libidn)]),
+  libidn=$withval, libidn=yes)
+if test "$libidn" != "no"; then
+  if test "$libidn" != "yes"; then
+    LDFLAGS="$@{LDFLAGS@} -L$libidn/lib"
+    CPPFLAGS="$@{CPPFLAGS@} -I$libidn/include"
+  fi
+  AC_CHECK_HEADER(idna.h,
+    AC_CHECK_LIB(idn, stringprep_check_version,
+      [libidn=yes LIBS="$@{LIBS@} -lidn"], libidn=no),
+    libidn=no)
+fi
 if test "$libidn" != "no" ; then
-	PKG_CHECK_MODULES(LIBIDN, libidn >= 0.0.0,
-			[libidn=yes],
-                        [libidn=no])
-	if test "$libidn" != "yes" ; then
-		libidn=no
-		AC_MSG_WARN([Libidn not found])
-	else
-		libidn=yes
-		AC_DEFINE(USE_LIBIDN, 1, [Define to 1 if you want Libidn.])
-	fi
+  AC_DEFINE(LIBIDN, 1, [Define to 1 if you want IDN support.])
+else
+  AC_MSG_WARN([Libidn not found])
 fi
 AC_MSG_CHECKING([if Libidn should be used])
 AC_MSG_RESULT($libidn)
 @end example
 
-@subsection Standalone Autoconf test
-
-The following illustrate a standalone autconf test, that work
-regardless of if your project Libtool (@pxref{top, GNU Libtool,,
-libtool}) or not.  It is the most portable solution, and is
-recommended.
+If you require that your users have installed @code{pkg-config} (which
+I cannot recommend generally), the above can be done more easily as
+follows.
 
 @example
-AC_CHECK_HEADER(idna.h,
-	AC_CHECK_LIB(idn, stringprep_check_version,
-		[libidn=yes AC_SUBST(SHISHI_LIBS, -lidn)],
-		libidn=no),
-	libidn=no)
-AC_ARG_ENABLE(idn, AC_HELP_STRING([--disable-idn], [Don't use Libidn]),
-	libidn=$enableval)
+AC_ARG_WITH(idn, AC_HELP_STRING([--with-idn], [Support IDN]),
+  libidn=$withval, libidn=yes)
 if test "$libidn" != "no" ; then
-	AC_DEFINE(USE_LIBIDN, 1, [Define to 1 if you want Libidn.])
-else
-	AC_MSG_WARN([Libidn not found])
+  PKG_CHECK_MODULES(LIBIDN, libidn >= 0.0.0, [libidn=yes], [libidn=no])
+  if test "$libidn" != "yes" ; then
+    libidn=no
+    AC_MSG_WARN([Libidn not found])
+  else
+    libidn=yes
+    AC_DEFINE(LIBIDN, 1, [Define to 1 if you want Libidn.])
+  fi
 fi
 AC_MSG_CHECKING([if Libidn should be used])
 AC_MSG_RESULT($libidn)
