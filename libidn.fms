@@ -9,9 +9,9 @@ BSD-Port-URL: http://www.freshports.org/devel/libidn/
 CVS-URL: http://josefsson.org/cgi-bin/viewcvs.cgi/libidn/
 Mirror-Site-URL: http://josefsson.org/libidn
 Demo-URL: http://josefsson.org/idn.php
-Version: 0.5.12
-Release-Focus: Minor feature enhancements
+Version: 0.5.13
+Release-Focus: Minor bugfixes
 
-Java code now support the XMPP NodePrep and ResourcePrep profiles.
-Bug fixes and improvements to Java code.  Update getopt from gnulib.
-Documentation improvements.
+The code to convert data between character encodings have been cleaned
+up.  It is now possible to bootstrap with unmodified Automake
+installations.  Translation improvements.
