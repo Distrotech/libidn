@@ -62,6 +62,13 @@ please let me know so work duplication can be avoided.
   - Add texi documentation.
   - Implement rest of IDN?  Possibly separate project.
 
+Before it becomes a FAQ: This library do not link with GLIB for the
+UTF-8 functions for two reasons.  First, GLIB does not provide
+versioning of the Unicode tables (and the developers said it will not
+be added either) and this package must know the Unicode version used.
+Secondly, GLIB requires some things (e.g., threads) that would make
+this package less portable.
+
 For more information see <URL:http://josefsson.org/libstringprep/>.
 
 Send all bug reports by electronic mail to bug-libstringprep@josefsson.org.
