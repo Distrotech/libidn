@@ -416,3 +416,10 @@ punycode_decode (size_t input_length,
   *output_length = out;
   return punycode_success;
 }
+
+/**
+ * punycode_uint
+ *
+ * Unicode code point data type, this is always a 32 bit unsigned
+ * integer.
+ */
