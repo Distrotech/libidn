@@ -598,7 +598,9 @@ sub output_man {
 
     print ".SH NAME\n";
 
-    print $args{'function'}."\n";
+    print $args{'function'};
+    print " \\- " . $args{'purpose'} if ($args{'purpose'});
+    print "\n";
 
     print ".SH SYNOPSIS\n";
     print ".B #include <". $args{'include'} . ">\n"
@@ -812,7 +814,7 @@ foreach $file (@ARGV) {
 	    if (/$doc_func/o) {
 		$function = $1;
 		$state = 2;
-		if (/-(.*)/) {
+		if (/-\s*(.*)/) {
 		    $function_purpose = $1;
 		} else {
 		    $function_purpose = "";
