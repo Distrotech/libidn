@@ -243,17 +243,25 @@ main (int argc, char *argv[])
 	      return 1;
 	    }
 
+	  q = stringprep_utf8_to_ucs4 (p, -1, NULL);
+	  if (!q)
+	    {
+	      free(p);
+	      fprintf(stderr, "%s: could not convert from UCS-4 to UTF-8.\n",
+		      argv[0]);
+	      return 1;
+	    }
 	  if (args_info.debug_given)
 	    {
 	      size_t i;
-	      for (i = 0; p[i]; i++)
-		fprintf(stderr, "input[%d] = U+%04x\n", i, p[i] & 0xFFFF);
+	      for (i = 0; q[i]; i++)
+		fprintf(stderr, "input[%d] = U+%04x\n", i, q[i] & 0xFFFF);
 	    }
 
-	  rc = idna_to_ascii_from_utf8 (p, &r,
+	  rc = idna_to_ascii_from_ucs4 (q, &r,
 					args_info.allow_unassigned_given,
 					args_info.usestd3asciirules_given);
-	  free(p);
+	  free(q);
 	  if (rc != IDNA_SUCCESS)
 	    {
 	      fprintf(stderr, "%s: idna_to_ascii_from_locale() failed "
@@ -275,15 +283,24 @@ main (int argc, char *argv[])
 	      return 1;
 	    }
 
+	  q = stringprep_utf8_to_ucs4 (p, -1, NULL);
+	  if (!q)
+	    {
+	      free(p);
+	      fprintf(stderr, "%s: could not convert from UCS-4 to UTF-8.\n",
+		      argv[0]);
+	      return 1;
+	    }
 	  if (args_info.debug_given)
 	    {
 	      size_t i;
-	      for (i = 0; p[i]; i++)
-		fprintf(stderr, "input[%d] = U+%04x\n", i, p[i] & 0xFFFF);
+	      for (i = 0; q[i]; i++)
+		fprintf(stderr, "input[%d] = U+%04x\n", i, q[i] & 0xFFFF);
 	    }
+	  free(q);
 
-	  rc = idna_to_unicode_utf8_from_utf8
-	    (p, &r, args_info.allow_unassigned_given,
+	  rc = idna_to_unicode_ucs4_from_utf8
+	    (p, &q, args_info.allow_unassigned_given,
 	     args_info.usestd3asciirules_given);
 	  free(p);
 	  if (rc != IDNA_SUCCESS)
@@ -296,13 +313,22 @@ main (int argc, char *argv[])
 	  if (args_info.debug_given)
 	    {
 	      size_t i;
-	      for (i = 0; r[i]; i++)
-		fprintf(stderr, "output[%d] = U+%04x\n", i, r[i] & 0xFFFF);
+	      for (i = 0; q[i]; i++)
+		fprintf(stderr, "output[%d] = U+%04x\n", i, q[i] & 0xFFFF);
 	    }
 
-	  fprintf(stdout, "%s\n", r);
+	  p = stringprep_ucs4_to_utf8 (q, -1, NULL, NULL);
+	  if (!p)
+	    {
+	      free(q);
+	      fprintf(stderr, "%s: could not convert from UCS-4 to UTF-8.\n",
+		      argv[0]);
+	      return 1;
+	    }
 
-	  free(r);
+	  fprintf(stdout, "%s\n", p);
+
+	  free(p);
 	}
 
     }
