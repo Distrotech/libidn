@@ -22,7 +22,9 @@ SUBDIRS = . m4 gl lib src doc @GTKDOC@ tests examples
 
 ACLOCAL_AMFLAGS = -I m4 -I gl/m4
 
-EXTRA_DIST = FAQ libidn.pc.in \
+EXTRA_DIST = Makefile.cfg Makefile.maint GNUmakefile \
+	.prev-version announce-gen \
+	FAQ libidn.pc.in \
 	libc/README libc/Makefile libc/Versions libc/configure \
 	libc/example.c libc/getaddrinfo.c libc/libc.patch libc/netdb.h \
 	contrib/README contrib/idn-python/README contrib/idn-python/Makefile \
@@ -48,24 +50,3 @@ ChangeLog:
 
 indent:
 	indent $(SOURCES)
-
-htmldir = ../www-$(PACKAGE)
-tag = $(PACKAGE)-`echo $(VERSION) | sed 's/\./-/g'`
-
-release:
-	cvs upd -p -r HEAD NEWS > /dev/null
-	if cvs upd -p -r $(tag) NEWS > /dev/null; then false else true; fi
-	rm -f ChangeLog && cvs upd ChangeLog
-	cvs commit
-	rm -f ChangeLog
-	$(MAKE) ChangeLog distcheck
-	cvs commit -m "" ChangeLog
-	rm -f $(distdir).tar.gz.asc
-	gpg -a --sign --detach $(distdir).tar.gz
-	gpg --verify $(distdir).tar.gz.asc
-	-cd contrib/doxygen && doxygen && cp -v html/* $(htmldir)/doxygen/
-	-cp -v doc/$(PACKAGE).{ps,pdf,html} $(htmldir)/ && \
-		cp -v reference/*.html $(htmldir)/reference/ && \
-		cd $(htmldir) && cvs commit -m "Update." \
-			$(PACKAGE).{ps,pdf,html} reference/*.html doxygen/*
-	cvs rtag $(tag) $(PACKAGE)
