@@ -1,3 +1,72 @@
+2004-11-08  Simon Josefsson <simon@josefsson.org>
+
+	* po/da.po, po/de.po, po/eo.po, po/fr.po, po/nl.po, po/pl.po,
+	po/ro.po, po/sr.po, po/sv.po: Generated.
+
+2004-11-08  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Version 0.5.10.
+
+2004-11-08  Simon Josefsson <simon@josefsson.org>
+
+	* tests/tst_pr29.c: No need for stringprep.h.
+
+2004-11-08  Simon Josefsson <simon@josefsson.org>
+
+	* tests/tst_idna.c, tests/tst_idna2.c, tests/tst_nfkc.c,
+	tests/tst_punycode.c, tests/tst_stringprep.c, examples/example2.c,
+	libc/example.c: Cosmetic fix.
+
+2004-11-08  Simon Josefsson <simon@josefsson.org>
+
+	* tests/utils.c: Typo.
+
+2004-11-08  Simon Josefsson <simon@josefsson.org>
+
+	* po/da.po, po/de.po, po/eo.po, po/fr.po, po/nl.po, po/pl.po,
+	po/ro.po, po/sr.po, po/sv.po: Sync with TP.
+
+2004-11-08  Simon Josefsson <simon@josefsson.org>
+
+	* Makefile.am: Simplify EXTRA_DIST.
+
+2004-11-08  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2004-11-08  Simon Josefsson <simon@josefsson.org>
+
+	* lib/Makefile.am: Use Libtool's -export-symbols-regex.
+
+2004-11-08  Simon Josefsson <simon@josefsson.org>
+
+	* lib/idna.c, lib/nfkc.c, lib/profiles.c, lib/punycode.c,
+	lib/toutf8.c, lib/version.c: Cosmetic fix.
+
+2004-11-08  Simon Josefsson <simon@josefsson.org>
+
+	* lib/tld.c: Add copyright header for me.
+
+2004-11-07  Simon Josefsson <simon@josefsson.org>
+
+	* libidn.fms: Add.
+
+2004-11-07  Simon Josefsson <simon@josefsson.org>
+
+	* README-alpha: Fix.
+
+2004-11-07  Simon Josefsson <simon@josefsson.org>
+
+	* FAQ: Add.
+
+2004-11-07  Simon Josefsson <simon@josefsson.org>
+
+	* AUTHORS: Update PGP key.
+
+2004-11-07  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS, configure.ac: Bump versions.
+
 2004-11-07  Simon Josefsson <simon@josefsson.org>
 
 	* po/da.po, po/de.po, po/eo.po, po/fr.po, po/nl.po, po/pl.po,
