@@ -2,7 +2,7 @@ Libidn NEWS -- History of user-visible changes.                 -*- outline -*-
 Copyright (C) 2002, 2003 Simon Josefsson
 See the end for copying conditions.
 
-* Version 0.2.4 (unreleased)
+* Version 0.3.0 (unreleased)
 
 ** Ported to Mac OS X.
 
@@ -12,7 +12,10 @@ See the end for copying conditions.
 
 ** Man pages for all public API functions are included.
 
-** API and ABI is backwards compatible with the previous version.
+** API and ABI is NOT backwards compatible with the previous version.
+All previously labeled (since 0.1.x) obsolete functions have been dropped.
+The use of 'enum' types instead of 'int' added in 0.2.3 reverted, it
+confused documentation generators and wasn't all that common practice.
 
 * Version 0.2.3 (released 2003-08-26)
 
