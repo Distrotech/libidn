@@ -55,7 +55,7 @@ stringprep_find_string_in_table (uint32_t * ucs4,
   return -1;
 }
 
-static enum Stringprep_rc
+static int
 stringprep_apply_table_to_string (uint32_t * ucs4,
 				  size_t * ucs4len,
 				  size_t maxucs4len,
@@ -113,10 +113,10 @@ stringprep_apply_table_to_string (uint32_t * ucs4,
  *
  * Return value: Returns 0 iff successful, or an error code.
  **/
-enum Stringprep_rc
+int
 stringprep (char *in,
 	    size_t maxlen,
-	    enum Stringprep_profile_flags flags, Stringprep_profile * profile)
+	    Stringprep_profile_flags flags, Stringprep_profile * profile)
 {
   size_t i, j;
   ssize_t k;
@@ -318,10 +318,9 @@ done:
  *
  * Return value: Returns 0 iff successful, or an error code.
  **/
-enum Stringprep_rc
+int
 stringprep_profile (char *in,
-		    char **out,
-		    char *profile, enum Stringprep_profile_flags flags)
+		    char **out, char *profile, Stringprep_profile_flags flags)
 {
   Stringprep_profiles *p;
   char *str;
