@@ -31,7 +31,7 @@ nodist_include_HEADERS = $(idn_int)
 
 libidn_la_SOURCES = gunibreak.h gunicomp.h gunidecomp.h internal.h \
 	stringprep.c nfkc.c version.c toutf8.c \
-	stringprep_generic.c obsolete.c profiles.c \
+	stringprep_generic.c profiles.c \
 	punycode.h punycode.c \
 	idna.h idna.c
 libidn_la_LIBADD = $(LTLIBICONV)
