@@ -147,7 +147,7 @@ main (int argc, char *argv[])
   doit ();
 
   if (debug)
-    printf ("TLD self tests done with %d errors\n", error_count);
+    printf ("Self tests done with %d errors\n", error_count);
 
   return error_count ? 1 : 0;
 }
