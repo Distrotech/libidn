@@ -12,6 +12,8 @@ See the end for copying conditions.
 
 ** Man pages for all public API functions are included.
 
+** Fixed bug in SASLprep profile.
+
 ** API and ABI is NOT backwards compatible with the previous version.
 All previously labeled (since 0.1.x) obsolete functions have been dropped.
 The use of 'enum' types instead of 'int' added in 0.2.3 reverted, it
