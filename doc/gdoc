@@ -692,6 +692,11 @@ sub dump_function {
 		$param = $2;
 		push @args, $1;
 	    }
+	    if ($param =~ m/^(.*)(\[\])$/) {
+		$param = $1;
+		push @args, $2;
+	    }
+#	    print STDERR " :> @args\n";
 	    $type = join " ", @args;
 
 	    if ($parameters{$param} eq "" && $param != "void") {
