@@ -72,6 +72,6 @@ release:
 		-o ../$(htmldir)/manual/ $(PACKAGE) "GNU Libidn"
 	cp -v $(distdir).tar.gz{,.sig} $(htmldir)/releases/
 	cp -v doc/reference/*.{html,png} $(htmldir)/reference/
-	cd contrib/doxygen && doxygen && cd ../.. && cp -v contrib/doxygen/html/* $(htmldir)/doxygen/ && cd contrib/doxygen/latex && make ps pdf && cd ../../../ && cp contrib/doxygen/latex/refman.pdf $(htmldir)/doxygen/$(PACKAGE).pdf && cp contrib/doxygen/latex/refman.ps $(htmldir)/doxygen/$(PACKAGE).ps
+	cd contrib/doxygen && doxygen && cd ../.. && cp -v contrib/doxygen/html/* $(htmldir)/doxygen/ && cd contrib/doxygen/latex && make refman.pdf && cd ../../../ && cp contrib/doxygen/latex/refman.pdf $(htmldir)/doxygen/$(PACKAGE).pdf
 	cd $(htmldir) && cvs add -kb releases/$(distdir).tar.gz{,.sig} && \
 		cvs commit -m "Update." manual/ reference/ doxygen/ releases/
