@@ -62,6 +62,7 @@ ACLOCAL_AMFLAGS = -I .
 
 .PHONY: ChangeLog
 ChangeLog:
+	test ! -f .cvsusers || \
 	cvs2cl --fsf --usermap .cvsusers --separate-header -I \
 	"ChangeLog|.cvsignore|.cvsusers|autogen.sh"
 
