@@ -587,6 +587,8 @@ Stringprep_profile stringprep_saslprep[] = {
   ,
   {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_rfc3454_C_6, "C.6"}
   ,
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_rfc3454_C_7, "C.7"}
+  ,
   {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_rfc3454_C_8, "C.8"}
   ,
   {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_rfc3454_C_9, "C.9"}
