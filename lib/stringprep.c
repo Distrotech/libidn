@@ -89,14 +89,14 @@ stringprep_apply_table_to_string (uint32_t * ucs4,
   ((!INVERTED(profileflags) && !(profileflags & flags) && profileflags) || \
    ( INVERTED(profileflags) && (profileflags & flags)))
 
-static int
-stringprep1 (uint32_t *ucs4, size_t *len, size_t maxucs4len,
-	     Stringprep_profile_flags flags, Stringprep_profile * profile)
+int
+stringprep_4i (uint32_t *ucs4, size_t *len, size_t maxucs4len,
+	       Stringprep_profile_flags flags, Stringprep_profile * profile)
 {
   size_t i, j;
   ssize_t k;
-  int rc;
   size_t ucs4len = *len;
+  int rc;
 
   for (i = 0; profile[i].operation; i++)
     {
@@ -127,7 +127,6 @@ stringprep1 (uint32_t *ucs4, size_t *len, size_t maxucs4len,
 	      }
 
 	    memcpy (ucs4, q, ucs4len * sizeof (ucs4[0]));
-	    ucs4[ucs4len] = 0;
 
 	    free (q);
 	  }
@@ -222,10 +221,40 @@ stringprep1 (uint32_t *ucs4, size_t *len, size_t maxucs4len,
 	}
     }
 
-  ucs4[ucs4len] = 0;
   *len = ucs4len;
 
   return STRINGPREP_OK;
+}
+
+static int
+stringprep_4zi_1 (uint32_t *ucs4, size_t ucs4len, size_t maxucs4len,
+		  Stringprep_profile_flags flags, Stringprep_profile * profile)
+{
+  int rc;
+
+  rc = stringprep_4i (ucs4, &ucs4len, maxucs4len, flags, profile);
+  if (rc != STRINGPREP_OK)
+    return rc;
+
+  if (ucs4len >= maxucs4len)
+    return STRINGPREP_TOO_SMALL_BUFFER;
+
+  ucs4[ucs4len] = 0;
+
+  return STRINGPREP_OK;
+}
+
+int
+stringprep_4zi (uint32_t *ucs4, size_t maxucs4len,
+		Stringprep_profile_flags flags, Stringprep_profile * profile)
+{
+  int rc;
+  size_t ucs4len;
+
+  for (ucs4len = 0; ucs4len < maxucs4len && ucs4[ucs4len] != 0; ucs4len++)
+    ;
+
+  return stringprep_4zi_1 (ucs4, ucs4len, maxucs4len, flags, profile);
 }
 
 /**
@@ -273,7 +302,7 @@ stringprep (char *in,
       goto done;
     }
 
-  rc = stringprep1 (ucs4, &ucs4len, maxucs4len, flags, profile);
+  rc = stringprep_4zi_1 (ucs4, ucs4len, maxucs4len, flags, profile);
   if (rc != STRINGPREP_OK)
     goto done;
 
@@ -298,10 +327,10 @@ stringprep (char *in,
 
 /**
  * stringprep_profile:
- * @in: input/ouput array with string to prepare.
- * @out: output variable with newly allocate string.
- * @flags: optional stringprep profile flags.
+ * @in: input array with UTF-8 string to prepare.
+ * @out: output variable with pointer to newly allocate string.
  * @profile: name of stringprep profile to use.
+ * @flags: optional stringprep profile flags.
  *
  * Prepare the input UTF-8 string according to the stringprep profile.
  * Normally application programmers use stringprep profile macros such
