@@ -307,7 +307,7 @@ main (int argc, char *argv[])
 	    }
 
 #ifdef WITH_TLD
-	  if (args_info.tld_given)
+	  if (args_info.tld_flag)
 	    {
 	      const Tld_table *tld;
 	      size_t errpos;
@@ -387,7 +387,7 @@ main (int argc, char *argv[])
 	  free (q);
 
 #ifdef WITH_TLD
-	  if (args_info.tld_given)
+	  if (args_info.tld_flag)
 	    {
 	      const Tld_table *tld;
 	      size_t errpos;
