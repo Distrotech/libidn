@@ -1,0 +1,29 @@
+<!-- ##### SECTION Title ##### -->
+stringprep_kerberos5
+
+<!-- ##### SECTION Short_Description ##### -->
+Stringprep Profile for Kerberos UTF-8 Strings
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+This specifies processing rules that will allow users to enter
+Kerberos Principal Names and input to cryptographic String to Key
+functions.  It is a profile of stringprep.
+</para>
+
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO stringprep_kerberos5 ##### -->
+<para>
+
+</para>
+
+@in: 
+@maxlen: 
+
+

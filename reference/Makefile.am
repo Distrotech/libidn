@@ -36,7 +36,8 @@ CFILE_GLOB=$(top_srcdir)/*.c dummy.c
 IGNORE_HFILES=config.h \
 	gunibreak.h \
 	gunicomp.h \
-	gunidecomp.h
+	gunidecomp.h \
+	internal.h
 
 # Images to copy into HTML directory.
 HTML_IMAGES =

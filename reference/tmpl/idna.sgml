@@ -1,0 +1,61 @@
+<!-- ##### SECTION Title ##### -->
+idna
+
+<!-- ##### SECTION Short_Description ##### -->
+Internationalizing Domain Names in Applications.
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+Until now, there has been no standard method for domain names to use
+characters outside the ASCII repertoire. The IDNA document defines
+internationalized domain names (IDNs) and a mechanism called IDNA for
+handling them in a standard fashion. IDNs use characters drawn from a
+large repertoire (Unicode), but IDNA allows the non-ASCII characters to
+be represented using only the ASCII characters already allowed in
+so-called host names today.  This backward-compatible representation is
+required in existing protocols like DNS, so that IDNs can be introduced
+with no changes to the existing infrastructure. IDNA is only meant for
+processing domain names, not free text.
+</para>
+
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO IDNA_ACE_PREFIX ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### FUNCTION idna_to_ascii ##### -->
+<para>
+
+</para>
+
+@in: 
+@inlen: 
+@out: 
+@allowunassigned: 
+@usestd3asciirules: 
+@Returns: 
+
+
+<!-- ##### FUNCTION idna_to_unicode ##### -->
+<para>
+
+</para>
+
+@in: 
+@inlen: 
+@out: 
+@outlen: 
+@allowunassigned: 
+@usestd3asciirules: 
+@Returns: 
+
+

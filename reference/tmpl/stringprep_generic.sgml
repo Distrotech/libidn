@@ -1,0 +1,29 @@
+<!-- ##### SECTION Title ##### -->
+stringprep_generic
+
+<!-- ##### SECTION Short_Description ##### -->
+Low-level generic stringprep profile for debugging purposes.
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+This header exports various symbol that is useful for defining new
+stringprep profiles based on the tables in the original stringprep
+specification.
+</para>
+
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO stringprep_generic ##### -->
+<para>
+
+</para>
+
+@in: 
+@maxlen: 
+
+
