@@ -22,7 +22,7 @@ SUBDIRS = @GTKDOC@
 
 ACLOCAL_AMFLAGS = -I .
 
-EXTRA_DIST = libidn.pc.in iconv.m4 strdup.c memset.c \
+EXTRA_DIST = libidn.pc.in iconv.m4 \
 	gen-stringprep-tables.pl rfc3454.txt \
 	gen-unicode-tables.pl UnicodeData-3.2.0.txt LineBreak-3.2.0.txt \
 	SpecialCasing-3.2.0.txt CaseFolding-3.2.0.txt \
@@ -30,14 +30,12 @@ EXTRA_DIST = libidn.pc.in iconv.m4 strdup.c memset.c \
 	gdoc libidn.html libidn.ps libidn.pdf lgpl.texi \
 	libc/README libc/Makefile libc/Versions libc/configure \
 	libc/example.c libc/getaddrinfo.c libc/libc.patch libc/netdb.h \
-	contrib/README \
-	contrib/idn-python/README contrib/idn-python/Makefile \
+	contrib/README contrib/idn-python/README contrib/idn-python/Makefile \
 	contrib/idn-python/idn.c contrib/idn-python/test.py \
-	getopt.h getopt.c getopt1.c \
-	$(man_MANS) $(lisp_LISP)
+	getopt.h getopt.c getopt1.c strdup.c memset.c
 
 clean-local:
-	rm -f idn_cmd.c idn_cmd.h punycode.elc idna.elc
+	rm -f idn_cmd.c idn_cmd.h
 
 # Library
 
@@ -78,7 +76,7 @@ idn.c: idn_cmd.c idn_cmd.h
 idn_cmd.c idn_cmd.h: idn.ggo
 	gengetopt --input $< --file-name idn_cmd
 
-man_MANS = idn.1
+dist_man_MANS = idn.1
 
 idn.1: idn.c
 	$(HELP2MAN) --name="Internationalized Domain Names command line tool" \
@@ -99,8 +97,9 @@ noinst_PROGRAMS = $(tests) example example2 example3 example4
 
 # Lisp interface
 
-lisp_LISP = punycode.el idna.el
-ELCFILES =
+dist_lisp_LISP = punycode.el idna.el
+ELCFILES=
+elc-stamp:
 
 # Documentation
 
