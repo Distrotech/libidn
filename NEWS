@@ -4,6 +4,8 @@ See the end for copying conditions.
 
 * Version 0.5.3 (unreleased)
 
+** Fix crash in `idn --tld' command line tool.
+
 ** API and ABI is backwards compatible with the previous version.
 
 * Version 0.5.2 (released 2004-07-14)
