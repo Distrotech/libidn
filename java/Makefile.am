@@ -39,4 +39,9 @@ libidn.jar:
 
 clean-local:
 	rm -f $(libidn_jar_DATA)
+
+# Invoked by ../doc/java/Makefile.
+.PHONY: javadoc
+javadoc:
+	cd $(srcdir) && $(JAVADOC) -d ../doc/java gnu/inet/encoding/*.java
 endif
