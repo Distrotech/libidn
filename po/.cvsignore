@@ -8,6 +8,7 @@ boldquot.sed
 en@boldquot.header
 en@quot.header
 insert-header.sin
+libidn.pot
 quot.sed
 remove-potcdate.sin
 remove-potcdate.sed
