@@ -19,8 +19,8 @@
     <p>Report bugs to <A
     HREF="mailto:bug-libidn@gnu.org">bug-libidn@gnu.org</A>, but first
     please make sure your browser really is encoding the data you type
-    in the charset you select.  If not, an error is the proper
-    response.
+    in the charset you select.  If not, incorrect output or an error
+    is the "correct" output.
 
     <hr>
     <h2>Input</h2>
