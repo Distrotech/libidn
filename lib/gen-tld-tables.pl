@@ -57,7 +57,7 @@ print "const Tld_table * tld_table[] =\n";
 print "{\n";
 foreach (@tlds)
 {
-    print "  &_tld_${_}_table,\n";
+    print "  &_tld_${_},\n";
 }
 print "  NULL\n";
 print "};\n";
@@ -72,24 +72,26 @@ sub print_tld_domain
     my $num_intervals = @$intervals;
 
     print "/* TLD $tld */\n";
-    print "const Tld_table _tld_${tld}_table =\n";
+    print "const Tld_table_element _tld_${tld}_valid[] =\n";
     print "{\n";
-    print "  \"$tld\",\n";
-    print "  \"$version\",\n";
-    print "  $num_intervals,\n";
-    print "  {\n";
-
     if (@$intervals)
     {
 	my $last = pop @$intervals;
 	foreach (@$intervals)
 	{
-	    print "    $_->[0],  $_->[1],\n";
+	    print "  { $_->[0],  $_->[1] },\n";
 	}
-	print "    $last->[0],  $last->[1]\n";
+	print "  { $last->[0],  $last->[1] }\n";
     }
-    print "  }\n";
+    print "};\n";
+    print "\n";
 
+    print "const Tld_table _tld_${tld} =\n";
+    print "{\n";
+    print "  \"$tld\",\n";
+    print "  \"$version\",\n";
+    print "  $num_intervals,\n";
+    print "  _tld_${tld}_valid\n";
     print "};\n\n";
 }
 

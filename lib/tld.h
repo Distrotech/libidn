@@ -36,13 +36,21 @@ extern "C"
   /* Get uint32_t. */
 #include <idn-int.h>
 
-  /* Domain restriction structure. */
+  /* Interval of valid code points in the TLD. */
+  struct Tld_table_element
+  {
+    uint32_t start;
+    uint32_t end;
+  };
+  typedef struct Tld_table_element Tld_table_element;
+
+  /* List valid code points in a TLD. */
   struct Tld_table
   {
-    char *name;			/* TLD name, e.g., "no". */
-    char *version;		/* Version string from TLD file. */
-    size_t ndata;		/* Number of entries in data. */
-    const uint32_t *data;	/* Sorted array of code points. */
+    char *name;				/* TLD name, e.g., "no". */
+    char *version;			/* Version string from TLD file. */
+    size_t nvalid;			/* Number of entries in data. */
+    const Tld_table_element *valid;	/* Sorted array of valid code points. */
   };
   typedef struct Tld_table Tld_table;
 
