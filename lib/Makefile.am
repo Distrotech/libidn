@@ -46,5 +46,7 @@ gunibreak.h gunicomp.h gunidecomp.h: gen-unicode-tables.pl $(SPEC)/UnicodeData-3
 rfc3454.c: gen-stringprep-tables.pl
 	$(PERL) $(srcdir)/gen-stringprep-tables.pl $(SPEC)/rfc3454.txt
 
+# Maintainer targets
+
 indent:
 	indent $(SOURCES)
