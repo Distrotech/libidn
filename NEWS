@@ -16,6 +16,8 @@ the characters in the table are various ASCII characters and U+3002).
 
 ** The self tests are linked with libtool -no-install to avoid wrapper script.
 
+** Separated self test utilities into a separate library, shared by all tests.
+
 ** More translations.
 Added Romanian (by Laurentiu Buzdugan).
 
