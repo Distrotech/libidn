@@ -38,6 +38,13 @@ pkgconfig_DATA = libidn.pc
 
 # Maintainer targets
 
+update-po:
+	cd po && \
+	wget --timestamping --retr-symlinks \
+		ftp://ftp.unex.es/pub/gnu-i18n/po/maint/$(PACKAGE)/??.po && \
+	cvs add ??.po || true && \
+	cvs commit -m "Sync with TP." ??.po
+
 ChangeLog:
 	cvs2cl --FSF --fsf --usermap .cvsusers -I ChangeLog -I .cvs \
 		-I autogen.sh -I contrib -I doc/specifications/ -I draft- && \
