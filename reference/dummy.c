@@ -49,6 +49,31 @@ stringprep_kerberos5 (char *in, int maxlen)
 {
 }
 
+/**
+ * stringprep_xmpp_nodeprep:
+ * @in: input/ouput array with string to prepare.
+ * @maxlen: maximum length of input/output array.
+ *
+ * Prepare the input UTF-8 string according to the draft XMPP node
+ * identifier profile.  Returns 0 iff successful, or an error code.
+ **/
+int
+stringprep_xmpp_nodeprep (char *in, int maxlen)
+{
+}
+
+/**
+ * stringprep_xmpp_resourceprep:
+ * @in: input/ouput array with string to prepare.
+ * @maxlen: maximum length of input/output array.
+ *
+ * Prepare the input UTF-8 string according to the draft XMPP resource
+ * identifier profile.  Returns 0 iff successful, or an error code.
+ **/
+int
+stringprep_xmpp_resourceprep (char *in, int maxlen)
+{
+}
 
 /**
  * stringprep_generic:
