@@ -1,5 +1,5 @@
 /* idna.h	Declarations for IDNA.
- * Copyright (C) 2002, 2003  Simon Josefsson
+ * Copyright (C) 2002, 2003, 2004  Simon Josefsson
  *
  * This file is part of GNU Libidn.
  *
@@ -46,7 +46,8 @@ extern "C"
     IDNA_CONTAINS_ACE_PREFIX = 8,
     IDNA_ICONV_ERROR = 9,
     /* Internal errors. */
-    IDNA_MALLOC_ERROR = 201
+    IDNA_MALLOC_ERROR = 201,
+    IDNA_DLOPEN_ERROR = 202
   } Idna_rc;
 
   /* IDNA flags */
