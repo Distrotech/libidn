@@ -71,7 +71,7 @@ extern "C"
   /* Extract TLD, as ASCII string, of UCS4 domain name into "out". */
   int tld_get_4 (const uint32_t * in, size_t inlen, char **out);
   int tld_get_4z (const uint32_t * in, char **out);
-  int tld_get_8z (const char * , char **out);
+  int tld_get_8z (const char * in, char **out);
 
   /* Return structure corresponding to the named TLD from specified
    * list of TLD tables, or return NULL if no matching TLD can be

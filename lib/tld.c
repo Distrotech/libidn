@@ -85,7 +85,7 @@ tld_default_table (const char *tld, const Tld_table ** overrides)
 		 (c) == 0xFF0E || (c) == 0xFF61)
 
 /**
- * tld_get_4i:
+ * tld_get_4:
  * @in: Array of unicode code points to process. Does not need to be
  * zero terminated.
  * @inlen: Number of unicode code points.
@@ -98,7 +98,7 @@ tld_default_table (const char *tld, const Tld_table ** overrides)
  * error code otherwise.
  */
 int
-tld_get_4i (const uint32_t * in, size_t inlen, char **out)
+tld_get_4 (const uint32_t * in, size_t inlen, char **out)
 {
   const uint32_t *ipos;
   size_t olen;
@@ -156,7 +156,7 @@ tld_get_4z (const uint32_t * in, char **out)
   while (*ipos)
     ipos++;
 
-  return tld_get_4i (in, ipos - in, out);
+  return tld_get_4 (in, ipos - in, out);
 }
 
 /**
@@ -181,7 +181,7 @@ tld_get_8z (const char * in, char **out)
   if (!iucs)
     return TLD_MALLOC_ERROR;
 
-  return tld_get_4i (iucs, ilen, out);
+  return tld_get_4 (iucs, ilen, out);
 }
 
 /*
@@ -299,7 +299,7 @@ tld_check_4tz (const uint32_t * in, size_t * errpos, const Tld_table * tld)
 }
 
 /**
- * tld_check_4i
+ * tld_check_4
  * @in: Array of unicode code points to process. Does not need to be
  * zero terminated.
  * @inlen: Number of unicode code points.
@@ -322,7 +322,7 @@ tld_check_4tz (const uint32_t * in, size_t * errpos, const Tld_table * tld)
  * general failure conditions.
  */
 int
-tld_check_4i (const uint32_t * in, size_t inlen, size_t * errpos,
+tld_check_4 (const uint32_t * in, size_t inlen, size_t * errpos,
 	      const Tld_table ** overrides)
 {
   const uint32_t *ipos;
@@ -332,7 +332,7 @@ tld_check_4i (const uint32_t * in, size_t inlen, size_t * errpos,
 
   *errpos = 0;
   /* Get TLD name. */
-  rc = tld_get_4i (in, inlen, &domain);
+  rc = tld_get_4 (in, inlen, &domain);
 
   if (rc != TLD_SUCCESS)
     {
@@ -382,7 +382,7 @@ tld_check_4z (const uint32_t * in, size_t * errpos,
   while (*ipos)
     ipos++;
 
-  return tld_check_4i (in, ipos - in, errpos, overrides);
+  return tld_check_4 (in, ipos - in, errpos, overrides);
 }
 
 /**
@@ -423,7 +423,7 @@ tld_check_8z (const char *in, size_t * errpos, const Tld_table ** overrides)
   if (!iucs)
     return TLD_MALLOC_ERROR;
 
-  rc = tld_check_4i (iucs, ilen, errpos, overrides);
+  rc = tld_check_4 (iucs, ilen, errpos, overrides);
 
   free (iucs);
 
