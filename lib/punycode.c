@@ -20,7 +20,7 @@
  */
 
 /*
- * This file is derived from RFC 3492 written by Adam M. Costello.
+ * This file is derived from RFC 3492bis written by Adam M. Costello.
  *
  * Disclaimer and license: Regarding this entire document or any
  * portion of it (including the pseudocode and C code), the author
@@ -59,7 +59,8 @@
  * MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE.
  */
 
-#include "internal.h"
+#include <string.h>
+#include "punycode.h"
 
 /*** Bootstring parameters for Punycode ***/
 
@@ -76,7 +77,7 @@ enum
 
 /* decode_digit(cp) returns the numeric value of a basic code */
 /* point (for use in representing integers) in the range 0 to */
-/* base-1, or base if cp is does not represent a value.       */
+/* base-1, or base if cp does not represent a value.          */
 
 static punycode_uint
 decode_digit (punycode_uint cp)
@@ -147,75 +148,87 @@ adapt (punycode_uint delta, punycode_uint numpoints, int firsttime)
 
 /**
  * punycode_encode:
- * @input_length: The @input_length is the number of code points in the @input.
- * @input: The @input is represented as an array of Unicode code points
- *         (not code units; surrogate pairs are not allowed).
- * @case_flags: The @case_flags array holds @input_length boolean
- *              values, where nonzero suggests that the corresponding
- *              Unicode character be forced to uppercase after being
- *              decoded (if possible), and zero suggests that it be
- *              forced to lowercase (if possible).  ASCII code points
- *              are encoded literally, except that ASCII letters are
- *              forced to uppercase or lowercase according to the
- *              corresponding uppercase flags.  If @case_flags is a
- *              %NULL pointer then ASCII letters are left as they are,
- *              and other code points are treated as if their
- *              uppercase flags were zero.
- * @output_length: The @output_length is an in/out argument: the caller
- *                 passes in the maximum number of code points that it
- *                 can receive, and on successful return it will
- *                 contain the number of code points actually output.
- * @output: The @output will be represented as an array of ASCII code
- *          points.  The output string is *not* zero-terminated; it
- *          will contain zeros if and only if the input contains
- *          zeros. (Of course the caller can leave room for a
- *          terminator and add one if needed.)
+ * @input_length: The number of code points in the @input array and
+ *   the number of flags in the @case_flags array.
+ * @input: An array of code points.  They are presumed to be Unicode
+ *   code points, but that is not strictly REQUIRED.  The array
+ *   contains code points, not code units.  UTF-16 uses code units
+ *   D800 through DFFF to refer to code points 10000..10FFFF.  The
+ *   code points D800..DFFF do not occur in any valid Unicode string.
+ *   The code points that can occur in Unicode strings (0..D7FF and
+ *   E000..10FFFF) are also called Unicode scalar values.
+ * @case_flags: A %NULL pointer or an array of boolean values parallel
+ *   to the @input array.  Nonzero (true, flagged) suggests that the
+ *   corresponding Unicode character be forced to uppercase after
+ *   being decoded (if possible), and zero (false, unflagged) suggests
+ *   that it be forced to lowercase (if possible).  ASCII code points
+ *   (0..7F) are encoded literally, except that ASCII letters are
+ *   forced to uppercase or lowercase according to the corresponding
+ *   case flags.  If @case_flags is a %NULL pointer then ASCII letters
+ *   are left as they are, and other code points are treated as
+ *   unflagged.
+ * @output_length: The caller passes in the maximum number of ASCII
+ *   code points that it can receive.  On successful return it will
+ *   contain the number of ASCII code points actually output.
+ * @output: An array of ASCII code points.  It is *not*
+ *   null-terminated; it will contain zeros if and only if the @input
+ *   contains zeros.  (Of course the caller can leave room for a
+ *   terminator and add one if needed.)
  *
- * Converts Unicode to Punycode.
+ * Converts a sequence of code points (presumed to be Unicode code
+ * points) to Punycode.
  *
- * Return value: The return value can be any of the Punycode_status
- *               values defined above except %PUNYCODE_BAD_INPUT; if
- *               not %PUNYCODE_SUCCESS, then @output_size and @output
- *               might contain garbage.
+ * Return value: The return value can be any of the punycode_status
+ *   values defined above except %punycode_bad_input.  If not
+ *   %punycode_success, then @output_size and @output might contain
+ *   garbage.
  **/
 int
-punycode_encode (size_t input_length,
+punycode_encode (size_t input_length_orig,
 		 const punycode_uint input[],
 		 const unsigned char case_flags[],
 		 size_t * output_length, char output[])
 {
-  punycode_uint n, delta, h, b, out, max_out, bias, j, m, q, k, t;
+  punycode_uint input_length, n, delta, h, b, bias, j, m, q, k, t;
+  size_t out, max_out;
 
-  if (input_length > maxint || *output_length > maxint)
-    return punycode_bad_input;
+  /* The Punycode spec assumes that the input length is the same type */
+  /* of integer as a code point, so we need to convert the size_t to  */
+  /* a punycode_uint, which could overflow.                           */
+
+  if (input_length_orig > maxint)
+    return punycode_overflow;
+  input_length = (punycode_uint) input_length_orig;
 
   /* Initialize the state: */
 
   n = initial_n;
-  delta = out = 0;
+  delta = 0;
+  out = 0;
   max_out = *output_length;
   bias = initial_bias;
 
   /* Handle the basic code points: */
+
   for (j = 0; j < input_length; ++j)
     {
       if (basic (input[j]))
 	{
 	  if (max_out - out < 2)
 	    return punycode_big_output;
-	  output[out++] =
-	    case_flags ?
-	    (punycode_uint) encode_basic (input[j], case_flags[j]) : input[j];
+	  output[out++] = case_flags ?
+	    encode_basic (input[j], case_flags[j]) : (char) input[j];
 	}
       /* else if (input[j] < n) return punycode_bad_input; */
       /* (not needed for Punycode with unsigned code points) */
     }
 
-  h = b = out;
+  h = b = (punycode_uint) out;
+  /* cannot overflow because out <= input_length <= maxint */
 
   /* h is the number of code points that have been handled, b is the  */
-  /* number of basic code points, and out is the number of characters */
-  /* that have been output.                                           */
+  /* number of basic code points, and out is the number of ASCII code */
+  /* points that have been output.                                    */
 
   if (b > 0)
     output[out++] = delimiter;
@@ -286,33 +299,37 @@ punycode_encode (size_t input_length,
 
 /**
  * punycode_decode:
- * @input_length: The @input_length is the number of code points in the input.
- * @input: The @input is represented as an array of ASCII code points.
- * @output_length: The @output_length is an in/out argument: the caller
- *                 passes in the maximum number of code points that it
- *                 can receive, and on successful return it will
- *                 contain the actual number of code points output.
- * @output: The output will be represented as an array of Unicode code
- *          points.
- * @case_flags: The @case_flags array needs room for at least
- *              @output_length values, or it can be a %NULL pointer if
- *              the case information is not needed.  A nonzero flag
- *              suggests that the corresponding Unicode character be
- *              forced to uppercase by the caller (if possible), while
- *              zero suggests that it be forced to lowercase (if
- *              possible).  ASCII code points are output already in
- *              the proper case, but their flags will be set
- *              appropriately so that applying the flags would be
- *              harmless.
+ * @input_length: The number of ASCII code points in the @input array.
+ * @input: An array of ASCII code points (0..7F).
+ * @output_length: The caller passes in the maximum number of code
+ *   points that it can receive into the @output array (which is also
+ *   the maximum number of flags that it can receive into the
+ *   @case_flags array, if @case_flags is not a %NULL pointer).  On
+ *   successful return it will contain the number of code points
+ *   actually output (which is also the number of flags actually
+ *   output, if case_flags is not a null pointer).  The decoder will
+ *   never need to output more code points than the number of ASCII
+ *   code points in the input, because of the way the encoding is
+ *   defined.  The number of code points output cannot exceed the
+ *   maximum possible value of a punycode_uint, even if the supplied
+ *   @output_length is greater than that.
+ * @output: An array of code points like the input argument of
+ *   punycode_encode() (see above).
+ * @case_flags: A %NULL pointer (if the flags are not needed by the
+ *   caller) or an array of boolean values parallel to the @output
+ *   array.  Nonzero (true, flagged) suggests that the corresponding
+ *   Unicode character be forced to uppercase by the caller (if
+ *   possible), and zero (false, unflagged) suggests that it be forced
+ *   to lowercase (if possible).  ASCII code points (0..7F) are output
+ *   already in the proper case, but their flags will be set
+ *   appropriately so that applying the flags would be harmless.
  *
- * Converts Punycode to Unicode.
+ * Converts Punycode to a sequence of code points (presumed to be
+ * Unicode code points).
  *
- * Return value: The return value can be any of the Punycode_status
- *               values defined above; if not %PUNYCODE_SUCCESS, then
- *               @output_length, @output, and @case_flags might contain
- *               garbage.  On success, the decoder will never need to
- *               write an @output_length greater than @input_length,
- *               because of how the encoding is defined.
+ * Return value: The return value can be any of the punycode_status
+ *   values defined above.  If not %punycode_success, then
+ *   @output_length, @output, and @case_flags might contain garbage.
  *
  **/
 int
@@ -321,16 +338,15 @@ punycode_decode (size_t input_length,
 		 size_t * output_length,
 		 punycode_uint output[], unsigned char case_flags[])
 {
-  punycode_uint n, out, i, max_out, bias, b, j, in, oldi, w, k, digit, t;
-
-  if (input_length > maxint || *output_length > maxint)
-    return punycode_bad_input;
+  punycode_uint n, out, i, max_out, bias, oldi, w, k, digit, t;
+  size_t b, j, in;
 
   /* Initialize the state: */
 
   n = initial_n;
   out = i = 0;
-  max_out = *output_length;
+  max_out = *output_length > maxint ? maxint
+    : (punycode_uint) * output_length;
   bias = initial_bias;
 
   /* Handle the basic code points:  Let b be the number of input code */
@@ -358,8 +374,8 @@ punycode_decode (size_t input_length,
   for (in = b > 0 ? b + 1 : 0; in < input_length; ++out)
     {
 
-      /* in is the index of the next character to be consumed, and */
-      /* out is the number of code points in the output array.     */
+      /* in is the index of the next ASCII code point to be consumed, */
+      /* and out is the number of code points in the output array.    */
 
       /* Decode a generalized variable-length integer into delta,  */
       /* which gets added to i.  The overflow checking is easier   */
@@ -398,15 +414,14 @@ punycode_decode (size_t input_length,
       /* Insert n at position i of the output: */
 
       /* not needed for Punycode: */
-      /* if (decode_digit(n) <= base) return punycode_invalid_input; */
+      /* if (basic(n)) return punycode_invalid_input; */
       if (out >= max_out)
 	return punycode_big_output;
 
       if (case_flags)
 	{
 	  memmove (case_flags + i + 1, case_flags + i, out - i);
-
-	  /* Case of last character determines uppercase flag: */
+	  /* Case of last ASCII code point determines case flag: */
 	  case_flags[i] = flagged (input[in - 1]);
 	}
 
@@ -414,7 +429,8 @@ punycode_decode (size_t input_length,
       output[i++] = n;
     }
 
-  *output_length = out;
+  *output_length = (size_t) out;
+  /* cannot overflow because out <= old value of *output_length */
   return punycode_success;
 }
 
