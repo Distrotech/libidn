@@ -69,6 +69,9 @@
 
 #include "stringprep.h"
 #include "stringprep_generic.h"
+#include "stringprep_nameprep.h"
+#include "stringprep_kerberos5.h"
 #include "punycode.h"
+#include "idna.h"
 
 #endif /* _INTERNAL_H */
