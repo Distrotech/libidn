@@ -53,7 +53,7 @@ foreach my $tldfile (@ARGV)
 }
 
 print "/* Main array */\n";
-print "const Tld_table * tld_tables[] =\n";
+print "const Tld_table * _tld_tables[] =\n";
 print "{\n";
 foreach (@tlds)
 {
@@ -72,7 +72,7 @@ sub print_tld_domain
     my $num_intervals = @$intervals;
 
     print "/* TLD $tld */\n";
-    print "const Tld_table_element _tld_${tld}_valid[] =\n";
+    print "static const Tld_table_element _tld_${tld}_valid[] =\n";
     print "{\n";
     if (@$intervals)
     {
@@ -86,7 +86,7 @@ sub print_tld_domain
     print "};\n";
     print "\n";
 
-    print "const Tld_table _tld_${tld} =\n";
+    print "static const Tld_table _tld_${tld} =\n";
     print "{\n";
     print "  \"$tld\",\n";
     print "  \"$version\",\n";

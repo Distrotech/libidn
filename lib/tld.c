@@ -30,6 +30,9 @@
 /* Get specifications. */
 #include <tld.h>
 
+/* Array of built-in domain restriction structures.  See tlds.c.  */
+extern const Tld_table *_tld_tables[];
+
 /**
  * tld_get_table:
  * @tld: TLD name (e.g. "com") as zero terminated ASCII byte string.
@@ -76,7 +79,7 @@ tld_default_table (const char *tld, const Tld_table ** overrides)
     tldtable = tld_get_table (tld, overrides);
 
   if (!tldtable)
-    tldtable = tld_get_table (tld, tld_tables);
+    tldtable = tld_get_table (tld, _tld_tables);
 
   return tldtable;
 }
