@@ -74,19 +74,22 @@ idna[] =
     0x0644, 0x064A, 0x0647, 0x0645, 0x0627, 0x0628, 0x062A, 0x0643,
 	0x0644, 0x0645, 0x0648, 0x0634, 0x0639, 0x0631, 0x0628, 0x064A,
 	0x061F}
-    , IDNA_ACE_PREFIX "egbpdaj6bu4bxfgehfvwxn", 0, 0, IDNA_SUCCESS, IDNA_SUCCESS}
+  , IDNA_ACE_PREFIX "egbpdaj6bu4bxfgehfvwxn", 0, 0, IDNA_SUCCESS,
+      IDNA_SUCCESS}
   ,
   {
     "(B) Chinese (simplified)", 9,
     {
     0x4ED6, 0x4EEC, 0x4E3A, 0x4EC0, 0x4E48, 0x4E0D, 0x8BF4, 0x4E2D, 0x6587}
-  , IDNA_ACE_PREFIX "ihqwcrb4cv8a8dqg056pqjye", 0, 0, IDNA_SUCCESS, IDNA_SUCCESS}
+  , IDNA_ACE_PREFIX "ihqwcrb4cv8a8dqg056pqjye", 0, 0, IDNA_SUCCESS,
+      IDNA_SUCCESS}
   ,
   {
     "(C) Chinese (traditional)", 9,
     {
     0x4ED6, 0x5011, 0x7232, 0x4EC0, 0x9EBD, 0x4E0D, 0x8AAA, 0x4E2D, 0x6587}
-  , IDNA_ACE_PREFIX "ihqwctvzc91f659drss3x8bo0yb", 0, 0, IDNA_SUCCESS, IDNA_SUCCESS}
+  , IDNA_ACE_PREFIX "ihqwctvzc91f659drss3x8bo0yb", 0, 0, IDNA_SUCCESS,
+      IDNA_SUCCESS}
   ,
   {
     "(D) Czech: Pro<ccaron>prost<ecaron>nemluv<iacute><ccaron>esky", 22,
@@ -94,7 +97,8 @@ idna[] =
     0x0050, 0x0072, 0x006F, 0x010D, 0x0070, 0x0072, 0x006F, 0x0073,
 	0x0074, 0x011B, 0x006E, 0x0065, 0x006D, 0x006C, 0x0075, 0x0076,
 	0x00ED, 0x010D, 0x0065, 0x0073, 0x006B, 0x0079}
-  , IDNA_ACE_PREFIX "Proprostnemluvesky-uyb24dma41a", 0, 0, IDNA_SUCCESS, IDNA_SUCCESS}
+  , IDNA_ACE_PREFIX "Proprostnemluvesky-uyb24dma41a", 0, 0, IDNA_SUCCESS,
+      IDNA_SUCCESS}
   ,
   {
     "(E) Hebrew:", 22,
@@ -102,7 +106,8 @@ idna[] =
     0x05DC, 0x05DE, 0x05D4, 0x05D4, 0x05DD, 0x05E4, 0x05E9, 0x05D5,
 	0x05D8, 0x05DC, 0x05D0, 0x05DE, 0x05D3, 0x05D1, 0x05E8, 0x05D9,
 	0x05DD, 0x05E2, 0x05D1, 0x05E8, 0x05D9, 0x05EA}
-  , IDNA_ACE_PREFIX "4dbcagdahymbxekheh6e0a7fei0b", 0, 0, IDNA_SUCCESS, IDNA_SUCCESS}
+  , IDNA_ACE_PREFIX "4dbcagdahymbxekheh6e0a7fei0b", 0, 0, IDNA_SUCCESS,
+      IDNA_SUCCESS}
   ,
   {
     "(F) Hindi (Devanagari):", 30,
@@ -129,8 +134,8 @@ idna[] =
     0xC138, 0xACC4, 0xC758, 0xBAA8, 0xB4E0, 0xC0AC, 0xB78C, 0xB4E4,
 	0xC774, 0xD55C, 0xAD6D, 0xC5B4, 0xB97C, 0xC774, 0xD574, 0xD55C,
 	0xB2E4, 0xBA74, 0xC5BC, 0xB9C8, 0xB098, 0xC88B, 0xC744, 0xAE4C}
-    , IDNA_ACE_PREFIX "989aomsvi5e83db1d2a355cv1e0vak1dwrv93d5xbh15a0dt"
-    "30a5jpsd879ccm6fea98c", 0, 0, IDNA_PUNYCODE_ERROR, IDNA_PUNYCODE_ERROR}
+  , IDNA_ACE_PREFIX "989aomsvi5e83db1d2a355cv1e0vak1dwrv93d5xbh15a0dt"
+      "30a5jpsd879ccm6fea98c", 0, 0, IDNA_PUNYCODE_ERROR, IDNA_PUNYCODE_ERROR}
   /* too long output */
   ,
   {
@@ -140,7 +145,8 @@ idna[] =
 	0x043E, 0x043D, 0x0438, 0x043D, 0x0435, 0x0433, 0x043E, 0x0432,
 	0x043E, 0x0440, 0x044F, 0x0442, 0x043F, 0x043E, 0x0440, 0x0443,
 	0x0441, 0x0441, 0x043A, 0x0438}
-  , IDNA_ACE_PREFIX "b1abfaaepdrnnbgefbadotcwatmq2g4l", 0, 0, IDNA_SUCCESS, IDNA_SUCCESS}
+  , IDNA_ACE_PREFIX "b1abfaaepdrnnbgefbadotcwatmq2g4l", 0, 0, IDNA_SUCCESS,
+      IDNA_SUCCESS}
   ,
   {
     "(J) Spanish: Porqu<eacute>nopuedensimplementehablarenEspa<ntilde>ol", 40,
@@ -167,7 +173,8 @@ idna[] =
     "(L) 3<nen>B<gumi><kinpachi><sensei>", 8,
     {
     0x0033, 0x5E74, 0x0042, 0x7D44, 0x91D1, 0x516B, 0x5148, 0x751F}
-  , IDNA_ACE_PREFIX "3B-ww4c5e180e575a65lsy2b", 0, 0, IDNA_SUCCESS, IDNA_SUCCESS}
+  , IDNA_ACE_PREFIX "3B-ww4c5e180e575a65lsy2b", 0, 0, IDNA_SUCCESS,
+      IDNA_SUCCESS}
   ,
   {
     "(M) <amuro><namie>-with-SUPER-MONKEYS", 24,
@@ -199,7 +206,8 @@ idna[] =
     {
     0x004D, 0x0061, 0x006A, 0x0069, 0x3067, 0x004B, 0x006F, 0x0069,
 	0x3059, 0x308B, 0x0035, 0x79D2, 0x524D}
-  , IDNA_ACE_PREFIX "MajiKoi5-783gue6qz075azm5e", 0, 0, IDNA_SUCCESS, IDNA_SUCCESS}
+  , IDNA_ACE_PREFIX "MajiKoi5-783gue6qz075azm5e", 0, 0, IDNA_SUCCESS,
+      IDNA_SUCCESS}
   ,
   {
     "(Q) <pafii>de<runba>", 9,
@@ -213,13 +221,13 @@ idna[] =
     0x305D, 0x306E, 0x30B9, 0x30D4, 0x30FC, 0x30C9, 0x3067}
   , IDNA_ACE_PREFIX "d9juau41awczczp", 0, 0, IDNA_SUCCESS, IDNA_SUCCESS}
   ,
-  { /* XXX depends on IDNA_ACE_PREFIX */
+  {				/* XXX depends on IDNA_ACE_PREFIX */
     "ToASCII() with ACE prefix", 6 + 3,
     {
-      'i', 'e', 's', 'g', '-', '-', 'f', 'o', 0x3067 },
-    IDNA_ACE_PREFIX "too long too long too long too long too long too "
-    "long too long too long too long too long ", 0, 0,
-    IDNA_CONTAINS_ACE_PREFIX, IDNA_PUNYCODE_ERROR}
+  'i', 'e', 's', 'g', '-', '-', 'f', 'o', 0x3067},
+      IDNA_ACE_PREFIX "too long too long too long too long too long too "
+      "long too long too long too long too long ", 0, 0,
+      IDNA_CONTAINS_ACE_PREFIX, IDNA_PUNYCODE_ERROR}
 #if 0
   {
     "(S) -> $1.00 <-", 11,
@@ -305,11 +313,12 @@ main (int argc, char *argv[])
 
       if (debug)
 	{
-	  printf ("in: %s (%d==%d)\n", idna[i].out, strlen(idna[i].out), len);
+	  printf ("in: %s (%d==%d)\n", idna[i].out, strlen (idna[i].out),
+		  len);
 	  ucs4print (ucs4label, len);
 	}
 
-      len2 = sizeof(tmp);
+      len2 = sizeof (tmp);
       rc = idna_to_unicode (ucs4label, len, tmp, &len2,
 			    idna[i].allowunassigned,
 			    idna[i].usestd3asciirules);
@@ -334,9 +343,9 @@ main (int argc, char *argv[])
 	}
 
       if ((rc == IDNA_SUCCESS && (len2 != idna[i].inlen ||
-				  memcmp(idna[i].in, tmp, len2) != 0)) ||
+				  memcmp (idna[i].in, tmp, len2) != 0)) ||
 	  (rc != IDNA_SUCCESS && (len2 != len ||
-				  memcmp(ucs4label, tmp, len) != 0)))
+				  memcmp (ucs4label, tmp, len) != 0)))
 	{
 	  fail ("IDNA entry %d failed\n", i);
 	  if (debug)

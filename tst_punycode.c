@@ -236,11 +236,11 @@ main (int argc, char *argv[])
       }
   while (argc-- > 1);
 
-  p = malloc (sizeof(*p) * BUFSIZ);
+  p = malloc (sizeof (*p) * BUFSIZ);
   if (p == NULL)
     fail ("malloc() returned NULL\n");
 
-  q = malloc (sizeof(*q) * BUFSIZ);
+  q = malloc (sizeof (*q) * BUFSIZ);
   if (q == NULL)
     fail ("malloc() returned NULL\n");
 
@@ -298,7 +298,7 @@ main (int argc, char *argv[])
 	}
 
       outlen = BUFSIZ;
-      rc = punycode_decode (strlen(punycode[i].out), punycode[i].out,
+      rc = punycode_decode (strlen (punycode[i].out), punycode[i].out,
 			    &outlen, q, NULL);
       if (rc != punycode[i].rc)
 	{

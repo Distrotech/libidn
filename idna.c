@@ -57,7 +57,7 @@ idna_to_ascii (const unsigned long *in, size_t inlen,
 	       char *out, int allowunassigned, int usestd3asciirules)
 {
   size_t len, outlen;
-  unsigned long *src; /* XXX don't need to copy data? */
+  unsigned long *src;		/* XXX don't need to copy data? */
   int rc;
 
   src = malloc (sizeof (in[0]) * (inlen + 1));
@@ -176,7 +176,7 @@ step3:
     int match;
 
     match = 1;
-    for (i = 0; match && i < strlen(IDNA_ACE_PREFIX); i++)
+    for (i = 0; match && i < strlen (IDNA_ACE_PREFIX); i++)
       if (IDNA_ACE_PREFIX[i] != src[i])
 	match = 0;
     if (match)
@@ -275,7 +275,7 @@ step3:
    * this step.
    */
 
-  rc = punycode_decode (strlen(utf8in), utf8in, outlen, out, NULL);
+  rc = punycode_decode (strlen (utf8in), utf8in, outlen, out, NULL);
   if (rc != PUNYCODE_SUCCESS)
     return IDNA_PUNYCODE_ERROR;
 
@@ -291,7 +291,7 @@ step3:
    * step 3, using a case-insensitive ASCII comparison.
    */
 
-  if (strcasecmp(utf8in, tmpout + strlen(IDNA_ACE_PREFIX)) != 0)
+  if (strcasecmp (utf8in, tmpout + strlen (IDNA_ACE_PREFIX)) != 0)
     return IDNA_ROUNDTRIP_VERIFY_ERROR;
 
   /* 8. Return the saved copy from step 5.
@@ -358,12 +358,12 @@ idna_to_unicode (const unsigned long *in, size_t inlen,
 				 p, BUFSIZ);
   if (rc != IDNA_SUCCESS)
     {
-      memcpy(out, in,
-	     sizeof (in[0]) * (inlen < outlensave ? inlen : outlensave));
+      memcpy (out, in,
+	      sizeof (in[0]) * (inlen < outlensave ? inlen : outlensave));
       *outlen = inlen;
     }
 
-  free(p);
+  free (p);
 
   return rc;
 }
@@ -396,36 +396,34 @@ idna_ucs4_to_ace (const unsigned long *input, char **output)
       end = start;
 
       /* 1) Whenever dots are used as label separators, the following
-	 characters MUST be recognized as dots: U+002E (full stop),
-	 U+3002 (ideographic full stop), U+FF0E (fullwidth full stop),
-	 U+FF61 (halfwidth ideographic full stop). */
+         characters MUST be recognized as dots: U+002E (full stop),
+         U+3002 (ideographic full stop), U+FF0E (fullwidth full stop),
+         U+FF61 (halfwidth ideographic full stop). */
       for (; *end &&
-	     *end != 0x002E &&
-	     *end != 0x3002 &&
-	     *end != 0xFF0E &&
-	     *end != 0xFF61; end++)
+	   *end != 0x002E &&
+	   *end != 0x3002 && *end != 0xFF0E && *end != 0xFF61; end++)
 	;
 
-      rc = idna_to_ascii (start, end-start, buf, 0, 0);
+      rc = idna_to_ascii (start, end - start, buf, 0, 0);
       if (rc != IDNA_SUCCESS)
 	return rc;
 
       if (out)
 	{
-	  out = realloc(out, strlen(out) + 1 + strlen(buf) + 1);
+	  out = realloc (out, strlen (out) + 1 + strlen (buf) + 1);
 	  if (!out)
 	    return IDNA_MALLOC_ERROR;
-	  strcat(out, ".");
-	  strcat(out, buf);
+	  strcat (out, ".");
+	  strcat (out, buf);
 	}
       else
 	{
-	  out = strdup(buf);
+	  out = strdup (buf);
 	  if (!out)
 	    return IDNA_MALLOC_ERROR;
 	}
 
-      start = end+1;
+      start = end + 1;
     }
   while (*end);
 
@@ -457,8 +455,8 @@ idna_utf8_to_ace (const char *input, char **output)
   if (!ucs4)
     return IDNA_ICONV_ERROR;
 
-  rc = idna_ucs4_to_ace(ucs4, output);
-  free(ucs4);
+  rc = idna_ucs4_to_ace (ucs4, output);
+  free (ucs4);
 
   return rc;
 }
@@ -485,8 +483,8 @@ idna_locale_to_ace (const char *input, char **output)
   if (!utf8)
     return IDNA_ICONV_ERROR;
 
-  rc = idna_utf8_to_ace(utf8, output);
-  free(utf8);
+  rc = idna_utf8_to_ace (utf8, output);
+  free (utf8);
 
   return rc;
 }
@@ -528,34 +526,32 @@ idna_ucs4ace_to_ucs4 (const unsigned long *input, unsigned long **output)
       end = start;
 
       /* 1) Whenever dots are used as label separators, the following
-	 characters MUST be recognized as dots: U+002E (full stop),
-	 U+3002 (ideographic full stop), U+FF0E (fullwidth full stop),
-	 U+FF61 (halfwidth ideographic full stop). */
+         characters MUST be recognized as dots: U+002E (full stop),
+         U+3002 (ideographic full stop), U+FF0E (fullwidth full stop),
+         U+FF61 (halfwidth ideographic full stop). */
       for (; *end &&
-	     *end != 0x002E &&
-	     *end != 0x3002 &&
-	     *end != 0xFF0E &&
-	     *end != 0xFF61; end++)
+	   *end != 0x002E &&
+	   *end != 0x3002 && *end != 0xFF0E && *end != 0xFF61; end++)
 	;
 
-      buflen = end-start;
-      buf = malloc(sizeof(buf[0]) * (buflen + 1));
+      buflen = end - start;
+      buf = malloc (sizeof (buf[0]) * (buflen + 1));
       if (!buf)
 	return IDNA_MALLOC_ERROR;
 
-      rc = idna_to_unicode (start, end-start, buf, &buflen, 0, 0);
+      rc = idna_to_unicode (start, end - start, buf, &buflen, 0, 0);
       /* don't check rc as per specification! */
 
       if (out)
 	{
-	  out = realloc(out, sizeof(out[0]) * (outlen + 1 + buflen + 1));
+	  out = realloc (out, sizeof (out[0]) * (outlen + 1 + buflen + 1));
 	  if (!out)
 	    return IDNA_MALLOC_ERROR;
-	  out[outlen++] = 0x002E; /* '.' (full stop) */
-	  memcpy(out + outlen, buf, sizeof(buf[0]) * buflen);
+	  out[outlen++] = 0x002E;	/* '.' (full stop) */
+	  memcpy (out + outlen, buf, sizeof (buf[0]) * buflen);
 	  outlen += buflen;
 	  out[outlen] = 0x0;
-	  free(buf);
+	  free (buf);
 	}
       else
 	{
@@ -564,7 +560,7 @@ idna_ucs4ace_to_ucs4 (const unsigned long *input, unsigned long **output)
 	  out[outlen] = 0x0;
 	}
 
-      start = end+1;
+      start = end + 1;
     }
   while (*end);
 
@@ -597,8 +593,8 @@ idna_utf8ace_to_ucs4 (const char *input, unsigned long **output)
   if (!ucs4)
     return IDNA_ICONV_ERROR;
 
-  rc = idna_ucs4ace_to_ucs4(ucs4, output);
-  free(ucs4);
+  rc = idna_ucs4ace_to_ucs4 (ucs4, output);
+  free (ucs4);
 
   return rc;
 }
@@ -622,9 +618,9 @@ idna_utf8ace_to_utf8 (const char *input, char **output)
   unsigned long *ucs4;
   int rc;
 
-  rc = idna_utf8ace_to_ucs4(input, &ucs4);
-  *output = stringprep_ucs4_to_utf8(ucs4, -1, NULL, NULL);
-  free(ucs4);
+  rc = idna_utf8ace_to_ucs4 (input, &ucs4);
+  *output = stringprep_ucs4_to_utf8 (ucs4, -1, NULL, NULL);
+  free (ucs4);
 
   if (!*output)
     return IDNA_ICONV_ERROR;
@@ -652,9 +648,9 @@ idna_utf8ace_to_locale (const char *input, char **output)
   char *utf8;
   int rc;
 
-  rc = idna_utf8ace_to_utf8(input, &utf8);
-  *output = stringprep_utf8_to_locale(utf8);
-  free(utf8);
+  rc = idna_utf8ace_to_utf8 (input, &utf8);
+  *output = stringprep_utf8_to_locale (utf8);
+  free (utf8);
 
   if (!*output)
     return IDNA_ICONV_ERROR;
@@ -683,12 +679,12 @@ idna_localeace_to_locale (const char *input, char **output)
   char *utf8;
   int rc;
 
-  utf8 = stringprep_locale_to_utf8(input);
+  utf8 = stringprep_locale_to_utf8 (input);
   if (!utf8)
     return IDNA_ICONV_ERROR;
 
-  rc = idna_utf8ace_to_locale(utf8, output);
-  free(utf8);
+  rc = idna_utf8ace_to_locale (utf8, output);
+  free (utf8);
 
   return rc;
 }

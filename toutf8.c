@@ -182,9 +182,10 @@ char *
 stringprep_convert (const char *str,
 		    const char *to_codeset, const char *from_codeset)
 {
-  fprintf(stderr, "warning: cannot convert data to UTF-8, returning source\n");
-  fprintf(stderr, "warning: this indicate a badly installed GNU Libidn\n");
-  return strdup(str);
+  fprintf (stderr,
+	   "warning: cannot convert data to UTF-8, returning source\n");
+  fprintf (stderr, "warning: this indicate a badly installed GNU Libidn\n");
+  return strdup (str);
 }
 
 #endif

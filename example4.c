@@ -22,8 +22,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <stringprep.h> /* stringprep_locale_charset() */
-#include <idna.h> /* idna_localeace_to_locale() */
+#include <stringprep.h>		/* stringprep_locale_charset() */
+#include <idna.h>		/* idna_localeace_to_locale() */
 
 /*
  * Compiling using libtool and pkg-config is recommended:
@@ -48,7 +48,7 @@ main (int argc, char *argv[])
   printf ("Input domain encoded as `%s': ", stringprep_locale_charset ());
   fflush (stdout);
   fgets (buf, BUFSIZ, stdin);
-  buf[strlen(buf)-1] = '\0';
+  buf[strlen (buf) - 1] = '\0';
 
   printf ("Read string (length %d): ", strlen (buf));
   for (i = 0; i < strlen (buf); i++)
@@ -58,8 +58,8 @@ main (int argc, char *argv[])
   rc = idna_localeace_to_locale (buf, &p);
   if (rc != IDNA_SUCCESS)
     {
-      printf("ToUnicode() failed... %d\n", rc);
-      exit(1);
+      printf ("ToUnicode() failed... %d\n", rc);
+      exit (1);
     }
 
   printf ("ACE label (length %d): '%s'\n", strlen (p), p);
@@ -67,7 +67,7 @@ main (int argc, char *argv[])
     printf ("%02x ", p[i] & 0xFF);
   printf ("\n");
 
-  free(p);
+  free (p);
 
   return 0;
 }
