@@ -1,3 +1,396 @@
+2003-10-18  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Version 0.3.3.
+
+2003-10-18  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2003-10-18  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2003-10-18  Simon Josefsson <simon@josefsson.org>
+
+	* src/Makefile.am: Revert to old elisp automake idiom.
+
+2003-10-18  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2003-10-18  Simon Josefsson <simon@josefsson.org>
+
+	* lib/stringprep.h.in: (struct Stringprep_table, struct
+	Stringprep_profiles): Use 'const'.
+	(stringprep_4i, stringprep_4zi, stringprep, stringprep_profile):
+	Likewise.
+
+2003-10-18  Simon Josefsson <simon@josefsson.org>
+
+	* lib/stringprep.c:
+	(stringprep_find_character_in_table): Mark parameter as 'const'.
+	(stringprep_find_string_in_table): Likewise.
+	(stringprep_apply_table_to_string): Likewise.
+	(stringprep_4i, stringprep_4zi_1, stringprep_4zi, stringprep):
+	Likewise.
+
+2003-10-18  Simon Josefsson <simon@josefsson.org>
+
+	* lib/stringprep.c:
+	(stringprep_profile): Fix warning.
+
+2003-10-18  Simon Josefsson <simon@josefsson.org>
+
+	* tests/tst_idna.c, tests/tst_punycode.c: Fix warnings.
+
+2003-10-18  Simon Josefsson <simon@josefsson.org>
+
+	* tests/tst_nfkc.c, tests/tst_punycode.c, tests/tst_stringprep.c,
+	tests/tst_idna.c, tests/tst_idna2.c: Indent.
+
+2003-10-18  Simon Josefsson <simon@josefsson.org>
+
+	* lib/stringprep.c: Remove stringprep_generic documentation.
+
+2003-10-18  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi: Remove stringprep_generic.
+
+2003-10-18  Simon Josefsson <simon@josefsson.org>
+
+	* lib/gen-stringprep-tables.pl: Mark table elements as 'const'.
+
+2003-10-18  Simon Josefsson <simon@josefsson.org>
+
+	* lib/stringprep.c:
+	(stringprep_apply_table_to_string): Remove 'name' parameter.
+	(stringprep_4i): Likewise.
+
+2003-10-18  Simon Josefsson <simon@josefsson.org>
+
+	* lib/profiles.c:
+	(stringprep_profiles): Remove "generic".  Indent.
+
+2003-10-18  Simon Josefsson <simon@josefsson.org>
+
+	* lib/stringprep.h.in: (struct Stringprep_table): Remove 'name'.
+	(stringprep_profiles, stringprep_rfc3454_A_1,stringprep_rfc3454_B_1)
+	(stringprep_rfc3454_B_2, stringprep_rfc3454_B_3)
+	(stringprep_rfc3454_C_1_1, stringprep_rfc3454_C_1_2)
+	(stringprep_rfc3454_C_2_1, stringprep_rfc3454_C_2_2)
+	(stringprep_rfc3454_C_3, stringprep_rfc3454_C_4)
+	(stringprep_rfc3454_C_5, stringprep_rfc3454_C_6)
+	(stringprep_rfc3454_C_7, stringprep_rfc3454_C_8)
+	(stringprep_rfc3454_C_9, stringprep_rfc3454_D_1)
+	(stringprep_rfc3454_D_2)
+	(stringprep_nameprep)
+	(stringprep_saslprep, stringprep_plain,stringprep_trace)
+	(stringprep_kerberos5)
+	(stringprep_xmpp_nodeprep, stringprep_xmpp_resourceprep)
+	(stringprep_xmpp_nodeprep_prohibit)
+	(stringprep_iscsi): Mark as 'const'.
+	(stringprep_generic, stringprep_generic): Remove.
+
+2003-10-17  Simon Josefsson <simon@josefsson.org>
+
+	* lib/punycode.h, lib/stringprep.h.in, tests/tst_stringprep.c:
+	Indent.
+
+2003-10-17  Simon Josefsson <simon@josefsson.org>
+
+	* lib/stringprep.c: Fix memory leak.
+
+2003-10-17  Simon Josefsson <simon@josefsson.org>
+
+	* doc/gdoc: Fix #include for man pages.
+
+2003-10-17  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi: Fix.
+
+2003-10-17  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi: Sync 'idn -h'.
+
+2003-10-17  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi: Fix.
+
+2003-10-17  Simon Josefsson <simon@josefsson.org>
+
+	* lib/gen-stringprep-tables.pl, lib/idna.c, lib/nfkc.c,
+	lib/profiles.c, lib/punycode.c, lib/stringprep.c, lib/toutf8.c,
+	lib/version.c, src/idn.c, tests/tst_idna.c, tests/tst_idna2.c,
+	tests/tst_nfkc.c, tests/tst_stringprep.c: Include cleanup.  We
+	assume C89, use <...> for headers we use, and use "..." for headers
+	we implement.
+
+2003-10-16  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi: Add.
+
+2003-10-16  Simon Josefsson <simon@josefsson.org>
+
+	* src/Makefile.am: Fix gengetopt building.
+
+2003-10-16  Simon Josefsson <simon@josefsson.org>
+
+	* THANKS: Add.
+
+2003-10-16  Simon Josefsson <simon@josefsson.org>
+
+	* src/idn.ggo.in: Use less negations for --quiet, reported by Oden
+	Eriksson <oden.eriksson@kvikkjokk.net>.
+
+2003-10-16  Simon Josefsson <simon@josefsson.org>
+
+	* src/Makefile.am: Fix gengetopt built source files.  Use new
+	automake Emacs Lisp targets.
+
+2003-10-16  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi: Use current version number in examples.
+
+2003-10-16  Simon Josefsson <simon@josefsson.org>
+
+	* configure.ac: Update so version.
+
+2003-10-16  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2003-10-16  Simon Josefsson <simon@josefsson.org>
+
+	* lib/punycode.h: Include parameter names in prototypes, for
+	GTK-DOC.
+
+2003-10-16  Simon Josefsson <simon@josefsson.org>
+
+	* lib/stringprep.c: Doc fix.
+
+2003-10-16  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi: Fix typo.
+
+2003-10-16  Simon Josefsson <simon@josefsson.org>
+
+	* tests/tst_punycode.c, tests/tst_idna.c: Fix.
+
+2003-10-16  Simon Josefsson <simon@josefsson.org>
+
+	* lib/internal.h: Removed.
+
+2003-10-16  Simon Josefsson <simon@josefsson.org>
+
+	* tests/tst_stringprep.c, tests/tst_nfkc.c, src/idn.c: Make
+	#include's explicit.
+
+2003-10-16  Simon Josefsson <simon@josefsson.org>
+
+	* tests/tst_idna.c, tests/tst_idna2.c, tests/tst_punycode.c: Make
+	#include's explicit.  Fix warnings.
+
+2003-10-16  Simon Josefsson <simon@josefsson.org>
+
+	* lib/Makefile.am: Remove internal.h.
+
+2003-10-16  Simon Josefsson <simon@josefsson.org>
+
+	* lib/stringprep.c: Doc fix.
+
+2003-10-16  Simon Josefsson <simon@josefsson.org>
+
+	* lib/version.c, lib/stringprep.c: Make #include's explicit.
+
+2003-10-16  Simon Josefsson <simon@josefsson.org>
+
+	* lib/toutf8.c, lib/profiles.c: Make #include's explicit.
+
+2003-10-16  Simon Josefsson <simon@josefsson.org>
+
+	* lib/nfkc.c: Make #include's explicit.
+
+2003-10-16  Simon Josefsson <simon@josefsson.org>
+
+	* lib/idna.c: Fix.
+
+2003-10-16  Simon Josefsson <simon@josefsson.org>
+
+	* lib/idna.c: Make #include's explicit.
+
+2003-10-16  Simon Josefsson <simon@josefsson.org>
+
+	* lib/punycode.h: Fix typo.
+
+2003-10-16  Simon Josefsson <simon@josefsson.org>
+
+	* lib/punycode.c: Sync with latest draft, but change return types
+	to 'int' to be backwards compatible.
+
+2003-10-16  Simon Josefsson <simon@josefsson.org>
+
+	* lib/punycode.h: Sync with latest draft, but change return types
+	to 'int' to be backwards compatible.
+
+2003-10-16  Simon Josefsson <simon@josefsson.org>
+
+	* configure.ac, lib/internal.h: Remove DMALLOC stuff.
+
+2003-10-16  Simon Josefsson <simon@josefsson.org>
+
+	* lib/stringprep.c: Fix warnings.
+
+2003-10-16  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi: Typo.
+
+2003-10-16  Simon Josefsson <simon@josefsson.org>
+
+	* tests/tst_stringprep.c: Simplify debug prints.
+
+2003-10-16  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2003-10-16  Simon Josefsson <simon@josefsson.org>
+
+	* lib/idna.c:
+	(idna_to_unicode_internal): Handle reallocating larger utf8in after
+	stringprep error STRINGPREP_TOO_SMALL_BUFFER.
+	(idna_to_unicode_44i): Let new logic in idna_to_unicode_internal()
+	replace BUFSIZ alloc.
+
+2003-10-16  Simon Josefsson <simon@josefsson.org>
+
+	* lib/stringprep.c:
+	(stringprep_profile): Loop around stringprep return
+	STRINGPREP_TOO_SMALL_BUFFER and increase buffer size.
+
+2003-10-16  Simon Josefsson <simon@josefsson.org>
+
+	* lib/stringprep.c:
+	(stringprep): Check return value from stringprep_ucs4_to_utf8.
+	Don't use goto.
+
+2003-10-16  Simon Josefsson <simon@josefsson.org>
+
+	* lib/stringprep.c:
+	(stringprep): Loop around stringprep_4i error
+	STRINGPREP_TOO_SMALL_BUFFER and increase buffer size.
+	(stringprep_apply_table_to_string): Don't dereference possibly
+	unallocated memory just to do pointer arithmetic.
+
+2003-10-16  Simon Josefsson <simon@josefsson.org>
+
+	* lib/nfkc.c: Check malloc return value.
+
+2003-10-16  Simon Josefsson <simon@josefsson.org>
+
+	* lib/nfkc.c: Check malloc return code.
+
+2003-10-16  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2003-10-16  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi: Doc fox.  Add stringprep_4i and stringprep_4zi.
+
+2003-10-16  Simon Josefsson <simon@josefsson.org>
+
+	* lib/stringprep.c: Doc fix.
+
+2003-10-16  Simon Josefsson <simon@josefsson.org>
+
+	* doc/man/Makefile.am: Add stringprep_4i.3, stringprep_4zi.3.
+
+2003-10-16  Simon Josefsson <simon@josefsson.org>
+
+	* lib/stringprep.c: Doc fix.
+
+2003-10-16  Simon Josefsson <simon@josefsson.org>
+
+	* lib/stringprep.h.in:
+	(stringprep_4i, stringprep_4zi): Add.
+
+2003-10-16  Simon Josefsson <simon@josefsson.org>
+
+	* lib/stringprep.c:
+	(stringprep1): Don't zero terminate.  Rename to stringprep_4i and
+	export it.
+	(stringprep_4zi_1): Add.  Calls stringprep_4i, then zero terminate.
+	(stringprep_4zi): Add.  New API.
+	(stringprep): Use stringprep_4zi_1.
+
+2003-10-16  Simon Josefsson <simon@josefsson.org>
+
+	* lib/stringprep.c: Fix typo.
+
+2003-10-16  Simon Josefsson <simon@josefsson.org>
+
+	* lib/stringprep.c:
+	(stringprep): Split core part into stringprep1.
+	(stringprep1): New, simplified version of core part.
+
+2003-10-15  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Fix.
+
+2003-10-15  Simon Josefsson <simon@josefsson.org>
+
+	* src/idn.c: Print UCS-4 instead of UTF-8 in debug output for
+	--stringprep.
+
+2003-10-15  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2003-10-15  Simon Josefsson <simon@josefsson.org>
+
+	* src/idn.c: Fix UCS-4 output in --stringprep.  Print debug output
+	even with --idna-to-ascii.  Fix error message.
+
+2003-10-12  Simon Josefsson <simon@josefsson.org>
+
+	* libc/getaddrinfo-idn.txt: Clarify alternative approaches.
+
+2003-10-12  Simon Josefsson <simon@josefsson.org>
+
+	* libc/getaddrinfo-idn.txt: Fix.
+
+2003-10-11  Simon Josefsson <simon@josefsson.org>
+
+	* libc/getaddrinfo-idn.txt: Add.
+
+2003-10-10  Simon Josefsson <simon@josefsson.org>
+
+	* configure.ac: Revert typo.
+
+2003-10-10  Simon Josefsson <simon@josefsson.org>
+
+	* configure.ac: Fix so version comment (matches libtool manual).
+
+2003-10-10  Simon Josefsson <simon@josefsson.org>
+
+	* FAQ: Fix.
+
+2003-10-10  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2003-10-10  Simon Josefsson <simon@josefsson.org>
+
+	* src/idn.ggo.in: Remove 'generic' (should not be exposed).  Add
+	'trace'.
+
+2003-10-08  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS, configure.ac: Bump versions.
+
+2003-10-08  Simon Josefsson <simon@josefsson.org>
+
+	* Makefile.maint: Fix doxygen generation.
+
 2003-10-07  Simon Josefsson <simon@josefsson.org>
 
 	* NEWS: Version 0.3.2.
