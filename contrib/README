@@ -4,7 +4,9 @@ See the end for copying conditions.
 
 The idn-python/ sub-directory contains a Python interface for Libidn,
 contributed by Stephane Bortzmeyer <bortzmeyer@nic.fr>.  It is
-licensed under the same licence as Libidn itself.
+licensed under the same licence as Libidn itself.  Note that as of
+version 2.3 Python has native IDN support, see
+<http://www.python.org/doc/2.3.2/lib/module-encodings.idna.html>.
 
 The web/ sub-directory contains a online libidn interface in PHP.
 
