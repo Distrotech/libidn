@@ -327,7 +327,7 @@ main (int argc, char *argv[])
   for (i = 0; i < sizeof (idna) / sizeof (idna[0]); i++)
     {
 #ifdef DRAFT
-      printf("<section title=\"%s.\">\n", idna[i].name);
+      printf("<section title=\"%s\">\n", idna[i].name);
       printf("\n");
       printf("<figure>\n");
       printf("<artwork>\n");

@@ -392,7 +392,7 @@ main (int argc, char *argv[])
   for (i = 0; i < sizeof (strprep) / sizeof (strprep[0]); i++)
     {
 #ifdef DRAFT
-      printf ("<section title=\"%s.\">\n", strprep[i].comment);
+      printf ("<section title=\"%s\">\n", strprep[i].comment);
       printf ("\n");
       printf ("<figure>\n");
       printf ("<artwork>\n");
