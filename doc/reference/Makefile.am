@@ -19,7 +19,8 @@
 
 HIGNORE = gunibreak.h gunicomp.h gunidecomp.h idn-int.h idn-free.h
 HTML_OBJECTS = index.html c4.html libidn-tld.html \
-	libidn-idna.html libidn-punycode.html libidn-stringprep.html
+	libidn-idna.html libidn-punycode.html libidn-stringprep.html \
+	libidn-pr29.html
 
 EXTRA_DIST = $(PACKAGE)-docs.tmpl $(HTML_OBJECTS) $(IMAGES)
 IMAGES = home.png left.png right.png up.png
