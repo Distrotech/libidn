@@ -70,9 +70,9 @@ through the resolver, and that the input string should also be run
 through the IDNA ToUnicode steps and the output of that placed in the
 'ai_canonname' field.
 
-The semantics of AI_CANON|AI_CANONIDN is that instead of running the
-ToUnicode IDNA steps on the input string, the canonical host name as
-returned by the resolver for the input string should be used in the
+The semantics of AI_CANONNAME|AI_CANONIDN is that instead of running
+the ToUnicode IDNA steps on the input string, the canonical host name
+as returned by the resolver for the input string should be used in the
 ToUnicode IDNA step.
 
 Status
