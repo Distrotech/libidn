@@ -1254,9 +1254,9 @@ pr29_4 (const uint32_t *in, size_t len)
 	if (combinationclass (in[j]))
 	  for (k = j + 1; k < len; j++)
 	    if (in_last_column_row (in[k], row))
-	      return 1;
+	      return PR29_PROBLEM;
 
-  return 0;
+  return PR29_SUCCESS;
 }
 
 /**
