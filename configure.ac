@@ -1,13 +1,13 @@
 dnl Process this file with autoconf to produce a configure script.
-AC_INIT(libstringprep, 0.0.8, bug-libstringprep@josefsson.org)
+AC_INIT(libstringprep, 0.1.0, bug-libstringprep@josefsson.org)
 AC_CONFIG_SRCDIR(stringprep.h.in)
 
 # Interfaces removed:    CURRENT++, AGE=0, REVISION=0
 # Interfaces added:      CURRENT++, AGE++, REVISION=0
 # No interfaces changed:                   REVISION++
-LT_CURRENT=3
-LT_AGE=3
-LT_REVISION=1
+LT_CURRENT=4
+LT_AGE=4
+LT_REVISION=0
 AC_SUBST(LT_CURRENT)
 AC_SUBST(LT_AGE)
 AC_SUBST(LT_REVISION)

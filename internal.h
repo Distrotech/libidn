@@ -69,5 +69,6 @@
 
 #include "stringprep.h"
 #include "stringprep_generic.h"
+#include "punycode.h"
 
 #endif /* _INTERNAL_H */

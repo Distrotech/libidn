@@ -13,6 +13,7 @@ config.sub
 configure
 depcomp
 example
+example2
 gunibreak.h
 gunicomp.h
 gunidecomp.h
@@ -26,6 +27,7 @@ missing
 mkinstalldirs
 nfkc.lo
 profiles.lo
+punycode.lo
 stamp-h1
 stringprep.h
 stringprep.lo
@@ -33,6 +35,7 @@ stringprep_generic.c
 stringprep_generic.lo
 tst_nfkc
 tst_stringprep
+tst_punycode
 toutf8.lo
 version.lo
 INSTALL

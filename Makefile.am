@@ -33,7 +33,8 @@ include_HEADERS = stringprep.h stringprep_generic.h stringprep_nameprep.h \
 
 libstringprep_la_SOURCES = gunicomp.h gunidecomp.h internal.h \
 	stringprep.c nfkc.c version.c toutf8.c \
-	stringprep_generic.c profiles.c
+	stringprep_generic.c profiles.c \
+	punycode.h punycode.c
 libstringprep_la_LIBADD = @LTLIBOBJS@ @LTLIBICONV@
 libstringprep_la_LDFLAGS = -version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE)
 
@@ -46,7 +47,7 @@ stringprep_generic.c: draft-hoffman-stringprep-07.txt gen-stringprep-tables.pl
 	$(PERL) $(srcdir)/gen-stringprep-tables.pl \
 		draft-hoffman-stringprep-07.txt
 
-tests = tst_stringprep tst_nfkc
+tests = tst_stringprep tst_nfkc tst_punycode
 
 check_PROGRAMS = $(tests)
 
@@ -55,7 +56,7 @@ TESTS = $(tests)
 INCLUDES = -I$(top_srcdir)
 LDADD = libstringprep.la
 
-noinst_PROGRAMS = $(tests) example
+noinst_PROGRAMS = $(tests) example example2
 
 ACLOCAL_AMFLAGS = -I .
 
@@ -65,7 +66,7 @@ ChangeLog:
 	"ChangeLog|.cvsignore|.cvsusers|autogen.sh"
 
 indent:
-	indent $(libstringprep_la_SOURCES)
+	indent $(SOURCES)
 
 sign: $(distdir).tar.gz
 	rm -f $(distdir).tar.gz.asc

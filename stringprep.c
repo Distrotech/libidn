@@ -24,7 +24,7 @@
 #define DBG 0
 
 static int
-stringprep_find_character_in_table (long ucs4,
+stringprep_find_character_in_table (unsigned long ucs4,
 				    Stringprep_table_element * table)
 {
   int i;
@@ -38,7 +38,7 @@ stringprep_find_character_in_table (long ucs4,
 }
 
 static int
-stringprep_find_string_in_table (long *ucs4,
+stringprep_find_string_in_table (unsigned long *ucs4,
 				 int ucs4len,
 				 int *tablepos,
 				 Stringprep_table_element * table)
@@ -57,7 +57,7 @@ stringprep_find_string_in_table (long *ucs4,
 }
 
 static int
-stringprep_apply_table_to_string (long *ucs4,
+stringprep_apply_table_to_string (unsigned long *ucs4,
 				  int *ucs4len,
 				  int maxucs4len,
 				  Stringprep_table_element * table)
@@ -80,8 +80,8 @@ stringprep_apply_table_to_string (long *ucs4,
 	return STRINGPREP_TOO_SMALL_BUFFER;
 
       memmove (&ucs4[pos + maplen], &ucs4[pos + 1],
-	       *ucs4len * sizeof (long) - (&ucs4[pos + 1] - ucs4));
-      memcpy (&ucs4[pos], table[i].map, sizeof (long) * maplen);
+	       *ucs4len * sizeof (unsigned long) - (&ucs4[pos + 1] - ucs4));
+      memcpy (&ucs4[pos], table[i].map, sizeof (unsigned long) * maplen);
       *ucs4len = *ucs4len - 1 + maplen;
     }
 
@@ -99,14 +99,14 @@ stringprep (char *in, int maxlen, int flags, Stringprep_profile * profile)
   int i;
   int rc;
   char *p = 0;
-  long *q = 0;
-  long *ucs4;
+  unsigned long *q = 0;
+  unsigned long *ucs4;
   int ucs4len;
   int maxucs4len;
 
   ucs4 = stringprep_utf8_to_ucs4 (in, -1, &ucs4len);
   maxucs4len = 4 * ucs4len + 10;
-  ucs4 = realloc (ucs4, 1 + maxucs4len * sizeof (long));
+  ucs4 = realloc (ucs4, 1 + maxucs4len * sizeof (unsigned long));
   if (!ucs4)
     {
       rc = STRINGPREP_MALLOC_ERROR;

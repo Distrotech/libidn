@@ -73,9 +73,9 @@ extern "C"
 
   struct Stringprep_table_element
   {
-    long start;
-    long end;			/* 0 if only one character     */
-    long map[STRINGPREP_MAX_MAP_CHARS];	/* Always NULL if end is non-0 */
+    unsigned long start;
+    unsigned long end;				/* 0 if only one character */
+    unsigned long map[STRINGPREP_MAX_MAP_CHARS];/* NULL if end is not 0 */
   };
   typedef struct Stringprep_table_element Stringprep_table_element;
 
@@ -97,16 +97,17 @@ extern "C"
 
 /* Utility */
 
-  extern int stringprep_unichar_to_utf8 (long c, char *outbuf);
-  extern long stringprep_utf8_to_unichar (const char *p);
+  extern int stringprep_unichar_to_utf8 (unsigned long c, char *outbuf);
+  extern unsigned long stringprep_utf8_to_unichar (const char *p);
 
-  extern long *stringprep_utf8_to_ucs4 (const char *str, int len,
-					int *items_written);
-  extern char *stringprep_ucs4_to_utf8 (const long *str, int len,
+  extern unsigned long *stringprep_utf8_to_ucs4 (const char *str, int len,
+						 int *items_written);
+  extern char *stringprep_ucs4_to_utf8 (const unsigned long *str, int len,
 					int *items_read, int *items_written);
 
   extern char *stringprep_utf8_nfkc_normalize (const char *str, int len);
-  extern long *stringprep_ucs4_nfkc_normalize (long *str, int len);
+  extern unsigned long *stringprep_ucs4_nfkc_normalize (unsigned long *str,
+							int len);
 
   extern const char *stringprep_locale_charset ();
   extern char *stringprep_convert (const char *str,
