@@ -142,6 +142,9 @@
 ;; IDNA Elisp API:
 
 (defun idna-to-ascii (str)
+  "Returns an ASCII Compatible Encoding (ACE) of STR.
+It is computed by the IDNA ToASCII operation, after converting the
+input to UTF-8."
   (let ((proc (idna-to-ascii-process))
 	string)
     (if (null proc)
@@ -154,6 +157,8 @@
 	string))))
 
 (defun idna-to-unicode (str)
+  "Returns a possibly multibyte string after decoding STR.
+It is computed by the IDNA ToUnicode operation."
   (let ((proc (idna-to-unicode-process))
 	string)
     (if (null proc)

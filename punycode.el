@@ -139,6 +139,7 @@
 ;; Punycode Elisp API:
 
 (defun punycode-encode (str)
+  "Returns a Punycode encoding of STR."
   (let ((proc (punycode-encode-process))
 	string)
     (if (null proc)
@@ -151,6 +152,7 @@
 	string))))
 
 (defun punycode-decode (str)
+  "Returns a possibly multibyte string which is the punycode decoding of STR."
   (let ((proc (punycode-decode-process))
 	string)
     (if (null proc)
