@@ -46,11 +46,11 @@ Stringprep_profile stringprep_generic[] = {
      mapping and, if so, replace it with its mapping. This is
      described in section 3. */
 
-  {STRINGPREP_MAP_TABLE, 0, stringprep_generic_B_1, "B.1"}
+  {STRINGPREP_MAP_TABLE, 0, stringprep_rfc3454_B_1, "B.1"}
   ,
-  {STRINGPREP_MAP_TABLE, ~STRINGPREP_NO_NFKC, stringprep_generic_B_2, "B.2"}
+  {STRINGPREP_MAP_TABLE, ~STRINGPREP_NO_NFKC, stringprep_rfc3454_B_2, "B.2"}
   ,
-  {STRINGPREP_MAP_TABLE, STRINGPREP_NO_NFKC, stringprep_generic_B_3, "B.3"}
+  {STRINGPREP_MAP_TABLE, STRINGPREP_NO_NFKC, stringprep_rfc3454_B_3, "B.3"}
   ,
 
   /* 2) Normalize -- Possibly normalize the result of step 1 using
@@ -63,27 +63,27 @@ Stringprep_profile stringprep_generic[] = {
      the output. If any are found, return an error. This is
      described in section 5. */
 
-  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_1_1, "C.1.1"}
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_rfc3454_C_1_1, "C.1.1"}
   ,
-  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_1_2, "C.1.2"}
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_rfc3454_C_1_2, "C.1.2"}
   ,
-  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_2_1, "C.2.1"}
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_rfc3454_C_2_1, "C.2.1"}
   ,
-  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_2_2, "C.2.2"}
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_rfc3454_C_2_2, "C.2.2"}
   ,
-  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_3, "C.3"}
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_rfc3454_C_3, "C.3"}
   ,
-  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_4, "C.4"}
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_rfc3454_C_4, "C.4"}
   ,
-  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_5, "C.5"}
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_rfc3454_C_5, "C.5"}
   ,
-  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_6, "C.6"}
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_rfc3454_C_6, "C.6"}
   ,
-  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_7, "C.7"}
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_rfc3454_C_7, "C.7"}
   ,
-  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_8, "C.8"}
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_rfc3454_C_8, "C.8"}
   ,
-  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_9, "C.9"}
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_rfc3454_C_9, "C.9"}
   ,
 
   /* 4) Check bidi -- Possibly check for right-to-left characters, and
@@ -95,12 +95,12 @@ Stringprep_profile stringprep_generic[] = {
   {STRINGPREP_BIDI, ~STRINGPREP_NO_BIDI, 0, "BIDI"}
   ,
   {STRINGPREP_BIDI_PROHIBIT_TABLE, ~STRINGPREP_NO_BIDI,
-   stringprep_generic_C_8, "C.8"}
+   stringprep_rfc3454_C_8, "C.8"}
   ,
-  {STRINGPREP_BIDI_RAL_TABLE, ~STRINGPREP_NO_BIDI, stringprep_generic_D_1,
+  {STRINGPREP_BIDI_RAL_TABLE, ~STRINGPREP_NO_BIDI, stringprep_rfc3454_D_1,
    "D.1"}
   ,
-  {STRINGPREP_BIDI_L_TABLE, ~STRINGPREP_NO_BIDI, stringprep_generic_D_2,
+  {STRINGPREP_BIDI_L_TABLE, ~STRINGPREP_NO_BIDI, stringprep_rfc3454_D_2,
    "D.2"}
   ,
 
@@ -109,48 +109,48 @@ Stringprep_profile stringprep_generic[] = {
      described in section 7. */
 
   {STRINGPREP_UNASSIGNED_TABLE, ~STRINGPREP_NO_UNASSIGNED,
-   stringprep_generic_A_1, "A.1"}
+   stringprep_rfc3454_A_1, "A.1"}
   ,
 
   {0}
 };
 
 Stringprep_profile stringprep_nameprep[] = {
-  {STRINGPREP_MAP_TABLE, 0, stringprep_generic_B_1, "B.1"}
+  {STRINGPREP_MAP_TABLE, 0, stringprep_rfc3454_B_1, "B.1"}
   ,
-  {STRINGPREP_MAP_TABLE, 0, stringprep_generic_B_2, "B.2"}
+  {STRINGPREP_MAP_TABLE, 0, stringprep_rfc3454_B_2, "B.2"}
   ,
   {STRINGPREP_NFKC, 0, 0, "NFKC"}
   ,
-  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_1_2, "C.1.2"}
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_rfc3454_C_1_2, "C.1.2"}
   ,
-  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_2_2, "C.2.2"}
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_rfc3454_C_2_2, "C.2.2"}
   ,
-  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_3, "C.3"}
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_rfc3454_C_3, "C.3"}
   ,
-  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_4, "C.4"}
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_rfc3454_C_4, "C.4"}
   ,
-  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_5, "C.5"}
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_rfc3454_C_5, "C.5"}
   ,
-  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_6, "C.6"}
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_rfc3454_C_6, "C.6"}
   ,
-  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_7, "C.7"}
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_rfc3454_C_7, "C.7"}
   ,
-  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_8, "C.8"}
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_rfc3454_C_8, "C.8"}
   ,
-  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_9, "C.9"}
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_rfc3454_C_9, "C.9"}
   ,
   {STRINGPREP_BIDI, 0, 0, "BIDI"}
   ,
   {STRINGPREP_BIDI_PROHIBIT_TABLE, ~STRINGPREP_NO_BIDI,
-   stringprep_generic_C_8, "C.8"}
+   stringprep_rfc3454_C_8, "C.8"}
   ,
-  {STRINGPREP_BIDI_RAL_TABLE, 0, stringprep_generic_D_1, "D.1"}
+  {STRINGPREP_BIDI_RAL_TABLE, 0, stringprep_rfc3454_D_1, "D.1"}
   ,
-  {STRINGPREP_BIDI_L_TABLE, 0, stringprep_generic_D_2, "D.2"}
+  {STRINGPREP_BIDI_L_TABLE, 0, stringprep_rfc3454_D_2, "D.2"}
   ,
   {STRINGPREP_UNASSIGNED_TABLE, ~STRINGPREP_NO_UNASSIGNED,
-   stringprep_generic_A_1, "A.1"}
+   stringprep_rfc3454_A_1, "A.1"}
   ,
   {0}
 };
@@ -158,41 +158,41 @@ Stringprep_profile stringprep_nameprep[] = {
 Stringprep_profile stringprep_kerberos5[] = {
   /* XXX this is likely to be wrong as the specification is
      a rough draft. */
-  {STRINGPREP_MAP_TABLE, 0, stringprep_generic_B_1, "B.1"}
+  {STRINGPREP_MAP_TABLE, 0, stringprep_rfc3454_B_1, "B.1"}
   ,
-  {STRINGPREP_MAP_TABLE, 0, stringprep_generic_B_3, "B.2"}
+  {STRINGPREP_MAP_TABLE, 0, stringprep_rfc3454_B_3, "B.2"}
   ,
   {STRINGPREP_NFKC, 0, 0, "NFKC"}
   ,
-  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_1_2, "C.1.2"}
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_rfc3454_C_1_2, "C.1.2"}
   ,
-  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_2_2, "C.2.2"}
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_rfc3454_C_2_2, "C.2.2"}
   ,
-  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_3, "C.3"}
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_rfc3454_C_3, "C.3"}
   ,
-  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_4, "C.4"}
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_rfc3454_C_4, "C.4"}
   ,
-  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_5, "C.5"}
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_rfc3454_C_5, "C.5"}
   ,
-  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_6, "C.6"}
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_rfc3454_C_6, "C.6"}
   ,
-  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_7, "C.7"}
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_rfc3454_C_7, "C.7"}
   ,
-  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_8, "C.8"}
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_rfc3454_C_8, "C.8"}
   ,
-  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_9, "C.9"}
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_rfc3454_C_9, "C.9"}
   ,
   {STRINGPREP_BIDI, 0, 0, "BIDI"}
   ,
   {STRINGPREP_BIDI_PROHIBIT_TABLE, ~STRINGPREP_NO_BIDI,
-   stringprep_generic_C_8, "C.8"}
+   stringprep_rfc3454_C_8, "C.8"}
   ,
-  {STRINGPREP_BIDI_RAL_TABLE, 0, stringprep_generic_D_1, "D.1"}
+  {STRINGPREP_BIDI_RAL_TABLE, 0, stringprep_rfc3454_D_1, "D.1"}
   ,
-  {STRINGPREP_BIDI_L_TABLE, 0, stringprep_generic_D_2, "D.2"}
+  {STRINGPREP_BIDI_L_TABLE, 0, stringprep_rfc3454_D_2, "D.2"}
   ,
   {STRINGPREP_UNASSIGNED_TABLE, ~STRINGPREP_NO_UNASSIGNED,
-   stringprep_generic_A_1, "A.1"}
+   stringprep_rfc3454_A_1, "A.1"}
   ,
   {0}
 };
@@ -218,117 +218,117 @@ Stringprep_table_element stringprep_xmpp_nodeprep_prohibit[] = {
 };
 
 Stringprep_profile stringprep_xmpp_nodeprep[] = {
-  {STRINGPREP_MAP_TABLE, 0, stringprep_generic_B_1, "B.1"}
+  {STRINGPREP_MAP_TABLE, 0, stringprep_rfc3454_B_1, "B.1"}
   ,
-  {STRINGPREP_MAP_TABLE, 0, stringprep_generic_B_2, "B.2"}
+  {STRINGPREP_MAP_TABLE, 0, stringprep_rfc3454_B_2, "B.2"}
   ,
   {STRINGPREP_NFKC, 0, 0, "NFKC"}
   ,
-  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_1_1, "C.1.1"}
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_rfc3454_C_1_1, "C.1.1"}
   ,
-  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_1_2, "C.1.2"}
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_rfc3454_C_1_2, "C.1.2"}
   ,
-  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_2_1, "C.2.1"}
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_rfc3454_C_2_1, "C.2.1"}
   ,
-  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_2_2, "C.2.2"}
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_rfc3454_C_2_2, "C.2.2"}
   ,
-  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_3, "C.3"}
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_rfc3454_C_3, "C.3"}
   ,
-  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_4, "C.4"}
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_rfc3454_C_4, "C.4"}
   ,
-  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_5, "C.5"}
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_rfc3454_C_5, "C.5"}
   ,
-  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_6, "C.6"}
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_rfc3454_C_6, "C.6"}
   ,
-  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_7, "C.7"}
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_rfc3454_C_7, "C.7"}
   ,
-  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_8, "C.8"}
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_rfc3454_C_8, "C.8"}
   ,
-  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_9, "C.9"}
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_rfc3454_C_9, "C.9"}
   ,
   {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_xmpp_nodeprep_prohibit,
    "XMPP-PROHIBIT"}
   ,
   {STRINGPREP_BIDI, 0, 0, "BIDI"}
   ,
-  {STRINGPREP_BIDI_PROHIBIT_TABLE, 0, stringprep_generic_C_8, "C.8"}
+  {STRINGPREP_BIDI_PROHIBIT_TABLE, 0, stringprep_rfc3454_C_8, "C.8"}
   ,
-  {STRINGPREP_BIDI_RAL_TABLE, 0, stringprep_generic_D_1, "D.1"}
+  {STRINGPREP_BIDI_RAL_TABLE, 0, stringprep_rfc3454_D_1, "D.1"}
   ,
-  {STRINGPREP_BIDI_L_TABLE, 0, stringprep_generic_D_2, "D.2"}
+  {STRINGPREP_BIDI_L_TABLE, 0, stringprep_rfc3454_D_2, "D.2"}
   ,
   {STRINGPREP_UNASSIGNED_TABLE, ~STRINGPREP_NO_UNASSIGNED,
-   stringprep_generic_A_1, "A.1"}
+   stringprep_rfc3454_A_1, "A.1"}
   ,
   {0}
 };
 
 Stringprep_profile stringprep_xmpp_resourceprep[] = {
-  {STRINGPREP_MAP_TABLE, 0, stringprep_generic_B_1, "B.1"}
+  {STRINGPREP_MAP_TABLE, 0, stringprep_rfc3454_B_1, "B.1"}
   ,
   {STRINGPREP_NFKC, 0, 0, "NFKC"}
   ,
-  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_1_2, "C.1.2"}
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_rfc3454_C_1_2, "C.1.2"}
   ,
-  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_2_1, "C.2.1"}
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_rfc3454_C_2_1, "C.2.1"}
   ,
-  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_2_2, "C.2.2"}
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_rfc3454_C_2_2, "C.2.2"}
   ,
-  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_3, "C.3"}
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_rfc3454_C_3, "C.3"}
   ,
-  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_4, "C.4"}
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_rfc3454_C_4, "C.4"}
   ,
-  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_5, "C.5"}
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_rfc3454_C_5, "C.5"}
   ,
-  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_6, "C.6"}
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_rfc3454_C_6, "C.6"}
   ,
-  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_7, "C.7"}
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_rfc3454_C_7, "C.7"}
   ,
-  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_8, "C.8"}
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_rfc3454_C_8, "C.8"}
   ,
-  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_9, "C.9"}
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_rfc3454_C_9, "C.9"}
   ,
   {STRINGPREP_BIDI, 0, 0, "BIDI"}
   ,
-  {STRINGPREP_BIDI_PROHIBIT_TABLE, 0, stringprep_generic_C_8, "C.8"}
+  {STRINGPREP_BIDI_PROHIBIT_TABLE, 0, stringprep_rfc3454_C_8, "C.8"}
   ,
-  {STRINGPREP_BIDI_RAL_TABLE, ~STRINGPREP_NO_BIDI, stringprep_generic_D_1,
+  {STRINGPREP_BIDI_RAL_TABLE, ~STRINGPREP_NO_BIDI, stringprep_rfc3454_D_1,
    "D.1"}
   ,
-  {STRINGPREP_BIDI_L_TABLE, ~STRINGPREP_NO_BIDI, stringprep_generic_D_2,
+  {STRINGPREP_BIDI_L_TABLE, ~STRINGPREP_NO_BIDI, stringprep_rfc3454_D_2,
    "D.2"}
   ,
   {STRINGPREP_UNASSIGNED_TABLE, ~STRINGPREP_NO_UNASSIGNED,
-   stringprep_generic_A_1, "A.1"}
+   stringprep_rfc3454_A_1, "A.1"}
   ,
   {0}
 };
 
 Stringprep_profile stringprep_plain[] = {
-  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_2_1, "C.2.1"}
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_rfc3454_C_2_1, "C.2.1"}
   ,
-  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_2_2, "C.2.2"}
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_rfc3454_C_2_2, "C.2.2"}
   ,
-  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_3, "C.3"}
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_rfc3454_C_3, "C.3"}
   ,
-  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_4, "C.4"}
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_rfc3454_C_4, "C.4"}
   ,
-  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_5, "C.5"}
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_rfc3454_C_5, "C.5"}
   ,
-  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_6, "C.6"}
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_rfc3454_C_6, "C.6"}
   ,
-  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_8, "C.8"}
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_rfc3454_C_8, "C.8"}
   ,
-  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_9, "C.9"}
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_rfc3454_C_9, "C.9"}
   ,
   {STRINGPREP_BIDI, 0, 0, "BIDI"}
   ,
-  {STRINGPREP_BIDI_PROHIBIT_TABLE, 0, stringprep_generic_C_8, "C.8"}
+  {STRINGPREP_BIDI_PROHIBIT_TABLE, 0, stringprep_rfc3454_C_8, "C.8"}
   ,
-  {STRINGPREP_BIDI_RAL_TABLE, ~STRINGPREP_NO_BIDI, stringprep_generic_D_1,
+  {STRINGPREP_BIDI_RAL_TABLE, ~STRINGPREP_NO_BIDI, stringprep_rfc3454_D_1,
    "D.1"}
   ,
-  {STRINGPREP_BIDI_L_TABLE, ~STRINGPREP_NO_BIDI, stringprep_generic_D_2,
+  {STRINGPREP_BIDI_L_TABLE, ~STRINGPREP_NO_BIDI, stringprep_rfc3454_D_2,
    "D.2"}
   ,
   {0}
@@ -467,46 +467,46 @@ Stringprep_table_element stringprep_iscsi_prohibit[] = {
 };
 
 Stringprep_profile stringprep_iscsi[] = {
-  {STRINGPREP_MAP_TABLE, 0, stringprep_generic_B_1, "B.1"}
+  {STRINGPREP_MAP_TABLE, 0, stringprep_rfc3454_B_1, "B.1"}
   ,
-  {STRINGPREP_MAP_TABLE, 0, stringprep_generic_B_2, "B.2"}
+  {STRINGPREP_MAP_TABLE, 0, stringprep_rfc3454_B_2, "B.2"}
   ,
   {STRINGPREP_NFKC, 0, 0, "NFKC"}
   ,
-  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_2_1, "C.1.1"}
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_rfc3454_C_2_1, "C.1.1"}
   ,
-  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_2_2, "C.1.2"}
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_rfc3454_C_2_2, "C.1.2"}
   ,
-  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_2_1, "C.2.1"}
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_rfc3454_C_2_1, "C.2.1"}
   ,
-  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_2_2, "C.2.2"}
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_rfc3454_C_2_2, "C.2.2"}
   ,
-  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_3, "C.3"}
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_rfc3454_C_3, "C.3"}
   ,
-  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_4, "C.4"}
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_rfc3454_C_4, "C.4"}
   ,
-  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_5, "C.5"}
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_rfc3454_C_5, "C.5"}
   ,
-  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_6, "C.6"}
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_rfc3454_C_6, "C.6"}
   ,
-  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_8, "C.8"}
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_rfc3454_C_8, "C.8"}
   ,
-  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_9, "C.9"}
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_rfc3454_C_9, "C.9"}
   ,
   {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_iscsi_prohibit, "ISCSI-PROHIBIT"}
   ,
   {STRINGPREP_BIDI, 0, 0, "BIDI"}
   ,
-  {STRINGPREP_BIDI_PROHIBIT_TABLE, 0, stringprep_generic_C_8, "C.8"}
+  {STRINGPREP_BIDI_PROHIBIT_TABLE, 0, stringprep_rfc3454_C_8, "C.8"}
   ,
-  {STRINGPREP_BIDI_RAL_TABLE, ~STRINGPREP_NO_BIDI, stringprep_generic_D_1,
+  {STRINGPREP_BIDI_RAL_TABLE, ~STRINGPREP_NO_BIDI, stringprep_rfc3454_D_1,
    "D.1"}
   ,
-  {STRINGPREP_BIDI_L_TABLE, ~STRINGPREP_NO_BIDI, stringprep_generic_D_2,
+  {STRINGPREP_BIDI_L_TABLE, ~STRINGPREP_NO_BIDI, stringprep_rfc3454_D_2,
    "D.2"}
   ,
   {STRINGPREP_UNASSIGNED_TABLE, ~STRINGPREP_NO_UNASSIGNED,
-   stringprep_generic_A_1, "A.1"}
+   stringprep_rfc3454_A_1, "A.1"}
   ,
   {0}
 };
@@ -569,40 +569,40 @@ Stringprep_table_element stringprep_saslprep_space_map[] = {
 Stringprep_profile stringprep_saslprep[] = {
   {STRINGPREP_MAP_TABLE, 0, stringprep_saslprep_space_map, "SASL-SPACE-MAP"}
   ,
-  {STRINGPREP_MAP_TABLE, 0, stringprep_generic_B_1, "B.1"}
+  {STRINGPREP_MAP_TABLE, 0, stringprep_rfc3454_B_1, "B.1"}
   ,
   {STRINGPREP_NFKC, 0, 0, "NFKC"}
   ,
-  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_2_2, "C.1.2"}
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_rfc3454_C_2_2, "C.1.2"}
   ,
-  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_2_1, "C.2.1"}
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_rfc3454_C_2_1, "C.2.1"}
   ,
-  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_2_2, "C.2.2"}
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_rfc3454_C_2_2, "C.2.2"}
   ,
-  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_3, "C.3"}
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_rfc3454_C_3, "C.3"}
   ,
-  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_4, "C.4"}
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_rfc3454_C_4, "C.4"}
   ,
-  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_5, "C.5"}
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_rfc3454_C_5, "C.5"}
   ,
-  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_6, "C.6"}
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_rfc3454_C_6, "C.6"}
   ,
-  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_8, "C.8"}
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_rfc3454_C_8, "C.8"}
   ,
-  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_9, "C.9"}
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_rfc3454_C_9, "C.9"}
   ,
   {STRINGPREP_BIDI, 0, 0, "BIDI"}
   ,
-  {STRINGPREP_BIDI_PROHIBIT_TABLE, 0, stringprep_generic_C_8, "C.8"}
+  {STRINGPREP_BIDI_PROHIBIT_TABLE, 0, stringprep_rfc3454_C_8, "C.8"}
   ,
-  {STRINGPREP_BIDI_RAL_TABLE, ~STRINGPREP_NO_BIDI, stringprep_generic_D_1,
+  {STRINGPREP_BIDI_RAL_TABLE, ~STRINGPREP_NO_BIDI, stringprep_rfc3454_D_1,
    "D.1"}
   ,
-  {STRINGPREP_BIDI_L_TABLE, ~STRINGPREP_NO_BIDI, stringprep_generic_D_2,
+  {STRINGPREP_BIDI_L_TABLE, ~STRINGPREP_NO_BIDI, stringprep_rfc3454_D_2,
    "D.2"}
   ,
   {STRINGPREP_UNASSIGNED_TABLE, ~STRINGPREP_NO_UNASSIGNED,
-   stringprep_generic_A_1, "A.1"}
+   stringprep_rfc3454_A_1, "A.1"}
   ,
   {0}
 };

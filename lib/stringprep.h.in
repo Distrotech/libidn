@@ -103,23 +103,23 @@ extern "C"
   extern Stringprep_profiles stringprep_profiles[];
 
 /* Profiles */
-  extern Stringprep_table_element stringprep_generic_A_1[];
-  extern Stringprep_table_element stringprep_generic_B_1[];
-  extern Stringprep_table_element stringprep_generic_B_2[];
-  extern Stringprep_table_element stringprep_generic_B_3[];
-  extern Stringprep_table_element stringprep_generic_C_1_1[];
-  extern Stringprep_table_element stringprep_generic_C_1_2[];
-  extern Stringprep_table_element stringprep_generic_C_2_1[];
-  extern Stringprep_table_element stringprep_generic_C_2_2[];
-  extern Stringprep_table_element stringprep_generic_C_3[];
-  extern Stringprep_table_element stringprep_generic_C_4[];
-  extern Stringprep_table_element stringprep_generic_C_5[];
-  extern Stringprep_table_element stringprep_generic_C_6[];
-  extern Stringprep_table_element stringprep_generic_C_7[];
-  extern Stringprep_table_element stringprep_generic_C_8[];
-  extern Stringprep_table_element stringprep_generic_C_9[];
-  extern Stringprep_table_element stringprep_generic_D_1[];
-  extern Stringprep_table_element stringprep_generic_D_2[];
+  extern Stringprep_table_element stringprep_rfc3454_A_1[];
+  extern Stringprep_table_element stringprep_rfc3454_B_1[];
+  extern Stringprep_table_element stringprep_rfc3454_B_2[];
+  extern Stringprep_table_element stringprep_rfc3454_B_3[];
+  extern Stringprep_table_element stringprep_rfc3454_C_1_1[];
+  extern Stringprep_table_element stringprep_rfc3454_C_1_2[];
+  extern Stringprep_table_element stringprep_rfc3454_C_2_1[];
+  extern Stringprep_table_element stringprep_rfc3454_C_2_2[];
+  extern Stringprep_table_element stringprep_rfc3454_C_3[];
+  extern Stringprep_table_element stringprep_rfc3454_C_4[];
+  extern Stringprep_table_element stringprep_rfc3454_C_5[];
+  extern Stringprep_table_element stringprep_rfc3454_C_6[];
+  extern Stringprep_table_element stringprep_rfc3454_C_7[];
+  extern Stringprep_table_element stringprep_rfc3454_C_8[];
+  extern Stringprep_table_element stringprep_rfc3454_C_9[];
+  extern Stringprep_table_element stringprep_rfc3454_D_1[];
+  extern Stringprep_table_element stringprep_rfc3454_D_2[];
 
   /* Generic (for debugging) */
 
