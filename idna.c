@@ -1,5 +1,5 @@
 /* idna.c	Convert to or from IDN strings.
- * Copyright (C) 2002  Simon Josefsson
+ * Copyright (C) 2002, 2003  Simon Josefsson
  *
  * This file is part of GNU Libidn.
  *
@@ -454,6 +454,9 @@ idna_utf8_to_ace (const char *input, char **output)
   int rc;
 
   ucs4 = stringprep_utf8_to_ucs4 (input, -1, &ucs4len);
+  if (!ucs4)
+    return IDNA_ICONV_ERROR;
+
   rc = idna_ucs4_to_ace(ucs4, output);
   free(ucs4);
 
@@ -479,6 +482,9 @@ idna_locale_to_ace (const char *input, char **output)
   int rc;
 
   utf8 = stringprep_locale_to_utf8 (input);
+  if (!utf8)
+    return IDNA_ICONV_ERROR;
+
   rc = idna_utf8_to_ace(utf8, output);
   free(utf8);
 
@@ -588,6 +594,9 @@ idna_utf8ace_to_ucs4 (const char *input, unsigned long **output)
   int rc;
 
   ucs4 = stringprep_utf8_to_ucs4 (input, -1, &ucs4len);
+  if (!ucs4)
+    return IDNA_ICONV_ERROR;
+
   rc = idna_ucs4ace_to_ucs4(ucs4, output);
   free(ucs4);
 
@@ -617,6 +626,9 @@ idna_utf8ace_to_utf8 (const char *input, char **output)
   *output = stringprep_ucs4_to_utf8(ucs4, -1, NULL, NULL);
   free(ucs4);
 
+  if (!*output)
+    return IDNA_ICONV_ERROR;
+
   return rc;
 }
 
@@ -644,6 +656,9 @@ idna_utf8ace_to_locale (const char *input, char **output)
   *output = stringprep_utf8_to_locale(utf8);
   free(utf8);
 
+  if (!*output)
+    return IDNA_ICONV_ERROR;
+
   return rc;
 }
 
@@ -669,6 +684,9 @@ idna_localeace_to_locale (const char *input, char **output)
   int rc;
 
   utf8 = stringprep_locale_to_utf8(input);
+  if (!utf8)
+    return IDNA_ICONV_ERROR;
+
   rc = idna_utf8ace_to_locale(utf8, output);
   free(utf8);
 
