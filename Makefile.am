@@ -25,7 +25,7 @@ ACLOCAL_AMFLAGS = -I m4
 EXTRA_DIST = Makefile.cfg Makefile.maint GNUmakefile \
 	.prev-version announce-gen \
 	FAQ libidn.pc.in \
-	libc/README libc/Makefile libc/Versions libc/configure \
+	libc/README libc/Makefile libc/Versions libc/Banner libc/configure \
 	libc/example.c libc/getaddrinfo.c libc/libc.patch libc/netdb.h \
 	contrib/README contrib/idn-python/README contrib/idn-python/Makefile \
 	contrib/idn-python/idn.c contrib/idn-python/test.py \
