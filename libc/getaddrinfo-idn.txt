@@ -1,0 +1,84 @@
+Libidn getaddrinfo-idn.txt -- Proposal for IDN support in POSIX getaddrinfo.
+Copyright (C) 2003 Simon Josefsson
+See the end for copying conditions.
+
+Background
+----------
+
+Libidn is a package for internationalized string handling based on the
+Stringprep, Punycode and Internationalized Domain Names in
+Applications (IDNA) specifications.  It can be used by applications
+directly by linking to it, as is done by, e.g., Gnus, KDE, and Mutt.
+
+Having each and every application link with and perform its own IDN
+handling is not a good idea.  It bloats the code and makes things
+unnecessarily complex.  Only few applications, such as web browsers
+and mail clients, will need to do this in the future, to provide good
+user interfaces for internationalization.
+
+Alternative Approaches
+----------------------
+
+There are implementation that modify gethostbyname() to accept Unicode
+strings, and even implementations that assume gethostbyname, on the
+client host, send Unicode strings out to the DNS server, and perform
+the IDN-conversion on the local DNS-server.
+
+Some doubts can be raised whether this is an approach that is likely
+to be standardized.  It also lack in functionality: it only provide
+black-box ToASCII functionality.  The application cannot extract the
+output from the ToASCII operation.  More important, there is no way to
+perform a ToUnicode operation that applications may want to use.
+
+See also the thread rooted in <iluel7n6bmu.fsf@latte.josefsson.org>
+posted to libc-alpha@sources.redhat.com on 08 Jan 2003.
+
+What I propose
+--------------
+
+The getaddrinfo() API should have two new flags, AI_IDN and
+AI_CANONIDN.  Roughly they correspond to IDNA ToASCII and IDNA
+ToUnicode, but there are several details.
+
+An application that uses AI_IDN signal to the getaddrinfo()
+implementation that the input host name may be UTF-8 and that the
+appropriate IDNA ToASCII steps should be carried out on the input, and
+the output from the ToASCII operation (if any) should be used in the
+lookup using the current resolver processing.
+
+An application that uses AI_CANONIDN signal to the getaddrinfo()
+implementation that the input host name should be put through the IDNA
+ToUnicode steps, and the output of that placed in the 'ai_canonname'
+field of the resulting structure.  Normal resolver processing applies
+to the input string, of course.
+
+Consequently, an application that uses AI_IDN|AI_CANONIDN signal to
+the getaddrinfo() implementation that the input host name may be in
+UTF-8 and should be put through the IDNA ToASCII steps before run
+through the resolver, and that the input string should also be run
+through the IDNA ToUnicode steps and the output of that placed in the
+'ai_canonname' field.
+
+The semantics of AI_CANON|AI_CANONIDN is that instead of running the
+ToUnicode IDNA steps on the input string, the canonical host name as
+returned by the resolver for the input string should be used in the
+ToUnicode IDNA step.
+
+Status
+------
+
+The AI_IDN flag has been implemented and shipped as a proof-of-concept
+patch for GNU Libc with GNU Libidn since January 2003, binary packages
+for at least two Linux distributions exists.  The AI_CANONIDN flag is
+not yet implemented.
+
+Feedback
+--------
+
+This document is a work-in-progress and the details may change.
+Contact me at simon@josefsson.org.
+
+----------------------------------------------------------------------
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.
