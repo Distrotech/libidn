@@ -15,6 +15,22 @@ updates to the manual.  People responsible for maintaining TLD tables
 are hereby encouraged to contribute them (under reasonable licensing
 terms) for inclusion in future versions of Libidn.
 
+** API and ABI is backwards compatible with the previous version.
+stringprep_kerberos5: Removed macro documentation, likely to be deprecated.
+Tld_table_element:
+Tld_table:
+Tld_rc: Added new TLD types.
+tld_finddomain:
+tld_checkchar:
+tld_gettld_4i:
+tld_gettld_4z:
+tld_check_4it:
+tld_check_4iz:
+tld_check_4i:
+tld_check_4z:
+tld_check_8z:
+tld_check_lz: Added new TLD functions.
+
 * Version 0.3.7 (released 2004-01-22)
 
 ** The command line parameter '--' idiom is documented.
@@ -25,6 +41,8 @@ compatibility.
 
 ** DocBook manuals no longer included (the tools are too unstable).
 
+** API and ABI is backwards compatible with the previous version.
+
 * Version 0.3.6 (released 2004-01-06)
 
 ** The manual now contain a troubleshooting section for the command line tool.
@@ -32,6 +50,8 @@ compatibility.
 ** The PHP interface pass the string directly on the command line.
 
 ** The macro that create 'idn-int.h' has been updated to latest version.
+
+** API and ABI is backwards compatible with the previous version.
 
 * Version 0.3.5 (released 2003-12-15)
 
