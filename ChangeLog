@@ -1,3 +1,22 @@
+2002-12-06 04:33  Simon Josefsson <simon@josefsson.org>
+
+	* configure.ac:
+
+	Release 0.0.4.  
+
+2002-12-06 04:32  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS, README, profiles.c, stringprep.c, stringprep.h.in,
+	stringprep_nameprep.h, tst_stringprep.c:
+
+	Add unassigned code point handling, and self test.  
+
+2002-12-06 03:56  Simon Josefsson <simon@josefsson.org>
+
+	* tst_stringprep.c:
+
+	Don't modify constant string during debug.  
+
 2002-12-05 03:07  Simon Josefsson <simon@josefsson.org>
 
 	* stringprep.c:
