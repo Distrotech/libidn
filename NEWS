@@ -2,6 +2,10 @@ Libidn NEWS -- History of user-visible changes.                 -*- outline -*-
 Copyright (C) 2002, 2003, 2004 Simon Josefsson
 See the end for copying conditions.
 
+* Version 0.5.1 (unreleased)
+
+** API and ABI is backwards compatible with the previous version.
+
 * Version 0.5.0 (released 2004-06-26)
 
 ** Functions to detect "normalization problem sequences" as per PR-29 added.
