@@ -21,20 +21,19 @@ INCLUDES = -I$(top_srcdir)/lib -I../lib
 
 bin_PROGRAMS = idn
 
-idn_cmd = idn_cmd.c idn_cmd.h
-idn_SOURCES = idn.c $(idn_cmd)
+dist_lisp_DATA = punycode.el idna.el
+
+BUILT_SOURCES = idn_cmd.c idn_cmd.h
+idn_SOURCES = idn.c $(BUILT_SOURCES)
 EXTRA_DIST = getopt.h
-BUILT_SOURCES = $(idn_cmd)
+DISTCLEANFILES = $(BUILT_SOURCES)
 idn_LDADD = ../lib/libidn.la $(LTLIBOBJS)
 
-idn.c: $(idn_cmd)
+idn.c: $(BUILT_SOURCES)
 
-$(idn_cmd): idn.ggo
-	-gengetopt --input $^ --file-name $(srcdir)/idn_cmd
-
-dist_lisp_LISP = punycode.el idna.el
-ELCFILES=
-elc-stamp:
+$(BUILT_SOURCES): idn.ggo
+	gengetopt --input $^ --file-name idn_cmd || \
+		cp $(srcdir)/idn_cmd.h $(srcdir)/idn_cmd.h .
 
 # Maintainer targets
 
