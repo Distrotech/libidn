@@ -69,7 +69,7 @@ enum
 };
 
 /* basic(cp) tests whether cp is a basic code point: */
-#define basic(cp) ((uint32_t)(cp) < 0x80)
+#define basic(cp) ((punycode_uint)(cp) < 0x80)
 
 /* delim(cp) tests whether cp is a delimiter: */
 #define delim(cp) ((cp) == delimiter)
@@ -78,8 +78,8 @@ enum
 /* point (for use in representing integers) in the range 0 to */
 /* base-1, or base if cp is does not represent a value.       */
 
-static uint32_t
-decode_digit (uint32_t cp)
+static punycode_uint
+decode_digit (punycode_uint cp)
 {
   return cp - 48 < 10 ? cp - 22 : cp - 65 < 26 ? cp - 65 :
     cp - 97 < 26 ? cp - 97 : base;
@@ -92,7 +92,7 @@ decode_digit (uint32_t cp)
 /* is undefined if flag is nonzero and digit d has no uppercase form. */
 
 static char
-encode_digit (uint32_t d, int flag)
+encode_digit (punycode_uint d, int flag)
 {
   return d + 22 + 75 * (d < 26) - ((flag != 0) << 5);
   /*  0..25 map to ASCII a..z or A..Z */
@@ -103,7 +103,7 @@ encode_digit (uint32_t d, int flag)
 /* (uppercase).  The behavior is undefined if bcp is not a  */
 /* basic code point.                                        */
 
-#define flagged(bcp) ((uint32_t)(bcp) - 65 < 26)
+#define flagged(bcp) ((punycode_uint)(bcp) - 65 < 26)
 
 /* encode_basic(bcp,flag) forces a basic code point to lowercase */
 /* if flag is zero, uppercase if flag is nonzero, and returns    */
@@ -112,7 +112,7 @@ encode_digit (uint32_t d, int flag)
 /* code point.                                                   */
 
 static char
-encode_basic (uint32_t bcp, int flag)
+encode_basic (punycode_uint bcp, int flag)
 {
   bcp -= (bcp - 97 < 26) << 5;
   return bcp + ((!flag && (bcp - 65 < 26)) << 5);
@@ -120,16 +120,16 @@ encode_basic (uint32_t bcp, int flag)
 
 /*** Platform-specific constants ***/
 
-/* maxint is the maximum value of a uint32_t variable: */
-static const uint32_t maxint = -1;
+/* maxint is the maximum value of a punycode_uint variable: */
+static const punycode_uint maxint = -1;
 /* Because maxint is unsigned, -1 becomes the maximum value. */
 
 /*** Bias adaptation function ***/
 
-static uint32_t
-adapt (uint32_t delta, uint32_t numpoints, int firsttime)
+static punycode_uint
+adapt (punycode_uint delta, punycode_uint numpoints, int firsttime)
 {
-  uint32_t k;
+  punycode_uint k;
 
   delta = firsttime ? delta / damp : delta >> 1;
   /* delta >> 1 is a faster way of doing delta / 2 */
@@ -178,14 +178,16 @@ adapt (uint32_t delta, uint32_t numpoints, int firsttime)
  *               not punycode_success, then output_size and output
  *               might contain garbage.
  **/
-int
+enum punycode_status
 punycode_encode (size_t input_length,
-		 const uint32_t input[],
+		 const punycode_uint input[],
 		 const unsigned char case_flags[],
 		 size_t * output_length, char output[])
 {
-  uint32_t n, delta, b, out, bias, m, q, k, t;
-  size_t h, max_out, j;
+  punycode_uint n, delta, h, b, out, max_out, bias, j, m, q, k, t;
+
+  if (input_length > max_int || *output_length > max_int)
+    return punycode_bad_input;
 
   /* Initialize the state: */
 
@@ -312,13 +314,16 @@ punycode_encode (size_t input_length,
  *               because of how the encoding is defined.
  *
  **/
-int
+enum punycode_status
 punycode_decode (size_t input_length,
 		 const char input[],
 		 size_t * output_length,
-		 uint32_t output[], unsigned char case_flags[])
+		 punycode_uint output[], unsigned char case_flags[])
 {
-  uint32_t n, out, i, max_out, bias, b, j, in, oldi, w, k, digit, t;
+  punycode_uint n, out, i, max_out, bias, b, j, in, oldi, w, k, digit, t;
+
+  if (input_length > max_int || *output_length > max_int)
+    return punycode_bad_input;
 
   /* Initialize the state: */
 
