@@ -4,7 +4,7 @@ See the end for copying conditions.
 
 * Version 0.4.5 (unreleased)
 
-** Added more SASLPrep test vectors.
+** Added more SASLPrep and NFKC test vectors.
 
 ** API and ABI is backwards compatible with the previous version.
 
