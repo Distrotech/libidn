@@ -196,7 +196,8 @@ fi
 (cd ${split_html_dir} && tar czf - *.html) > \
     $outdir/${PACKAGE}_html_node.tar.gz
 html_node_tgz_size="`calcsize $outdir/${PACKAGE}_html_node.tar.gz`"
-mv ${split_html_dir} $outdir/html_node
+mv ${split_html_dir}/* $outdir/html_node/
+rmdir ${split_html_dir}
 
 echo Making .tar.gz for sources...
 srcfiles=`ls *.texinfo *.texi *.txi 2>/dev/null`
@@ -216,7 +217,8 @@ ${DOCBOOK2HTML} -o $split_html_db_dir ${outdir}/$PACKAGE-db.xml
 (cd ${split_html_db_dir} && tar czf - *.html) > \
     $outdir/${PACKAGE}_html_node_db.tar.gz
 html_node_db_tgz_size="`calcsize $outdir/${PACKAGE}_html_node_db.tar.gz`"
-mv ${split_html_db_dir} $outdir/html_node_db
+mv ${split_html_db_dir}/* $outdir/html_node_db/
+rmdir ${split_html_db_dir}
 
 echo Generating docbook ASCII...
 ${DOCBOOK2TXT} ${outdir}/$PACKAGE-db.xml
