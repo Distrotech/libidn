@@ -747,7 +747,7 @@ problem in the calling application.
 @end deftypevr
 
 @deftypevr {Return code} {Stringprep_rc} {STRINGPREP_PROFILE_ERROR}
-The stringprep profile was inconsistent..  This usually indicate an
+The stringprep profile was inconsistent.  This usually indicate an
 internal error in the library.
 @end deftypevr
 
