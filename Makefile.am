@@ -54,7 +54,7 @@ libidn_TEXINFOS = fdl.texi \
 libidn-api-version.texi: version.c
 	$(PERL) $(srcdir)/gdoc -texinfo $^ > $@
 
-libidn-api-stringprep.texi: stringprep.c nfkc.c toutf8.c
+libidn-api-stringprep.texi: stringprep.c nfkc.c toutf8.c reference/dummy.c
 	$(PERL) $(srcdir)/gdoc -texinfo $^ > $@
 
 libidn-api-punycode.texi: punycode.c

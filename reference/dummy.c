@@ -5,7 +5,7 @@
  * Used together with stringprep_check_version() to verify header file
  * and run-time library consistency.
  */
-#define STRINGPREP_VERSION "@PACKAGE_VERSION@"
+#define STRINGPREP_VERSION
 
 /**
  * stringprep_nameprep:
@@ -18,7 +18,9 @@
  * Returns 0 iff successful, or an error code.
  **/
 int
-stringprep_nameprep (char *in, int maxlen);
+stringprep_nameprep (char *in, int maxlen)
+{
+}
 
 /**
  * stringprep_nameprep_no_unassigned:
@@ -30,7 +32,9 @@ stringprep_nameprep (char *in, int maxlen);
  * true AllowUnassigned.  Returns 0 iff successful, or an error code.
  **/
 int
-stringprep_nameprep_no_unassigned (char *in, int maxlen);
+stringprep_nameprep_no_unassigned (char *in, int maxlen)
+{
+}
 
 /**
  * stringprep_kerberos5:
@@ -41,7 +45,9 @@ stringprep_nameprep_no_unassigned (char *in, int maxlen);
  * stringprep profile.  Returns 0 iff successful, or an error code.
  **/
 int
-stringprep_kerberos5 (char *in, int maxlen);
+stringprep_kerberos5 (char *in, int maxlen)
+{
+}
 
 
 /**
@@ -55,4 +61,6 @@ stringprep_kerberos5 (char *in, int maxlen);
  * an error code.
  **/
 int
-stringprep_generic (char *in, int maxlen);
+stringprep_generic (char *in, int maxlen)
+{
+}
