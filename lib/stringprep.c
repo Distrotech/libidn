@@ -367,6 +367,14 @@ stringprep_profile (char *in,
  */
 
 /**
+ * Stringprep_rc
+ *
+ * Enumerated return codes of stringprep(), stringprep_profile()
+ * functions (and macros using those functions).  The value 0 is
+ * guaranteed to always correspond to success.
+ */
+
+/**
  * stringprep_nameprep:
  * @in: input/ouput array with string to prepare.
  * @maxlen: maximum length of input/output array.

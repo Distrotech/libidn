@@ -423,3 +423,10 @@ punycode_decode (size_t input_length,
  * Unicode code point data type, this is always a 32 bit unsigned
  * integer.
  */
+
+/**
+ * Punycode_status
+ *
+ * Enumerated return codes of punycode_encode() and punycode_decode().
+ * The value 0 is guaranteed to always correspond to success.
+ */
