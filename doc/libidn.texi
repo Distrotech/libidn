@@ -1671,6 +1671,11 @@ consequence most of the API is available to native Java applications.
 This section contain notes on this support, complete documentation is
 pending.
 
+The Java library, if Libidn has been built with Java support
+(@pxref{Downloading and Installing}), will be placed in
+@file{java/libidn.jar}.  The source code is located in
+@file{java/gnu/inet/encoding/}.
+
 @section Overview
 
 This package provides a Java implementation of the Internationalized
