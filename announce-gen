@@ -154,7 +154,7 @@ sub print_changelog_deltas ($$)
 
   # The exit code should be 1.
   # Allow in case there are no modified ChangeLog entries.
-  $? == 0
+  $? == 256 || $? == 128
     or warn "$ME: warning: `cmd' had unexpected exit code or signal ($?)\n";
 }
 
