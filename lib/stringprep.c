@@ -475,9 +475,9 @@ stringprep_profile (const char *in,
  * characters, and bidirectional character handling.  Profiles for
  * Nameprep, iSCSI, SASL and XMPP are included.  Punycode and ASCII
  * Compatible Encoding (ACE) via IDNA are supported.  A mechanism to
- * define TLD specific inclusion tables, and to compare strings
- * against those tables, is included.  Default tables for some TLDs
- * are also included.
+ * define Top-Level Domain (TLD) specific validation tables, and to
+ * compare strings against those tables, is included.  Default tables
+ * for some TLDs are also included.
  *
  * The Stringprep API consists of two main functions, one for
  * converting data from the system's native representation into UTF-8,
@@ -487,10 +487,11 @@ stringprep_profile (const char *in,
  * function and one decoding function.  The IDNA API consists of the
  * ToASCII and ToUnicode functions, as well as an high-level interface
  * for converting entire domain names to and from the ACE encoded
- * form.  The TLD API consists of one function to look up the correct
- * TLD table to use from a string, and a function to compare a single
- * character against a TLD table, and some utility functions to
- * operate on entire strings in one operation.
+ * form.  The TLD API consists of one set of functions to extract the
+ * TLD name from a domain string, one set of functions to locate the
+ * proper TLD table to use based on the TLD name, and core functions
+ * to validate a string against a TLD table, and some utility wrappers
+ * to perform all the steps in one call.
  *
  * The library is used by, e.g., GNU SASL and Shishi to process user
  * names and passwords.  Libidn can be built into GNU Libc to enable a
