@@ -146,3 +146,12 @@ and other text strings.
 @Returns: 
 
 
+<!-- ##### FUNCTION stringprep_utf8_to_locale ##### -->
+<para>
+
+</para>
+
+@str: 
+@Returns: 
+
+

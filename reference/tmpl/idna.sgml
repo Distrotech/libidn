@@ -18,10 +18,12 @@ with no changes to the existing infrastructure. IDNA is only meant for
 processing domain names, not free text.
 </para>
 
+
 <!-- ##### SECTION See_Also ##### -->
 <para>
 
 </para>
+
 
 <!-- ##### MACRO IDNA_ACE_PREFIX ##### -->
 <para>
@@ -54,6 +56,86 @@ processing domain names, not free text.
 @outlen: 
 @allowunassigned: 
 @usestd3asciirules: 
+@Returns: 
+
+
+<!-- ##### FUNCTION idna_ucs4_to_ace ##### -->
+<para>
+
+</para>
+
+@input: 
+@output: 
+@Returns: 
+
+
+<!-- ##### FUNCTION idna_utf8_to_ace ##### -->
+<para>
+
+</para>
+
+@input: 
+@output: 
+@Returns: 
+
+
+<!-- ##### FUNCTION idna_locale_to_ace ##### -->
+<para>
+
+</para>
+
+@input: 
+@output: 
+@Returns: 
+
+
+<!-- ##### FUNCTION idna_ucs4ace_to_ucs4 ##### -->
+<para>
+
+</para>
+
+@input: 
+@output: 
+@Returns: 
+
+
+<!-- ##### FUNCTION idna_utf8ace_to_ucs4 ##### -->
+<para>
+
+</para>
+
+@input: 
+@output: 
+@Returns: 
+
+
+<!-- ##### FUNCTION idna_utf8ace_to_utf8 ##### -->
+<para>
+
+</para>
+
+@input: 
+@output: 
+@Returns: 
+
+
+<!-- ##### FUNCTION idna_utf8ace_to_locale ##### -->
+<para>
+
+</para>
+
+@input: 
+@output: 
+@Returns: 
+
+
+<!-- ##### FUNCTION idna_localeace_to_locale ##### -->
+<para>
+
+</para>
+
+@input: 
+@output: 
 @Returns: 
 
 
