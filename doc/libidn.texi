@@ -1190,6 +1190,10 @@ the computed output to standard output.  What processing is performed
 (e.g., ToASCII, or Punycode encode) is indicated by options.  If any
 errors are encountered, the execution of the applications is aborted.
 
+To process a string that starts with @code{-}, for example
+@code{-foo}, use @code{--} to signal the end of parameters, as in
+@code{idn --quiet -a -- -foo}.
+
 @section Options
 @code{idn} recognizes these commands:
 
@@ -1214,8 +1218,8 @@ errors are encountered, the execution of the applications is aborted.
 
   -p, --profile=STRING     Use specified stringprep profile instead
 
-  Valid stringprep profiles are 'Nameprep', 'KRBprep', 'Nodeprep',
-  'Resourceprep', 'plain', 'trace', 'SASLprep', and 'iSCSI.
+  Valid stringprep profiles are `Nameprep', `KRBprep', `Nodeprep',
+  `Resourceprep', `plain', `trace', `SASLprep', and `iSCSI'.
 
       --debug              Print debugging information  (default=off)
 
