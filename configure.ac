@@ -87,9 +87,19 @@ AC_MSG_RESULT($enable_tld)
 # Check for gtk-doc.
 GTK_DOC_CHECK(1.1)
 
+# Check for java
+AC_ARG_ENABLE(java, AC_HELP_STRING([--enable-java], [enable Java API]),,
+		enable_java=no)
+if test "$enable_java" != "no"; then
+	AC_PROG_JAVAC
+	AC_PROG_JAR
+fi
+AM_CONDITIONAL(JAVA, test "$enable_java" != "no")
+
 AC_CONFIG_FILES([Makefile libidn.pc doc/reference/Makefile \
 		lib/stringprep.h contrib/doxygen/Doxyfile \
 		doc/Makefile doc/specifications/Makefile doc/tld/Makefile \
 		lib/Makefile src/Makefile tests/Makefile examples/Makefile \
-		po/Makefile.in])
+		java/Makefile java/gnu/Makefile java/gnu/inet/Makefile \
+		java/gnu/inet/encoding/Makefile po/Makefile.in])
 AC_OUTPUT
