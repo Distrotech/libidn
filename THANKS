@@ -1,4 +1,4 @@
-Libstringprep THANKS -- acknowledgements
+Libidn THANKS -- acknowledgements
 See the end for copying conditions.
 
 Some functions (see nfkc.c and toutf8.c) has been borrowed from GLib

@@ -1,5 +1,5 @@
 dnl Process this file with autoconf to produce a configure script.
-AC_INIT(libstringprep, 0.1.0, bug-libstringprep@josefsson.org)
+AC_INIT(libidn, 0.1.0, bug-libidn@josefsson.org)
 AC_CONFIG_SRCDIR(stringprep.h.in)
 
 # Interfaces removed:    CURRENT++, AGE=0, REVISION=0
@@ -54,5 +54,5 @@ if test "$ac_cv_locale_works" = "yes"; then
   AC_DEFINE(LOCALE_WORKS, 1, [Define if setlocale() and nl_langinfo() works.])
 fi
 
-AC_CONFIG_FILES([Makefile libstringprep.pc stringprep.h])
+AC_CONFIG_FILES([Makefile libidn.pc stringprep.h])
 AC_OUTPUT
