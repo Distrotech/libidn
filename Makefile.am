@@ -22,7 +22,7 @@ SUBDIRS = @GTKDOC@
 
 ACLOCAL_AMFLAGS = -I .
 
-EXTRA_DIST = libidn.pc.in iconv.m4 \
+EXTRA_DIST = FAQ libidn.pc.in iconv.m4 \
 	gen-stringprep-tables.pl rfc3454.txt \
 	gen-unicode-tables.pl UnicodeData-3.2.0.txt LineBreak-3.2.0.txt \
 	SpecialCasing-3.2.0.txt CaseFolding-3.2.0.txt \
@@ -32,6 +32,7 @@ EXTRA_DIST = libidn.pc.in iconv.m4 \
 	libc/example.c libc/getaddrinfo.c libc/libc.patch libc/netdb.h \
 	contrib/README contrib/idn-python/README contrib/idn-python/Makefile \
 	contrib/idn-python/idn.c contrib/idn-python/test.py \
+	contrib/web/idn.php \
 	getopt.h getopt.c getopt1.c strdup.c memset.c
 
 clean-local:
