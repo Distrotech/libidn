@@ -977,7 +977,7 @@ Output would exceed the space provided.
 Input needs wider integers to process.
 @end deftypevr
 
-@section Unicode Code Point Type
+@section Unicode Code Point Data Type
 
 The punycode function uses a special type to denote Unicode code
 points.  It is guaranteed to always be a 32 bit unsigned integer.
@@ -1173,31 +1173,31 @@ the file @file{tld.h} using:
 
 @section Return Codes
 
-All functions return a exit code:
+Most functions return a exit code:
 
-@deftypevr {Return code} {Idna_rc} {TLD_SUCCESS = 0}
+@deftypevr {Return code} {Tld_rc} {TLD_SUCCESS = 0}
 Successful operation.  This value is guaranteed to always be zero, the
 remaining ones are only guaranteed to hold non-zero values, for
 logical comparison purposes.
 @end deftypevr
 
-@deftypevr {Return code} {Idna_rc} TLD_ILLEGAL
+@deftypevr {Return code} {Tld_rc} TLD_ILLEGAL
 Illegal character found.
 @end deftypevr
 
-@deftypevr {Return code} {Idna_rc} TLD_NODATA
+@deftypevr {Return code} {Tld_rc} TLD_NODATA
 No input data was provided.
 @end deftypevr
 
-@deftypevr {Return code} {Idna_rc} TLD_MALLOC_ERROR
+@deftypevr {Return code} {Tld_rc} TLD_MALLOC_ERROR
 Error during memory allocation.
 @end deftypevr
 
-@deftypevr {Return code} {Idna_rc} TLD_ICONV_ERROR
+@deftypevr {Return code} {Tld_rc} TLD_ICONV_ERROR
 Error during iconv string conversion.
 @end deftypevr
 
-@deftypevr {Return code} {Idna_rc} TLD_NOTLD
+@deftypevr {Return code} {Tld_rc} TLD_NOTLD
 No top-level domain found in domain string.
 @end deftypevr
 
@@ -1209,27 +1209,27 @@ This is an array of TLD information tables that comes with Libidn.
 
 @deftp {Data type} {Tld_table_element} @var{start} @var{end}
 @example
-  /* Interval of valid code points in the TLD. */
-  struct Tld_table_element
-  @{
-    uint32_t start;		/* Start of range. */
-    uint32_t end;		/* End of range, end == start if single. */
-  @};
-  typedef struct Tld_table_element Tld_table_element;
+/* Interval of valid code points in the TLD. */
+struct Tld_table_element
+@{
+  uint32_t start;		/* Start of range. */
+  uint32_t end;		/* End of range, end == start if single. */
+@};
+typedef struct Tld_table_element Tld_table_element;
 @end example
 @end deftp
 
 @deftp {Data type} {Tld_table} @var{name} @var{version} @var{nvalid} @var{valid}
 @example
-  /* List valid code points in a TLD. */
-  struct Tld_table
-  @{
-    char *name;			/* TLD name, e.g., "no". */
-    char *version;		/* Version string from TLD file. */
-    size_t nvalid;		/* Number of entries in data. */
-    Tld_table_element *valid[];	/* Sorted array of valid code points. */
-  @};
-  typedef struct Tld_table Tld_table;
+/* List valid code points in a TLD. */
+struct Tld_table
+@{
+  char *name;			/* TLD name, e.g., "no". */
+  char *version;		/* Version string from TLD file. */
+  size_t nvalid;		/* Number of entries in data. */
+  Tld_table_element *valid[];	/* Sorted array of valid code points. */
+@};
+typedef struct Tld_table Tld_table;
 @end example
 In this @code{struct}, the @var{name} field is a string (@samp{char*})
 indicating the TLD name (e.g., ``no'').  The @var{version} field is a
