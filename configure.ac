@@ -93,6 +93,7 @@ AC_ARG_ENABLE(java, AC_HELP_STRING([--enable-java], [enable Java API]),,
 if test "$enable_java" != "no"; then
 	AC_PROG_JAVAC
 	AC_PROG_JAR
+	AC_PROG_JAVADOC
 fi
 AM_CONDITIONAL(JAVA, test "$enable_java" != "no")
 AC_MSG_CHECKING([if implementation in Java should be built])
