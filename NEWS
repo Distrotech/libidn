@@ -2,7 +2,7 @@ Libidn NEWS -- History of user-visible changes.                 -*- outline -*-
 Copyright (C) 2002, 2003 Simon Josefsson
 See the end for copying conditions.
 
-* Version 0.3.0 (unreleased)
+* Version 0.3.0 (released 2003-09-23)
 
 ** Ported to Mac OS X.
 
