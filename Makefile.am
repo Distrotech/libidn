@@ -44,8 +44,8 @@ pkgconfig_DATA = libidn.pc
 
 ChangeLog:
 	test ! -f .cvsusers || \
-	(cvs2cl --FSF --usermap .cvsusers \
-	-I "ChangeLog|.cvs|autogen.sh|contrib|draft.*xml" && \
+	(cvs2cl --FSF --fsf --usermap .cvsusers \
+	-I "ChangeLog|.cvs|.prev-version|autogen.sh|contrib|doc/specifications/|draft.*xml" && \
 	cat .cvscopying >> ChangeLog)
 
 indent:
