@@ -47,8 +47,8 @@ extern "C"
   /* List valid code points in a TLD. */
   struct Tld_table
   {
-    char *name;			/* TLD name, e.g., "no". */
-    char *version;		/* Version string from TLD file. */
+    const char *name;		/* TLD name, e.g., "no". */
+    const char *version;	/* Version string from TLD file. */
     size_t nvalid;		/* Number of entries in data. */
     const Tld_table_element *valid;	/* Sorted array of valid code points. */
   };
