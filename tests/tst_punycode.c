@@ -48,7 +48,7 @@ fail (const char *format, ...)
 }
 
 static void
-ucs4print (uint32_t * str, size_t len)
+ucs4print (const uint32_t * str, size_t len)
 {
   size_t i;
 
