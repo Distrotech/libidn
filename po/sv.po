@@ -24,7 +24,7 @@ msgstr "%s: Bara en av -s, -e, -d, -a eller -u kan anges.\n"
 
 #: src/idn.c:93
 #, c-format
-msgid "System locale uses charset `%s'.\n"
+msgid "Charset `%s'.\n"
 msgstr ""
 
 #: src/idn.c:97
