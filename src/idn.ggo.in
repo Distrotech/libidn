@@ -21,8 +21,8 @@ version "(@PACKAGE@) @VERSION@"
 
 purpose "Command line interface to the internationalized domain name library.
 
-Valid stringprep profiles are 'generic', 'Nameprep', 'KRBprep', 'Nodeprep',
-'Resourceprep', 'plain', 'SASLprep', and 'ISCSIprep'."
+Valid stringprep profiles are 'Nameprep', 'KRBprep', 'Nodeprep',
+'Resourceprep', 'plain', 'trace', 'SASLprep', and 'ISCSIprep'."
 
 option "stringprep" s "Prepare string according to nameprep profile" no
 option "punycode-decode" d "Decode Punycode" no
