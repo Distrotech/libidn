@@ -20,6 +20,9 @@
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
 # 02111-1307, USA.
 
+# See doc/tld/README and draft-hoffman-idn-reg-*.txt inside Libidn for
+# more information on the input file syntax.
+
 # Use this to generate TLD tables:
 # $ ./gen-tld-tables *.tld > tlds.c
 
