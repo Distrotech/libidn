@@ -1,4 +1,4 @@
-/* version.c	version handling
+/* version.c	Version handling.
  * Copyright (C) 1998, 1999, 2000, 2001, 2002 Free Software Foundation, Inc.
  * Copyright (C) 2002  Simon Josefsson
  *

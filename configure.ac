@@ -1,4 +1,23 @@
 dnl Process this file with autoconf to produce a configure script.
+
+dnl Copyright (C) 2002 Simon Josefsson.
+dnl
+dnl This file is part of GNU Libidn.
+dnl
+dnl GNU Libidn is free software; you can redistribute it and/or modify
+dnl it under the terms of the GNU Lesser General Public License as
+dnl published by the Free Software Foundation; either version 2.1 of
+dnl the License, or (at your option) any later version.
+dnl
+dnl GNU Libidn is distributed in the hope that it will be useful,
+dnl but WITHOUT ANY WARRANTY; without even the implied warranty of
+dnl MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+dnl GNU Lesser General Public License for more details.
+dnl
+dnl You should have received a copy of the GNU Lesser General Public
+dnl License along with GNU Libidn; if not, write to the Free Software
+dnl Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
+
 AC_INIT(libidn, 0.1.3, bug-libidn@josefsson.org)
 AC_CONFIG_SRCDIR(stringprep.h.in)
 

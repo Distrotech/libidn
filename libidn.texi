@@ -316,7 +316,7 @@ corresponding profile header file (see below).  If you are writing an
 application that only makes use of the utility functions, including
 this header file may be more appropriate however.
 
-The name space of the stringprep part of Libidn is @code{stringprep_*}
+The name space of the stringprep part of Libidn is @code{stringprep*}
 for function names, @code{Stringprep*} for data types and
 @code{STRINGPREP_*} for other symbols.  In addition the same name
 prefixes with one prepended underscore are reserved for internal use
