@@ -17,7 +17,7 @@
 # License along with GNU Libidn; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
 
-SUBDIRS = gnu misc
+SUBDIRS = gnu . misc
 
 EXTRA_DIST = README.html README.UNICODE
 
@@ -26,8 +26,18 @@ libidn_jardir = $(datadir)/java
 libidn_jar_DATA = libidn.jar
 
 libidn.jar:
-	$(JAR) cf $@ gnu/inet/encoding/Punycode.class		\
-		gnu/inet/encoding/PunycodeException.class
+	$(JAR) cf $@ gnu/inet/encoding/CombiningClass.class	\
+		gnu/inet/encoding/Composition.class		\
+		gnu/inet/encoding/DecompositionKeys.class	\
+		gnu/inet/encoding/DecompositionMappings.class	\
+		gnu/inet/encoding/IDNA.class			\
+		gnu/inet/encoding/IDNAException.class		\
+		gnu/inet/encoding/NFKC.class			\
+		gnu/inet/encoding/Punycode.class		\
+		gnu/inet/encoding/PunycodeException.class	\
+		gnu/inet/encoding/RFC3454.class			\
+		gnu/inet/encoding/Stringprep.class		\
+		gnu/inet/encoding/StringprepException.class
 
 clean-local:
 	rm -f $(libidn_jar_DATA)
