@@ -24,41 +24,41 @@
 
 #ifdef _LIBC
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <errno.h>
-#include <string.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <string.h>
+# include <errno.h>
+# include <string.h>
 
-#define HAVE_ICONV 1
-#define LOCALE_WORKS 1
-#define ICONV_CONST
+# define HAVE_ICONV 1
+# define LOCALE_WORKS 1
+# define ICONV_CONST
 
 #else /* _LIBC */
 
-#if HAVE_CONFIG_H
-# include "config.h"
-#endif
+# if HAVE_CONFIG_H
+#  include "config.h"
+# endif
 
-#ifdef STDC_HEADERS
-# include <stdio.h>
-# include <stdlib.h>
-# include <stdarg.h>
-# include <ctype.h>
-# include <string.h>
-#endif
+# if STDC_HEADERS
+#  include <stdio.h>
+#  include <stdlib.h>
+#  include <stdarg.h>
+#  include <ctype.h>
+#  include <string.h>
+# endif
 
-#if HAVE_UNISTD_H
-# include <unistd.h>
-#endif
+# if HAVE_UNISTD_H
+#  include <unistd.h>
+# endif
 
-#ifdef HAVE_ERRNO_H
-# include <errno.h>
-#endif
+# if HAVE_ERRNO_H
+#  include <errno.h>
+# endif
 
-#if defined(WITH_DMALLOC) && WITH_DMALLOC
-# include <dmalloc.h>
-#endif
+# if defined(WITH_DMALLOC) && WITH_DMALLOC
+#  include <dmalloc.h>
+# endif
 
 #endif /* _LIBC */
 
