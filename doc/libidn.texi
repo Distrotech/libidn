@@ -563,7 +563,7 @@ compatibility new features may have been introduced but due to problem
 with the dynamic linker an old version is actually used.  So you may
 want to check that the version is okay right after program startup.
 
-@include version.api.texi
+@include texi/stringprep_check_version.texi
 
 The normal way to use the function is to put something similar to the
 following first in your @code{main}:
@@ -709,15 +709,24 @@ the file @file{stringprep.h} using:
 
 @section Unicode Encoding Transformation
 
-@include nfkc-basic.api.texi
+@include texi/stringprep_utf8_to_unichar.texi
+@include texi/stringprep_unichar_to_utf8.texi
+@include texi/stringprep_utf8_to_unichar.texi
+@include texi/stringprep_ucs4_to_utf8.texi
+@include texi/stringprep_utf8_to_ucs4.texi
 
 @section Unicode Normalization
 
-@include nfkc-main.api.texi
+@include texi/stringprep_ucs4_nfkc_normalize.texi
+@include texi/stringprep_utf8_nfkc_normalize.texi
 
 @section Character Set Conversion
 
-@include toutf8.api.texi
+@include texi/stringprep_locale_charset.texi
+@include texi/stringprep_convert.texi
+@include texi/stringprep_locale_to_utf8.texi
+@include texi/stringprep_utf8_to_locale.texi
+
 
 @c **********************************************************
 @c ******************  Stringprep Functions *****************
@@ -832,7 +841,10 @@ characters according to profile.
 
 @section Core Functions
 
-@include stringprep.api.texi
+@include texi/stringprep_4i.texi
+@include texi/stringprep_4zi.texi
+@include texi/stringprep.texi
+@include texi/stringprep_profile.texi
 
 @section Stringprep Profile Macros
 
@@ -967,7 +979,8 @@ and use @code{sizeof} to initialize @code{input_length} and
 
 The functions provided are the following two entry points:
 
-@include punycode.api.texi
+@include texi/punycode_encode.texi
+@include texi/punycode_decode.texi
 
 @c **********************************************************
 @c ********************* IDNA Functions *********************
@@ -1088,15 +1101,23 @@ encoded in the encoding used by the current locale.
 
 The functions provided are the following entry points:
 
-@include idna-core.api.texi
+@include texi/idna_to_ascii_4i.texi
+@include texi/idna_to_unicode_44i.texi
 
 @section Simplified ToASCII Interface
 
-@include idna-toascii.api.texi
+@include texi/idna_to_ascii_4z.texi
+@include texi/idna_to_ascii_8z.texi
+@include texi/idna_to_ascii_lz.texi
 
 @section Simplified ToUnicode Interface
 
-@include idna-tounicode.api.texi
+@include texi/idna_to_unicode_4z4z.texi
+@include texi/idna_to_unicode_8z4z.texi
+@include texi/idna_to_unicode_8z8z.texi
+@include texi/idna_to_unicode_8zlz.texi
+@include texi/idna_to_unicode_lzlz.texi
+
 
 @c **********************************************************
 @c ***********************  Examples  ***********************
