@@ -49,4 +49,5 @@ all: index.html
 
 clean-local:
 	rm -f *.bak scan.stamp tmpl.stamp sgml.stamp *.txt *.sgml \
-		$(MODULE)-doc.bottom $(MODULE)-doc.top $(HTML_OBJECTS) $(IMAGES) 
+		$(MODULE)-doc.bottom $(MODULE)-doc.top \
+		$(HTML_OBJECTS) $(IMAGES) 
