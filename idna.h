@@ -38,6 +38,7 @@ extern "C"
     IDNA_INVALID_LENGTH = 5,
     IDNA_NO_ACE_PREFIX = 6,
     IDNA_ROUNDTRIP_VERIFY_ERROR = 7,
+    IDNA_CONTAINS_ACE_PREFIX = 8,
     /* Internal errors. */
     IDNA_MALLOC_ERROR = 201
   };

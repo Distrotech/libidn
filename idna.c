@@ -57,7 +57,7 @@ idna_to_ascii (const unsigned long *in, size_t inlen,
 	       char *out, int allowunassigned, int usestd3asciirules)
 {
   size_t len, outlen;
-  unsigned long *src;
+  unsigned long *src; /* XXX don't need to copy data? */
   int rc;
 
   src = malloc (sizeof (in[0]) * inlen + 1);
@@ -172,7 +172,15 @@ step3:
    */
 
   {
-    /* XXX */
+    size_t i;
+    int match;
+
+    match = 1;
+    for (i = 0; match && i < strlen(IDNA_ACE_PREFIX); i++)
+      if (IDNA_ACE_PREFIX[i] != src[i])
+	match = 0;
+    if (match)
+      return IDNA_CONTAINS_ACE_PREFIX;
   }
 
   /*
