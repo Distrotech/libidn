@@ -91,8 +91,8 @@ tld_default_table (const char *tld, const Tld_table ** overrides)
  * @inlen: Number of unicode code points.
  * @out: Zero terminated ascii result string pointer.
  *
- * Isolate the top-level domain of @in and return it as
- * an ascii string in @out.
+ * Isolate the top-level domain of @in and return it as an ASCII
+ * string in @out.
  *
  * Return value: Return %TLD_SUCCESS on success, the corresponding
  * error code otherwise.
@@ -134,14 +134,13 @@ tld_get_4i (const uint32_t * in, size_t inlen, char **out)
   return TLD_NOTLD;
 }
 
-
 /**
  * tld_get_4z:
  * @in: Zero terminated array of unicode code points to process.
  * @out: Zero terminated ascii result string pointer.
  *
- * Isolate the top-level domain of @in and return it as
- * an ascii string in @out.
+ * Isolate the top-level domain of @in and return it as an ASCII
+ * string in @out.
  *
  * Return value: Returns %TLD_SUCCESS on success, the corresponding
  * error code otherwise.
@@ -158,6 +157,31 @@ tld_get_4z (const uint32_t * in, char **out)
     ipos++;
 
   return tld_get_4i (in, ipos - in, out);
+}
+
+/**
+ * tld_get_8z:
+ * @in: Zero terminated UTF-8 string to process.
+ * @out: Zero terminated ascii result string pointer.
+ *
+ * Isolate the top-level domain of @in and return it as an ASCII
+ * string in @out.
+ *
+ * Return value: Returns %TLD_SUCCESS on success, the corresponding
+ * error code otherwise.
+ */
+int
+tld_get_8z (const char * in, char **out)
+{
+  uint32_t *iucs;
+  size_t ilen;
+
+  iucs = stringprep_utf8_to_ucs4 (in, -1, &ilen);
+
+  if (!iucs)
+    return TLD_MALLOC_ERROR;
+
+  return tld_get_4i (iucs, ilen, out);
 }
 
 /*
