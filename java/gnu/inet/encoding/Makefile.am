@@ -20,7 +20,7 @@
 if JAVA
 JAVAROOT = $(top_builddir)/java
 
-noinst_JAVA = CombiningClass.java	\
+dist_noinst_JAVA = CombiningClass.java	\
 	Composition.java		\
 	DecompositionKeys.java		\
 	DecompositionMappings.java	\

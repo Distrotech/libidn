@@ -23,9 +23,7 @@ JAVAROOT = $(top_builddir)/java/misc
 
 override CLASSPATH_ENV=CLASSPATH=$(top_builddir)/java/libidn.jar
 
-noinst_JAVA = GenerateRFC3454.java		\
-	GenerateNFKC.java			\
-	TestIDNA.java				\
-	TestNFKC.java
+dist_noinst_JAVA = GenerateRFC3454.java GenerateNFKC.java	\
+			TestIDNA.java TestNFKC.java
 
 endif # JAVA
