@@ -10,3 +10,4 @@ libidn.la
 *.lo
 stringprep.h
 rfc3454.c
+tlds.c
