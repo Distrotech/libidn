@@ -4,6 +4,8 @@ See the end for copying conditions.
 
 * Version 0.4.5 (unreleased)
 
+** Added more SASLPrep test vectors.
+
 ** API and ABI is backwards compatible with the previous version.
 
 * Version 0.4.4 (released 2004-04-29)
