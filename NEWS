@@ -8,6 +8,8 @@ See the end for copying conditions.
 Non-ASCII space has always been mapped to ASCII space, so it is not
 clear this really have any effect, but the specification require it.
 
+** API and ABI is backwards compatible with the previous version.
+
 * Version 0.4.0 (released 2004-02-28)
 
 ** Support for TLD restrictions on IDN strings, contributed by Thomas Jacob.
