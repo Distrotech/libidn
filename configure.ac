@@ -18,7 +18,7 @@ dnl You should have received a copy of the GNU Lesser General Public
 dnl License along with GNU Libidn; if not, write to the Free Software
 dnl Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
 
-AC_INIT(libidn, 0.1.12, bug-libidn@gnu.org)
+AC_INIT(libidn, 0.1.13, bug-libidn@gnu.org)
 AC_CONFIG_SRCDIR(stringprep.h.in)
 
 # Interfaces removed:    CURRENT++, AGE=0, REVISION=0
@@ -39,7 +39,6 @@ AC_PROG_LIBTOOL
 AC_PROG_CC
 AM_MISSING_PROG(PERL, perl, $missing_dir)
 AM_MISSING_PROG(HELP2MAN, help2man, $missing_dir)
-AM_MISSING_PROG(GENGETOPT, gengetopt, $missing_dir)
 AM_ICONV
 AM_WITH_DMALLOC
 AM_PATH_LISPDIR
