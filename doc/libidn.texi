@@ -349,7 +349,7 @@ GCC 3.1 and GNU Make. @code{powerpc-apple-darwin6.5}.
 @cindex uClinux
 @cindex uClibc
 
-GCC 3.4 and GNU Make @code{m68k-uclinux-elf}.  (Only the library.)
+GCC 3.4 and GNU Make @code{m68k-uclinux-elf}.
 
 @end enumerate
 
