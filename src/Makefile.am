@@ -35,3 +35,8 @@ $(idn_cmd): idn.ggo
 dist_lisp_LISP = punycode.el idna.el
 ELCFILES=
 elc-stamp:
+
+# Maintainer targets
+
+indent:
+	indent $(SOURCES)

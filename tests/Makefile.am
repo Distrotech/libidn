@@ -22,3 +22,8 @@ LDADD = ../lib/libidn.la
 
 TESTS = tst_stringprep tst_punycode tst_idna tst_idna2 tst_nfkc
 check_PROGRAMS = $(TESTS)
+
+# Maintainer targets
+
+indent:
+	indent $(SOURCES)
