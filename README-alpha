@@ -7,6 +7,10 @@ This is the development release.  A proper release will be made in due
 time.  Let me repeat that, LIBIDN IS MOST LIKELY INSECURE. DO NOT USE
 IN A PRODUCTION ENVIRONMENT!
 
+The code will go through a security review before the stable release
+is made.  Volunteers needed.  The alpha release has been written for
+functionality, not security.
+
 ----------------------------------------------------------------------
 Copyright (C) 2002 Simon Josefsson
 
