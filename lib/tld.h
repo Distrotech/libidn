@@ -61,7 +61,7 @@ extern "C"
   typedef enum
   {
     TLD_SUCCESS = 0,
-    TLD_ILLEGAL = 1,		/* Illegal character found. */
+    TLD_INVALID = 1,		/* Illegal character found. */
     TLD_NODATA = 2,		/* Char, domain or inlen = 0. */
     TLD_MALLOC_ERROR = 3,
     TLD_ICONV_ERROR = 4,
@@ -86,7 +86,7 @@ extern "C"
 
   /* Check NAMEPREPPED domain name for valid characters as defined by
    * the relevant registering body (plus [a-z0-9.-]), if error is
-   * TLD_ILLEGAL, set errpos to position of offending character. */
+   * TLD_INVALID, set errpos to position of offending character. */
   int tld_check_4ti (const uint32_t * in, size_t inlen, size_t * errpos,
 		     const Tld_table * tld);
   int tld_check_4tz (const uint32_t * in, size_t * errpos,

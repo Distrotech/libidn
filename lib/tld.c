@@ -169,7 +169,7 @@ tld_get_4z (const uint32_t * in, char **out)
  * as a legal character in @tld.
  *
  * Return value: Return %TLD_SUCCESS if @ch is a legal character for
- * the TLD @tld or if @tld is %NULL, %TLD_ILLEGAL if @ch is not a
+ * the TLD @tld or if @tld is %NULL, %TLD_INVALID if @ch is not a
  * legal as defined by @tld.
  */
 static int
@@ -193,7 +193,7 @@ _tld_checkchar (uint32_t ch, const Tld_table * tld)
     if (ch >= p->start && ch <= p->end)
       return TLD_SUCCESS;
 
-  return TLD_ILLEGAL;
+  return TLD_INVALID;
 }
 
 
@@ -212,7 +212,7 @@ _tld_checkchar (uint32_t ch, const Tld_table * tld)
  * the case in @errpos.
  *
  * Return value: Returns %TLD_SUCCESS if all code points
- * are valid or when @tld is null, %TLD_ILLEGAL if a
+ * are valid or when @tld is null, %TLD_INVALID if a
  * character is not allowed, or additional error codes on
  * general failure conditions.
  */
@@ -256,7 +256,7 @@ tld_check_4ti (const uint32_t * in, size_t inlen, size_t * errpos,
  * the case in @errpos.
  *
  * Return value: Returns %TLD_SUCCESS if all code points
- * are valid or when @tld is null, %TLD_ILLEGAL if a
+ * are valid or when @tld is null, %TLD_INVALID if a
  * character is not allowed, or additional error codes on
  * general failure conditions.
  */
@@ -293,7 +293,7 @@ tld_check_4tz (const uint32_t * in, size_t * errpos, const Tld_table * tld)
  * is returned in @errpos.
  *
  * Return value: Returns %TLD_SUCCESS if all code points
- * are valid or when @tld is null, %TLD_ILLEGAL if a
+ * are valid or when @tld is null, %TLD_INVALID if a
  * character is not allowed, or additional error codes on
  * general failure conditions.
  */
@@ -342,7 +342,7 @@ tld_check_4i (const uint32_t * in, size_t inlen, size_t * errpos,
  * is returned in @errpos.
  *
  * Return value: Returns %TLD_SUCCESS if all code points
- * are valid or when @tld is null, %TLD_ILLEGAL if a
+ * are valid or when @tld is null, %TLD_INVALID if a
  * character is not allowed, or additional error codes on
  * general failure conditions.
  */
@@ -380,7 +380,7 @@ tld_check_4z (const uint32_t * in, size_t * errpos,
  * string.
  *
  * Return value: Returns %TLD_SUCCESS if all characters
- * are valid or when @tld is null, %TLD_ILLEGAL if a
+ * are valid or when @tld is null, %TLD_INVALID if a
  * character is not allowed, or additional error codes on
  * general failure conditions.
  */
@@ -425,7 +425,7 @@ tld_check_8z (const char *in, size_t * errpos, const Tld_table ** overrides)
  * string.
  *
  * Return value: Returns %TLD_SUCCESS if all characters
- * are valid or when @tld is null, %TLD_ILLEGAL if a
+ * are valid or when @tld is null, %TLD_INVALID if a
  * character is not allowed, or additional error codes on
  * general failure conditions.
  */
@@ -455,7 +455,7 @@ tld_check_lz (const char *in, size_t * errpos, const Tld_table ** overrides)
  * @TLD_SUCCESS: Successful operation.  This value is guaranteed to
  * always be zero, the remaining ones are only guaranteed to hold
  * non-zero values, for logical comparison purposes.
- * @TLD_ILLEGAL: Illegal character found.
+ * @TLD_INVALID: Illegal character found.
  * @TLD_NODATA: No input data was provided.
  * @TLD_MALLOC_ERROR: Error during memory allocation.
  * @TLD_ICONV_ERROR: Error during iconv string conversion.

@@ -1181,7 +1181,7 @@ remaining ones are only guaranteed to hold non-zero values, for
 logical comparison purposes.
 @end deftypevr
 
-@deftypevr {Return code} {Tld_rc} TLD_ILLEGAL
+@deftypevr {Return code} {Tld_rc} TLD_INVALID
 Illegal character found.
 @end deftypevr
 
