@@ -4,6 +4,9 @@ See the end for copying conditions.
 
 * Version 0.4.10 (unreleased)
 
+** More translations.
+Added Esperanto (by Edmund GRIMLEY EVANS).
+
 ** API and ABI is backwards compatible with the previous version.
 
 * Version 0.4.9 (released 2004-06-11)
