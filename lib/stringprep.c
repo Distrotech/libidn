@@ -390,14 +390,6 @@ stringprep_profile (char *in,
  */
 
 /**
- * Stringprep_profile_steps:
- *
- * Various steps in the stringprep algorithm.  You really want to
- * study the source code to understand this one.  Only useful if you
- * want to add another profile.
- */
-
-/**
  * stringprep_nameprep:
  * @in: input/ouput array with string to prepare.
  * @maxlen: maximum length of input/output array.
