@@ -82,9 +82,9 @@ sub print_tld_domain
 	my $last = pop @$intervals;
 	foreach (@$intervals)
 	{
-	    print "  { $_->[0],  $_->[1] },\n";
+	    printf "  { 0x%x,  0x%x },\n", $_->[0], $_->[1];
 	}
-	print "  { $last->[0],  $last->[1] }\n";
+	printf "  { 0x%x,  0x%x }\n", last->[0], last->[1];
     }
     print "};\n";
     print "\n";
