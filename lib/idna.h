@@ -31,7 +31,7 @@ extern "C"
 #include <idn-int.h>		/* uint32_t */
 
   /* Error codes. */
-  enum Idna_rc
+  typedef enum
   {
     IDNA_SUCCESS = 0,
     IDNA_STRINGPREP_ERROR = 1,
@@ -45,131 +45,112 @@ extern "C"
     IDNA_ICONV_ERROR = 9,
     /* Internal errors. */
     IDNA_MALLOC_ERROR = 201
-  };
+  } Idna_rc;
 
   /* IDNA flags */
-  enum Idna_flags
+  typedef enum
   {
     IDNA_ALLOW_UNASSIGNED = 0x0001,
     IDNA_USE_STD3_ASCII_RULES = 0x0002
-  };
+  } Idna_flags;
 
 #ifndef IDNA_ACE_PREFIX
 #define IDNA_ACE_PREFIX "xn--"
 #endif
 
   /* Core functions */
-  extern enum Idna_rc idna_to_ascii_4i (const uint32_t * in, size_t inlen,
-					char *out, enum Idna_flags flags);
-  extern enum Idna_rc idna_to_unicode_44i (const uint32_t * in, size_t inlen,
-					   uint32_t * out, size_t * outlen,
-					   enum Idna_flags flags);
+  extern int idna_to_ascii_4i (const uint32_t * in, size_t inlen,
+			       char *out, int flags);
+  extern int idna_to_unicode_44i (const uint32_t * in, size_t inlen,
+				  uint32_t * out, size_t * outlen, int flags);
 
   /* Wrappers that handle several labels */
 
-  extern enum Idna_rc idna_to_ascii_4z (const uint32_t * input, char **output,
-					enum Idna_flags flags);
+  extern int idna_to_ascii_4z (const uint32_t * input,
+			       char **output, int flags);
 
-  extern enum Idna_rc idna_to_ascii_8z (const char *input, char **output,
-					enum Idna_flags flags);
+  extern int idna_to_ascii_8z (const char *input, char **output, int flags);
 
-  extern enum Idna_rc idna_to_ascii_lz (const char *input, char **output,
-					enum Idna_flags flags);
+  extern int idna_to_ascii_lz (const char *input, char **output, int flags);
 
 
-  extern enum Idna_rc idna_to_unicode_4z4z (const uint32_t * input,
-					    uint32_t ** output,
-					    enum Idna_flags flags);
+  extern int idna_to_unicode_4z4z (const uint32_t * input,
+				   uint32_t ** output, int flags);
 
-  extern enum Idna_rc idna_to_unicode_8z4z (const char *input,
-					    uint32_t ** output,
-					    enum Idna_flags flags);
+  extern int idna_to_unicode_8z4z (const char *input,
+				   uint32_t ** output, int flags);
 
-  extern enum Idna_rc idna_to_unicode_8z8z (const char *input, char **output,
-					    enum Idna_flags flags);
+  extern int idna_to_unicode_8z8z (const char *input,
+				   char **output, int flags);
 
-  extern enum Idna_rc idna_to_unicode_8zlz (const char *input, char **output,
-					    enum Idna_flags flags);
+  extern int idna_to_unicode_8zlz (const char *input,
+				   char **output, int flags);
 
-  extern enum Idna_rc idna_to_unicode_lzlz (const char *input, char **output,
-					    enum Idna_flags flags);
+  extern int idna_to_unicode_lzlz (const char *input,
+				   char **output, int flags);
 
   /* Deprecated interfaces */
 
-  extern enum Idna_rc
-    idna_to_ascii (const unsigned long *in,
-		   size_t inlen,
-		   char *out, int allowunassigned, int usestd3asciirules);
+  extern int idna_to_ascii (const unsigned long *in, size_t inlen,
+			    char *out,
+			    int allowunassigned, int usestd3asciirules);
 
-  extern enum Idna_rc
-    idna_to_ascii_from_ucs4 (const unsigned long *input,
-			     char **output,
-			     int allowunassigned, int usestd3asciirules);
-
-  extern enum Idna_rc
-    idna_to_ascii_from_utf8 (const char *input,
-			     char **output,
-			     int allowunassigned, int usestd3asciirules);
-
-  extern enum Idna_rc
-    idna_to_ascii_from_locale (const char *input,
-			       char **output,
-			       int allowunassigned, int usestd3asciirules);
-
-  extern enum Idna_rc
-    idna_to_unicode (const unsigned long *in,
-		     size_t inlen,
-		     unsigned long *out,
-		     size_t * outlen,
-		     int allowunassigned, int usestd3asciirules);
-
-  extern enum Idna_rc
-    idna_to_unicode_ucs4_from_ucs4 (const unsigned long
-				    *input,
-				    unsigned long **output,
-				    int allowunassigned,
-				    int usestd3asciirules);
-
-  extern enum Idna_rc
-    idna_to_unicode_ucs4_from_utf8 (const char *input,
-				    unsigned long **output,
-				    int allowunassigned,
-				    int usestd3asciirules);
-
-  extern enum Idna_rc
-    idna_to_unicode_utf8_from_utf8 (const char *input,
-				    char **output,
-				    int allowunassigned,
-				    int usestd3asciirules);
-
-  extern enum Idna_rc
-    idna_to_unicode_locale_from_utf8 (const char *input,
+  extern int idna_to_ascii_from_ucs4 (const unsigned long *input,
 				      char **output,
 				      int allowunassigned,
 				      int usestd3asciirules);
 
-  extern enum Idna_rc
-    idna_to_unicode_locale_from_locale (const char *input,
+  extern int idna_to_ascii_from_utf8 (const char *input,
+				      char **output,
+				      int allowunassigned,
+				      int usestd3asciirules);
+
+  extern int idna_to_ascii_from_locale (const char *input,
 					char **output,
 					int allowunassigned,
 					int usestd3asciirules);
 
+  extern int idna_to_unicode (const unsigned long *in, size_t inlen,
+			      unsigned long *out, size_t * outlen,
+			      int allowunassigned, int usestd3asciirules);
+
+  extern int idna_to_unicode_ucs4_from_ucs4 (const unsigned long *input,
+					     unsigned long **output,
+					     int allowunassigned,
+					     int usestd3asciirules);
+
+  extern int idna_to_unicode_ucs4_from_utf8 (const char *input,
+					     unsigned long **output,
+					     int allowunassigned,
+					     int usestd3asciirules);
+
+  extern int idna_to_unicode_utf8_from_utf8 (const char *input,
+					     char **output,
+					     int allowunassigned,
+					     int usestd3asciirules);
+
+  extern int idna_to_unicode_locale_from_utf8 (const char *input,
+					       char **output,
+					       int allowunassigned,
+					       int usestd3asciirules);
+
+  extern int idna_to_unicode_locale_from_locale (const char *input,
+						 char **output,
+						 int allowunassigned,
+						 int usestd3asciirules);
+
   /* Deprecated interfaces (even older) */
 
-  extern enum Idna_rc idna_ucs4_to_ace (const unsigned long *input,
-					char **output);
-  extern enum Idna_rc idna_utf8_to_ace (const char *input, char **output);
-  extern enum Idna_rc idna_locale_to_ace (const char *input, char **output);
+  extern int idna_ucs4_to_ace (const unsigned long *input, char **output);
+  extern int idna_utf8_to_ace (const char *input, char **output);
+  extern int idna_locale_to_ace (const char *input, char **output);
 
-  extern enum Idna_rc idna_ucs4ace_to_ucs4 (const unsigned long *input,
-					    unsigned long **output);
-  extern enum Idna_rc idna_utf8ace_to_ucs4 (const char *input,
-					    unsigned long **output);
-  extern enum Idna_rc idna_utf8ace_to_utf8 (const char *input, char **output);
-  extern enum Idna_rc idna_utf8ace_to_locale (const char *input,
-					      char **output);
-  extern enum Idna_rc idna_localeace_to_locale (const char *input,
-						char **output);
+  extern int idna_ucs4ace_to_ucs4 (const unsigned long *input,
+				   unsigned long **output);
+  extern int idna_utf8ace_to_ucs4 (const char *input, unsigned long **output);
+  extern int idna_utf8ace_to_utf8 (const char *input, char **output);
+  extern int idna_utf8ace_to_locale (const char *input, char **output);
+  extern int idna_localeace_to_locale (const char *input, char **output);
 
 #ifdef __cplusplus
 }
