@@ -2,6 +2,15 @@ Libidn NEWS -- History of user-visible changes.                 -*- outline -*-
 Copyright (C) 2002, 2003 Simon Josefsson
 See the end for copying conditions.
 
+* Version 0.1.11 (released 2003-02-26)
+
+** Command line application "idn" is included.
+A simple wrapper around the library that allows you to invoke punycode
+encoding/decoding and IDNA ToASCII/ToUnicode on the command line.
+
+** Emacs Lisp interface for punycode and IDNA included.
+See punycode.el and idna.el.
+
 * Version 0.1.10 (released 2003-02-21)
 
 ** idna_*_to_ace() and idna_*ace_to_*() are deprecated in favor of
