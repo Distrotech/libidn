@@ -112,12 +112,22 @@ main (int argc, char *argv[])
 	      return 1;
 	    }
 
+	  q = stringprep_utf8_to_ucs4 (r, -1, NULL);
+	  if (!q)
+	    {
+	      free (r);
+	      fprintf (stderr, "%s: could not convert from UTF-8 to UCS-4.\n",
+		       argv[0]);
+	      return 1;
+	    }
+
 	  if (args_info.debug_given)
 	    {
 	      size_t i;
-	      for (i = 0; r[i]; i++)
-		fprintf (stderr, "output[%d] = U+%0.4x\n", i, r[i] & 0xFF);
+	      for (i = 0; q[i]; i++)
+		fprintf (stderr, "output[%d] = U+%0.4x\n", i, q[i]);
 	    }
+	  free (q);
 
 	  p = stringprep_utf8_to_locale (r);
 	  free (r);
