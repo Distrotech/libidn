@@ -9,7 +9,7 @@
  * $ libtool cc -o example example.c `pkg-config --cflags --libs libstringprep`
  * $ ./example
  * Input string encoded as `ISO-8859-1': ª
- * Before locale2utf (length 2): aa 0a 
+ * Before locale2utf8 (length 2): aa 0a 
  * Before stringprep (length 3): c2 aa 0a 
  * After stringprep (length 2): 61 0a 
  * $ 
@@ -27,7 +27,7 @@ main (int argc, char *argv[])
   fflush (stdout);
   fgets (buf, BUFSIZ, stdin);
 
-  printf ("Before locale2utf (length %d): ", strlen (buf));
+  printf ("Before locale2utf8 (length %d): ", strlen (buf));
   for (i = 0; i < strlen (buf); i++)
     printf ("%02x ", buf[i] & 0xFF);
   printf ("\n");
