@@ -8,6 +8,8 @@ See the end for copying conditions.
 
 ** Building for srcdir != objdir from CVS now work, thanks to Linus Nordberg.
 
+** API and ABI is backwards compatible with the previous version.
+
 * Version 0.5.13 (released 2005-01-29)
 
 ** The code to convert data between character encodings have been cleaned up.
@@ -20,6 +22,8 @@ any user-visible consequences, though.
 ** Italian translation added, thanks to Marco Colombo.
 
 ** Swedish translation updated.
+
+** API and ABI is backwards compatible with the previous version.
 
 * Version 0.5.12 (released 2004-12-04)
 
