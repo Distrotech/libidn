@@ -135,7 +135,7 @@ $type_env = "(\\\$\\w+)";
 		     $type_param, "<tt><b>\$1</b></tt>" );
 $blankline_html = "<p>";
 
-%highlights_texinfo = ( $type_constant, "\\\@var{\$1}",
+%highlights_texinfo = ( $type_constant, "\\\@code{\$1}",
 			$type_func, "\\\@code{\$1}",
 			$type_struct, "\\\@code{\$1}",
 			$type_param, "\\\@code{\$1}" );
@@ -156,9 +156,9 @@ $blankline_tex = "\\\\";
 $blankline_sgml = "</para><para>\n";
 
 # these are pretty rough
-%highlights_man = ( $type_constant, "\\n.I \\\"\$1\\\"\\n",
+%highlights_man = ( "\\s*" .$type_constant . "\\s*", "\\n.I \\\"\$1\\\"\\n",
 		    $type_func, "\\n.B \\\"\$1\\\"\\n",
-		    $type_struct, "\\n.I \\\"\$1\\\"\\n",
+		    $type_struct . "\\s*", "\\n.I \\\"\$1\\\"\\n",
 		    $type_param."([\.\, ]*)\n?", "\\n.I \\\"\$1\$2\\\"\\n" );
 $blankline_man = "";
 
@@ -772,7 +772,7 @@ $doc_start = "^/\\*\\*\$";
 $doc_end = "\\*/";
 $doc_com = "\\s*\\*\\s*";
 $doc_func = $doc_com."(\\w+):?";
-$doc_sect = $doc_com."([".$doc_special."[:upper:]][\\w ]+):(.*)";
+$doc_sect = $doc_com."([".$doc_special."[:upper:]][\\w ]+):\\s*(.*)";
 $doc_content = $doc_com."(.*)";
 
 %constants = ();
