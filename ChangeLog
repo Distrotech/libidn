@@ -1,3 +1,269 @@
+2003-11-09  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Version 0.3.4.
+
+2003-11-09  Simon Josefsson <simon@josefsson.org>
+
+	* lib/idna.c, lib/stringprep.c: Fix memory leak.
+
+2003-11-07  Simon Josefsson <simon@josefsson.org>
+
+	* configure.ac: Remove libtool bug workaround.
+
+2003-11-02  Simon Josefsson <simon@josefsson.org>
+
+	* doc/gendocs.sh: Mkdir HTML.
+
+2003-11-02  Simon Josefsson <simon@josefsson.org>
+
+	* doc/reference/Makefile.am: Cleanup.
+
+2003-11-02  Simon Josefsson <simon@josefsson.org>
+
+	* m4/Makefile.am: Dist gtk-doc.m4.
+
+2003-11-01  Simon Josefsson <simon@josefsson.org>
+
+	* AUTHORS: Update expiry date on PGP key.
+
+2003-11-01  Simon Josefsson <simon@josefsson.org>
+
+	* doc/reference/libidn-docs.sgml, doc/reference/libidn-docs.tmpl:
+	Rename.
+
+2003-11-01  Simon Josefsson <simon@josefsson.org>
+
+	* doc/reference/Makefile.am: Use my old cleaned up Makefile.
+
+2003-11-01  Simon Josefsson <simon@josefsson.org>
+
+	* doc/reference/Makefile.am: Don't break on first 'make'.
+
+2003-11-01  Simon Josefsson <simon@josefsson.org>
+
+	* doc/reference/Makefile.am: Make 'dist' work.
+
+2003-11-01  Simon Josefsson <simon@josefsson.org>
+
+	* doc/reference/libidn-docs.sgml: Add.
+
+2003-11-01  Simon Josefsson <simon@josefsson.org>
+
+	* doc/reference/Makefile.am: Add, based on GTK-DOC example
+	Makefile.am.
+
+2003-11-01  Simon Josefsson <simon@josefsson.org>
+
+	* doc/Makefile.am: Add reference/.
+
+2003-11-01  Simon Josefsson <simon@josefsson.org>
+
+	* Makefile.am: Remove GTK-DOC subdir reference/ (moved to doc/).
+
+2003-11-01  Simon Josefsson <simon@josefsson.org>
+
+	* configure.ac: Build GTK-DOC Makefile in doc/reference instead of
+	reference/.
+
+2003-11-01  Simon Josefsson <simon@josefsson.org>
+
+	* configure.ac: Use GTK_DOC_CHECK macro for gtk-doc checks.
+
+2003-11-01  Simon Josefsson <simon@josefsson.org>
+
+	* m4/gtk-doc.m4: Add.
+
+2003-11-01  Simon Josefsson <simon@josefsson.org>
+
+	* Makefile.am: Use GTK-DOC conditional.
+
+2003-11-01  Simon Josefsson <simon@josefsson.org>
+
+	* doc/Makefile.gdoci: Rebuild Makefile after rebuilding
+	Makefile.gdoc.
+
+2003-11-01  Simon Josefsson <simon@josefsson.org>
+
+	* doc/Makefile.am: Set GDOC_MAN_EXTRA_ARGS.
+
+2003-11-01  Simon Josefsson <simon@josefsson.org>
+
+	* doc/Makefile.gdoci: Add GDOC_TEXI_EXTRA_ARGS,
+	GDOC_MAN_EXTRA_ARGS.
+
+2003-11-01  Simon Josefsson <simon@josefsson.org>
+
+	* doc/Makefile.am: GDOC framework cleanup.
+
+2003-11-01  Simon Josefsson <simon@josefsson.org>
+
+	* doc/Makefile.gdoci: Create texinfo for whole sources files too.
+
+2003-11-01  Simon Josefsson <simon@josefsson.org>
+
+	* doc/Makefile.gdoci: Add -man parameters (move to Makefile.am?).
+
+2003-11-01  Simon Josefsson <simon@josefsson.org>
+
+	* doc/Makefile.gdoci: Mark Makefile.gdoc as BUILT_SOURCES.
+
+2003-11-01  Simon Josefsson <simon@josefsson.org>
+
+	* doc/Makefile.gdoci:
+	(Makefile.gdoc): Depend on ../configure for bootstrapping.
+
+2003-11-01  Simon Josefsson <simon@josefsson.org>
+
+	* doc/Makefile.gdoci: Mkdir.
+
+2003-11-01  Simon Josefsson <simon@josefsson.org>
+
+	* doc/Makefile.am: Update docbook HTMLs.
+
+2003-11-01  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi: Use gdoc @include's.
+
+2003-11-01  Simon Josefsson <simon@josefsson.org>
+
+	* doc/Makefile.am: Don't build in man/.  Build idn.1 man page here.
+	Move man page dist targets from man/.  Use Makefile.gdoci to
+	generate man pages and texinfo.
+
+2003-11-01  Simon Josefsson <simon@josefsson.org>
+
+	* doc/Makefile.gdoci: Add, initial version.
+
+2003-11-01  Simon Josefsson <simon@josefsson.org>
+
+	* configure.ac: Don't generate doc/man/Makefile.
+
+2003-10-31  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi: Move unicode utility functions from stringprep
+	to own chapter.  Replace API documentation with @include'd GDOC
+	generated version.
+
+2003-10-31  Simon Josefsson <simon@josefsson.org>
+
+	* doc/Makefile.am: Generate more API manuals with gdoc.  Replace
+	phony libidn-db.html with real targets.  Update libidn-db.html
+	files.
+
+2003-10-31  Simon Josefsson <simon@josefsson.org>
+
+	* doc/gdoc: Don't use @code for @deftypefun function name.
+
+2003-10-31  Simon Josefsson <simon@josefsson.org>
+
+	* lib/punycode.c:
+	(punycode_encode): Rename parameter to match punycode.h (and more
+	importantly, to make gdoc function properly).
+
+2003-10-31  Simon Josefsson <simon@josefsson.org>
+
+	* lib/nfkc.c: Doc fixes.
+
+2003-10-31  Simon Josefsson <simon@josefsson.org>
+
+	* doc/gdoc:
+	(dump_function): Handle parameters that look like 'char *foo[]'.
+
+2003-10-31  Simon Josefsson <simon@josefsson.org>
+
+	* doc/Makefile.am: Fix rule expansions.
+
+2003-10-31  Simon Josefsson <simon@josefsson.org>
+
+	* doc/Makefile.am: Dist gdoc and generated API texi's.  Generate
+	API doc.  Fix dependencies.
+
+2003-10-31  Simon Josefsson <simon@josefsson.org>
+
+	* doc/gdoc: Sync from GSSLib.
+
+2003-10-31  Simon Josefsson <simon@josefsson.org>
+
+	* README-alpha: Mention more tools.
+
+2003-10-31  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2003-10-31  Simon Josefsson <simon@josefsson.org>
+
+	* Makefile.maint: Fix doc generating commands.
+
+2003-10-31  Simon Josefsson <simon@josefsson.org>
+
+	* doc/gendocs.sh: Fix HTML dir move.
+
+2003-10-31  Simon Josefsson <simon@josefsson.org>
+
+	* doc/gendocs.sh: Fix outdir rm.
+
+2003-10-31  Simon Josefsson <simon@josefsson.org>
+
+	* doc/gendocs.sh: Fix outdir rm.
+
+2003-10-31  Simon Josefsson <simon@josefsson.org>
+
+	* doc/gendocs.sh: Don't remove $outdir (might contain CVS/).
+
+2003-10-31  Simon Josefsson <simon@josefsson.org>
+
+	* doc/gendocs.sh, doc/gendocs_template: TAR fixes.  Add
+	DocBook/Doxygen/GTK-DOC.
+
+2003-10-31  Simon Josefsson <simon@josefsson.org>
+
+	* doc/gendocs.sh, doc/gendocs_template: Add (taken from Texinfo
+	CVS).
+
+2003-10-31  Simon Josefsson <simon@josefsson.org>
+
+	* doc/Makefile.am: Add docbook targets.
+
+2003-10-31  Simon Josefsson <simon@josefsson.org>
+
+	* configure.ac: Look for docbook tools.
+
+2003-10-29  Simon Josefsson <simon@josefsson.org>
+
+	* Makefile.am: Dist libc/getaddrinfo-idn.txt.
+
+2003-10-29  Simon Josefsson <simon@josefsson.org>
+
+	* configure.ac: Add AC_CONFIG_AUX_DIR(.) for broken CVS libtoolize.
+
+2003-10-24  Simon Josefsson <simon@josefsson.org>
+
+	* THANKS: Fix.
+
+2003-10-19  Simon Josefsson <simon@josefsson.org>
+
+	* lib/gen-stringprep-tables.pl: Add warning in comment.
+
+2003-10-19  Simon Josefsson <simon@josefsson.org>
+
+	* libc/getaddrinfo-idn.txt: Character set fixes.
+
+2003-10-19  Simon Josefsson <simon@josefsson.org>
+
+	* libc/getaddrinfo-idn.txt: Fix.
+
+2003-10-19  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS, configure.ac: Bump versions.
+
+2003-10-19  Simon Josefsson <simon@josefsson.org>
+
+	* lib/stringprep.c: Add comment.
+
+2003-10-18  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi: Fix.
+
 2003-10-18  Simon Josefsson <simon@josefsson.org>
 
 	* NEWS: Version 0.3.3.
@@ -299,10 +565,6 @@
 2003-10-16  Simon Josefsson <simon@josefsson.org>
 
 	* lib/stringprep.c: Doc fix.
-
-2003-10-16  Simon Josefsson <simon@josefsson.org>
-
-	* doc/man/Makefile.am: Add stringprep_4i.3, stringprep_4zi.3.
 
 2003-10-16  Simon Josefsson <simon@josefsson.org>
 
@@ -681,10 +943,6 @@
 
 2003-09-13  Simon Josefsson <simon@josefsson.org>
 
-	* reference/Makefile.am: Remove dummy.c.
-
-2003-09-13  Simon Josefsson <simon@josefsson.org>
-
 	* lib/punycode.c, lib/stringprep.c: Doc fix.
 
 2003-09-13  Simon Josefsson <simon@josefsson.org>
@@ -741,19 +999,11 @@
 
 2003-09-12  Simon Josefsson <simon@josefsson.org>
 
-	* reference/dummy.c: Remove, merged into ../lib/*.c.
-
-2003-09-12  Simon Josefsson <simon@josefsson.org>
-
 	* lib/punycode.c: Doc fix.
 
 2003-09-12  Simon Josefsson <simon@josefsson.org>
 
 	* lib/idna.c: Fix.
-
-2003-09-12  Simon Josefsson <simon@josefsson.org>
-
-	* doc/man/Makefile.am: Fix update-api.
 
 2003-09-12  Simon Josefsson <simon@josefsson.org>
 
@@ -796,10 +1046,6 @@
 
 	* lib/idna.h: Typedef Idna_rc and Idna_flags.  Use int instead of
 	enum's.
-
-2003-09-12  Simon Josefsson <simon@josefsson.org>
-
-	* reference/Makefile.am: Fix path to sources.  Fix HIGNORE.
 
 2003-09-12  Simon Josefsson <simon@josefsson.org>
 
@@ -854,8 +1100,7 @@
 
 2003-09-12  Simon Josefsson <simon@josefsson.org>
 
-	* NEWS, configure.ac, doc/Makefile.am, doc/gdoc,
-	doc/man/Makefile.am: Build man pages.
+	* NEWS, configure.ac, doc/Makefile.am, doc/gdoc: Build man pages.
 
 2003-09-12  Simon Josefsson <simon@josefsson.org>
 
@@ -996,15 +1241,7 @@
 
 2003-08-20  Simon Josefsson <simon@josefsson.org>
 
-	* reference/Makefile.am: Fix paths (for distcheck).
-
-2003-08-20  Simon Josefsson <simon@josefsson.org>
-
 	* Makefile.am: Fix directory build order, for gtk-doc.
-
-2003-08-20  Simon Josefsson <simon@josefsson.org>
-
-	* reference/Makefile.am: Update paths to source code.
 
 2003-08-20  Simon Josefsson <simon@josefsson.org>
 
@@ -1108,7 +1345,7 @@
 
 2003-08-13  Simon Josefsson <simon@josefsson.org>
 
-	* doc/libidn.texi, reference/dummy.c, NEWS: Add.
+	* doc/libidn.texi, NEWS: Add.
 
 2003-08-13  Simon Josefsson <simon@josefsson.org>
 
@@ -1349,10 +1586,6 @@
 2003-06-19  Simon Josefsson <simon@josefsson.org>
 
 	* doc/libidn.texi: Tested on debian-sparc64.
-
-2003-06-19  Simon Josefsson <simon@josefsson.org>
-
-	* reference/Makefile.am: Ignore idn-int.h.
 
 2003-06-19  Simon Josefsson <simon@josefsson.org>
 
@@ -1837,15 +2070,10 @@
 
 2003-03-06  Simon Josefsson <simon@josefsson.org>
 
-	* reference/Makefile.am: Cosmetic fix.
-
-2003-03-06  Simon Josefsson <simon@josefsson.org>
-
 	* NEWS, example.c, internal.h, profiles.c, stringprep.h.in,
 	stringprep_generic.h, stringprep_iscsi.h, stringprep_kerberos5.h,
-	stringprep_nameprep.h, stringprep_plain.h, stringprep_xmpp.h,
-	reference/Makefile.am, reference/libidn-docs.tmpl: Deprecate
-	stringprep_*.h.
+	stringprep_nameprep.h, stringprep_plain.h, stringprep_xmpp.h:
+	Deprecate stringprep_*.h.
 
 2003-03-04  Simon Josefsson <simon@josefsson.org>
 
@@ -1915,10 +2143,6 @@
 2003-02-26  Simon Josefsson <simon@josefsson.org>
 
 	* Makefile.am: Make idn.c depend on idn_cmd.*.
-
-2003-02-26  Simon Josefsson <simon@josefsson.org>
-
-	* reference/Makefile.am: Ignore getopt.h.
 
 2003-02-26  Simon Josefsson <simon@josefsson.org>
 
@@ -2039,10 +2263,6 @@
 
 2003-02-21  Simon Josefsson <simon@josefsson.org>
 
-	* reference/Makefile.am: Distribute libidn-stringprep-iscsi.html.
-
-2003-02-21  Simon Josefsson <simon@josefsson.org>
-
 	* idna.c: Doc fix.
 
 2003-02-21  Simon Josefsson <simon@josefsson.org>
@@ -2062,8 +2282,8 @@
 2003-02-21  Simon Josefsson <simon@josefsson.org>
 
 	* ANNOUNCE, Makefile.am, README, internal.h, libidn.texi,
-	profiles.c, stringprep_iscsi.h, tst_stringprep.c,
-	reference/dummy.c, reference/libidn-docs.tmpl: Add iSCSI profile.
+	profiles.c, stringprep_iscsi.h, tst_stringprep.c: Add iSCSI
+	profile.
 
 2003-02-21  Simon Josefsson <simon@josefsson.org>
 
@@ -2095,23 +2315,11 @@
 
 2003-02-20  Simon Josefsson <simon@josefsson.org>
 
-	* reference/libidn-docs.tmpl: Include stringprep_plain.sgml.
-
-2003-02-20  Simon Josefsson <simon@josefsson.org>
-
-	* reference/Makefile.am: Add libidn-stringprep-plain.html.
-
-2003-02-20  Simon Josefsson <simon@josefsson.org>
-
 	* libidn.texi: Fix last commit.
 
 2003-02-20  Simon Josefsson <simon@josefsson.org>
 
 	* libidn.texi: Mention stringprep_plain.h.
-
-2003-02-20  Simon Josefsson <simon@josefsson.org>
-
-	* reference/dummy.c: Add stringprep_plain.
 
 2003-02-20  Simon Josefsson <simon@josefsson.org>
 
@@ -2255,12 +2463,6 @@
 
 2003-02-13  Simon Josefsson <simon@josefsson.org>
 
-	* reference/Makefile.am, reference/libidn-docs.sgml,
-	reference/libidn-docs.tmpl, reference/libidn.types: Cleanup gtk-doc
-	build.
-
-2003-02-13  Simon Josefsson <simon@josefsson.org>
-
 	* profiles.c: Zero terminate XMPP array.
 
 2003-02-13  Simon Josefsson <simon@josefsson.org>
@@ -2366,10 +2568,6 @@
 
 2003-02-07  Simon Josefsson <simon@josefsson.org>
 
-	* reference/libidn-docs.sgml: Reorder.
-
-2003-02-07  Simon Josefsson <simon@josefsson.org>
-
 	* README-alpha: Add build instructions.
 
 2003-02-07  Simon Josefsson <simon@josefsson.org>
@@ -2378,15 +2576,7 @@
 
 2003-02-07  Simon Josefsson <simon@josefsson.org>
 
-	* reference/dummy.c, libidn.texi: Add XMPP.
-
-2003-02-07  Simon Josefsson <simon@josefsson.org>
-
-	* reference/libidn-docs.sgml: Include xmpp.
-
-2003-02-07  Simon Josefsson <simon@josefsson.org>
-
-	* reference/libidn-docs.sgml: Update (from ANNOUNCE).
+	* libidn.texi: Add XMPP.
 
 2003-02-07  Simon Josefsson <simon@josefsson.org>
 
@@ -2441,19 +2631,11 @@
 
 2003-01-28  Simon Josefsson <simon@josefsson.org>
 
-	* reference/Makefile.am: Really ignore netdb.h.
-
-2003-01-28  Simon Josefsson <simon@josefsson.org>
-
 	* configure.ac: Release 0.1.5.
 
 2003-01-28  Simon Josefsson <simon@josefsson.org>
 
 	* Makefile.am: Dist libc/*.
-
-2003-01-28  Simon Josefsson <simon@josefsson.org>
-
-	* reference/Makefile.am: Ignore netdb.h.
 
 2003-01-28  Simon Josefsson <simon@josefsson.org>
 
@@ -2544,11 +2726,6 @@
 
 2003-01-15  Simon Josefsson <simon@josefsson.org>
 
-	* reference/Makefile.am: Add uninstall target.  Fix distcheck
-	builds.
-
-2003-01-15  Simon Josefsson <simon@josefsson.org>
-
 	* lgpl.texi, libidn.texi: Add acknowledgements, lgpl.
 
 2003-01-15  Simon Josefsson <simon@josefsson.org>
@@ -2560,7 +2737,7 @@
 
 2003-01-15  Simon Josefsson <simon@josefsson.org>
 
-	* Makefile.am, reference/dummy.c: Improve texinfo manual.
+	* Makefile.am: Improve texinfo manual.
 
 2003-01-15  Simon Josefsson <simon@josefsson.org>
 
@@ -2613,22 +2790,6 @@
 
 2003-01-08  Simon Josefsson <simon@josefsson.org>
 
-	* reference/Makefile.am: dist dummy.c.
-
-2003-01-08  Simon Josefsson <simon@josefsson.org>
-
-	* reference/Makefile.am: Add templates.  Don't parse internal.h
-
-2003-01-08  Simon Josefsson <simon@josefsson.org>
-
-	* reference/libidn-docs.sgml: Add ANNOUNCE text.
-
-2003-01-08  Simon Josefsson <simon@josefsson.org>
-
-	* reference/dummy.c: Add.
-
-2003-01-08  Simon Josefsson <simon@josefsson.org>
-
 	* version.c, toutf8.c: Doc fix.
 
 2003-01-08  Simon Josefsson <simon@josefsson.org>
@@ -2645,11 +2806,6 @@
 
 2003-01-08  Simon Josefsson <simon@josefsson.org>
 
-	* reference/dummy.c, reference/Makefile.am: Dummy GTK-DOC C file
-	with documentation for #define macros.
-
-2003-01-08  Simon Josefsson <simon@josefsson.org>
-
 	* stringprep.h.in: GTK-DOC fixes.
 
 2003-01-08  Simon Josefsson <simon@josefsson.org>
@@ -2662,9 +2818,7 @@
 
 2003-01-08  Simon Josefsson <simon@josefsson.org>
 
-	* Makefile.am, configure.ac, reference/Makefile.am,
-	reference/libidn-docs.sgml, reference/libidn.types: Add API
-	Reference Manual.
+	* Makefile.am, configure.ac: Add API Reference Manual.
 
 2003-01-05  Simon Josefsson <simon@josefsson.org>
 
