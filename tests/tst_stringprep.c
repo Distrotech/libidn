@@ -19,7 +19,18 @@
  *
  */
 
-#include "internal.h"
+#if HAVE_CONFIG_H
+# include "config.h"
+#endif
+
+#if STDC_HEADERS
+# include <stdio.h>
+# include <stdlib.h>
+# include <stdarg.h>
+# include <string.h>
+#endif
+
+#include <stringprep.h>
 
 static int debug = 0;
 static int error_count = 0;

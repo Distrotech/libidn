@@ -19,7 +19,19 @@
  *
  */
 
-#include "internal.h"
+#if HAVE_CONFIG_H
+# include "config.h"
+#endif
+
+#if STDC_HEADERS
+# include <stdio.h>
+# include <stdlib.h>
+# include <string.h>
+#endif
+
+#include <stringprep.h>
+#include <punycode.h>
+#include <idna.h>
 
 #include "idn_cmd.h"
 
