@@ -21,18 +21,6 @@ To compile from CVS, you may need recent versions of perl, texinfo (>=
 automake (>= 1.9), libtool (>= 1.5.2), gtk-doc, doxygen, gcj, javadoc,
 and gettext (>= 0.14.1).
 
-If you get a warning like:
-
-/usr/share/automake-1.9/am/java.am: JAVAROOT was already defined in condition JAVA, which is included in condition TRUE ...
-java/gnu/inet/encoding/Makefile.am:23:   while processing `dist_noinst_JAVA'
-java/gnu/inet/encoding/Makefile.am:21: ... `JAVAROOT' previously defined here
-/usr/share/automake-1.9/am/java.am: JAVAROOT was already defined in condition JAVA, which is included in condition TRUE ...
-java/misc/Makefile.am:25:   while processing `dist_noinst_JAVA'
-java/misc/Makefile.am:22: ... `JAVAROOT' previously defined here
-
-Then replace 'JAVAROOT' in /usr/share/automake-1.9/am/java.am with
-'#JAVAROOT'.
-
 Bootstrap the build environment using:
 
   $ ./autogen.sh
