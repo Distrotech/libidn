@@ -77,7 +77,7 @@ Stringprep_profile stringprep_generic[] = {
   {STRINGPREP_BIDI, ~STRINGPREP_NO_BIDI, 0, "BIDI"}
   ,
   {STRINGPREP_BIDI_PROHIBIT_TABLE, ~STRINGPREP_NO_BIDI,
-   stringprep_generic_C_9, "C.9"}
+   stringprep_generic_C_8, "C.8"}
   ,
   {STRINGPREP_BIDI_RAL_TABLE, ~STRINGPREP_NO_BIDI, stringprep_generic_D_1,
    "D.1"}
@@ -118,14 +118,16 @@ Stringprep_profile stringprep_nameprep[] = {
   ,
   {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_7, "C.7"}
   ,
-  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_8, "C.8"}
-  ,
+  /* Already done below for bidi:
+     {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_8, "C.8"}
+     ,
+  */
   {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_9, "C.9"}
   ,
   {STRINGPREP_BIDI, 0, 0, "BIDI"}
   ,
   {STRINGPREP_BIDI_PROHIBIT_TABLE, ~STRINGPREP_NO_BIDI,
-   stringprep_generic_C_9, "C.9"}
+   stringprep_generic_C_8, "C.8"}
   ,
   {STRINGPREP_BIDI_RAL_TABLE, 0, stringprep_generic_D_1, "D.1"}
   ,
@@ -160,14 +162,16 @@ Stringprep_profile stringprep_kerberos5[] = {
   ,
   {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_7, "C.7"}
   ,
-  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_8, "C.8"}
-  ,
+  /* Already done below for bidi:
+     {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_8, "C.8"}
+     ,
+  */
   {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_9, "C.9"}
   ,
   {STRINGPREP_BIDI, 0, 0, "BIDI"}
   ,
   {STRINGPREP_BIDI_PROHIBIT_TABLE, ~STRINGPREP_NO_BIDI,
-   stringprep_generic_C_9, "C.9"}
+   stringprep_generic_C_8, "C.8"}
   ,
   {STRINGPREP_BIDI_RAL_TABLE, 0, stringprep_generic_D_1, "D.1"}
   ,
@@ -222,8 +226,10 @@ Stringprep_profile stringprep_xmpp_nodeprep[] = {
   ,
   {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_7, "C.7"}
   ,
-  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_8, "C.8"}
-  ,
+  /* Already done below for bidi:
+     {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_8, "C.8"}
+     ,
+  */
   {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_9, "C.9"}
   ,
   {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_xmpp_nodeprep_prohibit,
@@ -268,8 +274,10 @@ Stringprep_profile stringprep_xmpp_resourceprep[] = {
   ,
   {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_7, "C.7"}
   ,
-  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_8, "C.8"}
-  ,
+  /* Already done below for bidi:
+     {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_8, "C.8"}
+     ,
+  */
   {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_9, "C.9"}
   ,
   {STRINGPREP_BIDI, 0, 0, "BIDI"}
