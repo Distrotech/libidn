@@ -20,14 +20,17 @@ to support, e.g., Unicode 4.0 or RFC 952 ASCII rules checking.  Note
 that the old entry points are unmodified, and new entry points with
 this modification were added.
 
+** Bugfixes.
+
 ** API and ABI is not backwards compatible.
 In punycode.h and stringprep.h the "unsigned long" data type was
 changed into "uint32_t", which cause a API and ABI missmatch on
 platforms where the size of "unsigned long" is not 32 bits.  For 32
 bit platforms, the API and ABI is backwards compatible though.  For
 idna.h, the old entry points that used "unsigned long" still exist,
-and new entry points that uses "uint32_t" was added.  The so version
-has been increased so the 64 bit platforms doesn't become confused.
+and new entry points that uses "uint32_t" was added.  The shared
+object version has been increased, so that 64 bit platforms aren't
+confused.
 
 * Version 0.1.15 (released 2003-06-07)
 
