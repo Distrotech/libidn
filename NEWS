@@ -2,7 +2,7 @@ Libidn NEWS -- History of user-visible changes.                 -*- outline -*-
 Copyright (C) 2002, 2003 Simon Josefsson
 See the end for copying conditions.
 
-* Version 0.2.2 (unreleased)
+* Version 0.2.2 (released 2003-08-13)
 
 ** Fixed problem with strings longer than 4GB in punycode functions.
 The punycode code cannot handle strings longer than 4GB.  The code now
