@@ -189,9 +189,13 @@ sub process_definition
 	    {
 		$is_int = 1;
 	    }
-	    elsif (index($_, "|") != -1)
+	    elsif (s/^\|//)
 	    {
-		$_ = "";
+		$is_int = 0;
+	    }
+	    elsif (s/^\://)
+	    {
+		$is_int = 0;
 	    }
 	    else
 	    {
