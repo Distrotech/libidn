@@ -420,7 +420,7 @@ int
 stringprep_profile (const char *in,
 		    char **out, char *profile, Stringprep_profile_flags flags)
 {
-  Stringprep_profiles *p;
+  const Stringprep_profiles *p;
   char *str = NULL;
   size_t len = strlen (in) + 1;
   int rc;
