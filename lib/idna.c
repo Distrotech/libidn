@@ -225,9 +225,11 @@ step3:
   outlen = 63 - strlen (IDNA_ACE_PREFIX);
   rc = punycode_encode (len, src, NULL,
 			&outlen, &out[strlen (IDNA_ACE_PREFIX)]);
-  free (src);
   if (rc != PUNYCODE_SUCCESS)
-    return IDNA_PUNYCODE_ERROR;
+    {
+      free (src);
+      return IDNA_PUNYCODE_ERROR;
+    }
   out[strlen (IDNA_ACE_PREFIX) + outlen] = '\0';
 
   /*
@@ -242,6 +244,7 @@ step3:
    */
 
 step8:
+  free (src);
   if (strlen (out) < 1 || strlen (out) > 63)
     return IDNA_INVALID_LENGTH;
 

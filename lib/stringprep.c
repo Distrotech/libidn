@@ -380,20 +380,19 @@ stringprep (char *in,
     }
 
   utf8 = stringprep_ucs4_to_utf8 (ucs4, ucs4len, 0, 0);
+  free (ucs4);
   if (!utf8)
-    {
-      free (ucs4);
-      return STRINGPREP_MALLOC_ERROR;
-    }
+    return STRINGPREP_MALLOC_ERROR;
 
   if (strlen (utf8) >= maxlen)
     {
       free (utf8);
-      free (ucs4);
       return STRINGPREP_TOO_SMALL_BUFFER;
     }
 
   strcpy (in, utf8);		/* flawfinder: ignore */
+
+  free (utf8);
 
   return STRINGPREP_OK;
 }
