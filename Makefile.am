@@ -34,7 +34,7 @@ EXTRA_DIST = libidn.pc.in iconv.m4 strdup.c memset.c \
 	contrib/idn-python/README contrib/idn-python/Makefile \
 	contrib/idn-python/idn.c contrib/idn-python/test.py \
 	getopt.h getopt.c getopt1.c \
-	idn.1 punycode.el idna.el
+	$(man_MANS) $(lisp_LISP)
 
 clean-local:
 	rm -f idn_cmd.c idn_cmd.h punycode.elc idna.elc
