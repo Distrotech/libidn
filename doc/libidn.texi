@@ -585,9 +585,9 @@ this header file.
 
 The name space of the stringprep part of Libidn is @code{stringprep*}
 for function names, @code{Stringprep*} for data types and
-@code{STRINGPREP_*} for other symbols.  In addition the same name
-prefixes with one prepended underscore are reserved for internal use
-and should never be used by an application.
+@code{STRINGPREP_*} for other symbols.  In addition,
+@code{_stringprep*} is reserved for internal use and should never be
+used by applications.
 
 @item punycode.h
 
@@ -597,10 +597,8 @@ want to perform raw punycode operations.
 
 The name space of the punycode part of Libidn is @code{punycode_*} for
 function names, @code{Punycode*} for data types and @code{PUNYCODE_*}
-for other symbols.  In addition the same name prefixes with one
-prepended underscore are reserved for internal use and should never be
-used by an application.
-
+for other symbols.  In addition, @code{_punycode*} is reserved for
+internal use and should never be used by applications.
 @item idna.h
 
 The entry point to the IDNA functions.  This is the normal entry point
@@ -608,9 +606,8 @@ for applications that need IDN functionality.
 
 The name space of the IDNA part of Libidn is @code{idna_*} for
 function names, @code{Idna*} for data types and @code{IDNA_*} for
-other symbols.  In addition the same name prefixes with one prepended
-underscore are reserved for internal use and should never be used by
-an application.
+other symbols.  In addition, @code{_idna*} is reserved for internal
+use and should never be used by applications.
 
 @item tld.h
 
@@ -620,8 +617,19 @@ applications that are used by TLDs to validate customer input.
 
 The name space of the TLD part of Libidn is @code{tld_*} for function
 names, @code{Tld_*} for data types and @code{TLD_*} for other symbols.
-In addition the same name prefixes with one prepended underscore are
-reserved for internal use and should never be used by an application.
+In addition, @code{_tld*} is reserved for internal use and should
+never be used by applications.
+
+@item pr29.h
+
+The entry point to the PR29 functions.  These functions are used to
+detect ``problem sequences'' (@pxref{PR29 Functions}), mostly for use
+in security critical applications.
+
+The name space of the PR29 part of Libidn is @code{pr29_*} for
+function names, @code{Pr29_*} for data types and @code{PR29_*} for
+other symbols.  In addition, @code{_pr29*} is reserved for internal
+use and should never be used by applications.
 
 @end table
 
