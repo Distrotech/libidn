@@ -137,7 +137,7 @@ main (int argc, char *argv[])
 	  continue;
 	}
 
-      rc = tld_check_4it (tld[i].in, tld[i].inlen, &errpos, tldtable);
+      rc = tld_check_4ti (tld[i].in, tld[i].inlen, &errpos, tldtable);
       if (rc != tld[i].rc)
 	{
 	  fail ("TLD entry %d failed: %d\n", i, rc);
