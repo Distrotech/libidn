@@ -17,25 +17,7 @@
 # License along with GNU Libidn; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
 
-SUBDIRS = specifications
-
-EXTRA_DIST = libidn.html libidn.ps libidn.pdf lgpl.texi
-
-dist_man_MANS = idn.1
-
-idn.1: ../src/idn.c
-	$(HELP2MAN) --name="Internationalized Domain Names command line tool" \
-		--output=$@ $(top_builddir)/src/idn
-
-info_TEXINFOS = libidn.texi
-pdf_TEXINFOS = libidn.texi
-ps_TEXINFOS = libidn.texi
-
-libidn.html: libidn.texi
-	$(MAKEINFO) --html --no-split --number-sections $^
-
-libidn_TEXINFOS = fdl.texi \
-	example.c.texi example2.c.texi example3.c.texi example4.c.texi
-
-%.c.texi: ../examples/%.c
-	sed -e 's/{/@{/g' -e 's/}/@}/g' < $< > $@
+EXTRA_DIST = rfc3454.txt \
+	UnicodeData-3.2.0.txt LineBreak-3.2.0.txt \
+	SpecialCasing-3.2.0.txt CaseFolding-3.2.0.txt \
+	CompositionExclusions-3.2.0.txt
