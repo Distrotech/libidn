@@ -18,9 +18,23 @@
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
 
 if JAVA
+HTML = AllNames.html packages.html tree.html			\
+	gnu.inet.encoding.PunycodeException.html		\
+	gnu.inet.encoding.CombiningClass.html			\
+	gnu.inet.encoding.Punycode.html				\
+	gnu.inet.encoding.Composition.html			\
+	gnu.inet.encoding.RFC3454.html				\
+	gnu.inet.encoding.DecompositionKeys.html		\
+	gnu.inet.encoding.StringprepException.html		\
+	gnu.inet.encoding.DecompositionMappings.html		\
+	gnu.inet.encoding.Stringprep.html			\
+	gnu.inet.encoding.IDNAException.html			\
+	gnu.inet.encoding.IDNA.html gnu.inet.encoding.NFKC.html
+EXTRA_DIST = $(HTML)
+
 all:
 	cd ../../java && make javadoc
 
 clean-local:
-	rm -f *.html
+	rm -f $(HTML)
 endif
