@@ -1,9 +1,9 @@
 Libidn ANNOUNCE -- Overview to attract interest.
 See the end for copying conditions.
 
-Libidn is an implementation of the Stringprep (with the Nameprep and
-Kerberos 5 profiles), Punycode and IDNA specifications defined by the
-IETF Internationalized Domain Names (IDN) working group, used for
+GNU Libidn is an implementation of the Stringprep (with the Nameprep
+and Kerberos 5 profiles), Punycode and IDNA specifications defined by
+the IETF Internationalized Domain Names (IDN) working group, used for
 internationalized domain names.  It is licensed under the GNU Lesser
 General Public License.
 
@@ -26,15 +26,15 @@ libraries to process user names and passwords before they are input to
 cryptographic operations.  It is also used by experimental code for
 domain name related purposes.
 
-Libidn is developed for the GNU/Linux system, but runs on over 20 Unix
-platforms (including Solaris, IRIX, AIX, and Tru64) and Windows.
+GNU Libidn is developed for the GNU/Linux system, but runs on over 20
+Unix platforms (including Solaris, IRIX, AIX, and Tru64) and Windows.
 
 The project page of the library is available at:
-http://josefsson.org/libidn/
+http://www.gnu.org/software/libidn/
 
 For more information see:
 http://www.ietf.org/html.charters/idn-charter.html
-http://www.ietf.org/rfc/rfc3454.txt
+http://www.ietf.org/rfc/rfc3454.txt (stringprep specification)
 http://www.ietf.org/internet-drafts/draft-ietf-idn-punycode-03.txt
 http://www.ietf.org/internet-drafts/draft-ietf-idn-nameprep-11.txt
 http://www.ietf.org/internet-drafts/draft-ietf-idn-idna-14.txt
