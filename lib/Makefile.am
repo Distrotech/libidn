@@ -28,7 +28,7 @@ DISTCLEANFILES = $(idn_int)
 include_HEADERS = stringprep.h idna.h punycode.h
 nodist_include_HEADERS = $(idn_int)
 
-libidn_la_SOURCES = gunibreak.h gunicomp.h gunidecomp.h internal.h \
+libidn_la_SOURCES = gunibreak.h gunicomp.h gunidecomp.h \
 	nfkc.c toutf8.c version.c \
 	stringprep.h.in stringprep.c rfc3454.c profiles.c \
 	punycode.h punycode.c \
