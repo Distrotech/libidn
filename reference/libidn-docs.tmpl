@@ -3,6 +3,7 @@
 <!ENTITY libidn-stringprep-generic SYSTEM "stringprep_generic.sgml">
 <!ENTITY libidn-stringprep-kerberos5 SYSTEM "stringprep_kerberos5.sgml">
 <!ENTITY libidn-stringprep-nameprep SYSTEM "stringprep_nameprep.sgml">
+<!ENTITY libidn-stringprep-plain SYSTEM "stringprep_plain.sgml">
 <!ENTITY libidn-stringprep-xmpp SYSTEM "stringprep_xmpp.sgml">
 <!ENTITY libidn-punycode SYSTEM "punycode.sgml">
 <!ENTITY libidn-idna SYSTEM "idna.sgml">
@@ -18,10 +19,9 @@
     <para>
 GNU Libidn is an implementation of the Stringprep, Punycode and IDNA
 specifications defined by the IETF Internationalized Domain Names
-(IDN) working group, used for internationalized domain names.
-Currently the Nameprep, Kerberos 5 and XMPP Stringprep profiles are
-supported.  It is available under the GNU Lesser General Public
-License.
+(IDN) working group, used for internationalized domain names.  It is
+available under the GNU Lesser General Public License.  Currently the
+Nameprep, Kerberos 5, SASL and XMPP Stringprep profiles are supported.
     </para>
     <para>
 The library contains a generic Stringprep implementation (including
@@ -43,8 +43,8 @@ domain names to and from the ACE encoded form.
     <para>
 The library is used by forthcoming network applications to process
 user names and passwords before they are input to cryptographic
-operations.  Libidn can be built into GNU Libc to enables a new flag
-to getaddrinfo() for system-wide IDN processing.
+operations.  Libidn can be built into GNU Libc to enable a new
+getaddrinfo() flag for system-wide IDN processing.
     </para>
     <para>
 GNU Libidn is developed for the GNU/Linux system, but runs on over 20
@@ -55,6 +55,7 @@ Unix platforms (including Solaris, IRIX, AIX, and Tru64) and Windows.
     &libidn-stringprep-generic;
     &libidn-stringprep-kerberos5;
     &libidn-stringprep-nameprep;
+    &libidn-stringprep-plain;
     &libidn-stringprep-xmpp;
     &libidn-punycode;
     &libidn-idna;
