@@ -319,8 +319,10 @@ done:
  * Return value: Returns 0 iff successful, or an error code.
  **/
 int
-stringprep_profile (char *in,
-		    char **out, char *profile, Stringprep_profile_flags flags)
+stringprep_profile (const char *in,
+		    char **out,
+		    char *profile,
+		    Stringprep_profile_flags flags)
 {
   Stringprep_profiles *p;
   char *str;
@@ -387,6 +389,14 @@ stringprep_profile (char *in,
  *   string contains unassigned characters according to profile.
  *
  * Stringprep profile flags.
+ */
+
+/**
+ * Stringprep_profile_steps:
+ *
+ * Various steps in the stringprep algorithm.  You really want to
+ * study the source code to understand this one.  Only useful if you
+ * want to add another profile.
  */
 
 /**
