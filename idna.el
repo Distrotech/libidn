@@ -40,6 +40,8 @@
 ;; (idna-to-unicode "www.gnu.org")
 ;; => "www.gnu.org"
 
+;; Todo: Support AllowUnassigned and UseSTD3ASCIIRules somehow?
+
 ;; This package is useless unless your emacs has at least partial
 ;; support for the UTF-8 coding system.
 
