@@ -19,7 +19,18 @@
  *
  */
 
-#include "internal.h"
+#if HAVE_CONFIG_H
+# include "config.h"
+#endif
+
+#if STDC_HEADERS
+# include <stdio.h>
+# include <stdlib.h>
+# include <stdarg.h>
+# include <string.h>
+#endif
+
+#include <idna.h>
 
 static int debug = 0;
 static int error_count = 0;
@@ -604,8 +615,7 @@ struct idna
 int
 main (int argc, char *argv[])
 {
-  uint32_t tmp[100];
-  size_t len, len2, i;
+  size_t i;
   char *out;
   int rc;
 

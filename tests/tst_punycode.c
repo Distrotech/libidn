@@ -19,7 +19,18 @@
  *
  */
 
-#include "internal.h"
+#if HAVE_CONFIG_H
+# include "config.h"
+#endif
+
+#if STDC_HEADERS
+# include <stdio.h>
+# include <stdlib.h>
+# include <stdarg.h>
+# include <string.h>
+#endif
+
+#include <punycode.h>
 
 static int debug = 0;
 static int error_count = 0;
@@ -46,7 +57,7 @@ ucs4print (uint32_t * str, ssize_t len)
   printf ("\t;; ");
   for (i = 0; len >= 0 ? i < len : str[i]; i++)
     {
-      printf ("U+%04lux ", str[i]);
+      printf ("U+%04ux ", str[i]);
       if ((i + 1) % 4 == 0)
 	printf (" ");
       if ((i + 1) % 8 == 0 && i + 1 < len)
