@@ -1,5 +1,5 @@
 /* stringprep.h		Header file for stringprep functions.         -*- c -*-
- * Copyright (C) 2002, 2003  Simon Josefsson
+ * Copyright (C) 2002, 2003, 2004  Simon Josefsson
  *
  * This file is part of GNU Libidn.
  *
@@ -94,7 +94,7 @@ extern "C"
 
   struct Stringprep_profiles
   {
-    char *name;
+    const char *name;
     const Stringprep_profile *tables;
   };
   typedef struct Stringprep_profiles Stringprep_profiles;
