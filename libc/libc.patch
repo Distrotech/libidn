@@ -4,7 +4,7 @@ RCS file: /cvs/glibc/libc/resolv/netdb.h,v
 retrieving revision 1.40
 diff -u -p -r1.40 netdb.h
 --- resolv/netdb.h	8 Aug 2002 21:17:03 -0000	1.40
-+++ resolv/netdb.h	1 Mar 2003 20:03:38 -0000
++++ resolv/netdb.h	28 Jan 2003 06:24:41 -0000
 @@ -424,6 +424,11 @@ struct gaicb
  # define AI_PASSIVE	0x0001	/* Socket address is intended for `bind'.  */
  # define AI_CANONNAME	0x0002	/* Request for canonical name.  */
@@ -25,3 +25,47 @@ diff -u -p -r1.40 netdb.h
  # endif
  
  # define NI_MAXHOST      1025
+Index: sysdeps/posix/getaddrinfo.c
+===================================================================
+RCS file: /cvs/glibc/libc/sysdeps/posix/getaddrinfo.c,v
+retrieving revision 1.42
+diff -u -p -r1.42 getaddrinfo.c
+--- sysdeps/posix/getaddrinfo.c	29 Aug 2002 08:51:26 -0000	1.42
++++ sysdeps/posix/getaddrinfo.c	28 Jan 2003 06:24:41 -0000
+@@ -50,6 +50,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBI
+ #include <sys/un.h>
+ #include <sys/utsname.h>
+ #include <net/if.h>
++#include <idna.h>
+ 
+ #define GAIH_OKIFUNSPEC 0x0100
+ #define GAIH_EAI        ~(GAIH_OKIFUNSPEC)
+@@ -433,6 +434,15 @@ gaih_inet (const char *name, const struc
+       at->scopeid = 0;
+       at->next = NULL;
+ 
++      if (req->ai_flags & AI_IDN)
++	{
++	  char *p;
++	  rc = idna_locale_to_ace (name, &p);
++	  if (rc != IDNA_SUCCESS)
++	    return -EAI_IDN_ENCODE;
++	  name = p; /* XXX memory leak */
++	}
++
+       if (inet_pton (AF_INET, name, at->addr) > 0)
+ 	{
+ 	  if (req->ai_family == AF_UNSPEC || req->ai_family == AF_INET)
+@@ -740,10 +750,10 @@ getaddrinfo (const char *name, const cha
+   if (hints == NULL)
+     hints = &default_hints;
+ 
+-  if (hints->ai_flags & ~(AI_PASSIVE|AI_CANONNAME|AI_NUMERICHOST))
++  if (hints->ai_flags & ~(AI_PASSIVE|AI_CANONNAME|AI_NUMERICHOST|AI_IDN))
+     return EAI_BADFLAGS;
+ 
+-  if ((hints->ai_flags & AI_CANONNAME) && name == NULL)
++  if ((hints->ai_flags & (AI_CANONNAME|AI_IDN)) && name == NULL)
+     return EAI_BADFLAGS;
+ 
+   if (service && service[0])
