@@ -4,6 +4,14 @@ See the end for copying conditions.
 
 * Version 0.4.4 (unreleased)
 
+** Fixed two bugs in iSCSI definition, syncing with newly published RFC 3722.
+The first bug was an omission of prohibiting the characters in C.1.1,
+C.1.2 and C.7 (space characters and characters that are inappropriate
+for canonical representation).  The second was a bug in the definition
+of the table, causing the entire table to be skipped, of the special
+prohibited output character table defined in RFC 3722 (see section 6,
+the characters in the table are various ASCII characters and U+3002).
+
 ** More translations.
 Added Romanian (by Laurentiu Buzdugan).
 
