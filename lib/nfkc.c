@@ -671,7 +671,7 @@ combine_hangul (gunichar a, gunichar b, gunichar * result)
    : (compose_data[compose_table[Page]][Char]))
 
 #define COMPOSE_INDEX(Char) \
-     (((Char) > (G_UNICODE_LAST_CHAR)) ? 0 : CI((Char) >> 8, (Char) & 0xff))
+     ((((Char) >> 8) > (COMPOSE_TABLE_LAST)) ? 0 : CI((Char) >> 8, (Char) & 0xff))
 
 static gboolean
 combine (gunichar a, gunichar b, gunichar * result)
