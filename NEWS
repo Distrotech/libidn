@@ -2,7 +2,7 @@ Libidn NEWS -- History of user-visible changes.                 -*- outline -*-
 Copyright (C) 2002, 2003 Simon Josefsson
 See the end for copying conditions.
 
-* Version 0.1.10 (unreleased)
+* Version 0.1.10 (released 2003-02-21)
 
 ** idna_*_to_ace() and idna_*ace_to_*() are deprecated in favor of
 ** idna_to_ascii_from_*() and idna_to_unicode_*_from_*() respectively.
