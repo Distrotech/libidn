@@ -74,7 +74,7 @@ idn_LDADD = @LIBOBJS@ libidn.la
 idn.c: idn_cmd.c idn_cmd.h
 
 idn_cmd.c idn_cmd.h: idn.ggo
-	gengetopt --input $< --file-name idn_cmd
+	$(GENGETOPT) --input $< --file-name idn_cmd
 
 dist_man_MANS = idn.1
 
