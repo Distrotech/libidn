@@ -23,15 +23,14 @@ lib_LTLIBRARIES = libidn.la
 
 idn_int = idn-int.h
 
-BUILT_SOURCES = $(idn_int)
-
+BUILT_SOURCES = $(idn_int) gunibreak.h gunicomp.h gunidecomp.h rfc3454.c
 DISTCLEANFILES = $(idn_int)
 include_HEADERS = stringprep.h idna.h punycode.h
 nodist_include_HEADERS = $(idn_int)
 
 libidn_la_SOURCES = gunibreak.h gunicomp.h gunidecomp.h internal.h \
 	stringprep.c nfkc.c version.c toutf8.c \
-	stringprep_generic.c profiles.c \
+	rfc3454.c profiles.c \
 	punycode.h punycode.c \
 	idna.h idna.c
 libidn_la_LIBADD = $(LTLIBICONV)
@@ -44,5 +43,5 @@ SPEC = $(top_srcdir)/doc/specifications
 gunibreak.h gunicomp.h gunidecomp.h: gen-unicode-tables.pl $(SPEC)/UnicodeData-3.2.0.txt $(SPEC)/LineBreak-3.2.0.txt $(SPEC)/SpecialCasing-3.2.0.txt $(SPEC)/CaseFolding-3.2.0.txt $(SPEC)/CompositionExclusions-3.2.0.txt
 	$(PERL) $(srcdir)/gen-unicode-tables.pl -decomp 3.2 $(SPEC)/UnicodeData-3.2.0.txt $(SPEC)/LineBreak-3.2.0.txt $(SPEC)/SpecialCasing-3.2.0.txt $(SPEC)/CaseFolding-3.2.0.txt $(SPEC)/CompositionExclusions-3.2.0.txt
 
-stringprep_generic.c: gen-stringprep-tables.pl
+rfc3454.c: gen-stringprep-tables.pl
 	$(PERL) $(srcdir)/gen-stringprep-tables.pl $(SPEC)/rfc3454.txt
