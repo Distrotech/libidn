@@ -166,7 +166,7 @@ const gchar *const g_utf8_skip = utf8_skip_data;
 
 #define g_utf8_next_char(p) (char *)((p) + g_utf8_skip[*(guchar *)(p)])
 
-/**
+/*
  * g_utf8_strlen:
  * @p: pointer to the start of a UTF-8 encoded string.
  * @max: the maximum number of bytes to examine. If @max
@@ -216,7 +216,7 @@ g_utf8_strlen (const gchar * p, gssize max)
   return len;
 }
 
-/**
+/*
  * g_utf8_get_char:
  * @p: a pointer to Unicode character encoded as UTF-8
  *
@@ -243,7 +243,7 @@ g_utf8_get_char (const gchar * p)
   return result;
 }
 
-/**
+/*
  * g_unichar_to_utf8:
  * @c: a ISO10646 character code
  * @outbuf: output buffer, must have at least 6 bytes of space.
@@ -305,7 +305,7 @@ g_unichar_to_utf8 (gunichar c, gchar * outbuf)
   return len;
 }
 
-/**
+/*
  * g_utf8_to_ucs4_fast:
  * @str: a UTF-8 encoded string
  * @len: the maximum length of @str to use. If @len < 0, then
@@ -408,7 +408,7 @@ g_utf8_to_ucs4_fast (const gchar * str, glong len, glong * items_written)
   return result;
 }
 
-/**
+/*
  * g_ucs4_to_utf8:
  * @str: a UCS-4 encoded string
  * @len: the maximum length of @str to use. If @len < 0, then
@@ -511,7 +511,7 @@ err_out:
 #define NCount (VCount * TCount)
 #define SCount (LCount * NCount)
 
-/**
+/*
  * g_unicode_canonical_ordering:
  * @string: a UCS-4 encoded string.
  * @len: the maximum length of @string to use.
@@ -862,7 +862,7 @@ _g_utf8_normalize_wc (const gchar * str, gssize max_len, GNormalizeMode mode)
   return wc_buffer;
 }
 
-/**
+/*
  * g_utf8_normalize:
  * @str: a UTF-8 encoded string.
  * @len: length of @str, in bytes, or -1 if @str is nul-terminated.
