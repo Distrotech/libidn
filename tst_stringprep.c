@@ -103,7 +103,7 @@ struct stringprep
   char *comment;
   char *in;
   char *out;
-  Stringprep_profile *profile;
+  char *profile;
   int flags;
   int rc;
 }
@@ -174,7 +174,7 @@ strprep[] =
   },
   {
     "Non-ASCII multibyte space character U+1680",
-    "\xE1\x9A\x80", NULL, stringprep_nameprep, 0,
+    "\xE1\x9A\x80", NULL, "Nameprep", 0,
     STRINGPREP_CONTAINS_PROHIBITED
   },
   {
@@ -195,12 +195,12 @@ strprep[] =
   },
   {
     "Non-ASCII 8bit control character U+0085",
-    "\xC2\x85", NULL, stringprep_nameprep, 0,
+    "\xC2\x85", NULL, "Nameprep", 0,
     STRINGPREP_CONTAINS_PROHIBITED
   },
   {
     "Non-ASCII multibyte control character U+180E",
-    "\xE1\xA0\x8E", NULL, stringprep_nameprep, 0,
+    "\xE1\xA0\x8E", NULL, "Nameprep", 0,
     STRINGPREP_CONTAINS_PROHIBITED
   },
   {
@@ -209,47 +209,47 @@ strprep[] =
   },
   {
     "Non-ASCII control character U+1D175",
-    "\xF0\x9D\x85\xB5", NULL, stringprep_nameprep, 0,
+    "\xF0\x9D\x85\xB5", NULL, "Nameprep", 0,
     STRINGPREP_CONTAINS_PROHIBITED
   },
   {
     "Plane 0 private use character U+F123",
-    "\xEF\x84\xA3", NULL, stringprep_nameprep, 0,
+    "\xEF\x84\xA3", NULL, "Nameprep", 0,
     STRINGPREP_CONTAINS_PROHIBITED
   },
   {
     "Plane 15 private use character U+F1234",
-    "\xF3\xB1\x88\xB4", NULL, stringprep_nameprep, 0,
+    "\xF3\xB1\x88\xB4", NULL, "Nameprep", 0,
     STRINGPREP_CONTAINS_PROHIBITED
   },
   {
     "Plane 16 private use character U+10F234",
-    "\xF4\x8F\x88\xB4", NULL, stringprep_nameprep, 0,
+    "\xF4\x8F\x88\xB4", NULL, "Nameprep", 0,
     STRINGPREP_CONTAINS_PROHIBITED
   },
   {
     "Non-character code point U+8FFFE",
-    "\xF2\x8F\xBF\xBE", NULL, stringprep_nameprep, 0,
+    "\xF2\x8F\xBF\xBE", NULL, "Nameprep", 0,
     STRINGPREP_CONTAINS_PROHIBITED
   },
   {
     "Non-character code point U+10FFFF",
-    "\xF4\x8F\xBF\xBF", NULL, stringprep_nameprep, 0,
+    "\xF4\x8F\xBF\xBF", NULL, "Nameprep", 0,
     STRINGPREP_CONTAINS_PROHIBITED
   },
   {
     "Surrogate code U+DF42",
-    "\xED\xBD\x82", NULL, stringprep_nameprep, 0,
+    "\xED\xBD\x82", NULL, "Nameprep", 0,
     STRINGPREP_CONTAINS_PROHIBITED
   },
   {
     "Non-plain text character U+FFFD",
-    "\xEF\xBF\xBD", NULL, stringprep_nameprep, 0,
+    "\xEF\xBF\xBD", NULL, "Nameprep", 0,
     STRINGPREP_CONTAINS_PROHIBITED
   },
   {
     "Ideographic description character U+2FF5",
-    "\xE2\xBF\xB5", NULL, stringprep_nameprep, 0,
+    "\xE2\xBF\xB5", NULL, "Nameprep", 0,
     STRINGPREP_CONTAINS_PROHIBITED
   },
   {
@@ -258,32 +258,32 @@ strprep[] =
   },
   {
     "Left-to-right mark U+200E",
-    "\xE2\x80\x8E", "\xCC\x81", stringprep_nameprep, 0,
+    "\xE2\x80\x8E", "\xCC\x81", "Nameprep", 0,
     STRINGPREP_CONTAINS_PROHIBITED
   },
   {
     "Deprecated U+202A",
-    "\xE2\x80\xAA", "\xCC\x81", stringprep_nameprep, 0,
+    "\xE2\x80\xAA", "\xCC\x81", "Nameprep", 0,
     STRINGPREP_CONTAINS_PROHIBITED
   },
   {
     "Language tagging character U+E0001",
-    "\xF3\xA0\x80\x81", "\xCC\x81", stringprep_nameprep, 0,
+    "\xF3\xA0\x80\x81", "\xCC\x81", "Nameprep", 0,
     STRINGPREP_CONTAINS_PROHIBITED
   },
   {
     "Language tagging character U+E0042",
-    "\xF3\xA0\x81\x82", NULL, stringprep_nameprep, 0,
+    "\xF3\xA0\x81\x82", NULL, "Nameprep", 0,
     STRINGPREP_CONTAINS_PROHIBITED
   },
   {
     "Bidi: RandALCat character U+05BE and LCat characters",
-    "foo\xD6\xBE""bar", NULL, stringprep_nameprep, 0,
+    "foo\xD6\xBE""bar", NULL, "Nameprep", 0,
     STRINGPREP_BIDI_BOTH_L_AND_RAL
   },
   {
     "Bidi: RandALCat character U+FD50 and LCat characters",
-    "foo\xEF\xB5\x90""bar", NULL, stringprep_nameprep, 0,
+    "foo\xEF\xB5\x90""bar", NULL, "Nameprep", 0,
     STRINGPREP_BIDI_BOTH_L_AND_RAL
   },
   {
@@ -291,7 +291,7 @@ strprep[] =
     "foo\xEF\xB9\xB6""bar", "foo \xd9\x8e""bar"
   },
   { "Bidi: RandALCat without trailing RandALCat U+0627 U+0031",
-    "\xD8\xA7\x31", NULL, stringprep_nameprep, 0,
+    "\xD8\xA7\x31", NULL, "Nameprep", 0,
     STRINGPREP_BIDI_LEADTRAIL_NOT_RAL}
   ,
   {
@@ -300,14 +300,14 @@ strprep[] =
   },
   {
     "Unassigned code point U+E0002",
-    "\xF3\xA0\x80\x82", NULL, stringprep_nameprep, STRINGPREP_NO_UNASSIGNED,
+    "\xF3\xA0\x80\x82", NULL, "Nameprep", STRINGPREP_NO_UNASSIGNED,
     STRINGPREP_CONTAINS_UNASSIGNED
   },
   {
     "Larger test (shrinking)",
     "X\xC2\xAD\xC3\xDF\xC4\xB0\xE2\x84\xA1\x6a\xcc\x8c\xc2\xa0\xc2"
     "\xaa\xce\xb0\xe2\x80\x80", "xssi\xcc\x87""tel\xc7\xb0 a\xce\xb0 ",
-    stringprep_nameprep
+    "Nameprep"
   },
   {
     "Larger test (expanding)",
@@ -318,48 +318,48 @@ strprep[] =
   },
 #if !defined(DRAFT)
   { "Test of prohibited ASCII character U+0020",
-    "\x20", NULL, stringprep_generic, 0, STRINGPREP_CONTAINS_PROHIBITED
+    "\x20", NULL, "generic", 0, STRINGPREP_CONTAINS_PROHIBITED
   },
   {
     "Test of NFKC U+00A0 and prohibited character U+0020",
-    "\xC2\xA0", NULL, stringprep_generic, 0, STRINGPREP_CONTAINS_PROHIBITED
+    "\xC2\xA0", NULL, "generic", 0, STRINGPREP_CONTAINS_PROHIBITED
   },
   { "Case map + normalization",
-    "\xC2\xB5", "\xCE\xBC", stringprep_generic},
+    "\xC2\xB5", "\xCE\xBC", "generic"},
   /* The rest are rather non-interesting, but no point in removing
      working test cases... */
   { "case_nonfkc",
-    "\xC2\xB5", "\xCE\xBC", stringprep_generic, STRINGPREP_NO_NFKC}
+    "\xC2\xB5", "\xCE\xBC", "generic", STRINGPREP_NO_NFKC}
   ,
   { "NFKC test",
-  "\xC2\xAA", "\x61", stringprep_generic},
+  "\xC2\xAA", "\x61", "generic"},
   { "nameprep, exposed a bug in libstringprep 0.0.5",
     "\xC2\xAA\x0A", "\x61\x0A"},
   { "unassigned code point U+0221",
-    "\xC8\xA1", "\xC8\xA1", stringprep_generic},
+    "\xC8\xA1", "\xC8\xA1", "generic"},
   { "Unassigned code point U+0221",
-    "\xC8\xA1", NULL, stringprep_generic, STRINGPREP_NO_UNASSIGNED,
+    "\xC8\xA1", NULL, "generic", STRINGPREP_NO_UNASSIGNED,
     STRINGPREP_CONTAINS_UNASSIGNED},
   { "Unassigned code point U+0236",
-    "\xC8\xB6", "\xC8\xB6", stringprep_generic},
+    "\xC8\xB6", "\xC8\xB6", "generic"},
   { "unassigned code point U+0236",
-    "\xC8\xB6", NULL, stringprep_generic, STRINGPREP_NO_UNASSIGNED,
+    "\xC8\xB6", NULL, "generic", STRINGPREP_NO_UNASSIGNED,
     STRINGPREP_CONTAINS_UNASSIGNED},
   { "bidi both RandALCat and LCat  U+0627 U+00AA U+0628",
-    "\xD8\xA7\xC2\xAA\xD8\xA8", NULL, stringprep_generic, 0,
+    "\xD8\xA7\xC2\xAA\xD8\xA8", NULL, "generic", 0,
     STRINGPREP_BIDI_BOTH_L_AND_RAL}
   ,
   { "XMPP node profile prohibited output",
-    "foo@bar", NULL, stringprep_xmpp_nodeprep, 0,
+    "foo@bar", NULL, "Nodeprep", 0,
       STRINGPREP_CONTAINS_PROHIBITED},
   { "XMPP resource profile on same string should work though",
-    "foo@bar", "foo@bar", stringprep_xmpp_resourceprep},
+    "foo@bar", "foo@bar", "Resourceprep"},
   { "SASL ANONYMOUS plain mechanism",
-    "simon@josefsson.org", "simon@josefsson.org", stringprep_plain},
+    "simon@josefsson.org", "simon@josefsson.org", "plain"},
   { "iSCSI profile",
-    "Example-Name", "example-name", stringprep_iscsi},
+    "Example-Name", "example-name", "ISCSIprep"},
   { "SASL profile",
-    "Example\xC2\xA0""Name", "Example Name", stringprep_saslprep}
+    "Example\xC2\xA0""Name", "Example Name", "SASLprep"}
 #endif
 };
 
@@ -390,10 +390,6 @@ main (int argc, char *argv[])
       }
   while (argc-- > 1);
 
-  p = malloc (BUFSIZ);
-  if (p == NULL)
-    fail ("malloc() returned NULL\n");
-
   for (i = 0; i < sizeof (strprep) / sizeof (strprep[0]); i++)
     {
 #ifdef DRAFT
@@ -407,8 +403,6 @@ main (int argc, char *argv[])
       if (debug)
 	printf ("STRINGPREP entry %d\n", i);
 
-      strcpy (p, strprep[i].in);
-
       if (debug)
 	{
 	  printf ("flags: %d\n", strprep[i].flags);
@@ -421,10 +415,11 @@ main (int argc, char *argv[])
 	  puts ("");
 	}
 
-      rc = stringprep (p, BUFSIZ, strprep[i].flags,
-		       strprep[i].profile ?
-		       strprep[i].profile :
-		       stringprep_nameprep);
+      rc = stringprep_profile (strprep[i].in, &p,
+			       strprep[i].profile ?
+			       strprep[i].profile :
+			       "Nameprep",
+			       strprep[i].flags);
       if (rc != strprep[i].rc)
 	{
 	  fail ("stringprep() entry %d failed: %d\n", i, rc);
@@ -434,8 +429,11 @@ main (int argc, char *argv[])
 	}
 
 #ifdef DRAFT
-      printf ("out: ");
-      escapeprint (p, strlen (p));
+      if (rc == STRINGPREP_OK)
+	{
+	  printf ("out: ");
+	  escapeprint (p, strlen (p));
+	}
 #endif
 
       if (debug && rc == STRINGPREP_OK)
@@ -468,6 +466,8 @@ main (int argc, char *argv[])
 	    }
 	  else if (debug)
 	    printf ("OK\n\n");
+
+	  free (p);
 	}
       else if (debug)
 	  printf ("OK\n\n");
@@ -486,8 +486,6 @@ main (int argc, char *argv[])
   hexprint (p, strlen (p));
   puts ("");
 #endif
-
-  free (p);
 
   if (debug)
     printf ("Stringprep self tests done with %d errors\n", error_count);

@@ -21,6 +21,18 @@
 
 #include "internal.h"
 
+Stringprep_profiles stringprep_profiles[] = {
+  { "generic", stringprep_generic },
+  { "Nameprep", stringprep_nameprep },
+  { "KRBprep", stringprep_kerberos5 },
+  { "Nodeprep", stringprep_xmpp_nodeprep },
+  { "Resourceprep", stringprep_xmpp_resourceprep },
+  { "plain", stringprep_plain },
+  { "SASLprep", stringprep_saslprep },
+  { "ISCSIprep", stringprep_iscsi },
+  { NULL, NULL }
+};
+
 Stringprep_profile stringprep_generic[] = {
   /* 1) Map -- For each character in the input, check if it has a
      mapping and, if so, replace it with its mapping. This is

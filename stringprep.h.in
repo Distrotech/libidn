@@ -46,6 +46,7 @@ extern "C"
     STRINGPREP_TOO_SMALL_BUFFER = 100,
     STRINGPREP_PROFILE_ERROR = 101,
     STRINGPREP_FLAG_ERROR = 102,
+    STRINGPREP_UNKNOWN_PROFILE = 103,
     /* Internal errors. */
     STRINGPREP_NFKC_FAILED = 200,
     STRINGPREP_MALLOC_ERROR = 201
@@ -90,6 +91,15 @@ extern "C"
     char *name;
   };
   typedef struct Stringprep_table Stringprep_profile;
+
+  struct Stringprep_profiles
+  {
+    char *name;
+    Stringprep_profile *tables;
+  };
+  typedef struct Stringprep_profiles Stringprep_profiles;
+
+  extern Stringprep_profiles stringprep_profiles[];
 
 /* Profiles */
   extern Stringprep_table_element stringprep_generic_A_1[];
@@ -153,6 +163,9 @@ extern "C"
 
   extern int stringprep (char *in, size_t maxlen, int flags,
 			 Stringprep_profile * profile);
+
+  extern int stringprep_profile (char *in, char **out,
+				 char *profile, int flags);
 
   extern const char *stringprep_check_version (const char *req_version);
 

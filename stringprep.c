@@ -402,3 +402,52 @@ done:
     free (ucs4);
   return rc;
 }
+
+/**
+ * stringprep_profile:
+ * @in: input/ouput array with string to prepare.
+ * @out: output variable with newly allocate string.
+ * @flags: optional stringprep profile flags.
+ * @profile: name of stringprep profile to use.
+ *
+ * Prepare the input UTF-8 string according to the stringprep profile.
+ * Normally application programmers use stringprep profile macros such
+ * as stringprep_nameprep(), stringprep_kerberos5() etc instead of
+ * calling this function directly.
+ *
+ * Note that you must convert strings entered in the systems locale
+ * into UTF-8 before using this function.
+ *
+ * The output @out variable must be deallocated by the caller.
+ *
+ * Return value: Returns 0 iff successful, or an error code.
+ **/
+int
+stringprep_profile (char *in, char **out, char *profile, int flags)
+{
+  Stringprep_profiles *p;
+  char *str;
+  size_t len;
+  int rc;
+
+  for (p = &stringprep_profiles[0]; p->name; p++)
+    if (strcmp(p->name, profile) == 0)
+      break;
+
+  if (!p || !p->name || !p->tables)
+    return STRINGPREP_UNKNOWN_PROFILE;
+
+  len = strlen(in) + BUFSIZ;
+  str = (char*) malloc(len);
+  if (str == NULL)
+    return STRINGPREP_MALLOC_ERROR;
+
+  strcpy(str, in);
+
+  rc = stringprep (str, len, flags, p->tables);
+
+  if (rc == STRINGPREP_OK)
+    *out = str;
+
+  return rc;
+}
