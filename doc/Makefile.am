@@ -22,10 +22,17 @@ if ENABLE_GTK_DOC
 SUBDIRS += reference
 endif
 
-EXTRA_DIST = gdoc libidn.html libidn.ps libidn.pdf lgpl.texi texinfo.css
+EXTRA_DIST = gdoc libidn.html libidn.ps libidn.pdf lgpl.texi texinfo.css \
+	components.fig
 
 info_TEXINFOS = libidn.texi
-libidn_TEXINFOS = fdl.texi $(gdoc_TEXINFOS)
+libidn_TEXINFOS = fdl.texi $(gdoc_TEXINFOS) components.eps components.png
+
+components.eps: components.fig
+	fig2dev -L eps components.fig components.eps
+
+components.png: components.fig
+	fig2dev -L png components.fig components.png
 
 AM_MAKEINFOHTMLFLAGS = --no-split --number-sections --css-include=texinfo.css
 
