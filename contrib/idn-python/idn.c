@@ -26,7 +26,7 @@ idn2ace (PyObject * self, PyObject * args)
   PyObject *outstr;
   if (!PyArg_ParseTuple (args, "s", &instr))
     onError ("Invalid argument");
-  rc = idna_utf8_to_ace (instr, &result);
+  rc = idna_to_ascii_8z (instr, &result);
   if (rc != IDNA_SUCCESS)
     {
       switch (rc)
@@ -56,7 +56,7 @@ ace2idn (PyObject * self, PyObject * args)
   PyObject *outstr;
   if (!PyArg_ParseTuple (args, "s", &instr))
     onError ("Invalid argument");
-  rc = idna_utf8ace_to_utf8 (instr, &result);
+  rc = idna_to_unicode_8z8z (instr, &result);
   if (rc != IDNA_SUCCESS)
     {
       result = malloc (MESSAGE_SIZE);
