@@ -1,5 +1,5 @@
 /* example4.c	Example ToUnicode() code showing how to use Libidn.
- * Copyright (C) 2002, 2003  Simon Josefsson
+ * Copyright (C) 2002, 2003, 2004  Simon Josefsson
  *
  * This file is part of GNU Libidn.
  *
@@ -22,6 +22,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <locale.h>		/* setlocale() */
 #include <stringprep.h>		/* stringprep_locale_charset() */
 #include <idna.h>		/* idna_to_unicode_lzlz() */
 
@@ -45,6 +46,8 @@ main (int argc, char *argv[])
   char *p;
   int rc;
   size_t i;
+
+  setlocale (LC_ALL, "");
 
   printf ("Input domain encoded as `%s': ", stringprep_locale_charset ());
   fflush (stdout);

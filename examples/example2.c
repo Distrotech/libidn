@@ -1,5 +1,5 @@
 /* example2.c	Example code showing how to use punycode.
- * Copyright (C) 2002, 2003  Simon Josefsson
+ * Copyright (C) 2002, 2003, 2004  Simon Josefsson
  * Copyright (C) 2002  Adam M. Costello
  *
  * This file is part of GNU Libidn.
@@ -19,6 +19,8 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
  */
+
+#include <locale.h>		/* setlocale() */
 
 /*
  * This file is derived from RFC 3492 written by Adam M. Costello.
@@ -98,6 +100,8 @@ main (int argc, char **argv)
   int r;
   size_t input_length, output_length, j;
   unsigned char case_flags[unicode_max_length];
+
+  setlocale (LC_ALL, "");
 
   if (argc != 2)
     usage (argv);
