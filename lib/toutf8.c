@@ -117,14 +117,22 @@ stringprep_convert (const char *str,
   int len;
 
   if (strcmp (to_codeset, from_codeset) == 0)
-    return (char *) strdup (str);
+    {
+      char *p;
+      p = malloc (strlen (str) + 1);
+      if (!p)
+	return NULL;
+      strcpy (p, str);
+      return p;
+    }
 
   cd = iconv_open (to_codeset, from_codeset);
 
   if (cd == (iconv_t) - 1)
     return NULL;
 
-  p = (char *) strdup (str);
+  p = (char *) malloc (strlen (str) + 1);
+  strcpy (p, str);
   if (p == NULL)
     return NULL;
   len = strlen (p);
@@ -203,9 +211,14 @@ char *
 stringprep_convert (const char *str,
 		    const char *to_codeset, const char *from_codeset)
 {
+  char *p;
   fprintf (stderr, "libidn: warning: libiconv not installed, cannot "
 	   "convert data to UTF-8\n");
-  return strdup (str);
+  p = malloc (strlen (str) + 1);
+  if (!p)
+    return NULL;
+  strcpy (p, str);
+  return p;
 }
 
 #endif
