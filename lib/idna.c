@@ -535,7 +535,8 @@ idna_to_ascii_8z (const char *input, char **output, int flags)
 
 /**
  * idna_to_ascii_lz:
- * @input: zero terminated input UTF-8 string.
+ * @input: zero terminated input string encoded in the current locale's
+ *   character set.
  * @output: pointer to newly allocated output string.
  * @flags: IDNA flags, e.g. IDNA_ALLOW_UNASSIGNED or IDNA_USE_STD3_ASCII_RULES.
  *
