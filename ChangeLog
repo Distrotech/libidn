@@ -1,3 +1,35 @@
+2002-12-05 03:07  Simon Josefsson <simon@josefsson.org>
+
+	* stringprep.c:
+
+	Don't use *_fast().  
+
+2002-12-05 02:44  Simon Josefsson <simon@josefsson.org>
+
+	* Makefile.am:
+
+	Don't use $< (GNU specific).  
+
+2002-12-03 04:19  Simon Josefsson <simon@josefsson.org>
+
+	* Makefile.am:
+
+	Portability fixes.  
+
+2002-12-03 03:38  Simon Josefsson <simon@josefsson.org>
+
+	* internal.h, nfkc.c, stringprep.c, toutf8.c, tst_nfkc.c,
+	tst_stringprep.c, version.c:
+
+	Simplify the #include-mess. (NULL wasn't found on 
+	alpha-unknown-netbsd1.6) 
+
+2002-11-30 16:22  Simon Josefsson <simon@josefsson.org>
+
+	* config.rpath:
+
+	[no log message] 
+
 2002-11-30 16:16  Simon Josefsson <simon@josefsson.org>
 
 	* NEWS, configure.ac:
@@ -124,9 +156,9 @@
 
 2002-11-06 07:15  Simon Josefsson <simon@josefsson.org>
 
-	* Makefile.am, NEWS, README, THANKS, config.rpath, configure.ac,
-	example.c, iconv.m4, libstringprep.pc.in, profiles.c,
-	stringprep.h.in, stringprep_generic.h, stringprep_kerberos5.h,
+	* Makefile.am, NEWS, README, THANKS, configure.ac, example.c,
+	iconv.m4, libstringprep.pc.in, profiles.c, stringprep.h.in,
+	stringprep_generic.h, stringprep_kerberos5.h,
 	stringprep_nameprep.h, toutf8.c:
 
 	Add example.  Add toutf8.c.  Check if OS has locale functions.  Add
@@ -135,7 +167,7 @@
 
 2002-11-05 12:53  Simon Josefsson <simon@josefsson.org>
 
-	* AUTHORS, COPYING, CaseFolding-3.2.0.txt,
+	* AUTHORS, COPYING.LIB, CaseFolding-3.2.0.txt,
 	CompositionExclusions-3.2.0.txt, LineBreak-3.2.0.txt, Makefile.am,
 	NEWS, README, SpecialCasing-3.2.0.txt, THANKS,
 	UnicodeData-3.2.0.txt, configure.ac,
