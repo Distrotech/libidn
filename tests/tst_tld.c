@@ -87,7 +87,7 @@ const struct tld tld[] = {
     "fr",
     5,
     { 0x00E0, 0x00E2, 0x00E6, 0x4711, 0x0042 },
-    TLD_ILLEGAL,
+    TLD_INVALID,
     3
   }
 };
@@ -155,7 +155,7 @@ main (int argc, char *argv[])
 	  if (debug)
 	    printf ("ERROR\n");
 	}
-      else if (rc == TLD_ILLEGAL)
+      else if (rc == TLD_INVALID)
 	{
 	  if (debug)
 	    printf ("returned errpos %d expected errpos %d\n",

@@ -313,7 +313,7 @@ main (int argc, char *argv[])
 	      size_t errpos;
 
 	      rc = tld_check_8z (p, &errpos, NULL);
-	      if (rc == TLD_ILLEGAL)
+	      if (rc == TLD_INVALID)
 		{
 		  fprintf (stderr,
 			   "%s: string rejected by TLD test (pos %d): %s\n",
@@ -393,7 +393,7 @@ main (int argc, char *argv[])
 	      size_t errpos;
 
 	      rc = tld_check_8z (p, &errpos, NULL);
-	      if (rc == TLD_ILLEGAL)
+	      if (rc == TLD_INVALID)
 		{
 		  fprintf (stderr,
 			   "%s: string rejected by TLD test (pos %d): %s\n",

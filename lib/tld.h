@@ -61,7 +61,7 @@ extern "C"
   typedef enum
   {
     TLD_SUCCESS = 0,
-    TLD_INVALID = 1,		/* Illegal character found. */
+    TLD_INVALID = 1,		/* Invalid character found. */
     TLD_NODATA = 2,		/* Char, domain or inlen = 0. */
     TLD_MALLOC_ERROR = 3,
     TLD_ICONV_ERROR = 4,

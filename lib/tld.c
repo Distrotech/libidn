@@ -165,12 +165,12 @@ tld_get_4z (const uint32_t * in, char **out)
  * @ch: 32 bit unicode character to check.
  * @tld: Tld_table data structure to check @ch against
  *
- * Verify if @ch is either in [a-z0-9-.] or mentioned
- * as a legal character in @tld.
+ * Verify if @ch is either in [a-z0-9-.] or mentioned as a valid
+ * character in @tld.
  *
- * Return value: Return %TLD_SUCCESS if @ch is a legal character for
- * the TLD @tld or if @tld is %NULL, %TLD_INVALID if @ch is not a
- * legal as defined by @tld.
+ * Return value: Return %TLD_SUCCESS if @ch is a valid character for
+ * the TLD @tld or if @tld is %NULL, %TLD_INVALID if @ch is invalid as
+ * defined by @tld.
  */
 static int
 _tld_checkchar (uint32_t ch, const Tld_table * tld)
@@ -455,7 +455,7 @@ tld_check_lz (const char *in, size_t * errpos, const Tld_table ** overrides)
  * @TLD_SUCCESS: Successful operation.  This value is guaranteed to
  * always be zero, the remaining ones are only guaranteed to hold
  * non-zero values, for logical comparison purposes.
- * @TLD_INVALID: Illegal character found.
+ * @TLD_INVALID: Invalid character found.
  * @TLD_NODATA: No input data was provided.
  * @TLD_MALLOC_ERROR: Error during memory allocation.
  * @TLD_ICONV_ERROR: Error during iconv string conversion.

@@ -1182,7 +1182,7 @@ logical comparison purposes.
 @end deftypevr
 
 @deftypevr {Return code} {Tld_rc} TLD_INVALID
-Illegal character found.
+Invalid character found.
 @end deftypevr
 
 @deftypevr {Return code} {Tld_rc} TLD_NODATA
