@@ -102,6 +102,7 @@ struct stringprep
   int flags;
   char *out;
   stringprep_profile *profile;
+  int rc;
 }
 strprep[] =
 {
@@ -119,6 +120,22 @@ strprep[] =
   ,
   {
   "\xC2\xAA", 0, "\x61", stringprep_generic}
+  ,
+  /* unassigned code point 0221: */
+  {
+    "\xC8\xA1", 0, "\xC8\xA1", stringprep_generic}
+  ,
+  /* unassigned code point 0221: */
+  {
+    "\xC8\xA1", STRINGPREP_NO_UNASSIGNED, NULL, stringprep_generic, STRINGPREP_CONTAINS_UNASSIGNED}
+  ,
+  /* unassigned code point 0236: */
+  {
+    "\xC8\xB6", 0, "\xC8\xB6", stringprep_generic}
+  ,
+  /* unassigned code point 0236: */
+  {
+    "\xC8\xB6", STRINGPREP_NO_UNASSIGNED, NULL, stringprep_generic, STRINGPREP_CONTAINS_UNASSIGNED}
 };
 
 int
@@ -156,7 +173,7 @@ main (int argc, char *argv[])
       strcpy (p, strprep[i].in);
 
       rc = stringprep (p, BUFSIZ, strprep[i].flags, strprep[i].profile);
-      if (rc != STRINGPREP_OK)
+      if (rc != strprep[i].rc)
 	{
 	  fail ("stringprep() entry %d failed: %d\n", i, rc);
 	  continue;
@@ -164,6 +181,8 @@ main (int argc, char *argv[])
 
       if (debug)
 	{
+	  printf ("flags: %d\n", strprep[i].flags);
+
 	  printf ("in:\n");
 	  escapeprint (strprep[i].in, strlen (strprep[i].in));
 	  hexprint (strprep[i].in, strlen (strprep[i].in));
@@ -171,27 +190,35 @@ main (int argc, char *argv[])
 	  binprint (strprep[i].in, strlen (strprep[i].in));
 	  puts ("");
 
-	  printf ("out:\n");
-	  escapeprint (p, strlen (p));
-	  hexprint (p, strlen (p));
-	  puts ("");
-	  binprint (p, strlen (p));
-	  puts ("");
+	  if (rc == STRINGPREP_OK)
+	    {
+	      printf ("out:\n");
+	      escapeprint (p, strlen (p));
+	      hexprint (p, strlen (p));
+	      puts ("");
+	      binprint (p, strlen (p));
+	      puts ("");
 
-	  printf ("expected out:\n");
-	  escapeprint (strprep[i].out, strlen (strprep[i].out));
-	  hexprint (strprep[i].out, strlen (strprep[i].out));
-	  puts ("");
-	  binprint (strprep[i].out, strlen (strprep[i].out));
-	  puts ("");
+	      printf ("expected out:\n");
+	      escapeprint (strprep[i].out, strlen (strprep[i].out));
+	      hexprint (strprep[i].out, strlen (strprep[i].out));
+	      puts ("");
+	      binprint (strprep[i].out, strlen (strprep[i].out));
+	      puts ("");
+	    }
+	  else
+	    printf("returned %d expected %d\n", rc, strprep[i].rc);
 	}
 
-      if (strlen (strprep[i].out) != strlen (p) ||
-	  memcmp (strprep[i].out, p, strlen (p)) != 0)
+      if (rc == STRINGPREP_OK)
 	{
-	  fail ("stringprep() entry %d failed\n", i);
-	  if (debug)
-	    printf ("ERROR\n");
+	  if (strlen (strprep[i].out) != strlen (p) ||
+	      memcmp (strprep[i].out, p, strlen (p)) != 0)
+	    {
+	      fail ("stringprep() entry %d failed\n", i);
+	      if (debug)
+		printf ("ERROR\n");
+	    }
 	}
       else if (debug)
 	printf ("OK\n");

@@ -124,8 +124,9 @@ stringprep (char *in, int maxlen, int flags, stringprep_profile * profile)
 
   for (i = 0; profile[i].flags || profile[i].table; i++)
     {
-      if (!profile[i].table && profile[i].flags == ~STRINGPREP_NO_NFKC &&
-	  !(flags & STRINGPREP_NO_NFKC))
+      if (profile[i].flags == ~STRINGPREP_NO_NFKC &&
+	  !(flags & STRINGPREP_NO_NFKC) &&
+	  !profile[i].table)
 	{
 
 	  q = stringprep_ucs4_nfkc_normalize (ucs4, ucs4len);
@@ -143,6 +144,15 @@ stringprep (char *in, int maxlen, int flags, stringprep_profile * profile)
 	  ucs4 = q;
 	  q = 0;
 
+	  continue;
+	}
+      else if (profile[i].flags == STRINGPREP_UNASSIGNED_MASK)
+	{
+	  if (flags & STRINGPREP_NO_UNASSIGNED)
+	    {
+	      if (stringprep_find_string_in_table (ucs4, ucs4len, NULL,  profile[i].table) != -1)
+		return STRINGPREP_CONTAINS_UNASSIGNED;
+	    }
 	  continue;
 	}
       else if (profile[i].flags & STRINGPREP_INVERT_MAGIC)

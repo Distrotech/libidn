@@ -24,6 +24,7 @@
 #include "stringprep_kerberos5.h"
 
 struct stringprep_table stringprep_generic[] = {
+  {STRINGPREP_UNASSIGNED_MASK, stringprep_generic_A_1},
   {0, stringprep_generic_B_1},
   {~STRINGPREP_NO_NFKC, stringprep_generic_B_2},
   {STRINGPREP_NO_NFKC, stringprep_generic_B_3},
@@ -45,6 +46,7 @@ struct stringprep_table stringprep_generic[] = {
 };
 
 struct stringprep_table stringprep_nameprep[] = {
+  {STRINGPREP_UNASSIGNED_MASK, stringprep_generic_A_1},
   {0, stringprep_generic_B_1},
   {~STRINGPREP_NO_NFKC, stringprep_generic_B_2},
   {~STRINGPREP_NO_NFKC},
@@ -55,10 +57,10 @@ struct stringprep_table stringprep_nameprep[] = {
   {0, stringprep_generic_C_5},
   {0, stringprep_generic_C_6},
   {0, stringprep_generic_C_7},
-  {~STRINGPREP_NO_BIDI & STRINGPREP_BIDI_PROHIBITED, stringprep_generic_C_8},
+  {STRINGPREP_BIDI_PROHIBITED_MASK, stringprep_generic_C_8},
   {0, stringprep_generic_C_9},
-  {~STRINGPREP_NO_BIDI & STRINGPREP_BIDI_RAL, stringprep_generic_D_1},
-  {~STRINGPREP_NO_BIDI & STRINGPREP_BIDI_L, stringprep_generic_D_2},
+  {STRINGPREP_BIDI_RAL_MASK, stringprep_generic_D_1},
+  {STRINGPREP_BIDI_L_MASK, stringprep_generic_D_2},
   {0}
 };
 

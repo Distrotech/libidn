@@ -1,4 +1,4 @@
-Shishi README -- important introductory notes
+Libstringprep README -- important introductory notes
 See the end for copying conditions.
 
 Libstringprep is an implementation of the IETF stringprep
@@ -7,16 +7,17 @@ specification, licensed under the LGPL.
 Libstringprep is unstable and in its early steps of development.  You
 should expect it to not work as well as having security problems.
 
-Things left to do below.  If you like to start working on anything,
-please let me know so work duplication can be avoided.
-
-  - Optimize it, the table searching is slow (but does it matter?).
-  - Port applications to use libstringprep.
-  - Include tables for more stringprep profiles.
-  - Add texi documentation.
-  - Implement rest of IDN?  Possibly separate project.
-
 Currently the API include the following definitions and functions:
+
+Header file: #include <stringprep.h>
+
+     Main API header file.
+
+Header file: #include <stringprep_nameprep.h>
+Header file: #include <stringprep_kerbero5.h>
+
+     Convenience header files for stringprep_nameprep* and
+     stringprep_kerberos5 macros (see below).
 
 Function: int stringprep (char *in, int maxlen, int flags,
                           stringprep_profile * profile);
@@ -33,20 +34,26 @@ Function: int stringprep (char *in, int maxlen, int flags,
      before using this function.
 
 Macro: int stringprep_nameprep(char *in, int maxlen)
+Macro: int stringprep_nameprep_no_unassigned(char *in, int maxlen)
 Macro: int stringprep_kerberos5(char *in, int maxlen)
 
-     Short-hand macros for applying Nameprep and Kerberos 5
-     stringprep profiles to strings, respectively.
+     Short-hand macros for applying Nameprep with
+     AllowUnassigned=TRUE, Nameprep with AllowUnassigned=FALSE and
+     Kerberos 5 stringprep profiles to strings, respectively.
 
 Type: STRINGPREP_NO_NFKC
 Type: STRINGPREP_NO_BIDI
+Type: STRINGPREP_NO_UNASSIGNED
 
      Valid options to the FLAGS parameter of stringprep().
      STRINGPREP_NO_NFKC disables the NFKC normalization, as well as
      selecting the non-NFKC case folding tables. STRINGPREP_NO_BIDI
-     disables the BIDI step.  Usually the profile specifies this.
+     disables the BIDI step.  STRINGPREP_NO_UNASSIGNED causes
+     stringprep() abort with an error if string contains unassigned
+     characters according to profile.  Usually the profile specifies
+     BIDI and NFKC settings.
 
-It also contains the following utility functions:
+The library also contains the following utility functions:
 
 Function: int stringprep_unichar_to_utf8 (long c, char *outbuf);
 Function: long stringprep_utf8_to_unichar (const char *p);
@@ -97,6 +104,16 @@ following systems, but no guarantees.
   - sparc-sun-solaris2.6 (Sun WorkShop Compiler C 5.0, non-GNU make)
   - sparc-sun-solaris2.8 (Sun WorkShop Compiler C 6.0U2, SUN make, iconv ok)
   - sparc-sun-solaris2.8 (GCC 3.1, GNU make, iconv ok)
+  - ... and over 10 other unix systems.
+
+Things left to do below.  If you like to start working on anything,
+please let me know so work duplication can be avoided.
+
+  - Optimize it, the table searching is slow (but does it matter?).
+  - Port applications to use libstringprep.
+  - Include tables for more stringprep profiles.
+  - Add texi documentation.
+  - Implement rest of IDN?  Possibly separate project.
 
 Before it becomes a FAQ: This library do not link with GLIB for the
 UTF-8 functions for two reasons.  First, GLIB does not provide

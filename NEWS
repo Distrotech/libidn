@@ -3,7 +3,13 @@ See the end for copying conditions.
 
 Please send libstringprep bug reports to bug-libstringprep@josefsson.org.
 
-* Version 0.0.3.
+* Version 0.0.4
+
+** Add unassigned code point handling, including self test cases.
+
+** Portability fixes.
+
+* Version 0.0.3
 
 ** Exported utility function `stringprep_utf8_to_unichar', complementary
 to existing `stringprep_unichar_to_utf8'.

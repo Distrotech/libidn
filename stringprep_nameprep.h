@@ -37,6 +37,9 @@ extern struct stringprep_table stringprep_nameprep[];
 #define stringprep_nameprep(in, maxlen) \
 	stringprep(in, maxlen, 0, stringprep_nameprep)
 
+#define stringprep_nameprep_no_unassigned(in, maxlen) \
+  stringprep(in, maxlen, STRINGPREP_NO_UNASSIGNED, stringprep_nameprep)
+
 #ifdef __cplusplus
 }
 #endif
