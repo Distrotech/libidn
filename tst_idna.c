@@ -213,9 +213,8 @@ struct idna
       IDNA_ACE_PREFIX "-> $1.00 <--", 0, 0, IDNA_SUCCESS, IDNA_SUCCESS},
 #endif
   {				/* XXX depends on IDNA_ACE_PREFIX */
-    "ToASCII() with ACE prefix", 6 + 3,
-    {
-  'i', 'e', 's', 'g', '-', '-', 'f', 'o', 0x3067},
+    "ToASCII() with ACE prefix", 4 + 3,
+    { 'x', 'k', '-', '-', 'f', 'o', 0x3067},
       IDNA_ACE_PREFIX "too long too long too long too long too long too "
       "long too long too long too long too long ", 0, 0,
       IDNA_CONTAINS_ACE_PREFIX, IDNA_PUNYCODE_ERROR}
