@@ -23,7 +23,7 @@
 # include "config.h"
 #endif
 
-#if STDC_HEADERS
+#if defined(STDC_HEADERS) || defined(_LIBC)
 # include <stdlib.h>
 # include <string.h>
 #endif
