@@ -496,9 +496,9 @@ alpha beta major: $(local-check)
 	echo $(VERSION) > $(prev_version_file)
 	$(CVS) ci -m. $(prev_version_file)
 	@$(emit-upload-commands)
-	cd contrib/doxygen && doxygen && cp -v html/* $(htmldir)/doxygen/
-	cp -v doc/$(PACKAGE).{ps,pdf,html} $(htmldir)/
-	cp -v reference/*.html $(htmldir)/reference/
-	cd $(htmldir) && \
+	-cd contrib/doxygen && doxygen && cp -v html/* $(htmldir)/doxygen/
+	-cp -v doc/$(PACKAGE).{ps,pdf,html} $(htmldir)/
+	-cp -v reference/*.html $(htmldir)/reference/
+	-cd $(htmldir) && \
 		cvs commit -m "Update." \
 			$(PACKAGE).{ps,pdf,html} reference/*.html doxygen/*
