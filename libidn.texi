@@ -602,6 +602,9 @@ by Adam M. Costello.
 Some functions (see nfkc.c and toutf8.c) has been borrowed from GLib
 downloaded from www.gtk.org.
 
+Several people reported bugs, sent patches or suggested improvements,
+see the file THANKS.
+
 @include lgpl.texi
 
 @node Copying This Manual
