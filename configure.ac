@@ -44,10 +44,9 @@ AM_PATH_LISPDIR
 
 # Checks for header files.
 AC_HEADER_STDC
-AC_CHECK_HEADERS(sys/types.h string.h strings.h memory.h unistd.h errno.h)
+AC_CHECK_HEADERS(unistd.h errno.h)
 
 # Checks for typedefs, structures, and compiler characteristics.
-AC_TYPE_SIZE_T
 AX_CREATE_STDINT_H(lib/idn-int.h)
 
 # Need getopt.
