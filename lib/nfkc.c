@@ -19,7 +19,16 @@
  *
  */
 
-#include "internal.h"
+#if HAVE_CONFIG_H
+# include "config.h"
+#endif
+
+#if defined(STDC_HEADERS) || defined(_LIBC)
+# include <stdlib.h>
+# include <string.h>
+#endif
+
+#include <stringprep.h>
 
 /* This file contains functions from GLIB, including gutf8.c and
  * gunidecomp.c, all licensed under LGPL and copyright hold by:
