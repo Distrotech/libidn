@@ -21,6 +21,9 @@
 
 #include "internal.h"
 
+#define DOTP(c) ((c) == 0x002E || (c) == 0x3002 ||	\
+		 (c) == 0xFF0E || (c) == 0xFF61)
+
 /* Core functions */
 
 /**
@@ -409,27 +412,43 @@ idna_to_ascii_4z (const uint32_t * input, char **output, int flags)
   char *out = NULL;
   int rc;
 
-  *output = NULL;
+  /* 1) Whenever dots are used as label separators, the following
+     characters MUST be recognized as dots: U+002E (full stop),
+     U+3002 (ideographic full stop), U+FF0E (fullwidth full stop),
+     U+FF61 (halfwidth ideographic full stop). */
 
+  if (input[0] == 0)
+    {
+      /* Handle implicit zero-length root label. */
+      *output = malloc (1);
+      if (!*output)
+	return IDNA_MALLOC_ERROR;
+      strcpy (*output, "");
+      return IDNA_SUCCESS;
+    }
+
+  if (DOTP(input[0]) && input[1] == 0)
+    {
+      /* Handle explicit zero-length root label. */
+      *output = malloc (2);
+      if (!*output)
+	return IDNA_MALLOC_ERROR;
+      strcpy (*output, ".");
+      return IDNA_SUCCESS;
+    }
+
+  *output = NULL;
   do
     {
       end = start;
 
-      /* 1) Whenever dots are used as label separators, the following
-         characters MUST be recognized as dots: U+002E (full stop),
-         U+3002 (ideographic full stop), U+FF0E (fullwidth full stop),
-         U+FF61 (halfwidth ideographic full stop). */
-      for (; *end &&
-	   *end != 0x002E &&
-	   *end != 0x3002 && *end != 0xFF0E && *end != 0xFF61; end++)
+      for (; *end && !DOTP(*end); end++)
 	;
 
-      if (end == start && *end == '\0')
+      if (*end == '\0' && start == end)
 	{
-	  /* Handle empty trailing labels. The RFC is not clear on this,
-	     the text that mandate this behaviour inside a parenthesis in
-	     the terminology section. */
-	  strcpy (buf, (out || end == input) ? "" : ".");
+	  /* Handle explicit zero-length root label. */
+	  buf[0] = '\0';
 	}
       else
 	{
@@ -553,13 +572,7 @@ idna_to_unicode_4z4z (const uint32_t * input, uint32_t ** output, int flags)
     {
       end = start;
 
-      /* 1) Whenever dots are used as label separators, the following
-         characters MUST be recognized as dots: U+002E (full stop),
-         U+3002 (ideographic full stop), U+FF0E (fullwidth full stop),
-         U+FF61 (halfwidth ideographic full stop). */
-      for (; *end &&
-	   *end != 0x002E &&
-	   *end != 0x3002 && *end != 0xFF0E && *end != 0xFF61; end++)
+      for (; *end && !DOTP(*end); end++)
 	;
 
       buflen = end - start;
