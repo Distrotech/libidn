@@ -22,7 +22,11 @@ EXTRA_DIST = gen-stringprep-tables.pl gen-unicode-tables.pl
 lib_LTLIBRARIES = libidn.la
 
 idn_int = idn-int.h
-BUILT_SOURCES = $(idn_int)
+
+BUILT_SOURCES = $(idn_int) \
+	gunibreak.h gunicomp.h gunidecomp.h \
+	stringprep_generic.c
+
 DISTCLEANFILES = $(idn_int)
 include_HEADERS = stringprep.h stringprep_generic.h stringprep_nameprep.h \
 	stringprep_kerberos5.h stringprep_xmpp.h stringprep_plain.h \
@@ -37,11 +41,11 @@ libidn_la_SOURCES = gunicomp.h gunidecomp.h internal.h \
 libidn_la_LIBADD = @LTLIBICONV@
 libidn_la_LDFLAGS = -version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE)
 
-nfkc.c: gunicomp.h gunidecomp.h
+nfkc.c: gunibreak.h gunicomp.h gunidecomp.h
 
 SPEC = ../doc/specifications
 
-gunicomp.h gunidecomp.h: gen-unicode-tables.pl $(SPEC)/UnicodeData-3.2.0.txt $(SPEC)/LineBreak-3.2.0.txt $(SPEC)/SpecialCasing-3.2.0.txt $(SPEC)/CaseFolding-3.2.0.txt $(SPEC)/CompositionExclusions-3.2.0.txt
+gunibreak.h gunicomp.h gunidecomp.h: gen-unicode-tables.pl $(SPEC)/UnicodeData-3.2.0.txt $(SPEC)/LineBreak-3.2.0.txt $(SPEC)/SpecialCasing-3.2.0.txt $(SPEC)/CaseFolding-3.2.0.txt $(SPEC)/CompositionExclusions-3.2.0.txt
 	$(PERL) $(srcdir)/gen-unicode-tables.pl -decomp 3.2 $(SPEC)/UnicodeData-3.2.0.txt $(SPEC)/LineBreak-3.2.0.txt $(SPEC)/SpecialCasing-3.2.0.txt $(SPEC)/CaseFolding-3.2.0.txt $(SPEC)/CompositionExclusions-3.2.0.txt
 
 stringprep_generic.c: gen-stringprep-tables.pl
