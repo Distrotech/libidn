@@ -23,6 +23,9 @@ Please let me know if you want to finish and maintain the Java API
 glue.  It may involve some tedious work initially, but could be
 interesting in the long run.
 
+Eventually I think the Java API Glue functions should be merged into
+libidn, instead of having a separate libidn-java library.
+
 ----------------------------------------------------------------------
 Copying and distribution of this file, with or without modification,
 are permitted in any medium without royalty provided the copyright
