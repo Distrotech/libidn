@@ -36,6 +36,7 @@ open(FH, ">$filename") or die "cannot open $filename for writing";
 print FH "#include <stringprep.h>\n";
 
 while(<>) {
+    s/^   (.*)/$1/g; # for rfc
     $line = $_;
 
     die "already in table" if $intable && m,^----- Start Table (.*) -----,;
@@ -51,7 +52,7 @@ while(<>) {
 
     if (m,^[A-Z],) {
 	$header = $line;
-    } elsif (!m,^-,) {
+    } elsif (!m,^[ -],) {
 	$header .= $line;
     }
 
@@ -60,6 +61,11 @@ while(<>) {
     if ($intable) {
 	$_ = $line;
 	chop $line;
+
+	next if m,^$,;
+	next if m,^Hoffman & Blanchet          Standards Track                    \[Page [0-9]+\]$,;
+	next if m,^$,;
+	next if m,RFC 3454        Preparation of Internationalized Strings   December 2002,;
 
 	die "regexp failed on line: $line" unless
 	    m,^([0-9A-F]+)(-([0-9A-F]+))?(; ([0-9A-F]+)( ([0-9A-F]+))?( ([0-9A-F]+))?( ([0-9A-F]+))?;)?,;

@@ -18,7 +18,7 @@
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
 
 EXTRA_DIST = libstringprep.pc.in iconv.m4 strdup.c memset.c \
-	gen-stringprep-tables.pl draft-hoffman-stringprep-07.txt \
+	gen-stringprep-tables.pl rfc3454.txt \
 	gen-unicode-tables.pl UnicodeData-3.2.0.txt LineBreak-3.2.0.txt \
 	SpecialCasing-3.2.0.txt CaseFolding-3.2.0.txt \
 	CompositionExclusions-3.2.0.txt
@@ -43,9 +43,8 @@ nfkc.c: gunicomp.h gunidecomp.h
 gunicomp.h gunidecomp.h: gen-unicode-tables.pl UnicodeData-3.2.0.txt LineBreak-3.2.0.txt SpecialCasing-3.2.0.txt CaseFolding-3.2.0.txt CompositionExclusions-3.2.0.txt
 	$(PERL) $(srcdir)/gen-unicode-tables.pl -decomp 3.2 UnicodeData-3.2.0.txt LineBreak-3.2.0.txt SpecialCasing-3.2.0.txt CaseFolding-3.2.0.txt CompositionExclusions-3.2.0.txt
 
-stringprep_generic.c: draft-hoffman-stringprep-07.txt gen-stringprep-tables.pl 
-	$(PERL) $(srcdir)/gen-stringprep-tables.pl \
-		draft-hoffman-stringprep-07.txt
+stringprep_generic.c: rfc3454.txt gen-stringprep-tables.pl 
+	$(PERL) $(srcdir)/gen-stringprep-tables.pl rfc3454.txt
 
 tests = tst_stringprep tst_nfkc tst_punycode
 
