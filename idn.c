@@ -331,9 +331,18 @@ main (int argc, char *argv[])
 	      return 1;
 	    }
 
-	  fprintf (stdout, "%s\n", p);
-
+	  r = stringprep_utf8_to_locale (p);
 	  free (p);
+	  if (!r)
+	    {
+	      fprintf (stderr, "%s: could not convert from UTF-8 to %s.\n",
+		       argv[0], stringprep_locale_charset ());
+	      return 1;
+	    }
+
+	  fprintf (stdout, "%s\n", r);
+
+	  free (r);
 	}
 
     }
