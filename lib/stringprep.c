@@ -34,8 +34,13 @@ stringprep_find_character_in_table (uint32_t ucs4,
 {
   ssize_t i;
 
-  /* During self tests, this is where it spends its CPU time and
-     causes most cache misses.  Do a binary search? */
+  /* This is where typical uses of Libidn spends very close to all CPU
+     time and causes most cache misses.  One could easily do a binary
+     search instead.  Before rewriting this, I want hard evidence this
+     slowness is at all relevant in typical applications.  (I don't
+     dispute optimization may improve matters significantly, I'm
+     mostly interested in having someone give real-world benchmark on
+     the impact of libidn.) */
 
   for (i = 0; table[i].start; i++)
     if (ucs4 >= table[i].start &&
