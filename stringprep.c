@@ -136,6 +136,7 @@ stringprep (char *in, int maxlen, int flags,
   int i;
   int rc;
   char *p = 0;
+  long *q = 0;
   long *ucs4;
   int ucs4len;
   int maxucs4len;
@@ -154,11 +155,10 @@ stringprep (char *in, int maxlen, int flags,
       if (!profile[i].table && profile[i].flags == ~STRINGPREP_NO_NFKC &&
 	  !(flags & STRINGPREP_NO_NFKC))
 	{
-	  long *p;
 
-	  p = stringprep_ucs4_nfkc_normalize (ucs4, ucs4len);
+	  q = stringprep_ucs4_nfkc_normalize (ucs4, ucs4len);
 
-	  if (!p)
+	  if (!q)
 	    {
 	      rc = STRINGPREP_NFKC_FAILED;
 	      goto done;
@@ -168,8 +168,8 @@ stringprep (char *in, int maxlen, int flags,
 	    ;
 
 	  free(ucs4);
-	  ucs4 = p;
-	  p = 0;
+	  ucs4 = q;
+	  q = 0;
 
 	  continue;
 	}
@@ -259,8 +259,10 @@ stringprep (char *in, int maxlen, int flags,
   rc = STRINGPREP_OK;
 
  done:
-  if (p) 
+  if (p)
     free(p);
+  if (q)
+    free(q);
   if (ucs4)
     free(ucs4);
   return rc;
