@@ -20,7 +20,7 @@
  */
 
 /*
- * This file is derived from RFC 3492 written by Adam M. Costello.
+ * This file is derived from RFC 3492bis written by Adam M. Costello.
  *
  * Disclaimer and license: Regarding this entire document or any
  * portion of it (including the pseudocode and C code), the author
