@@ -18,6 +18,10 @@
 
 purpose "Command line interface to the internationalized domain name library.
 
+All strings are expected to be encoded in the preferred charset used
+by your locale.  Use `--debug' to find out what this charset is.  You
+can override the charset used by setting environment variable CHARSET.
+
 To process a string that starts with `-', for example `-foo', use `--'
 to signal the end of parameters, as in `idn --quiet -a -- -foo'."
 

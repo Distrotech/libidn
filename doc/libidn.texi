@@ -1375,6 +1375,11 @@ the computed output to standard output.  What processing is performed
 (e.g., ToASCII, or Punycode encode) is indicated by options.  If any
 errors are encountered, the execution of the applications is aborted.
 
+All strings are expected to be encoded in the preferred charset used
+by your locale.  Use @code{--debug} to find out what this charset is.
+You can override the charset used by setting environment variable
+@code{CHARSET}.
+
 To process a string that starts with @code{-}, for example
 @code{-foo}, use @code{--} to signal the end of parameters, as in
 @code{idn --quiet -a -- -foo}.
