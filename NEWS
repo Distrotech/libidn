@@ -4,6 +4,15 @@ See the end for copying conditions.
 
 * Version 0.4.1 (unreleased)
 
+** Logic of stringprep_locale_charset modified.
+Future versions will use, in order, $CHARSET iff defined, nl_langinfo
+(CODESET) iff working, or fall back to returning "ASCII".  Earlier it
+attempted to guess the system locale, in contrast with the current
+application's locale, via some setlocale save/set/reset magic.  This
+change may require you to invoke setlocale() in your application,
+which is (should be) required for non-ASCII to work anyway.  Based on
+discussion with Ulrich Drepper <drepper@redhat.com>.
+
 ** Fixed SASLprep tables to prohibit non-ASCII space in output.
 Non-ASCII space has always been mapped to ASCII space, so it is not
 clear this really have any effect, but the specification require it.
@@ -13,6 +22,7 @@ Refer to libc/README for more information.  Incidentally, GLIBC in CVS
 now include a copy of Libidn.
 
 ** API and ABI is backwards compatible with the previous version.
+IDNA_DLOPEN_ERROR: ADD.  Only used internally by Libidn in libc.
 
 * Version 0.4.0 (released 2004-02-28)
 
