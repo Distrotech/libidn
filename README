@@ -20,7 +20,7 @@ Header file: #include <stringprep_kerbero5.h>
      stringprep_kerberos5 macros (see below).
 
 Function: int stringprep (char *in, int maxlen, int flags,
-                          stringprep_profile * profile);
+                          Stringprep_profile * profile);
 
      Perform stringprep on a zero terminated UTF-8 string.  Since the
      stringprep operation can expand the string, maxlen indicate how
@@ -40,6 +40,18 @@ Macro: int stringprep_kerberos5(char *in, int maxlen)
      Short-hand macros for applying Nameprep with
      AllowUnassigned=TRUE, Nameprep with AllowUnassigned=FALSE and
      Kerberos 5 stringprep profiles to strings, respectively.
+
+Macro: STRINGPREP_VERSION
+
+     CPP definition, a string with version of the stringprep header file.
+
+Function: extern char *stringprep_check_version (char *req_version);
+
+     Check that the the version of the library is at minimum the one
+     given as a string in REQ_VERSION and return the actual version
+     string of the library; return NULL if the condition is not met.
+     If `NULL' is passed to this function no check is done and only the
+     version string is returned.
 
 Type: STRINGPREP_NO_NFKC
 Type: STRINGPREP_NO_BIDI
@@ -79,18 +91,6 @@ Function: char *stringprep_convert (const char *str,
 Function: char *stringprep_locale_to_utf8 (const char *str);
 
      Convert strings between character sets.
-
-Macro: STRINGPREP_VERSION
-
-     CPP definition, a string with version of the stringprep header file.
-
-Function: extern char *stringprep_check_version (char *req_version);
-
-     Check that the the version of the library is at minimum the one
-     given as a string in REQ_VERSION and return the actual version
-     string of the library; return NULL if the condition is not met.
-     If `NULL' is passed to this function no check is done and only the
-     version string is returned.
 
 Libstringprep has at some point in time passed the self tests on the
 following systems, but no guarantees.
