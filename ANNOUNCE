@@ -24,7 +24,7 @@ entire domain names to and from the ACE encoded form.
 
 The library is used by, e.g., GNU SASL and Shishi to process user
 names and passwords.  Libidn can be built into GNU Libc to enable a
-new system-wide getaddrinfo() flag for IDN processing.
+new system-wide getaddrinfo flag for IDN processing.
 
 Libidn is developed for the GNU/Linux system, but runs on over 20
 platforms including most major Unix platforms and Windows, and many

@@ -112,7 +112,7 @@ entire domain names to and from the ACE encoded form.
 
 The library is used by, e.g., GNU SASL and Shishi to process user
 names and passwords.  Libidn can be built into GNU Libc to enable a
-new system-wide getaddrinfo() flag for IDN processing.
+new system-wide getaddrinfo flag for IDN processing.
 
 Libidn is developed for the GNU/Linux system, but runs on over 20 Unix
 platforms (including Solaris, IRIX, AIX, and Tru64) and Windows.
@@ -431,7 +431,7 @@ run-time library does not meet the required version number.
 @end deftypefun
 
 The normal way to use the function is to put something similar to the
-following first in your @code{main()}:
+following first in your @code{main}:
 
 @example
   if (!stringprep_check_version (STRINGPREP_VERSION))
@@ -517,7 +517,7 @@ specifies BIDI and NFKC settings.
 @end defcv
 
 @defcv {Enumerated type} Stringprep_profile_flags STRINGPREP_NO_UNASSIGNED
-STRINGPREP_NO_UNASSIGNED causes stringprep() abort with an error if
+STRINGPREP_NO_UNASSIGNED causes stringprep abort with an error if
 string contains unassigned characters according to profile.
 @end defcv
 
@@ -535,7 +535,7 @@ The core stringprep functions are:
 
 Prepare the input UTF-8 string according to the stringprep profile.
 Normally application programmers use stringprep profile macros such as
-@code{stringprep_nameprep()}, @code{stringprep_kerberos5()} etc
+@code{stringprep_nameprep}, @code{stringprep_kerberos5} etc
 instead of calling this function directly.
 
 Since the stringprep operation can expand the string, @code{maxlen}
@@ -563,7 +563,7 @@ Returns 0 iff successful, or an error code.
 
 Prepare the input UTF-8 string according to the stringprep profile.
 Normally application programmers use stringprep profile macros such as
-@code{stringprep_nameprep()}, @code{stringprep_kerberos5()} etc
+@code{stringprep_nameprep}, @code{stringprep_kerberos5} etc
 instead of calling this function directly.
 
 Note that you must convert strings entered in the systems locale into
@@ -615,7 +615,7 @@ UCS-4, assuming valid UTF-8 input.  This function does no error
 checking on the input.
 
 Returns a pointer to a newly allocated UCS-4 string.  This value must
-be freed with @code{free()}.
+be freed with @code{free}.
 @end deftypefun
 
 @deftypefun {char *} stringprep_ucs4_to_utf8 (const uint32_t * @var{str}, ssize_t @var{len}, size_t * @var{items_read}, size_t * @var{items_written})
@@ -636,7 +636,7 @@ Convert a string from a 32-bit fixed width representation as UCS-4.
 to UTF-8. The result will be terminated with a 0 byte.
 
 Returns a pointer to a newly allocated UTF-8 string.  This value must
-be freed with @code{free()}. If an error occurs, @var{NULL} will be
+be freed with @code{free}. If an error occurs, @var{NULL} will be
 returned and @code{error} set.
 @end deftypefun
 
@@ -650,7 +650,7 @@ nul-terminated.
 Converts a string into canonical form, standardizing such issues as
 whether a character with an accent is represented as a base character
 and combining accent or as a single precomposed character. You should
-generally call @code{g_utf8_normalize()} before comparing two Unicode
+generally call @code{g_utf8_normalize} before comparing two Unicode
 strings.
 
 The normalization mode is NFKC (ALL COMPOSE).  It standardizes
@@ -674,7 +674,7 @@ Returns a newly allocated string, that is the NFKC normalized form of
 nul-terminated.
 
 Converts UCS4 string into UTF-8 and runs
-@code{stringprep_utf8_nfkc_normalize()}.
+@code{stringprep_utf8_nfkc_normalize}.
 
 Returns a newly allocated Unicode string, that is the NFKC normalized
 form of @code{str}.
@@ -697,7 +697,7 @@ return NULL, but use "ASCII" as a fallback.
 @code{str}.
 
 Convert the string from one character set to another using the
-system's @code{iconv()} function.
+system's @code{iconv} function.
 
 Returns newly allocated zero-terminated string which is @code{str}
 transcoded into to_codeset.
@@ -708,7 +708,7 @@ transcoded into to_codeset.
 @var{str}: input zero terminated string.
 
 Convert string encoded in the locale's character set into UTF-8 by
-using @code{stringprep_convert()}.
+using @code{stringprep_convert}.
 
 Returns newly allocated zero-terminated string which is @code{str}
 transcoded into UTF-8.
@@ -719,7 +719,7 @@ transcoded into UTF-8.
 @var{str}: input zero terminated string.
 
 Convert string encoded in UTF-8 into the locale's character set by
-using @code{stringprep_convert()}.
+using @code{stringprep_convert}.
 
 Returns newly allocated zero-terminated string which is @code{str}
 transcoded into the locale's character set.
@@ -734,7 +734,7 @@ Macros for specific stringprep profiles:
 @var{maxlen}: maximum length of input/output array.
 
 Prepare the input UTF-8 string according to the nameprep profile.  The
-AllowUnassigned flag is false, use @code{stringprep_nameprep()} for
+AllowUnassigned flag is false, use @code{stringprep_nameprep} for
 true AllowUnassigned.  Returns 0 iff successful, or an error code.
 @end deftypefun
 
@@ -897,7 +897,7 @@ introduced with no changes to the existing infrastructure. IDNA is
 only meant for processing domain names, not free text.
 
 The idea behind the IDNA function names are as follows: the
-@code{idna_to_ascii_4i()} and @code{idna_to_unicode_44i()} functions
+@code{idna_to_ascii_4i} and @code{idna_to_unicode_44i} functions
 are the core IDNA primitives.  The @code{4} indicate that the function
 takes UCS-4 strings (i.e., Unicode code points encoded in a 32-bit
 unsigned integer type) of the specified length.  The @code{i} indicate
