@@ -55,11 +55,22 @@ AX_CREATE_STDINT_H(lib/idn-int.h, sys/types.h)
 # Need getopt.
 GETOPT_H=
 AC_CHECK_HEADERS([getopt.h], [], [GETOPT_H=getopt.h])
-AC_CHECK_FUNCS([optarg optind opterr optopt \
-                getopt getopt_long getopt_long_only], [],
-  [GETOPT_H=getopt.h; AC_LIBOBJ([getopt]) AC_LIBOBJ([getopt1])
+AC_CHECK_FUNCS([getopt_long_only], [],
+  [GETOPT_H=getopt.h
+   AC_LIBOBJ([getopt])
+   AC_LIBOBJ([getopt1])
+   AC_DEFINE([optarg], [rpl_optarg],
+     [Define to rpl_optarg if the replacement variable should be used.])
+   AC_DEFINE([optind], [rpl_optind],
+     [Define to rpl_optind if the replacement variable should be used.])
+   AC_DEFINE([optopt], [rpl_optopt],
+     [Define to rpl_optopt if the replacement variable should be used.])
    AC_DEFINE([getopt], [rpl_getopt],
-     [Define to rpl_getopt if the replacement function should be used])])
+     [Define to rpl_getopt if the replacement function should be used.])
+   AC_DEFINE([getopt_long], [rpl_getopt_long],
+     [Define to rpl_getopt_long if the replacement function should be used.])
+   AC_DEFINE([getopt_long_only], [rpl_getopt_long_only],
+     [Define to rpl_getopt_long_only if the replacement function should be used.])])
 AC_SUBST([GETOPT_H])
 
 # Check if locale stuff works
