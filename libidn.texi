@@ -10,9 +10,8 @@
 @syncodeindex pg cp
 
 @copying
-This manual is for GNU Libidn
-(version @value{VERSION}, @value{UPDATED}),
-which is a library for internationalized string processing.
+This manual is for GNU Libidn version @value{VERSION},
+@value{UPDATED}.
 
 Copyright @copyright{} 2002, 2003 Simon Josefsson.
 
@@ -77,15 +76,15 @@ Software Foundation raise funds for GNU development.''
 
 * Emacs API::                   Emacs Lisp API for Libidn.
 
-Appendices
-
-* Library Copying::		How you can copy and share GNU Libidn.
-* Copying This Manual::		How you can copy and share this manual.
-
 Indices
 
 * Concept Index::
 * Function and Variable Index::
+
+Appendices
+
+* Library Copying::		How you can copy and share GNU Libidn.
+* Copying This Manual::		How you can copy and share this manual.
 
 @end menu
 
@@ -757,6 +756,16 @@ downloaded from www.gtk.org.
 Several people reported bugs, sent patches or suggested improvements,
 see the file THANKS.
 
+@node Concept Index
+@unnumbered Concept Index
+
+@printindex cp
+
+@node Function and Variable Index
+@unnumbered Function and Variable Index
+
+@printindex fn
+
 @include lgpl.texi
 
 @node Copying This Manual
@@ -767,15 +776,5 @@ see the file THANKS.
 @end menu
 
 @include fdl.texi
-
-@node Concept Index
-@unnumbered Concept Index
-
-@printindex cp
-
-@node Function and Variable Index
-@unnumbered Function and Variable Index
-
-@printindex fn
 
 @bye
