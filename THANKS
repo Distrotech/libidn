@@ -8,9 +8,9 @@ by Adam M. Costello.
 Some functions (see nfkc.c and toutf8.c) has been borrowed from GLib
 downloaded from www.gtk.org.
 
-Waldo Bastian, Stephane Bortzmeyer, Seungho Lee, Hugo Salgado H.,
-Travis Shirk, and Leonard Stiles sent bug reports, patches and/or
-suggested improvements.
+Waldo Bastian, Stephane Bortzmeyer, Joe Hildebrand, Seungho Lee, Hugo
+Salgado H., Travis Shirk, and Leonard Stiles sent bug reports, patches
+and/or suggested improvements.
 
 ----------------------------------------------------------------------
 Copying and distribution of this file, with or without modification,
