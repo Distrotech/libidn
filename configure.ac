@@ -18,14 +18,14 @@ dnl You should have received a copy of the GNU Lesser General Public
 dnl License along with GNU Libidn; if not, write to the Free Software
 dnl Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
 
-AC_INIT([libidn], [0.4.7], [bug-libidn@gnu.org])
+AC_INIT([libidn], [0.4.8], [bug-libidn@gnu.org])
 
 # Library code modified:                              REVISION++
 # Interfaces changed/added/removed:   CURRENT++       REVISION=0
 # Interfaces added:                             AGE++
 # Interfaces removed:                           AGE=0
 LT_CURRENT=14
-LT_REVISION=2
+LT_REVISION=3
 LT_AGE=3
 AC_SUBST(LT_CURRENT)
 AC_SUBST(LT_REVISION)
