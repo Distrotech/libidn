@@ -271,7 +271,7 @@ stringprep (char *in, int maxlen, int flags, Stringprep_profile * profile)
       goto done;
     }
 
-  strcpy (in, p);
+  strcpy (in, p); /* flawfinder: ignore */
 
   rc = STRINGPREP_OK;
 
