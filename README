@@ -1,10 +1,25 @@
+Shishi README -- important introductory notes
+See the end for copying conditions.
+
 Libstringprep is an implementation of the IETF stringprep
 specification, licensed under the LGPL.
 
+Libstringprep is unstable and in its early steps of development.  You
+should expect it to not work as well as having security problems.
+
+Things left to do below.  If you like to start working on anything,
+please let me know so work duplication can be avoided.
+
+  - Optimize it, the table searching is slow (but does it matter?).
+  - Port applications to use libstringprep.
+  - Include tables for more stringprep profiles.
+  - Add texi documentation.
+  - Implement rest of IDN?  Possibly separate project.
+
 Currently the API include the following definitions and functions:
 
-Function: extern int stringprep (char *in, int maxlen, int flags,
-                                 stringprep_profile * profile);
+Function: int stringprep (char *in, int maxlen, int flags,
+                          stringprep_profile * profile);
 
      Perform stringprep on a zero terminated UTF-8 string.  Since the
      stringprep operation can expand the string, maxlen indicate how
@@ -17,13 +32,46 @@ Function: extern int stringprep (char *in, int maxlen, int flags,
      must convert strings entered in the systems locale into UTF-8
      before using this function.
 
+Macro: int stringprep_nameprep(char *in, int maxlen)
+Macro: int stringprep_kerberos5(char *in, int maxlen)
+
+     Short-hand macros for applying Nameprep and Kerberos 5
+     stringprep profiles to strings, respectively.
+
 Type: STRINGPREP_NO_NFKC
 Type: STRINGPREP_NO_BIDI
 
      Valid options to the FLAGS parameter of stringprep().
      STRINGPREP_NO_NFKC disables the NFKC normalization, as well as
      selecting the non-NFKC case folding tables. STRINGPREP_NO_BIDI
-     disables the BIDI step.
+     disables the BIDI step.  Usually the profile specifies this.
+
+It also contains the following utility functions:
+
+Function: int stringprep_unichar_to_utf8 (long c, char *outbuf);
+Function: long stringprep_utf8_to_unichar (const char *p);
+
+     Convert between Unicode (UCS4) and UTF-8, one character only.
+
+Function: long *stringprep_utf8_to_ucs4 (const char *str, int  len,
+				      int *items_written);
+Function: char *stringprep_ucs4_to_utf8 (const long * str, int len,
+				      int * items_read, int * items_written);
+
+     Convert between Unicode (UCS4) and UTF-8, zero-terminated strings.
+
+Function: char *stringprep_utf8_nfkc_normalize (const char *str, int len);
+Function: long *stringprep_ucs4_nfkc_normalize (long *str, int len);
+
+     Perform NFKC normalization on strings.
+
+Function: const char *stringprep_locale_charset ();
+Function: char *stringprep_convert (const char *str,
+				 const char *to_codeset,
+				 const char *from_codeset);
+Function: char *stringprep_locale_to_utf8 (const char *str);
+
+     Convert strings between character sets.
 
 Macro: STRINGPREP_VERSION
 
@@ -50,18 +98,6 @@ following systems, but no guarantees.
   - sparc-sun-solaris2.8 (Sun WorkShop Compiler C 6.0U2, SUN make, iconv ok)
   - sparc-sun-solaris2.8 (GCC 3.1, GNU make, iconv ok)
 
-Libstringprep is unstable and in its early steps of development.  You
-should expect it to not work as well as having security problems.
-
-Things left to do below.  If you like to start working on anything,
-please let me know so work duplication can be avoided.
-
-  - Optimize it, the table searching is slow (but does it matter?).
-  - Port applications to use libstringprep.
-  - Include tables for more stringprep profiles.
-  - Add texi documentation.
-  - Implement rest of IDN?  Possibly separate project.
-
 Before it becomes a FAQ: This library do not link with GLIB for the
 UTF-8 functions for two reasons.  First, GLIB does not provide
 versioning of the Unicode tables (and the developers said it will not
@@ -72,3 +108,18 @@ this package less portable.
 For more information see <URL:http://josefsson.org/libstringprep/>.
 
 Send all bug reports by electronic mail to bug-libstringprep@josefsson.org.
+
+----------------------------------------------------------------------
+Copyright information:
+
+Copyright (C) 2002 Simon Josefsson
+
+   Permission is granted to anyone to make or distribute verbatim copies
+   of this document as received, in any medium, provided that the
+   copyright notice and this permission notice are preserved,
+   thus giving the recipient permission to redistribute in turn.
+
+   Permission is granted to distribute modified versions
+   of this document, or of portions of it,
+   under the above conditions, provided also that they
+   carry prominent notices stating who last changed them.
