@@ -46,7 +46,7 @@ HTML_IMAGES =
 content_files =
 
 # Other files to distribute.
-extra_files =
+extra_files = dummy.c
 
 # CFLAGS and LDFLAGS for compiling scan program. Only needed if your app/lib
 # contains GtkObjects/GObjects and you want to document signals and properties.
