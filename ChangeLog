@@ -1,3 +1,140 @@
+2004-11-07  Simon Josefsson <simon@josefsson.org>
+
+	* po/da.po, po/de.po, po/eo.po, po/fr.po, po/nl.po, po/pl.po,
+	po/ro.po, po/sr.po: Generated.
+
+2004-11-07  Simon Josefsson <simon@josefsson.org>
+
+	* Makefile.am: Fix release target.
+
+2004-11-07  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Version 0.5.9.
+
+2004-11-07  Simon Josefsson <simon@josefsson.org>
+
+	* po/sv.po: Sync with TP.
+
+2004-11-07  Simon Josefsson <simon@josefsson.org>
+
+	* doc/reference/Makefile.am, doc/reference/libidn.types: Simplify.
+
+2004-11-07  Simon Josefsson <simon@josefsson.org>
+
+	* doc/Makefile.am: Fix SUBDIRS order, because GTK-DOC need
+	components.png.
+
+2004-11-07  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2004-11-07  Simon Josefsson <simon@josefsson.org>
+
+	* doc/gendocs_template, doc/gendocs.sh: Update.
+
+2004-10-28  Simon Josefsson <simon@josefsson.org>
+
+	* doc/gdoc: Support -include, from GnuTLS.
+
+2004-10-27  Simon Josefsson <simon@josefsson.org>
+
+	* lib/profiles.c: Doc fix.
+
+2004-10-25  Simon Josefsson <simon@josefsson.org>
+
+	* doc/gdoc: Fix man output.
+
+2004-10-25  Simon Josefsson <simon@josefsson.org>
+
+	* lib/stringprep.c, lib/strerror-stringprep.c: Doc fix.
+
+2004-10-25  Simon Josefsson <simon@josefsson.org>
+
+	* lib/tld.c: Doc fix.
+
+2004-10-25  Simon Josefsson <simon@josefsson.org>
+
+	* lib/tld.c, lib/strerror-pr29.c: Doc fix.
+
+2004-10-25  Simon Josefsson <simon@josefsson.org>
+
+	* lib/strerror-punycode.c, lib/punycode.c, lib/pr29.c: Doc fix.
+
+2004-10-25  Simon Josefsson <simon@josefsson.org>
+
+	* lib/strerror-idna.c, lib/idna.c: Doc fix.
+
+2004-10-25  Simon Josefsson <simon@josefsson.org>
+
+	* doc/gdoc: Use @code, not @var, for constants in texinfo output.
+	Fix newlines in man output.
+
+2004-10-25  Simon Josefsson <simon@josefsson.org>
+
+	* doc/gdoc: Use # instead of & for types.
+
+2004-10-25  Simon Josefsson <simon@josefsson.org>
+
+	* doc/reference/Makefile.am, doc/reference/libidn-docs.sgml: Add
+	image.
+
+2004-10-25  Simon Josefsson <simon@josefsson.org>
+
+	* po/LINGUAS, po/sv.po: Sync with TP.
+
+2004-10-25  Simon Josefsson <simon@josefsson.org>
+
+	* Makefile.am:
+	(update-po): Fix.
+
+2004-10-24  Simon Josefsson <simon@josefsson.org>
+
+	* doc/reference/libidn.types: Fix.
+
+2004-10-24  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Fix.
+
+2004-10-24  Simon Josefsson <simon@josefsson.org>
+
+	* Makefile.am:
+	(DISTCHECK_CONFIGURE_FLAGS): Add --enable-gtk-doc.
+
+2004-10-24  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS, doc/reference/Makefile.am, doc/reference/libidn-docs.sgml,
+	doc/reference/libidn-docs.tmpl: Align GTK-DOC build infrastructure
+	with GTK-DOC official recommendations.
+
+2004-10-24  Simon Josefsson <simon@josefsson.org>
+
+	* po/da.po, po/de.po, po/eo.po, po/fr.po, po/nl.po, po/ro.po,
+	po/sr.po: Sync with TP.
+
+2004-10-16  Simon Josefsson <simon@josefsson.org>
+
+	* gl/Makefile.am, gl/m4/getopt.m4: Update.
+
+2004-10-15  Simon Josefsson <simon@josefsson.org>
+
+	* po/pl.po: Sync with TP.
+
+2004-10-13  Simon Josefsson <simon@josefsson.org>
+
+	* libidn.fms: Update.
+
+2004-10-12  Simon Josefsson <simon@josefsson.org>
+
+	* README: Fix.
+
+2004-10-12  Simon Josefsson <simon@josefsson.org>
+
+	* README: Improve readability.
+
+2004-10-12  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS, configure.ac: Bump versions.
+
 2004-10-12  Simon Josefsson <simon@josefsson.org>
 
 	* po/da.po, po/de.po, po/eo.po, po/fr.po, po/nl.po, po/pl.po,
