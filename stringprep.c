@@ -22,7 +22,7 @@
 #include "internal.h"
 
 static int
-stringprep_find_character_in_table (unsigned long ucs4,
+stringprep_find_character_in_table (uint32_t ucs4,
 				    Stringprep_table_element * table)
 {
   int i;
@@ -36,7 +36,7 @@ stringprep_find_character_in_table (unsigned long ucs4,
 }
 
 static ssize_t
-stringprep_find_string_in_table (unsigned long *ucs4,
+stringprep_find_string_in_table (uint32_t *ucs4,
 				 size_t ucs4len,
 				 int *tablepos,
 				 Stringprep_table_element * table)
@@ -56,8 +56,8 @@ stringprep_find_string_in_table (unsigned long *ucs4,
 }
 
 static int
-stringprep_apply_table_to_string (unsigned long *ucs4,
-				  size_t *ucs4len,
+stringprep_apply_table_to_string (uint32_t *ucs4,
+				  size_t * ucs4len,
 				  size_t maxucs4len,
 				  Stringprep_table_element * table,
 				  const char *tablename)
@@ -69,17 +69,16 @@ stringprep_apply_table_to_string (unsigned long *ucs4,
   while ((pos = stringprep_find_string_in_table
 	  (ucs4, *ucs4len, &i, table)) != -1)
     {
-      for(maplen = STRINGPREP_MAX_MAP_CHARS;
-	  maplen > 0 && table[i].map[maplen-1] == 0;
-	  maplen--)
+      for (maplen = STRINGPREP_MAX_MAP_CHARS;
+	   maplen > 0 && table[i].map[maplen - 1] == 0; maplen--)
 	;
 
       if (*ucs4len - 1 + maplen >= maxucs4len)
 	return STRINGPREP_TOO_SMALL_BUFFER;
 
       memmove (&ucs4[pos + maplen], &ucs4[pos + 1],
-	       *ucs4len * sizeof (unsigned long) - (&ucs4[pos + 1] - ucs4));
-      memcpy (&ucs4[pos], table[i].map, sizeof (unsigned long) * maplen);
+	       *ucs4len * sizeof (uint32_t) - (&ucs4[pos + 1] - ucs4));
+      memcpy (&ucs4[pos], table[i].map, sizeof (uint32_t) * maplen);
       *ucs4len = *ucs4len - 1 + maplen;
     }
 
@@ -121,13 +120,13 @@ stringprep (char *in, size_t maxlen, int flags, Stringprep_profile * profile)
   int i, j;
   int rc;
   char *p = 0;
-  unsigned long *q = 0;
-  unsigned long *ucs4;
+  uint32_t *q = 0;
+  uint32_t *ucs4;
   size_t ucs4len, maxucs4len;
 
   ucs4 = stringprep_utf8_to_ucs4 (in, -1, &ucs4len);
   maxucs4len = 4 * ucs4len + 10;	/* XXX */
-  ucs4 = realloc (ucs4, 1 + maxucs4len * sizeof (unsigned long));
+  ucs4 = realloc (ucs4, 1 + maxucs4len * sizeof (uint32_t));
   if (!ucs4)
     {
       rc = STRINGPREP_MALLOC_ERROR;
@@ -189,7 +188,7 @@ stringprep (char *in, size_t maxlen, int flags, Stringprep_profile * profile)
 		{
 		  rc = STRINGPREP_CONTAINS_UNASSIGNED;
 		  goto done;
-	      }
+		}
 	    }
 	  break;
 
@@ -221,7 +220,8 @@ stringprep (char *in, size_t maxlen, int flags, Stringprep_profile * profile)
 		{
 		  done_prohibited = 1;
 		  k = stringprep_find_string_in_table (ucs4, ucs4len,
-						       NULL, profile[j].table);
+						       NULL,
+						       profile[j].table);
 		  if (k != -1)
 		    {
 		      rc = STRINGPREP_BIDI_CONTAINS_PROHIBITED;
@@ -326,25 +326,25 @@ stringprep_profile (char *in, char **out, char *profile, int flags)
   int rc;
 
   for (p = &stringprep_profiles[0]; p->name; p++)
-    if (strcmp(p->name, profile) == 0)
+    if (strcmp (p->name, profile) == 0)
       break;
 
   if (!p || !p->name || !p->tables)
     return STRINGPREP_UNKNOWN_PROFILE;
 
-  len = strlen(in) + BUFSIZ;
-  str = (char*) malloc(len);
+  len = strlen (in) + BUFSIZ;
+  str = (char *) malloc (len);
   if (str == NULL)
     return STRINGPREP_MALLOC_ERROR;
 
-  strcpy(str, in);
+  strcpy (str, in);
 
   rc = stringprep (str, len, flags, p->tables);
 
   if (rc == STRINGPREP_OK)
     *out = str;
   else
-    free(str);
+    free (str);
 
   return rc;
 }
