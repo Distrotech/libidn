@@ -1135,17 +1135,17 @@ The functions provided are the following entry points:
 
 Organizations that manage some Top Level Domains (@acronym{TLD}s) have
 published tables with characters they accept within the domain.  The
-reason may be to reduce complexity from the full Unicode range, and to
-protect themselves from future (backwards incompatible) changes in the
-IDN or Unicode specifications.  Libidn implement an infrastructure for
-defining and checking strings against such tables.  Libidn also ship
-some tables from @acronym{TLD}s that we have managed to get permission
-to use them from.  Because these tables are even less static than
-Unicode or StringPrep tables, it is likely that they will be updated
-from time to time (even in backwards incompatibe ways).  The Libidn
-interface provide a ``version'' field for each @acronym{TLD} table,
-which can be compared for equality to guarantee the same operation
-over time.
+reason may be to reduce complexity that come from using the full
+Unicode range, and to protect themselves from future (backwards
+incompatible) changes in the IDN or Unicode specifications.  Libidn
+implement an infrastructure for defining and checking strings against
+such tables.  Libidn also ship some tables from @acronym{TLD}s that we
+have managed to get permission to use them from.  Because these tables
+are even less static than Unicode or StringPrep tables, it is likely
+that they will be updated from time to time (even in backwards
+incompatibe ways).  The Libidn interface provide a ``version'' field
+for each @acronym{TLD} table, which can be compared for equality to
+guarantee the same operation over time.
 
 From a design point of view, you can regard the @acronym{TLD} tables
 for IDN as the ``localization'' step that come after
