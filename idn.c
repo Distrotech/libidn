@@ -28,6 +28,12 @@
 
 #include "idn_cmd.h"
 
+#define GREETING "Copyright 2003 Simon Josefsson\n"\
+	"GNU Libidn comes with NO WARRANTY, to the extent permitted by law.\n"\
+	"You may redistribute copies of GNU Libidn under the terms of\n"\
+	"the GNU Lesser General Public License.  For more information\n"\
+	"about these matters, see the file named COPYING.LIB.\n"\
+
 int
 main (int argc, char *argv[])
 {
@@ -47,25 +53,16 @@ main (int argc, char *argv[])
     {
       fprintf(stderr, "%s: One of -e, -d, -a or -u must be specified.\n",
 	      argv[0]);
+      cmdline_parser_print_help();
       return 1;
     }
 
-  if (args_info.debug_given)
-    {
-      fprintf(stderr, "system locale uses charset `%s'.\n",
-	      stringprep_locale_charset());
-    }
-
   if (!args_info.quiet_given)
-    {
-      fprintf(stderr, "%s %s\n", PACKAGE, VERSION);
-      fprintf(stderr, "Copyright 2003 Simon Josefsson\n"
-	      "GNU Libidn comes with NO WARRANTY, to the extent permitted "
-	      "by law.\n"
-	      "You may redistribute copies of GNU Libidn under the terms of\n"
-	      "the GNU Lesser General Public License.  For more information\n"
-	      "about these matters, see the file named COPYING.LIB.\n");
-    }
+      fprintf(stderr, "%s %s\n" GREETING, PACKAGE, VERSION);
+
+  if (args_info.debug_given)
+    fprintf(stderr, "system locale uses charset `%s'.\n",
+	    stringprep_locale_charset());
 
   do
     {
