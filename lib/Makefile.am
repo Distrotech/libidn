@@ -49,7 +49,7 @@ rfc3454.c: gen-stringprep-tables.pl
 	$(PERL) $(srcdir)/gen-stringprep-tables.pl $(SPEC)/rfc3454.txt
 
 tlds.c: gen-tld-tables.pl
-	$(PERL) $(srcdir)/gen-tld-tables.pl ../doc/tld/*.tld
+	$(PERL) $(srcdir)/gen-tld-tables.pl ../doc/tld/*.tld > tlds.c
 
 # Maintainer targets
 
