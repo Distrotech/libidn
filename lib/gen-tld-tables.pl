@@ -20,8 +20,8 @@
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
 # 02111-1307, USA.
 
-# Use this to generate custom TLD restriction structures as well
-#  like follows "./gen-tld-tables TLD definition-file"
+# Use this to generate TLD tables:
+# $ ./gen-tld-tables *.tld > tlds.c
 
 # I consider the output of this program to be unrestricted.  Use it as
 # you will.
@@ -97,7 +97,7 @@ sub print_tld_domain
 
 # process a definition file
 # $filename, \$tld, \$version
-# return @data on success, undef otherwise
+# return @data on success, die otherwise
 sub process_definition
 {
     my $filename = shift;
