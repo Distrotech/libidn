@@ -302,8 +302,7 @@ maintainer-distcheck: changelog-check
 # checks fail.  Also, make sure the NEWS file is up-to-date.
 # FIXME: use dist-hook/my-dist like distcheck-hook/my-distcheck.
 cvs-dist: $(local-check) maintainer-distcheck
-	echo $(CVS) update po
-	echo $(CVS) tag -c $(this-cvs-tag)
+	$(CVS) tag -c $(this-cvs-tag)
 	$(MAKE) dist
 
 # Use this to make sure we don't run these programs when building
@@ -495,7 +494,7 @@ alpha beta major: $(local-check)
 	ln $(rel-files) $(release_archive_dir)
 	echo chmod a-w $(rel-files)
 	echo $(VERSION) > $(prev_version_file)
-	echo $(CVS) ci -m. $(prev_version_file)
+	$(CVS) ci -m. $(prev_version_file)
 	@$(emit-upload-commands)
 	cd contrib/doxygen && doxygen && cp -v html/* $(htmldir)/doxygen/
 	cp -v doc/$(PACKAGE).{ps,pdf,html} $(htmldir)/
