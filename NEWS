@@ -4,6 +4,8 @@ See the end for copying conditions.
 
 * Version 0.3.4 (unreleased)
 
+** DocBook manuals in XML, PDF, PostScript, ASCII and HTML formats included.
+
 * Version 0.3.3 (released 2003-10-18)
 
 ** Fixed list of Stringprep profiles in 'idn --help' and 'idn.php'.
