@@ -43,46 +43,22 @@ const Tld_table *
 tld_get_table (const char *tld_str, const Tld_table ** xtra_tlds)
 {
   const Tld_table **tld = NULL;
-  int found = 0;
 
   if (!tld_str)
     return NULL;
 
   /* First search custom tlds. */
   if (xtra_tlds)
-    {
-      tld = xtra_tlds;
-      while (*tld)
-	if (!strcmp ((*tld)->name, tld_str))
-	  {
-	    found = 1;
-	    break;
-	  }
-	else
-	  tld++;
-    }
-
-  if (found)
-    return *tld;
+    for (tld = xtra_tlds; *tld; tld++)
+      if (!strcmp ((*tld)->name, tld_str))
+	return *tld;
 
   /* Then search the internal stuff. */
-  if (tld_table)
-    {
-      tld = tld_table;
-      while (*tld)
-	if (!strcmp ((*tld)->name, tld_str))
-	  {
-	    found = 1;
-	    break;
-	  }
-	else
-	  tld++;
-    }
+  for (tld = tld_table; *tld; tld++)
+    if (!strcmp ((*tld)->name, tld_str))
+      return *tld;
 
-  if (found)
-    return *tld;
-  else
-    return NULL;
+  return NULL;
 }
 
 #define DOTP(c) ((c) == 0x002E || (c) == 0x3002 ||	\
@@ -117,7 +93,7 @@ _tld_checkchar (uint32_t ch, const Tld_table * tld)
 
   /* FIXME: replace searches by bsearch like stuff. */
 
-  for (p = tld->valid, i = 0; i < tld->nvalid; i++, p++)
+  for (p = *tld->valid, i = 0; i < tld->nvalid; i++, p++)
     if (ch >= p->start && ch <= p->end)
       return TLD_SUCCESS;
 
