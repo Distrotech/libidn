@@ -53,21 +53,21 @@ extern int errno;
 static const char *
 stringprep_locale_charset_slow ()
 {
-  const char *charset = getenv("CHARSET");
+  const char *charset = getenv ("CHARSET");
   char *p;
 
   if (charset && *charset)
     return charset;
 
 #if LOCALE_WORKS
-  p = setlocale(LC_CTYPE, NULL);
-  setlocale(LC_CTYPE, "");
+  p = setlocale (LC_CTYPE, NULL);
+  setlocale (LC_CTYPE, "");
 
   charset = nl_langinfo (CODESET);
 
-  setlocale(LC_CTYPE, p);
+  setlocale (LC_CTYPE, p);
 #endif
-  
+
   if (charset && *charset)
     return charset;
 
@@ -85,10 +85,9 @@ stringprep_locale_charset ()
   return stringprep_locale_charset_cache;
 }
 
-char*
+char *
 stringprep_convert (const char *str,
-		    const char *to_codeset,
-		    const char *from_codeset)
+		    const char *to_codeset, const char *from_codeset)
 {
   iconv_t cd;
   char *dest;
@@ -101,28 +100,28 @@ stringprep_convert (const char *str,
   int have_error = 0;
   int len;
 
-  if (strcmp(to_codeset, from_codeset) == 0)
-    return strdup(str);
+  if (strcmp (to_codeset, from_codeset) == 0)
+    return strdup (str);
 
   cd = iconv_open (to_codeset, from_codeset);
 
-  if (cd == (iconv_t) -1)
+  if (cd == (iconv_t) - 1)
     return NULL;
 
-  len = strlen(str);
+  len = strlen (str);
 
-  p = (char*) str;
+  p = (char *) str;
   inbytes_remaining = len;
-  outbuf_size = len + 1; /* + 1 for nul in case len == 1 */
-  
-  outbytes_remaining = outbuf_size - 1; /* -1 for nul */
+  outbuf_size = len + 1;	/* + 1 for nul in case len == 1 */
+
+  outbytes_remaining = outbuf_size - 1;	/* -1 for nul */
   outp = dest = malloc (outbuf_size);
 
- again:
-  
+again:
+
   err = iconv (cd, &p, &inbytes_remaining, &outp, &outbytes_remaining);
 
-  if (err == (size_t) -1)
+  if (err == (size_t) - 1)
     {
       switch (errno)
 	{
@@ -136,9 +135,9 @@ stringprep_convert (const char *str,
 
 	    outbuf_size *= 2;
 	    dest = realloc (dest, outbuf_size);
-		
+
 	    outp = dest + used;
-	    outbytes_remaining = outbuf_size - used - 1; /* -1 for nul */
+	    outbytes_remaining = outbuf_size - used - 1;	/* -1 for nul */
 
 	    goto again;
 	  }
@@ -156,7 +155,7 @@ stringprep_convert (const char *str,
 
   *outp = '\0';
 
-  if ((p - str) != len) 
+  if ((p - str) != len)
     have_error = 1;
 
   iconv_close (cd);
@@ -178,10 +177,9 @@ stringprep_locale_charset ()
   return NULL;
 }
 
-char*
+char *
 stringprep_convert (const char *str,
-		    const char *to_codeset,
-		    const char *from_codeset)
+		    const char *to_codeset, const char *from_codeset)
 {
   return NULL;
 }
@@ -191,5 +189,5 @@ stringprep_convert (const char *str,
 char *
 stringprep_locale_to_utf8 (const char *str)
 {
-  return stringprep_convert (str, "UTF-8",  stringprep_locale_charset ());
+  return stringprep_convert (str, "UTF-8", stringprep_locale_charset ());
 }
