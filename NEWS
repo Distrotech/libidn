@@ -4,6 +4,12 @@ See the end for copying conditions.
 
 * Version 0.1.12 (released 2003-03-06)
 
+** Building libidn doesn't require gengetopt.
+Warnings are still printed though.  Gengetopt will be replaced by argp
+eventually.
+
+** Command line tool "idn" supports stringprep too.
+
 ** New stringprep API entry point: stringprep_profile().
 It takes a name of the stringprep profile as an argument instead of
 the stringprep table structure.
