@@ -2,6 +2,10 @@ Libidn NEWS -- History of user-visible changes.                 -*- outline -*-
 Copyright (C) 2002, 2003, 2004, 2005 Simon Josefsson
 See the end for copying conditions.
 
+* Version 0.5.14 (unreleased)
+
+** Vietnamese translation added, thanks to Clytie Siddall.
+
 * Version 0.5.13 (released 2005-01-29)
 
 ** The code to convert data between character encodings have been cleaned up.
