@@ -1,0 +1,29 @@
+Libstringprep is an implementation of the Stringprep specification
+used by the Internationalized Domain Names IETF working group to
+implement internationalized domain names.  It is licensed under the
+GNU Lesser General Public License.
+
+The library implements Unicode 3.2 NFKC normalization, mapping
+characters in strings according to Stringprep, and the Bidirectional
+Character handling steps of Stringprep.  The simple API consists of
+two main functions, one for converting data from the system's native
+representation into UTF-8, and one function to perform the Stringprep
+processing.
+
+The library contains the Nameprep and Kerberos 5 stringprep profiles,
+but adding a new Stringprep profile is straightforward.  The library
+is currently used by forthcoming SASL and Kerberos libraries to
+process user names and passwords before they are input to
+cryptographic operations.  No domain name related application use it.
+
+The library has been tested on several different Unix systems
+(including Linux, Solaris, IRIX, AIX, and Tru64).  It was designed to
+be ported easily to Windows as well.
+
+The project page of the library is available at:
+http://www.josefsson.org/libstringprep/
+
+For more information see:
+http://www.ietf.org/html.charters/idn-charter.html
+http://www.ietf.org/internet-drafts/draft-hoffman-stringprep-07.txt
+http://www.i-d-n.net/
