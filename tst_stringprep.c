@@ -106,11 +106,11 @@ struct stringprep
 }
 strprep[] =
 {
-  /* nothing 00AD */
+  /* map to nothing U+00AD */
   {
   "foo\xC2\xAD" "bar", 0, "foobar", stringprep_generic}
   ,
-    /* case_nfkc + normalization: */
+    /* map case_nfkc + normalization: */
   {
   "\xC2\xB5", 0, "\xCE\xBC", stringprep_generic}
   ,
@@ -121,23 +121,46 @@ strprep[] =
   {
   "\xC2\xAA", 0, "\x61", stringprep_generic}
   ,
-  /* unassigned code point 0221: */
+  /* unassigned code point U+0221: */
   {
     "\xC8\xA1", 0, "\xC8\xA1", stringprep_generic}
   ,
-  /* unassigned code point 0221: */
+  /* unassigned code point U+0221: */
   {
     "\xC8\xA1", STRINGPREP_NO_UNASSIGNED, NULL, stringprep_generic,
     STRINGPREP_CONTAINS_UNASSIGNED}
   ,
-  /* unassigned code point 0236: */
+  /* unassigned code point U+0236: */
   {
     "\xC8\xB6", 0, "\xC8\xB6", stringprep_generic}
   ,
-  /* unassigned code point 0236: */
+  /* unassigned code point U+0236: */
   {
     "\xC8\xB6", STRINGPREP_NO_UNASSIGNED, NULL, stringprep_generic,
-    STRINGPREP_CONTAINS_UNASSIGNED}
+    STRINGPREP_CONTAINS_UNASSIGNED},
+  /* prohibited ASCII character U+0020: */
+  {
+    "\x20", 0, NULL, stringprep_generic,
+    STRINGPREP_CONTAINS_PROHIBITED},
+  /* prohibited character U+00A0: */
+  {
+    "\xC2\xA0", 0, NULL, stringprep_generic,
+    STRINGPREP_CONTAINS_PROHIBITED},
+  /* prohibited non-character U+10FFFE: */
+  {
+    "\xF4\x8F\xBF\xBE", 0, NULL, stringprep_generic,
+    STRINGPREP_CONTAINS_PROHIBITED},
+  /* prohibited surrogate character U+D801: */
+  {
+    "\xED\xA0\x81", 0, NULL, stringprep_generic,
+    STRINGPREP_CONTAINS_PROHIBITED},
+  /* bidi RandALCat without trailing RandALCat <U+0627><U+0031>: */
+  {
+    "\xD8\xA7\x31", 0, NULL, stringprep_generic,
+    STRINGPREP_BIDI_LEADTRAIL_NOT_RAL},
+  /* bidi RandALCat correct  <U+0627><U+0031><U+0628>: */
+  {
+    "\xD8\xA7\x31\xD8\xA8", 0, "\xD8\xA7\x31\xD8\xA8", stringprep_generic}
 };
 
 int
@@ -231,6 +254,12 @@ main (int argc, char *argv[])
     }
 
   free (p);
+
+#if 0
+  memset(p, 0, 10);
+  stringprep_unichar_to_utf8 (0x0628, p);
+  hexprint (p, strlen (p)); puts("");
+#endif
 
   if (debug)
     printf ("Stringprep self tests done with %d errors\n", error_count);

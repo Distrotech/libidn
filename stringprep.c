@@ -154,8 +154,8 @@ stringprep (char *in, int maxlen, int flags, Stringprep_profile * profile)
 	  break;
 
 	case STRINGPREP_PROHIBIT_TABLE:
-	  if (stringprep_find_string_in_table (ucs4, ucs4len, NULL,
-					       profile[i].table) != -1)
+	  if (stringprep_find_string_in_table
+	      (ucs4, ucs4len, NULL, profile[i].table) != -1)
 	    {
 	      rc = STRINGPREP_CONTAINS_PROHIBITED;
 	      goto done;
@@ -166,8 +166,8 @@ stringprep (char *in, int maxlen, int flags, Stringprep_profile * profile)
 	  if (UNAPPLICAPLEFLAGS(flags, profile[i].flags))
 	    break;
 	  if (flags & STRINGPREP_NO_UNASSIGNED)
-	    if (stringprep_find_string_in_table (ucs4, ucs4len, NULL,
-						 profile[i].table) != -1)
+	    if (stringprep_find_string_in_table
+		(ucs4, ucs4len, NULL, profile[i].table) != -1)
 	      {
 		rc = STRINGPREP_CONTAINS_UNASSIGNED;
 		goto done;
@@ -183,13 +183,18 @@ stringprep (char *in, int maxlen, int flags, Stringprep_profile * profile)
 	    goto done;
 	  break;
 
+	case STRINGPREP_BIDI_PROHIBIT_TABLE:
+	case STRINGPREP_BIDI_RAL_TABLE:
+	case STRINGPREP_BIDI_L_TABLE:
+	  break;
+
 	case STRINGPREP_BIDI:
 	  {
 	    int done_prohibited = 0;
 	    int done_ral = 0;
 	    int done_l = 0;
-	    int contains_ral = 0;
-	    int contains_l = 0;
+	    int contains_ral = -1;
+	    int contains_l = -1;
 	    int j;
 
 	    for (j = 0; profile[j].flags || profile[j].table; j++)
@@ -203,14 +208,16 @@ stringprep (char *in, int maxlen, int flags, Stringprep_profile * profile)
 	      else if (profile[j].operation == STRINGPREP_BIDI_RAL_TABLE)
 		{
 		  done_ral = 1;
-		  contains_ral = stringprep_find_string_in_table
-		    (ucs4, ucs4len, 0, profile[j].table) != -1;
+		  if (stringprep_find_string_in_table
+		      (ucs4, ucs4len, NULL, profile[j].table) != -1)
+		    contains_ral = j;
 		}
 	      else if (profile[j].operation == STRINGPREP_BIDI_L_TABLE)
 		{
 		  done_l = 1;
-		  contains_l = stringprep_find_string_in_table
-		    (ucs4, ucs4len, 0, profile[j].table) != -1;
+		  if (stringprep_find_string_in_table
+		      (ucs4, ucs4len, NULL, profile[j].table) != -1)
+		    contains_l = j;
 		}
 
 	    if (!done_prohibited || !done_ral || !done_l)
@@ -219,25 +226,27 @@ stringprep (char *in, int maxlen, int flags, Stringprep_profile * profile)
 		goto done;
 	      }
 
-	    if (contains_ral && contains_l)
+	    if (contains_ral != -1 && contains_l != -1)
 	      {
 		rc = STRINGPREP_BIDI_BOTH_L_AND_RAL;
 		goto done;
 	      }
 
-	    if (contains_ral &&
-		(!stringprep_find_character_in_table (ucs4[0],
-						      profile[j].table) ||
-		 !stringprep_find_character_in_table (ucs4[ucs4len],
-						      profile[j].table)))
-	      {
-		rc = STRINGPREP_BIDI_LEADTRAIL_NOT_RAL;
-		goto done;
-	      }
+	    if (contains_ral != -1)
+	      if (!(stringprep_find_character_in_table
+		    (ucs4[0], profile[contains_ral].table) != -1 &&
+		    stringprep_find_character_in_table
+		    (ucs4[ucs4len-1], profile[contains_ral].table) != -1))
+		{
+		  rc = STRINGPREP_BIDI_LEADTRAIL_NOT_RAL;
+		  goto done;
+		}
 	  }
+	  break;
 
 	default:
 	  rc = STRINGPREP_PROFILE_ERROR;
+	  goto done;
 	  break;
 	}
 #if DBG
