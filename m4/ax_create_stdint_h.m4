@@ -75,7 +75,7 @@ ac_cv_stdint_result="(no helpful system typedefs seen)"
 AC_CACHE_CHECK([for stdint uintptr_t], [ac_cv_header_stdint_x],[
  ac_cv_header_stdint_x="" # the 1997 typedefs (inttypes.h)
   AC_MSG_RESULT([(..)])
-  for i in stdint.h inttypes.h sys/inttypes.h $inttype_headers ; do
+  for i in stdint.h inttypes.h sys/inttypes.h sys/types.h $inttype_headers ; do
    unset ac_cv_type_uintptr_t 
    unset ac_cv_type_uint64_t
    _AC_CHECK_TYPE_NEW(uintptr_t,[ac_cv_header_stdint_x=$i],dnl
@@ -91,7 +91,7 @@ if test "_$ac_cv_header_stdint_x" = "_" ; then
 AC_CACHE_CHECK([for stdint uint32_t], [ac_cv_header_stdint_o],[
  ac_cv_header_stdint_o="" # the 1995 typedefs (sys/inttypes.h)
   AC_MSG_RESULT([(..)])
-  for i in inttypes.h sys/inttypes.h stdint.h $inttype_headers ; do
+  for i in inttypes.h sys/inttypes.h stdint.h sys/types.h $inttype_headers ; do
    unset ac_cv_type_uint32_t
    unset ac_cv_type_uint64_t
    AC_CHECK_TYPE(uint32_t,[ac_cv_header_stdint_o=$i],dnl
