@@ -1,0 +1,10 @@
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+libdir=@libdir@
+includedir=@includedir@
+
+Name: Libstringprep
+Description: Library for IETF stringprep text processing.
+Version: @VERSION@
+Libs: -L${libdir} -lstringprep
+Cflags: -I${includedir}

@@ -1,0 +1,67 @@
+Libstringprep is an implementation of the IETF stringprep
+specification, licensed under the LGPL.
+
+Currently the API consists of the following definitions and functions:
+
+Function: extern int stringprep (char *in, int maxlen, int flags,
+                                 stringprep_profile * profile);
+
+     Perform stringprep on a zero terminated UTF-8 string.  Since the
+     stringprep operation can expand the string, maxlen indicate how
+     large the buffer holding the string is.  See below for valid
+     flags options.  The profile indicates processing details, see the
+     profile header files, such as stringprep_generic.h and
+     stringprep_nameprep.h for two examples.  Your application can
+     define new profiles, possibly re-using the generic stringprep
+     tables that always will be part of the library.  Note that you
+     must convert strings entered in the systems locale into UTF-8
+     before using this function.
+
+Type: STRINGPREP_NO_NFKC
+Type: STRINGPREP_NO_BIDI
+
+     Valid options to the FLAGS parameter of stringprep().
+     STRINGPREP_NO_NFKC disables the NFKC normalization, as well as
+     selecting the non-NFKC case folding tables. STRINGPREP_NO_BIDI
+     disables the BIDI step.
+
+STRINGPREP_VERSION
+
+     CPP definition, a string with version of the stringprep header file.
+
+extern const char *stringprep_check_version (const char *req_version);
+
+     Check that the the version of the library is at minimum the one
+     given as a string in REQ_VERSION and return the actual version
+     string of the library; return NULL if the condition is not met.
+     If `NULL' is passed to this function no check is done and only the
+     version string is returned.
+
+Libstringprep has at some point in time passed the self tests on the
+following systems, but no guarantees.
+
+  - alphaev67-dec-osf5.0 (Tru64 UNIX C, GNU make)
+  - i686-pc-linux-gnu (Debian Sid)
+  - i686-pc-linux-gnu (RedHat 7.2)
+  - mips-sgi-irix6.5 (MIPS C compiler, GNU make)
+  - rs6000-ibm-aix4.3.2.0 (GCC 2.9-aix43-000718, GNU make)
+  - rs6000-ibm-aix4.3.2.0 (IBM C for AIX compiler, GNU make)
+  - sparc-sun-solaris2.6 (Sun WorkShop Compiler C 5.0, non-GNU make)
+  - sparc-sun-solaris2.8 (Sun WorkShop Compiler C 6.0U2, SUN make)
+  - sparc-sun-solaris2.8 (GCC 3.1, GNU make)
+
+Libstringprep is unstable and in its early steps of development.  You
+should expect it to not work as well as having security problems.
+
+Things left to do below.  If you like to start working on anything,
+please let me know so work duplication can be avoided.
+
+  - Optimize it, the table searching is slow (but does it matter?).
+  - Port applications to use libstringprep.
+  - Include tables for more stringprep profiles.
+  - Add texi documentation.
+  - Implement rest of IDN?  Possibly separate project.
+
+For more information see <URL:http://josefsson.org/libstringprep/>.
+
+Send all bug reports by electronic mail to bug-libstringprep@josefsson.org.
