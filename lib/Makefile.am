@@ -17,21 +17,21 @@
 # License along with GNU Libidn; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
 
-EXTRA_DIST = gen-stringprep-tables.pl gen-unicode-tables.pl 
+EXTRA_DIST = gen-stringprep-tables.pl gen-unicode-tables.pl gen-tld-tables.pl
 
 lib_LTLIBRARIES = libidn.la
 
 idn_int = idn-int.h
 
-BUILT_SOURCES = $(idn_int) gunibreak.h gunicomp.h gunidecomp.h rfc3454.c
+BUILT_SOURCES = $(idn_int) gunibreak.h gunicomp.h gunidecomp.h rfc3454.c tldchk-data.c
 DISTCLEANFILES = $(idn_int)
-include_HEADERS = stringprep.h idna.h punycode.h
+include_HEADERS = stringprep.h idna.h punycode.h tldchk.h
 nodist_include_HEADERS = $(idn_int)
 
 libidn_la_SOURCES = gunibreak.h gunicomp.h gunidecomp.h \
 	nfkc.c toutf8.c version.c \
 	stringprep.h.in stringprep.c rfc3454.c profiles.c \
-	punycode.h punycode.c \
+	punycode.h punycode.c tldchk.h tldchk.c tldchk-data.c\
 	idna.h idna.c
 libidn_la_LIBADD = $(LTLIBICONV)
 libidn_la_LDFLAGS = -version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE)
@@ -39,12 +39,16 @@ libidn_la_LDFLAGS = -version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE)
 nfkc.c: gunibreak.h gunicomp.h gunidecomp.h
 
 SPEC = $(top_srcdir)/doc/specifications
+TLD_DIR = $(top_srcdir)/doc/tld
 
 gunibreak.h gunicomp.h gunidecomp.h: gen-unicode-tables.pl $(SPEC)/UnicodeData-3.2.0.txt $(SPEC)/LineBreak-3.2.0.txt $(SPEC)/SpecialCasing-3.2.0.txt $(SPEC)/CaseFolding-3.2.0.txt $(SPEC)/CompositionExclusions-3.2.0.txt
 	$(PERL) $(srcdir)/gen-unicode-tables.pl -decomp 3.2 $(SPEC)
 
 rfc3454.c: gen-stringprep-tables.pl
 	$(PERL) $(srcdir)/gen-stringprep-tables.pl $(SPEC)/rfc3454.txt
+
+tldchk-data.c: gen-tld-tables.pl
+	$(PERL) $(srcdir)/gen-tld-tables.pl DIR=$(TLD_DIR)
 
 # Maintainer targets
 
