@@ -58,8 +58,13 @@ extern "C"
 #define IDNA_ACE_PREFIX "xn--"
 #endif
 
+  /* Core functions */
   extern int idna_to_ascii_4i (const uint32_t * in, size_t inlen,
 			       char *out, int flags);
+  extern int idna_to_unicode_44i (const uint32_t * in, size_t inlen,
+				  uint32_t * out, size_t * outlen, int flags);
+
+  /* Wrappers that handle several labels */
 
   extern int idna_to_ascii_4z (const uint32_t * input, char **output,
 			       int flags);
@@ -68,8 +73,6 @@ extern "C"
 
   extern int idna_to_ascii_lz (const char *input, char **output, int flags);
 
-  extern int idna_to_unicode_44i (const uint32_t * in, size_t inlen,
-				  uint32_t * out, size_t * outlen, int flags);
 
   extern int idna_to_unicode_4z4z (const uint32_t * input, uint32_t ** output,
 				   int flags);
