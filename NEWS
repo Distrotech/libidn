@@ -1,11 +1,9 @@
-Libstringprep NEWS -- history of user-visible changes.          -*- outline -*-
+Libidn NEWS -- History of user-visible changes.                 -*- outline -*-
 See the end for copying conditions.
-
-Please send libstringprep bug reports to bug-libstringprep@josefsson.org.
 
 * Version 0.1.0
 
-** Supports punycode.  Caveat emptor: I don't use it myself.
+** Supports punycode and IDNA.  Caveat emptor: I don't use it myself.
 
 ** Uses "unsigned long" for Unicode code points instead of "long".
 Long is guaranteed to be at least 32 bits by C standards so it is

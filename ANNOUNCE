@@ -34,7 +34,7 @@ http://josefsson.org/libidn/
 
 For more information see:
 http://www.ietf.org/html.charters/idn-charter.html
-http://www.ietf.org/internet-drafts/draft-hoffman-stringprep-07.txt
+http://www.ietf.org/rfc/rfc3454.txt
 http://www.ietf.org/internet-drafts/draft-ietf-idn-punycode-03.txt
 http://www.ietf.org/internet-drafts/draft-ietf-idn-nameprep-11.txt
 http://www.ietf.org/internet-drafts/draft-ietf-idn-idna-14.txt
