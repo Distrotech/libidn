@@ -73,7 +73,7 @@ idna_to_ascii (const unsigned long *in, size_t inlen,
     int inasciirange;
 
     inasciirange = 1;
-    for (i = 0; in[i]; i++)
+    for (i = 0; i < inlen; i++)
       if (in[i] > 0x7F)
 	inasciirange = 0;
     if (inasciirange)
