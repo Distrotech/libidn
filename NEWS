@@ -9,7 +9,7 @@ See the contrib/java/ directory.  It is implemented using the Java
 Native Interface, and light initial testing indicate interoperability
 between GCJ, IBM's JDK and Sun's JDK.
 
-** Building is now silent when gengetopt isn't found.
+** Building is now silent when gengetopt is not present.
 
 ** Bug fixes.
 
