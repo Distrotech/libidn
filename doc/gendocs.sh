@@ -139,7 +139,7 @@ fi
 echo Generating output formats for $srcfile
 # remove any old junk
 rm -f $outdir/*.{gz,ps,pdf,html,txt,xml}
-rm -rf $outdir/html_node $outdir/html_node_db
+rm -rf $outdir/html_node/*.html $outdir/html_node_db/*.html
 
 echo Generating info files...
 ${MAKEINFO} -o $PACKAGE.info $srcfile
