@@ -3,11 +3,17 @@ See the end for copying conditions.
 
 * Version 0.1.0
 
+** Official GNU project.
+
+** Renamed from libstringprep to libidn.
+
 ** Supports punycode and IDNA.  Caveat emptor: I don't use it myself.
 
 ** Uses "unsigned long" for Unicode code points instead of "long".
 Long is guaranteed to be at least 32 bits by C standards so it is
 always sufficiently large, no need to use uint32_t and the like.
+
+** The obsolete stringprep_utf8_to_ucs4_fast API entry point was removed.
 
 * Version 0.0.8
 
