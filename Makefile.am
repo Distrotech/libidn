@@ -102,11 +102,19 @@ ChangeLog:
 indent:
 	indent $(SOURCES)
 
-sign: $(distdir).tar.gz
+htmldir = ../www-$(PACKAGE)
+tag = $(PACKAGE)-`echo $(VERSION) | sed 's/\./-/g'`
+
+release:
+	cvs upd -p -r libidn-0-1-0 NEWS > /dev/null
+	if cvs upd -p -r $(tag) NEWS > /dev/null; then false else true; fi
+	cvs commit
+	make distcheck
 	rm -f $(distdir).tar.gz.asc
 	gpg -a --sign --detach $(distdir).tar.gz
 	gpg --verify $(distdir).tar.gz.asc
-
-upload: sign
-	scp $(distdir).tar.gz $(distdir).tar.gz.asc \
-		gnudist.gnu.org:~alpha/gnu/libidn/
+	scp $(distdir).tar.gz* gnudist.gnu.org:~alpha/gnu/$(PACKAGE)/
+	test -d $(htmldir) && cp -v $(PACKAGE).{ps,pdf,html} $(htmldir)/
+	test -d $(htmldir)/reference && cp -v reference/html/*.html $(htmldir)/reference/
+	test -d $(htmldir) && cd $(htmldir) && cvs commit -m "Update." $(PACKAGE).{ps,pdf,html} reference/*.html
+	cvs rtag $(tag) $(PACKAGE)
