@@ -28,7 +28,6 @@
 #include <stdarg.h>
 #include <string.h>
 
-#include <stringprep.h>
 #include <pr29.h>
 
 #include "utils.h"
