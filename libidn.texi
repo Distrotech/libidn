@@ -30,7 +30,7 @@ Software Foundation raise funds for GNU development.''
 
 @dircategory GNU Libraries
 @direntry
-* libidn:	(libidn)Internationalized string processing library.
+* libidn: (libidn).	Internationalized string processing library.
 @end direntry
 
 @titlepage
