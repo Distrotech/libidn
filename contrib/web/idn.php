@@ -1,7 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
 <?php
 if (!$charset) {
-	$data = "räksmörgås.josefsson.org";
+	$data = "räksmörgås.josefßon.org";
 	$charset = "UTF-8";
 } ?>
 <html>
@@ -22,6 +22,10 @@ if (!$charset) {
 
 <?php if (!$lastcharset && !$mode) { ?>
 
+    <p>Free shrimp sandwiches are <a
+    href="http://xn--rksmrgs-5wao1o.josefsson.org/">served over
+    here</a>.
+
     <p>This page ignores any Accept-Charset headers sent by your
     browser.  Instead, the Unicode repertoire encoded as UTF-8 is
     used.  If you are using software that cannot handle this, you must
@@ -37,9 +41,9 @@ if (!$charset) {
 
       <p>The following string must only contain characters that your
       browser is able to represent in <?php print $charset; ?> when
-      submitting this form.  If you wish to another charset you must
-      select it below, submit the form and wait for a new page, and
-      then enter your string.<br>
+      submitting this form.  If you wish to use another charset you
+      must select it below, submit the form and wait for a new page to
+      load, and then enter your string.<br>
 
       <input type=text name=data size=40 value="<?php print $data ?>"><br>
 
