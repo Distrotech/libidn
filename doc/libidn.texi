@@ -314,9 +314,9 @@ of Unicode.
 This could include porting Libidn to an embedded platforms that may
 need memory or size optimization.
 
-@item Remote helpdesk support for programming API questions.
+@item Integrating IDN support in your existing project.
 
-@item On-site education of IDN and Libidn.
+@item System design of components related to IDN.
 
 @end itemize
 
