@@ -26,7 +26,7 @@ idn_int = idn-int.h
 
 BUILT_SOURCES = $(idn_int) gunibreak.h gunicomp.h gunidecomp.h rfc3454.c tlds.c
 DISTCLEANFILES = $(idn_int)
-include_HEADERS = stringprep.h idna.h punycode.h
+include_HEADERS = stringprep.h idna.h punycode.h idn-free.h
 if TLD
 include_HEADERS += tld.h
 endif
