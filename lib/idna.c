@@ -722,3 +722,23 @@ idna_to_unicode_lzlz (const char *input, char **output, int flags)
  *
  * The IANA allocated prefix to use for IDNA. "xn--"
  */
+
+/**
+ * Idna_rc:
+ *
+ * Enumerated return codes of idna_to_ascii_4i(),
+ * idna_to_unicode_44i() functions (and functions derived from those
+ * functions).  The value 0 is guaranteed to always correspond to
+ * success.
+ */
+
+
+/**
+ * Idna_flags:
+ * @IDNA_ALLOW_UNASSIGNED: Don't reject strings containing unassigned
+ *   Unicode code points.
+ * @IDNA_USE_STD3_ASCII_RULES: Validate strings according to STD3
+ *   rules (i.e., normal host name rules).
+ *
+ * Flags to pass to idna_to_ascii_4i(), idna_to_unicode_44i() etc.
+ */
