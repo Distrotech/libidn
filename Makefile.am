@@ -85,8 +85,7 @@ idn_cmd.c idn_cmd.h: idn.ggo
 
 # Test suite
 
-tests = tst_stringprep tst_punycode tst_idna tst_nfkc \
-	tst_ostringprep tst_opunycode tst_oidna
+tests = tst_stringprep tst_punycode tst_idna tst_nfkc tst_oidna
 
 check_PROGRAMS = $(tests)
 
