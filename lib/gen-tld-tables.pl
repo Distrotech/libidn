@@ -104,11 +104,15 @@ sub process_definition
     my $tld = shift;
     my $version = shift;
     my $incversion;
+    my $path;
     my @data;
 
     local * FILE;
 
     open(FILE, "<$filename") or die "Cannot open $filename";
+
+    $path = $filename;
+    $path =~ s/\/[^\/]+$//;
 
     my ($is_int,$have_num,$num,$cnum);
     my $line = 1;
@@ -122,19 +126,19 @@ sub process_definition
 	{
 	    my $incfile = $1;
 	    my ($junk, $ver);
-	    my $incdata = process_definition($incfile, \$junk, \$ver);
+	    my $incdata = process_definition("$path/$incfile", \$junk, \$ver);
 	    $incversion = $incversion . " $incfile ($ver)";
 	    push @data, @$incdata;
 	    next;
 	}
 
-	if (m/^version "(.*)"/)
+	if (m/^version\s+"(.*)"\s*$/i)
 	{
 	    $$version = $1;
 	    next;
 	}
 
-	if (m/^tld (.*)/)
+	if (m/^tld\s+(\S+)\s*$/i)
 	{
 	    $$tld = $1;
 	    next;
