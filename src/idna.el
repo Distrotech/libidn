@@ -62,12 +62,16 @@
   :type '(repeat string)
   :group 'idna)
 
-(defcustom idna-to-ascii-parameters '("--quiet" "--idna-to-ascii")
+(defcustom idna-to-ascii-parameters '("--quiet"
+				      "--idna-to-ascii"
+				      "--usestd3asciirules")
   "Parameters passed to `idna-program' to invoke IDNA ToASCII mode."
   :type '(repeat string)
   :group 'idna)
 
-(defcustom idna-to-unicode-parameters '("--quiet" "--idna-to-unicode")
+(defcustom idna-to-unicode-parameters '("--quiet"
+					"--idna-to-unicode"
+					"--usestd3asciirules")
   "Parameters passed `idna-program' to invoke IDNA ToUnicode mode."
   :type '(repeat string)
   :group 'idna)
@@ -174,6 +178,16 @@ It is computed by the IDNA ToUnicode operation."
       (if (and string (string= (substring string (1- (length string))) "\n"))
 	  (substring string 0 (1- (length string)))
 	string))))
+
+(defun idna-shutdown ()
+  "Kill the IDNA related processes."
+  (interactive)
+  (if (and idna-to-ascii-process
+	   (eq (process-status idna-to-ascii-process) 'run))
+      (kill-process idna-to-ascii-process))
+  (if (and idna-to-unicode-process
+	   (eq (process-status idna-to-unicode-process) 'run))
+      (kill-process idna-to-unicode-process)))
 
 (provide 'idna)
 
