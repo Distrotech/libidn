@@ -1,10 +1,11 @@
 Libidn ANNOUNCE -- Overview to attract interest.
 See the end for copying conditions.
 
-Libidn is an implementation of the Stringprep (Nameprep profile),
-Punycode and IDNA specifications defined by the IETF Internationalized
-Domain Names working group to implement internationalized domain
-names.  It is licensed under the GNU Lesser General Public License.
+Libidn is an implementation of the Stringprep (with the Nameprep and
+Kerberos 5 profiles), Punycode and IDNA specifications defined by the
+IETF Internationalized Domain Names (IDN) working group, used for
+internationalized domain names.  It is licensed under the GNU Lesser
+General Public License.
 
 The library contains a generic Stringprep implementation (including
 Unicode 3.2 NFKC normalization, table mapping of characters, and
