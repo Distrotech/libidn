@@ -24,8 +24,66 @@
 /* Get stringprep_utf8_to_ucs4, stringprep_locale_to_utf8. */
 #include <stringprep.h>
 
+/* Get strcmp(). */
+#include <string.h>
+
 /* Get specifications. */
 #include <tld.h>
+
+/**
+ * tld_get_table:
+ * @tld_str: TLD name (e.g. "com") as zero terminated ASCII byte string.
+ * @xtra_tlds: Additional well-formed info-structures for TLDs or %NULL.
+ *
+ * Return value: Return structure corresponding to TLD @tld_str, first
+ * looking through @xtra_tlds then thru built-in list, or %NULL if no
+ * such structure found.
+ */
+const Tld_table *
+tld_get_table (const char *tld_str, const Tld_table ** xtra_tlds)
+{
+  const Tld_table **tld = NULL;
+  int found = 0;
+
+  if (!tld_str)
+    return NULL;
+
+  /* First search custom tlds. */
+  if (xtra_tlds)
+    {
+      tld = xtra_tlds;
+      while (*tld)
+	if (!strcmp ((*tld)->name, tld_str))
+	  {
+	    found = 1;
+	    break;
+	  }
+	else
+	  tld++;
+    }
+
+  if (found)
+    return *tld;
+
+  /* Then search the internal stuff. */
+  if (tld_table)
+    {
+      tld = tld_table;
+      while (*tld)
+	if (!strcmp ((*tld)->name, tld_str))
+	  {
+	    found = 1;
+	    break;
+	  }
+	else
+	  tld++;
+    }
+
+  if (found)
+    return *tld;
+  else
+    return NULL;
+}
 
 #define DOTP(c) ((c) == 0x002E || (c) == 0x3002 ||	\
 		 (c) == 0xFF0E || (c) == 0xFF61)
@@ -394,61 +452,6 @@ tld_check_lz (const char *in, size_t * errpos, const Tld_table ** xtra_tlds)
   free (utf8);
 
   return rc;
-}
-
-/**
- * tld_get_table:
- * @tld_str: TLD name (e.g. "com") as zero terminated ASCII byte string.
- * @xtra_tlds: Additional well-formed info-structures for TLDs or %NULL.
- *
- * Return value: Return structure corresponding to TLD @tld_str, first
- *   looking through @xtra_tlds then thru built-in list, or %NULL if
- *   no such structure found.
- */
-const Tld_table *
-tld_get_table (const char *tld_str, const Tld_table ** xtra_tlds)
-{
-  const Tld_table **tld = NULL;
-  int found = 0;
-
-  if (!tld_str)
-    return NULL;
-
-  /* First search custom tlds. */
-  if (xtra_tlds)
-    {
-      tld = xtra_tlds;
-      while (*tld)
-	if (!strcmp ((*tld)->name, tld_str))
-	  {
-	    found = 1;
-	    break;
-	  }
-	else
-	  tld++;
-    }
-
-  if (found)
-    return *tld;
-
-  /* Then search the internal stuff. */
-  if (tld_table)
-    {
-      tld = tld_table;
-      while (*tld)
-	if (!strcmp ((*tld)->name, tld_str))
-	  {
-	    found = 1;
-	    break;
-	  }
-	else
-	  tld++;
-    }
-
-  if (found)
-    return *tld;
-  else
-    return NULL;
 }
 
 /**
