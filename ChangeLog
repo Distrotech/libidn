@@ -1,3 +1,216 @@
+2004-03-08  Simon Josefsson <simon@josefsson.org>
+
+	* po/sv.po: Generated.
+
+2004-03-08  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Version 0.4.1.
+
+2004-03-08  Simon Josefsson <simon@josefsson.org>
+
+	* tests/tst_tld.c: Fix warning.
+
+2004-03-08  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Fix.
+
+2004-03-08  Simon Josefsson <simon@josefsson.org>
+
+	* po/sv.po: Generated.
+
+2004-03-08  Simon Josefsson <simon@josefsson.org>
+
+	* src/Makefile.am:
+	(idn_LDADD): Add LTLIBINTL.
+
+2004-03-08  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2004-03-08  Simon Josefsson <simon@josefsson.org>
+
+	* po/sv.po: Generated.
+
+2004-03-08  Simon Josefsson <simon@josefsson.org>
+
+	* po/sv.po: Fix.
+
+2004-03-08  Simon Josefsson <simon@josefsson.org>
+
+	* src/idn.c: Cosmetic fix.
+
+2004-03-08  Simon Josefsson <simon@josefsson.org>
+
+	* po/sv.po: Add.
+
+2004-03-08  Simon Josefsson <simon@josefsson.org>
+
+	* src/idn.c: Translation markup.
+
+2004-03-08  Simon Josefsson <simon@josefsson.org>
+
+	* po/sv.po: Fix.
+
+2004-03-08  Simon Josefsson <simon@josefsson.org>
+
+	* src/idn.c: Gettextiscate.
+
+2004-03-08  Simon Josefsson <simon@josefsson.org>
+
+	* po/sv.po: Add.
+
+2004-03-08  Simon Josefsson <simon@josefsson.org>
+
+	* src/Makefile.am, src/gettext.h: Add gettext.h.  Define LOCALEDIR
+	(for gettext).
+
+2004-03-08  Simon Josefsson <simon@josefsson.org>
+
+	* po/Makevars: Add.
+
+2004-03-08  Simon Josefsson <simon@josefsson.org>
+
+	* config.rpath, m4/lib-ld.m4, m4/lib-prefix.m4: Remove, added by
+	gettextize.
+
+2004-03-08  Simon Josefsson <simon@josefsson.org>
+
+	* Makefile.am, configure.ac, po/LINGUAS, po/POTFILES.in:
+	Gettextiscate.
+
+2004-03-08  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2004-03-08  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Fix.
+
+2004-03-08  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi: Fix IDNA_DLOPEN_ERROR.
+
+2004-03-08  Simon Josefsson <simon@josefsson.org>
+
+	* lib/toutf8.c:
+	(stringprep_convert): Don't copy input.  Check for malloc failures.
+	From Ulrich Drepper <drepper@redhat.com>, via libidn integration in
+	libc.
+
+2004-03-08  Simon Josefsson <simon@josefsson.org>
+
+	* src/idn.c: Invoke setlocale (LC_ALL, "").
+
+2004-03-08  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2004-03-08  Simon Josefsson <simon@josefsson.org>
+
+	* lib/toutf8.c:
+	(stringprep_locale_charset_slow): Remove.
+	(stringprep_locale_charset) [_LIBC]: Define to nl_langinfo(CODESET).
+	(stringprep_locale_charset) [!_LIBC]: Don't cache charset.  Remove
+	broken setlocale hack.  All based on discussion with Ulrich Drepper
+	<drepper@redhat.com>, during libidn integration in libc.
+
+2004-03-08  Simon Josefsson <simon@josefsson.org>
+
+	* lib/idna.c:
+	(Idna_rc): Doc fix IDNA_DLOPEN_ERROR.
+
+2004-03-08  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Fix.
+
+2004-03-08  Simon Josefsson <simon@josefsson.org>
+
+	* THANKS, NEWS: Add.
+
+2004-03-08  Simon Josefsson <simon@josefsson.org>
+
+	* lib/nfkc.c: Fix warning, tiny patch by Ulrich Drepper
+	<drepper@redhat.com> from libidn integration in libc.
+
+2004-03-08  Simon Josefsson <simon@josefsson.org>
+
+	* lib/idna.h:
+	(Idna_rc): Add IDNA_DLOPEN_ERROR error code, for libidn part of
+	libc.
+
+2004-03-08  Simon Josefsson <simon@josefsson.org>
+
+	* lib/stringprep.h.in:
+	(Stringprep_profiles): Mark 'name' as 'const'.  Tiny patch to libidn
+	in libc by Ulrich Drepper <drepper@redhat.com>.
+
+2004-03-08  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2004-03-08  Simon Josefsson <simon@josefsson.org>
+
+	* Makefile.am: Dist libc/idn-stub.c and libc/libidn.texi.
+
+2004-03-08  Simon Josefsson <simon@josefsson.org>
+
+	* libc/libc.patch: Update, from libc-alpha post.
+
+2004-03-08  Simon Josefsson <simon@josefsson.org>
+
+	* libc/idn-stub.c, libc/libidn.texi: Add, from libc-alpha post.
+
+2004-03-08  Simon Josefsson <simon@josefsson.org>
+
+	* libc/Makefile: Sync libc-alpha post.
+
+2004-03-08  Simon Josefsson <simon@josefsson.org>
+
+	* libc/README, libc/example.c: Update.
+
+2004-03-08  Simon Josefsson <simon@josefsson.org>
+
+	* libc/getaddrinfo.c, libc/netdb.h: Sync.
+
+2004-03-07  Simon Josefsson <simon@josefsson.org>
+
+	* lib/stringprep.c: Fix comment.
+
+2004-03-07  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2004-03-07  Simon Josefsson <simon@josefsson.org>
+
+	* README-alpha: Fix version requirements.
+
+2004-03-07  Simon Josefsson <simon@josefsson.org>
+
+	* README-alpha: Fix texinfo requirement.
+
+2004-03-05  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2004-03-05  Simon Josefsson <simon@josefsson.org>
+
+	* lib/profiles.c:
+	(stringprep_saslprep): Fix typo; make sure non-ASCII space
+	characters are prohibited.
+
+2004-03-01  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi, doc/tld/README: Mention tldchk.berlios.de,
+	suggested by Thomas Jacob <jacob@internet24.de>.
+
+2004-02-28  Simon Josefsson <simon@josefsson.org>
+
+	* lib/Makefile.am: Don't install tld.h if --disable-tld.
+
+2004-02-28  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS, configure.ac: Bump versions.
+
 2004-02-28  Simon Josefsson <simon@josefsson.org>
 
 	* NEWS: Version 0.4.0.
