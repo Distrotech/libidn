@@ -130,12 +130,9 @@ release:
 	rm -f $(distdir).tar.gz.asc
 	gpg -a --sign --detach $(distdir).tar.gz
 	gpg --verify $(distdir).tar.gz.asc
-	scp $(distdir).tar.gz* gnuftp.gnu.org:~alpha/gnu/$(PACKAGE)/
-	test -d $(htmldir) && cp -v doc/$(PACKAGE).{ps,pdf,html} $(htmldir)/
-	test -d $(htmldir)/reference && \
-		cp -v reference/*.html $(htmldir)/reference/
-	test -d $(htmldir)/doxygen && test -d contrib/doxygen/html && \
-		cp -v contrib/doxygen/html/* $(htmldir)/doxygen/
-	test -d $(htmldir) && cd $(htmldir) && cvs commit -m "Update." \
+	-cp -v doc/$(PACKAGE).{ps,pdf,html} $(htmldir)/ && \
+		cp -v reference/*.html $(htmldir)/reference/ && \
+		cd $(htmldir) && cvs commit -m "Update." \
 		$(PACKAGE).{ps,pdf,html} reference/*.html
+	-cd contrib/doxygen && doxygen && cp -v html/* $(htmldir)/doxygen/
 	cvs rtag $(tag) $(PACKAGE)
