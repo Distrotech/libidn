@@ -175,7 +175,7 @@ extern "C"
 
   extern int stringprep (char *in, size_t maxlen,
 			 Stringprep_profile_flags flags,
-			 Stringprep_profile *profile);
+			 Stringprep_profile * profile);
 
   extern int stringprep_profile (char *in,
 				 char **out,
