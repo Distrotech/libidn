@@ -20,6 +20,7 @@ $ cp libidn-0.2.4/libc/{Makefile,configure,Versions} glibc-2.3.2/libidn/
 $ cp libidn-0.2.4/lib/*.{c,h} glibc-2.3.2/libidn/
 $ cp libidn-0.2.4/libc/getaddrinfo.c glibc-2.3.2/sysdeps/posix/
 $ cp libidn-0.2.4/libc/netdb.h glibc-2.3.2/resolv/
+$ touch glibc-2.3.2/libidn/libidn.texi
 
 4) Configure and build Libc with the Libidn add-on:
 
