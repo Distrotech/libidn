@@ -2,7 +2,7 @@ Libidn libc/README -- Instructions for building as a GNU Libc add-on.
 See the end for copying conditions.
 
 GNU Libidn can be built as part of GNU Libc if you follow these
-instructions.  Note that you should note run configure in Libidn.
+instructions.  Note that you should not run configure in Libidn.
 
 1) Unpack Libc:
 
