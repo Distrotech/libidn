@@ -1,5 +1,5 @@
 ## Process this file with automake to produce Makefile.in
-# Copyright (C) 2004  Free Software Foundation
+# Copyright (C) 2004, 2005  Free Software Foundation
 #
 # This file is part of GNU Libidn.
 #
@@ -17,12 +17,10 @@
 # License along with GNU Libidn; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
 
-if JAVA
-
 JAVAROOT = $(top_builddir)/java/misc
 JAVACFLAGS = -classpath $(top_builddir)/java/libidn-@VERSION@.jar
 
+if JAVA
 dist_noinst_JAVA = GenerateRFC3454.java GenerateNFKC.java	\
 			TestIDNA.java TestNFKC.java
-
 endif # JAVA
