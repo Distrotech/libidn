@@ -2,6 +2,10 @@ Libidn NEWS -- History of user-visible changes.                 -*- outline -*-
 Copyright (C) 2002, 2003 Simon Josefsson
 See the end for copying conditions.
 
+* Version 0.2.4 (unreleased)
+
+** API and ABI is backwards compatible with the previous version.
+
 * Version 0.2.3 (released 2003-08-26)
 
 ** Example 4 was the same as example 3, now changed to demo ToUnicode.
