@@ -4,6 +4,13 @@ See the end for copying conditions.
 
 * Version 0.5.8 (unreleased)
 
+** BidiMirroring-3.2.0.txt is now included, not only the generated source code.
+This allow builds to succeed after 'make realclean'.
+
+** Generated files now have consistent 'DO NOT EDIT!' comments.
+
+** API and ABI is backwards compatible with the previous version.
+
 * Version 0.5.7 (released 2004-10-12)
 
 ** Shared library version incremented, because new APIs were added.
