@@ -9,7 +9,7 @@ The stringprep_convert function has been added to gnulib, under the
 name iconv_string, and is now used by libidn.  This should not have
 any user-visible consequences, though.
 
-** It is not possible to bootstrap with unmodified Automake installations.
+** It is now possible to bootstrap with unmodified Automake installations.
 
 ** Italian translation added, thanks to Marco Colombo.
 
