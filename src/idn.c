@@ -90,8 +90,7 @@ main (int argc, char *argv[])
     fprintf (stderr, "%s %s\n" GREETING, PACKAGE, VERSION);
 
   if (args_info.debug_given)
-    fprintf (stderr, _("System locale uses charset `%s'.\n"),
-	     stringprep_locale_charset ());
+    fprintf (stderr, _("Charset `%s'.\n"), stringprep_locale_charset ());
 
   if (!args_info.quiet_given && args_info.inputs_num == 0)
     fprintf (stderr, _("Type each input string on a line by itself, "
