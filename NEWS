@@ -6,6 +6,8 @@ See the end for copying conditions.
 
 ** Hide accidentally exported variable g_utf8_skip, by marking it as static.
 
+** Various fixes.
+
 ** API and ABI is backwards compatible with the previous version.
 g_utf8_skip: REMOVED.  (But never meant to be used.)
 
