@@ -448,7 +448,7 @@ int
 idna_utf8_to_ace (const char *input, char **output)
 {
   unsigned long *ucs4;
-  int ucs4len;
+  size_t ucs4len;
   int rc;
 
   ucs4 = stringprep_utf8_to_ucs4 (input, -1, &ucs4len);
@@ -586,7 +586,7 @@ int
 idna_utf8ace_to_ucs4 (const char *input, unsigned long **output)
 {
   unsigned long *ucs4;
-  int ucs4len;
+  size_t ucs4len;
   int rc;
 
   ucs4 = stringprep_utf8_to_ucs4 (input, -1, &ucs4len);
