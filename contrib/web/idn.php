@@ -1,5 +1,4 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
-
 <?php
 if (!$charset) {
 	$data = "räksmörgås.josefsson.org"; 
@@ -7,10 +6,10 @@ if (!$charset) {
 } else if ($lastcharset && $charset != $lastcharset) {
 	$data = "foo";
 } ?>
-
 <html>
   <head>
-    <meta http-equiv='Content-Type' content='text/html; charset="<?php print $charset ?>"'>
+    <meta http-equiv='Content-Type'
+          content='text/html; charset="<?php print $charset ?>"'>
     <title>Try GNU Libidn</title>
   </head>
 
@@ -25,14 +24,14 @@ if (!$charset) {
     <p>Report problems to <A
     HREF="mailto:bug-libidn@gnu.org">bug-libidn@gnu.org</A>, but first
     please make sure your browser really is encoding the data you type
-    in the charset you select.  If not, incorrect output or an error
-    is the proper response.
+    in the charset used for this page (i.e., <?php print $charset;
+    ?>).  If not, incorrect output or an error is the proper response.
 
     <p>As it happens, this page may also be a good test of your
     browser.  Mozilla 1.2.1 in Debian unstable works.  This file was
-    written in HTML 2.0 with the i18n extensions (RFC 2070, META
-    HTTP-EQUIV), but tagged as HTML 3.2 since the i18n doctype isn't
-    widely implemented (the W3C validator doesn't even support it).
+    originally written in HTML 2.0 with the i18n extensions (RFC 2070,
+    META HTTP-EQUIV), but now tagged as HTML 3.2 since the i18n
+    doctype isn't widely implemented.
 
     <hr>
     <h2>Input</h2>
@@ -40,11 +39,14 @@ if (!$charset) {
 
       <p>The following string must be in <?php print $charset; ?>. If
 	you wish to use another charset you must select it below,
-	submit the form, and then enter your string.<br>
+	submit the form and wait for a new page, and then enter your
+	string.<br>
 
       <input type=text name=data size=40 value="<?php print $data ?>"><br>
 
-      <input type=radio name=mode value=stringprep <?php if ($mode == "stringprep") { print "checked"; } ?>>Prepare string using profile: <select name=profile>
+      <input type=radio name=mode value=stringprep <?php if ($mode == "stringprep") { print "checked"; } ?>>Prepare string using profile:
+
+      <select name=profile>
 	<option <?php if ($profile == "Nameprep" || !$profile) { print "selected"; } ?>>Nameprep
 	<option <?php if ($profile == "generic") { print "selected"; } ?>>generic
 	<option <?php if ($profile == "KRBprep") { print "selected"; } ?>>KRBprep
@@ -65,9 +67,7 @@ if (!$charset) {
       <input type=checkbox name=usestd3asciirules <?php if ($usestd3asciirules) { print "checked"; } ?>>UseSTD3ASCIIRules<br>
       <input type=checkbox name=debug <?php if ($debug) { print "checked"; } ?>>Debug<br>
 
-      <input type=hidden name="lastcharset" value="<?php print $charset; ?>">
-
-      Use specified charset for next reload: <select name=charset>
+      Change charset of page to: <select name=charset>
 	<option <?php if ($charset == "ANSI_X3.4-1968") { print "selected"; } ?>>ANSI_X3.4-1968
 	<option <?php if ($charset == "ANSI_X3.110-1983") { print "SELECTED"; } ?>>ANSI_X3.110-1983
 	<option <?php if ($charset == "ANSI_X3.4-1968") { print "SELECTED"; } ?>>ANSI_X3.4-1968
@@ -266,6 +266,9 @@ if (!$charset) {
 	<option <?php if ($charset == "VISCII") { print "SELECTED"; } ?>>VISCII
 	<option <?php if ($charset == "WIN-SAMI-2") { print "SELECTED"; } ?>>WIN-SAMI-2
 	</select><br>
+
+      <input type=hidden name="lastcharset" value="<?php print $charset; ?>">
+
       <input type=submit><br>
     </form>
 
