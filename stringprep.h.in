@@ -79,15 +79,15 @@ extern "C"
   struct Stringprep_table_element
   {
     uint32_t start;
-    uint32_t end;				/* 0 if only one character */
-    uint32_t map[STRINGPREP_MAX_MAP_CHARS];/* NULL if end is not 0 */
+    uint32_t end;		/* 0 if only one character */
+    uint32_t map[STRINGPREP_MAX_MAP_CHARS];	/* NULL if end is not 0 */
   };
   typedef struct Stringprep_table_element Stringprep_table_element;
 
   struct Stringprep_table
   {
-    int operation;
-    int flags;
+    enum Stringprep_profile_steps operation;
+    enum Stringprep_profile_flags flags;
     Stringprep_table_element *table;
     char *name;
   };
@@ -121,10 +121,14 @@ extern "C"
   extern Stringprep_table_element stringprep_generic_D_1[];
   extern Stringprep_table_element stringprep_generic_D_2[];
 
+  /* Generic (for debugging) */
+
   extern Stringprep_profile stringprep_generic[];
 
 #define stringprep_generic(in, maxlen)		\
   stringprep(in, maxlen, 0, stringprep_generic)
+
+  /* Nameprep */
 
   extern Stringprep_profile stringprep_nameprep[];
 
@@ -134,12 +138,22 @@ extern "C"
 #define stringprep_nameprep_no_unassigned(in, maxlen)			\
   stringprep(in, maxlen, STRINGPREP_NO_UNASSIGNED, stringprep_nameprep)
 
+  /* SASL */
+
   extern Stringprep_profile stringprep_saslprep[];
+  extern Stringprep_profile stringprep_plain[];
+
+#define stringprep_plain(in, maxlen)		\
+  stringprep(in, maxlen, 0, stringprep_plain)
+
+  /* Kerberos */
 
   extern Stringprep_profile stringprep_kerberos5[];
 
 #define stringprep_kerberos5(in, maxlen)		\
   stringprep(in, maxlen, 0, stringprep_kerberos5)
+
+  /* XMPP */
 
   extern Stringprep_profile stringprep_xmpp_nodeprep[];
   extern Stringprep_profile stringprep_xmpp_resourceprep[];
@@ -150,23 +164,24 @@ extern "C"
 #define stringprep_xmpp_resourceprep(in, maxlen)		\
   stringprep(in, maxlen, 0, stringprep_xmpp_resourceprep)
 
-  extern Stringprep_profile stringprep_plain[];
-
-#define stringprep_plain(in, maxlen)		\
-  stringprep(in, maxlen, 0, stringprep_plain)
+  /* iSCSI */
 
   extern Stringprep_profile stringprep_iscsi[];
 
 #define stringprep_iscsi(in, maxlen)		\
   stringprep(in, maxlen, 0, stringprep_iscsi)
 
-/* API */
+  /* API */
 
-  extern int stringprep (char *in, size_t maxlen, int flags,
-			 Stringprep_profile * profile);
+  extern enum Stringprep_rc
+    stringprep (char *in, size_t maxlen,
+		enum Stringprep_profile_flags flags,
+		struct Stringprep_table *profile);
 
-  extern int stringprep_profile (char *in, char **out,
-				 char *profile, int flags);
+  extern enum Stringprep_rc
+    stringprep_profile (char *in,
+			char **out,
+			char *profile, enum Stringprep_profile_flags flags);
 
   extern const char *stringprep_check_version (const char *req_version);
 
@@ -176,13 +191,13 @@ extern "C"
   extern uint32_t stringprep_utf8_to_unichar (const char *p);
 
   extern uint32_t *stringprep_utf8_to_ucs4 (const char *str, ssize_t len,
-					    size_t *items_written);
-  extern char *stringprep_ucs4_to_utf8 (const uint32_t *str, ssize_t len,
-					size_t *items_read,
-					size_t *items_written);
+					    size_t * items_written);
+  extern char *stringprep_ucs4_to_utf8 (const uint32_t * str, ssize_t len,
+					size_t * items_read,
+					size_t * items_written);
 
   extern char *stringprep_utf8_nfkc_normalize (const char *str, ssize_t len);
-  extern uint32_t *stringprep_ucs4_nfkc_normalize (uint32_t *str,
+  extern uint32_t *stringprep_ucs4_nfkc_normalize (uint32_t * str,
 						   ssize_t len);
 
   extern const char *stringprep_locale_charset (void);
