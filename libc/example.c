@@ -65,6 +65,7 @@ main(int argc, char *argv[])
   else if (res)
     printf("address `%s'\ncanonical name `%s'\n",
 	   res->ai_addr ?
+	   /* FIXME: Use inet_ntop, so it works for IPv6 too. */
 	   inet_ntoa(((struct sockaddr_in*)res->ai_addr)->sin_addr) : "ERROR",
 	   res->ai_canonname ? res->ai_canonname : "ERROR");
   else
