@@ -1,6 +1,9 @@
 Makefile
 Makefile.gdoc
 Makefile.in
+components.eps
+components.pdf
+components.png
 example.c.texi
 example2.c.texi
 example3.c.texi
