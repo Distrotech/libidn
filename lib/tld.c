@@ -37,7 +37,7 @@
  * to only use library deault tables.
  *
  * Return value: Return structure corresponding to TLD @tld_str, first
- * looking through @xtra_tlds then thru built-in list, or %NULL if no
+ * looking through @overrides then thru built-in list, or %NULL if no
  * such structure found.
  */
 const Tld_table *
@@ -259,15 +259,15 @@ tld_check_4tz (const uint32_t * in, size_t * errpos, const Tld_table * tld)
  * zero terminated).
  * @inlen: Number of unicode code points.
  * @errpos: Position of offending character is returned here.
- * @xtra_tlds: An array of additional domain restriction structures
+ * @overrides: An array of additional domain restriction structures
  *  that complement and supersede the built-in information.
  *
  * Test each of the code points in @in for whether or not they are
- * allowed by the information in @xtra_tlds or by the built-in TLD
+ * allowed by the information in @overrides or by the built-in TLD
  * restriction data. When data for the same TLD is available both
- * internally and in @xtra_tlds, the information in @xtra_tlds takes
+ * internally and in @overrides, the information in @overrides takes
  * precedence. If several entries for a specific TLD are found, the
- * first one is used.  If @xtra_tlds is %NULL, only the built-in
+ * first one is used.  If @overrides is %NULL, only the built-in
  * information is used.  The position of the first offending character
  * is returned in @errpos.
  *
@@ -278,7 +278,7 @@ tld_check_4tz (const uint32_t * in, size_t * errpos, const Tld_table * tld)
  */
 int
 tld_check_4i (const uint32_t * in, size_t inlen, size_t * errpos,
-	      const Tld_table ** xtra_tlds)
+	      const Tld_table ** overrides)
 {
   const uint32_t *ipos;
   const Tld_table *tld;
@@ -298,7 +298,7 @@ tld_check_4i (const uint32_t * in, size_t inlen, size_t * errpos,
     }
 
   /* Retrieve appropriate data structure. */
-  tld = tld_get_table (domain, xtra_tlds);
+  tld = tld_get_table (domain, overrides);
   free (domain);
 
   return tld_check_4ti (in, inlen, errpos, tld);
@@ -308,15 +308,15 @@ tld_check_4i (const uint32_t * in, size_t inlen, size_t * errpos,
  * tld_check_4z
  * @in: Zero-terminated array of unicode code points to process.
  * @errpos: Position of offending character is returned here.
- * @xtra_tlds: An array of additional domain restriction structures
+ * @overrides: An array of additional domain restriction structures
  * that complement and supersede the built-in information.
  *
  * Test each of the code points in @in for whether or not they are
- * allowed by the information in @xtra_tlds or by the built-in TLD
+ * allowed by the information in @overrides or by the built-in TLD
  * restriction data. When data for the same TLD is available both
- * internally and in @xtra_tlds, the information in @xtra_tlds takes
+ * internally and in @overrides, the information in @overrides takes
  * precedence. If several entries for a specific TLD are found, the
- * first one is used.  If @xtra_tlds is %NULL, only the built-in
+ * first one is used.  If @overrides is %NULL, only the built-in
  * information is used.  The position of the first offending character
  * is returned in @errpos.
  *
@@ -327,7 +327,7 @@ tld_check_4i (const uint32_t * in, size_t inlen, size_t * errpos,
  */
 int
 tld_check_4z (const uint32_t * in, size_t * errpos,
-	      const Tld_table ** xtra_tlds)
+	      const Tld_table ** overrides)
 {
   const uint32_t *ipos = in;
 
@@ -337,22 +337,22 @@ tld_check_4z (const uint32_t * in, size_t * errpos,
   while (*ipos)
     ipos++;
 
-  return tld_check_4i (in, ipos - in, errpos, xtra_tlds);
+  return tld_check_4i (in, ipos - in, errpos, overrides);
 }
 
 /**
  * tld_check_8z
  * @in: Zero-terminated UTF8 string to process.
  * @errpos: Position of offending character is returned here.
- * @xtra_tlds: An array of additional domain restriction structures
+ * @overrides: An array of additional domain restriction structures
  * that complement and supersede the built-in information.
  *
  * Test each of the characters in @in for whether or not they are
- * allowed by the information in @xtra_tlds or by the built-in TLD
+ * allowed by the information in @overrides or by the built-in TLD
  * restriction data. When data for the same TLD is available both
- * internally and in @xtra_tlds, the information in @xtra_tlds takes
+ * internally and in @overrides, the information in @overrides takes
  * precedence. If several entries for a specific TLD are found, the
- * first one is used.  If @xtra_tlds is %NULL, only the built-in
+ * first one is used.  If @overrides is %NULL, only the built-in
  * information is used.  The position of the first offending character
  * is returned in @errpos.  Note that the error position refers to the
  * decoded character offset rather than the byte position in the
@@ -364,7 +364,7 @@ tld_check_4z (const uint32_t * in, size_t * errpos,
  * general failure conditions.
  */
 int
-tld_check_8z (const char *in, size_t * errpos, const Tld_table ** xtra_tlds)
+tld_check_8z (const char *in, size_t * errpos, const Tld_table ** overrides)
 {
   uint32_t *iucs;
   size_t ilen;
@@ -378,7 +378,7 @@ tld_check_8z (const char *in, size_t * errpos, const Tld_table ** xtra_tlds)
   if (!iucs)
     return TLD_MALLOC_ERROR;
 
-  rc = tld_check_4i (iucs, ilen, errpos, xtra_tlds);
+  rc = tld_check_4i (iucs, ilen, errpos, overrides);
 
   free (iucs);
 
@@ -389,15 +389,15 @@ tld_check_8z (const char *in, size_t * errpos, const Tld_table ** xtra_tlds)
  * tld_check_lz
  * @in: Zero-terminated string in the current locales encoding to process.
  * @errpos: Position of offending character is returned here.
- * @xtra_tlds: An array of additional domain restriction structures
+ * @overrides: An array of additional domain restriction structures
  * that complement and supersede the built-in information.
  *
  * Test each of the characters in @in for whether or not they are
- * allowed by the information in @xtra_tlds or by the built-in TLD
+ * allowed by the information in @overrides or by the built-in TLD
  * restriction data. When data for the same TLD is available both
- * internally and in @xtra_tlds, the information in @xtra_tlds takes
+ * internally and in @overrides, the information in @overrides takes
  * precedence. If several entries for a specific TLD are found, the
- * first one is used.  If @xtra_tlds is %NULL, only the built-in
+ * first one is used.  If @overrides is %NULL, only the built-in
  * information is used.  The position of the first offending character
  * is returned in @errpos.  Note that the error position refers to the
  * decoded character offset rather than the byte position in the
@@ -409,7 +409,7 @@ tld_check_8z (const char *in, size_t * errpos, const Tld_table ** xtra_tlds)
  * general failure conditions.
  */
 int
-tld_check_lz (const char *in, size_t * errpos, const Tld_table ** xtra_tlds)
+tld_check_lz (const char *in, size_t * errpos, const Tld_table ** overrides)
 {
   char *utf8;
   int rc;
@@ -422,7 +422,7 @@ tld_check_lz (const char *in, size_t * errpos, const Tld_table ** xtra_tlds)
     return TLD_ICONV_ERROR;
 
 
-  rc = tld_check_8z (utf8, errpos, xtra_tlds);
+  rc = tld_check_8z (utf8, errpos, overrides);
 
   free (utf8);
 

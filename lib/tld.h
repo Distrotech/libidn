@@ -87,16 +87,16 @@ extern "C"
 		     const Tld_table * tld);
 
   /* Utility interfaces that uses tld_get_* to find TLD of string,
-     then tld_get_table_* with xtra_tlds to find proper TLD table for
+     then tld_get_table_* with overrides to find proper TLD table for
      the TLD string, and then hands over to tld_check_4t*. */
   int tld_check_4i (const uint32_t * in, size_t inlen, size_t * errpos,
-		    const Tld_table ** xtra_tlds);
+		    const Tld_table ** overrides);
   int tld_check_4z (const uint32_t * in, size_t * errpos,
-		    const Tld_table ** xtra_tlds);
+		    const Tld_table ** overrides);
   int tld_check_8z (const char *in, size_t * errpos,
-		    const Tld_table ** xtra_tlds);
+		    const Tld_table ** overrides);
   int tld_check_lz (const char *in, size_t * errpos,
-		    const Tld_table ** xtra_tlds);
+		    const Tld_table ** overrides);
 
 #ifdef __cplusplus
 }
