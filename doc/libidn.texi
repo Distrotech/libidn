@@ -818,7 +818,7 @@ string of code points drawn from a larger set. Punycode is an instance
 of Bootstring that uses particular parameter values specified by this
 document, appropriate for IDNA.
 
-All punycode functions return an enumerated return code as follows:
+All functions return a exit code:
 
 @deftp {Return code} {PUNYCODE_SUCCESS = 0}
 Successful operation.
@@ -838,7 +838,7 @@ Input needs wider integers to process.
 
 The functions provided are the following two entry points:
 
-@deftypefun {enum punycode_status} punycode_encode (size_t @var{input_length}, const uint32_t @var{input[]}, const unsigned char @var{case_flags[]}, size_t * @var{output_length}, char @var{output[]})
+@deftypefun int punycode_encode (size_t @var{input_length}, const uint32_t @var{input[]}, const unsigned char @var{case_flags[]}, size_t * @var{output_length}, char @var{output[]})
 
 @var{input_length}: The input_length is the number of code points in
 the input.
@@ -856,7 +856,7 @@ output_size and output might contain garbage.
 
 @end deftypefun
 
-@deftypefun {enum punycode_status} punycode_decode (size_t @var{input_length}, const char @var{input[]}, size_t * @var{output_length}, uint32_t @var{output[]}, unsigned char @var{case_flags[]})
+@deftypefun int punycode_decode (size_t @var{input_length}, const char @var{input[]}, size_t * @var{output_length}, uint32_t @var{output[]}, unsigned char @var{case_flags[]})
 
 @var{input_length}: The input_length is the number of code points in
 the input.

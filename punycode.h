@@ -83,11 +83,11 @@ extern "C"
     punycode_overflow = PUNYCODE_OVERFLOW
   };
 
-  enum punycode_status punycode_encode (size_t input_length,
-					const uint32_t input[],
-					const unsigned char case_flags[],
-					size_t * output_length,
-					char output[]);
+  int punycode_encode (size_t input_length,
+		       const uint32_t input[],
+		       const unsigned char case_flags[],
+		       size_t * output_length,
+		       char output[]);
 
 /* punycode_encode() converts Unicode to Punycode.  The input     */
 /* is represented as an array of Unicode code points (not code    */
@@ -114,11 +114,11 @@ extern "C"
 /* except punycode_bad_input; if not punycode_success, then       */
 /* output_size and output might contain garbage.                  */
 
-  enum punycode_status punycode_decode (size_t input_length,
-					const char input[],
-					size_t * output_length,
-					uint32_t output[],
-					unsigned char case_flags[]);
+  int punycode_decode (size_t input_length,
+		       const char input[],
+		       size_t * output_length,
+		       uint32_t output[],
+		       unsigned char case_flags[]);
 
 /* punycode_decode() converts Punycode to Unicode.  The input is  */
 /* represented as an array of ASCII code points, and the output   */
