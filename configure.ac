@@ -18,7 +18,7 @@ dnl You should have received a copy of the GNU Lesser General Public
 dnl License along with GNU Libidn; if not, write to the Free Software
 dnl Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
 
-AC_INIT(libidn, 0.3.5, bug-libidn@gnu.org)
+AC_INIT([libidn],[0.3.5],[bug-libidn@gnu.org])
 
 # Library code modified:                              REVISION++
 # Interfaces changed/added/removed:   CURRENT++       REVISION=0
@@ -55,7 +55,7 @@ AC_CHECK_FUNCS(getopt_long,, [AC_LIBOBJ(getopt) AC_LIBOBJ(getopt1)])
 # Check if locale stuff works
 AC_CACHE_CHECK([if setlocale() and nl_langinfo() works],
 	ac_cv_locale_works, [
-	AC_TRY_RUN([
+	AC_RUN_IFELSE([AC_LANG_SOURCE([[
 #include <locale.h>
 #include <langinfo.h>
 int main ()
@@ -65,10 +65,7 @@ int main ()
   cs = nl_langinfo(CODESET);
   return !cs;
 }
-],
-		ac_cv_locale_works=yes,
-		ac_cv_locale_works=no,
-		ac_cv_locale_works=no)
+]])],[ac_cv_locale_works=yes],[ac_cv_locale_works=no],[ac_cv_locale_works=no])
 	])
 if test "$ac_cv_locale_works" = "yes"; then
   AC_DEFINE(LOCALE_WORKS, 1, [Define if setlocale() and nl_langinfo() works.])
