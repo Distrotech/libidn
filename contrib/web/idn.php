@@ -1,7 +1,8 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
 <html>
   <head>
-    <meta http-equiv='Content-Type' content='text/html; charset="<?php print $charset ? $charset : "ISO-8859-1" ?>"'>
+    <?php if (!$charset) { $charset = "ISO-8859-1"; } ?>
+    <meta http-equiv='Content-Type' content='text/html; charset="<?php print $charset ?>"'>
     <title>Try GNU Libidn</title>
   </head>
 
@@ -29,12 +30,13 @@
     <h2>Input</h2>
     <form>
 
-      <p>The string must be in <?php print $charset ? $charset :
-	"ISO-8859-1" ?>, if you wish to use another charset, select it
-	below and reload page:<br>
+      <p>The string must be in <?php print $charset; ?>, if you wish
+	to use another charset, select it below and reload page:<br>
 
-      <input type=text name=data size=40 value="<?php print $data ?
-	$data : "räksmörgås.josefsson.org" ?>"><br>
+	<?php if (!$lastcharset) { $data = "räksmörgås.josefsson.org"; }
+	      else if ($charset != $lastcharset) { $data = "foo"; } ?>
+
+      <input type=text name=data size=40 value="<?php print $data ?>"><br>
 
       <input type=radio name=mode value=stringprep <?php if ($mode == "stringprep") { print "checked"; } ?>>Prepare string using profile: <select name=profile>
 	<option <?php if ($profile == "Nameprep" || !$profile) { print "selected"; } ?>>Nameprep
@@ -56,6 +58,8 @@
       <input type=checkbox name=allowunassigned <?php if ($allowunassigned) { print "checked"; } ?>>Allow Unassigned<br>
       <input type=checkbox name=usestd3asciirules <?php if ($usestd3asciirules) { print "checked"; } ?>>UseSTD3ASCIIRules<br>
       <input type=checkbox name=debug <?php if ($debug) { print "checked"; } ?>>Debug<br>
+
+      <input type=hidden name="lastcharset" value="<?php print $charset; ?>">
 
       Use specified charset for next reload: <select name=charset>
 	<option <?php if ($charset == "ANSI_X3.4-1968") { print "selected"; } ?>>ANSI_X3.4-1968
@@ -264,16 +268,15 @@
 
     <pre>
 <?php
-   if ($charset) {
-     print "$ CHARSET=" .  escapeshellarg($charset) . "; export CHARSET\n";
-     putenv("CHARSET=" . escapeshellarg($charset));
-   }
-   $cmd = "echo " . escapeshellarg( $data ? $data : "räksmörgås.josefsson.org") . " | /usr/local/bin/idn" . ($debug ? " --debug" : "") . ($allowunassigned ? " --allow-unassigned" : "") . ($usestd3asciirules ? " --usestd3asciirules" : "") . ($mode == "stringprep" ? " --stringprep" : "") . ($mode == "stringprep" ? " --profile " . escapeshellarg($profile) : "") . ($mode == "punydecode" ? " --punycode-decode" : "") . ($mode == "punyencode" ? " --punycode-encode" : "") . ($mode == "toascii" || !$mode ? " --idna-to-ascii" : "") . ($mode == "tounicode" ? " --idna-to-unicode" : "") . " 2>&1";
+   print "$ CHARSET=" .  escapeshellarg($charset) . "; export CHARSET\n";
+   putenv("CHARSET=" . escapeshellarg($charset));
+   $cmd = "echo " . escapeshellarg($data) . " | /usr/local/bin/idn" . ($debug ? " --debug" : "") . ($allowunassigned ? " --allow-unassigned" : "") . ($usestd3asciirules ? " --usestd3asciirules" : "") . ($mode == "stringprep" ? " --stringprep" : "") . ($mode == "stringprep" ? " --profile " . escapeshellarg($profile) : "") . ($mode == "punydecode" ? " --punycode-decode" : "") . ($mode == "punyencode" ? " --punycode-encode" : "") . ($mode == "toascii" || !$mode ? " --idna-to-ascii" : "") . ($mode == "tounicode" ? " --idna-to-unicode" : "") . " 2>&1";
    $h = popen($cmd, "r");
    while($s = fgets($h, 1024)) { $out .= $s; };
    pclose($h);
    print "$ $cmd\n";
    print $out;
+   print "$ \n";
 ?>
 </pre>
     <hr>
