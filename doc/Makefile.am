@@ -1,5 +1,5 @@
 ## Process this file with automake to produce Makefile.in
-# Copyright (C) 2002, 2003 Simon Josefsson.
+# Copyright (C) 2002, 2003, 2004 Simon Josefsson.
 #
 # This file is part of GNU Libidn.
 #
@@ -28,7 +28,7 @@ EXTRA_DIST = gdoc libidn.html libidn.ps libidn.pdf lgpl.texi	\
 info_TEXINFOS = libidn.texi
 libidn_TEXINFOS = fdl.texi $(gdoc_TEXINFOS)
 
-AM_MAKEINFOHTMLFLAGS = --no-split --number-sections
+AM_MAKEINFOHTMLFLAGS = --no-split --number-sections --css-include=libidn.css
 
 # Man pages.
 
