@@ -19,13 +19,14 @@
 
 SUBDIRS = specifications man
 
-EXTRA_DIST = libidn.html libidn.ps libidn.pdf lgpl.texi libidn-db.xml	\
-	libidn-db.txt libidn-db.pdf libidn-db.ps html/a1470.html	\
-	html/a1593.html html/c1088.html html/c1113.html			\
-	html/c1123.html html/c1126.html html/c1131.html			\
-	html/c1136.html html/c1141.html html/c1220.html html/c16.html	\
-	html/c261.html html/c363.html html/c756.html html/c846.html	\
-	html/c9.html html/i1225.html html/i1351.html html/index.html	\
+libidn_texi_auto_deps = libidn-api-version.texi
+
+libidn_html_auto_deps = html/a1470.html html/a1593.html			\
+	html/c1088.html html/c1113.html html/c1123.html			\
+	html/c1126.html html/c1131.html html/c1136.html			\
+	html/c1141.html html/c1220.html html/c16.html html/c261.html	\
+	html/c363.html html/c756.html html/c846.html html/c9.html	\
+	html/i1225.html html/i1351.html html/index.html			\
 	html/x1016.html html/x1098.html html/x1103.html			\
 	html/x1108.html html/x1184.html html/x1578.html			\
 	html/x1696.html html/x179.html html/x195.html html/x214.html	\
@@ -35,20 +36,31 @@ EXTRA_DIST = libidn.html libidn.ps libidn.pdf lgpl.texi libidn-db.xml	\
 	html/x649.html html/x693.html html/x781.html html/x788.html	\
 	html/x898.html html/x910.html html/x917.html html/x972.html
 
+EXTRA_DIST = gdoc libidn.html libidn.ps libidn.pdf lgpl.texi	\
+	libidn-db.xml libidn-db.txt libidn-db.pdf libidn-db.ps	\
+	$(libidn_texi_auto_deps) $(libidn_html_auto_deps)
+
 info_TEXINFOS = libidn.texi
 pdf_TEXINFOS = libidn.texi
 ps_TEXINFOS = libidn.texi
 
-libidn.html: libidn.texi
-	$(MAKEINFO) --html --no-split --number-sections $^
-
-libidn_TEXINFOS = fdl.texi \
+libidn_TEXINFOS = fdl.texi $(libidn_texi_auto_deps) \
 	example.c.texi example2.c.texi example3.c.texi example4.c.texi
+
+libidn.html: libidn.texi $(libidn_TEXINFOS)
+	$(MAKEINFO) --html --no-split --number-sections $^
 
 %.c.texi: ../examples/%.c
 	sed -e 's/{/@{/g' -e 's/}/@}/g' < $< > $@
 
-libidn-db.xml: libidn.texi
+# GDOC
+
+libidn-api-version.texi: $(top_srcdir)/lib/version.c
+	$(PERL) $(srcdir)/gdoc -texinfo $^ > $@
+
+# DocBook
+
+libidn-db.xml: libidn.texi $(libidn_TEXINFOS)
 	$(MAKEINFO) --docbook --output $@ $^
 
 libidn-db.html: libidn-db.xml
