@@ -95,7 +95,7 @@ static const char print_ascii[] =
   "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
   " !\"#$%&'()*+,-./"
   "0123456789:;<=>?"
-  "@ABCDEFGHIJKLMNO"
+  "\x40ABCDEFGHIJKLMNO"
   "PQRSTUVWXYZ[\\]^_" "`abcdefghijklmno" "pqrstuvwxyz{|}~\n";
 
 
