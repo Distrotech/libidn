@@ -3,6 +3,8 @@ See the end for copying conditions.
 
 Please send libstringprep bug reports to bug-libstringprep@josefsson.org.
 
+* Version 0.0.8
+
 ** Portability fixes (now works under Cygwin on Windows 2000).
 
 ** Bug fixes.
