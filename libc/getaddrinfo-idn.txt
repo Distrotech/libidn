@@ -83,6 +83,13 @@ patch for GNU Libc with GNU Libidn since January 2003.  Binary libc
 packages with the patch exists for (at least) two GNU/Linux
 distributions.  The AI_CANONIDN flag is not yet implemented.
 
+Todo:
+-----
+
+Ulrich Drepper <drepper@redhat.com> writes:
+> For the encoding conversion code, in glibc you'd have to use the
+> glibc-internal interfaces, and not iconv() itself.
+
 Feedback
 --------
 
