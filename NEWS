@@ -2,6 +2,17 @@ Libidn NEWS -- History of user-visible changes.                 -*- outline -*-
 Copyright (C) 2002, 2003, 2004 Simon Josefsson
 See the end for copying conditions.
 
+* Version 0.5.12 (unreleased)
+
+** Java code now support the XMPP NodePrep and ResourcePrep profiles.
+
+** Bug fixes and improvements to Java code.
+The allowUnassigned flag is now respected properly.  The prohibited
+code points check now works.  Arguments are now checked.  Convenience
+method with allowUnassigned set to false was added.
+
+** API and ABI is backwards compatible with the previous version.
+
 * Version 0.5.11 (released 2004-11-21)
 
 ** Fix formatting of man pages, based on warnings from Doclifter.
