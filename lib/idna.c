@@ -449,7 +449,7 @@ idna_to_unicode_44i (const uint32_t * in, size_t inlen,
  * contain several labels, separated by dots.  The output buffer must
  * be deallocated by the caller.
  *
- * Return value: Returns IDNA_SUCCESS on success, or error code.
+ * Return value: Returns %IDNA_SUCCESS on success, or error code.
  **/
 int
 idna_to_ascii_4z (const uint32_t * input, char **output, int flags)
@@ -545,7 +545,7 @@ idna_to_ascii_4z (const uint32_t * input, char **output, int flags)
  * contain several labels, separated by dots.  The output buffer must
  * be deallocated by the caller.
  *
- * Return value: Returns IDNA_SUCCESS on success, or error code.
+ * Return value: Returns %IDNA_SUCCESS on success, or error code.
  **/
 int
 idna_to_ascii_8z (const char *input, char **output, int flags)
@@ -578,7 +578,7 @@ idna_to_ascii_8z (const char *input, char **output, int flags)
  * domain name may contain several labels, separated by dots.  The
  * output buffer must be deallocated by the caller.
  *
- * Return value: Returns IDNA_SUCCESS on success, or error code.
+ * Return value: Returns %IDNA_SUCCESS on success, or error code.
  **/
 int
 idna_to_ascii_lz (const char *input, char **output, int flags)
@@ -609,7 +609,7 @@ idna_to_ascii_lz (const char *input, char **output, int flags)
  * separated by dots.  The output buffer must be deallocated by the
  * caller.
  *
- * Return value: Returns IDNA_SUCCESS on success, or error code.
+ * Return value: Returns %IDNA_SUCCESS on success, or error code.
  **/
 int
 idna_to_unicode_4z4z (const uint32_t * input, uint32_t ** output, int flags)
@@ -685,7 +685,7 @@ idna_to_unicode_4z4z (const uint32_t * input, uint32_t ** output, int flags)
  * separated by dots.  The output buffer must be deallocated by the
  * caller.
  *
- * Return value: Returns IDNA_SUCCESS on success, or error code.
+ * Return value: Returns %IDNA_SUCCESS on success, or error code.
  **/
 int
 idna_to_unicode_8z4z (const char *input, uint32_t ** output, int flags)
@@ -716,7 +716,7 @@ idna_to_unicode_8z4z (const char *input, uint32_t ** output, int flags)
  * separated by dots.  The output buffer must be deallocated by the
  * caller.
  *
- * Return value: Returns IDNA_SUCCESS on success, or error code.
+ * Return value: Returns %IDNA_SUCCESS on success, or error code.
  **/
 int
 idna_to_unicode_8z8z (const char *input, char **output, int flags)
@@ -747,7 +747,7 @@ idna_to_unicode_8z8z (const char *input, char **output, int flags)
  * name may contain several labels, separated by dots.  The output
  * buffer must be deallocated by the caller.
  *
- * Return value: Returns IDNA_SUCCESS on success, or error code.
+ * Return value: Returns %IDNA_SUCCESS on success, or error code.
  **/
 int
 idna_to_unicode_8zlz (const char *input, char **output, int flags)
@@ -779,7 +779,7 @@ idna_to_unicode_8zlz (const char *input, char **output, int flags)
  * The domain name may contain several labels, separated by dots.  The
  * output buffer must be deallocated by the caller.
  *
- * Return value: Returns IDNA_SUCCESS on success, or error code.
+ * Return value: Returns %IDNA_SUCCESS on success, or error code.
  **/
 int
 idna_to_unicode_lzlz (const char *input, char **output, int flags)
