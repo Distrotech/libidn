@@ -23,7 +23,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stringprep.h>		/* stringprep_locale_charset() */
-#include <idna.h>		/* idna_localeace_to_locale() */
+#include <idna.h>		/* idna_to_ascii_lz() */
 
 /*
  * Compiling using libtool and pkg-config is recommended:
@@ -56,7 +56,7 @@ main (int argc, char *argv[])
     printf ("%02x ", buf[i] & 0xFF);
   printf ("\n");
 
-  rc = idna_localeace_to_locale (buf, &p);
+  rc = idna_to_ascii_lz (buf, &p, 0);
   if (rc != IDNA_SUCCESS)
     {
       printf ("ToUnicode() failed... %d\n", rc);

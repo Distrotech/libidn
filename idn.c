@@ -40,7 +40,7 @@ main (int argc, char *argv[])
   struct gengetopt_args_info args_info;
   char readbuf[BUFSIZ];
   char *p, *r;
-  unsigned long *q;
+  uint32_t *q;
   int rc;
 
   if (cmdline_parser(argc, argv, &args_info) != 0)
@@ -185,7 +185,7 @@ main (int argc, char *argv[])
 	  size_t len, len2;
 
 	  len = BUFSIZ;
-	  q = (unsigned long*) malloc(len * sizeof(q[0]));
+	  q = (uint32_t*) malloc(len * sizeof(q[0]));
 	  if (!q)
 	    {
 	      sprintf(readbuf, "%s: malloc() failed: ", argv[0]);
@@ -258,9 +258,11 @@ main (int argc, char *argv[])
 		fprintf(stderr, "input[%d] = U+%04x\n", i, q[i] & 0xFFFF);
 	    }
 
-	  rc = idna_to_ascii_from_ucs4 (q, &r,
-					args_info.allow_unassigned_given,
-					args_info.usestd3asciirules_given);
+	  rc = idna_to_ascii_4z (q, &r,
+				 (args_info.allow_unassigned_given ?
+				  IDNA_ALLOW_UNASSIGNED : 0) |
+				 (args_info.usestd3asciirules_given ?
+				  IDNA_USE_STD3_ASCII_RULES : 0));
 	  free(q);
 	  if (rc != IDNA_SUCCESS)
 	    {
@@ -299,9 +301,11 @@ main (int argc, char *argv[])
 	    }
 	  free(q);
 
-	  rc = idna_to_unicode_ucs4_from_utf8
-	    (p, &q, args_info.allow_unassigned_given,
-	     args_info.usestd3asciirules_given);
+	  rc = idna_to_unicode_4z4z (p, &q,
+				     (args_info.allow_unassigned_given ?
+				      IDNA_ALLOW_UNASSIGNED : 0) |
+				     (args_info.usestd3asciirules_given ?
+				      IDNA_USE_STD3_ASCII_RULES : 0));
 	  free(p);
 	  if (rc != IDNA_SUCCESS)
 	    {
