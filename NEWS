@@ -4,6 +4,11 @@ See the end for copying conditions.
 
 * Version 0.5.10 (unreleased)
 
+** Libtool's -export-symbols-regex is now used to only export official APIs.
+Before, applications might accidentally access internal functions.
+Note that this is not supported on all platforms, so you must still
+make sure you are not using undocumented symbols in Libidn.
+
 ** API and ABI is backwards compatible with the previous version.
 
 * Version 0.5.9 (released 2004-11-07)
