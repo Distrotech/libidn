@@ -22,7 +22,6 @@ stringprep_kerberos5: DEPRECATED.
 Tld_table_element:
 Tld_table:
 Tld_rc: ADD.  New data types.
-tld_tables: ADD.  New variable with built-in TLD tables.
 tld_get_4:
 tld_get_4z:
 tld_get_z: ADD.  New functions to extract TLD from string.
