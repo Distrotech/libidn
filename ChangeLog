@@ -1,3 +1,117 @@
+2003-08-13  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Version 0.2.2.
+
+2003-08-13  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Fix.
+
+2003-08-13  Simon Josefsson <simon@josefsson.org>
+
+	* Makefile.am: Fix release target.
+
+2003-08-13  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS, TODO: Add.
+
+2003-08-13  Simon Josefsson <simon@josefsson.org>
+
+	* punycode.c: Typo.
+
+2003-08-13  Simon Josefsson <simon@josefsson.org>
+
+	* punycode.h: Indent.
+
+2003-08-13  Simon Josefsson <simon@josefsson.org>
+
+	* punycode.h: Revert to RFC code: use punycode_status.
+
+2003-08-13  Simon Josefsson <simon@josefsson.org>
+
+	* punycode.c: Revert to RFC code: use punycode_uint and enum
+	  punycode_status.  However, we do continue to use size_t to
+	  promote use of sizeof() by application writers.  We return
+	  punycode_bad_input if a size_t value exceeds the largest
+	  punycode_uint, since the code presumably cannot handle that.	If
+	  size_t is smaller than punycode_uint, it seems unlikely that an
+	  application could be able to pass a string that is longer than
+	  SIZE_MAX anyway, but should it happen the worst that occur is
+	  that the punycode code will only see the beginning of the string,
+	  which isn't unreasonable on a platform with a small SIZE_MAX.
+
+2003-08-13  Simon Josefsson <simon@josefsson.org>
+
+	* punycode.h: Define and use punycode_uint.
+
+2003-08-08  Simon Josefsson <simon@josefsson.org>
+
+	* toutf8.c: (stringprep_locale_charset): Improve docstring.
+
+2003-08-01  Simon Josefsson <simon@josefsson.org>
+
+	* draft-ietf-ips-iscsi-string-prep-05.txt: Add.
+
+2003-07-31  Simon Josefsson <simon@josefsson.org>
+
+	* Makefile.am: Replace gnudist with gnuftp.
+
+2003-07-31  Simon Josefsson <simon@josefsson.org>
+
+	* THANKS, NEWS: Add.
+
+2003-07-31  Simon Josefsson <simon@josefsson.org>
+
+	* idn.c: Encode -u output in locale charset, suggested by Adam M.
+	  Costello.
+
+2003-07-11  Simon Josefsson <simon@josefsson.org>
+
+	* memset.c: Rewrite to get LGPL code.
+
+2003-07-11  Simon Josefsson <simon@josefsson.org>
+
+	* strdup.c: Revert, to get LGPL code.
+
+2003-07-11  Simon Josefsson <simon@josefsson.org>
+
+	* Makefile.am: Install but don't distribute idn-int.h.
+
+2003-07-11  Simon Josefsson <simon@josefsson.org>
+
+	* m4/Makefile.am, Makefile.am, configure.ac: Dist m4's.
+
+2003-07-11  Simon Josefsson <simon@josefsson.org>
+
+	* configure.ac, Makefile.am, strdup.c, m4/memset.m4,
+	  m4/onceonly_2_57.m4, m4/strdup.m4: Replace AC_REPLACE_OBJ with
+	  gnulib.
+
+2003-07-11  Simon Josefsson <simon@josefsson.org>
+
+	* configure.ac: Bump versions.
+
+2003-07-11  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2003-07-11  Simon Josefsson <simon@josefsson.org>
+
+	* Makefile.am: Use BUILT_SOURCES for idn_cmd.* and idn-int.h, and
+	  don't include idn-int.h in the distribution.
+
+2003-07-08  Simon Josefsson <simon@josefsson.org>
+
+	* THANKS: Add.
+
+2003-07-08  Simon Josefsson <simon@josefsson.org>
+
+	* m4/ax_create_stdint_h.m4: Look in sys/types.h too, for cygwin.
+
+2003-07-06  Simon Josefsson <simon@josefsson.org>
+
+	* ANNOUNCE, doc/libidn.texi: Don't use () when talking about the
+	  name of a function.
+
 2003-07-04  Simon Josefsson <simon@josefsson.org>
 
 	* NEWS: Version 0.2.1.
