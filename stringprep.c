@@ -101,6 +101,9 @@ stringprep_apply_table_to_string (unsigned long *ucs4,
  * @profile: pointer to stringprep profile to use.
  *
  * Prepare the input UTF-8 string according to the stringprep profile.
+ * Normally application programmers use stringprep profile macros such
+ * as stringprep_nameprep(), stringprep_kerberos5() etc instead of
+ * calling this function directly.
  *
  * Return value: Returns 0 iff successful, or an error code.
  **/

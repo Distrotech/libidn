@@ -21,7 +21,8 @@
 
 #include "internal.h"
 
-/** idna_to_ascii
+/**
+ * idna_to_ascii
  * @in: input array with unicode code points.
  * @inlen: length of input array with unicode code points.
  * @out: output zero terminated string that must have room for at
@@ -48,6 +49,8 @@
  * range to begin with (although it could fail). Applying the ToASCII
  * operation multiple times has exactly the same effect as applying it just
  * once.
+ *
+ * Return value: Returns 0 on success, or an error code.
  */
 int
 idna_to_ascii (const unsigned long *in, size_t inlen,
@@ -282,7 +285,8 @@ step3:
   return IDNA_SUCCESS;
 }
 
-/** idna_to_unicode
+/**
+ * idna_to_unicode
  * @in: input array with unicode code points.
  * @inlen: length of input array with unicode code points.
  * @out: output array with unicode code points.
