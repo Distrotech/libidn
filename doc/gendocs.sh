@@ -138,7 +138,7 @@ fi
 
 echo Generating output formats for $srcfile
 # remove any old junk
-rm -rf $outdir/
+rm -rf $outdir/*
 
 echo Generating info files...
 ${MAKEINFO} -o $PACKAGE.info $srcfile
