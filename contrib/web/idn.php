@@ -314,7 +314,7 @@
 	<li><a href="http://josefsson.org/idn.php?data=bon%C4%A1usa%C4%A7%C4%A7a&mode=toascii&charset=UTF-8">UTF-8 Maltese Malti</a>
 	<li><a href="http://josefsson.org/idn.php?data=bon%F5usa%B1%B1a&mode=toascii&charset=ISO-8859-3">ISO-8859-3 Maltese Malti (same as previous)</a>
 	<li><a href="http://josefsson.org/idn.php?data=%CE%B5%CE%BB%CE%BB%CE%B7%CE%BD%CE%B9%CE%BA%CE%AC&mode=toascii&charset=UTF-8">UTF-8 Greek</a>
-	<li><a href="http://josefsson.org/idn.php?data=%E5%EB%EB%E7%ED%E9%EA%DC&mode=toascii&charset=ISO-8859-7">ISO-8859-7 Greek</a>
+	<li><a href="http://josefsson.org/idn.php?data=%E5%EB%EB%E7%ED%E9%EA%DC&mode=toascii&charset=ISO-8859-7">ISO-8859-7 Greek (same as previous)</a>
     </ul>
 
     <hr>
