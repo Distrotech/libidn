@@ -2,12 +2,16 @@ Libidn NEWS -- History of user-visible changes.                 -*- outline -*-
 Copyright (C) 2002, 2003 Simon Josefsson
 See the end for copying conditions.
 
-* Version 0.1.13 (unreleased)
+* Version 0.1.13 (released 2003-03-13)
 
 ** Unfinished Java *.class files implementing the libidn API.
 See the contrib/java/ directory.  It is implemented using the Java
 Native Interface, and light initial testing indicate interoperability
 between GCJ, IBM's JDK and Sun's JDK.
+
+** Building is now silent when gengetopt isn't found.
+
+** Bug fixes.
 
 * Version 0.1.12 (released 2003-03-06)
 
