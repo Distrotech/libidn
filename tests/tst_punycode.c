@@ -23,12 +23,10 @@
 # include "config.h"
 #endif
 
-#if STDC_HEADERS
-# include <stdio.h>
-# include <stdlib.h>
-# include <stdarg.h>
-# include <string.h>
-#endif
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdarg.h>
+#include <string.h>
 
 #include <punycode.h>
 
@@ -50,12 +48,12 @@ fail (const char *format, ...)
 }
 
 static void
-ucs4print (uint32_t * str, ssize_t len)
+ucs4print (uint32_t * str, size_t len)
 {
-  int i;
+  size_t i;
 
   printf ("\t;; ");
-  for (i = 0; len >= 0 ? i < len : str[i]; i++)
+  for (i = 0; i < len; i++)
     {
       printf ("U+%04ux ", str[i]);
       if ((i + 1) % 4 == 0)
