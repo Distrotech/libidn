@@ -1,3 +1,66 @@
+2002-12-13 08:41  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS, configure.ac:
+
+	Release 0.0.8.  
+
+2002-12-13 08:40  Simon Josefsson <simon@josefsson.org>
+
+	* AUTHORS, Makefile.am, NEWS, README, THANKS, configure.ac,
+	internal.h, libstringprep.pc.in, strdup.c, stringprep.c,
+	stringprep_generic.h, stringprep_kerberos5.h,
+	stringprep_nameprep.h, toutf8.c, tst_nfkc.c, tst_stringprep.c:
+
+	Portability fixes.  
+
+2002-12-13 08:00  Simon Josefsson <simon@josefsson.org>
+
+	* Makefile.am:
+
+	Link with libiconv.  
+
+2002-12-10 17:23  Simon Josefsson <simon@josefsson.org>
+
+	* stringprep.c:
+
+	Don't use uint32_t in one odd place.  
+
+2002-12-10 15:04  Simon Josefsson <simon@josefsson.org>
+
+	* stringprep.c:
+
+	Flawfinder.  
+
+2002-12-10 15:04  Simon Josefsson <simon@josefsson.org>
+
+	* toutf8.c:
+
+	Fix.  
+
+2002-12-10 12:12  Simon Josefsson <simon@josefsson.org>
+
+	* stringprep.h.in:
+
+	Remove comma on last enum entry.  
+
+2002-12-09 12:58  Simon Josefsson <simon@josefsson.org>
+
+	* tst_nfkc.c:
+
+	Fix memory leak.  
+
+2002-12-09 12:50  Simon Josefsson <simon@josefsson.org>
+
+	* configure.ac, internal.h, stringprep.c:
+
+	Use dmalloc.  Fix memory leak when bidi fails.  
+
+2002-12-09 01:47  Simon Josefsson <simon@josefsson.org>
+
+	* tst_stringprep.c:
+
+	Check version.  
+
 2002-12-09 01:24  Simon Josefsson <simon@josefsson.org>
 
 	* NEWS, configure.ac:
