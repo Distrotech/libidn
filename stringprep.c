@@ -52,86 +52,86 @@
 #define DBG 0
 
 static int
-stringprep_find_character_in_table (long ucs4, 
+stringprep_find_character_in_table (long ucs4,
 				    struct stringprep_table_element *table)
 {
   int i;
 
   for (i = 0; table[i].start; i++)
-    if (ucs4 >= table[i].start && 
+    if (ucs4 >= table[i].start &&
 	ucs4 <= (table[i].end ? table[i].end : table[i].start))
       return i;
-  
+
   return -1;
 }
 
 static int
-stringprep_find_string_in_table (long *ucs4, 
-				 int ucs4len, 
+stringprep_find_string_in_table (long *ucs4,
+				 int ucs4len,
 				 int *tablepos,
 				 struct stringprep_table_element *table)
 {
-  int j,pos;
+  int j, pos;
 
   for (j = 0; j < ucs4len; j++)
-    if ((pos = stringprep_find_character_in_table(ucs4[j], table)) != -1)
+    if ((pos = stringprep_find_character_in_table (ucs4[j], table)) != -1)
       {
 	if (tablepos)
 	  *tablepos = pos;
 	return j;
       }
-  
+
   return -1;
 }
 
 static int
-stringprep_apply_table_to_string (long *ucs4, 
-				  int *ucs4len, 
+stringprep_apply_table_to_string (long *ucs4,
+				  int *ucs4len,
 				  int maxucs4len,
 				  struct stringprep_table_element *table)
 {
   int i;
-  int pos,maplen;
-  
+  int pos, maplen;
+
 #if DBG
-  printf("str: ");
-  for (i=0; i < *ucs4len; i++)
-    printf("U+%06x ", ucs4[i]);
-  printf(" "); fflush(stdout);
+  printf ("in:  ");
+  for (i = 0; i < *ucs4len; i++)
+    printf ("U+%06x ", ucs4[i]);
+  printf ("\n");
 #endif
 
-  if ((pos = stringprep_find_string_in_table(ucs4, *ucs4len, &i, table)) != -1)
+  if ((pos =
+       stringprep_find_string_in_table (ucs4, *ucs4len, &i, table)) != -1)
     {
 #if DBG
-      printf("hit %06x %06x-%06x ", ucs4[pos], table[i].start, table[i].end);
-      fflush(stdout);
+      printf ("hit %06x %06x-%06x\n", ucs4[pos], table[i].start,
+	      table[i].end);
 #endif
 
-      for (maplen=0; table[i].map[maplen]; maplen++)
+      for (maplen = 0; table[i].map[maplen]; maplen++)
 	;
-      
+
       if (*ucs4len - 1 + maplen >= maxucs4len)
 	return STRINGPREP_TOO_SMALL_BUFFER;
-      
-      memmove(&ucs4[pos+maplen], &ucs4[pos+1],
-	      *ucs4len*sizeof(uint32_t) - (&ucs4[pos+1]-ucs4));
-      memcpy(&ucs4[pos], table[i].map, sizeof(uint32_t)*maplen);
+
+      memmove (&ucs4[pos + maplen], &ucs4[pos + 1],
+	       *ucs4len * sizeof (uint32_t) - (&ucs4[pos + 1] - ucs4));
+      memcpy (&ucs4[pos], table[i].map, sizeof (uint32_t) * maplen);
       *ucs4len = *ucs4len - 1 + maplen;
     }
-  
+
 #if DBG
-  printf("out: ");
-  for (i=0; i < *ucs4len; i++)
-    printf("U+%06x ", ucs4[i]);
-  printf("\n");
+  printf ("out: ");
+  for (i = 0; i < *ucs4len; i++)
+    printf ("U+%06x ", ucs4[i]);
+  printf ("\n");
 #endif
 
   return STRINGPREP_OK;
 }
 
 int
-stringprep (char *in, int maxlen, int flags,
-	    stringprep_profile * profile)
+stringprep (char *in, int maxlen, int flags, stringprep_profile * profile)
 {
   int i;
   int rc;
@@ -142,8 +142,8 @@ stringprep (char *in, int maxlen, int flags,
   int maxucs4len;
 
   ucs4 = stringprep_utf8_to_ucs4_fast (in, -1, &ucs4len);
-  maxucs4len = 4*ucs4len + 10;
-  ucs4 = realloc(ucs4, 1 + maxucs4len*sizeof(long));
+  maxucs4len = 4 * ucs4len + 10;
+  ucs4 = realloc (ucs4, 1 + maxucs4len * sizeof (long));
   if (!ucs4)
     {
       rc = STRINGPREP_MALLOC_ERROR;
@@ -164,10 +164,10 @@ stringprep (char *in, int maxlen, int flags,
 	      goto done;
 	    }
 
-	  for(ucs4len=0; ucs4[ucs4len]; ucs4len++)
+	  for (ucs4len = 0; ucs4[ucs4len]; ucs4len++)
 	    ;
 
-	  free(ucs4);
+	  free (ucs4);
 	  ucs4 = q;
 	  q = 0;
 
@@ -185,15 +185,15 @@ stringprep (char *in, int maxlen, int flags,
 	}
 
       if (!profile[i].table)
-	continue; /* this indicates an error in the profile ... */
+	continue;		/* this indicates an error in the profile ... */
 
-      rc = stringprep_apply_table_to_string  
+      rc = stringprep_apply_table_to_string
 	(ucs4, &ucs4len, maxucs4len, profile[i].table);
       if (rc != STRINGPREP_OK)
 	goto done;
     }
 
-  if (!(flags & STRINGPREP_NO_BIDI)) 
+  if (!(flags & STRINGPREP_NO_BIDI))
     {
       int done_prohibited = 0;
       int done_ral = 0;
@@ -206,7 +206,7 @@ stringprep (char *in, int maxlen, int flags,
 	  {
 	    done_prohibited = 1;
 	    rc = stringprep_apply_table_to_string
-	      (ucs4, &ucs4len,  maxucs4len, profile[i].table);
+	      (ucs4, &ucs4len, maxucs4len, profile[i].table);
 	    if (rc != STRINGPREP_OK)
 	      goto done;
 	  }
@@ -236,9 +236,9 @@ stringprep (char *in, int maxlen, int flags,
 	}
 
       if (contains_ral &&
-	  (!stringprep_find_character_in_table (ucs4[0], 
+	  (!stringprep_find_character_in_table (ucs4[0],
 						profile[i].table) ||
-	   !stringprep_find_character_in_table (ucs4[ucs4len], 
+	   !stringprep_find_character_in_table (ucs4[ucs4len],
 						profile[i].table)))
 	{
 	  rc = STRINGPREP_BIDI_LEADTRAIL_NOT_RAL;
@@ -248,22 +248,22 @@ stringprep (char *in, int maxlen, int flags,
 
   p = stringprep_ucs4_to_utf8 (ucs4, ucs4len, 0, 0);
 
-  if (strlen(p) >= maxlen)
+  if (strlen (p) >= maxlen)
     {
       rc = STRINGPREP_TOO_SMALL_BUFFER;
       goto done;
     }
 
-  strcpy(in, p);
+  strcpy (in, p);
 
   rc = STRINGPREP_OK;
 
- done:
+done:
   if (p)
-    free(p);
+    free (p);
   if (q)
-    free(q);
+    free (q);
   if (ucs4)
-    free(ucs4);
+    free (ucs4);
   return rc;
 }
