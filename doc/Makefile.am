@@ -19,32 +19,35 @@
 
 SUBDIRS = specifications man
 
-libidn_texi_auto_deps = libidn-api-version.texi
-
-libidn_html_auto_deps = html/a1470.html html/a1593.html			\
-	html/c1088.html html/c1113.html html/c1123.html			\
-	html/c1126.html html/c1131.html html/c1136.html			\
-	html/c1141.html html/c1220.html html/c16.html html/c261.html	\
-	html/c363.html html/c756.html html/c846.html html/c9.html	\
-	html/i1225.html html/i1351.html html/index.html			\
-	html/x1016.html html/x1098.html html/x1103.html			\
-	html/x1108.html html/x1184.html html/x1578.html			\
-	html/x1696.html html/x179.html html/x195.html html/x214.html	\
-	html/x232.html html/x29.html html/x297.html html/x300.html	\
-	html/x318.html html/x344.html html/x421.html html/x435.html	\
-	html/x440.html html/x45.html html/x551.html html/x617.html	\
-	html/x649.html html/x693.html html/x781.html html/x788.html	\
-	html/x898.html html/x910.html html/x917.html html/x972.html
+libidn_html_auto_deps = html/a1553.html html/a1676.html			\
+	html/c1166.html html/c1191.html html/c1201.html			\
+	html/c1204.html html/c1209.html html/c1214.html			\
+	html/c1219.html html/c1298.html html/c16.html html/c261.html	\
+	html/c364.html html/c531.html html/c793.html html/c9.html	\
+	html/c907.html html/i1303.html html/i1434.html html/index.html	\
+	html/x1042.html html/x1089.html html/x1176.html			\
+	html/x1181.html html/x1186.html html/x1262.html			\
+	html/x1661.html html/x1779.html html/x179.html html/x195.html	\
+	html/x214.html html/x232.html html/x29.html html/x297.html	\
+	html/x300.html html/x319.html html/x345.html html/x376.html	\
+	html/x446.html html/x45.html html/x480.html html/x543.html	\
+	html/x548.html html/x601.html html/x615.html html/x730.html	\
+	html/x805.html html/x825.html html/x832.html html/x919.html	\
+	html/x966.html html/x978.html html/x985.html
 
 EXTRA_DIST = gdoc libidn.html libidn.ps libidn.pdf lgpl.texi	\
 	libidn-db.xml libidn-db.txt libidn-db.pdf libidn-db.ps	\
-	$(libidn_texi_auto_deps) $(libidn_html_auto_deps)
+	$(libidn_html_auto_deps)
 
 info_TEXINFOS = libidn.texi
 pdf_TEXINFOS = libidn.texi
 ps_TEXINFOS = libidn.texi
 
-libidn_TEXINFOS = fdl.texi $(libidn_texi_auto_deps) \
+libidn_TEXINFOS = fdl.texi \
+	version.api.texi toutf8.api.texi punycode.api.texi \
+	nfkc-basic.api.texi nfkc-main.api.texi \
+	stringprep.api.texi \
+	idna-core.api.texi idna-toascii.api.texi idna-tounicode.api.texi \
 	example.c.texi example2.c.texi example3.c.texi example4.c.texi
 
 libidn.html: libidn.texi $(libidn_TEXINFOS)
@@ -55,15 +58,51 @@ libidn.html: libidn.texi $(libidn_TEXINFOS)
 
 # GDOC
 
-libidn-api-version.texi: $(top_srcdir)/lib/version.c
+%.api.texi: ../lib/%.c
 	$(PERL) $(srcdir)/gdoc -texinfo $^ > $@
+
+nfkc-basic.api.texi: ../lib/nfkc.c
+	$(PERL) $(srcdir)/gdoc \
+		-function stringprep_unichar_to_utf8 \
+		-function stringprep_utf8_to_unichar \
+		-function stringprep_ucs4_to_utf8 \
+		-function stringprep_utf8_to_ucs4 \
+		-texinfo $^ > $@
+
+nfkc-main.api.texi: ../lib/nfkc.c
+	$(PERL) $(srcdir)/gdoc \
+		-function stringprep_ucs4_nfkc_normalize \
+		-function stringprep_utf8_nfkc_normalize \
+		-texinfo $^ > $@
+
+idna-core.api.texi: ../lib/idna.c
+	$(PERL) $(srcdir)/gdoc \
+		-function idna_to_ascii_4i \
+		-function idna_to_unicode_44i \
+		-texinfo $^ > $@
+
+idna-toascii.api.texi: ../lib/idna.c
+	$(PERL) $(srcdir)/gdoc \
+		-function idna_to_ascii_4z \
+		-function idna_to_ascii_8z \
+		-function idna_to_ascii_lz \
+		-texinfo $^ > $@
+
+idna-tounicode.api.texi: ../lib/idna.c
+	$(PERL) $(srcdir)/gdoc \
+		-function idna_to_unicode_4z4z \
+		-function idna_to_unicode_8z4z \
+		-function idna_to_unicode_8z8z \
+		-function idna_to_unicode_8zlz \
+		-function idna_to_unicode_lzlz \
+		 -texinfo $^ > $@
 
 # DocBook
 
 libidn-db.xml: libidn.texi $(libidn_TEXINFOS)
 	$(MAKEINFO) --docbook --output $@ libidn.texi
 
-libidn-db.html: libidn-db.xml
+$(libidn_html_auto_deps): libidn-db.xml
 	$(DOCBOOK2HTML) -o html $^
 
 libidn-db.txt: libidn-db.xml
