@@ -24,7 +24,7 @@ dist_lisp_DATA = punycode.el idna.el
 bin_PROGRAMS = idn
 
 BUILT_SOURCES = idn_cmd.c idn_cmd.h
-idn_SOURCES = idn.c gettext.h idn.ggo idn_cmd.c idn_cmd.h
+idn_SOURCES = idn.c idn.ggo idn_cmd.c idn_cmd.h
 DISTCLEANFILES = $(BUILT_SOURCES)
 idn_LDADD = ../lib/libidn.la ../gl/libgnu.la $(LTLIBINTL)
 
