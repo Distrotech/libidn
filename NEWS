@@ -11,7 +11,7 @@ attempted to guess the system locale, in contrast with the current
 application's locale, via some setlocale save/set/reset magic.  This
 change may require you to invoke setlocale() in your application,
 which is (should be) required for non-ASCII to work anyway.  Based on
-discussion with Ulrich Drepper <drepper@redhat.com>.
+discussion with Ulrich Drepper.
 
 ** Fixed SASLprep tables to prohibit non-ASCII space in output.
 Non-ASCII space has always been mapped to ASCII space, so it is not
