@@ -4,10 +4,19 @@ See the end for copying conditions.
 
 * Version 0.4.10 (unreleased)
 
+** Functions to detect "normalization problem sequences" as per PR-29 added.
+See the new chapter "PR29 Functions" in the manual
+(doc/libidn.{ps,pdf,html}) for more information and the background
+story.  An external link that discuss the problem is
+<http://www.unicode.org/review/pr-29.html>.
+
 ** More translations.
 Added Esperanto (by Edmund GRIMLEY EVANS).
 
 ** API and ABI is backwards compatible with the previous version.
+pr29.h: ADD.  Prototypes for PR29 types and functions.
+pr29_4, pr29_4z, pr29_8z: ADD.  New API entry points for PR29 functions.
+Pr29_rc: ADD.  New error code enum type for PR29 functions.
 
 * Version 0.4.9 (released 2004-06-11)
 

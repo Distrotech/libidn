@@ -67,6 +67,7 @@ section entitled "GNU Free Documentation License".
 * Punycode Functions::		Punycode functions.
 * IDNA Functions::		IDNA functions.
 * TLD Functions::		TLD functions.
+* PR29 Functions::		Detect strings non-idempotent under NFKC.
 * Examples::                    Demonstrate how to use the library.
 * Invoking idn::		Command line interface to the library.
 * Emacs API::                   Emacs Lisp API for Libidn.
@@ -1307,6 +1308,81 @@ No top-level domain found in domain string.
 @include texi/tld_check_4z.texi
 @include texi/tld_check_8z.texi
 @include texi/tld_check_lz.texi
+
+@c **********************************************************
+@c ********************** PR29 Functions ********************
+@c **********************************************************
+@node PR29 Functions
+@chapter PR29 Functions
+@cindex PR29 Functions
+
+A deficiency in the specification of Unicode Normalization Forms has
+been found.  The consequence is that some strings can be normalized
+into different strings by different implementations.  In other words,
+two different implementations may return different output for the same
+input (because the interpretation of the specification is
+ambiguous). Further, an implementation invoked again on the one of the
+output strings may return a different string (because one of the
+interpretation of the ambiguous specification make normalization
+non-idempotent).  Fortunately, only a select few character sequence
+exhibit this problem, and none of them are expected to occur in
+natural languages (due to different linguistic uses of the involved
+characters).
+
+A full discussion of the problem may be found at
+@url{http://www.unicode.org/review/pr-29.html}.
+
+The PR29 functions below allow you to detect the problem sequence.  So
+when would you want to use these functions?  For most applications,
+such as those using Nameprep for IDN, this is likely only to be an
+interoperability problem.  Thus, you may not want to care about it, as
+the character sequences will rarely occur naturally.  However, if you
+are using a profile, such as SASLPrep, to process authentication
+tokens; authorization tokens; or passwords, there is a real danger
+that attackers may try to use the peculiarities in these strings to
+attack parts of your system.  As only a small number of strings, and
+no naturally occurring strings, exhibit this problem, the conservative
+approach of rejecting the strings is recommended.  If this approach is
+not used, you should instead verify that all parts of your system,
+that process the tokens and passwords, use a NFKC implementation that
+produce the same output for the same input.
+
+@section Header file @code{pr29.h}
+
+To use the functions explained in this chapter, you need to include
+the file @file{pr29.h} using:
+
+@example
+#include <pr29.h>
+@end example
+
+@section Return Codes
+
+Most functions return a exit code:
+
+@deftypevr {Return code} {Pr29_rc} {PR29_SUCCESS = 0}
+Successful operation.  This value is guaranteed to always be zero, the
+remaining ones are only guaranteed to hold non-zero values, for
+logical comparison purposes.
+@end deftypevr
+
+@deftypevr {Return code} {Pr29_rc} PR29_PROBLEM
+A problem sequence was encountered.
+@end deftypevr
+
+@deftypevr {Return code} {Pr29_rc} PR29_STRINGPREP_ERROR
+The character set conversion failed (only for @code{pr29_8} and
+@code{pr29_8z}).
+@end deftypevr
+
+@section Core Functions
+
+@include texi/pr29_4.texi
+
+@section Utility Functions
+
+@include texi/pr29_4z.texi
+@include texi/pr29_8z.texi
 
 @c **********************************************************
 @c ***********************  Examples  ***********************
