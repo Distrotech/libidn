@@ -2,7 +2,7 @@ Libidn NEWS -- History of user-visible changes.                 -*- outline -*-
 Copyright (C) 2002, 2003 Simon Josefsson
 See the end for copying conditions.
 
-* Version 0.2.1 (unreleased)
+* Version 0.2.1 (released 2003-07-04)
 
 ** Don't reject zero-length trailing labels as in, e.g., "www.example.org.".
 The IDNA RFC is not clear on this topic, zero-length labels in general
