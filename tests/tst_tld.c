@@ -31,51 +31,19 @@
 #include <stringprep.h>
 #include <tld.h>
 
-static int debug = 0;
-static int error_count = 0;
-static int break_on_error = 0;
-
-static void
-fail (const char *format, ...)
-{
-  va_list arg_ptr;
-
-  va_start (arg_ptr, format);
-  vfprintf (stderr, format, arg_ptr);
-  va_end (arg_ptr);
-  error_count++;
-  if (break_on_error)
-    exit (1);
-}
-
-static void
-ucs4print (const uint32_t * str, size_t len)
-{
-  size_t i;
-
-  printf ("\t;; ");
-  for (i = 0; i < len; i++)
-    {
-      printf ("U+%04ux ", str[i]);
-      if ((i + 1) % 4 == 0)
-	printf (" ");
-      if ((i + 1) % 8 == 0 && i + 1 < len)
-	printf ("\n\t;; ");
-    }
-  puts ("");
-}
+#include "utils.h"
 
 struct tld
 {
-  char *name;
-  char *tld;
+  const char *name;
+  const char *tld;
   size_t inlen;
   uint32_t in[100];
   int rc;
   int errpos;
 };
 
-const struct tld tld[] = {
+static const struct tld tld[] = {
   {
    "Simple valid French domain",
    "fr",
@@ -91,30 +59,13 @@ const struct tld tld[] = {
    3}
 };
 
-int
-main (int argc, char *argv[])
+void
+doit (void)
 {
   size_t i;
   const Tld_table *tldtable;
   size_t errpos;
   int rc;
-
-  do
-    if (strcmp (argv[argc - 1], "-v") == 0 ||
-	strcmp (argv[argc - 1], "--verbose") == 0)
-      debug = 1;
-    else if (strcmp (argv[argc - 1], "-b") == 0 ||
-	     strcmp (argv[argc - 1], "--break-on-error") == 0)
-      break_on_error = 1;
-    else if (strcmp (argv[argc - 1], "-h") == 0 ||
-	     strcmp (argv[argc - 1], "-?") == 0 ||
-	     strcmp (argv[argc - 1], "--help") == 0)
-      {
-	printf ("Usage: %s [-vbh?] [--verbose] [--break-on-error] [--help]\n",
-		argv[0]);
-	return 1;
-      }
-  while (argc-- > 1);
 
   for (i = 0; i < sizeof (tld) / sizeof (tld[0]); i++)
     {
@@ -171,9 +122,4 @@ main (int argc, char *argv[])
       else if (debug)
 	printf ("OK\n");
     }
-
-  if (debug)
-    printf ("TLD self tests done with %d errors\n", error_count);
-
-  return error_count ? 1 : 0;
 }

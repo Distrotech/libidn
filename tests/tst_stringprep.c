@@ -30,91 +30,14 @@
 
 #include <stringprep.h>
 
-static int debug = 0;
-static int error_count = 0;
-static int break_on_error = 0;
-
-static void
-fail (const char *format, ...)
-{
-  va_list arg_ptr;
-
-  va_start (arg_ptr, format);
-  vfprintf (stderr, format, arg_ptr);
-  va_end (arg_ptr);
-  error_count++;
-  if (break_on_error)
-    exit (1);
-}
-
-static void
-escapeprint (char *str, int len)
-{
-  int i;
-
-  printf (" (length %d bytes):\n\t", len);
-  for (i = 0; i < len; i++)
-    {
-      if (((str[i] & 0xFF) >= 'A' && (str[i] & 0xFF) <= 'Z') ||
-	  ((str[i] & 0xFF) >= 'a' && (str[i] & 0xFF) <= 'z') ||
-	  ((str[i] & 0xFF) >= '0' && (str[i] & 0xFF) <= '9')
-	  || (str[i] & 0xFF) == ' ' || (str[i] & 0xFF) == '.')
-	printf ("%c", (str[i] & 0xFF));
-      else
-	printf ("\\x%02X", (str[i] & 0xFF));
-      if ((i + 1) % 16 == 0 && (i + 1) < len)
-	printf ("'\n\t'");
-    }
-  printf ("\n");
-}
-
-static void
-hexprint (char *str, int len)
-{
-  int i;
-
-  printf ("\t;; ");
-  for (i = 0; i < len; i++)
-    {
-      printf ("%02x ", (str[i] & 0xFF));
-      if ((i + 1) % 8 == 0)
-	printf (" ");
-      if ((i + 1) % 16 == 0 && i + 1 < len)
-	printf ("\n\t;; ");
-    }
-  printf ("\n");
-}
-
-static void
-binprint (char *str, int len)
-{
-  int i;
-
-  printf ("\t;; ");
-  for (i = 0; i < len; i++)
-    {
-      printf ("%d%d%d%d%d%d%d%d ",
-	      (str[i] & 0xFF) & 0x80 ? 1 : 0,
-	      (str[i] & 0xFF) & 0x40 ? 1 : 0,
-	      (str[i] & 0xFF) & 0x20 ? 1 : 0,
-	      (str[i] & 0xFF) & 0x10 ? 1 : 0,
-	      (str[i] & 0xFF) & 0x08 ? 1 : 0,
-	      (str[i] & 0xFF) & 0x04 ? 1 : 0,
-	      (str[i] & 0xFF) & 0x02 ? 1 : 0, (str[i] & 0xFF) & 0x01 ? 1 : 0);
-      if ((i + 1) % 3 == 0)
-	printf (" ");
-      if ((i + 1) % 6 == 0 && i + 1 < len)
-	printf ("\n\t;; ");
-    }
-  printf ("\n");
-}
+#include "utils.h"
 
 struct stringprep
 {
-  char *comment;
-  char *in;
-  char *out;
-  char *profile;
+  const char *comment;
+  const char *in;
+  const char *out;
+  const char *profile;
   int flags;
   int rc;
 };
@@ -251,9 +174,11 @@ const struct stringprep strprep[] = {
   {"iSCSI profile", "Example-Name", "example-name", "iSCSI"},
   {"SASL profile", "Example\xC2\xA0" "Name", "Example Name", "SASLprep"},
   /* SASLprep test vectors. */
-  {"SASLprep 1 SOFT HYPHEN mapped to nothing", "x\xC2\xADy", "xy", "SASLprep"},
+  {"SASLprep 1 SOFT HYPHEN mapped to nothing", "x\xC2\xADy", "xy",
+   "SASLprep"},
   {"SASLprep 2 no transformation", "user", "user", "SASLprep"},
-  {"SASLprep 3 case preserved, will not match #2", "USER", "USER", "SASLprep"},
+  {"SASLprep 3 case preserved, will not match #2", "USER", "USER",
+   "SASLprep"},
   {"SASLprep 4 output is NFKC", "\xE2\x85\xA3", "IV", "SASLprep"},
   {"SASLprep 5 Error - prohibited character", "\x07", NULL, "SASLprep",
    0, STRINGPREP_CONTAINS_PROHIBITED},
@@ -261,8 +186,8 @@ const struct stringprep strprep[] = {
    0, STRINGPREP_BIDI_LEADTRAIL_NOT_RAL}
 };
 
-int
-main (int argc, char *argv[])
+void
+doit (void)
 {
   char *p;
   int rc;
@@ -270,23 +195,6 @@ main (int argc, char *argv[])
 
   if (!stringprep_check_version (STRINGPREP_VERSION))
     fail ("stringprep_check_version() failed\n");
-
-  do
-    if (strcmp (argv[argc - 1], "-v") == 0 ||
-	strcmp (argv[argc - 1], "--verbose") == 0)
-      debug = 1;
-    else if (strcmp (argv[argc - 1], "-b") == 0 ||
-	     strcmp (argv[argc - 1], "--break-on-error") == 0)
-      break_on_error = 1;
-    else if (strcmp (argv[argc - 1], "-h") == 0 ||
-	     strcmp (argv[argc - 1], "-?") == 0 ||
-	     strcmp (argv[argc - 1], "--help") == 0)
-      {
-	printf ("Usage: %s [-vbh?] [--verbose] [--break-on-error] [--help]\n",
-		argv[0]);
-	return 1;
-      }
-  while (argc-- > 1);
 
   for (i = 0; i < sizeof (strprep) / sizeof (strprep[0]); i++)
     {
@@ -382,9 +290,4 @@ main (int argc, char *argv[])
     puts ("");
   }
 #endif
-
-  if (debug)
-    printf ("Stringprep self tests done with %d errors\n", error_count);
-
-  return error_count ? 1 : 0;
 }

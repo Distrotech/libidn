@@ -1,5 +1,5 @@
 /* tst_idna2.c	Self tests for idna_to_ascii_8z().
- * Copyright (C) 2002, 2003  Simon Josefsson
+ * Copyright (C) 2002, 2003, 2004  Simon Josefsson
  *
  * This file is part of GNU Libidn.
  *
@@ -30,68 +30,15 @@
 
 #include <idna.h>
 
-static int debug = 0;
-static int error_count = 0;
-static int break_on_error = 0;
-
-static void
-fail (const char *format, ...)
-{
-  va_list arg_ptr;
-
-  va_start (arg_ptr, format);
-  vfprintf (stdout, format, arg_ptr);
-  va_end (arg_ptr);
-  error_count++;
-  if (break_on_error)
-    exit (1);
-}
-
-
-static void
-escapeprint (char *str, int len)
-{
-  int i;
-
-  for (i = 0; i < len; i++)
-    {
-      if (((str[i] & 0xFF) >= 'A' && (str[i] & 0xFF) <= 'Z') ||
-	  ((str[i] & 0xFF) >= 'a' && (str[i] & 0xFF) <= 'z') ||
-	  ((str[i] & 0xFF) >= '0' && (str[i] & 0xFF) <= '9')
-	  || (str[i] & 0xFF) == ' ' || (str[i] & 0xFF) == '.')
-	printf ("%c", (str[i] & 0xFF));
-      else
-	printf ("\\x%02X", (str[i] & 0xFF));
-      if ((i + 1) % 16 == 0 && (i + 1) < len)
-	printf ("'\n\t'");
-    }
-  printf (" (length %d bytes):\n", len);
-}
-
-static void
-hexprint (char *str, int len)
-{
-  int i;
-
-  printf ("\t;; ");
-  for (i = 0; i < len; i++)
-    {
-      printf ("%02x ", (str[i] & 0xFF));
-      if ((i + 1) % 8 == 0)
-	printf (" ");
-      if ((i + 1) % 16 == 0 && i + 1 < len)
-	printf ("\n\t;; ");
-    }
-  printf ("\n");
-}
+#include "utils.h"
 
 struct idna
 {
-  char *in;
-  char *out;
+  const char *in;
+  const char *out;
 };
 
-const struct idna idna[] = {
+static const struct idna idna[] = {
   {"\x65\x78\x61\x6d\x70\x6c\x65\x2e\xc3\xad\x64\x6e", "example.xn--dn-mja"
    /* 1-1-1 Has an IDN in just the TLD */
    },
@@ -510,32 +457,14 @@ const struct idna idna[] = {
    /* 5-2-2 Newly assigned outside of BMP; zone editors should reject */
    /* Don't resolve as xn--dn-mja7922x.example */
    }
-
 };
 
-int
-main (int argc, char *argv[])
+void
+doit (void)
 {
   size_t i;
   char *out;
   int rc;
-
-  do
-    if (strcmp (argv[argc - 1], "-v") == 0 ||
-	strcmp (argv[argc - 1], "--verbose") == 0)
-      debug = 1;
-    else if (strcmp (argv[argc - 1], "-b") == 0 ||
-	     strcmp (argv[argc - 1], "--break-on-error") == 0)
-      break_on_error = 1;
-    else if (strcmp (argv[argc - 1], "-h") == 0 ||
-	     strcmp (argv[argc - 1], "-?") == 0 ||
-	     strcmp (argv[argc - 1], "--help") == 0)
-      {
-	printf ("Usage: %s [-vbh?] [--verbose] [--break-on-error] [--help]\n",
-		argv[0]);
-	return 1;
-      }
-  while (argc-- > 1);
 
   for (i = 0; i < sizeof (idna) / sizeof (idna[0]); i++)
     {
@@ -586,9 +515,4 @@ main (int argc, char *argv[])
       else if (debug)
 	printf ("OK\n");
     }
-
-  if (debug)
-    printf ("IDNA2 self tests done with %d errors\n", error_count);
-
-  return error_count ? 1 : 0;
 }

@@ -1,5 +1,5 @@
 /* tst_idna.c	Self tests for idna_to_ascii().
- * Copyright (C) 2002, 2003  Simon Josefsson
+ * Copyright (C) 2002, 2003, 2004  Simon Josefsson
  *
  * This file is part of GNU Libidn.
  *
@@ -31,52 +31,20 @@
 #include <stringprep.h>
 #include <idna.h>
 
-static int debug = 0;
-static int error_count = 0;
-static int break_on_error = 0;
-
-static void
-fail (const char *format, ...)
-{
-  va_list arg_ptr;
-
-  va_start (arg_ptr, format);
-  vfprintf (stderr, format, arg_ptr);
-  va_end (arg_ptr);
-  error_count++;
-  if (break_on_error)
-    exit (1);
-}
-
-static void
-ucs4print (const uint32_t * str, size_t len)
-{
-  size_t i;
-
-  printf ("\t;; ");
-  for (i = 0; i < len; i++)
-    {
-      printf ("U+%04ux ", str[i]);
-      if ((i + 1) % 4 == 0)
-	printf (" ");
-      if ((i + 1) % 8 == 0 && i + 1 < len)
-	printf ("\n\t;; ");
-    }
-  puts ("");
-}
+#include "utils.h"
 
 struct idna
 {
-  char *name;
+  const char *name;
   size_t inlen;
   uint32_t in[100];
-  char *out;
+  const char *out;
   int flags;
   int toasciirc;
   int tounicoderc;
 };
 
-const struct idna idna[] = {
+static const struct idna idna[] = {
   {
    "Arabic (Egyptian)", 17,
    {
@@ -246,31 +214,14 @@ const struct idna idna[] = {
    IDNA_CONTAINS_ACE_PREFIX, IDNA_PUNYCODE_ERROR}
 };
 
-int
-main (int argc, char *argv[])
+void
+doit (void)
 {
   char label[100];
   uint32_t *ucs4label = NULL;
   uint32_t tmp[100];
   size_t len, len2, i;
   int rc;
-
-  do
-    if (strcmp (argv[argc - 1], "-v") == 0 ||
-	strcmp (argv[argc - 1], "--verbose") == 0)
-      debug = 1;
-    else if (strcmp (argv[argc - 1], "-b") == 0 ||
-	     strcmp (argv[argc - 1], "--break-on-error") == 0)
-      break_on_error = 1;
-    else if (strcmp (argv[argc - 1], "-h") == 0 ||
-	     strcmp (argv[argc - 1], "-?") == 0 ||
-	     strcmp (argv[argc - 1], "--help") == 0)
-      {
-	printf ("Usage: %s [-vbh?] [--verbose] [--break-on-error] [--help]\n",
-		argv[0]);
-	return 1;
-      }
-  while (argc-- > 1);
 
   for (i = 0; i < sizeof (idna) / sizeof (idna[0]); i++)
     {
@@ -372,9 +323,4 @@ main (int argc, char *argv[])
 
   if (ucs4label)
     free (ucs4label);
-
-  if (debug)
-    printf ("IDNA self tests done with %d errors\n", error_count);
-
-  return error_count ? 1 : 0;
 }

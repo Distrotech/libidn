@@ -1,5 +1,5 @@
 /* tst_punycode.c	Self tests for punycode.
- * Copyright (C) 2002, 2003  Simon Josefsson
+ * Copyright (C) 2002, 2003, 2004  Simon Josefsson
  *
  * This file is part of GNU Libidn.
  *
@@ -30,46 +30,14 @@
 
 #include <punycode.h>
 
-static int debug = 0;
-static int error_count = 0;
-static int break_on_error = 0;
-
-static void
-fail (const char *format, ...)
-{
-  va_list arg_ptr;
-
-  va_start (arg_ptr, format);
-  vfprintf (stderr, format, arg_ptr);
-  va_end (arg_ptr);
-  error_count++;
-  if (break_on_error)
-    exit (1);
-}
-
-static void
-ucs4print (const uint32_t * str, size_t len)
-{
-  size_t i;
-
-  printf ("\t;; ");
-  for (i = 0; i < len; i++)
-    {
-      printf ("U+%04ux ", str[i]);
-      if ((i + 1) % 4 == 0)
-	printf (" ");
-      if ((i + 1) % 8 == 0 && i + 1 < len)
-	printf ("\n\t;; ");
-    }
-  puts ("");
-}
+#include "utils.h"
 
 struct punycode
 {
-  char *name;
+  const char *name;
   size_t inlen;
   uint32_t in[100];
-  char *out;
+  const char *out;
   int rc;
 };
 
@@ -200,30 +168,13 @@ const struct punycode punycode[] = {
     0x0020, 0x003C, 0x002D}, "-> $1.00 <--", PUNYCODE_SUCCESS}
 };
 
-int
-main (int argc, char *argv[])
+void
+doit (void)
 {
   char *p;
   uint32_t *q;
   int rc;
   size_t i, outlen;
-
-  do
-    if (strcmp (argv[argc - 1], "-v") == 0 ||
-	strcmp (argv[argc - 1], "--verbose") == 0)
-      debug = 1;
-    else if (strcmp (argv[argc - 1], "-b") == 0 ||
-	     strcmp (argv[argc - 1], "--break-on-error") == 0)
-      break_on_error = 1;
-    else if (strcmp (argv[argc - 1], "-h") == 0 ||
-	     strcmp (argv[argc - 1], "-?") == 0 ||
-	     strcmp (argv[argc - 1], "--help") == 0)
-      {
-	printf ("Usage: %s [-vbh?] [--verbose] [--break-on-error] [--help]\n",
-		argv[0]);
-	return 1;
-      }
-  while (argc-- > 1);
 
   p = malloc (sizeof (*p) * BUFSIZ);
   if (p == NULL)
@@ -325,9 +276,4 @@ main (int argc, char *argv[])
 
   free (q);
   free (p);
-
-  if (debug)
-    printf ("Punycode self tests done with %d errors\n", error_count);
-
-  return error_count ? 1 : 0;
 }

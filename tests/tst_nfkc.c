@@ -30,84 +30,7 @@
 
 #include <stringprep.h>
 
-static int debug = 0;
-static int error_count = 0;
-static int break_on_error = 0;
-
-static void
-fail (const char *format, ...)
-{
-  va_list arg_ptr;
-
-  va_start (arg_ptr, format);
-  vfprintf (stderr, format, arg_ptr);
-  va_end (arg_ptr);
-  error_count++;
-  if (break_on_error)
-    exit (1);
-}
-
-static void
-escapeprint (const char *str, int len)
-{
-  int i;
-
-  printf (" (length %d bytes):\n\t", len);
-  for (i = 0; i < len; i++)
-    {
-      if (((str[i] & 0xFF) >= 'A' && (str[i] & 0xFF) <= 'Z') ||
-	  ((str[i] & 0xFF) >= 'a' && (str[i] & 0xFF) <= 'z') ||
-	  ((str[i] & 0xFF) >= '0' && (str[i] & 0xFF) <= '9')
-	  || (str[i] & 0xFF) == ' ' || (str[i] & 0xFF) == '.')
-	printf ("%c", (str[i] & 0xFF));
-      else
-	printf ("\\x%02X", (str[i] & 0xFF));
-      if ((i + 1) % 16 == 0 && (i + 1) < len)
-	printf ("'\n\t'");
-    }
-  printf ("\n");
-}
-
-static void
-hexprint (const char *str, int len)
-{
-  int i;
-
-  printf ("\t;; ");
-  for (i = 0; i < len; i++)
-    {
-      printf ("%02x ", (str[i] & 0xFF));
-      if ((i + 1) % 8 == 0)
-	printf (" ");
-      if ((i + 1) % 16 == 0 && i + 1 < len)
-	printf ("\n\t;; ");
-    }
-  printf ("\n");
-}
-
-static void
-binprint (const char *str, int len)
-{
-  int i;
-
-  printf ("\t;; ");
-  for (i = 0; i < len; i++)
-    {
-      printf ("%d%d%d%d%d%d%d%d ",
-	      (str[i] & 0xFF) & 0x80 ? 1 : 0,
-	      (str[i] & 0xFF) & 0x40 ? 1 : 0,
-	      (str[i] & 0xFF) & 0x20 ? 1 : 0,
-	      (str[i] & 0xFF) & 0x10 ? 1 : 0,
-	      (str[i] & 0xFF) & 0x08 ? 1 : 0,
-	      (str[i] & 0xFF) & 0x04 ? 1 : 0,
-	      (str[i] & 0xFF) & 0x02 ? 1 : 0, (str[i] & 0xFF) & 0x01 ? 1 : 0);
-      if ((i + 1) % 3 == 0)
-	printf (" ");
-      if ((i + 1) % 6 == 0 && i + 1 < len)
-	printf ("\n\t;; ");
-    }
-  printf ("\n");
-}
+#include "utils.h"
 
 struct nfkc
 {
@@ -120,28 +43,11 @@ static struct nfkc nfkc[] = {
   {"\xC2\xAA", "\x61"}
 };
 
-int
-main (int argc, char *argv[])
+void
+doit (void)
 {
   char *out;
   size_t i;
-
-  do
-    if (strcmp (argv[argc - 1], "-v") == 0 ||
-	strcmp (argv[argc - 1], "--verbose") == 0)
-      debug = 1;
-    else if (strcmp (argv[argc - 1], "-b") == 0 ||
-	     strcmp (argv[argc - 1], "--break-on-error") == 0)
-      break_on_error = 1;
-    else if (strcmp (argv[argc - 1], "-h") == 0 ||
-	     strcmp (argv[argc - 1], "-?") == 0 ||
-	     strcmp (argv[argc - 1], "--help") == 0)
-      {
-	printf ("Usage: %s [-vbh?] [--verbose] [--break-on-error] [--help]\n",
-		argv[0]);
-	return 1;
-      }
-  while (argc-- > 1);
 
   for (i = 0; i < sizeof (nfkc) / sizeof (nfkc[0]); i++)
     {
@@ -191,9 +97,4 @@ main (int argc, char *argv[])
 
       free (out);
     }
-
-  if (debug)
-    printf ("NFKC self tests done with %d errors\n", error_count);
-
-  return error_count ? 1 : 0;
 }
