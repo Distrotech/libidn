@@ -21,11 +21,11 @@
 
 #include "internal.h"
 
-static int
+static ssize_t
 stringprep_find_character_in_table (uint32_t ucs4,
 				    Stringprep_table_element * table)
 {
-  int i;
+  ssize_t i;
 
   for (i = 0; table[i].start; i++)
     if (ucs4 >= table[i].start &&
@@ -38,11 +38,11 @@ stringprep_find_character_in_table (uint32_t ucs4,
 static ssize_t
 stringprep_find_string_in_table (uint32_t * ucs4,
 				 size_t ucs4len,
-				 int *tablepos,
+				 size_t * tablepos,
 				 Stringprep_table_element * table)
 {
   size_t j;
-  int pos;
+  ssize_t pos;
 
   for (j = 0; j < ucs4len; j++)
     if ((pos = stringprep_find_character_in_table (ucs4[j], table)) != -1)
@@ -55,19 +55,18 @@ stringprep_find_string_in_table (uint32_t * ucs4,
   return -1;
 }
 
-static int
+static enum Stringprep_rc
 stringprep_apply_table_to_string (uint32_t * ucs4,
 				  size_t * ucs4len,
 				  size_t maxucs4len,
 				  Stringprep_table_element * table,
 				  const char *tablename)
 {
-  int i;
   ssize_t pos;
-  size_t maplen;
+  size_t i, maplen;
 
-  while ((pos = stringprep_find_string_in_table
-	  (ucs4, *ucs4len, &i, table)) != -1)
+  while ((pos = stringprep_find_string_in_table (ucs4, *ucs4len,
+						 &i, table)) != -1)
     {
       for (maplen = STRINGPREP_MAX_MAP_CHARS;
 	   maplen > 0 && table[i].map[maplen - 1] == 0; maplen--)
@@ -105,19 +104,22 @@ stringprep_apply_table_to_string (uint32_t * ucs4,
  * Since the stringprep operation can expand the string, @maxlen
  * indicate how large the buffer holding the string is.  The @flags
  * are one of Stringprep_profile_flags, or 0.  The profile indicates
- * processing details, see the profile header files, such as
- * stringprep_generic.h and stringprep_nameprep.h for two examples.
- * Your application can define new profiles, possibly re-using the
- * generic stringprep tables that always will be part of the library.
+ * processing details specific to that profile.  Your application can
+ * define new profiles, possibly re-using the generic stringprep
+ * tables that always will be part of the library.
+ *
  * Note that you must convert strings entered in the systems locale
  * into UTF-8 before using this function.
  *
  * Return value: Returns 0 iff successful, or an error code.
  **/
-int
-stringprep (char *in, size_t maxlen, int flags, Stringprep_profile * profile)
+enum Stringprep_rc
+stringprep (char *in,
+	    size_t maxlen,
+	    enum Stringprep_profile_flags flags, Stringprep_profile * profile)
 {
-  int i, j;
+  size_t i, j;
+  ssize_t k;
   int rc;
   char *p = 0;
   uint32_t *q = 0;
@@ -168,9 +170,9 @@ stringprep (char *in, size_t maxlen, int flags, Stringprep_profile * profile)
 	  break;
 
 	case STRINGPREP_PROHIBIT_TABLE:
-	  j = stringprep_find_string_in_table (ucs4, ucs4len,
+	  k = stringprep_find_string_in_table (ucs4, ucs4len,
 					       NULL, profile[i].table);
-	  if (j != -1)
+	  if (k != -1)
 	    {
 	      rc = STRINGPREP_CONTAINS_PROHIBITED;
 	      goto done;
@@ -182,9 +184,9 @@ stringprep (char *in, size_t maxlen, int flags, Stringprep_profile * profile)
 	    break;
 	  if (flags & STRINGPREP_NO_UNASSIGNED)
 	    {
-	      j = stringprep_find_string_in_table
+	      k = stringprep_find_string_in_table
 		(ucs4, ucs4len, NULL, profile[i].table);
-	      if (j != -1)
+	      if (k != -1)
 		{
 		  rc = STRINGPREP_CONTAINS_UNASSIGNED;
 		  goto done;
@@ -213,7 +215,6 @@ stringprep (char *in, size_t maxlen, int flags, Stringprep_profile * profile)
 	    int done_l = 0;
 	    int contains_ral = -1;
 	    int contains_l = -1;
-	    int k;
 
 	    for (j = 0; profile[j].operation; j++)
 	      if (profile[j].operation == STRINGPREP_BIDI_PROHIBIT_TABLE)
@@ -317,8 +318,10 @@ done:
  *
  * Return value: Returns 0 iff successful, or an error code.
  **/
-int
-stringprep_profile (char *in, char **out, char *profile, int flags)
+enum Stringprep_rc
+stringprep_profile (char *in,
+		    char **out,
+		    char *profile, enum Stringprep_profile_flags flags)
 {
   Stringprep_profiles *p;
   char *str;
