@@ -165,14 +165,21 @@ const struct stringprep strprep[] = {
   {"bidi both RandALCat and LCat  U+0627 U+00AA U+0628",
    "\xD8\xA7\xC2\xAA\xD8\xA8", NULL, "Nameprep", 0,
    STRINGPREP_BIDI_BOTH_L_AND_RAL},
+  /* XMPP */
   {"XMPP node profile prohibited output",
    "foo@bar", NULL, "Nodeprep", 0, STRINGPREP_CONTAINS_PROHIBITED},
   {"XMPP resource profile on same string should work though",
    "foo@bar", "foo@bar", "Resourceprep"},
-  {"SASL ANONYMOUS plain mechanism",
-   "simon@josefsson.org", "simon@josefsson.org", "plain"},
-  {"iSCSI profile", "Example-Name", "example-name", "iSCSI"},
+  /* iSCSI */
+  {"iSCSI 1", "Example-Name", "example-name", "iSCSI"},
+  {"iSCSI 2", "O+o", NULL, "iSCSI", 0, STRINGPREP_CONTAINS_PROHIBITED},
+  {"iSCSI 3", "\x01", NULL, "iSCSI", 0, STRINGPREP_CONTAINS_PROHIBITED},
+  {"iSCSI 4", "\xE3\x80\x82", NULL, "iSCSI", 0, STRINGPREP_CONTAINS_PROHIBITED},
+  {"iSCSI 5", "\xE2\xBF\xB5", NULL, "iSCSI", 0, STRINGPREP_CONTAINS_PROHIBITED},
   {"SASL profile", "Example\xC2\xA0" "Name", "Example Name", "SASLprep"},
+  /* SASL trace */
+  {"SASL ANONYMOUS plain mechanism", "simon@josefsson.org",
+   "simon@josefsson.org", "plain"},
   /* SASLprep test vectors. */
   {"SASLprep 1 SOFT HYPHEN mapped to nothing", "x\xC2\xADy", "xy",
    "SASLprep"},
