@@ -47,7 +47,7 @@ libidn_la_SOURCES = gunibreak.h gunicomp.h gunidecomp.h \
 if TLD
 libidn_la_SOURCES += tld.h tld.c tlds.c
 endif
-libidn_la_LIBADD = $(LTLIBICONV) ../gl/libgnu.la
+libidn_la_LIBADD = $(LTLIBICONV)
 libidn_la_LDFLAGS = -version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE)
 
 nfkc.c: gunibreak.h gunicomp.h gunidecomp.h
