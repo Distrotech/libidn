@@ -69,7 +69,7 @@ extern "C"
   } Tld_rc;
 
   /* Extract TLD, as ASCII string, of UCS4 domain name into "out". */
-  int tld_get_4i (const uint32_t * in, size_t inlen, char **out);
+  int tld_get_4 (const uint32_t * in, size_t inlen, char **out);
   int tld_get_4z (const uint32_t * in, char **out);
   int tld_get_8z (const char * , char **out);
 
@@ -87,16 +87,16 @@ extern "C"
   /* Check NAMEPREPPED domain name for valid characters as defined by
    * the relevant registering body (plus [a-z0-9.-]), if error is
    * TLD_INVALID, set errpos to position of offending character. */
-  int tld_check_4ti (const uint32_t * in, size_t inlen, size_t * errpos,
-		     const Tld_table * tld);
+  int tld_check_4t (const uint32_t * in, size_t inlen, size_t * errpos,
+		    const Tld_table * tld);
   int tld_check_4tz (const uint32_t * in, size_t * errpos,
 		     const Tld_table * tld);
 
   /* Utility interfaces that uses tld_get_4* to find TLD of string,
      then tld_default_table_* (with overrides) to find proper TLD
      table for the string, and then hands over to tld_check_4t*. */
-  int tld_check_4i (const uint32_t * in, size_t inlen, size_t * errpos,
-		    const Tld_table ** overrides);
+  int tld_check_4 (const uint32_t * in, size_t inlen, size_t * errpos,
+		   const Tld_table ** overrides);
   int tld_check_4z (const uint32_t * in, size_t * errpos,
 		    const Tld_table ** overrides);
   int tld_check_8z (const char *in, size_t * errpos,
