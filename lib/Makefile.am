@@ -29,8 +29,8 @@ include_HEADERS = stringprep.h idna.h punycode.h
 nodist_include_HEADERS = $(idn_int)
 
 libidn_la_SOURCES = gunibreak.h gunicomp.h gunidecomp.h internal.h \
-	stringprep.c nfkc.c version.c toutf8.c \
-	rfc3454.c profiles.c \
+	nfkc.c toutf8.c version.c \
+	stringprep.h.in stringprep.c rfc3454.c profiles.c \
 	punycode.h punycode.c \
 	idna.h idna.c
 libidn_la_LIBADD = $(LTLIBICONV)
@@ -45,3 +45,6 @@ gunibreak.h gunicomp.h gunidecomp.h: gen-unicode-tables.pl $(SPEC)/UnicodeData-3
 
 rfc3454.c: gen-stringprep-tables.pl
 	$(PERL) $(srcdir)/gen-stringprep-tables.pl $(SPEC)/rfc3454.txt
+
+indent:
+	indent $(SOURCES)
