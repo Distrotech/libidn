@@ -120,7 +120,7 @@ strprep[] =
   },
   {
     "Case folding 8bit U+00DF (german sharp s)",
-    "\xC3\xDF", "ss"
+    "\xC3\x9F", "ss"
   },
   {
     "Case folding U+0130 (turkish capital I with dot)",
@@ -145,7 +145,7 @@ strprep[] =
   },
   {
     "Self-reverting case folding U+01F0 and normalization",
-    "\xC7\xF0", "\xC7\xB0"
+    "\xC7\xB0", "\xC7\xB0"
   },
   {
     "Self-reverting case folding U+0390 and normalization",
@@ -304,13 +304,13 @@ strprep[] =
   },
   {
     "Larger test (shrinking)",
-    "X\xC2\xAD\xC3\xDF\xC4\xB0\xE2\x84\xA1\x6a\xcc\x8c\xc2\xa0\xc2"
+    "X\xC2\xAD\xC3\x9F\xC4\xB0\xE2\x84\xA1\x6a\xcc\x8c\xc2\xa0\xc2"
     "\xaa\xce\xb0\xe2\x80\x80", "xssi\xcc\x87""tel\xc7\xb0 a\xce\xb0 ",
     "Nameprep"
   },
   {
     "Larger test (expanding)",
-    "X\xC3\xDF\xe3\x8c\x96\xC4\xB0\xE2\x84\xA1\xE2\x92\x9F\xE3\x8c\x80",
+    "X\xC3\x9F\xe3\x8c\x96\xC4\xB0\xE2\x84\xA1\xE2\x92\x9F\xE3\x8c\x80",
     "xss\xe3\x82\xad\xe3\x83\xad\xe3\x83\xa1\xe3\x83\xbc\xe3\x83\x88"
     "\xe3\x83\xab""i\xcc\x87""tel\x28""d\x29\xe3\x82\xa2\xe3\x83\x91"
     "\xe3\x83\xbc\xe3\x83\x88"
@@ -415,6 +415,27 @@ main (int argc, char *argv[])
 	  puts ("");
 	}
 
+      {
+	unsigned long *l;
+	char *x;
+	l = stringprep_utf8_to_ucs4 (strprep[i].in, -1, NULL);
+	x = stringprep_ucs4_to_utf8 (l, -1, NULL, NULL);
+
+	if (strcmp(strprep[i].in, x) != 0)
+	  {
+	    fail ("bad UTF-8 in entry %d\n", i);
+	    if (debug)
+	      {
+		puts("expected:");
+		escapeprint (strprep[i].in, strlen (strprep[i].in));
+		hexprint (strprep[i].in, strlen (strprep[i].in));
+		puts("\ncomputed:");
+		escapeprint (x, strlen (x));
+		hexprint (x, strlen (x));
+		puts("");
+	      }
+	  }
+      }
       rc = stringprep_profile (strprep[i].in, &p,
 			       strprep[i].profile ?
 			       strprep[i].profile :
@@ -483,10 +504,12 @@ main (int argc, char *argv[])
     }
 
 #if 0
+  { char p[20];
   memset (p, 0, 10);
-  stringprep_unichar_to_utf8 (0x3316, p);
+  stringprep_unichar_to_utf8 (0x00DF, p);
   hexprint (p, strlen (p));
   puts ("");
+  }
 #endif
 
   if (debug)
