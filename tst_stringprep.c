@@ -181,6 +181,9 @@ main (int argc, char *argv[])
   char *p;
   int rc, i;
 
+  if (!stringprep_check_version (STRINGPREP_VERSION))
+    fail("stringprep_check_version() failed\n");
+
   do
     if (strcmp (argv[argc - 1], "-v") == 0 ||
 	strcmp (argv[argc - 1], "--verbose") == 0)
