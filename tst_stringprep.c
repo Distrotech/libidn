@@ -1,5 +1,5 @@
 /* tst_stringprep.c	Self tests for stringprep().
- * Copyright (C) 2002  Simon Josefsson
+ * Copyright (C) 2002, 2003  Simon Josefsson
  *
  * This file is part of GNU Libidn.
  *
@@ -178,6 +178,20 @@ strprep[] =
     /* case mapping (this triggered a bug in 0.0.5) */
   {
   "CAFE", 0, "cafe", stringprep_generic}
+  ,
+    /* XMPP node profile prohibited output: */
+  {
+  "foo@bar", 0, NULL, stringprep_xmpp_nodeprep,
+      STRINGPREP_CONTAINS_PROHIBITED},
+    /* XMPP resource profile on same string should work though: */
+  {
+  "foo@bar", 0, "foo@bar", stringprep_xmpp_resourceprep},
+    /* XMPP node profile output */
+  {
+  "\xC2\xAA", 0, "\x61", stringprep_xmpp_nodeprep},
+    /* XMPP resource profile output */
+  {
+  "\xC2\xAA", 0, "\x61", stringprep_xmpp_nodeprep}
 };
 
 int

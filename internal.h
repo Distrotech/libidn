@@ -1,5 +1,5 @@
 /* internal.h	internal header file for libstringprep
- * Copyright (C) 2002  Simon Josefsson
+ * Copyright (C) 2002, 2003  Simon Josefsson
  *
  * This file is part of Libstringprep.
  *
@@ -85,6 +85,7 @@
 #include "stringprep_generic.h"
 #include "stringprep_nameprep.h"
 #include "stringprep_kerberos5.h"
+#include "stringprep_xmpp.h"
 #include "punycode.h"
 #include "idna.h"
 

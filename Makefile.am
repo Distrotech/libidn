@@ -1,5 +1,5 @@
 ## Process this file with automake to produce Makefile.in
-# Copyright (C) 2002 Simon Josefsson.
+# Copyright (C) 2002, 2003 Simon Josefsson.
 #
 # This file is part of GNU Libidn.
 #
@@ -36,7 +36,7 @@ pkgconfig_DATA = libidn.pc
 lib_LTLIBRARIES = libidn.la
 
 include_HEADERS = stringprep.h stringprep_generic.h stringprep_nameprep.h \
-	stringprep_kerberos5.h
+	stringprep_kerberos5.h stringprep_xmpp.h
 
 libidn_la_SOURCES = gunicomp.h gunidecomp.h internal.h \
 	stringprep.c nfkc.c version.c toutf8.c \

@@ -1,5 +1,5 @@
 /* profiles.c	Definitions of stringprep profiles.
- * Copyright (C) 2002  Simon Josefsson
+ * Copyright (C) 2002, 2003  Simon Josefsson
  *
  * This file is part of GNU Libidn.
  *
@@ -172,6 +172,115 @@ Stringprep_profile stringprep_kerberos5[] = {
   {STRINGPREP_BIDI_RAL_TABLE, 0, stringprep_generic_D_1, "D.1"}
   ,
   {STRINGPREP_BIDI_L_TABLE, 0, stringprep_generic_D_2, "D.2"}
+  ,
+  {STRINGPREP_UNASSIGNED_TABLE, ~STRINGPREP_NO_UNASSIGNED,
+   stringprep_generic_A_1, "A.1"}
+  ,
+  {0}
+};
+
+Stringprep_table_element stringprep_xmpp_nodeprep_prohibit[] = {
+  {0x000022}
+  ,				/* #x22 (") */
+  {0x000026}
+  ,				/* #x26 (&) */
+  {0x000027}
+  ,				/* #x27 (') */
+  {0x00002F}
+  ,				/* #x2F (/) */
+  {0x00003A}
+  ,				/* #x3A (:) */
+  {0x00003C}
+  ,				/* #x3C (<) */
+  {0x00003E}
+  ,				/* #x3E (>) */
+  {0x000040}			/* #x40 (@) */
+};
+
+Stringprep_profile stringprep_xmpp_nodeprep[] = {
+  {STRINGPREP_MAP_TABLE, 0, stringprep_generic_B_1, "B.1"}
+  ,
+  {STRINGPREP_MAP_TABLE, 0, stringprep_generic_B_2, "B.2"}
+  ,
+  {STRINGPREP_NFKC, 0, 0, "NFKC"}
+  ,
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_1_1, "C.1.1"}
+  ,
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_1_2, "C.1.2"}
+  ,
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_2_1, "C.2.1"}
+  ,
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_2_2, "C.2.2"}
+  ,
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_3, "C.3"}
+  ,
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_4, "C.4"}
+  ,
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_5, "C.5"}
+  ,
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_6, "C.6"}
+  ,
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_7, "C.7"}
+  ,
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_8, "C.8"}
+  ,
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_9, "C.9"}
+  ,
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_xmpp_nodeprep_prohibit,
+   "XMPP-PROHIBIT"}
+  ,
+  {STRINGPREP_BIDI, 0, 0, "BIDI"}
+  ,
+  {STRINGPREP_BIDI_PROHIBIT_TABLE, 0, stringprep_generic_C_8, "C.8"}
+  ,
+  {STRINGPREP_BIDI_RAL_TABLE, 0, stringprep_generic_D_1, "D.1"}
+  ,
+  {STRINGPREP_BIDI_L_TABLE, 0, stringprep_generic_D_2, "D.2"}
+  ,
+  {STRINGPREP_UNASSIGNED_TABLE, ~STRINGPREP_NO_UNASSIGNED,
+   stringprep_generic_A_1, "A.1"}
+  ,
+  {0}
+};
+
+Stringprep_profile stringprep_xmpp_resourceprep[] = {
+  {STRINGPREP_MAP_TABLE, 0, stringprep_generic_B_1, "B.1"}
+  ,
+  {STRINGPREP_MAP_TABLE, 0, stringprep_generic_B_2, "B.2"}
+  ,
+  {STRINGPREP_NFKC, 0, 0, "NFKC"}
+  ,
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_1_1, "C.1.1"}
+  ,
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_1_2, "C.1.2"}
+  ,
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_2_1, "C.2.1"}
+  ,
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_2_2, "C.2.2"}
+  ,
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_3, "C.3"}
+  ,
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_4, "C.4"}
+  ,
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_5, "C.5"}
+  ,
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_6, "C.6"}
+  ,
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_7, "C.7"}
+  ,
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_8, "C.8"}
+  ,
+  {STRINGPREP_PROHIBIT_TABLE, 0, stringprep_generic_C_9, "C.9"}
+  ,
+  {STRINGPREP_BIDI, 0, 0, "BIDI"}
+  ,
+  {STRINGPREP_BIDI_PROHIBIT_TABLE, 0, stringprep_generic_C_8, "C.8"}
+  ,
+  {STRINGPREP_BIDI_RAL_TABLE, ~STRINGPREP_NO_BIDI, stringprep_generic_D_1,
+   "D.1"}
+  ,
+  {STRINGPREP_BIDI_L_TABLE, ~STRINGPREP_NO_BIDI, stringprep_generic_D_2,
+   "D.2"}
   ,
   {STRINGPREP_UNASSIGNED_TABLE, ~STRINGPREP_NO_UNASSIGNED,
    stringprep_generic_A_1, "A.1"}
