@@ -20,6 +20,10 @@ if (!$charset) {
     encounter a problem with this page, report a thorough analyse of
     it to <A HREF="mailto:bug-libidn@gnu.org">bug-libidn@gnu.org</A>.
 
+    <p>If you are interested in commercial support of Libidn and/or
+    proprietary customizations, you can <a
+    href="mailto:simon@josefsson.org">contact me</a>.
+
 <?php if (!$lastcharset && !$mode) { ?>
 
     <p>Free shrimp sandwiches are <a
@@ -255,13 +259,12 @@ if (!$charset) {
 
     <pre>
 <?php
-   print "$ CHARSET=" .  escapeshellarg($charset) . "; export CHARSET\n";
    putenv("CHARSET=" . escapeshellarg($charset));
-   $cmd = "echo " . escapeshellarg($data) . " | /usr/local/bin/idn" . ($debug ? " --debug" : "") . ($allowunassigned ? " --allow-unassigned" : "") . ($usestd3asciirules ? " --usestd3asciirules" : "") . ($mode == "stringprep" ? " --stringprep" : "") . ($mode == "stringprep" ? " --profile " . escapeshellarg($profile) : "") . ($mode == "punydecode" ? " --punycode-decode" : "") . ($mode == "punyencode" ? " --punycode-encode" : "") . ($mode == "toascii" || !$mode ? " --idna-to-ascii" : "") . ($mode == "tounicode" ? " --idna-to-unicode" : "") . " 2>&1";
+   $cmd = "/usr/local/bin/idn" . ($debug ? " --debug" : "") . ($allowunassigned ? " --allow-unassigned" : "") . ($usestd3asciirules ? " --usestd3asciirules" : "") . ($mode == "stringprep" ? " --stringprep" : "") . ($mode == "stringprep" ? " --profile " . escapeshellarg($profile) : "") . ($mode == "punydecode" ? " --punycode-decode" : "") . ($mode == "punyencode" ? " --punycode-encode" : "") . ($mode == "toascii" || !$mode ? " --idna-to-ascii" : "") . ($mode == "tounicode" ? " --idna-to-unicode" : "") . " " . escapeshellarg($data) . " 2>&1";
    $h = popen($cmd, "r");
    while($s = fgets($h, 1024)) { $out .= $s; };
    pclose($h);
-   print "$ $cmd\n";
+   print "$ CHARSET=" .  escapeshellarg($charset) . " $cmd\n";
    print $out;
    print "$ \n";
 ?>
@@ -314,7 +317,8 @@ if (!$charset) {
     PUNYCODE_OVERFLOW		/* Input needs wider integers to process.  */
   };
 
-  enum
+
+  typedef enum
   {
     STRINGPREP_OK = 0,
     /* Stringprep errors. */
@@ -333,12 +337,14 @@ if (!$charset) {
     STRINGPREP_MALLOC_ERROR = 201
   } Stringprep_rc;
 
-  enum
+  typedef enum
   {
     IDNA_SUCCESS = 0,
     IDNA_STRINGPREP_ERROR = 1,
     IDNA_PUNYCODE_ERROR = 2,
-    IDNA_CONTAINS_LDH = 3,
+    IDNA_CONTAINS_NON_LDH = 3,
+    /* Workaround typo in earlier versions. */
+    IDNA_CONTAINS_LDH = IDNA_CONTAINS_NON_LDH,
     IDNA_CONTAINS_MINUS = 4,
     IDNA_INVALID_LENGTH = 5,
     IDNA_NO_ACE_PREFIX = 6,
@@ -347,7 +353,7 @@ if (!$charset) {
     IDNA_ICONV_ERROR = 9,
     /* Internal errors. */
     IDNA_MALLOC_ERROR = 201
-  };
+  } Idna_rc;
 </pre>
 
     <hr>
