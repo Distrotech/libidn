@@ -1,5 +1,5 @@
 /* idn.c --- Command line interface to libidn.
- * Copyright (C) 2003, 2004  Simon Josefsson
+ * Copyright (C) 2003, 2004, 2005  Simon Josefsson
  *
  * This file is part of GNU Libidn.
  *
@@ -48,7 +48,7 @@
 
 #include "idn_cmd.h"
 
-#define GREETING "Copyright 2002, 2003, 2004 Simon Josefsson.\n"	\
+#define GREETING "Copyright 2002, 2003, 2004, 2005 Simon Josefsson.\n"	\
   "GNU Libidn comes with NO WARRANTY, to the extent permitted by law.\n" \
   "You may redistribute copies of GNU Libidn under the terms of\n"	\
   "the GNU Lesser General Public License.  For more information\n"	\
