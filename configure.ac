@@ -95,6 +95,8 @@ if test "$enable_java" != "no"; then
 	AC_PROG_JAR
 fi
 AM_CONDITIONAL(JAVA, test "$enable_java" != "no")
+AC_MSG_CHECKING([if implementation in Java should be built])
+AC_MSG_RESULT($enable_java)
 
 AC_CONFIG_FILES([Makefile libidn.pc doc/reference/Makefile \
 		lib/stringprep.h contrib/doxygen/Doxyfile \
