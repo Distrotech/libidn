@@ -9,9 +9,9 @@ The punycode code cannot handle strings longer than 4GB.  The code now
 return PUNYCODE_BAD_INPUT on too long input, instead of failing in an
 unknown way.
 
-** Build fixes.
-
 ** The "idn --idna-to-unicode" command now output locale encoded strings.
+
+** Build fixes, bug fixes.
 
 ** API and ABI is backwards compatible with the previous version.
 
