@@ -21,6 +21,8 @@ A#2: The stringprep profiles included are usually derived from the
      hundred bytes (see profiles.c).  The Unicode normalization tables
      and the generic stringprep tables are roughly equivalent in size,
      although the latter tables can surely be compressed much further.
+     However, if in the future several large Stringprep profiles are
+     added, configure options will be added to help reduce size.
 
 Q#3: I thought GNU was encouraging libraries to be licensed under the GPL?
 
@@ -33,8 +35,8 @@ A#3: The reasoning for this was for libraries that provide unique
 Q#4: How do I add a new stringprep profile?
 
 A#4: Add the profile definition to profiles.c, export the symbol and
-     optionally add a CPP macro in stringprep.h.in documented in
-     reference/dummy.c.  If you want to add self tests, do it through
+     optionally add a CPP macro in stringprep.h.in (and document it in
+     stringprep.c).  If you want to add self tests, do it through
      tst_stringprep.c.  Mention it in NEWS.
 
 ----------------------------------------------------------------------
