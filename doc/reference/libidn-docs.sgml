@@ -1,11 +1,7 @@
-<!doctype book PUBLIC "-//Davenport//DTD DocBook V3.0//EN" [
-<!ENTITY libidn-stringprep SYSTEM "stringprep.sgml">
-<!ENTITY libidn-punycode SYSTEM "punycode.sgml">
-<!ENTITY libidn-idna SYSTEM "idna.sgml">
-<!ENTITY libidn-tld SYSTEM "tld.sgml">
-<!ENTITY libidn-pr29 SYSTEM "pr29.sgml">
-]>
-<book id="index">
+<?xml version="1.0"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+               "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd">
+<book id="index" xmlns:xi="http://www.w3.org/2003/XInclude">
   <bookinfo>
     <title>GNU Libidn API Reference Manual</title>
   </bookinfo>
@@ -62,10 +58,10 @@
       C++, Emacs Lisp, Python and Java.
     </para>
 
-    &libidn-stringprep;
-    &libidn-punycode;
-    &libidn-idna;
-    &libidn-tld;
-    &libidn-pr29;
+    <xi:include href="xml/idna.xml"/>
+    <xi:include href="xml/pr29.xml"/>
+    <xi:include href="xml/punycode.xml"/>
+    <xi:include href="xml/tld.xml"/>
+    <xi:include href="xml/stringprep.xml"/>
   </chapter>
 </book>

@@ -4,6 +4,9 @@ See the end for copying conditions.
 
 * Version 0.5.9 (unreleased)
 
+** Align GTK-DOC build infrastructure with GTK-DOC official recommendations.
+This mean, for example, that Devhelp files are generated and installed.
+
 * Version 0.5.8 (released 2004-10-12)
 
 ** BidiMirroring-3.2.0.txt is now included, not only the generated source code.
