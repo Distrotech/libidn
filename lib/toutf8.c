@@ -23,11 +23,11 @@
 # include "config.h"
 #endif
 
-#if defined(STDC_HEADERS) || defined(_LIBC)
-# include <stdio.h>
-# include <stdlib.h>
-# include <string.h>
-#endif
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#include "stringprep.h"
 
 #ifdef _LIBC
 # define HAVE_ICONV 1
@@ -38,8 +38,6 @@
 #if defined(HAVE_ERRNO_H) || defined(_LIBC)
 # include <errno.h>
 #endif
-
-#include <stringprep.h>
 
 #ifdef HAVE_ICONV
 # include <iconv.h>

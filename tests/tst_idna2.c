@@ -23,12 +23,10 @@
 # include "config.h"
 #endif
 
-#if STDC_HEADERS
-# include <stdio.h>
-# include <stdlib.h>
-# include <stdarg.h>
-# include <string.h>
-#endif
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdarg.h>
+#include <string.h>
 
 #include <idna.h>
 

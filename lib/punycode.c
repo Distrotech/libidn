@@ -60,6 +60,7 @@
  */
 
 #include <string.h>
+
 #include "punycode.h"
 
 /*** Bootstring parameters for Punycode ***/

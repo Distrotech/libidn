@@ -33,7 +33,7 @@ my ($line, $start, $end, @map);
 
 open(FH, ">$filename") or die "cannot open $filename for writing";
 
-print FH "#include <stringprep.h>\n";
+print FH "#include \"stringprep.h\"\n";
 
 while(<>) {
     s/^   (.*)/$1/g; # for rfc

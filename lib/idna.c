@@ -23,15 +23,11 @@
 # include "config.h"
 #endif
 
-#if defined(STDC_HEADERS) || defined(_LIBC)
-# include <stdlib.h>
-# include <string.h>
-#endif
-
+#include <stdlib.h>
+#include <string.h>
 #include <stringprep.h>
 #include <punycode.h>
 
-/* Get specification. */
 #include "idna.h"
 
 #define DOTP(c) ((c) == 0x002E || (c) == 0x3002 ||	\

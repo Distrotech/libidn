@@ -19,7 +19,7 @@
  *
  */
 
-#include <stringprep.h>
+#include "stringprep.h"
 
 Stringprep_profiles stringprep_profiles[] = {
   {"generic", stringprep_generic}

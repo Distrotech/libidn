@@ -24,12 +24,10 @@
 # include "config.h"
 #endif
 
-#if defined(STDC_HEADERS) || defined(_LIBC)
-# include <ctype.h>
-# include <string.h>
-#endif
+#include <ctype.h>
+#include <string.h>
 
-#include <stringprep.h>
+#include "stringprep.h"
 
 static const char *
 parse_version_number (const char *s, int *number)

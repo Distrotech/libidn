@@ -23,12 +23,9 @@
 # include "config.h"
 #endif
 
-#if defined(STDC_HEADERS) || defined(_LIBC)
-# include <stdlib.h>
-# include <string.h>
-#endif
+#include <stdlib.h>
+#include <string.h>
 
-/* Get specification. */
 #include "stringprep.h"
 
 static ssize_t
