@@ -91,7 +91,7 @@ sub print_tld_domain
     print "  \"$tld\",\n";
     print "  \"$version\",\n";
     print "  $num_intervals,\n";
-    print "  _tld_${tld}_valid\n";
+    print "  &_tld_${tld}_valid\n";
     print "};\n\n";
 }
 
