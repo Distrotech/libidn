@@ -1,3 +1,86 @@
+2004-06-11  Simon Josefsson <simon@josefsson.org>
+
+	* po/da.po, po/de.po, po/fr.po, po/nl.po, po/pl.po, po/ro.po,
+	po/sr.po, po/sv.po: Generated.
+
+2004-06-11  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Version 0.4.9.
+
+2004-06-11  Simon Josefsson <simon@josefsson.org>
+
+	* java/Makefile.am: Work around automake limitation (cannot have
+	instal-data-local target in a conditional).
+
+2004-06-08  Simon Josefsson <simon@josefsson.org>
+
+	* lib/stringprep.c: Cosmetic fix, sync with libc.
+
+2004-06-07  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Fix.
+
+2004-06-07  Simon Josefsson <simon@josefsson.org>
+
+	* java/Makefile.am: Create libidn.jar link.
+
+2004-06-03  Simon Josefsson <simon@josefsson.org>
+
+	* java/misc/Makefile.am: Use versioned *.jar.
+
+2004-06-02  Simon Josefsson <simon@josefsson.org>
+
+	* java/Makefile.am: Versionize *.jar filename.
+
+2004-06-01  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2004-06-01  Simon Josefsson <simon@josefsson.org>
+
+	* doc/java/Makefile.am: Dist HTMLs.
+
+2004-06-01  Simon Josefsson <simon@josefsson.org>
+
+	* doc/gendocs_template: Add JavaDoc links.
+
+2004-06-01  Simon Josefsson <simon@josefsson.org>
+
+	* Makefile.am: Copy javadoc files.
+
+2004-06-01  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS, configure.ac: Bump versions.
+
+2004-06-01  Simon Josefsson <simon@josefsson.org>
+
+	* doc/java/Makefile.am: Fix.
+
+2004-06-01  Simon Josefsson <simon@josefsson.org>
+
+	* java/Makefile.am: Add javadoc.
+
+2004-06-01  Simon Josefsson <simon@josefsson.org>
+
+	* java/Makefile.am: Distribute libidn.jar, suggested by Oliver
+	Hitz.
+
+2004-06-01  Simon Josefsson <simon@josefsson.org>
+
+	* m4/ac_prog_javadoc.m4: Add.
+
+2004-06-01  Simon Josefsson <simon@josefsson.org>
+
+	* doc/Makefile.am, doc/java/Makefile.am: Add java/.
+
+2004-06-01  Simon Josefsson <simon@josefsson.org>
+
+	* configure.ac: Build doc/java/Makefile.
+
+2004-06-01  Simon Josefsson <simon@josefsson.org>
+
+	* configure.ac: Find javadoc.
+
 2004-06-01  Simon Josefsson <simon@josefsson.org>
 
 	* po/da.po, po/de.po, po/fr.po, po/nl.po, po/pl.po, po/ro.po,
