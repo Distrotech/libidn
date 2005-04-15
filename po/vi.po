@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libidn 0.5.12\n"
 "Report-Msgid-Bugs-To: bug-libidn@gnu.org\n"
-"POT-Creation-Date: 2005-03-19 18:57+0100\n"
+"POT-Creation-Date: 2004-12-04 02:28+0100\n"
 "PO-Revision-Date: 2005-02-07 16:03+1030\n"
 "Last-Translator: Clytie Siddall <clytie@riverland.net.au>\n"
 "Language-Team: Vietnamese <gnomevi-list@lists.sourceforge.net> \n"
@@ -143,11 +143,8 @@ msgstr "Bộ ký tự `%s'.\n"
 
 #: src/idn.c:101
 #, c-format
-msgid ""
-"Type each input string on a line by itself, terminated by a newline "
-"character.\n"
-msgstr ""
-"Gõ mỗi chuỗi nhập trên một đường riêng, giới hạn bằng ký tự đường mới.\n"
+msgid "Type each input string on a line by itself, terminated by a newline character.\n"
+msgstr "Gõ mỗi chuỗi nhập trên một đường riêng, giới hạn bằng ký tự đường mới.\n"
 
 #: src/idn.c:116
 msgid "Input error"
