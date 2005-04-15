@@ -2,6 +2,12 @@ Libidn NEWS -- History of user-visible changes.                 -*- outline -*-
 Copyright (C) 2002, 2003, 2004, 2005 Simon Josefsson
 See the end for copying conditions.
 
+* Version 0.5.16 (unreleased)
+
+** Kinyarwanda translations added, thanks to Steve Murphy.
+
+** API and ABI is backwards compatible with the previous version.
+
 * Version 0.5.15 (released 2005-03-19)
 
 ** Improvements to code to convert data between character sets.
