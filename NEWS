@@ -4,6 +4,8 @@ See the end for copying conditions.
 
 * Version 0.5.16 (unreleased)
 
+** Mark static PR29 data tables as 'const', thanks to Joe Orton.
+
 ** Kinyarwanda translations added, thanks to Steve Murphy.
 
 ** API and ABI is backwards compatible with the previous version.
