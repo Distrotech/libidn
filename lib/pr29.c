@@ -590,11 +590,11 @@ static uint32_t nzcc[] = {
  *                              09D7 BENGALI AU LENGTH MARK
  */
 
-static uint32_t pr29_1_1[] = {
+static const uint32_t pr29_1_1[] = {
   0x09C7, 0
 };
 
-static uint32_t pr29_1_2[] = {
+static const uint32_t pr29_1_2[] = {
   0x09BE, 0x09D7, 0
 };
 
@@ -604,11 +604,11 @@ static uint32_t pr29_1_2[] = {
  *                              0B57 ORIYA AU LENGTH MARK
  */
 
-static uint32_t pr29_2_1[] = {
+static const uint32_t pr29_2_1[] = {
   0x0B47, 0
 };
 
-static uint32_t pr29_2_2[] = {
+static const uint32_t pr29_2_2[] = {
   0x0B3E, 0x0B56, 0x0B57, 0
 };
 
@@ -617,11 +617,11 @@ static uint32_t pr29_2_2[] = {
  *                              0BD7 TAMIL AU LENGTH MARK
  */
 
-static uint32_t pr29_3_1[] = {
+static const uint32_t pr29_3_1[] = {
   0x0BC6, 0
 };
 
-static uint32_t pr29_3_2[] = {
+static const uint32_t pr29_3_2[] = {
   0x0BBE, 0x0BD7, 0
 };
 
@@ -629,11 +629,11 @@ static uint32_t pr29_3_2[] = {
  * 0BC7 TAMIL VOWEL SIGN EE     0BBE TAMIL VOWEL SIGN AA
  */
 
-static uint32_t pr29_4_1[] = {
+static const uint32_t pr29_4_1[] = {
   0x0BC7, 0
 };
 
-static uint32_t pr29_4_2[] = {
+static const uint32_t pr29_4_2[] = {
   0x0BBE, 0
 };
 
@@ -641,11 +641,11 @@ static uint32_t pr29_4_2[] = {
  * 0B92 TAMIL LETTER O          0BD7 TAMIL AU LENGTH MARK
  */
 
-static uint32_t pr29_5_1[] = {
+static const uint32_t pr29_5_1[] = {
   0x0B92, 0
 };
 
-static uint32_t pr29_5_2[] = {
+static const uint32_t pr29_5_2[] = {
   0x0BD7, 0
 };
 
@@ -655,11 +655,11 @@ static uint32_t pr29_5_2[] = {
  *                              0CD6 KANNADA AI LENGTH MARK
  */
 
-static uint32_t pr29_6_1[] = {
+static const uint32_t pr29_6_1[] = {
   0x0CC6, 0
 };
 
-static uint32_t pr29_6_2[] = {
+static const uint32_t pr29_6_2[] = {
   0x0CC2, 0xCD5, 0xCD6, 0
 };
 
@@ -668,11 +668,11 @@ static uint32_t pr29_6_2[] = {
  * 0CCA KANNADA VOWEL SIGN O    0CD5 KANNADA LENGTH MARK
  */
 
-static uint32_t pr29_7_1[] = {
+static const uint32_t pr29_7_1[] = {
   0x0CBF, 0xCCA, 0
 };
 
-static uint32_t pr29_7_2[] = {
+static const uint32_t pr29_7_2[] = {
   0x0CD5, 0
 };
 
@@ -680,11 +680,11 @@ static uint32_t pr29_7_2[] = {
  * 0D47 MALAYALAM VOWEL SIGN EE         0D3E MALAYALAM VOWEL SIGN AA
  */
 
-static uint32_t pr29_8_1[] = {
+static const uint32_t pr29_8_1[] = {
   0x0D47, 0
 };
 
-static uint32_t pr29_8_2[] = {
+static const uint32_t pr29_8_2[] = {
   0x0D3E, 0
 };
 
@@ -693,11 +693,11 @@ static uint32_t pr29_8_2[] = {
  *                                      0D57 MALAYALAM AU LENGTH MARK
  */
 
-static uint32_t pr29_9_1[] = {
+static const uint32_t pr29_9_1[] = {
   0x0D46, 0
 };
 
-static uint32_t pr29_9_2[] = {
+static const uint32_t pr29_9_2[] = {
   0x0D3E, 0x0D57, 0
 };
 
@@ -705,11 +705,11 @@ static uint32_t pr29_9_2[] = {
  * 1025 MYANMAR LETTER U                102E MYANMAR VOWEL SIGN II
  */
 
-static uint32_t pr29_10_1[] = {
+static const uint32_t pr29_10_1[] = {
   0x1025, 0
 };
 
-static uint32_t pr29_10_2[] = {
+static const uint32_t pr29_10_2[] = {
   0x102E, 0
 };
 
@@ -718,11 +718,11 @@ static uint32_t pr29_10_2[] = {
  *                                      0DDF SINHALA VOWEL SIGN GAYANUKITTA
  */
 
-static uint32_t pr29_11_1[] = {
+static const uint32_t pr29_11_1[] = {
   0x0DD9, 0
 };
 
-static uint32_t pr29_11_2[] = {
+static const uint32_t pr29_11_2[] = {
   0x0DCF, 0x0DDF, 0
 };
 
@@ -731,13 +731,13 @@ static uint32_t pr29_11_2[] = {
  *                              1161..1175 HANGUL JUNGSEONG A..I [21 instances]
  */
 
-static uint32_t pr29_12_1[] = {
+static const uint32_t pr29_12_1[] = {
   0x1100, 0x1101, 0x1102, 0x1103, 0x1104, 0x1105, 0x1106, 0x1107,
   0x1108, 0x1109, 0x110A, 0x110B, 0x110C, 0x110D, 0x110E, 0x110F,
   0x1110, 0x1111, 0x1112, 0
 };
 
-static uint32_t pr29_12_2[] = {
+static const uint32_t pr29_12_2[] = {
   0x1161, 0x1162, 0x1163, 0x1164, 0x1165, 0x1166, 0x1167, 0x1168,
   0x1169, 0x116A, 0x116B, 0x116C, 0x116D, 0x116E, 0x116F, 0x1170,
   0x1171, 0x1172, 0x1173, 0x1174, 0x1175, 0
@@ -749,7 +749,7 @@ static uint32_t pr29_12_2[] = {
  *                     11A8..11C2 HANGUL JONGSEONG KIYEOK..HIEUH [27 instances]
  */
 
-static uint32_t pr29_13_1[] = {
+static const uint32_t pr29_13_1[] = {
   0xAC00,			/* LV # Lo       HANGUL SYLLABLE GA     */
   0xAC1C,			/* LV # Lo       HANGUL SYLLABLE GAE    */
   0xAC38,			/* LV # Lo       HANGUL SYLLABLE GYA    */
@@ -1152,7 +1152,7 @@ static uint32_t pr29_13_1[] = {
   0
 };
 
-static uint32_t pr29_13_2[] = {
+static const uint32_t pr29_13_2[] = {
   0x11A8, 0x11A9, 0x11AA, 0x11AB, 0x11AC, 0x11AD, 0x11AE, 0x11AF,
   0x11B0, 0x11B1, 0x11B2, 0x11B3, 0x11B4, 0x11B5, 0x11B6, 0x11B7,
   0x11B8, 0x11B9, 0x11BA, 0x11BB, 0x11BC, 0x11BD, 0x11BE, 0x11BF,
@@ -1161,11 +1161,11 @@ static uint32_t pr29_13_2[] = {
 
 typedef struct
 {
-  uint32_t *first;
-  uint32_t *last;
+  const uint32_t *first;
+  const uint32_t *last;
 } Pr29;
 
-static Pr29 pr29[] = {
+static const Pr29 pr29[] = {
   {&pr29_1_1[0], &pr29_1_2[0]},
   {&pr29_2_1[0], &pr29_2_2[0]},
   {&pr29_3_1[0], &pr29_3_2[0]},
