@@ -2,7 +2,7 @@ Libidn NEWS -- History of user-visible changes.                 -*- outline -*-
 Copyright (C) 2002, 2003, 2004, 2005 Simon Josefsson
 See the end for copying conditions.
 
-* Version 0.5.16 (unreleased)
+* Version 0.5.16 (released 2005-05-06)
 
 ** Mark static PR29 data tables as 'const', thanks to Joe Orton.
 
