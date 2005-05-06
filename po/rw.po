@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libidn 0.5.6\n"
 "Report-Msgid-Bugs-To: bug-libidn@gnu.org\n"
-"POT-Creation-Date: 2004-10-02 21:50+0200\n"
+"POT-Creation-Date: 2005-05-06 01:52+0200\n"
 "PO-Revision-Date: 2005-04-04 10:55-0700\n"
 "Last-Translator: Steven Michael Murphy <murf@e-tools.com>\n"
 "Language-Team: Kinyarwanda <translation-team-rw@lists.sourceforge.net>\n"
@@ -180,7 +180,9 @@ msgstr ""
 
 #: src/idn.c:101
 #, fuzzy, c-format
-msgid "Type each input string on a line by itself, terminated by a newline character.\n"
+msgid ""
+"Type each input string on a line by itself, terminated by a newline "
+"character.\n"
 msgstr "Iyinjiza Ikurikiranyanyuguti ku a Umurongo ku ku a Inyuguti"
 
 #: src/idn.c:116
@@ -188,81 +190,81 @@ msgstr "Iyinjiza Ikurikiranyanyuguti ku a Umurongo ku ku a Inyuguti"
 msgid "Input error"
 msgstr "Ikosa"
 
-#: src/idn.c:126 src/idn.c:184 src/idn.c:261 src/idn.c:332
+#: src/idn.c:126 src/idn.c:186 src/idn.c:267 src/idn.c:341
 #, fuzzy, c-format
 msgid "Could not convert from %s to UTF-8."
 msgstr "OYA GUHINDURA Bivuye Kuri 8"
 
-#: src/idn.c:133 src/idn.c:156 src/idn.c:190 src/idn.c:389
+#: src/idn.c:134 src/idn.c:158 src/idn.c:193 src/idn.c:402
 #, fuzzy
 msgid "Could not convert from UTF-8 to UCS-4."
 msgstr "OYA GUHINDURA Bivuye 8 Kuri 4."
 
-#: src/idn.c:140 src/idn.c:196 src/idn.c:273 src/idn.c:346
+#: src/idn.c:141 src/idn.c:199 src/idn.c:280 src/idn.c:356
 #, fuzzy, c-format
 msgid "input[%d] = U+%04x\n"
 msgstr "Iyinjiza U"
 
-#: src/idn.c:149
+#: src/idn.c:150
 #, c-format
 msgid "stringprep_profile: %s"
 msgstr ""
 
-#: src/idn.c:163 src/idn.c:237 src/idn.c:320 src/idn.c:363
+#: src/idn.c:165 src/idn.c:242 src/idn.c:329 src/idn.c:374
 #, fuzzy, c-format
 msgid "output[%d] = U+%04x\n"
 msgstr "Ibisohoka U"
 
-#: src/idn.c:170 src/idn.c:209 src/idn.c:249 src/idn.c:394
+#: src/idn.c:172 src/idn.c:213 src/idn.c:255 src/idn.c:407
 #, fuzzy, c-format
 msgid "Could not convert from UTF-8 to %s."
 msgstr "OYA GUHINDURA Bivuye 8 Kuri"
 
-#: src/idn.c:203
+#: src/idn.c:206
 #, c-format
 msgid "punycode_encode: %s"
 msgstr ""
 
-#: src/idn.c:224
+#: src/idn.c:228
 msgid "malloc"
 msgstr ""
 
-#: src/idn.c:230
+#: src/idn.c:234
 #, c-format
 msgid "punycode_decode: %s"
 msgstr ""
 
-#: src/idn.c:244 src/idn.c:267 src/idn.c:339
+#: src/idn.c:250 src/idn.c:274 src/idn.c:349
 #, fuzzy
 msgid "Could not convert from UCS-4 to UTF-8."
 msgstr "OYA GUHINDURA Bivuye 4. Kuri 8"
 
-#: src/idn.c:283
+#: src/idn.c:290
 #, c-format
 msgid "idna_to_ascii_4z: %s"
 msgstr ""
 
-#: src/idn.c:296
+#: src/idn.c:304
 #, c-format
 msgid "idna_to_unicode_8z4z (TLD): %s"
 msgstr ""
 
-#: src/idn.c:303
+#: src/idn.c:311
 #, fuzzy, c-format
 msgid "tld[%d] = U+%04x\n"
 msgstr "U"
 
-#: src/idn.c:309 src/idn.c:375
+#: src/idn.c:317 src/idn.c:386
 #, fuzzy, c-format
 msgid "tld_check_4z (position %d): %s"
 msgstr "Ibirindiro"
 
-#: src/idn.c:312 src/idn.c:381
+#: src/idn.c:320 src/idn.c:392
 #, c-format
 msgid "tld_check_4z: %s"
 msgstr ""
 
-#: src/idn.c:357
+#: src/idn.c:367
 #, c-format
 msgid "idna_to_unicode_8z4z: %s"
 msgstr ""
