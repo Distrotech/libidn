@@ -1,3 +1,43 @@
+2005-05-06  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Version 0.5.16.
+
+2005-05-06  Simon Josefsson <simon@josefsson.org>
+
+	* po/da.po, po/de.po, po/eo.po, po/fr.po, po/nl.po, po/pl.po,
+	po/ro.po, po/rw.po, po/sr.po, po/sv.po, po/zh_CN.po: Sync with TP.
+
+2005-05-06  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2005-05-06  Simon Josefsson <simon@josefsson.org>
+
+	* lib/pr29.c: Use 'const' for static data, tiny patch from Joe
+	Orton <jorton@redhat.com>.
+
+2005-04-16  Simon Josefsson <simon@josefsson.org>
+
+	* po/da.po, po/de.po, po/eo.po, po/fr.po, po/nl.po, po/pl.po,
+	po/ro.po, po/sr.po: Sync with TP.
+
+2005-04-15  Simon Josefsson <simon@josefsson.org>
+
+	* configure.ac: Bump versions.
+
+2005-04-15  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2005-04-15  Simon Josefsson <simon@josefsson.org>
+
+	* po/da.po, po/de.po, po/eo.po, po/fr.po, po/it.po, po/nl.po,
+	po/pl.po, po/ro.po, po/sr.po, po/vi.po: Sync with TP.
+
+2005-04-06  Simon Josefsson <simon@josefsson.org>
+
+	* po/LINGUAS, po/rw.po, po/zh_CN.po: Sync with TP.
+
 2005-03-19  Simon Josefsson <simon@josefsson.org>
 
 	* po/da.po, po/de.po, po/eo.po, po/fr.po, po/it.po, po/nl.po,
