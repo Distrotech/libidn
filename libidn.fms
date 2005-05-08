@@ -9,9 +9,7 @@ BSD-Port-URL: http://www.freshports.org/devel/libidn/
 CVS-URL: http://josefsson.org/cgi-bin/viewcvs.cgi/libidn/
 Mirror-Site-URL: http://josefsson.org/libidn
 Demo-URL: http://josefsson.org/idn.php
-Version: 0.5.13
+Version: 0.5.16
 Release-Focus: Minor bugfixes
 
-The code to convert data between character encodings have been cleaned
-up.  It is now possible to bootstrap with unmodified Automake
-installations.  Translation improvements.
+Mark static PR29 data tables as 'const'. Kinyarwanda translations added.
