@@ -1,3 +1,94 @@
+2005-05-26  Simon Josefsson <simon@josefsson.org>
+
+	* po/da.po, po/de.po, po/eo.po, po/fr.po, po/it.po, po/nl.po,
+	po/pl.po, po/ro.po, po/rw.po, po/sr.po, po/sv.po, po/vi.po,
+	po/zh_CN.po: Generated.
+
+2005-05-26  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Version 0.5.17.
+
+2005-05-26  Simon Josefsson <simon@josefsson.org>
+
+	* doc/lgpl.texi: Fix sectioning.
+
+2005-05-26  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Fix.
+
+2005-05-26  Simon Josefsson <simon@josefsson.org>
+
+	* gl/Makefile.am, gl/dummy.c, gl/gettext.h, gl/m4/getopt.m4,
+	gl/m4/gettext.m4, gl/m4/glibc2.m4, gl/m4/gnulib.m4,
+	gl/m4/intdiv0.m4, gl/m4/intmax.m4, gl/m4/inttypes-pri.m4,
+	gl/m4/inttypes.m4, gl/m4/isc-posix.m4, gl/m4/lcmessage.m4,
+	gl/m4/lib-link.m4, gl/m4/lib-prefix.m4, gl/m4/nls.m4, gl/m4/po.m4,
+	gl/m4/printf-posix.m4, gl/m4/progtest.m4, gl/m4/strdup.m4: Sync
+	with gnulib.
+
+2005-05-26  Simon Josefsson <simon@josefsson.org>
+
+	* AUTHORS, COPYING, COPYING.LIB, FAQ, Makefile.am, README, TODO,
+	configure.ac, libidn.pc.in, doc/Makefile.am, doc/Makefile.gdoci,
+	doc/fdl.texi, doc/gdoc, doc/gendocs.sh, doc/gendocs_template,
+	doc/lgpl.texi, doc/java/Makefile.am, doc/tld/Makefile.am,
+	examples/Makefile.am, examples/example.c, examples/example2.c,
+	examples/example3.c, examples/example4.c, examples/example5.c,
+	gl/dummy.c, gl/error.c, gl/error.h, gl/getopt.c, gl/getopt1.c,
+	gl/getopt_.h, gl/getopt_int.h, gl/gettext.h, gl/strdup.c,
+	gl/strdup.h, java/Makefile.am,
+	java/gnu/inet/encoding/CombiningClass.java,
+	java/gnu/inet/encoding/Composition.java,
+	java/gnu/inet/encoding/DecompositionKeys.java,
+	java/gnu/inet/encoding/DecompositionMappings.java,
+	java/gnu/inet/encoding/IDNA.java,
+	java/gnu/inet/encoding/IDNAException.java,
+	java/gnu/inet/encoding/Makefile.am,
+	java/gnu/inet/encoding/NFKC.java,
+	java/gnu/inet/encoding/Punycode.java,
+	java/gnu/inet/encoding/PunycodeException.java,
+	java/gnu/inet/encoding/RFC3454.java,
+	java/gnu/inet/encoding/Stringprep.java,
+	java/gnu/inet/encoding/StringprepException.java,
+	java/misc/GenerateNFKC.java, java/misc/GenerateRFC3454.java,
+	java/misc/Makefile.am, java/misc/TestIDNA.java,
+	java/misc/TestNFKC.java, lib/Makefile.am,
+	lib/gen-stringprep-tables.pl, lib/gen-tld-tables.pl,
+	lib/gen-unicode-tables.pl, lib/iconvme.c, lib/iconvme.h,
+	lib/idn-free.c, lib/idn-free.h, lib/idna.c, lib/idna.h, lib/nfkc.c,
+	lib/pr29.c, lib/pr29.h, lib/profiles.c, lib/punycode.c,
+	lib/punycode.h, lib/strerror-idna.c, lib/strerror-pr29.c,
+	lib/strerror-punycode.c, lib/strerror-stringprep.c,
+	lib/strerror-tld.c, lib/stringprep.c, lib/stringprep.h.in,
+	lib/tld.c, lib/tld.h, lib/toutf8.c, lib/version.c, libc/example.c,
+	src/Makefile.am, src/idn.c, src/idn.ggo, src/idna.el,
+	src/punycode.el, tests/Makefile.am, tests/tst_idna.c,
+	tests/tst_idna2.c, tests/tst_nfkc.c, tests/tst_pr29.c,
+	tests/tst_punycode.c, tests/tst_strerror.c, tests/tst_stringprep.c,
+	tests/tst_tld.c, tests/utils.c, tests/utils.h: Update FSF address
+	in license.  Fix copyrights.
+
+2005-05-26  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2005-05-12  Simon Josefsson <simon@josefsson.org>
+
+	* po/da.po, po/de.po, po/eo.po, po/fr.po, po/nl.po, po/pl.po,
+	po/ro.po, po/rw.po, po/sr.po, po/zh_CN.po: Sync with TP.
+
+2005-05-11  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi: Add.
+
+2005-05-08  Simon Josefsson <simon@josefsson.org>
+
+	* configure.ac, NEWS: Bump versions.
+
+2005-05-08  Simon Josefsson <simon@josefsson.org>
+
+	* libidn.fms: 0.5.16.
+
 2005-05-06  Simon Josefsson <simon@josefsson.org>
 
 	* NEWS: Version 0.5.16.
