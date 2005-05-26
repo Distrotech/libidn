@@ -4,6 +4,10 @@ See the end for copying conditions.
 
 * Version 0.5.17 (unreleased)
 
+** Translation updated.
+
+** API and ABI is backwards compatible with the previous version.
+
 * Version 0.5.16 (released 2005-05-06)
 
 ** Mark static PR29 data tables as 'const', thanks to Joe Orton.
