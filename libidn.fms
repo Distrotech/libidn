@@ -9,7 +9,8 @@ BSD-Port-URL: http://www.freshports.org/devel/libidn/
 CVS-URL: http://josefsson.org/cgi-bin/viewcvs.cgi/libidn/
 Mirror-Site-URL: http://josefsson.org/libidn
 Demo-URL: http://josefsson.org/idn.php
-Version: 0.5.16
+Version: 0.5.17
 Release-Focus: Minor bugfixes
 
-Mark static PR29 data tables as 'const'. Kinyarwanda translations added.
+The gnulib portability files were updated.  The license template in
+files were updated with the new FSF address.  Translation updated.
