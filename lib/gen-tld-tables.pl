@@ -2,33 +2,32 @@
 
 # Author: Thomas Jacob, Internet24.de
 
-# Copyright (C) 2004  Simon Josefsson.
+# Copyright (C) 2004, 2005  Simon Josefsson.
 # Copyright (C) 2004  Free Software Foundation, Inc.
-
+#
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2, or (at your option)
 # any later version.
-
+#
 # This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
-
+#
 # You should have received a copy of the GNU General Public License
-# along with this program; if not, write to the Free Software
-# Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
-# 02111-1307, USA.
+# along with this program; if not, you can either send email to this
+# program's maintainer or write to: The Free Software Foundation,
+# Inc.; 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+#
+# I consider the output of this program to be unrestricted.  Use it as
+# you will.
 
 # See doc/tld/README and draft-hoffman-idn-reg-*.txt inside Libidn for
 # more information on the input file syntax.
 
 # Use this to generate TLD tables:
 # $ ./gen-tld-tables *.tld > tlds.c
-
-# I consider the output of this program to be unrestricted.  Use it as
-# you will.
-#
 
 use strict;
 use warnings;
