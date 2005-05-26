@@ -4,6 +4,10 @@ See the end for copying conditions.
 
 * Version 0.5.17 (unreleased)
 
+** The gnulib portability files were updated.
+
+** The license template in files were updated with the new address.
+
 ** Translation updated.
 
 ** API and ABI is backwards compatible with the previous version.
