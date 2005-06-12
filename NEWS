@@ -4,6 +4,9 @@ See the end for copying conditions.
 
 * Version 0.5.18 (unreleased)
 
+** Fix use of 'head -1' in configure script (should be 'head -n -1'),
+** thanks to Carsten Lohrke.
+
 ** Translation updates.
 
 ** API and ABI is backwards compatible with the previous version.
