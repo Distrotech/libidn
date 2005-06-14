@@ -1,18 +1,19 @@
-# Vietnamese Translation for libidn-0.5.12.
+# Vietnamese Translation for libidn-0.5.16.
 # Copyright (C) 2005 Free Software Foundation, Inc.
 # Clytie Siddall <clytie@riverland.net.au>, 2005.
-#
+# 
 msgid ""
 msgstr ""
-"Project-Id-Version: libidn 0.5.12\n"
+"Project-Id-Version: libidn 0.5.16\n"
 "Report-Msgid-Bugs-To: bug-libidn@gnu.org\n"
-"POT-Creation-Date: 2005-05-26 16:44+0200\n"
-"PO-Revision-Date: 2005-02-07 16:03+1030\n"
+"POT-Creation-Date: 2005-05-06 01:52+0200\n"
+"PO-Revision-Date: 2005-05-13 14:37+0930\n"
 "Last-Translator: Clytie Siddall <clytie@riverland.net.au>\n"
 "Language-Team: Vietnamese <gnomevi-list@lists.sourceforge.net> \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
 
 #: lib/strerror-idna.c:70 lib/strerror-pr29.c:54 lib/strerror-punycode.c:54
 #: lib/strerror-stringprep.c:74 lib/strerror-tld.c:56
@@ -74,7 +75,7 @@ msgstr "Chuỗi không tránh nhân lên trong sự tiêu chuẩn hoá NFKC Unic
 
 #: lib/strerror-punycode.c:58
 msgid "Invalid input"
-msgstr "dữ liệu nhập không hợp lệ"
+msgstr "Dữ liệu nhập không hợp lệ"
 
 #: lib/strerror-punycode.c:62 lib/strerror-stringprep.c:98
 msgid "Output would exceed the buffer space provided"
@@ -98,7 +99,7 @@ msgstr "Dữ liệu nhập chứa đặc tính thuộc hai hướng xung đột"
 
 #: lib/strerror-stringprep.c:90
 msgid "Malformed bidirectional string"
-msgstr "Chuỗi thuộc hai hướng khuyết tật"
+msgstr "Chuỗi thuộc hai hướng dạng sai"
 
 #: lib/strerror-stringprep.c:94
 msgid "Prohibited bidirectional code points in input"
@@ -143,15 +144,12 @@ msgstr "Bộ ký tự `%s'.\n"
 
 #: src/idn.c:101
 #, c-format
-msgid ""
-"Type each input string on a line by itself, terminated by a newline "
-"character.\n"
-msgstr ""
-"Gõ mỗi chuỗi nhập trên một đường riêng, giới hạn bằng ký tự đường mới.\n"
+msgid "Type each input string on a line by itself, terminated by a newline character.\n"
+msgstr "Gõ mỗi chuỗi nhập trên một đường riêng, giới hạn bằng ký tự dòng mới.\n"
 
 #: src/idn.c:116
 msgid "Input error"
-msgstr "lỗi nhập"
+msgstr "Lỗi gõ"
 
 #: src/idn.c:126 src/idn.c:186 src/idn.c:267 src/idn.c:341
 #, c-format
@@ -165,7 +163,7 @@ msgstr "Không chuyển đôi được từ UTF-8 đến UCS-4."
 #: src/idn.c:141 src/idn.c:199 src/idn.c:280 src/idn.c:356
 #, c-format
 msgid "input[%d] = U+%04x\n"
-msgstr "input[%d] = U+%04x (nhập)\n"
+msgstr "input[%d] = U+%04x (gõ)\n"
 
 #: src/idn.c:150
 #, c-format
@@ -210,6 +208,7 @@ msgstr "idna_to_ascii_4z: %s (từ IDNA đến ASCII)"
 msgid "idna_to_unicode_8z4z (TLD): %s"
 msgstr "idna_to_unicode_8z4z (TLD): %s (từ IDNA đến Unicode)"
 
+# Variable: do not translate/ biến: đừng dịch
 #: src/idn.c:311
 #, c-format
 msgid "tld[%d] = U+%04x\n"
