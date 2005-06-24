@@ -4,6 +4,9 @@ See the end for copying conditions.
 
 * Version 0.5.18 (unreleased)
 
+** The macro AX_CREATE_STDINT_H that is used to create idn-int.h
+** has been updated.
+
 ** Fix use of 'head -1' in configure script (should be 'head -n -1'),
 ** thanks to Carsten Lohrke.
 
