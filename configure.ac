@@ -6,17 +6,18 @@ dnl This file is part of GNU Libidn.
 dnl
 dnl GNU Libidn is free software; you can redistribute it and/or modify
 dnl it under the terms of the GNU Lesser General Public License as
-dnl published by the Free Software Foundation; either version 2.1 of
-dnl the License, or (at your option) any later version.
+dnl published by the Free Software Foundation; either version 2, or
+dnl (at your option) any later version.
 dnl
-dnl GNU Libidn is distributed in the hope that it will be useful,
-dnl but WITHOUT ANY WARRANTY; without even the implied warranty of
-dnl MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-dnl GNU Lesser General Public License for more details.
+dnl GNU Libidn is distributed in the hope that it will be useful, but
+dnl WITHOUT ANY WARRANTY; without even the implied warranty of
+dnl MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+dnl General Public License for more details.
 dnl
-dnl You should have received a copy of the GNU Lesser General Public
-dnl License along with GNU Libidn; if not, write to the Free Software
-dnl Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA
+dnl You should have received a copy of the GNU General Public License
+dnl along with GNU Libidn; see the file COPYING.LIB.  If not, write to
+dnl the Free Software Foundation, Inc., 51 Franklin Street, Fifth
+dnl Floor, Boston, MA 02110-1301, USA.
 
 AC_INIT([libidn], [0.5.18], [bug-libidn@gnu.org])
 
