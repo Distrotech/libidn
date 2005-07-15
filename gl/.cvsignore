@@ -1,5 +1,7 @@
 .deps
 .libs
+Makefile
+Makefile.in
 getopt.h
 *.la
 *.lo
