@@ -1,3 +1,92 @@
+2005-07-16  Simon Josefsson <simon@josefsson.org>
+
+	* po/da.po, po/de.po, po/eo.po, po/fr.po, po/it.po, po/nl.po,
+	po/pl.po, po/ro.po, po/rw.po, po/sr.po, po/sv.po, po/vi.po,
+	po/zh_CN.po: Generated.
+
+2005-07-16  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Version 0.5.18.
+
+2005-07-16  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2005-07-16  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi: Link to help-libidn.
+
+2005-07-16  Simon Josefsson <simon@josefsson.org>
+
+	* README: Add.
+
+2005-07-16  Simon Josefsson <simon@josefsson.org>
+
+	* gl/Makefile.am, gl/m4/gnulib.m4: Update.
+
+2005-07-16  Simon Josefsson <simon@josefsson.org>
+
+	* configure.ac: Simplify.
+
+2005-06-24  Simon Josefsson <simon@josefsson.org>
+
+	* m4/ax_create_stdint_h.m4: Use 'sed 1q' instead of 'head -n 1',
+	more portable.
+
+2005-06-24  Simon Josefsson <simon@josefsson.org>
+
+	* doc/Makefile.am: Add 2005 to man page copyrights.
+
+2005-06-24  Simon Josefsson <simon@josefsson.org>
+
+	* m4/ax_create_stdint_h.m4: Fix head usage (really!!).
+
+2005-06-24  Simon Josefsson <simon@josefsson.org>
+
+	* configure.ac: Fix license.
+
+2005-06-24  Simon Josefsson <simon@josefsson.org>
+
+	* configure.ac: Bump versions.
+
+2005-06-24  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2005-06-24  Simon Josefsson <simon@josefsson.org>
+
+	* m4/ax_create_stdint_h.m4: Fix use of head.
+
+2005-06-24  Simon Josefsson <simon@josefsson.org>
+
+	* m4/ax_create_stdint_h.m4: New upstream release.
+
+2005-06-15  Simon Josefsson <simon@josefsson.org>
+
+	* po/da.po, po/de.po, po/eo.po, po/fr.po, po/it.po, po/pl.po,
+	po/ro.po, po/sr.po, po/vi.po: Sync with TP.
+
+2005-06-12  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Fix.
+
+2005-06-12  Simon Josefsson <simon@josefsson.org>
+
+	* THANKS: fix
+
+2005-06-12  Simon Josefsson <simon@josefsson.org>
+
+	* m4/ax_create_stdint_h.m4: Turn 'head -1' into 'head -n -1', tiny
+	patch from Carsten Lohrke <current@myrealbox.com>.
+
+2005-06-05  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS, po/nl.po: Add.
+
+2005-05-26  Simon Josefsson <simon@josefsson.org>
+
+	* libidn.fms: 0.5.17.
+
 2005-05-26  Simon Josefsson <simon@josefsson.org>
 
 	* po/da.po, po/de.po, po/eo.po, po/fr.po, po/it.po, po/nl.po,
