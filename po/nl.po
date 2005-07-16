@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libidn 0.5.16\n"
 "Report-Msgid-Bugs-To: bug-libidn@gnu.org\n"
-"POT-Creation-Date: 2005-05-06 01:52+0200\n"
+"POT-Creation-Date: 2005-07-16 16:00+0200\n"
 "PO-Revision-Date: 2005-06-05 21:55+0200\n"
 "Last-Translator: Benno Schulenberg <benno@nietvergeten.nl>\n"
 "Language-Team: Dutch <vertaling@vrijschrift.org>\n"
@@ -48,7 +48,9 @@ msgstr "Invoer begint niet met een ACE-voorvoegsel ('xn--')"
 
 #: lib/strerror-idna.c:98
 msgid "String not idempotent under ToASCII"
-msgstr "Tekenreeks is niet hetzelfde na retourconversie (van ASCII naar Unicode en terug)"
+msgstr ""
+"Tekenreeks is niet hetzelfde na retourconversie (van ASCII naar Unicode en "
+"terug)"
 
 #: lib/strerror-idna.c:102
 msgid "Input already contain ACE prefix (`xn--')"
@@ -73,7 +75,9 @@ msgstr "Onbekende fout"
 
 #: lib/strerror-pr29.c:58
 msgid "String not idempotent under Unicode NFKC normalization"
-msgstr "Tekenreeks is problematisch bij normalisering volgens Unicode-NFKC: er zijn verschillende mogelijkheden"
+msgstr ""
+"Tekenreeks is problematisch bij normalisering volgens Unicode-NFKC: er zijn "
+"verschillende mogelijkheden"
 
 #: lib/strerror-punycode.c:58
 msgid "Invalid input"
@@ -146,8 +150,11 @@ msgstr "Tekenset '%s'.\n"
 
 #: src/idn.c:101
 #, c-format
-msgid "Type each input string on a line by itself, terminated by a newline character.\n"
-msgstr "Typ elke invoertekenreeks op een afzonderlijke regel, afgesloten met Enter.\n"
+msgid ""
+"Type each input string on a line by itself, terminated by a newline "
+"character.\n"
+msgstr ""
+"Typ elke invoertekenreeks op een afzonderlijke regel, afgesloten met Enter.\n"
 
 #: src/idn.c:116
 msgid "Input error"
