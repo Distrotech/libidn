@@ -135,6 +135,7 @@ also available.
 * Features::
 * Library Overview::
 * Supported Platforms::
+* Getting help::
 * Commercial Support::
 * Downloading and Installing::
 * Bug Reports::
@@ -371,6 +372,15 @@ GCC 2.95 and GNU Make @code{arm-linux}.
 
 If you use Libidn on, or port Libidn to, a new platform please report
 it to the author.
+
+@node Getting help
+@section Getting help
+
+A mailing list where users of Libidn may help each other exists, and
+you can reach it by sending e-mail to @email{help-libidn@@gnu.org}.
+Archives of the mailing list discussions, and an interface to manage
+subscriptions, is available through the World Wide Web at
+@url{http://lists.gnu.org/mailman/listinfo/help-libidn}.
 
 @node Commercial Support
 @section Commercial Support
