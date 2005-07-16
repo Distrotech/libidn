@@ -10,6 +10,8 @@ See the end for copying conditions.
 ** Fix use of 'head -1' in configure script (should be 'head -n -1'),
 ** thanks to Carsten Lohrke.
 
+** Announce the help-libidn mailing list in documentation and README.
+
 ** Translation updates.
 
 ** API and ABI is backwards compatible with the previous version.
