@@ -25,12 +25,9 @@ AC_INIT([libidn], [0.5.18], [bug-libidn@gnu.org])
 # Interfaces changed/added/removed:   CURRENT++       REVISION=0
 # Interfaces added:                             AGE++
 # Interfaces removed:                           AGE=0
-LT_CURRENT=16
-LT_REVISION=11
-LT_AGE=5
-AC_SUBST(LT_CURRENT)
-AC_SUBST(LT_REVISION)
-AC_SUBST(LT_AGE)
+AC_SUBST(LT_CURRENT, 16)
+AC_SUBST(LT_REVISION, 11)
+AC_SUBST(LT_AGE, 5)
 
 AC_PREREQ(2.59)
 AM_INIT_AUTOMAKE([1.9 gnits])
