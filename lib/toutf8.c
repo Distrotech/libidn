@@ -40,10 +40,10 @@
 
 #ifdef _LIBC
 # define HAVE_ICONV 1
-# define LOCALE_WORKS 1
+# define HAVE_LANGINFO_CODESET 1
 #endif
 
-#if LOCALE_WORKS
+#if HAVE_LANGINFO_CODESET
 # include <langinfo.h>
 # include <locale.h>
 #endif
@@ -79,7 +79,7 @@ stringprep_locale_charset (void)
   if (charset && *charset)
     return charset;
 
-# ifdef LOCALE_WORKS
+# ifdef HAVE_LANGINFO_CODESET
   charset = nl_langinfo (CODESET);
 
   if (charset && *charset)
