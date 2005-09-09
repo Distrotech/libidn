@@ -68,23 +68,7 @@ AX_CREATE_STDINT_H(lib/idn-int.h, sys/types.h)
 gl_INIT
 
 # Check if locale stuff works
-AC_CACHE_CHECK([if setlocale() and nl_langinfo() works],
-	ac_cv_locale_works, [
-	AC_RUN_IFELSE([AC_LANG_SOURCE([[
-#include <locale.h>
-#include <langinfo.h>
-int main ()
-{
-  char* cs;
-  setlocale(LC_CTYPE, "");
-  cs = nl_langinfo(CODESET);
-  return !cs;
-}
-]])],[ac_cv_locale_works=yes],[ac_cv_locale_works=no],[ac_cv_locale_works=no])
-	])
-if test "$ac_cv_locale_works" = "yes"; then
-  AC_DEFINE(LOCALE_WORKS, 1, [Define if setlocale() and nl_langinfo() works.])
-fi
+AM_LANGINFO_CODESET
 
 # Make it possible to disable TLD code.
 AC_ARG_ENABLE(tld, AC_HELP_STRING([--disable-tld], [disable TLD code]),
