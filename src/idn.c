@@ -28,17 +28,19 @@
 #include <string.h>
 #include <errno.h>
 
-#include <error.h>
-
-#ifdef LOCALE_WORKS
+#ifdef HAVE_LOCALE_H
 # include <locale.h>
 #else
 # define setlocale(Category, Locale)	/* empty */
 #endif
 
+/* Gnulib headers. */
+#include <error.h>
+
 #include "gettext.h"
 #define _(String) dgettext (PACKAGE, String)
 
+/* Libidn headers. */
 #include <stringprep.h>
 #include <punycode.h>
 #include <idna.h>
