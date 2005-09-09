@@ -4,6 +4,8 @@ See the end for copying conditions.
 
 * Version 0.5.19 (unreleased)
 
+** Gnulib updates, fixes for getopt.
+
 ** API and ABI is backwards compatible with the previous version.
 
 * Version 0.5.18 (released 2005-07-16)
