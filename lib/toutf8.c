@@ -40,12 +40,16 @@
 
 #ifdef _LIBC
 # define HAVE_ICONV 1
+# define HAVE_LOCALE_H 1
 # define HAVE_LANGINFO_CODESET 1
+#endif
+
+#if HAVE_LOCALE_H
+# include <locale.h>
 #endif
 
 #if HAVE_LANGINFO_CODESET
 # include <langinfo.h>
-# include <locale.h>
 #endif
 
 #ifdef _LIBC
