@@ -60,6 +60,7 @@ fi
 
 # Checks for header files.
 AC_HEADER_STDC
+AC_CHECK_HEADERS([locale.h])
 
 # Checks for typedefs, structures, and compiler characteristics.
 AX_CREATE_STDINT_H(lib/idn-int.h, sys/types.h)
