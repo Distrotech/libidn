@@ -28,7 +28,7 @@
 #include <string.h>
 #include <errno.h>
 
-#ifdef HAVE_LOCALE_H
+#ifdef HAVE_SETLOCALE
 # include <locale.h>
 #else
 # define setlocale(Category, Locale)	/* empty */
