@@ -28,15 +28,12 @@
 #include <string.h>
 #include <errno.h>
 
-#ifdef HAVE_SETLOCALE
+#if HAVE_LOCALE_H
 # include <locale.h>
-#else
-# define setlocale(Category, Locale)	/* empty */
 #endif
 
 /* Gnulib headers. */
-#include <error.h>
-
+#include "error.h"
 #include "gettext.h"
 #define _(String) dgettext (PACKAGE, String)
 
@@ -69,7 +66,9 @@ main (int argc, char *argv[])
   unsigned cmdn = 0;
   int rc;
 
+#ifdef HAVE_SETLOCALE
   setlocale (LC_ALL, "");
+#endif
   program_name = argv[0];
   bindtextdomain (PACKAGE, LOCALEDIR);
   textdomain (PACKAGE);
