@@ -4,6 +4,10 @@ See the end for copying conditions.
 
 * Version 0.5.19 (unreleased)
 
+** The test for setlocale and nl_langinfo has now been separated.
+The autoconf script now test for locale.h, setlocale and
+nl_langinfo(CODESET) independently.
+
 ** Gnulib updates, fixes for getopt.
 
 ** API and ABI is backwards compatible with the previous version.
