@@ -64,6 +64,9 @@ AC_HEADER_STDC
 # Checks for typedefs, structures, and compiler characteristics.
 AX_CREATE_STDINT_H(lib/idn-int.h, sys/types.h)
 
+# Checks for library functions.
+AC_CHECK_FUNCS([setlocale])
+
 # For gnulib stuff in gl/.
 gl_INIT
 
