@@ -1,5 +1,5 @@
 ## Process this file with automake to produce Makefile.in
-# Copyright (C) 2004 Simon Josefsson.
+# Copyright (C) 2004, 2005 Simon Josefsson.
 #
 # This file is part of GNU Libidn.
 #
@@ -18,18 +18,22 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA
 
 if JAVA
-HTML = AllNames.html packages.html tree.html			\
-	gnu.inet.encoding.PunycodeException.html		\
-	gnu.inet.encoding.CombiningClass.html			\
-	gnu.inet.encoding.Punycode.html				\
-	gnu.inet.encoding.Composition.html			\
-	gnu.inet.encoding.RFC3454.html				\
-	gnu.inet.encoding.DecompositionKeys.html		\
-	gnu.inet.encoding.StringprepException.html		\
-	gnu.inet.encoding.DecompositionMappings.html		\
-	gnu.inet.encoding.Stringprep.html			\
-	gnu.inet.encoding.IDNAException.html			\
-	gnu.inet.encoding.IDNA.html gnu.inet.encoding.NFKC.html
+HTML = about.html deprecated.html package-list alphaindex.html		\
+	index.html serialized-form.html					\
+	resources/gjdochtml-clean-color1.css				\
+	resources/gjdochtml-clean-layout.css resources/gjdoc.js		\
+	resources/inherit.png gnu/inet/encoding/classes.html		\
+	gnu/inet/encoding/CombiningClass.html				\
+	gnu/inet/encoding/Composition.html				\
+	gnu/inet/encoding/DecompositionKeys.html			\
+	gnu/inet/encoding/DecompositionMappings.html			\
+	gnu/inet/encoding/IDNAException.html				\
+	gnu/inet/encoding/IDNA.html gnu/inet/encoding/NFKC.html		\
+	gnu/inet/encoding/package-summary.html				\
+	gnu/inet/encoding/PunycodeException.html			\
+	gnu/inet/encoding/Punycode.html gnu/inet/encoding/RFC3454.html	\
+	gnu/inet/encoding/StringprepException.html			\
+	gnu/inet/encoding/Stringprep.html gnu/inet/encoding/tree.html
 EXTRA_DIST = $(HTML)
 
 all:
