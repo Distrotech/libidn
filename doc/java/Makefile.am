@@ -36,7 +36,9 @@ HTML = about.html deprecated.html package-list alphaindex.html		\
 	gnu/inet/encoding/Stringprep.html gnu/inet/encoding/tree.html
 EXTRA_DIST = $(HTML)
 
-all:
+all-local: $(HTML)
+
+$(HTML): ../../java/libidn-@VERSION@.jar
 	cd ../../java && make javadoc
 
 clean-local:
