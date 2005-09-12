@@ -10,6 +10,8 @@ nl_langinfo(CODESET) independently.
 
 ** Gnulib updates, fixes for getopt.
 
+** Changed to Gjdoc from GNU Classpath, for better Java manuals in doc/java/.
+
 ** API and ABI is backwards compatible with the previous version.
 
 * Version 0.5.18 (released 2005-07-16)
