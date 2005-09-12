@@ -1,6 +1,9 @@
 Makefile
 Makefile.in
-*.html
-gnu
+about.html
+deprecated.html
 package-list
-resources
+alphaindex.html
+index.html
+serialized-form.html
+package-list
