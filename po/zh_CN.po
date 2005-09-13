@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libidn 0.5.12\n"
 "Report-Msgid-Bugs-To: bug-libidn@gnu.org\n"
-"POT-Creation-Date: 2005-07-16 16:00+0200\n"
+"POT-Creation-Date: 2005-09-12 16:11+0200\n"
 "PO-Revision-Date: 2005-03-12 18:48+0800\n"
 "Last-Translator: Meng Jie <zuxyhere@eastday.com>\n"
 "Language-Team: Chinese (simplified) <i18n-translation@lists.linux.net.cn>\n"
@@ -137,99 +137,99 @@ msgstr "输入缺失"
 msgid "No top-level domain found in input"
 msgstr "输入中未发现顶级域"
 
-#: src/idn.c:89
+#: src/idn.c:90
 msgid "Only one of -s, -e, -d, -a or -u can be specified."
 msgstr "只能指定 -s，-e，-d，-a 或 -u 中的一个。"
 
-#: src/idn.c:98
+#: src/idn.c:99
 #, c-format
 msgid "Charset `%s'.\n"
 msgstr "字符集‘%s’。\n"
 
-#: src/idn.c:101
+#: src/idn.c:102
 #, c-format
 msgid ""
 "Type each input string on a line by itself, terminated by a newline "
 "character.\n"
 msgstr "输入时，每个字符串单占一行。\n"
 
-#: src/idn.c:116
+#: src/idn.c:117
 msgid "Input error"
 msgstr "输入错误"
 
-#: src/idn.c:126 src/idn.c:186 src/idn.c:267 src/idn.c:341
+#: src/idn.c:127 src/idn.c:187 src/idn.c:268 src/idn.c:342
 #, c-format
 msgid "Could not convert from %s to UTF-8."
 msgstr "无法将 %s 转为 UTF-8"
 
-#: src/idn.c:134 src/idn.c:158 src/idn.c:193 src/idn.c:402
+#: src/idn.c:135 src/idn.c:159 src/idn.c:194 src/idn.c:403
 msgid "Could not convert from UTF-8 to UCS-4."
 msgstr "无法将 UTF-8 转为 UCS-4。"
 
-#: src/idn.c:141 src/idn.c:199 src/idn.c:280 src/idn.c:356
+#: src/idn.c:142 src/idn.c:200 src/idn.c:281 src/idn.c:357
 #, c-format
 msgid "input[%d] = U+%04x\n"
 msgstr "输入[%d] = U+%04x\n"
 
-#: src/idn.c:150
+#: src/idn.c:151
 #, c-format
 msgid "stringprep_profile: %s"
 msgstr "stringprep_profile：%s"
 
-#: src/idn.c:165 src/idn.c:242 src/idn.c:329 src/idn.c:374
+#: src/idn.c:166 src/idn.c:243 src/idn.c:330 src/idn.c:375
 #, c-format
 msgid "output[%d] = U+%04x\n"
 msgstr "输出[%d] = U+%04x\n"
 
-#: src/idn.c:172 src/idn.c:213 src/idn.c:255 src/idn.c:407
+#: src/idn.c:173 src/idn.c:214 src/idn.c:256 src/idn.c:408
 #, c-format
 msgid "Could not convert from UTF-8 to %s."
 msgstr "无法将 UTF-8 转为 %s。"
 
-#: src/idn.c:206
+#: src/idn.c:207
 #, c-format
 msgid "punycode_encode: %s"
 msgstr "punycode_encode：%s"
 
-#: src/idn.c:228
+#: src/idn.c:229
 msgid "malloc"
 msgstr "malloc"
 
-#: src/idn.c:234
+#: src/idn.c:235
 #, c-format
 msgid "punycode_decode: %s"
 msgstr "punycode_decode: %s"
 
-#: src/idn.c:250 src/idn.c:274 src/idn.c:349
+#: src/idn.c:251 src/idn.c:275 src/idn.c:350
 msgid "Could not convert from UCS-4 to UTF-8."
 msgstr "无法将 UCS-4 转为 UTF-8。"
 
-#: src/idn.c:290
+#: src/idn.c:291
 #, c-format
 msgid "idna_to_ascii_4z: %s"
 msgstr "idna_to_ascii_4z：%s"
 
-#: src/idn.c:304
+#: src/idn.c:305
 #, c-format
 msgid "idna_to_unicode_8z4z (TLD): %s"
 msgstr "idna_to_unicode_8z4z (TLD)：%s"
 
-#: src/idn.c:311
+#: src/idn.c:312
 #, c-format
 msgid "tld[%d] = U+%04x\n"
 msgstr "tld[%d] = U+%04x\n"
 
-#: src/idn.c:317 src/idn.c:386
+#: src/idn.c:318 src/idn.c:387
 #, c-format
 msgid "tld_check_4z (position %d): %s"
 msgstr "tld_check_4z (position %d)：%s"
 
-#: src/idn.c:320 src/idn.c:392
+#: src/idn.c:321 src/idn.c:393
 #, c-format
 msgid "tld_check_4z: %s"
 msgstr "tld_check_4z：%s"
 
-#: src/idn.c:367
+#: src/idn.c:368
 #, c-format
 msgid "idna_to_unicode_8z4z: %s"
 msgstr "idna_to_unicode_8z4z：%s"

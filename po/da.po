@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libidn 0.4.1\n"
 "Report-Msgid-Bugs-To: bug-libidn@gnu.org\n"
-"POT-Creation-Date: 2005-07-16 16:00+0200\n"
+"POT-Creation-Date: 2005-09-12 16:11+0200\n"
 "PO-Revision-Date: 2004-03-16 10:07+0100\n"
 "Last-Translator: Morten Bo Johansen <mojo@mbjnet.dk>\n"
 "Language-Team: Danish <dansk@klid.dk>\n"
@@ -132,102 +132,102 @@ msgstr ""
 msgid "No top-level domain found in input"
 msgstr ""
 
-#: src/idn.c:89
+#: src/idn.c:90
 #, fuzzy
 msgid "Only one of -s, -e, -d, -a or -u can be specified."
 msgstr "%s: Kun en af -s, -e, -d, -a or -u kan angives.\n"
 
-#: src/idn.c:98
+#: src/idn.c:99
 #, c-format
 msgid "Charset `%s'.\n"
 msgstr "Tegnsæt `%s'.\n"
 
-#: src/idn.c:101
+#: src/idn.c:102
 #, c-format
 msgid ""
 "Type each input string on a line by itself, terminated by a newline "
 "character.\n"
 msgstr "Indtast hver streng på en særskilt linje, afsluttet med en ny linje.\n"
 
-#: src/idn.c:116
+#: src/idn.c:117
 msgid "Input error"
 msgstr ""
 
-#: src/idn.c:126 src/idn.c:186 src/idn.c:267 src/idn.c:341
+#: src/idn.c:127 src/idn.c:187 src/idn.c:268 src/idn.c:342
 #, fuzzy, c-format
 msgid "Could not convert from %s to UTF-8."
 msgstr "%s: kunne ikke omdanne fra %s til UTF-8.\n"
 
-#: src/idn.c:134 src/idn.c:158 src/idn.c:193 src/idn.c:402
+#: src/idn.c:135 src/idn.c:159 src/idn.c:194 src/idn.c:403
 #, fuzzy
 msgid "Could not convert from UTF-8 to UCS-4."
 msgstr "%s: kunne ikke omdanne fra UTF-8 til UCS-4.\n"
 
-#: src/idn.c:141 src/idn.c:199 src/idn.c:280 src/idn.c:356
+#: src/idn.c:142 src/idn.c:200 src/idn.c:281 src/idn.c:357
 #, c-format
 msgid "input[%d] = U+%04x\n"
 msgstr "inddata[%d] = U+%04x\n"
 
-#: src/idn.c:150
+#: src/idn.c:151
 #, c-format
 msgid "stringprep_profile: %s"
 msgstr ""
 
-#: src/idn.c:165 src/idn.c:242 src/idn.c:329 src/idn.c:374
+#: src/idn.c:166 src/idn.c:243 src/idn.c:330 src/idn.c:375
 #, c-format
 msgid "output[%d] = U+%04x\n"
 msgstr "uddata[%d] = U+%04x\n"
 
-#: src/idn.c:172 src/idn.c:213 src/idn.c:255 src/idn.c:407
+#: src/idn.c:173 src/idn.c:214 src/idn.c:256 src/idn.c:408
 #, fuzzy, c-format
 msgid "Could not convert from UTF-8 to %s."
 msgstr "%s: kunne ikke omdanne fra UTF-8 til %s.\n"
 
-#: src/idn.c:206
+#: src/idn.c:207
 #, c-format
 msgid "punycode_encode: %s"
 msgstr ""
 
-#: src/idn.c:228
+#: src/idn.c:229
 msgid "malloc"
 msgstr ""
 
-#: src/idn.c:234
+#: src/idn.c:235
 #, c-format
 msgid "punycode_decode: %s"
 msgstr ""
 
-#: src/idn.c:250 src/idn.c:274 src/idn.c:349
+#: src/idn.c:251 src/idn.c:275 src/idn.c:350
 #, fuzzy
 msgid "Could not convert from UCS-4 to UTF-8."
 msgstr "%s: kunne ikke omdanne fra UCS-4 til UTF-8.\n"
 
-#: src/idn.c:290
+#: src/idn.c:291
 #, c-format
 msgid "idna_to_ascii_4z: %s"
 msgstr ""
 
-#: src/idn.c:304
+#: src/idn.c:305
 #, fuzzy, c-format
 msgid "idna_to_unicode_8z4z (TLD): %s"
 msgstr "%s: idna_to_unicode_8z4z() fejlede med fejl %d.\n"
 
-#: src/idn.c:311
+#: src/idn.c:312
 #, c-format
 msgid "tld[%d] = U+%04x\n"
 msgstr "tld[%d] = U+%04x\n"
 
-#: src/idn.c:317 src/idn.c:386
+#: src/idn.c:318 src/idn.c:387
 #, c-format
 msgid "tld_check_4z (position %d): %s"
 msgstr ""
 
-#: src/idn.c:320 src/idn.c:392
+#: src/idn.c:321 src/idn.c:393
 #, c-format
 msgid "tld_check_4z: %s"
 msgstr ""
 
-#: src/idn.c:367
+#: src/idn.c:368
 #, fuzzy, c-format
 msgid "idna_to_unicode_8z4z: %s"
 msgstr "%s: idna_to_unicode_8z4z() fejlede med fejl %d.\n"
