@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libidn 0.5.6\n"
 "Report-Msgid-Bugs-To: bug-libidn@gnu.org\n"
-"POT-Creation-Date: 2004-10-02 21:50+0200\n"
+"POT-Creation-Date: 2005-09-12 16:11+0200\n"
 "PO-Revision-Date: 2004-10-15 22:20+0200\n"
 "Last-Translator: Jakub Bogusz <qboosh@pld-linux.org>\n"
 "Language-Team: Polish <translation-team-pl@lists.sourceforge.net>\n"
@@ -133,97 +133,100 @@ msgstr "Brak wej¶cia"
 msgid "No top-level domain found in input"
 msgstr "Nie znaleziono domeny najwy¿szego poziomu na wej¶ciu"
 
-#: src/idn.c:89
+#: src/idn.c:90
 msgid "Only one of -s, -e, -d, -a or -u can be specified."
 msgstr "Mo¿na podaæ tylko jedno z -s, -e, -d, -a lub -u."
 
-#: src/idn.c:98
+#: src/idn.c:99
 #, c-format
 msgid "Charset `%s'.\n"
 msgstr "Zestaw znaków `%s'.\n"
 
-#: src/idn.c:101
+#: src/idn.c:102
 #, c-format
-msgid "Type each input string on a line by itself, terminated by a newline character.\n"
-msgstr "Nale¿y podaæ ka¿dy ³añcuch w osobnej linii, zakoñczony znakiem nowej linii.\n"
+msgid ""
+"Type each input string on a line by itself, terminated by a newline "
+"character.\n"
+msgstr ""
+"Nale¿y podaæ ka¿dy ³añcuch w osobnej linii, zakoñczony znakiem nowej linii.\n"
 
-#: src/idn.c:116
+#: src/idn.c:117
 msgid "Input error"
 msgstr "B³±d wej¶cia"
 
-#: src/idn.c:126 src/idn.c:184 src/idn.c:261 src/idn.c:332
+#: src/idn.c:127 src/idn.c:187 src/idn.c:268 src/idn.c:342
 #, c-format
 msgid "Could not convert from %s to UTF-8."
 msgstr "Nie mo¿na przekonwertowaæ z %s na UTF-8."
 
-#: src/idn.c:133 src/idn.c:156 src/idn.c:190 src/idn.c:389
+#: src/idn.c:135 src/idn.c:159 src/idn.c:194 src/idn.c:403
 msgid "Could not convert from UTF-8 to UCS-4."
 msgstr "Nie mo¿na przekonwertowaæ z UTF-8 na UCS-4."
 
-#: src/idn.c:140 src/idn.c:196 src/idn.c:273 src/idn.c:346
+#: src/idn.c:142 src/idn.c:200 src/idn.c:281 src/idn.c:357
 #, c-format
 msgid "input[%d] = U+%04x\n"
 msgstr "wej¶cie[%d] = U+%04x\n"
 
-#: src/idn.c:149
+#: src/idn.c:151
 #, c-format
 msgid "stringprep_profile: %s"
 msgstr "stringprep_profile: %s"
 
-#: src/idn.c:163 src/idn.c:237 src/idn.c:320 src/idn.c:363
+#: src/idn.c:166 src/idn.c:243 src/idn.c:330 src/idn.c:375
 #, c-format
 msgid "output[%d] = U+%04x\n"
 msgstr "wyj¶cie[%d] = U+%04x\n"
 
-#: src/idn.c:170 src/idn.c:209 src/idn.c:249 src/idn.c:394
+#: src/idn.c:173 src/idn.c:214 src/idn.c:256 src/idn.c:408
 #, c-format
 msgid "Could not convert from UTF-8 to %s."
 msgstr "Nie mo¿na przekonwertowaæ z UTF-8 na %s."
 
-#: src/idn.c:203
+#: src/idn.c:207
 #, c-format
 msgid "punycode_encode: %s"
 msgstr "punycode_encode: %s"
 
-#: src/idn.c:224
+#: src/idn.c:229
 msgid "malloc"
 msgstr "malloc"
 
-#: src/idn.c:230
+#: src/idn.c:235
 #, c-format
 msgid "punycode_decode: %s"
 msgstr "punycode_decode: %s"
 
-#: src/idn.c:244 src/idn.c:267 src/idn.c:339
+#: src/idn.c:251 src/idn.c:275 src/idn.c:350
 msgid "Could not convert from UCS-4 to UTF-8."
 msgstr "Nie mo¿na przekonwertowaæ z UCS-4 na UTF-8."
 
-#: src/idn.c:283
+#: src/idn.c:291
 #, c-format
 msgid "idna_to_ascii_4z: %s"
 msgstr "idna_to_ascii_4z: %s"
 
-#: src/idn.c:296
+#: src/idn.c:305
 #, c-format
 msgid "idna_to_unicode_8z4z (TLD): %s"
 msgstr "idna_to_unicode_8z4z (TLD): %s"
 
-#: src/idn.c:303
+#: src/idn.c:312
 #, c-format
 msgid "tld[%d] = U+%04x\n"
 msgstr "tld[%d] = U+%04x\n"
 
-#: src/idn.c:309 src/idn.c:375
+#: src/idn.c:318 src/idn.c:387
 #, c-format
 msgid "tld_check_4z (position %d): %s"
 msgstr "tld_check_4z (pozycja %d): %s"
 
-#: src/idn.c:312 src/idn.c:381
+#: src/idn.c:321 src/idn.c:393
 #, c-format
 msgid "tld_check_4z: %s"
 msgstr "tld_check_4z: %s"
 
-#: src/idn.c:357
+#: src/idn.c:368
 #, c-format
 msgid "idna_to_unicode_8z4z: %s"
 msgstr "idna_to_unicode_8z4z: %s"
