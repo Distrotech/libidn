@@ -38,7 +38,7 @@ EXTRA_DIST = $(HTML)
 
 all-local: $(HTML)
 
-$(HTML): ../../java/libidn-@VERSION@.jar
+$(HTML): ../../java/gnu/inet/encoding/*.java
 	cd ../../java && make javadoc
 
 clean-local:
