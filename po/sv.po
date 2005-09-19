@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libidn 0.4.1\n"
 "Report-Msgid-Bugs-To: bug-libidn@gnu.org\n"
-"POT-Creation-Date: 2005-09-19 13:45+0200\n"
+"POT-Creation-Date: 2005-09-19 15:28+0200\n"
 "PO-Revision-Date: 2005-01-02 12:44+0100\n"
 "Last-Translator: Simon Josefsson <jas@extundo.com>\n"
 "Language-Team: Swedish <sv@li.org>\n"
@@ -17,217 +17,166 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: lib/strerror-idna.c:70 lib/strerror-pr29.c:54 lib/strerror-punycode.c:54
-#: lib/strerror-stringprep.c:74 lib/strerror-tld.c:56
 msgid "Success"
 msgstr "Lyckades"
 
-#: lib/strerror-idna.c:74 lib/strerror-pr29.c:62
 msgid "String preparation failed"
 msgstr "Strängbehandling misslyckades"
 
-#: lib/strerror-idna.c:78
 msgid "Punycode failed"
 msgstr "Punycode misslyckades"
 
-#: lib/strerror-idna.c:82
 msgid "Non-digit/letter/hyphen in input"
 msgstr "Icke-siffra/tecken/orddelare i indata"
 
-#: lib/strerror-idna.c:86
 msgid "Forbidden leading or trailing minus sign (`-')"
 msgstr "Förbjudet ledande eller avslutande minustecken (`-')"
 
-#: lib/strerror-idna.c:90
 msgid "Output would be too large or too small"
 msgstr "Utdata är för stort eller för litet"
 
-#: lib/strerror-idna.c:94
 msgid "Input does not start with ACE prefix (`xn--')"
 msgstr "Indata börjar inte med ACE-prefix (`xn--')"
 
-#: lib/strerror-idna.c:98
 msgid "String not idempotent under ToASCII"
 msgstr "Sträng är inte idempotent under ToASCII"
 
-#: lib/strerror-idna.c:102
 msgid "Input already contain ACE prefix (`xn--')"
 msgstr "Indata innehåller redan ACE-prefix (`xn--')"
 
-#: lib/strerror-idna.c:106 lib/strerror-tld.c:72
 msgid "System iconv failed"
 msgstr "Systemets iconv-operation misslyckades"
 
-#: lib/strerror-idna.c:110 lib/strerror-stringprep.c:118 lib/strerror-tld.c:68
 msgid "Cannot allocate memory"
 msgstr "Kan inte allokera minne"
 
-#: lib/strerror-idna.c:114
 msgid "System dlopen failed"
 msgstr "Systemets dlopen-funktion misslyckades"
 
-#: lib/strerror-idna.c:118 lib/strerror-pr29.c:66 lib/strerror-punycode.c:70
-#: lib/strerror-stringprep.c:122 lib/strerror-tld.c:80
 msgid "Unknown error"
 msgstr "Okänt fel"
 
-#: lib/strerror-pr29.c:58
 msgid "String not idempotent under Unicode NFKC normalization"
 msgstr "Sträng inte idempotent under Unicode NFKC normalisering"
 
-#: lib/strerror-punycode.c:58
 msgid "Invalid input"
 msgstr "Felaktig indata"
 
-#: lib/strerror-punycode.c:62 lib/strerror-stringprep.c:98
 msgid "Output would exceed the buffer space provided"
 msgstr "Utdata skulle överskrida tillhandahållen buffertutrymme"
 
-#: lib/strerror-punycode.c:66
 msgid "String size limit exceeded"
 msgstr "Stränglängdsbegränsning överskriden"
 
-#: lib/strerror-stringprep.c:78
 msgid "Forbidden unassigned code points in input"
 msgstr "Obekant teckenkod förbjuden i indata"
 
-#: lib/strerror-stringprep.c:82
 msgid "Prohibited code points in input"
 msgstr "Förbjuden teckenkod i indata"
 
-#: lib/strerror-stringprep.c:86
 msgid "Conflicting bidirectional properties in input"
 msgstr "Indata har olika bidirektionalitetsegenskaper"
 
-#: lib/strerror-stringprep.c:90
 msgid "Malformed bidirectional string"
 msgstr "Felaktig bidirektionell sträng"
 
-#: lib/strerror-stringprep.c:94
 msgid "Prohibited bidirectional code points in input"
 msgstr "Förbjuden bidirektionell teckenkod i indata"
 
-#: lib/strerror-stringprep.c:102
 msgid "Error in stringprep profile definition"
 msgstr "Fel i definition av stringprep-profil"
 
-#: lib/strerror-stringprep.c:106
 msgid "Flag conflict with profile"
 msgstr "Angiven parameter strider mot profil"
 
-#: lib/strerror-stringprep.c:110
 msgid "Unknown profile"
 msgstr "Okänd profil"
 
-#: lib/strerror-stringprep.c:114
 msgid "Unicode normalization failed (internal error)"
 msgstr "Unicode normalisering misslyckades (internt fel)"
 
-#: lib/strerror-tld.c:60
 msgid "Code points prohibited by top-level domain"
 msgstr "Teckenkod förbjuden av top-nivå domän"
 
-#: lib/strerror-tld.c:64
 msgid "Missing input"
 msgstr "Indata saknas"
 
-#: lib/strerror-tld.c:76
 msgid "No top-level domain found in input"
 msgstr "Kunde inte hitta topp-nivå domän i indata"
 
-#: src/idn.c:90
 msgid "Only one of -s, -e, -d, -a or -u can be specified."
 msgstr "Bara en av -s, -e, -d, -a eller -u kan anges."
 
-#: src/idn.c:99
 #, c-format
 msgid "Charset `%s'.\n"
 msgstr "Teckenuppsättning `%s'.\n"
 
-#: src/idn.c:102
 #, c-format
 msgid ""
 "Type each input string on a line by itself, terminated by a newline "
 "character.\n"
 msgstr "Mata in en sträng per rad.\n"
 
-#: src/idn.c:117
 msgid "Input error"
 msgstr "Fel i indata"
 
-#: src/idn.c:127 src/idn.c:187 src/idn.c:268 src/idn.c:342
 #, c-format
 msgid "Could not convert from %s to UTF-8."
 msgstr "Kunde inte konvertera från %s till UTF-8."
 
-#: src/idn.c:135 src/idn.c:159 src/idn.c:194 src/idn.c:403
 msgid "Could not convert from UTF-8 to UCS-4."
 msgstr "Kunde inte konvertera från UTF-8 till UCS-4."
 
-#: src/idn.c:142 src/idn.c:200 src/idn.c:281 src/idn.c:357
 #, c-format
 msgid "input[%d] = U+%04x\n"
 msgstr "in[%d] = U+%04x\n"
 
-#: src/idn.c:151
 #, c-format
 msgid "stringprep_profile: %s"
 msgstr ""
 
-#: src/idn.c:166 src/idn.c:243 src/idn.c:330 src/idn.c:375
 #, c-format
 msgid "output[%d] = U+%04x\n"
 msgstr "ut[%d] = U+%04x\n"
 
-#: src/idn.c:173 src/idn.c:214 src/idn.c:256 src/idn.c:408
 #, c-format
 msgid "Could not convert from UTF-8 to %s."
 msgstr "Kunde inte konvertera från UTF-8 till %s."
 
-#: src/idn.c:207
 #, c-format
 msgid "punycode_encode: %s"
 msgstr ""
 
-#: src/idn.c:229
 msgid "malloc"
 msgstr ""
 
-#: src/idn.c:235
 #, c-format
 msgid "punycode_decode: %s"
 msgstr ""
 
-#: src/idn.c:251 src/idn.c:275 src/idn.c:350
 msgid "Could not convert from UCS-4 to UTF-8."
 msgstr "Kunde inte konvertera från UCS-4 till UTF-8."
 
-#: src/idn.c:291
 #, c-format
 msgid "idna_to_ascii_4z: %s"
 msgstr ""
 
-#: src/idn.c:305
 #, c-format
 msgid "idna_to_unicode_8z4z (TLD): %s"
 msgstr ""
 
-#: src/idn.c:312
 #, c-format
 msgid "tld[%d] = U+%04x\n"
 msgstr "tld[%d] = U+%04x\n"
 
-#: src/idn.c:318 src/idn.c:387
 #, c-format
 msgid "tld_check_4z (position %d): %s"
 msgstr ""
 
-#: src/idn.c:321 src/idn.c:393
 #, c-format
 msgid "tld_check_4z: %s"
 msgstr ""
 
-#: src/idn.c:368
 #, c-format
 msgid "idna_to_unicode_8z4z: %s"
 msgstr ""
