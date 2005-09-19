@@ -21,9 +21,8 @@ gl_MODULES([dummy error getopt strdup])
 gl_AVOID([])
 gl_SOURCE_BASE([gl])
 gl_M4_BASE([gl/m4])
+gl_TESTS_BASE([gl/tests])
 gl_LIB([libgnu])
 gl_LGPL
 gl_LIBTOOL
 gl_MACRO_PREFIX([gl])
-
-# gnulib-cache.m4 ends here

@@ -48,5 +48,3 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/strdup.m4
   m4/strerror_r.m4
 ])
-
-# gnulib-comp.m4 ends here
