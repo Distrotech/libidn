@@ -35,8 +35,8 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/dummy.c
   lib/error.c
   lib/error.h
-  lib/getopt1.c
   lib/getopt.c
+  lib/getopt1.c
   lib/getopt_.h
   lib/getopt_int.h
   lib/gettext.h
