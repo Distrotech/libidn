@@ -6,6 +6,10 @@ See the end for copying conditions.
 
 ** The header file pr29.h is now installed by 'make install'.
 
+** Translation updates.
+
+** Update of gnulib files.
+
 ** API and ABI is backwards compatible with the previous version.
 
 * Version 0.5.19 (released 2005-09-19)
