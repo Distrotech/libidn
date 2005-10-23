@@ -4,6 +4,8 @@ See the end for copying conditions.
 
 * Version 0.5.20 (unreleased)
 
+** The header file pr29.h is now installed by 'make install'.
+
 ** API and ABI is backwards compatible with the previous version.
 
 * Version 0.5.19 (released 2005-09-19)
