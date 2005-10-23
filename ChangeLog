@@ -1,3 +1,75 @@
+2005-10-23  Simon Josefsson <simon@josefsson.org>
+
+	* po/da.po, po/de.po, po/eo.po, po/fr.po, po/it.po, po/nl.po,
+	po/pl.po, po/ro.po, po/rw.po, po/sr.po, po/sv.po, po/vi.po,
+	po/zh_CN.po: Generated.
+
+2005-10-23  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi: Mention Suse on IBM OpenPower.
+
+2005-10-23  Simon Josefsson <simon@josefsson.org>
+
+	* libidn.fms: Fix.
+
+2005-10-23  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2005-10-23  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Version 0.5.20.
+
+2005-10-23  Simon Josefsson <simon@josefsson.org>
+
+	* po/da.po, po/de.po, po/eo.po, po/fr.po, po/it.po, po/nl.po,
+	po/pl.po, po/ro.po, po/rw.po, po/sr.po, po/sv.po, po/vi.po,
+	po/zh_CN.po: Sync with TP.
+
+2005-10-23  Simon Josefsson <simon@josefsson.org>
+
+	* libidn.fms: Add.
+
+2005-10-23  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2005-10-23  Simon Josefsson <simon@josefsson.org>
+
+	* lib/Makefile.am: Install pr29.h.
+
+2005-10-22  Simon Josefsson <simon@josefsson.org>
+
+	* gl/m4/gnulib-comp.m4: Update.
+
+2005-10-07  Simon Josefsson <simon@josefsson.org>
+
+	* gl/getopt_.h: Update.
+
+2005-09-22  Simon Josefsson <simon@josefsson.org>
+
+	* gl/m4/gnulib-comp.m4: Update.
+
+2005-09-20  Simon Josefsson <simon@josefsson.org>
+
+	* gl/getopt1.c: Update.
+
+2005-09-19  Simon Josefsson <simon@josefsson.org>
+
+	* gl/m4/gnulib-cache.m4, gl/m4/gnulib-comp.m4: Update.
+
+2005-09-19  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS, configure.ac: Bump versions.
+
+2005-09-19  Simon Josefsson <simon@josefsson.org>
+
+	* Makefile.am: Use gnupload.
+
+2005-09-19  Simon Josefsson <simon@josefsson.org>
+
+	* libidn.fms: 0.5.19.
+
 2005-09-19  Simon Josefsson <simon@josefsson.org>
 
 	* po/da.po, po/de.po, po/eo.po, po/fr.po, po/it.po, po/nl.po,
