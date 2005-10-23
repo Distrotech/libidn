@@ -1,5 +1,5 @@
 /* pr29.h --- Detect strings that are non-idempotent under NFKC in Unicode 3.2.
- * Copyright (C) 2004  Simon Josefsson.
+ * Copyright (C) 2004, 2005  Simon Josefsson.
  *
  * This file is part of GNU Libidn.
  *
@@ -1303,12 +1303,17 @@ int
 pr29_8z (const char *in)
 {
   uint32_t *p;
+  int rc;
 
   p = stringprep_utf8_to_ucs4 (in, -1, NULL);
   if (!p)
     return PR29_STRINGPREP_ERROR;
 
-  return pr29_4z (p);
+  rc = pr29_4z (p);
+
+  free (p);
+
+  return rc;
 }
 
 /**
