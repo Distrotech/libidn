@@ -51,7 +51,7 @@ endif
 libidn_la_LIBADD = $(LTLIBICONV)
 libidn_la_LDFLAGS = \
 	-export-symbols-regex '^(idn|pr29_|punycode_|stringprep|tld_).*' \
-	-version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE)
+	-version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE) -no-undefined
 
 nfkc.c: gunibreak.h gunicomp.h gunidecomp.h
 
