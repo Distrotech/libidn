@@ -4,7 +4,7 @@ See the end for copying conditions.
 
 * Version 0.5.21 (unreleased)
 
-** Support shared libraries on Cygwin, thanks to Yaakov S.
+** Support shared libraries on Cygwin and Mingw32, thanks to Yaakov S.
 
 ** Fix memory leak.
 
