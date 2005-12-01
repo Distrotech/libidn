@@ -7,8 +7,9 @@ See the end for copying conditions.
 ** A C# port of Libidn has been added, contributed by Alexander Gnauck.
 The port resides in the csharp/ directory.  Configure will build it if
 it can find a working C# compiler; Mono's "mcs" is known to work
-(available in Debian in the "mono-mcs" package).  No further
-documentation is available at this point.
+(available in Debian in the "mono-mcs" package) but PNET's "cscc"
+should also work (available in Debian in the "pnet" package).  No
+further documentation is available at this point.
 
 ** Support shared libraries on Cygwin and Mingw32, thanks to Yaakov S.
 
