@@ -18,7 +18,7 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 # 02110-1301, USA.
 
-SUBDIRS = gl lib po src doc tests examples java
+SUBDIRS = gl lib po src doc tests examples java csharp
 
 ACLOCAL_AMFLAGS = -I m4 -I gl/m4
 DISTCHECK_CONFIGURE_FLAGS = --enable-gtk-doc
