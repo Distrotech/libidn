@@ -18,12 +18,17 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 # 02110-1301, USA.
 
-ACLOCAL_AMFLAGS = -I m4
-
-SUBDIRS = lib
-
-CSHARPCOMP = $(SHELL) lib/csharpcomp.sh
+CSHARPCOMP = $(SHELL) ./csharpcomp.sh
 CSHARPCOMPFLAGS = -O -g
+
+SOURCES = AssemblyInfo.cs IDNA.cs RFC3454.cs CombiningClass.cs	\
+	IDNAException.cs Stringprep.cs Composition.cs NFKC.cs	\
+	StringprepException.cs DecompositionKeys.cs Punycode.cs	\
+	DecompositionMappings.cs PunycodeException.cs
+
+EXTRA_DIST = $(SOURCES)
+
+CLEANFILES = Libidn.dll
 
 all-local: Libidn.dll
 
@@ -37,16 +42,6 @@ installdirs-local:
 uninstall-local:
 	rm -f $(DESTDIR)$(libdir)/Libidn.dll
 
-
-SOURCES = AssemblyInfo.cs IDNA.cs RFC3454.cs CombiningClass.cs	\
-	IDNAException.cs Stringprep.cs Composition.cs NFKC.cs	\
-	StringprepException.cs DecompositionKeys.cs Punycode.cs	\
-	DecompositionMappings.cs PunycodeException.cs
-
 Libidn.dll: $(SOURCES)
 	$(CSHARPCOMP) $(CSHARPCOMPFLAGS) -o $@ \
 		`for src in $(SOURCES); do echo $(srcdir)/$$src; done`
-
-EXTRA_DIST = $(SOURCES)
-
-CLEANFILES = Libidn.dll
