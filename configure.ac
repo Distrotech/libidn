@@ -107,6 +107,7 @@ if test -n "$HAVE_CSHARPCOMP"; then
   ac_result=yes
 else
   ac_result=no
+fi
 AC_MSG_RESULT($ac_result)
 
 AC_CONFIG_FILES([Makefile libidn.pc doc/reference/Makefile doc/java/Makefile \

@@ -30,18 +30,32 @@ EXTRA_DIST = $(SOURCES)
 
 CLEANFILES = Libidn.dll
 
-all-local: Libidn.dll
+ALL_LOCAL_TARGETS =
+INSTALLDIRS_LOCAL_TARGETS = 
+INSTALL_DATA_LOCAL_TARGETS =
+UNINSTALL_LOCAL_TARGETS =
 
-install-data-local:
-	$(mkinstalldirs) $(DESTDIR)$(libdir)
-	$(INSTALL_DATA) Libidn.dll $(DESTDIR)$(libdir)/Libidn.dll
-
-installdirs-local:
-	$(mkinstalldirs) $(DESTDIR)$(libdir)
-
-uninstall-local:
-	rm -f $(DESTDIR)$(libdir)/Libidn.dll
+if CSHARP
+ALL_LOCAL_TARGETS += Libidn.dll
+INSTALLDIRS_LOCAL_TARGETS += install-dll-dir
+INSTALL_DATA_LOCAL_TARGETS += install-dll
+UNINSTALL_LOCAL_TARGETS += uninstall-dll
 
 Libidn.dll: $(SOURCES)
 	$(CSHARPCOMP) $(CSHARPCOMPFLAGS) -o $@ \
 		`for src in $(SOURCES); do echo $(srcdir)/$$src; done`
+
+install-dll-dir:
+	$(mkinstalldirs) $(DESTDIR)$(libdir)
+
+install-dll: install-dll-dir
+	$(INSTALL_DATA) Libidn.dll $(DESTDIR)$(libdir)/Libidn.dll
+
+uninstall-dll:
+	rm -f $(DESTDIR)$(libdir)/Libidn.dll
+endif
+
+all-local: $(ALL_LOCAL_TARGETS)
+install-data-local: $(INSTALL_DATA_LOCAL_TARGETS)
+installdirs-local: $(INSTALLDIRS_LOCAL_TARGETS)
+uninstall-local: $(UNINSTALL_LOCAL_TARGETS)
