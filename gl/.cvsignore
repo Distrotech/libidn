@@ -2,6 +2,7 @@
 .libs
 Makefile
 Makefile.in
+csharpcomp.sh
 getopt.h
 *.la
 *.lo
