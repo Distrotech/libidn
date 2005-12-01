@@ -21,3 +21,36 @@
 ACLOCAL_AMFLAGS = -I m4
 
 SUBDIRS = lib
+
+CSHARPCOMP = $(SHELL) lib/csharpcomp.sh
+CSHARPCOMPFLAGS = -O -g
+
+all-local: Libidn.dll
+
+install-data-local:
+	$(mkinstalldirs) $(DESTDIR)$(libdir)
+	$(INSTALL_DATA) Libidn.dll $(DESTDIR)$(libdir)/Libidn.dll
+
+installdirs-local:
+	$(mkinstalldirs) $(DESTDIR)$(libdir)
+
+uninstall-local:
+	rm -f $(DESTDIR)$(libdir)/Libidn.dll
+
+
+SOURCES = AssemblyInfo.cs IDNA.cs RFC3454.cs CombiningClass.cs	\
+	IDNAException.cs Stringprep.cs Composition.cs NFKC.cs	\
+	StringprepException.cs DecompositionKeys.cs Punycode.cs	\
+	DecompositionMappings.cs PunycodeException.cs
+
+Libidn.dll: $(SOURCES)
+	$(CSHARPCOMP) $(CSHARPCOMPFLAGS) -o $@ \
+		`for src in $(SOURCES); do echo $(srcdir)/$$src; done`
+
+EXTRA_DIST = $(SOURCES)
+
+CLEANFILES = Libidn.dll
+
+ChangeLog:
+	cvs2cl --FSF --fsf --usermap ../.cvsusers -I ChangeLog -I .cvs && \
+	cat ../.cvscopying >> ChangeLog
