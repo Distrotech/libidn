@@ -8,8 +8,9 @@ See the end for copying conditions.
 The port resides in the csharp/ directory.  Configure will build it if
 it can find a working C# compiler; Mono's "mcs" is known to work
 (available in Debian in the "mono-mcs" package) but PNET's "cscc"
-should also work (available in Debian in the "pnet" package).  No
-further documentation is available at this point.
+should also work (available in Debian in the "pnet" package).  The
+port is licensed under the GPL.  No further documentation is available
+at this point.
 
 ** Support shared libraries on Cygwin and Mingw32, thanks to Yaakov S.
 
