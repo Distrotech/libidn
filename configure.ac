@@ -102,8 +102,12 @@ AC_MSG_RESULT($enable_java)
 # Check for C#
 gt_CSHARPCOMP
 AM_CONDITIONAL(CSHARP, test -n "$HAVE_CSHARPCOMP")
-AC_MSG_CHECKING([if implementation in C# should be built])
-AC_MSG_RESULT($HAVE_CSHARPCOMP)
+AC_MSG_CHECKING([if implementation in C should be built])
+if test -n "$HAVE_CSHARPCOMP"; then
+  ac_result=yes
+else
+  ac_result=no
+AC_MSG_RESULT($ac_result)
 
 AC_CONFIG_FILES([Makefile libidn.pc doc/reference/Makefile doc/java/Makefile \
 		gl/Makefile lib/stringprep.h contrib/doxygen/Doxyfile \
