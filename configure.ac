@@ -99,12 +99,18 @@ AM_CONDITIONAL(JAVA, test "$enable_java" != "no")
 AC_MSG_CHECKING([if implementation in Java should be built])
 AC_MSG_RESULT($enable_java)
 
+# Check for C#
+gt_CSHARPCOMP
+AM_CONDITIONAL(CSHARP, test -n "$HAVE_CSHARPCOMP")
+AC_MSG_CHECKING([if implementation in C# should be built])
+AC_MSG_RESULT($HAVE_CSHARPCOMP)
+
 AC_CONFIG_FILES([Makefile libidn.pc doc/reference/Makefile doc/java/Makefile \
 		gl/Makefile lib/stringprep.h contrib/doxygen/Doxyfile \
 		doc/Makefile doc/specifications/Makefile doc/tld/Makefile \
 		lib/Makefile src/Makefile tests/Makefile examples/Makefile \
 		java/Makefile java/gnu/Makefile java/gnu/inet/Makefile \
 		java/gnu/inet/encoding/Makefile java/misc/Makefile \
-		csharp/Makefile \
+		csharp/Makefile csharp/csharpcomp.sh \
 		po/Makefile.in])
 AC_OUTPUT
