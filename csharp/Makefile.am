@@ -50,7 +50,3 @@ Libidn.dll: $(SOURCES)
 EXTRA_DIST = $(SOURCES)
 
 CLEANFILES = Libidn.dll
-
-ChangeLog:
-	cvs2cl --FSF --fsf --usermap ../.cvsusers -I ChangeLog -I .cvs && \
-	cat .cvscopying >> ChangeLog
