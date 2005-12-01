@@ -11,6 +11,9 @@ Contributed TLD support.
 Oliver Hitz <oliver@net-track.ch>
 Contributed Java implementation.
 
+Alexander Gnauck <gnauck@ag-software.de>
+Contributed C# port.
+
 -----BEGIN PGP PUBLIC KEY BLOCK-----
 URL: http://josefsson.org/key.txt
 Comment: This 0xB565716F key is used to sign releases of Libidn.
