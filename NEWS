@@ -4,6 +4,12 @@ See the end for copying conditions.
 
 * Version 0.6.0 (unreleased)
 
+** A C# port of Libidn has been added, contributed by Alexander Gnauck.
+The port resides in the csharp/ directory.  Configure will build it if
+it can find a working C# compiler, currently only Mono's "mcs" has
+been tested (available in Debian in the "mono-mcs" package).  No
+further documentation is available at this point.
+
 ** Support shared libraries on Cygwin and Mingw32, thanks to Yaakov S.
 
 ** Fix memory leak.
