@@ -18,7 +18,7 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 # 02110-1301, USA.
 
-CSHARPCOMP = $(SHELL) ./csharpcomp.sh
+CSHARPCOMP = $(SHELL) ../gl/csharpcomp.sh
 CSHARPCOMPFLAGS = -O -g
 
 SOURCES = AssemblyInfo.cs IDNA.cs RFC3454.cs CombiningClass.cs	\

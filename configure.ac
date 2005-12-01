@@ -116,6 +116,6 @@ AC_CONFIG_FILES([Makefile libidn.pc doc/reference/Makefile doc/java/Makefile \
 		lib/Makefile src/Makefile tests/Makefile examples/Makefile \
 		java/Makefile java/gnu/Makefile java/gnu/inet/Makefile \
 		java/gnu/inet/encoding/Makefile java/misc/Makefile \
-		csharp/Makefile csharp/csharpcomp.sh \
+		csharp/Makefile gl/csharpcomp.sh \
 		po/Makefile.in])
 AC_OUTPUT
