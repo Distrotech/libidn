@@ -26,7 +26,11 @@ SOURCES = AssemblyInfo.cs IDNA.cs RFC3454.cs CombiningClass.cs	\
 	StringprepException.cs DecompositionKeys.cs Punycode.cs	\
 	DecompositionMappings.cs PunycodeException.cs
 
-EXTRA_DIST = $(SOURCES)
+MSVSC = libidn.csproj libidn.csproj.user libidn_PPC.csdproj	\
+	libidn_PPC.csdproj.user libidn_PPC.sln libidn_PPC.suo	\
+	libidn.sln libidn.suo
+
+EXTRA_DIST = $(SOURCES) $(MSVSC)
 
 CLEANFILES = Libidn.dll
 
