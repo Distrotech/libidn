@@ -19,7 +19,7 @@
 # 02110-1301, USA.
 
 CSHARPCOMP = $(SHELL) ../gl/csharpcomp.sh
-CSHARPCOMPFLAGS = -O -g
+CSHARPCOMPFLAGS =
 
 SOURCES = AssemblyInfo.cs IDNA.cs RFC3454.cs CombiningClass.cs	\
 	IDNAException.cs Stringprep.cs Composition.cs NFKC.cs	\
