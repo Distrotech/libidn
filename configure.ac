@@ -102,7 +102,7 @@ AC_MSG_RESULT($enable_java)
 # Check for C#
 gt_CSHARPCOMP
 AM_CONDITIONAL(CSHARP, test -n "$HAVE_CSHARPCOMP")
-AC_MSG_CHECKING([if implementation in C should be built])
+AC_MSG_CHECKING([[if implementation in C# should be built]])
 if test -n "$HAVE_CSHARPCOMP"; then
   ac_result=yes
 else
