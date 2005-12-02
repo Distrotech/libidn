@@ -72,6 +72,7 @@ section entitled ``GNU Free Documentation License''.
 * Invoking idn::		Command line interface to the library.
 * Emacs API::                   Emacs Lisp API for Libidn.
 * Java API::                    Notes on the Java port of Libidn.
+* C# API::                      Notes on the C# port of Libidn.
 * Acknowledgements::            Whom to blame.
 * Milestones::                  Rough outline of development history.
 
@@ -127,8 +128,8 @@ new system-wide getaddrinfo flag for IDN processing.
 Libidn is developed for the GNU/Linux system, but runs on over 20 Unix
 platforms (including Solaris, IRIX, AIX, and Tru64) and Windows.
 Libidn is written in C and (parts of) the API is accessible from C,
-C++, Emacs Lisp, Python and Java.  An experimental native Java API is
-also available.
+C++, Emacs Lisp, Python and Java.  A native Java and C# port is also
+provided.
 
 @menu
 * Getting Started::
@@ -473,6 +474,12 @@ information.
 Disable the TLD module.  This would typically only be useful if you
 are building on a memory restricted platforms.  @xref{TLD Functions},
 for more information.
+
+@item --enable-csharp[=IMPL]
+Build the C3 port into a *.DLL file.  @xref{C# API}, for more
+information.  Here, @code{IMPL} is @code{pnet} or @code{mono},
+indicating whether the PNET @command{cscc} compiler or the Mono
+@command{mcs} compiler should be used, respectively.
 
 @end table
 
@@ -1776,6 +1783,14 @@ of the library. Java 1.5 is currently in beta status.
 For more information refer to the documentation of java.lang.Character
 in the JDK API.
 
+@node C# API
+@chapter C# API
+
+The Libidn library has been ported to the C# language.  The port
+reside in the top-level @file{csharp/} directory.  Currently, no
+further documentation about the implementation or the API is
+available.
+
 @c **********************************************************
 @c *******************  Acknowledgements  *******************
 @c **********************************************************
@@ -1785,7 +1800,8 @@ in the JDK API.
 The punycode implementation was taken from the IETF IDN Punycode
 specification, by Adam M. Costello.  The TLD code was contributed by
 Thomas Jacob.  The Java implementation was contributed by Oliver Hitz.
-The Unicode tables were provided by Unicode, Inc.  Some functions for
+The C# implementation was contributed by Alexander Gnauck.  The
+Unicode tables were provided by Unicode, Inc.  Some functions for
 dealing with Unicode (see nfkc.c and toutf8.c) were borrowed from
 GLib, downloaded from @url{http://www.gtk.org/}.  The manual borrowed
 text from Libgcrypt by Werner Koch.
@@ -1842,6 +1858,13 @@ Version 0.4.2-0.4.9 released between 2004-03-20 and 2004-06-11.
 
 @item PR-29 functions for ``problem sequences''.
 Version 0.5.0 released on 2004-06-26.
+
+@item Many small portability fixes and wider use.
+Version 0.5.1 through 0.5.20, released between 2004-07-09 and
+2005-10-23.
+
+@item Native C# implementation.
+Version 0.6.0.
 
 @end table
 
