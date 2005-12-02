@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libidn 0.5.16\n"
 "Report-Msgid-Bugs-To: bug-libidn@gnu.org\n"
-"POT-Creation-Date: 2005-10-23 19:53+0200\n"
+"POT-Creation-Date: 2005-05-06 01:52+0200\n"
 "PO-Revision-Date: 2005-05-12 16:53+0100\n"
 "Last-Translator: Edmund GRIMLEY EVANS <edmundo@rano.org>\n"
 "Language-Team: Esperanto <translation-team-eo@lists.sourceforge.net>\n"
@@ -16,168 +16,217 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+#: lib/strerror-idna.c:70 lib/strerror-pr29.c:54 lib/strerror-punycode.c:54
+#: lib/strerror-stringprep.c:74 lib/strerror-tld.c:56
 msgid "Success"
 msgstr "Sukceso"
 
+#: lib/strerror-idna.c:74 lib/strerror-pr29.c:62
 msgid "String preparation failed"
 msgstr "Pretigo de signoĉeno malsukcesis"
 
+#: lib/strerror-idna.c:78
 msgid "Punycode failed"
 msgstr "Punycode malsukcesis"
 
+#: lib/strerror-idna.c:82
 msgid "Non-digit/letter/hyphen in input"
 msgstr "Signo ne-cifero/litero/dividstreko en enigo"
 
+#: lib/strerror-idna.c:86
 msgid "Forbidden leading or trailing minus sign (`-')"
 msgstr "Malpermesita minuso ('-') ĉe komenco aŭ fino"
 
+#: lib/strerror-idna.c:90
 msgid "Output would be too large or too small"
 msgstr "Eligo estus tro granda aŭ tro malgranda"
 
+#: lib/strerror-idna.c:94
 msgid "Input does not start with ACE prefix (`xn--')"
 msgstr "Enigo ne komenciĝas per ACE-prefikso ('xn--')"
 
+#: lib/strerror-idna.c:98
 msgid "String not idempotent under ToASCII"
 msgstr "Ĉeno ŝanĝiĝas ĉe dua apliko de ToASCII"
 
+#: lib/strerror-idna.c:102
 msgid "Input already contain ACE prefix (`xn--')"
 msgstr "Enigo jam havas ACE-prefikson ('xn--')"
 
+#: lib/strerror-idna.c:106 lib/strerror-tld.c:72
 msgid "System iconv failed"
 msgstr "Sistema iconv malsukcesis"
 
+#: lib/strerror-idna.c:110 lib/strerror-stringprep.c:118 lib/strerror-tld.c:68
 msgid "Cannot allocate memory"
 msgstr "Ne povas akiri memoron"
 
+#: lib/strerror-idna.c:114
 msgid "System dlopen failed"
 msgstr "Sistema dlopen malsukcesis"
 
+#: lib/strerror-idna.c:118 lib/strerror-pr29.c:66 lib/strerror-punycode.c:70
+#: lib/strerror-stringprep.c:122 lib/strerror-tld.c:80
 msgid "Unknown error"
 msgstr "Nekonata eraro"
 
+#: lib/strerror-pr29.c:58
 msgid "String not idempotent under Unicode NFKC normalization"
 msgstr "Ĉeno ŝanĝiĝas ĉe dua apliko de unikoda NFKC-normigo"
 
+#: lib/strerror-punycode.c:58
 msgid "Invalid input"
 msgstr "Nevalida enigo"
 
+#: lib/strerror-punycode.c:62 lib/strerror-stringprep.c:98
 msgid "Output would exceed the buffer space provided"
 msgstr "Eligo estus tro granda por donita bufro"
 
+#: lib/strerror-punycode.c:66
 msgid "String size limit exceeded"
 msgstr "Signoĉena grandolimo superita"
 
+#: lib/strerror-stringprep.c:78
 msgid "Forbidden unassigned code points in input"
 msgstr "Malpermesita neatribuita kodero en enigo"
 
+#: lib/strerror-stringprep.c:82
 msgid "Prohibited code points in input"
 msgstr "Malpermesita kodero en enigo"
 
+#: lib/strerror-stringprep.c:86
 msgid "Conflicting bidirectional properties in input"
 msgstr "Malkongruaj dudirektaj trajtoj en enigo"
 
+#: lib/strerror-stringprep.c:90
 msgid "Malformed bidirectional string"
 msgstr "Misformita dudirekta ĉeno"
 
+#: lib/strerror-stringprep.c:94
 msgid "Prohibited bidirectional code points in input"
 msgstr "Malpermesita dudirekta kodero en enigo"
 
+#: lib/strerror-stringprep.c:102
 msgid "Error in stringprep profile definition"
 msgstr "Eraro en difino de stringprep-profilo"
 
+#: lib/strerror-stringprep.c:106
 msgid "Flag conflict with profile"
 msgstr "Flaga malkongruo kun profilo"
 
+#: lib/strerror-stringprep.c:110
 msgid "Unknown profile"
 msgstr "Nekonata profilo"
 
+#: lib/strerror-stringprep.c:114
 msgid "Unicode normalization failed (internal error)"
 msgstr "Unikoda normigo malsukcesis (interna eraro)"
 
+#: lib/strerror-tld.c:60
 msgid "Code points prohibited by top-level domain"
 msgstr "Koderoj malpermesitaj de supera retregiono"
 
+#: lib/strerror-tld.c:64
 msgid "Missing input"
 msgstr "Mankanta enigo"
 
+#: lib/strerror-tld.c:76
 msgid "No top-level domain found in input"
 msgstr "Nenia supera retregiono trovita en enigo"
 
+#: src/idn.c:89
 msgid "Only one of -s, -e, -d, -a or -u can be specified."
 msgstr "Nur unu el -s, -e -d, -a aŭ -u povas esti donita."
 
+#: src/idn.c:98
 #, c-format
 msgid "Charset `%s'.\n"
 msgstr "Signaro '%s'.\n"
 
+#: src/idn.c:101
 #, c-format
-msgid ""
-"Type each input string on a line by itself, terminated by a newline "
-"character.\n"
+msgid "Type each input string on a line by itself, terminated by a newline character.\n"
 msgstr ""
 "Tajpu ĉiun enigan ĉenon en propra linio, kun linifina signo ĉe la\n"
 "fino.\n"
 
+#: src/idn.c:116
 msgid "Input error"
 msgstr "Enig-eraro"
 
+#: src/idn.c:126 src/idn.c:186 src/idn.c:267 src/idn.c:341
 #, c-format
 msgid "Could not convert from %s to UTF-8."
 msgstr "Ne povis konverti de %s al UTF-8."
 
+#: src/idn.c:134 src/idn.c:158 src/idn.c:193 src/idn.c:402
 msgid "Could not convert from UTF-8 to UCS-4."
 msgstr "Ne povis konverti de UTF-8 al UCS-4."
 
+#: src/idn.c:141 src/idn.c:199 src/idn.c:280 src/idn.c:356
 #, c-format
 msgid "input[%d] = U+%04x\n"
 msgstr "enigo[%d] = U+%04x\n"
 
+#: src/idn.c:150
 #, c-format
 msgid "stringprep_profile: %s"
 msgstr "stringprep_profile: %s"
 
+#: src/idn.c:165 src/idn.c:242 src/idn.c:329 src/idn.c:374
 #, c-format
 msgid "output[%d] = U+%04x\n"
 msgstr "eligo[%d] = U+%04x\n"
 
+#: src/idn.c:172 src/idn.c:213 src/idn.c:255 src/idn.c:407
 #, c-format
 msgid "Could not convert from UTF-8 to %s."
 msgstr "Ne povis konverti de UTF-8 al %s."
 
+#: src/idn.c:206
 #, c-format
 msgid "punycode_encode: %s"
 msgstr "punycode_encode: %s"
 
+#: src/idn.c:228
 msgid "malloc"
 msgstr "malloc"
 
+#: src/idn.c:234
 #, c-format
 msgid "punycode_decode: %s"
 msgstr "punycode_decode: %s"
 
+#: src/idn.c:250 src/idn.c:274 src/idn.c:349
 msgid "Could not convert from UCS-4 to UTF-8."
 msgstr "Ne povis konverti de UCS-4 al UTF-8."
 
+#: src/idn.c:290
 #, c-format
 msgid "idna_to_ascii_4z: %s"
 msgstr "idna_to_ascii_4z: %s"
 
+#: src/idn.c:304
 #, c-format
 msgid "idna_to_unicode_8z4z (TLD): %s"
 msgstr "idna_to_unicode_8z4z (TLD): %s"
 
+#: src/idn.c:311
 #, c-format
 msgid "tld[%d] = U+%04x\n"
 msgstr "tld[%d] = U+%04x\n"
 
+#: src/idn.c:317 src/idn.c:386
 #, c-format
 msgid "tld_check_4z (position %d): %s"
 msgstr "tld_check_4z (loko %d): %s"
 
+#: src/idn.c:320 src/idn.c:392
 #, c-format
 msgid "tld_check_4z: %s"
 msgstr "tld_check_4z: %s"
 
+#: src/idn.c:367
 #, c-format
 msgid "idna_to_unicode_8z4z: %s"
 msgstr "idna_to_unicode_8z4z: %s"
