@@ -2,7 +2,7 @@ Libidn NEWS -- History of user-visible changes.                 -*- outline -*-
 Copyright (C) 2002, 2003, 2004, 2005 Simon Josefsson
 See the end for copying conditions.
 
-* Version 0.6.0 (unreleased)
+* Version 0.6.0 (released 2005-12-03)
 
 ** A C# port of Libidn has been contributed by Alexander Gnauck.
 The port resides in the csharp/ directory.  Configure will build it if
