@@ -1864,7 +1864,7 @@ Version 0.5.1 through 0.5.20, released between 2004-07-09 and
 2005-10-23.
 
 @item Native C# implementation.
-Version 0.6.0.
+Version 0.6.0 released on 2005-12-03.
 
 @end table
 
