@@ -9,8 +9,8 @@ BSD-Port-URL: http://www.freshports.org/devel/libidn/
 CVS-URL: http://josefsson.org/cgi-bin/viewcvs.cgi/libidn/
 Mirror-Site-URL: http://josefsson.org/libidn
 Demo-URL: http://josefsson.org/idn.php
-Version: 0.5.20
+Version: 0.6.0
 Release-Focus: Minor bugfixes
 
-The header file pr29.h is now installed by 'make install'.
-Translation updates.  Update of gnulib files.
+A C# port of Libidn has been added.  Shared libraries on Cygwin and
+Mingw32 are supported. A memory leak was fixed.
