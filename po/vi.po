@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libidn 0.5.16\n"
 "Report-Msgid-Bugs-To: bug-libidn@gnu.org\n"
-"POT-Creation-Date: 2005-05-06 01:52+0200\n"
+"POT-Creation-Date: 2005-12-03 11:36+0100\n"
 "PO-Revision-Date: 2005-05-13 14:37+0930\n"
 "Last-Translator: Clytie Siddall <clytie@riverland.net.au>\n"
 "Language-Team: Vietnamese <gnomevi-list@lists.sourceforge.net> \n"
@@ -15,216 +15,168 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0\n"
 
-#: lib/strerror-idna.c:70 lib/strerror-pr29.c:54 lib/strerror-punycode.c:54
-#: lib/strerror-stringprep.c:74 lib/strerror-tld.c:56
 msgid "Success"
 msgstr "Thành công"
 
-#: lib/strerror-idna.c:74 lib/strerror-pr29.c:62
 msgid "String preparation failed"
 msgstr "Không chuẩn bị chuỗi được"
 
-#: lib/strerror-idna.c:78
 msgid "Punycode failed"
 msgstr "Không thi hành punycode (mã yếu đuối) được"
 
-#: lib/strerror-idna.c:82
 msgid "Non-digit/letter/hyphen in input"
 msgstr "Có ký tự không là số/chữ/dấu gạch nối trong dữ liệu nhập"
 
-#: lib/strerror-idna.c:86
 msgid "Forbidden leading or trailing minus sign (`-')"
 msgstr "Không cho phép dấu gạch nối (`-') đi trước hay theo sau"
 
-#: lib/strerror-idna.c:90
 msgid "Output would be too large or too small"
 msgstr "Dữ liệu xuất sẽ quá lớn hay quá nhỏ"
 
-#: lib/strerror-idna.c:94
 msgid "Input does not start with ACE prefix (`xn--')"
 msgstr "Dữ liệu nhập không bắt đầu bằng tiền tố ACE (`xn--')"
 
-#: lib/strerror-idna.c:98
 msgid "String not idempotent under ToASCII"
 msgstr "Chuỗi không tránh nhân lên trong ToASCII"
 
-#: lib/strerror-idna.c:102
 msgid "Input already contain ACE prefix (`xn--')"
 msgstr "Dữ liệu chứa tiền tố ACE (`xn--') rồi"
 
-#: lib/strerror-idna.c:106 lib/strerror-tld.c:72
 msgid "System iconv failed"
 msgstr "Hệ thống không thi hành iconv được"
 
-#: lib/strerror-idna.c:110 lib/strerror-stringprep.c:118 lib/strerror-tld.c:68
 msgid "Cannot allocate memory"
 msgstr "Không phân định bộ nhớ được"
 
-#: lib/strerror-idna.c:114
 msgid "System dlopen failed"
 msgstr "Hệ thống không thi hành dlopen được"
 
-#: lib/strerror-idna.c:118 lib/strerror-pr29.c:66 lib/strerror-punycode.c:70
-#: lib/strerror-stringprep.c:122 lib/strerror-tld.c:80
 msgid "Unknown error"
 msgstr "Lỗi chưa biết"
 
-#: lib/strerror-pr29.c:58
 msgid "String not idempotent under Unicode NFKC normalization"
 msgstr "Chuỗi không tránh nhân lên trong sự tiêu chuẩn hoá NFKC Unicode"
 
-#: lib/strerror-punycode.c:58
 msgid "Invalid input"
 msgstr "Dữ liệu nhập không hợp lệ"
 
-#: lib/strerror-punycode.c:62 lib/strerror-stringprep.c:98
 msgid "Output would exceed the buffer space provided"
 msgstr "Dữ liệu xuất sẽ vượt quá sức chứa đệm được cung cấp"
 
-#: lib/strerror-punycode.c:66
 msgid "String size limit exceeded"
 msgstr "Giới hạn cỡ chuỗi bị vượt quá"
 
-#: lib/strerror-stringprep.c:78
 msgid "Forbidden unassigned code points in input"
 msgstr "Không cho phép điểm mã không được gán trong dữ liệu nhập"
 
-#: lib/strerror-stringprep.c:82
 msgid "Prohibited code points in input"
 msgstr "Dữ liệu nhập chứa điểm mã cấm"
 
-#: lib/strerror-stringprep.c:86
 msgid "Conflicting bidirectional properties in input"
 msgstr "Dữ liệu nhập chứa đặc tính thuộc hai hướng xung đột"
 
-#: lib/strerror-stringprep.c:90
 msgid "Malformed bidirectional string"
 msgstr "Chuỗi thuộc hai hướng dạng sai"
 
-#: lib/strerror-stringprep.c:94
 msgid "Prohibited bidirectional code points in input"
 msgstr "Dữ liệu nhập chứa điểm mã thuộc hai hướng cấm"
 
-#: lib/strerror-stringprep.c:102
 msgid "Error in stringprep profile definition"
 msgstr "Lỗi trong lời định nghĩa hiện trạng stringprep (chuẩn bị chuỗi)"
 
-#: lib/strerror-stringprep.c:106
 msgid "Flag conflict with profile"
 msgstr "Cờ xung dột với hiện trạng"
 
-#: lib/strerror-stringprep.c:110
 msgid "Unknown profile"
 msgstr "Hiện trạng chưa biết"
 
-#: lib/strerror-stringprep.c:114
 msgid "Unicode normalization failed (internal error)"
 msgstr "Không thi hành được sự tiêu chuẩn hoá Unicode (lỗi nội bộ)"
 
-#: lib/strerror-tld.c:60
 msgid "Code points prohibited by top-level domain"
 msgstr "Miền mức đầu cấm điểm mã"
 
-#: lib/strerror-tld.c:64
 msgid "Missing input"
 msgstr "Thiếu dữ liệu nhập"
 
-#: lib/strerror-tld.c:76
 msgid "No top-level domain found in input"
 msgstr "Không tìm được miền mức đầu trong dữ liệu nhập"
 
-#: src/idn.c:89
 msgid "Only one of -s, -e, -d, -a or -u can be specified."
 msgstr "Chỉ có thể ghi rõ một của những đối số -s, -e, -d, -a hay -u."
 
-#: src/idn.c:98
 #, c-format
 msgid "Charset `%s'.\n"
 msgstr "Bộ ký tự `%s'.\n"
 
-#: src/idn.c:101
 #, c-format
-msgid "Type each input string on a line by itself, terminated by a newline character.\n"
-msgstr "Gõ mỗi chuỗi nhập trên một đường riêng, giới hạn bằng ký tự dòng mới.\n"
+msgid ""
+"Type each input string on a line by itself, terminated by a newline "
+"character.\n"
+msgstr ""
+"Gõ mỗi chuỗi nhập trên một đường riêng, giới hạn bằng ký tự dòng mới.\n"
 
-#: src/idn.c:116
 msgid "Input error"
 msgstr "Lỗi gõ"
 
-#: src/idn.c:126 src/idn.c:186 src/idn.c:267 src/idn.c:341
 #, c-format
 msgid "Could not convert from %s to UTF-8."
 msgstr "Không chuyển đôi được từ %s đến UTF-8."
 
-#: src/idn.c:134 src/idn.c:158 src/idn.c:193 src/idn.c:402
 msgid "Could not convert from UTF-8 to UCS-4."
 msgstr "Không chuyển đôi được từ UTF-8 đến UCS-4."
 
-#: src/idn.c:141 src/idn.c:199 src/idn.c:280 src/idn.c:356
 #, c-format
 msgid "input[%d] = U+%04x\n"
 msgstr "input[%d] = U+%04x (gõ)\n"
 
-#: src/idn.c:150
 #, c-format
 msgid "stringprep_profile: %s"
 msgstr "stringprep_profile: %s (chuẩn bị hiện trạng)"
 
-#: src/idn.c:165 src/idn.c:242 src/idn.c:329 src/idn.c:374
 #, c-format
 msgid "output[%d] = U+%04x\n"
 msgstr "output[%d] = U+%04x (xuất)\n"
 
-#: src/idn.c:172 src/idn.c:213 src/idn.c:255 src/idn.c:407
 #, c-format
 msgid "Could not convert from UTF-8 to %s."
 msgstr "Không chuyển đôi được từ UTF-8 đến %s."
 
-#: src/idn.c:206
 #, c-format
 msgid "punycode_encode: %s"
 msgstr "punycode_encode: %s (mã hóa bằng mã yếu đuối)"
 
-#: src/idn.c:228
 msgid "malloc"
 msgstr "malloc (phân định bộ nhớ)"
 
-#: src/idn.c:234
 #, c-format
 msgid "punycode_decode: %s"
 msgstr "punycode_decode: %s (giải mã bằng mã yếu đuối)"
 
-#: src/idn.c:250 src/idn.c:274 src/idn.c:349
 msgid "Could not convert from UCS-4 to UTF-8."
 msgstr "Không chuyển được từ UCS-4 đến UTF-8."
 
-#: src/idn.c:290
 #, c-format
 msgid "idna_to_ascii_4z: %s"
 msgstr "idna_to_ascii_4z: %s (từ IDNA đến ASCII)"
 
-#: src/idn.c:304
 #, c-format
 msgid "idna_to_unicode_8z4z (TLD): %s"
 msgstr "idna_to_unicode_8z4z (TLD): %s (từ IDNA đến Unicode)"
 
 # Variable: do not translate/ biến: đừng dịch
-#: src/idn.c:311
 #, c-format
 msgid "tld[%d] = U+%04x\n"
 msgstr "tld[%d] = U+%04x\n"
 
-#: src/idn.c:317 src/idn.c:386
 #, c-format
 msgid "tld_check_4z (position %d): %s"
 msgstr "tld_check_4z (position %d): %s (kiểm tra, vị trí)"
 
-#: src/idn.c:320 src/idn.c:392
 #, c-format
 msgid "tld_check_4z: %s"
 msgstr "tld_check_4z: %s (kiểm tra)"
 
-#: src/idn.c:367
 #, c-format
 msgid "idna_to_unicode_8z4z: %s"
 msgstr "idna_to_unicode_8z4z: %s (từ IDNA đến Unicode)"
