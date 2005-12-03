@@ -1,3 +1,191 @@
+2005-12-03  Simon Josefsson <simon@josefsson.org>
+
+	* po/da.po, po/de.po, po/eo.po, po/fr.po, po/it.po, po/nl.po,
+	po/pl.po, po/ro.po, po/rw.po, po/sr.po, po/sv.po, po/vi.po,
+	po/zh_CN.po: Generated.
+
+2005-12-03  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Version 0.6.0.
+
+2005-12-03  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi: Add.
+
+2005-12-03  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Fix.
+
+2005-12-03  Simon Josefsson <simon@josefsson.org>
+
+	* configure.ac: Csharp test is in gnulib now, remove it.
+
+2005-12-02  Simon Josefsson <simon@josefsson.org>
+
+	* po/da.po, po/de.po, po/eo.po, po/fr.po, po/it.po, po/nl.po,
+	po/pl.po, po/ro.po, po/rw.po, po/sr.po, po/vi.po, po/zh_CN.po: Sync
+	with TP.
+
+2005-12-02  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi: Add C# notes.
+
+2005-12-02  Simon Josefsson <simon@josefsson.org>
+
+	* configure.ac: Fix message.
+
+2005-12-02  Simon Josefsson <simon@josefsson.org>
+
+	* gl/Makefile.am, gl/csharpcomp.sh.in, gl/m4/csharp.m4,
+	gl/m4/csharpcomp.m4, gl/m4/gnulib-cache.m4, gl/m4/gnulib-comp.m4,
+	m4/csharp.m4, m4/csharpcomp.m4: Use csharpcomp-script from gnulib.
+
+2005-12-02  Simon Josefsson <simon@josefsson.org>
+
+	* csharp/Makefile.am: Don't specify any C# compile flags (fixes
+	distcheck).
+
+2005-12-02  Simon Josefsson <simon@josefsson.org>
+
+	* po/da.po, po/rw.po, po/zh_CN.po: Sync with TP.
+
+2005-12-02  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2005-12-02  Simon Josefsson <simon@josefsson.org>
+
+	* csharp/Makefile.am: Dist MSVS stuff.
+
+2005-12-02  Simon Josefsson <simon@josefsson.org>
+
+	* csharp/libidn.csproj, csharp/libidn.csproj.user,
+	csharp/libidn.sln, csharp/libidn.suo, csharp/libidn_PPC.csdproj,
+	csharp/libidn_PPC.csdproj.user, csharp/libidn_PPC.sln,
+	csharp/libidn_PPC.suo: Add MSVSC project files.
+
+2005-12-02  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2005-12-02  Simon Josefsson <simon@josefsson.org>
+
+	* csharp/CombiningClass.cs, csharp/Composition.cs,
+	csharp/DecompositionKeys.cs, csharp/DecompositionMappings.cs,
+	csharp/IDNA.cs, csharp/IDNAException.cs, csharp/NFKC.cs,
+	csharp/Punycode.cs, csharp/PunycodeException.cs, csharp/RFC3454.cs,
+	csharp/Stringprep.cs, csharp/StringprepException.cs: Use GPL for
+	the port.
+
+2005-12-02  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Fix.
+
+2005-12-02  Simon Josefsson <simon@josefsson.org>
+
+	* configure.ac, csharp/Makefile.am: Fix csharpcomp location.
+
+2005-12-02  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Fix.
+
+2005-12-02  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS, gl/csharpcomp.sh.in: Add.
+
+2005-12-02  Simon Josefsson <simon@josefsson.org>
+
+	* csharp/Makefile.am, configure.ac: Fix.
+
+2005-12-02  Simon Josefsson <simon@josefsson.org>
+
+	* configure.ac: Fix message.
+
+2005-12-01  Simon Josefsson <simon@josefsson.org>
+
+	* csharp/Makefile.am: Fix.
+
+2005-12-01  Simon Josefsson <simon@josefsson.org>
+
+	* m4/csharp.m4, m4/csharpcomp.m4: Add.
+
+2005-12-01  Simon Josefsson <simon@josefsson.org>
+
+	* configure.ac: Add C# tests.
+
+2005-12-01  Simon Josefsson <simon@josefsson.org>
+
+	* csharp/Makefile.am: Remove.
+
+2005-12-01  Simon Josefsson <simon@josefsson.org>
+
+	* csharp/Makefile.am: Fix.
+
+2005-12-01  Simon Josefsson <simon@josefsson.org>
+
+	* csharp/Makefile.am: Add.
+
+2005-12-01  Simon Josefsson <simon@josefsson.org>
+
+	* THANKS, AUTHORS: Add.
+
+2005-12-01  Simon Josefsson <simon@josefsson.org>
+
+	* csharp/Makefile.am: Use gnulib, for csharpcomp.
+
+2005-12-01  Simon Josefsson <simon@josefsson.org>
+
+	* csharp/Makefile.am: Add.
+
+2005-12-01  Simon Josefsson <simon@josefsson.org>
+
+	* Makefile.am, configure.ac: C# fixes.
+
+2005-12-01  Simon Josefsson <simon@josefsson.org>
+
+	* csharp/AssemblyInfo.cs, csharp/CombiningClass.cs,
+	csharp/Composition.cs, csharp/DecompositionKeys.cs,
+	csharp/DecompositionMappings.cs, csharp/IDNA.cs,
+	csharp/IDNAException.cs, csharp/NFKC.cs, csharp/Punycode.cs,
+	csharp/PunycodeException.cs, csharp/RFC3454.cs,
+	csharp/Stringprep.cs, csharp/StringprepException.cs: Add C# port,
+	from Alexander Gnauck <gnauck@ag-software.de>.
+
+2005-12-01  Simon Josefsson <simon@josefsson.org>
+
+	* configure.ac, NEWS: Bump version.
+
+2005-11-04  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Fix.
+
+2005-11-04  Simon Josefsson <simon@josefsson.org>
+
+	* THANKS, NEWS: Add.
+
+2005-11-04  Simon Josefsson <simon@josefsson.org>
+
+	* lib/Makefile.am: Use -no-undefined for libtool, for cygwin, tiny
+	patch from "Yaakov S (Cygwin Ports)"
+	<yselkowitz@users.sourceforge.net>.
+
+2005-10-26  Simon Josefsson <simon@josefsson.org>
+
+	* po/da.po: Add.
+
+2005-10-24  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS, configure.ac: Bump versions.
+
+2005-10-24  Simon Josefsson <simon@josefsson.org>
+
+	* lib/pr29.c:
+	(pr29_8z): Fix memory leak.
+
+2005-10-23  Simon Josefsson <simon@josefsson.org>
+
+	* libidn.fms: Add.
+
 2005-10-23  Simon Josefsson <simon@josefsson.org>
 
 	* po/da.po, po/de.po, po/eo.po, po/fr.po, po/it.po, po/nl.po,
@@ -6719,7 +6907,7 @@
 	version.
 
 	----------------------------------------------------------------------
-	Copyright 2002, 2003, 2004  Simon Josefsson
+	Copyright 2002, 2003, 2004, 2005  Simon Josefsson
 	Copying and distribution of this file, with or without modification,
 	are permitted in any medium without royalty provided the copyright
 	notice and this notice are preserved.
