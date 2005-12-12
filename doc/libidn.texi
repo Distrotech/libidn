@@ -1789,7 +1789,9 @@ in the JDK API.
 The Libidn library has been ported to the C# language.  The port
 reside in the top-level @file{csharp/} directory.  Currently, no
 further documentation about the implementation or the API is
-available.
+available.  However, the C# port was based on the Java port, and the
+API is exactly the same as in the Java version.  The help files for
+the Java API may thus be useful.
 
 @c **********************************************************
 @c *******************  Acknowledgements  *******************
