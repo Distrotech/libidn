@@ -21,6 +21,7 @@ gl_MODULES([csharpcomp-script dummy error getopt strdup])
 gl_AVOID([])
 gl_SOURCE_BASE([gl])
 gl_M4_BASE([gl/m4])
+gl_AUX_BASE([gl])
 gl_TESTS_BASE([gl/tests])
 gl_LIB([libgnu])
 gl_LGPL
