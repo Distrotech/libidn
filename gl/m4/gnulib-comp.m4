@@ -18,14 +18,16 @@
 # any checks for libraries, header files, types and library functions.
 AC_DEFUN([gl_EARLY],
 [
+  AC_REQUIRE([AC_PROG_RANLIB])
 ])
 
 # This macro should be invoked from ./configure.ac, in the section
 # "Check for header files, types and library functions".
 AC_DEFUN([gl_INIT],
 [
-AM_CONDITIONAL([GL_COND_LIBTOOL], [true])
+  AM_CONDITIONAL([GL_COND_LIBTOOL], [true])
   gt_CSHARPCOMP
+  AC_CONFIG_FILES([csharpcomp.sh:build-aux/csharpcomp.sh.in])
   gl_ERROR
   gl_GETOPT
   gl_FUNC_STRDUP
@@ -34,7 +36,7 @@ AM_CONDITIONAL([GL_COND_LIBTOOL], [true])
 # This macro records the list of files which have been installed by
 # gnulib-tool and may be removed by future gnulib-tool invocations.
 AC_DEFUN([gl_FILE_LIST], [
-  lib/csharpcomp.sh.in
+  build-aux/csharpcomp.sh.in
   lib/dummy.c
   lib/error.c
   lib/error.h
