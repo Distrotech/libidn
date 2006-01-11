@@ -1,5 +1,5 @@
 ## Process this file with automake to produce Makefile.in
-# Copyright (C) 2005 Simon Josefsson.
+# Copyright (C) 2005, 2006 Simon Josefsson.
 #
 # This file is part of GNU Libidn.
 #
@@ -18,7 +18,7 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 # 02110-1301, USA.
 
-CSHARPCOMP = $(SHELL) ../gl/csharpcomp.sh
+CSHARPCOMP = $(SHELL) ../csharpcomp.sh
 CSHARPCOMPFLAGS =
 
 SOURCES = AssemblyInfo.cs IDNA.cs RFC3454.cs CombiningClass.cs	\
