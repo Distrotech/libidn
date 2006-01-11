@@ -1,6 +1,6 @@
 dnl Process this file with autoconf to produce a configure script.
 
-dnl Copyright (C) 2002, 2003, 2004, 2005 Simon Josefsson.
+dnl Copyright (C) 2002, 2003, 2004, 2005, 2006 Simon Josefsson.
 dnl
 dnl This file is part of GNU Libidn.
 dnl
@@ -115,6 +115,6 @@ AC_CONFIG_FILES([Makefile libidn.pc doc/reference/Makefile doc/java/Makefile \
 		lib/Makefile src/Makefile tests/Makefile examples/Makefile \
 		java/Makefile java/gnu/Makefile java/gnu/inet/Makefile \
 		java/gnu/inet/encoding/Makefile java/misc/Makefile \
-		csharp/Makefile gl/csharpcomp.sh \
+		csharp/Makefile \
 		po/Makefile.in])
 AC_OUTPUT
