@@ -14,10 +14,10 @@
 
 
 # Specification in the form of a command-line invocation:
-#   gnulib-tool --import --dir=. --lib=libgnu --source-base=gl --m4-base=gl/m4 --aux-dir=gl --lgpl --libtool --macro-prefix=gl csharpcomp-script dummy error getopt strdup
+#   gnulib-tool --import --dir=. --lib=libgnu --source-base=gl --m4-base=gl/m4 --aux-dir=gl --lgpl --libtool --macro-prefix=gl csharpcomp-script error getopt strdup
 
 # Specification in the form of a few gnulib-tool.m4 macro invocations:
-gl_MODULES([csharpcomp-script dummy error getopt strdup])
+gl_MODULES([csharpcomp-script error getopt strdup])
 gl_AVOID([])
 gl_SOURCE_BASE([gl])
 gl_M4_BASE([gl/m4])
