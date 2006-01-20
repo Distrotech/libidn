@@ -4,6 +4,10 @@ See the end for copying conditions.
 
 * Version 0.6.1 (unreleased)
 
+** Make it possible to cross-compile to mingw32.
+You can build Libidn for Windows by invoking `./configure
+--host=i586-mingw32msvc' (or similar).
+
 ** Minor changes in how the C# code is built.
 
 ** Update of gnulib files.
