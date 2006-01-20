@@ -49,7 +49,7 @@ idn.1: $(top_srcdir)/src/idn.c $(top_srcdir)/src/idn.ggo \
 		$(top_srcdir)/configure.ac
 	$(HELP2MAN) \
 		--name="Internationalized Domain Names command line tool" \
-		--output=$@ $(top_builddir)/src/idn
+		--output=$@ $(top_builddir)/src/idn$(EXEEXT)
 
 # GDOC
 
