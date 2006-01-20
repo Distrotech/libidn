@@ -375,6 +375,13 @@ GCC 3.4 and GNU Make @code{m68k-uclinux-elf}.
 
 GCC 2.95 and GNU Make @code{arm-linux}.
 
+@item Cross compiled to Mingw32.
+@cindex Windows
+@cindex Microsoft
+@cindex mingw32
+
+GCC 3.4.4 and GNU Make @code{i586-mingw32msvc}.
+
 @end enumerate
 
 If you use Libidn on, or port Libidn to, a new platform please report
