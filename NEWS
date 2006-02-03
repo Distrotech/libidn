@@ -4,6 +4,9 @@ See the end for copying conditions.
 
 * Version 0.6.2 (unreleased)
 
+** Fix objdir != srcdir builds for the Java documentation.
+Thanks to Bernard Leak <bernard@brenda-arkle.demon.co.uk>.
+
 * Version 0.6.1 (released 2006-01-20)
 
 ** Make it possible to cross-compile to mingw32.
