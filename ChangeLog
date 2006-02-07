@@ -1,3 +1,93 @@
+2006-02-07  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi: Fix includes, for make dist.
+
+2006-02-07  Simon Josefsson <simon@josefsson.org>
+
+	* doc/Makefile.am: Fix -I's again, for make dist.
+
+2006-02-07  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi: Fix @verbatiminclude's, for make dist.
+
+2006-02-07  Simon Josefsson <simon@josefsson.org>
+
+	* doc/Makefile.am: Fix -I's, for make dist.
+
+2006-02-07  Simon Josefsson <simon@josefsson.org>
+
+	* doc/Makefile.am: Add -I for examples.
+
+2006-02-07  Simon Josefsson <simon@josefsson.org>
+
+	* po/da.po, po/de.po, po/eo.po, po/fr.po, po/it.po, po/nl.po,
+	po/pl.po, po/ro.po, po/rw.po, po/sr.po, po/sv.po, po/vi.po,
+	po/zh_CN.po: Generated.
+
+2006-02-07  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Version 0.6.2.
+
+2006-02-07  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2006-02-07  Simon Josefsson <simon@josefsson.org>
+
+	* po/da.po, po/de.po, po/eo.po, po/fr.po, po/it.po, po/nl.po,
+	po/pl.po, po/ro.po, po/sr.po, po/vi.po: Update.
+
+2006-02-07  Simon Josefsson <simon@josefsson.org>
+
+	* po/da.po, po/de.po, po/eo.po, po/fr.po, po/it.po, po/nl.po,
+	po/pl.po, po/ro.po, po/rw.po, po/sr.po, po/vi.po, po/zh_CN.po: Sync
+	with TP.
+
+2006-02-07  Simon Josefsson <simon@josefsson.org>
+
+	* gl/csharpcomp.sh.in, gl/getopt.c, gl/m4/getopt.m4,
+	gl/m4/gnulib-tool.m4: Update.
+
+2006-02-05  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2006-02-03  Simon Josefsson <simon@josefsson.org>
+
+	* java/misc/Makefile.am: Fix objdir != srcdir, tiny patch from
+	Bernard Leak <bernard@brenda-arkle.demon.co.uk>.
+
+2006-02-03  Simon Josefsson <simon@josefsson.org>
+
+	* THANKS, NEWS: Add.
+
+2006-02-03  Simon Josefsson <simon@josefsson.org>
+
+	* doc/java/Makefile.am, java/Makefile.am: Fix objdir != srcdir,
+	tiny patch from Bernard Leak <bernard@brenda-arkle.demon.co.uk>.
+
+2006-01-27  Simon Josefsson <simon@josefsson.org>
+
+	* po/da.po, po/de.po, po/eo.po, po/fr.po, po/it.po, po/nl.po,
+	po/pl.po, po/ro.po, po/rw.po, po/sr.po, po/vi.po, po/zh_CN.po: Sync
+	with TP.
+
+2006-01-27  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS, configure.ac: Bump versions.
+
+2006-01-27  Simon Josefsson <simon@josefsson.org>
+
+	* doc/Makefile.am: Fix 'make distcheck'.
+
+2006-01-26  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi: Fix.
+
+2006-01-20  Simon Josefsson <simon@josefsson.org>
+
+	* libidn.fms: 0.6.1.
+
 2006-01-20  Simon Josefsson <simon@josefsson.org>
 
 	* NEWS: Version 0.6.1.
@@ -6991,7 +7081,7 @@
 	version.
 
 	----------------------------------------------------------------------
-	Copyright 2002, 2003, 2004, 2005  Simon Josefsson
+	Copyright 2002, 2003, 2004, 2005, 2006  Simon Josefsson
 	Copying and distribution of this file, with or without modification,
 	are permitted in any medium without royalty provided the copyright
 	notice and this notice are preserved.
