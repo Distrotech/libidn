@@ -38,7 +38,7 @@ components.png: components.fig
 components.pdf: components.fig
 	fig2dev -L pdf components.fig components.pdf
 
-AM_MAKEINFOFLAGS = -I $(top_builddir)/doc
+AM_MAKEINFOFLAGS = -I $(top_builddir)/doc -I $(top_builddir)/examples
 AM_MAKEINFOHTMLFLAGS = --no-split --number-sections --css-include=texinfo.css
 
 # Man pages.
