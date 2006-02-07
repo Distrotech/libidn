@@ -2,7 +2,7 @@ Libidn NEWS -- History of user-visible changes.                 -*- outline -*-
 Copyright (C) 2002, 2003, 2004, 2005, 2006 Simon Josefsson
 See the end for copying conditions.
 
-* Version 0.6.2 (unreleased)
+* Version 0.6.2 (released 2006-02-07)
 
 ** Fix objdir != srcdir builds for the Java documentation.
 Thanks to Bernard Leak <bernard@brenda-arkle.demon.co.uk>.
