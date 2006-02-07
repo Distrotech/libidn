@@ -9,8 +9,8 @@ BSD-Port-URL: http://www.freshports.org/devel/libidn/
 CVS-URL: http://josefsson.org/cgi-bin/viewcvs.cgi/libidn/
 Mirror-Site-URL: http://josefsson.org/libidn
 Demo-URL: http://josefsson.org/idn.php
-Version: 0.6.1
+Version: 0.6.2
 Release-Focus: Minor bugfixes
 
-Make it possible to cross-compile to mingw32.  Minor changes in how
-the C# code is built.  Update of gnulib files.
+Fix objdir != srcdir builds for the Java documentation.  Update of
+gnulib files.
