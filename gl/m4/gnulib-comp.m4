@@ -27,7 +27,7 @@ AC_DEFUN([gl_INIT],
 [
   AM_CONDITIONAL([GL_COND_LIBTOOL], [true])
   gt_CSHARPCOMP
-  AC_CONFIG_FILES([csharpcomp.sh:gl/csharpcomp.sh.in])
+  AC_CONFIG_FILES([csharpcomp.sh:./csharpcomp.sh.in])
   gl_ERROR
   gl_GETOPT
   gl_FUNC_STRDUP
@@ -36,6 +36,8 @@ AC_DEFUN([gl_INIT],
 # This macro records the list of files which have been installed by
 # gnulib-tool and may be removed by future gnulib-tool invocations.
 AC_DEFUN([gl_FILE_LIST], [
+  build-aux/GNUmakefile
+  build-aux/Makefile.maint
   build-aux/csharpcomp.sh.in
   lib/dummy.c
   lib/error.c
