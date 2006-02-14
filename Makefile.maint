@@ -22,13 +22,10 @@
 # List of all C-like source code files that will be tested for
 # stylistic "errors".  You may want to define this to something 
 # more complex in Makefile.cfg.
-C_SOURCES ?= $(find . -name *.[chly])
+C_SOURCES ?= $(shell find . -name '*.[chly]')
 
 # Add some more files to check, typically set in Makefile.cfg.
-C_SOURCES += C_SOURCES_EXTRA
-
-# Remove files from the list to check, typically set in Makefile.cfg.
-#C_SOURCES = ??
+C_SOURCES += $(C_SOURCES_ADD)
 
 # Do not save the original name or timestamp in the .tar.gz file.
 # Use --rsyncable if available.
@@ -42,6 +39,6 @@ export LC_ALL = C
 
 # Casting arguments to free is never necessary.
 sc_cast_of_argument_to_free:
-	@grep -nE '\<free \(\(' $(C_SOURCES) &&		\
+	@grep -nE '\<free *\( *\(' $(C_SOURCES) &&		\
 	  { echo '$(ME): don'\''t cast free argument' 1>&2;		\
 	    exit 1; } || :
