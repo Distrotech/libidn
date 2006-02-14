@@ -37,8 +37,8 @@ AC_DEFUN([gl_INIT],
 # gnulib-tool and may be removed by future gnulib-tool invocations.
 AC_DEFUN([gl_FILE_LIST], [
   build-aux/GNUmakefile
-  build-aux/Makefile.maint
   build-aux/csharpcomp.sh.in
+  build-aux/maint.mk
   lib/dummy.c
   lib/error.c
   lib/error.h
