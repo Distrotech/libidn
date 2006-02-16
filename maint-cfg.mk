@@ -38,4 +38,4 @@ bootstrap: autoreconf
 W32ROOT ?= $(HOME)/w32root
 
 mingw32: autoreconf 
-	./configure $(CFGFLAGS) --host=i586-mingw32msvc --build=`./config.guess` --prefix=$(W32ROOT)
+	./configure --enable-gtk-doc --host=i586-mingw32msvc --build=`./config.guess` --prefix=$(W32ROOT)
