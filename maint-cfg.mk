@@ -35,7 +35,7 @@ autoreconf: gtk-doc.make doc/Makefile.gdoc
 bootstrap: autoreconf
 	./configure $(CFGFLAGS)
 
-LIBGCRYPTROOT ?= $(HOME)/w32root
+W32ROOT ?= $(HOME)/w32root
 
 mingw32: autoreconf 
-	./configure $(CFGFLAGS) --host=i586-mingw32msvc --build=`./config.guess` --prefix=$(LIBGCRYPTROOT)
+	./configure $(CFGFLAGS) --host=i586-mingw32msvc --build=`./config.guess` --prefix=$(W32ROOT)
