@@ -29,13 +29,13 @@ gtk-doc.make:
 doc/Makefile.gdoc:
 	printf "gdoc_MANS =\ngdoc_TEXINFOS =\n" > doc/Makefile.gdoc
 
-autoreconf: gtk-doc.make
+autoreconf: gtk-doc.make doc/Makefile.gdoc
 	test -f ./configure || autoreconf --install
 
-bootstrap: autoreconf doc/Makefile.gdoc
+bootstrap: autoreconf
 	./configure $(CFGFLAGS)
 
 LIBGCRYPTROOT ?= $(HOME)/w32root
 
-mingw32: gtk-doc.make autoreconf 
+mingw32: autoreconf 
 	./configure $(CFGFLAGS) --host=i586-mingw32msvc --build=`./config.guess` --prefix=$(LIBGCRYPTROOT)
