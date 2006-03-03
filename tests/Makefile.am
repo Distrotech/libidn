@@ -1,5 +1,5 @@
 ## Process this file with automake to produce Makefile.in
-# Copyright (C) 2002, 2003, 2004 Simon Josefsson.
+# Copyright (C) 2002, 2003, 2004, 2006 Simon Josefsson.
 #
 # This file is part of GNU Libidn.
 #
@@ -33,8 +33,3 @@ endif
 
 TESTS = $(ctests)	
 check_PROGRAMS = $(ctests)
-
-# Maintainer targets
-
-indent:
-	indent $(SOURCES)

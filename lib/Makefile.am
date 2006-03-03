@@ -1,5 +1,5 @@
 ## Process this file with automake to produce Makefile.in
-# Copyright (C) 2002, 2003, 2004, 2005 Simon Josefsson.
+# Copyright (C) 2002, 2003, 2004, 2005, 2006 Simon Josefsson.
 # Copyright (C) 2004 Free Software Foundation, Inc.
 #
 # This file is part of GNU Libidn.
@@ -65,8 +65,3 @@ rfc3454.c: gen-stringprep-tables.pl
 
 tlds.c: gen-tld-tables.pl
 	$(PERL) $(srcdir)/gen-tld-tables.pl $(top_srcdir)/doc/tld/*.tld > tlds.c
-
-# Maintainer targets
-
-indent:
-	indent $(SOURCES)

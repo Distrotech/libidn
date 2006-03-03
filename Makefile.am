@@ -1,5 +1,5 @@
 ## Process this file with automake to produce Makefile.in
-# Copyright (C) 2002, 2003, 2004, 2005 Simon Josefsson.
+# Copyright (C) 2002, 2003, 2004, 2005, 2006 Simon Josefsson.
 #
 # This file is part of GNU Libidn.
 #
@@ -51,12 +51,6 @@ ChangeLog:
 	cvs2cl --FSF --fsf --usermap .cvsusers -I ChangeLog -I .cvs \
 		-I autogen.sh -I contrib -I doc/specifications/ -I draft- && \
 	cat .cvscopying >> ChangeLog
-
-indent:
-	(cd lib && make indent)
-	(cd examples && make indent)
-	(cd src && make indent)
-	(cd tests && make indent)
 
 tag = $(PACKAGE)-`echo $(VERSION) | sed 's/\./-/g'`
 htmldir = ../www-$(PACKAGE)
