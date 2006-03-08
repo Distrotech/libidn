@@ -4,6 +4,10 @@ See the end for copying conditions.
 
 * Version 0.6.3 (unreleased)
 
+** Internal build fixes.
+
+** API and ABI is backwards compatible with the previous version.
+
 * Version 0.6.2 (released 2006-02-07)
 
 ** Fix objdir != srcdir builds for the Java documentation.
