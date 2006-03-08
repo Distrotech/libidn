@@ -1,3 +1,123 @@
+2006-03-08  Simon Josefsson <simon@josefsson.org>
+
+	* po/da.po, po/de.po, po/eo.po, po/fr.po, po/it.po, po/nl.po,
+	po/pl.po, po/ro.po, po/rw.po, po/sr.po, po/sv.po, po/vi.po,
+	po/zh_CN.po: Generated.
+
+2006-03-08  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Version 0.6.3.
+
+2006-03-08  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2006-03-08  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS, configure.ac, po/da.po, po/de.po, po/eo.po, po/fr.po,
+	po/it.po, po/nl.po, po/pl.po, po/ro.po, po/rw.po, po/sr.po,
+	po/sv.po, po/vi.po, po/zh_CN.po: Bump versions.
+
+2006-03-08  Simon Josefsson <simon@josefsson.org>
+
+	* maint.mk, gl/Makefile.am, gl/unistd_.h, gl/m4/gnulib-comp.m4,
+	gl/m4/unistd_h.m4: Update.
+
+2006-03-08  Simon Josefsson <simon@josefsson.org>
+
+	* gl/Makefile.am, gl/getopt.c, gl/unistd_.h, gl/m4/gnulib-comp.m4,
+	gl/m4/unistd_h.m4, maint.mk: Update.
+
+2006-03-03  Simon Josefsson <simon@josefsson.org>
+
+	* po/LINGUAS, po/da.po, po/de.po, po/eo.po, po/fr.po, po/it.po,
+	po/nl.po, po/pl.po, po/ro.po, po/rw.po, po/sr.po, po/vi.po,
+	po/zh_CN.po: Sync with TP.
+
+2006-03-03  Simon Josefsson <simon@josefsson.org>
+
+	* Makefile.am: Fix update-po rule.
+
+2006-03-03  Simon Josefsson <simon@josefsson.org>
+
+	* maint.mk: Update.
+
+2006-03-03  Simon Josefsson <simon@josefsson.org>
+
+	* maint.mk: Update.
+
+2006-03-03  Simon Josefsson <simon@josefsson.org>
+
+	* examples/example3.c, examples/example4.c, lib/nfkc.c: Doc fix.
+
+2006-03-03  Simon Josefsson <simon@josefsson.org>
+
+	* lib/idna.c, lib/nfkc.c, lib/stringprep.c, lib/toutf8.c,
+	lib/version.c, src/idn.c, tests/tst_idna.c, tests/tst_idna2.c,
+	tests/tst_nfkc.c, tests/tst_pr29.c, tests/tst_punycode.c,
+	tests/tst_strerror.c, tests/tst_stringprep.c, tests/tst_tld.c,
+	tests/utils.c: Stylistic fix.
+
+2006-03-03  Simon Josefsson <simon@josefsson.org>
+
+	* maint.mk, gl/getopt.c: Update.
+
+2006-03-03  Simon Josefsson <simon@josefsson.org>
+
+	* lib/Makefile.am, src/Makefile.am, tests/Makefile.am,
+	examples/Makefile.am, Makefile.am: Remove indent.
+
+2006-02-16  Simon Josefsson <simon@josefsson.org>
+
+	* maint-cfg.mk: Fix.
+
+2006-02-16  Simon Josefsson <simon@josefsson.org>
+
+	* maint-cfg.mk: Fix.
+
+2006-02-16  Simon Josefsson <simon@josefsson.org>
+
+	* maint-cfg.mk: Fix.  Add mingw32 target.
+
+2006-02-15  Simon Josefsson <simon@josefsson.org>
+
+	* maint.mk: Update.
+
+2006-02-14  Simon Josefsson <simon@josefsson.org>
+
+	* GNUmakefile, Makefile.cfg, Makefile.maint, maint-cfg.mk,
+	maint.mk, gl/m4/gnulib-comp.m4: Rename.
+
+2006-02-14  Simon Josefsson <simon@josefsson.org>
+
+	* Makefile.cfg: Fix.
+
+2006-02-14  Simon Josefsson <simon@josefsson.org>
+
+	* Makefile.cfg: Fix.
+
+2006-02-14  Simon Josefsson <simon@josefsson.org>
+
+	* Makefile.cfg: Fix.
+
+2006-02-14  Simon Josefsson <simon@josefsson.org>
+
+	* Makefile.cfg: Fix.
+
+2006-02-14  Simon Josefsson <simon@josefsson.org>
+
+	* GNUmakefile, Makefile.maint, Makefile.cfg: Add.
+
+2006-02-11  Simon Josefsson <simon@josefsson.org>
+
+	* GNUmakefile, Makefile.maint, csharpcomp.sh.in, gl/Makefile.am,
+	gl/csharpcomp.sh.in, gl/m4/gnulib-cache.m4, gl/m4/gnulib-comp.m4:
+	Update gnulib.
+
+2006-02-07  Simon Josefsson <simon@josefsson.org>
+
+	* libidn.fms: 0.6.2.
+
 2006-02-07  Simon Josefsson <simon@josefsson.org>
 
 	* doc/libidn.texi: Fix includes, for make dist.
