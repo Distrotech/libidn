@@ -50,7 +50,6 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/gettext.h
   lib/strdup.c
   lib/strdup.h
-  lib/unistd_.h
   m4/csharp.m4
   m4/csharpcomp.m4
   m4/error.m4
