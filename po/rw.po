@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libidn 0.5.6\n"
 "Report-Msgid-Bugs-To: bug-libidn@gnu.org\n"
-"POT-Creation-Date: 2004-10-02 21:50+0200\n"
+"POT-Creation-Date: 2006-03-08 12:59+0100\n"
 "PO-Revision-Date: 2005-04-04 10:55-0700\n"
 "Last-Translator: Steven Michael Murphy <murf@e-tools.com>\n"
 "Language-Team: Kinyarwanda <translation-team-rw@lists.sourceforge.net>\n"
@@ -24,245 +24,196 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: lib/strerror-idna.c:70 lib/strerror-pr29.c:54 lib/strerror-punycode.c:54
-#: lib/strerror-stringprep.c:74 lib/strerror-tld.c:56
 msgid "Success"
 msgstr "Ibyatunganye"
 
-#: lib/strerror-idna.c:74 lib/strerror-pr29.c:62
 #, fuzzy
 msgid "String preparation failed"
 msgstr "Byanze"
 
-#: lib/strerror-idna.c:78
 #, fuzzy
 msgid "Punycode failed"
 msgstr "Byanze"
 
-#: lib/strerror-idna.c:82
 #, fuzzy
 msgid "Non-digit/letter/hyphen in input"
 msgstr "Ibaruwa... in Iyinjiza"
 
-#: lib/strerror-idna.c:86
 #, fuzzy
 msgid "Forbidden leading or trailing minus sign (`-')"
 msgstr "Nyobora Cyangwa IKIMENYETSO"
 
-#: lib/strerror-idna.c:90
 #, fuzzy
 msgid "Output would be too large or too small"
 msgstr "Binini Cyangwa Gitoya"
 
-#: lib/strerror-idna.c:94
 #, fuzzy
 msgid "Input does not start with ACE prefix (`xn--')"
 msgstr "OYA Gutangira Na: Imbanziriza"
 
-#: lib/strerror-idna.c:98
 #, fuzzy
 msgid "String not idempotent under ToASCII"
 msgstr "OYA"
 
-#: lib/strerror-idna.c:102
 #, fuzzy
 msgid "Input already contain ACE prefix (`xn--')"
 msgstr "Imbanziriza"
 
-#: lib/strerror-idna.c:106 lib/strerror-tld.c:72
 #, fuzzy
 msgid "System iconv failed"
 msgstr "Byanze"
 
-#: lib/strerror-idna.c:110 lib/strerror-stringprep.c:118 lib/strerror-tld.c:68
 #, fuzzy
 msgid "Cannot allocate memory"
 msgstr "Ububiko"
 
-#: lib/strerror-idna.c:114
 #, fuzzy
 msgid "System dlopen failed"
 msgstr "Byanze"
 
-#: lib/strerror-idna.c:118 lib/strerror-pr29.c:66 lib/strerror-punycode.c:70
-#: lib/strerror-stringprep.c:122 lib/strerror-tld.c:80
 msgid "Unknown error"
 msgstr "Ikosa itazwi"
 
-#: lib/strerror-pr29.c:58
 #, fuzzy
 msgid "String not idempotent under Unicode NFKC normalization"
 msgstr "OYA"
 
-#: lib/strerror-punycode.c:58
 msgid "Invalid input"
 msgstr "ibinjizwa bitemewe"
 
-#: lib/strerror-punycode.c:62 lib/strerror-stringprep.c:98
 #, fuzzy
 msgid "Output would exceed the buffer space provided"
 msgstr "i Umwanya"
 
-#: lib/strerror-punycode.c:66
 #, fuzzy
 msgid "String size limit exceeded"
 msgstr "Ingano"
 
-#: lib/strerror-stringprep.c:78
 #, fuzzy
 msgid "Forbidden unassigned code points in input"
 msgstr "ITEGEKONGENGA Utudomo in Iyinjiza"
 
-#: lib/strerror-stringprep.c:82
 #, fuzzy
 msgid "Prohibited code points in input"
 msgstr "ITEGEKONGENGA Utudomo in Iyinjiza"
 
-#: lib/strerror-stringprep.c:86
 #, fuzzy
 msgid "Conflicting bidirectional properties in input"
 msgstr "Indangakintu... in Iyinjiza"
 
-#: lib/strerror-stringprep.c:90
 #, fuzzy
 msgid "Malformed bidirectional string"
 msgstr "Ikurikiranyanyuguti"
 
-#: lib/strerror-stringprep.c:94
 #, fuzzy
 msgid "Prohibited bidirectional code points in input"
 msgstr "ITEGEKONGENGA Utudomo in Iyinjiza"
 
-#: lib/strerror-stringprep.c:102
 #, fuzzy
 msgid "Error in stringprep profile definition"
 msgstr "in Ibijyana Insobanuro"
 
-#: lib/strerror-stringprep.c:106
 #, fuzzy
 msgid "Flag conflict with profile"
 msgstr "Na: Ibijyana"
 
-#: lib/strerror-stringprep.c:110
 #, fuzzy
 msgid "Unknown profile"
 msgstr "Ibijyana"
 
-#: lib/strerror-stringprep.c:114
 #, fuzzy
 msgid "Unicode normalization failed (internal error)"
 msgstr "Byanze By'imbere Ikosa"
 
-#: lib/strerror-tld.c:60
 #, fuzzy
 msgid "Code points prohibited by top-level domain"
 msgstr "Utudomo ku Hejuru: urwego Urwego"
 
-#: lib/strerror-tld.c:64
 #, fuzzy
 msgid "Missing input"
 msgstr "Iyinjiza"
 
-#: lib/strerror-tld.c:76
 #, fuzzy
 msgid "No top-level domain found in input"
 msgstr "Hejuru: urwego Urwego Byabonetse in Iyinjiza"
 
-#: src/idn.c:89
 #, fuzzy
 msgid "Only one of -s, -e, -d, -a or -u can be specified."
 msgstr "Bya S E D a Cyangwa u"
 
-#: src/idn.c:98
 #, c-format
 msgid "Charset `%s'.\n"
 msgstr ""
 
-#: src/idn.c:101
 #, fuzzy, c-format
-msgid "Type each input string on a line by itself, terminated by a newline character.\n"
+msgid ""
+"Type each input string on a line by itself, terminated by a newline "
+"character.\n"
 msgstr "Iyinjiza Ikurikiranyanyuguti ku a Umurongo ku ku a Inyuguti"
 
-#: src/idn.c:116
 #, fuzzy
 msgid "Input error"
 msgstr "Ikosa"
 
-#: src/idn.c:126 src/idn.c:184 src/idn.c:261 src/idn.c:332
 #, fuzzy, c-format
 msgid "Could not convert from %s to UTF-8."
 msgstr "OYA GUHINDURA Bivuye Kuri 8"
 
-#: src/idn.c:133 src/idn.c:156 src/idn.c:190 src/idn.c:389
 #, fuzzy
 msgid "Could not convert from UTF-8 to UCS-4."
 msgstr "OYA GUHINDURA Bivuye 8 Kuri 4."
 
-#: src/idn.c:140 src/idn.c:196 src/idn.c:273 src/idn.c:346
 #, fuzzy, c-format
 msgid "input[%d] = U+%04x\n"
 msgstr "Iyinjiza U"
 
-#: src/idn.c:149
 #, c-format
 msgid "stringprep_profile: %s"
 msgstr ""
 
-#: src/idn.c:163 src/idn.c:237 src/idn.c:320 src/idn.c:363
 #, fuzzy, c-format
 msgid "output[%d] = U+%04x\n"
 msgstr "Ibisohoka U"
 
-#: src/idn.c:170 src/idn.c:209 src/idn.c:249 src/idn.c:394
 #, fuzzy, c-format
 msgid "Could not convert from UTF-8 to %s."
 msgstr "OYA GUHINDURA Bivuye 8 Kuri"
 
-#: src/idn.c:203
 #, c-format
 msgid "punycode_encode: %s"
 msgstr ""
 
-#: src/idn.c:224
 msgid "malloc"
 msgstr ""
 
-#: src/idn.c:230
 #, c-format
 msgid "punycode_decode: %s"
 msgstr ""
 
-#: src/idn.c:244 src/idn.c:267 src/idn.c:339
 #, fuzzy
 msgid "Could not convert from UCS-4 to UTF-8."
 msgstr "OYA GUHINDURA Bivuye 4. Kuri 8"
 
-#: src/idn.c:283
 #, c-format
 msgid "idna_to_ascii_4z: %s"
 msgstr ""
 
-#: src/idn.c:296
 #, c-format
 msgid "idna_to_unicode_8z4z (TLD): %s"
 msgstr ""
 
-#: src/idn.c:303
 #, fuzzy, c-format
 msgid "tld[%d] = U+%04x\n"
 msgstr "U"
 
-#: src/idn.c:309 src/idn.c:375
 #, fuzzy, c-format
 msgid "tld_check_4z (position %d): %s"
 msgstr "Ibirindiro"
 
-#: src/idn.c:312 src/idn.c:381
 #, c-format
 msgid "tld_check_4z: %s"
 msgstr ""
 
-#: src/idn.c:357
 #, c-format
 msgid "idna_to_unicode_8z4z: %s"
 msgstr ""
