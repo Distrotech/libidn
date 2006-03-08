@@ -45,6 +45,20 @@ libgnu_la_SOURCES += gettext.h
 
 ## end   gnulib module gettext-h
 
+## begin gnulib module unistd
+
+BUILT_SOURCES += $(UNISTD_H)
+EXTRA_DIST += unistd_.h
+
+# We need the following in order to create <unistd.h> when the system
+# doesn't have one.
+unistd.h: unistd_.h
+	cp $(srcdir)/unistd_.h $@-t
+	mv $@-t $@
+MOSTLYCLEANFILES += unistd.h unistd.h-t
+
+## end   gnulib module unistd
+
 ## begin gnulib module dummy
 
 libgnu_la_SOURCES += dummy.c

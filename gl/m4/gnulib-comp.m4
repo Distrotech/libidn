@@ -31,6 +31,7 @@ AC_DEFUN([gl_INIT],
   gl_ERROR
   gl_GETOPT
   gl_FUNC_STRDUP
+  gl_HEADER_UNISTD
 ])
 
 # This macro records the list of files which have been installed by
@@ -49,6 +50,7 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/gettext.h
   lib/strdup.c
   lib/strdup.h
+  lib/unistd_.h
   m4/csharp.m4
   m4/csharpcomp.m4
   m4/error.m4
@@ -56,4 +58,5 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/onceonly_2_57.m4
   m4/strdup.m4
   m4/strerror_r.m4
+  m4/unistd_h.m4
 ])
