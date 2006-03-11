@@ -23,13 +23,10 @@ ifeq ($(.DEFAULT_GOAL),abort-due-to-no-makefile)
 .DEFAULT_GOAL := bootstrap
 endif
 
-gtk-doc.make:
-	gtkdocize
-
 doc/Makefile.gdoc:
 	printf "gdoc_MANS =\ngdoc_TEXINFOS =\n" > doc/Makefile.gdoc
 
-autoreconf: gtk-doc.make doc/Makefile.gdoc
+autoreconf: doc/Makefile.gdoc
 	test -f ./configure || autoreconf --install
 
 bootstrap: autoreconf
