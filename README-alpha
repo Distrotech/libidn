@@ -18,20 +18,14 @@ It will not become stable without help.  Donate time or money.
 
 To compile from CVS, you may need recent versions of perl, texinfo (>=
 4.7), gengetopt (>= 2.13), gettext (>= 0.14.1), cvs2cl, help2man,
-autoconf (>= 2.59), automake (>= 1.9), libtool (>= 1.5.2), gtk-doc
-[1], doxygen, gcj, gjdoc, mono or pnet.
+autoconf (>= 2.59), automake (>= 1.9), libtool (>= 1.5.2), fig2dev
+(transfig), pkg-config, gtk-doc, doxygen, gcj, gjdoc, mono or pnet.
 
 Bootstrap the build environment using:
 
   $ ./autogen.sh
 
 Then run ./configure and make as usual.
-
-[1] Apply the patch in
-<http://bugzilla.gnome.org/show_bug.cgi?id=156643> against GTK-DOC to
-avoid initial build errors like this:
-
-make[4]: *** No rule to make target `tmpl/*.sgml', needed by `sgml-build.stamp'.  Stop.
 
 ----------------------------------------------------------------------
 Copying and distribution of this file, with or without modification,
