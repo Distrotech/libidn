@@ -74,7 +74,7 @@ section entitled ``GNU Free Documentation License''.
 * Java API::                    Notes on the Java port of Libidn.
 * C# API::                      Notes on the C# port of Libidn.
 * Acknowledgements::            Whom to blame.
-* Milestones::                  Rough outline of development history.
+* History::                     Rough outline of development history.
 
 Indices
 
@@ -1825,10 +1825,10 @@ Several people reported bugs, sent patches or suggested improvements,
 see the file THANKS in the top-level directory of the source code.
 
 @c **********************************************************
-@c **********************  Milestones  **********************
+@c ***********************  History  ***********************
 @c **********************************************************
-@node Milestones
-@chapter Milestones
+@node History
+@chapter History
 
 The complete history of user visible changes is stored in the file
 @file{NEWS} in the top-level directory of the source code tree.  The
