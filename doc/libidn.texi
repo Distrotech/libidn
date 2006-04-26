@@ -1825,7 +1825,7 @@ Several people reported bugs, sent patches or suggested improvements,
 see the file THANKS in the top-level directory of the source code.
 
 @c **********************************************************
-@c ***********************  History  ***********************
+@c ************************  History  ***********************
 @c **********************************************************
 @node History
 @chapter History
