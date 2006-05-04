@@ -4,6 +4,8 @@ See the end for copying conditions.
 
 * Version 0.6.4 (unreleased)
 
+** The tests are run under valgrind, if it is installed.
+
 * Version 0.6.3 (released 2006-03-08)
 
 ** Fixes for the build environment.
