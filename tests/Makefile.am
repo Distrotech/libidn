@@ -33,3 +33,5 @@ endif
 
 TESTS = $(ctests)	
 check_PROGRAMS = $(ctests)
+
+TESTS_ENVIRONMENT = `if type valgrind > /dev/null 2>&1; then echo valgrind --leak-check=full --show-reachable=yes; else echo $$SHELL -c; fi`
