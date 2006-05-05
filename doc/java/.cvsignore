@@ -1,9 +1,9 @@
 Makefile
 Makefile.in
 about.html
-deprecated.html
-package-list
 alphaindex.html
+deprecated.html
+gjdoc.properties
 index.html
-serialized-form.html
 package-list
+serialized-form.html
