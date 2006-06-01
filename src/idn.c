@@ -1,5 +1,5 @@
 /* idn.c --- Command line interface to libidn.
- * Copyright (C) 2003, 2004, 2005  Simon Josefsson
+ * Copyright (C) 2003, 2004, 2005, 2006  Simon Josefsson
  *
  * This file is part of GNU Libidn.
  *
@@ -139,7 +139,8 @@ main (int argc, char *argv[])
 	    {
 	      size_t i;
 	      for (i = 0; q[i]; i++)
-		fprintf (stderr, _("input[%d] = U+%04x\n"), i, q[i]);
+		fprintf (stderr, _("input[%lu] = U+%04x\n"),
+			 (unsigned long) i, q[i]);
 	    }
 	  free (q);
 
@@ -163,7 +164,8 @@ main (int argc, char *argv[])
 	    {
 	      size_t i;
 	      for (i = 0; q[i]; i++)
-		fprintf (stderr, _("output[%d] = U+%04x\n"), i, q[i]);
+		fprintf (stderr, _("output[%lu] = U+%04x\n"),
+			 (unsigned long) i, q[i]);
 	    }
 	  free (q);
 
@@ -197,7 +199,8 @@ main (int argc, char *argv[])
 	    {
 	      size_t i;
 	      for (i = 0; i < len; i++)
-		fprintf (stderr, _("input[%d] = U+%04x\n"), i, q[i]);
+		fprintf (stderr, _("input[%lu] = U+%04x\n"),
+			 (unsigned long) i, q[i]);
 	    }
 
 	  len2 = BUFSIZ - 1;
@@ -240,7 +243,8 @@ main (int argc, char *argv[])
 	    {
 	      size_t i;
 	      for (i = 0; i < len; i++)
-		fprintf (stderr, _("output[%d] = U+%04x\n"), i, q[i]);
+		fprintf (stderr, _("output[%lu] = U+%04x\n"),
+			 (unsigned long) i, q[i]);
 	    }
 
 	  q[len] = 0;
@@ -278,7 +282,8 @@ main (int argc, char *argv[])
 	    {
 	      size_t i;
 	      for (i = 0; q[i]; i++)
-		fprintf (stderr, _("input[%d] = U+%04x\n"), i, q[i]);
+		fprintf (stderr, _("input[%lu] = U+%04x\n"),
+			 (unsigned long) i, q[i]);
 	    }
 
 	  rc = idna_to_ascii_4z (q, &p,
@@ -309,14 +314,15 @@ main (int argc, char *argv[])
 		{
 		  size_t i;
 		  for (i = 0; q[i]; i++)
-		    fprintf (stderr, _("tld[%d] = U+%04x\n"), i, q[i]);
+		    fprintf (stderr, _("tld[%lu] = U+%04x\n"),
+			     (unsigned long) i, q[i]);
 		}
 
 	      rc = tld_check_4z (q, &errpos, NULL);
 	      free (q);
 	      if (rc == TLD_INVALID)
-		error (EXIT_FAILURE, 0, _("tld_check_4z (position %d): %s"),
-		       errpos, tld_strerror (rc));
+		error (EXIT_FAILURE, 0, _("tld_check_4z (position %lu): %s"),
+		       (unsigned long) errpos, tld_strerror (rc));
 	      if (rc != TLD_SUCCESS)
 		error (EXIT_FAILURE, 0, _("tld_check_4z: %s"),
 		       tld_strerror (rc));
@@ -327,7 +333,8 @@ main (int argc, char *argv[])
 	    {
 	      size_t i;
 	      for (i = 0; p[i]; i++)
-		fprintf (stderr, _("output[%d] = U+%04x\n"), i, p[i]);
+		fprintf (stderr, _("output[%lu] = U+%04x\n"),
+			 (unsigned long) i, p[i]);
 	    }
 
 	  fprintf (stdout, "%s\n", p);
@@ -354,7 +361,8 @@ main (int argc, char *argv[])
 	    {
 	      size_t i;
 	      for (i = 0; q[i]; i++)
-		fprintf (stderr, _("input[%d] = U+%04x\n"), i, q[i]);
+		fprintf (stderr, _("input[%lu] = U+%04x\n"),
+			 (unsigned long) i, q[i]);
 	    }
 	  free (q);
 
@@ -372,7 +380,8 @@ main (int argc, char *argv[])
 	    {
 	      size_t i;
 	      for (i = 0; q[i]; i++)
-		fprintf (stderr, _("output[%d] = U+%04x\n"), i, q[i]);
+		fprintf (stderr, _("output[%lu] = U+%04x\n"),
+			 (unsigned long) i, q[i]);
 	    }
 
 #ifdef WITH_TLD
@@ -384,8 +393,8 @@ main (int argc, char *argv[])
 	      if (rc == TLD_INVALID)
 		{
 		  free (q);
-		  error (EXIT_FAILURE, 0, _("tld_check_4z (position %d): %s"),
-			 errpos, tld_strerror (rc));
+		  error (EXIT_FAILURE, 0, _("tld_check_4z (position %lu): %s"),
+			 (unsigned long) errpos, tld_strerror (rc));
 		}
 	      if (rc != TLD_SUCCESS)
 		{
