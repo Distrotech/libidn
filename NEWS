@@ -7,6 +7,9 @@ See the end for copying conditions.
 ** Fix translation of error messages.
 Thanks to Joe Orton <jorton@redhat.com>.
 
+** Fix warnings on 64-bit platforms.
+Thanks to Joe Orton <jorton@redhat.com>.
+
 ** The tests are run under valgrind, if it is installed.
 
 * Version 0.6.3 (released 2006-03-08)
