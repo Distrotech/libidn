@@ -79,10 +79,10 @@ AM_LANGINFO_CODESET
 if test "$cross_compiling" = no; then
   AC_CHECK_PROGS(VALGRIND, valgrind)
 fi
-if test -z "$VALGRIND"; then
-  opt_valgrind_tests=no
-else
+if test -n "$VALGRIND" && $VALGRIND true; then
   opt_valgrind_tests=yes
+else
+  opt_valgrind_tests=no
 fi 
 AC_MSG_CHECKING([whether self tests are run under valgrind])
 AC_ARG_ENABLE(valgrind-tests,
