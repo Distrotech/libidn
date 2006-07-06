@@ -11,6 +11,8 @@ Thanks to Joe Orton <jorton@redhat.com>.
 Thanks to Joe Orton <jorton@redhat.com>.
 
 ** The tests are run under valgrind, if it is installed.
+Use --disable-valgrind-tests to unconditionally disable this.  It is
+disabled by default for cross compiles.
 
 * Version 0.6.3 (released 2006-03-08)
 
