@@ -2,7 +2,7 @@ Libidn NEWS -- History of user-visible changes.                 -*- outline -*-
 Copyright (C) 2002, 2003, 2004, 2005, 2006 Simon Josefsson
 See the end for copying conditions.
 
-* Version 0.6.4 (unreleased)
+* Version 0.6.4 (released 2006-06-07)
 
 ** Fix translation of error messages.
 Thanks to Joe Orton <jorton@redhat.com>.
