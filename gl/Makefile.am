@@ -21,6 +21,7 @@ EXTRA_DIST =
 BUILT_SOURCES =
 SUFFIXES =
 MOSTLYCLEANFILES =
+MOSTLYCLEANDIRS =
 CLEANFILES =
 DISTCLEANFILES =
 MAINTAINERCLEANFILES =
@@ -65,5 +66,13 @@ libgnu_la_SOURCES += dummy.c
 
 ## end   gnulib module dummy
 
+
+mostlyclean-local:
+	@test -z "$(MOSTLYCLEANDIRS)" || \
+	  for dir in $(MOSTLYCLEANDIRS); do \
+	    if test -d $$dir; then \
+	      echo "rmdir $$dir"; rmdir $$dir; \
+	    fi; \
+	  done
 
 # Makefile.am ends here
