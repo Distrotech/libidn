@@ -1,3 +1,140 @@
+2006-07-07  Simon Josefsson <simon@josefsson.org>
+
+	* po/da.po, po/de.po, po/eo.po, po/fr.po, po/it.po, po/ja.po,
+	po/nl.po, po/pl.po, po/ro.po, po/rw.po, po/sr.po, po/sv.po,
+	po/vi.po, po/zh_CN.po: Generated.
+
+2006-07-07  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Version 0.6.4.
+
+2006-07-07  Simon Josefsson <simon@josefsson.org>
+
+	* configure.ac: Fix valgrind test.
+
+2006-07-07  Simon Josefsson <simon@josefsson.org>
+
+	* configure.ac: Check if running valgrind works.
+
+2006-07-06  Simon Josefsson <simon@josefsson.org>
+
+	* doc/Makefile.am: Need -I for texi2dvi too.
+
+2006-07-06  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi: Fix paths.
+
+2006-07-06  Simon Josefsson <simon@josefsson.org>
+
+	* gl/Makefile.am, gl/m4/onceonly_2_57.m4: Update.
+
+2006-07-06  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Fix.
+
+2006-07-06  Simon Josefsson <simon@josefsson.org>
+
+	* tests/Makefile.am: Simplify valgrind usage.
+
+2006-07-06  Simon Josefsson <simon@josefsson.org>
+
+	* configure.ac: Check for valgrind.
+
+2006-06-27  Simon Josefsson <simon@josefsson.org>
+
+	* doc/gdoc: Use GNU-style warnings.
+
+2006-06-27  Simon Josefsson <simon@josefsson.org>
+
+	* doc/gdoc: Fix man output, sync.
+
+2006-06-22  Simon Josefsson <simon@josefsson.org>
+
+	* configure.ac: Use AC_LIBTOOL_WIN32_DLL.
+
+2006-06-10  Simon Josefsson <simon@josefsson.org>
+
+	* po/LINGUAS, po/ja.po: Sync with TP.
+
+2006-06-07  Simon Josefsson <simon@josefsson.org>
+
+	* gl/m4/gnulib-comp.m4: Update.
+
+2006-06-07  Simon Josefsson <simon@josefsson.org>
+
+	* gl/m4/gnulib-comp.m4: Update.
+
+2006-06-01  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2006-06-01  Simon Josefsson <simon@josefsson.org>
+
+	* src/idn.c: When printing size_t, use %lu and cast the value to
+	unsigned long, based on report from Joe Orton <jorton@redhat.com>.
+
+2006-06-01  Simon Josefsson <simon@josefsson.org>
+
+	* po/da.po, po/de.po, po/eo.po, po/fr.po, po/it.po, po/nl.po,
+	po/pl.po, po/ro.po, po/rw.po, po/sr.po, po/vi.po, po/zh_CN.po: Sync
+	with TP.
+
+2006-06-01  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2006-06-01  Simon Josefsson <simon@josefsson.org>
+
+	* lib/strerror-idna.c, lib/strerror-pr29.c,
+	lib/strerror-punycode.c, lib/strerror-stringprep.c,
+	lib/strerror-tld.c: Include config.h, to make NLS work, tiny patch
+	from Joe Orton <jorton@redhat.com>.
+
+2006-05-16  Simon Josefsson <simon@josefsson.org>
+
+	* gl/Makefile.am, gl/m4/gnulib-cache.m4, gl/m4/gnulib-comp.m4:
+	Update.
+
+2006-05-04  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2006-05-04  Simon Josefsson <simon@josefsson.org>
+
+	* tests/Makefile.am: Run tests under valgrind, if present.
+
+2006-04-26  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi: Typo.
+
+2006-04-26  Simon Josefsson <simon@josefsson.org>
+
+	* gl/Makefile.am, gl/m4/strerror_r.m4: Update.
+
+2006-03-14  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi: Fix title.
+
+2006-03-11  Simon Josefsson <simon@josefsson.org>
+
+	* README-alpha: Fix.
+
+2006-03-11  Simon Josefsson <simon@josefsson.org>
+
+	* maint-cfg.mk: fix
+
+2006-03-11  Simon Josefsson <simon@josefsson.org>
+
+	* gtk-doc.make: Add.
+
+2006-03-08  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS, configure.ac: Bump versions.
+
+2006-03-08  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Typo.
+
 2006-03-08  Simon Josefsson <simon@josefsson.org>
 
 	* po/da.po, po/de.po, po/eo.po, po/fr.po, po/it.po, po/nl.po,
@@ -4074,6 +4211,10 @@
 
 2003-11-01  Simon Josefsson <simon@josefsson.org>
 
+	* doc/man/Makefile.am: Remove.
+
+2003-11-01  Simon Josefsson <simon@josefsson.org>
+
 	* doc/Makefile.gdoci: Mkdir.
 
 2003-11-01  Simon Josefsson <simon@josefsson.org>
@@ -4532,6 +4673,10 @@
 
 2003-10-16  Simon Josefsson <simon@josefsson.org>
 
+	* doc/man/Makefile.am: Add stringprep_4i.3, stringprep_4zi.3.
+
+2003-10-16  Simon Josefsson <simon@josefsson.org>
+
 	* lib/stringprep.c: Doc fix.
 
 2003-10-16  Simon Josefsson <simon@josefsson.org>
@@ -4983,6 +5128,10 @@
 
 2003-09-12  Simon Josefsson <simon@josefsson.org>
 
+	* doc/man/Makefile.am: Fix update-api.
+
+2003-09-12  Simon Josefsson <simon@josefsson.org>
+
 	* lib/idna.c, lib/stringprep.c: Doc fix.
 
 2003-09-12  Simon Josefsson <simon@josefsson.org>
@@ -5083,7 +5232,8 @@
 
 2003-09-12  Simon Josefsson <simon@josefsson.org>
 
-	* NEWS, configure.ac, doc/Makefile.am, doc/gdoc: Build man pages.
+	* NEWS, configure.ac, doc/Makefile.am, doc/gdoc,
+	doc/man/Makefile.am: Build man pages.
 
 2003-09-12  Simon Josefsson <simon@josefsson.org>
 
