@@ -62,7 +62,9 @@ release:
 	cvs commit -m "" ChangeLog
 	cvs rtag $(tag) $(PACKAGE)
 	gnupload --to alpha.gnu.org:libidn $(distdir).tar.gz
-	cd doc && ./gendocs.sh --html "--css-include=texinfo.css" \
+	cd doc && env MAKEINFO="makeinfo -I ../examples" \
+		      TEXI2DVI="texi2dvi -I ../examples" \
+		./gendocs.sh --html "--css-include=texinfo.css" \
 		-o ../$(htmldir)/manual/ $(PACKAGE) "GNU Libidn"
 	cp -v $(distdir).tar.gz{,.sig} $(htmldir)/releases/
 	cp -v doc/reference/html/*.{html,png,devhelp,css} $(htmldir)/reference/
