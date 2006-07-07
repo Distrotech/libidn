@@ -15,10 +15,10 @@
 
 
 # Specification in the form of a command-line invocation:
-#   gnulib-tool --import --dir=. --lib=libgnu --source-base=gl --m4-base=gl/m4 --aux-dir=. --lgpl --libtool --macro-prefix=gl csharpcomp-script error getopt maintainer-makefile strdup
+#   gnulib-tool --import --dir=. --lib=libgnu --source-base=gl --m4-base=gl/m4 --aux-dir=. --lgpl --libtool --macro-prefix=gl csharpcomp-script error getopt maintainer-makefile stdint strdup
 
 # Specification in the form of a few gnulib-tool.m4 macro invocations:
-gl_MODULES([csharpcomp-script error getopt maintainer-makefile strdup])
+gl_MODULES([csharpcomp-script error getopt maintainer-makefile stdint strdup])
 gl_AVOID([])
 gl_SOURCE_BASE([gl])
 gl_M4_BASE([gl/m4])

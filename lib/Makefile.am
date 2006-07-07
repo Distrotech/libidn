@@ -35,6 +35,9 @@ include_HEADERS += tld.h
 endif
 nodist_include_HEADERS = $(idn_int)
 
+idn-int.h:
+	cp ../gl/stdint.h idn-int.h
+
 libidn_la_SOURCES = gunibreak.h gunicomp.h gunidecomp.h \
 	nfkc.c toutf8.c version.c \
 	stringprep.h.in stringprep.c rfc3454.c profiles.c \
