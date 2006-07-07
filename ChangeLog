@@ -6,6 +6,41 @@
 
 2006-07-07  Simon Josefsson <simon@josefsson.org>
 
+	* NEWS: Version 0.6.5.
+
+2006-07-07  Simon Josefsson <simon@josefsson.org>
+
+	* doc/gendocs.sh: Update.
+
+2006-07-07  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2006-07-07  Simon Josefsson <simon@josefsson.org>
+
+	* THANKS, NEWS: Add.
+
+2006-07-07  Simon Josefsson <simon@josefsson.org>
+
+	* lib/Makefile.am: Need libintl too, for gettext, reported by
+	Kirill Ponomarew <krion@voodoo.bawue.com>.
+
+2006-07-07  Simon Josefsson <simon@josefsson.org>
+
+	* gl/getopt.c: Update.
+
+2006-07-07  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS, configure.ac: Bump versions.
+
+2006-07-07  Simon Josefsson <simon@josefsson.org>
+
+	* po/da.po, po/de.po, po/eo.po, po/fr.po, po/it.po, po/ja.po,
+	po/nl.po, po/pl.po, po/ro.po, po/rw.po, po/sr.po, po/sv.po,
+	po/vi.po, po/zh_CN.po: Generated.
+
+2006-07-07  Simon Josefsson <simon@josefsson.org>
+
 	* NEWS: Version 0.6.4.
 
 2006-07-07  Simon Josefsson <simon@josefsson.org>
