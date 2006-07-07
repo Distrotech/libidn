@@ -5,6 +5,8 @@ See the end for copying conditions.
 * Version 0.6.5 (unreleased)
 
 ** Link the library with external libintl, for gettext.
+This fixes building on FreeBSD, reported by Kirill Ponomarew
+<krion@voodoo.bawue.com>.
 
 ** API and ABI is backwards compatible with the previous version.
 
