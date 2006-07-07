@@ -8,6 +8,8 @@ See the end for copying conditions.
 This fixes building on FreeBSD, reported by Kirill Ponomarew
 <krion@voodoo.bawue.com>.
 
+** Update doxygen config file to version 1.4.7.
+
 ** API and ABI is backwards compatible with the previous version.
 
 * Version 0.6.4 (released 2006-06-07)
