@@ -4,6 +4,10 @@ See the end for copying conditions.
 
 * Version 0.6.5 (unreleased)
 
+** Link the library with external libintl, for gettext.
+
+** API and ABI is backwards compatible with the previous version.
+
 * Version 0.6.4 (released 2006-06-07)
 
 ** Fix translation of error messages.
@@ -15,6 +19,8 @@ Thanks to Joe Orton <jorton@redhat.com>.
 ** The tests are run under valgrind, if it is installed.
 Use --disable-valgrind-tests to unconditionally disable this.  It is
 disabled by default for cross compiles.
+
+** API and ABI is backwards compatible with the previous version.
 
 * Version 0.6.3 (released 2006-03-08)
 
