@@ -59,7 +59,6 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/error.m4
   m4/getopt.m4
   m4/longlong.m4
-  m4/onceonly_2_57.m4
   m4/stdint.m4
   m4/strdup.m4
   m4/strerror_r.m4
