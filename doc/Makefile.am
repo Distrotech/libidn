@@ -38,8 +38,8 @@ components.png: components.fig
 components.pdf: components.fig
 	fig2dev -L pdf components.fig components.pdf
 
-TEXI2DVI = texi2dvi -I $(top_srcdir)/examples
 AM_MAKEINFOFLAGS = -I $(top_builddir)/doc -I $(top_srcdir)/examples
+TEXI2DVI = texi2dvi $(AM_MAKEINFOFLAGS)
 AM_MAKEINFOHTMLFLAGS = $(AM_MAKEINFOFLAGS) \
 	--no-split --number-sections --css-include=texinfo.css
 
