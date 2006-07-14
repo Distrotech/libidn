@@ -41,8 +41,10 @@ AC_DEFUN([gl_INIT],
 AC_DEFUN([gl_FILE_LIST], [
   build-aux/GNUmakefile
   build-aux/csharpcomp.sh.in
+  build-aux/gendocs.sh
   build-aux/maint.mk
   doc/fdl.texi
+  doc/gendocs_template
   lib/dummy.c
   lib/error.c
   lib/error.h
