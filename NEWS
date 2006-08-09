@@ -10,6 +10,8 @@ idn-int.h is specific to the build environment that libidn was built
 under, and is not generally usable by any other compiler (if any) on
 the host.  This was true before too.
 
+** Update gnulib files.
+
 ** API and ABI is backwards compatible with the previous version.
 
 * Version 0.6.5 (released 2006-06-07)
