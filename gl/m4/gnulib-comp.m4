@@ -27,7 +27,7 @@ AC_DEFUN([gl_EARLY],
 AC_DEFUN([gl_INIT],
 [
   AM_CONDITIONAL([GL_COND_LIBTOOL], [true])
-  gt_CSHARPCOMP
+  AC_REQUIRE([gt_CSHARPCOMP])
   AC_CONFIG_FILES([csharpcomp.sh:./csharpcomp.sh.in])
   gl_ERROR
   gl_GETOPT
@@ -62,6 +62,7 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/error.m4
   m4/getopt.m4
   m4/longlong.m4
+  m4/onceonly_2_57.m4
   m4/stdint.m4
   m4/strdup.m4
   m4/strerror_r.m4
