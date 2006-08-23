@@ -2,7 +2,7 @@ Libidn NEWS -- History of user-visible changes.                 -*- outline -*-
 Copyright (C) 2002, 2003, 2004, 2005, 2006 Simon Josefsson
 See the end for copying conditions.
 
-* Version 0.6.6 (unreleased)
+* Version 0.6.6 (released 2006-08-23)
 
 ** Instead of AX_CREATE_STDINT_H, use the stdint gnulib module, for idn-int.h.
 This solves building on some HPPA systems.  Note that the generated
