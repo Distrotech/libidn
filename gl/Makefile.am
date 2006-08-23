@@ -17,7 +17,6 @@ noinst_LTLIBRARIES = libgnu.la
 libgnu_la_SOURCES =
 libgnu_la_LIBADD = @LTLIBOBJS@
 noinst_HEADERS =
-pkgdata_DATA =
 EXTRA_DIST =
 BUILT_SOURCES =
 SUFFIXES =
@@ -83,6 +82,12 @@ stdint.h: stdint_.h
 MOSTLYCLEANFILES += stdint.h stdint.h-t
 
 ## end   gnulib module stdint
+
+## begin gnulib module strdup
+
+EXTRA_DIST += strdup.h
+
+## end   gnulib module strdup
 
 ## begin gnulib module unistd
 
