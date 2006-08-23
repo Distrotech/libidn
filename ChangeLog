@@ -1,3 +1,89 @@
+2006-08-23  Simon Josefsson <simon@josefsson.org>
+
+	* po/da.po, po/de.po, po/eo.po, po/fr.po, po/it.po, po/ja.po,
+	po/nl.po, po/pl.po, po/ro.po, po/rw.po, po/sr.po, po/sv.po,
+	po/vi.po, po/zh_CN.po: Generated.
+
+2006-08-23  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Version 0.6.6.
+
+2006-08-23  Simon Josefsson <simon@josefsson.org>
+
+	* gl/m4/longlong.m4: Update.
+
+2006-08-23  Simon Josefsson <simon@josefsson.org>
+
+	* gl/Makefile.am, gl/m4/gnulib-comp.m4, gl/m4/strdup.m4,
+	gl/m4/strerror_r.m4: Update.
+
+2006-08-23  Simon Josefsson <simon@josefsson.org>
+
+	* gl/override/doc/gendocs_template: Add.
+
+2006-08-19  Simon Josefsson <simon@josefsson.org>
+
+	* gl/error.c, gl/m4/gnulib-comp.m4: Update.
+
+2006-08-09  Simon Josefsson <simon@josefsson.org>
+
+	* po/da.po, po/de.po, po/eo.po, po/fr.po, po/it.po, po/ja.po,
+	po/nl.po, po/pl.po, po/ro.po, po/rw.po, po/sr.po, po/vi.po,
+	po/zh_CN.po: Sync with TP.
+
+2006-08-09  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2006-08-09  Simon Josefsson <simon@josefsson.org>
+
+	* csharpcomp.sh.in, gendocs.sh, gl/Makefile.am, gl/error.c,
+	gl/error.h, gl/gettext.h, gl/stdint_.h, gl/m4/csharpcomp.m4,
+	gl/m4/gnulib-comp.m4, gl/m4/onceonly_2_57.m4, gl/m4/stdint.m4:
+	Update.
+
+2006-07-14  Simon Josefsson <simon@josefsson.org>
+
+	* Makefile.am: Fix.
+
+2006-07-14  Simon Josefsson <simon@josefsson.org>
+
+	* doc/gendocs.sh, gl/Makefile.am, gl/m4/gnulib-cache.m4,
+	gl/m4/gnulib-comp.m4: Update.
+
+2006-07-11  Simon Josefsson <simon@josefsson.org>
+
+	* doc/fdl.texi, gl/Makefile.am, gl/m4/absolute-header.m4,
+	gl/m4/gnulib-cache.m4, gl/m4/gnulib-comp.m4, gl/m4/stdint.m4:
+	Update.
+
+2006-07-11  Simon Josefsson <simon@josefsson.org>
+
+	* doc/Makefile.am: Fix texi2dvi -I's.
+
+2006-07-10  Simon Josefsson <simon@josefsson.org>
+
+	* gl/m4/absolute-header.m4, gl/m4/getopt.m4, gl/m4/gnulib-comp.m4,
+	gl/m4/onceonly_2_57.m4: Update.
+
+2006-07-07  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS, configure.ac, gl/Makefile.am, gl/stdint_.h,
+	gl/m4/absolute-header.m4, gl/m4/gnulib-cache.m4,
+	gl/m4/gnulib-comp.m4, gl/m4/longlong.m4, gl/m4/stdint.m4,
+	lib/Makefile.am, m4/ax_create_stdint_h.m4, po/da.po, po/de.po,
+	po/eo.po, po/fr.po, po/it.po, po/ja.po, po/nl.po, po/pl.po,
+	po/ro.po, po/rw.po, po/sr.po, po/sv.po, po/vi.po, po/zh_CN.po: Use
+	gnulib stdint module instead of AX_CREATE_STDINT_H.
+
+2006-07-07  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS, configure.ac: Bump version.
+
+2006-07-07  Simon Josefsson <simon@josefsson.org>
+
+	* Makefile.am: Fix gendocs.sh run.
+
 2006-07-07  Simon Josefsson <simon@josefsson.org>
 
 	* po/da.po, po/de.po, po/eo.po, po/fr.po, po/it.po, po/ja.po,
