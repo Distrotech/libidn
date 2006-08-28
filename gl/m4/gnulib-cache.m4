@@ -15,9 +15,10 @@
 
 
 # Specification in the form of a command-line invocation:
-#   gnulib-tool --import --dir=. --lib=libgnu --source-base=gl --m4-base=gl/m4 --doc-base=doc --aux-dir=. --lgpl --libtool --macro-prefix=gl csharpcomp-script error fdl gendocs getopt maintainer-makefile stdint strdup
+#   gnulib-tool --import --dir=. --local-dir=gl/override --lib=libgnu --source-base=gl --m4-base=gl/m4 --doc-base=doc --aux-dir=. --lgpl --libtool --macro-prefix=gl csharpcomp-script error fdl gendocs getopt maintainer-makefile stdint strdup
 
 # Specification in the form of a few gnulib-tool.m4 macro invocations:
+gl_LOCAL_DIR([gl/override])
 gl_MODULES([csharpcomp-script error fdl gendocs getopt maintainer-makefile stdint strdup])
 gl_AVOID([])
 gl_SOURCE_BASE([gl])
