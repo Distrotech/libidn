@@ -61,7 +61,6 @@ stdint.h: stdint_.h
 	    -e 's|@''ABSOLUTE_STDINT_H''@|$(ABSOLUTE_STDINT_H)|g' \
 	    -e 's/@''HAVE_SYS_TYPES_H''@/$(HAVE_SYS_TYPES_H)/g' \
 	    -e 's/@''HAVE_INTTYPES_H''@/$(HAVE_INTTYPES_H)/g' \
-	    -e 's|@''ABSOLUTE_INTTYPES_H''@|$(ABSOLUTE_INTTYPES_H)|g' \
 	    -e 's/@''HAVE_SYS_INTTYPES_H''@/$(HAVE_SYS_INTTYPES_H)/g' \
 	    -e 's/@''HAVE_SYS_BITYPES_H''@/$(HAVE_SYS_BITYPES_H)/g' \
 	    -e 's/@''HAVE_LONG_LONG_INT''@/$(HAVE_LONG_LONG_INT)/g' \
@@ -116,5 +115,3 @@ mostlyclean-local: mostlyclean-generic
 	      echo "rmdir $$dir"; rmdir $$dir; \
 	    fi; \
 	  done
-
-# Makefile.am ends here
