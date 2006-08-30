@@ -61,7 +61,7 @@ release:
 	$(MAKE) ChangeLog distcheck
 	cvs commit -m "" ChangeLog
 	cvs rtag $(tag) $(PACKAGE)
-	gnupload --to alpha.gnu.org:libidn $(distdir).tar.gz
+	./gnupload --to alpha.gnu.org:libidn $(distdir).tar.gz
 	cd doc && env MAKEINFO="makeinfo -I ../examples" \
 		      TEXI2DVI="texi2dvi -I ../examples" \
 		../gendocs.sh --html "--css-include=texinfo.css" \
