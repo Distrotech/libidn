@@ -84,9 +84,7 @@ Indices
 Appendices
 
 * PR29 discussion::             Implementation aspects of the PR29 flaw.
-* Library Copying::		License text covering the Libidn library.
-* Copying::		        License text for the command line tools.
-* Copying This Manual::		How you can copy and share this manual.
+* Copying Information::		License text covering the Libidn library.
 
 @end menu
 
@@ -2000,17 +1998,17 @@ Regards,
 Simon
 @end verbatim
 
-@include lgpl.texi
-
-@include gpl.texi
-
-@node Copying This Manual
-@appendix Copying This Manual
+@node Copying Information
+@appendix Copying Information
 
 @menu
-* GNU Free Documentation License::  License for copying this manual.
+* GNU Free Documentation License::   License for copying this manual.
+* Library Copying::                  License for copying the library.
+* Copying::                          License for copying the programs.
 @end menu
 
 @include fdl.texi
+@include lgpl.texi
+@include gpl.texi
 
 @bye
