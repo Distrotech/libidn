@@ -1,5 +1,5 @@
 @node Copying
-@unnumbered GNU GENERAL PUBLIC LICENSE
+@appendixsec GNU General Public License
 @center Version 2, June 1991
 
 @c This file is intended to be included in another file.
