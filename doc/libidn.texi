@@ -84,7 +84,8 @@ Indices
 Appendices
 
 * PR29 discussion::             Implementation aspects of the PR29 flaw.
-* Library Copying::		How you can copy and share GNU Libidn.
+* Library Copying::		License text covering the Libidn library.
+* Copying::		        License text for the command line tools.
 * Copying This Manual::		How you can copy and share this manual.
 
 @end menu
@@ -96,7 +97,8 @@ Appendices
 GNU Libidn is an implementation of the Stringprep, Punycode and IDNA
 specifications defined by the IETF Internationalized Domain Names
 (IDN) working group, used for internationalized domain names.  The C
-library is available under the GNU Lesser General Public License.
+library is available under the GNU Lesser General Public License
+(@pxref{Library Copying}).
 
 The library contains a generic Stringprep implementation that does
 Unicode 3.2 NFKC normalization, mapping and prohibitation of
@@ -129,7 +131,8 @@ Libidn is developed for the GNU/Linux system, but runs on over 20 Unix
 platforms (including Solaris, IRIX, AIX, and Tru64) and Windows.
 Libidn is written in C and (parts of) the API is accessible from C,
 C++, Emacs Lisp, Python and Java.  A native Java and C# port is also
-provided, licensed under the GNU General Public License.
+provided, licensed under the GNU General Public License
+(@pxref{Copying}).
 
 @menu
 * Getting Started::
@@ -173,7 +176,7 @@ doing a similar job.
 @table @asis
 @item It's Free Software
 Anybody can use, modify, and redistribute it under the terms of the
-GNU Lesser General Public License.
+GNU Lesser General Public License (@pxref{Library Copying}).
 
 @item It's thread-safe
 No global state is kept in the library.  All functions are reentrant.
@@ -1998,6 +2001,8 @@ Simon
 @end verbatim
 
 @include lgpl.texi
+
+@include gpl.texi
 
 @node Copying This Manual
 @appendix Copying This Manual

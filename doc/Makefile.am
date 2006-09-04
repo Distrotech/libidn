@@ -22,8 +22,8 @@ if ENABLE_GTK_DOC
 SUBDIRS += . reference
 endif
 
-EXTRA_DIST = gdoc libidn.html libidn.ps libidn.pdf lgpl.texi texinfo.css \
-	components.fig
+EXTRA_DIST = gdoc libidn.html libidn.ps libidn.pdf gpl.texi lgpl.texi	\
+	texinfo.css components.fig
 
 info_TEXINFOS = libidn.texi
 libidn_TEXINFOS = fdl.texi $(gdoc_TEXINFOS) \
