@@ -19,17 +19,17 @@ dnl along with GNU Libidn; see the file COPYING.LIB.  If not, write to
 dnl the Free Software Foundation, Inc., 51 Franklin Street, Fifth
 dnl Floor, Boston, MA 02110-1301, USA.
 
-AC_INIT([libidn], [0.6.6], [bug-libidn@gnu.org])
+AC_INIT([libidn], [0.6.7], [bug-libidn@gnu.org])
 
 # Library code modified:                              REVISION++
 # Interfaces changed/added/removed:   CURRENT++       REVISION=0
 # Interfaces added:                             AGE++
 # Interfaces removed:                           AGE=0
 AC_SUBST(LT_CURRENT, 16)
-AC_SUBST(LT_REVISION, 20)
+AC_SUBST(LT_REVISION, 21)
 AC_SUBST(LT_AGE, 5)
 
-AC_PREREQ(2.59)
+AC_PREREQ(2.60)
 AM_INIT_AUTOMAKE([1.9 gnits])
 AB_INIT
 AC_CONFIG_HEADERS(config.h)

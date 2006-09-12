@@ -2,6 +2,10 @@ Libidn NEWS -- History of user-visible changes.                 -*- outline -*-
 Copyright (C) 2002, 2003, 2004, 2005, 2006 Simon Josefsson
 See the end for copying conditions.
 
+* Version 0.6.7 (unreleased)
+
+** API and ABI is backwards compatible with the previous version.
+
 * Version 0.6.6 (released 2006-08-23)
 
 ** Instead of AX_CREATE_STDINT_H, use the stdint gnulib module, for idn-int.h.
