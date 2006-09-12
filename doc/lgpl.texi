@@ -1,7 +1,7 @@
-@node Library Copying
+@node GNU LGPL
 @appendixsec GNU Lesser General Public License
-
-@cindex LGPL, Lesser General Public License
+@cindex LGPL, GNU Lesser General Public License
+@cindex License, GNU LGPL
 @center Version 2.1, February 1999
 
 @display
@@ -475,6 +475,7 @@ and reuse of software generally.
 @end iftex
 @ifinfo
 @center NO WARRANTY
+
 @end ifinfo
 
 @item
@@ -506,6 +507,7 @@ DAMAGES.
 @end iftex
 @ifinfo
 @center END OF TERMS AND CONDITIONS
+
 @end ifinfo
 
 @page

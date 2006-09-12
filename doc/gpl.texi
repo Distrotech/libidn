@@ -1,5 +1,7 @@
-@node Copying
+@node GNU GPL
 @appendixsec GNU General Public License
+@cindex GPL, GNU General Public License
+@cindex License, GNU GPL
 @center Version 2, June 1991
 
 @c This file is intended to be included in another file.
@@ -287,6 +289,7 @@ of promoting the sharing and reuse of software generally.
 @end iftex
 @ifinfo
 @center NO WARRANTY
+
 @end ifinfo
 
 @item
@@ -317,6 +320,7 @@ POSSIBILITY OF SUCH DAMAGES.
 @end iftex
 @ifinfo
 @center END OF TERMS AND CONDITIONS
+
 @end ifinfo
 
 @page

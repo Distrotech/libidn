@@ -16,6 +16,7 @@ noinst_LTLIBRARIES = libgnu.la
 
 libgnu_la_SOURCES =
 libgnu_la_LIBADD = @LTLIBOBJS@
+libgnu_la_LDFLAGS = $(AM_LDFLAGS)
 noinst_HEADERS =
 EXTRA_DIST =
 BUILT_SOURCES =
@@ -36,8 +37,8 @@ EXTRA_DIST += getopt_.h getopt_int.h
 # We need the following in order to create <getopt.h> when the system
 # doesn't have one that works with the given compiler.
 getopt.h: getopt_.h
-	cp $(srcdir)/getopt_.h $@-t
-	mv $@-t $@
+	cp -f $(srcdir)/getopt_.h $@-t
+	mv -f $@-t $@
 MOSTLYCLEANFILES += getopt.h getopt.h-t
 
 ## end   gnulib module getopt
@@ -56,6 +57,7 @@ EXTRA_DIST += stdint_.h
 # We need the following in order to create <stdint.h> when the system
 # doesn't have one that works with the given compiler.
 stdint.h: stdint_.h
+	rm -f $@-t $@
 	sed -e 's/@''HAVE_WCHAR_H''@/$(HAVE_WCHAR_H)/g' \
 	    -e 's/@''HAVE_STDINT_H''@/$(HAVE_STDINT_H)/g' \
 	    -e 's|@''ABSOLUTE_STDINT_H''@|$(ABSOLUTE_STDINT_H)|g' \
