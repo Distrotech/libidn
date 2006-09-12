@@ -76,15 +76,15 @@ section entitled ``GNU Free Documentation License''.
 * Acknowledgements::            Whom to blame.
 * History::                     Rough outline of development history.
 
-Indices
-
-* Concept Index::
-* Function and Variable Index::
-
 Appendices
 
 * PR29 discussion::             Implementation aspects of the PR29 flaw.
 * Copying Information::		License text covering the Libidn library.
+
+Indices
+
+* Function and Variable Index::
+* Concept Index::
 
 @end menu
 
@@ -1878,16 +1878,6 @@ Version 0.6.0 released on 2005-12-03.
 
 @end table
 
-@node Concept Index
-@unnumbered Concept Index
-
-@printindex cp
-
-@node Function and Variable Index
-@unnumbered Function and Variable Index
-
-@printindex fn
-
 @node PR29 discussion
 @appendix PR29 discussion
 
@@ -2010,5 +2000,15 @@ Simon
 @include fdl.texi
 @include lgpl.texi
 @include gpl.texi
+
+@node Function and Variable Index
+@unnumbered Function and Variable Index
+
+@printindex fn
+
+@node Concept Index
+@unnumbered Concept Index
+
+@printindex cp
 
 @bye
