@@ -4,6 +4,9 @@ See the end for copying conditions.
 
 * Version 0.6.7 (unreleased)
 
+** Fix build failure of idn-int.h on C99 platforms.
+Reported by Paul Howarth <paul@city-fan.org>.
+
 ** API and ABI is backwards compatible with the previous version.
 
 * Version 0.6.6 (released 2006-08-23)
