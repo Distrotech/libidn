@@ -1,3 +1,89 @@
+2006-09-13  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Version 0.6.7.
+
+2006-09-13  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2006-09-13  Simon Josefsson <simon@josefsson.org>
+
+	* po/da.po, po/de.po, po/eo.po, po/fr.po, po/it.po, po/ja.po,
+	po/nl.po, po/pl.po, po/ro.po, po/rw.po, po/sr.po, po/vi.po,
+	po/zh_CN.po: Sync with TP.
+
+2006-09-13  Simon Josefsson <simon@josefsson.org>
+
+	* gl/m4/gnulib-comp.m4, gl/m4/onceonly_2_57.m4: Update.
+
+2006-09-12  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2006-09-12  Simon Josefsson <simon@josefsson.org>
+
+	* THANKS: Add.
+
+2006-09-12  Simon Josefsson <simon@josefsson.org>
+
+	* lib/Makefile.am: For C99 stdint.h platforms, create a dummy
+	idn-int.h that include stdint.h, reported by Paul Howarth
+	<paul@city-fan.org>.
+
+2006-09-12  Simon Josefsson <simon@josefsson.org>
+
+	* configure.ac, NEWS: Bump versions.
+
+2006-09-12  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi: Add.
+
+2006-09-12  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi: Move the index to the end.
+
+2006-09-12  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi: Fix refs.
+
+2006-09-12  Simon Josefsson <simon@josefsson.org>
+
+	* gl/Makefile.am, gl/m4/gnulib-comp.m4, doc/fdl.texi, doc/gpl.texi,
+	doc/lgpl.texi, doc/libidn.texi: Update.
+
+2006-09-04  Simon Josefsson <simon@josefsson.org>
+
+	* doc/fdl.texi, doc/gpl.texi, doc/lgpl.texi: Update.
+
+2006-09-04  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi: Fix.
+
+2006-09-04  Simon Josefsson <simon@josefsson.org>
+
+	* doc/Makefile.am, doc/gpl.texi, doc/lgpl.texi, doc/libidn.texi,
+	gl/Makefile.am, gl/m4/gnulib-cache.m4, gl/m4/gnulib-comp.m4: Add
+	lgpl and gpl from gnulib.
+
+2006-08-30  Simon Josefsson <simon@josefsson.org>
+
+	* Makefile.am: Use gnupload from gnulib.
+
+2006-08-30  Simon Josefsson <simon@josefsson.org>
+
+	* gnupload, gl/Makefile.am, gl/m4/gnulib-cache.m4,
+	gl/m4/gnulib-comp.m4: Update.
+
+2006-08-30  Simon Josefsson <simon@josefsson.org>
+
+	* gl/Makefile.am, gl/error.c, gl/stdint_.h, gl/m4/gnulib-cache.m4,
+	gl/m4/stdint.m4: Update.
+
+2006-08-28  Simon Josefsson <simon@josefsson.org>
+
+	* gl/Makefile.am, gl/stdint_.h, gl/m4/gnulib-cache.m4,
+	gl/m4/stdint.m4: Update.
+
 2006-08-23  Simon Josefsson <simon@josefsson.org>
 
 	* po/da.po, po/de.po, po/eo.po, po/fr.po, po/it.po, po/ja.po,
