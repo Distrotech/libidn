@@ -7,6 +7,12 @@ See the end for copying conditions.
 ** Fix build failure of idn-int.h on C99 platforms.
 Reported by Paul Howarth <paul@city-fan.org>.
 
+** The manual includes the GPL license, for the command-line tools.
+
+** The function, variable and concept index is moved to the end of the manual.
+
+** Update gnulib files.
+
 ** API and ABI is backwards compatible with the previous version.
 
 * Version 0.6.6 (released 2006-08-23)
