@@ -2,7 +2,7 @@ Libidn NEWS -- History of user-visible changes.                 -*- outline -*-
 Copyright (C) 2002, 2003, 2004, 2005, 2006 Simon Josefsson
 See the end for copying conditions.
 
-* Version 0.6.7 (unreleased)
+* Version 0.6.7 (released 2006-09-13)
 
 ** Fix build failure of idn-int.h on C99 platforms.
 Reported by Paul Howarth <paul@city-fan.org>.
