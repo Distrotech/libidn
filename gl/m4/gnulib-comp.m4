@@ -40,8 +40,6 @@ AC_DEFUN([gl_INIT],
   AC_CONFIG_FILES([csharpcomp.sh:./csharpcomp.sh.in])
   gl_ERROR
   gl_GETOPT
-  gl_STDINT_H
-  gl_FUNC_STRDUP
   gl_HEADER_UNISTD
   m4_popdef([AC_REPLACE_FUNCS])
   m4_popdef([AC_LIBOBJ])
@@ -92,17 +90,9 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/getopt_.h
   lib/getopt_int.h
   lib/gettext.h
-  lib/stdint_.h
-  lib/strdup.c
-  lib/strdup.h
-  m4/absolute-header.m4
   m4/csharp.m4
   m4/csharpcomp.m4
   m4/error.m4
   m4/getopt.m4
-  m4/longlong.m4
-  m4/stdint.m4
-  m4/strdup.m4
-  m4/ulonglong.m4
   m4/unistd_h.m4
 ])
