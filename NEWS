@@ -12,6 +12,8 @@ gnulib files had to be LGPL.
 
 ** Update gnulib files.
 
+** Some minor cleanups, like assuming locale.h and setlocale().
+
 ** API and ABI is backwards compatible with the previous version.
 
 * Version 0.6.7 (released 2006-09-13)
