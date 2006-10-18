@@ -2,5 +2,6 @@
 .libs
 Makefile
 Makefile.in
+stdint.h
 *.lo
 libgnu.la
