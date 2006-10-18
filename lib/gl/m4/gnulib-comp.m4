@@ -43,6 +43,7 @@ AC_DEFUN([lgl_INIT],
     gl_ltlibdeps="$gl_ltlibdeps $LTLIBICONV"
     gl_libdeps="$gl_libdeps $LIBICONV"
   fi
+  gl_STDINT_H
   gl_FUNC_STRDUP
   gl_FUNC_STRVERSCMP
   m4_popdef([AC_REPLACE_FUNCS])
@@ -81,15 +82,20 @@ AC_DEFUN([lgl_FILE_LIST], [
   lib/gettext.h
   lib/iconvme.c
   lib/iconvme.h
+  lib/stdint_.h
   lib/strdup.c
   lib/strdup.h
   lib/strverscmp.c
   lib/strverscmp.h
+  m4/absolute-header.m4
   m4/iconv.m4
   m4/iconvme.m4
   m4/lib-ld.m4
   m4/lib-link.m4
   m4/lib-prefix.m4
+  m4/longlong.m4
+  m4/stdint.m4
   m4/strdup.m4
   m4/strverscmp.m4
+  m4/ulonglong.m4
 ])
