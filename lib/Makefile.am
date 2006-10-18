@@ -18,7 +18,7 @@
 # License along with GNU Libidn; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA
 
-SUBDIRS = gl
+SUBDIRS = gl .
 
 EXTRA_DIST = gen-stringprep-tables.pl gen-unicode-tables.pl gen-tld-tables.pl
 
