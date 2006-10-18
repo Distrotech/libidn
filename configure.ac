@@ -62,10 +62,6 @@ fi
 
 # Checks for header files.
 AC_HEADER_STDC
-AC_CHECK_HEADERS([locale.h])
-
-# Checks for library functions.
-AC_CHECK_FUNCS([setlocale])
 
 # For gnulib stuff in gl/.
 gl_INIT

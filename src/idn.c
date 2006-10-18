@@ -27,10 +27,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <errno.h>
-
-#if HAVE_LOCALE_H
-# include <locale.h>
-#endif
+#include <locale.h>
 
 /* Gnulib headers. */
 #include "error.h"
@@ -66,9 +63,7 @@ main (int argc, char *argv[])
   unsigned cmdn = 0;
   int rc;
 
-#ifdef HAVE_SETLOCALE
   setlocale (LC_ALL, "");
-#endif
   program_name = argv[0];
   bindtextdomain (PACKAGE, LOCALEDIR);
   textdomain (PACKAGE);
