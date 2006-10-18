@@ -15,11 +15,11 @@
 
 
 # Specification in the form of a command-line invocation:
-#   gnulib-tool --import --dir=. --lib=libgnu --source-base=lib/gl --m4-base=lib/gl/m4 --doc-base=doc --aux-dir=. --lgpl --libtool --macro-prefix=lgl iconvme
+#   gnulib-tool --import --dir=. --lib=libgnu --source-base=lib/gl --m4-base=lib/gl/m4 --doc-base=doc --aux-dir=. --lgpl --libtool --macro-prefix=lgl gettext-h iconvme
 
 # Specification in the form of a few gnulib-tool.m4 macro invocations:
 gl_LOCAL_DIR([])
-gl_MODULES([iconvme])
+gl_MODULES([gettext-h iconvme])
 gl_AVOID([])
 gl_SOURCE_BASE([lib/gl])
 gl_M4_BASE([lib/gl/m4])

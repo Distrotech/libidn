@@ -76,6 +76,7 @@ AC_DEFUN([lgl_REPLACE_FUNCS],
 # gnulib-tool and may be removed by future gnulib-tool invocations.
 AC_DEFUN([lgl_FILE_LIST], [
   build-aux/config.rpath
+  lib/gettext.h
   lib/iconvme.c
   lib/iconvme.h
   lib/strdup.c
