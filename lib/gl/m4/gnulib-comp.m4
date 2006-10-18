@@ -18,7 +18,7 @@
 # This macro should be invoked from ./configure.ac, in the section
 # "Checks for programs", right after AC_PROG_CC, and certainly before
 # any checks for libraries, header files, types and library functions.
-AC_DEFUN([gl_EARLY],
+AC_DEFUN([lgl_EARLY],
 [
   m4_pattern_forbid([^gl_[A-Z]])dnl the gnulib macro namespace
   m4_pattern_allow([^gl_ES$])dnl a valid locale name
@@ -29,80 +29,61 @@ AC_DEFUN([gl_EARLY],
 
 # This macro should be invoked from ./configure.ac, in the section
 # "Check for header files, types and library functions".
-AC_DEFUN([gl_INIT],
+AC_DEFUN([lgl_INIT],
 [
-  m4_pushdef([AC_LIBOBJ], m4_defn([gl_LIBOBJ]))
-  m4_pushdef([AC_REPLACE_FUNCS], m4_defn([gl_REPLACE_FUNCS]))
+  m4_pushdef([AC_LIBOBJ], m4_defn([lgl_LIBOBJ]))
+  m4_pushdef([AC_REPLACE_FUNCS], m4_defn([lgl_REPLACE_FUNCS]))
   AM_CONDITIONAL([GL_COND_LIBTOOL], [true])
   gl_cond_libtool=true
-  gl_source_base='gl'
-  AC_REQUIRE([gt_CSHARPCOMP])
-  AC_CONFIG_FILES([csharpcomp.sh:./csharpcomp.sh.in])
-  gl_ERROR
-  gl_GETOPT
-  gl_STDINT_H
+  gl_source_base='lib/gl'
+  AM_ICONV
+  gl_ICONVME
+  if test $gl_cond_libtool = false; then
+    gl_ltlibdeps="$gl_ltlibdeps $LTLIBICONV"
+    gl_libdeps="$gl_libdeps $LIBICONV"
+  fi
   gl_FUNC_STRDUP
-  gl_HEADER_UNISTD
   m4_popdef([AC_REPLACE_FUNCS])
   m4_popdef([AC_LIBOBJ])
   AC_CONFIG_COMMANDS_PRE([
-    gl_libobjs=
-    gl_ltlibobjs=
-    if test -n "$gl_LIBOBJS"; then
-      for i in $gl_LIBOBJS; do
+    lgl_libobjs=
+    lgl_ltlibobjs=
+    if test -n "$lgl_LIBOBJS"; then
+      for i in $lgl_LIBOBJS; do
         # Remove the extension.
         sed_drop_objext='s/\.o$//;s/\.obj$//'
         i=`echo "$i" | sed "$sed_drop_objext"`
-        gl_libobjs="$gl_libobjs $i.$ac_objext"
-        gl_ltlibobjs="$gl_ltlibobjs $i.lo"
+        lgl_libobjs="$lgl_libobjs $i.$ac_objext"
+        lgl_ltlibobjs="$lgl_ltlibobjs $i.lo"
       done
     fi
-    AC_SUBST([gl_LIBOBJS], [$gl_libobjs])
-    AC_SUBST([gl_LTLIBOBJS], [$gl_ltlibobjs])
+    AC_SUBST([lgl_LIBOBJS], [$lgl_libobjs])
+    AC_SUBST([lgl_LTLIBOBJS], [$lgl_ltlibobjs])
   ])
 ])
 
 # Like AC_LIBOBJ, except that the module name goes
-# into gl_LIBOBJS instead of into LIBOBJS.
-AC_DEFUN([gl_LIBOBJ],
-  [gl_LIBOBJS="$gl_LIBOBJS $1.$ac_objext"])
+# into lgl_LIBOBJS instead of into LIBOBJS.
+AC_DEFUN([lgl_LIBOBJ],
+  [lgl_LIBOBJS="$lgl_LIBOBJS $1.$ac_objext"])
 
 # Like AC_REPLACE_FUNCS, except that the module name goes
-# into gl_LIBOBJS instead of into LIBOBJS.
-AC_DEFUN([gl_REPLACE_FUNCS],
-  [AC_CHECK_FUNCS([$1], , [gl_LIBOBJ($ac_func)])])
+# into lgl_LIBOBJS instead of into LIBOBJS.
+AC_DEFUN([lgl_REPLACE_FUNCS],
+  [AC_CHECK_FUNCS([$1], , [lgl_LIBOBJ($ac_func)])])
 
 # This macro records the list of files which have been installed by
 # gnulib-tool and may be removed by future gnulib-tool invocations.
-AC_DEFUN([gl_FILE_LIST], [
-  build-aux/GNUmakefile
-  build-aux/csharpcomp.sh.in
-  build-aux/gendocs.sh
-  build-aux/gnupload
-  build-aux/maint.mk
-  doc/fdl.texi
-  doc/gendocs_template
-  doc/gpl.texi
-  doc/lgpl.texi
-  lib/dummy.c
-  lib/error.c
-  lib/error.h
-  lib/getopt.c
-  lib/getopt1.c
-  lib/getopt_.h
-  lib/getopt_int.h
-  lib/gettext.h
-  lib/stdint_.h
+AC_DEFUN([lgl_FILE_LIST], [
+  build-aux/config.rpath
+  lib/iconvme.c
+  lib/iconvme.h
   lib/strdup.c
   lib/strdup.h
-  m4/absolute-header.m4
-  m4/csharp.m4
-  m4/csharpcomp.m4
-  m4/error.m4
-  m4/getopt.m4
-  m4/longlong.m4
-  m4/stdint.m4
+  m4/iconv.m4
+  m4/iconvme.m4
+  m4/lib-ld.m4
+  m4/lib-link.m4
+  m4/lib-prefix.m4
   m4/strdup.m4
-  m4/ulonglong.m4
-  m4/unistd_h.m4
 ])

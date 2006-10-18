@@ -41,6 +41,7 @@ AC_LIBTOOL_WIN32_DLL
 AC_PROG_LIBTOOL
 AC_PROG_CC
 gl_EARLY
+lgl_EARLY
 AM_MISSING_PROG(PERL, perl, $missing_dir)
 AM_MISSING_PROG(HELP2MAN, help2man, $missing_dir)
 AM_ICONV
@@ -68,6 +69,7 @@ AC_CHECK_FUNCS([setlocale])
 
 # For gnulib stuff in gl/.
 gl_INIT
+lgl_INIT
 
 # Check if locale stuff works
 AM_LANGINFO_CODESET
@@ -125,7 +127,7 @@ fi
 AC_MSG_RESULT($ac_result)
 
 AC_CONFIG_FILES([Makefile libidn.pc doc/reference/Makefile doc/java/Makefile \
-		gl/Makefile lib/stringprep.h contrib/doxygen/Doxyfile \
+		gl/Makefile lib/gl/Makefile lib/stringprep.h contrib/doxygen/Doxyfile \
 		doc/Makefile doc/specifications/Makefile doc/tld/Makefile \
 		lib/Makefile src/Makefile tests/Makefile examples/Makefile \
 		java/Makefile java/gnu/Makefile java/gnu/inet/Makefile \

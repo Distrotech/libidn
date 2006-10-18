@@ -20,7 +20,7 @@
 
 SUBDIRS = gl lib po src doc tests examples java csharp
 
-ACLOCAL_AMFLAGS = -I m4 -I gl/m4
+ACLOCAL_AMFLAGS = -I m4 -I gl/m4 -I lib/gl/m4
 DISTCHECK_CONFIGURE_FLAGS = --enable-gtk-doc
 
 EXTRA_DIST = FAQ libc/README libc/getaddrinfo-idn.txt libc/example.c \
