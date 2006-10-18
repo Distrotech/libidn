@@ -4,6 +4,12 @@ See the end for copying conditions.
 
 * Version 0.6.8 (unreleased)
 
+** The gnulib directory is separated into two directories.
+One gnulib directory (lib/gl/) for the LGPL library in lib/, and one
+gnulib directory (gl/) for the GPL tools in src/.  This allows the
+GPL'd tools to use more gnulib modules than before, since earlier all
+gnulib files had to be LGPL.
+
 ** Update gnulib files.
 
 ** API and ABI is backwards compatible with the previous version.
