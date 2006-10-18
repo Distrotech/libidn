@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libidn 0.5.6\n"
 "Report-Msgid-Bugs-To: bug-libidn@gnu.org\n"
-"POT-Creation-Date: 2004-10-02 21:50+0200\n"
+"POT-Creation-Date: 2006-10-18 15:11+0200\n"
 "PO-Revision-Date: 2004-10-15 22:20+0200\n"
 "Last-Translator: Jakub Bogusz <qboosh@pld-linux.org>\n"
 "Language-Team: Polish <translation-team-pl@lists.sourceforge.net>\n"
@@ -15,215 +15,167 @@ msgstr ""
 "Content-Type: text/plain; charset=ISO-8859-2\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: lib/strerror-idna.c:70 lib/strerror-pr29.c:54 lib/strerror-punycode.c:54
-#: lib/strerror-stringprep.c:74 lib/strerror-tld.c:56
 msgid "Success"
 msgstr "Sukces"
 
-#: lib/strerror-idna.c:74 lib/strerror-pr29.c:62
 msgid "String preparation failed"
 msgstr "Przygotowanie ³añcucha nie powiod³o siê"
 
-#: lib/strerror-idna.c:78
 msgid "Punycode failed"
 msgstr "Punycode zawiod³o"
 
-#: lib/strerror-idna.c:82
 msgid "Non-digit/letter/hyphen in input"
 msgstr "Znak nie bêd±cy cyfr±, liter± ani kresk± na wej¶ciu"
 
-#: lib/strerror-idna.c:86
 msgid "Forbidden leading or trailing minus sign (`-')"
 msgstr "Zabroniony wiod±cy lub koñcz±cy znak minus (`-')"
 
-#: lib/strerror-idna.c:90
 msgid "Output would be too large or too small"
 msgstr "Wyj¶cie mo¿e byæ zbyt du¿e lub zbyt ma³e"
 
-#: lib/strerror-idna.c:94
 msgid "Input does not start with ACE prefix (`xn--')"
 msgstr "Wej¶cie nie zaczyna siê przedrostkiem ACE (`xn--')"
 
-#: lib/strerror-idna.c:98
 msgid "String not idempotent under ToASCII"
 msgstr "£añcuch nie idempotentny wzglêdem ToASCII"
 
-#: lib/strerror-idna.c:102
 msgid "Input already contain ACE prefix (`xn--')"
 msgstr "Wej¶cie ju¿ zawiera przedrostek ACE (`xn--')"
 
-#: lib/strerror-idna.c:106 lib/strerror-tld.c:72
 msgid "System iconv failed"
 msgstr "Systemowa funkcja iconv nie powiod³a siê"
 
-#: lib/strerror-idna.c:110 lib/strerror-stringprep.c:118 lib/strerror-tld.c:68
 msgid "Cannot allocate memory"
 msgstr "Nie mo¿na przydzieliæ pamiêci"
 
-#: lib/strerror-idna.c:114
 msgid "System dlopen failed"
 msgstr "Systemowa funkcja dlopen nie powiod³a siê"
 
-#: lib/strerror-idna.c:118 lib/strerror-pr29.c:66 lib/strerror-punycode.c:70
-#: lib/strerror-stringprep.c:122 lib/strerror-tld.c:80
 msgid "Unknown error"
 msgstr "Nieznany b³±d"
 
-#: lib/strerror-pr29.c:58
 msgid "String not idempotent under Unicode NFKC normalization"
 msgstr "£añcuch nie idempotentny wzglêdem normalizacji Unikodu NFKC"
 
-#: lib/strerror-punycode.c:58
 msgid "Invalid input"
 msgstr "B³êdne wej¶cie"
 
-#: lib/strerror-punycode.c:62 lib/strerror-stringprep.c:98
 msgid "Output would exceed the buffer space provided"
 msgstr "Wyj¶cie przekroczy³oby dostarczone miejsce w buforze"
 
-#: lib/strerror-punycode.c:66
 msgid "String size limit exceeded"
 msgstr "Przekroczony limit rozmiaru ³añcucha"
 
-#: lib/strerror-stringprep.c:78
 msgid "Forbidden unassigned code points in input"
 msgstr "Zabronione nieprzypisane znaki na wej¶ciu"
 
-#: lib/strerror-stringprep.c:82
 msgid "Prohibited code points in input"
 msgstr "Zabronione znaki na wej¶ciu"
 
-#: lib/strerror-stringprep.c:86
 msgid "Conflicting bidirectional properties in input"
 msgstr "Konfliktowe w³asno¶ci dwukierunkowego pisma na wej¶ciu"
 
-#: lib/strerror-stringprep.c:90
 msgid "Malformed bidirectional string"
 msgstr "¬le sformu³owany ³añcuch dwukierunkowy"
 
-#: lib/strerror-stringprep.c:94
 msgid "Prohibited bidirectional code points in input"
 msgstr "Zabronione znaki dwukierunkowe na wej¶ciu"
 
-#: lib/strerror-stringprep.c:102
 msgid "Error in stringprep profile definition"
 msgstr "B³±d w definicji profilu stringprep"
 
-#: lib/strerror-stringprep.c:106
 msgid "Flag conflict with profile"
 msgstr "Konflikt flag z profilem"
 
-#: lib/strerror-stringprep.c:110
 msgid "Unknown profile"
 msgstr "Nieznany profil"
 
-#: lib/strerror-stringprep.c:114
 msgid "Unicode normalization failed (internal error)"
 msgstr "Normalizacja Unikodu nie powiod³a siê (b³±d wewnêtrzny)"
 
-#: lib/strerror-tld.c:60
 msgid "Code points prohibited by top-level domain"
 msgstr "Znaki zabronione przez domenê najwy¿szego poziomu"
 
-#: lib/strerror-tld.c:64
 msgid "Missing input"
 msgstr "Brak wej¶cia"
 
-#: lib/strerror-tld.c:76
 msgid "No top-level domain found in input"
 msgstr "Nie znaleziono domeny najwy¿szego poziomu na wej¶ciu"
 
-#: src/idn.c:89
 msgid "Only one of -s, -e, -d, -a or -u can be specified."
 msgstr "Mo¿na podaæ tylko jedno z -s, -e, -d, -a lub -u."
 
-#: src/idn.c:98
 #, c-format
 msgid "Charset `%s'.\n"
 msgstr "Zestaw znaków `%s'.\n"
 
-#: src/idn.c:101
 #, c-format
-msgid "Type each input string on a line by itself, terminated by a newline character.\n"
-msgstr "Nale¿y podaæ ka¿dy ³añcuch w osobnej linii, zakoñczony znakiem nowej linii.\n"
+msgid ""
+"Type each input string on a line by itself, terminated by a newline "
+"character.\n"
+msgstr ""
+"Nale¿y podaæ ka¿dy ³añcuch w osobnej linii, zakoñczony znakiem nowej linii.\n"
 
-#: src/idn.c:116
 msgid "Input error"
 msgstr "B³±d wej¶cia"
 
-#: src/idn.c:126 src/idn.c:184 src/idn.c:261 src/idn.c:332
 #, c-format
 msgid "Could not convert from %s to UTF-8."
 msgstr "Nie mo¿na przekonwertowaæ z %s na UTF-8."
 
-#: src/idn.c:133 src/idn.c:156 src/idn.c:190 src/idn.c:389
 msgid "Could not convert from UTF-8 to UCS-4."
 msgstr "Nie mo¿na przekonwertowaæ z UTF-8 na UCS-4."
 
-#: src/idn.c:140 src/idn.c:196 src/idn.c:273 src/idn.c:346
-#, c-format
-msgid "input[%d] = U+%04x\n"
+#, fuzzy, c-format
+msgid "input[%lu] = U+%04x\n"
 msgstr "wej¶cie[%d] = U+%04x\n"
 
-#: src/idn.c:149
 #, c-format
 msgid "stringprep_profile: %s"
 msgstr "stringprep_profile: %s"
 
-#: src/idn.c:163 src/idn.c:237 src/idn.c:320 src/idn.c:363
-#, c-format
-msgid "output[%d] = U+%04x\n"
+#, fuzzy, c-format
+msgid "output[%lu] = U+%04x\n"
 msgstr "wyj¶cie[%d] = U+%04x\n"
 
-#: src/idn.c:170 src/idn.c:209 src/idn.c:249 src/idn.c:394
 #, c-format
 msgid "Could not convert from UTF-8 to %s."
 msgstr "Nie mo¿na przekonwertowaæ z UTF-8 na %s."
 
-#: src/idn.c:203
 #, c-format
 msgid "punycode_encode: %s"
 msgstr "punycode_encode: %s"
 
-#: src/idn.c:224
 msgid "malloc"
 msgstr "malloc"
 
-#: src/idn.c:230
 #, c-format
 msgid "punycode_decode: %s"
 msgstr "punycode_decode: %s"
 
-#: src/idn.c:244 src/idn.c:267 src/idn.c:339
 msgid "Could not convert from UCS-4 to UTF-8."
 msgstr "Nie mo¿na przekonwertowaæ z UCS-4 na UTF-8."
 
-#: src/idn.c:283
 #, c-format
 msgid "idna_to_ascii_4z: %s"
 msgstr "idna_to_ascii_4z: %s"
 
-#: src/idn.c:296
 #, c-format
 msgid "idna_to_unicode_8z4z (TLD): %s"
 msgstr "idna_to_unicode_8z4z (TLD): %s"
 
-#: src/idn.c:303
-#, c-format
-msgid "tld[%d] = U+%04x\n"
+#, fuzzy, c-format
+msgid "tld[%lu] = U+%04x\n"
 msgstr "tld[%d] = U+%04x\n"
 
-#: src/idn.c:309 src/idn.c:375
-#, c-format
-msgid "tld_check_4z (position %d): %s"
+#, fuzzy, c-format
+msgid "tld_check_4z (position %lu): %s"
 msgstr "tld_check_4z (pozycja %d): %s"
 
-#: src/idn.c:312 src/idn.c:381
 #, c-format
 msgid "tld_check_4z: %s"
 msgstr "tld_check_4z: %s"
 
-#: src/idn.c:357
 #, c-format
 msgid "idna_to_unicode_8z4z: %s"
 msgstr "idna_to_unicode_8z4z: %s"
