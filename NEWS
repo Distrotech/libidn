@@ -2,6 +2,10 @@ Libidn NEWS -- History of user-visible changes.                 -*- outline -*-
 Copyright (C) 2002, 2003, 2004, 2005, 2006 Simon Josefsson
 See the end for copying conditions.
 
+* Version 0.6.9 (unreleased)
+
+** API and ABI is backwards compatible with the previous version.
+
 * Version 0.6.8 (released 2006-10-18)
 
 ** The gnulib directory is separated into two directories.
