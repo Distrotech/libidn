@@ -52,10 +52,9 @@ AC_DEFUN([lgl_INIT],
     lgl_libobjs=
     lgl_ltlibobjs=
     if test -n "$lgl_LIBOBJS"; then
-      for i in $lgl_LIBOBJS; do
-        # Remove the extension.
-        sed_drop_objext='s/\.o$//;s/\.obj$//'
-        i=`echo "$i" | sed "$sed_drop_objext"`
+      # Remove the extension.
+      sed_drop_objext='s/\.o$//;s/\.obj$//'
+      for i in `for i in $lgl_LIBOBJS; do echo "$i"; done | sed "$sed_drop_objext" | sort | uniq`; do
         lgl_libobjs="$lgl_libobjs $i.$ac_objext"
         lgl_ltlibobjs="$lgl_ltlibobjs $i.lo"
       done

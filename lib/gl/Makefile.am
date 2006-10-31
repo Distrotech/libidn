@@ -102,9 +102,8 @@ EXTRA_DIST += strverscmp.c strverscmp.h
 
 
 mostlyclean-local: mostlyclean-generic
-	@test -z "$(MOSTLYCLEANDIRS)" || \
-	  for dir in $(MOSTLYCLEANDIRS); do \
-	    if test -d $$dir; then \
-	      echo "rmdir $$dir"; rmdir $$dir; \
-	    fi; \
-	  done
+	@for dir in '' $(MOSTLYCLEANDIRS); do \
+	  if test -n "$$dir" && test -d $$dir; then \
+	    echo "rmdir $$dir"; rmdir $$dir; \
+	  fi; \
+	done
