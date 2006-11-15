@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2004  Free Software Foundation, Inc.
+ * Copyright (C) 2004, 2006  Free Software Foundation, Inc.
  *
  * Author: Oliver Hitz
  *
@@ -49,6 +49,15 @@ public class TestIDNA
   public static void main(String[] args)
     throws Exception
   {
+      String[] tests = new String[] {
+	  "domain\u3002invalid",
+	  "domain\uFF0Einvalid",
+	  "domain\uFF61invalid",
+      };
+      for ( String test : tests ) {
+	  assert IDNA.toASCII( test ).equals( "domain.invalid" );
+      }
+
     if (args.length == 2) {
       if (args[0].equals("-u")) {
 	try {
