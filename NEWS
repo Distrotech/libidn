@@ -4,6 +4,9 @@ See the end for copying conditions.
 
 * Version 0.6.9 (unreleased)
 
+** The Java code is fixed to properly translate any non-ASCII dot into '.'.
+Reported and fixed by "Stephane Mikaty" <mikaty@ecircle-ag.com>.
+
 ** Update gnulib files.
 
 ** API and ABI is backwards compatible with the previous version.
