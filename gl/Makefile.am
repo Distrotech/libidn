@@ -18,6 +18,7 @@ noinst_LTLIBRARIES = libgnu.la
 libgnu_la_SOURCES =
 libgnu_la_LIBADD = $(gl_LTLIBOBJS)
 libgnu_la_DEPENDENCIES = $(gl_LTLIBOBJS)
+EXTRA_libgnu_la_SOURCES =
 libgnu_la_LDFLAGS = $(AM_LDFLAGS)
 noinst_HEADERS =
 EXTRA_DIST =
@@ -36,6 +37,8 @@ AM_CPPFLAGS =
 
 EXTRA_DIST += error.c error.h
 
+EXTRA_libgnu_la_SOURCES += error.c
+
 ## end   gnulib module error
 
 ## begin gnulib module getopt
@@ -52,6 +55,8 @@ getopt.h: getopt_.h
 MOSTLYCLEANFILES += getopt.h getopt.h-t
 
 EXTRA_DIST += getopt.c getopt1.c getopt_.h getopt_int.h
+
+EXTRA_libgnu_la_SOURCES += getopt.c getopt1.c
 
 ## end   gnulib module getopt
 

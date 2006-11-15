@@ -18,6 +18,7 @@ noinst_LTLIBRARIES = libgnu.la
 libgnu_la_SOURCES =
 libgnu_la_LIBADD = $(lgl_LTLIBOBJS)
 libgnu_la_DEPENDENCIES = $(lgl_LTLIBOBJS)
+EXTRA_libgnu_la_SOURCES =
 libgnu_la_LDFLAGS = $(AM_LDFLAGS)
 noinst_HEADERS =
 EXTRA_DIST =
@@ -91,12 +92,16 @@ EXTRA_DIST += stdint_.h
 
 EXTRA_DIST += strdup.c strdup.h
 
+EXTRA_libgnu_la_SOURCES += strdup.c
+
 ## end   gnulib module strdup
 
 ## begin gnulib module strverscmp
 
 
 EXTRA_DIST += strverscmp.c strverscmp.h
+
+EXTRA_libgnu_la_SOURCES += strverscmp.c
 
 ## end   gnulib module strverscmp
 
