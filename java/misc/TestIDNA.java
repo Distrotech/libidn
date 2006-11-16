@@ -49,7 +49,16 @@ public class TestIDNA
   public static void main(String[] args)
     throws Exception
   {
-    if (args.length == 2) {
+      String[] tests = new String[] {
+	  "domain\u3002invalid",
+	  "domain\uFF0Einvalid",
+	  "domain\uFF61invalid",
+      };
+      for ( int i = 0; i < tests.length ; i++ ) {
+	  assert IDNA.toASCII( tests[i] ).equals( "domain.invalid" );
+      }
+
+      if (args.length == 2) {
       if (args[0].equals("-u")) {
 	try {
 	  System.out.println("Input: "+args[1]);
