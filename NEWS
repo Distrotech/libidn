@@ -11,6 +11,9 @@ Reported and fixed by "Stephane Mikaty" <mikaty@ecircle-ag.com>.
 
 ** Bump tool versions to autoconf 2.61, automake 1.10, and gettext 0.16.
 
+** Old versions of iconv.m4, codeset.m4 and lib-link.m4 removed from m4/.
+Modern versions are part of gnulib.
+
 ** API and ABI is backwards compatible with the previous version.
 
 * Version 0.6.8 (released 2006-10-18)
