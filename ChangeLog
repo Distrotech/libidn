@@ -1,3 +1,77 @@
+2006-11-30  Simon Josefsson <simon@josefsson.org>
+
+	* po/da.po, po/de.po, po/eo.po, po/fr.po, po/it.po, po/ja.po,
+	po/nl.po, po/pl.po, po/ro.po, po/rw.po, po/sr.po, po/vi.po,
+	po/zh_CN.po: Sync with TP.
+
+2006-11-30  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Version 0.6.9.
+
+2006-11-30  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2006-11-30  Simon Josefsson <simon@josefsson.org>
+
+	* m4/codeset.m4, m4/iconv.m4, m4/lib-link.m4: Remove.
+
+2006-11-30  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS, configure.ac: Bump tool versions.
+
+2006-11-30  Simon Josefsson <simon@josefsson.org>
+
+	* gl/Makefile.am, gl/gettext.h, lib/gl/Makefile.am,
+	lib/gl/gettext.h, lib/gl/m4/stdint.m4: Update.
+
+2006-11-16  Simon Josefsson <simon@josefsson.org>
+
+	* java/misc/TestIDNA.java: Re-add test, with fixed code that
+	doesn't use Java 1.5 syntax.  Suggested by "Stephane Mikaty"
+	<mikaty@ecircle-ag.com>.
+
+2006-11-16  Simon Josefsson <simon@josefsson.org>
+
+	* java/misc/TestIDNA.java: Revert (didn't compile).
+
+2006-11-15  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS, THANKS: Add.
+
+2006-11-15  Simon Josefsson <simon@josefsson.org>
+
+	* java/misc/TestIDNA.java: New self-test to test for ToIDNA
+	regression regarding non-ascii dot-delimiters.  Tiny patch from
+	"Stephane Mikaty" <mikaty@ecircle-ag.com>.
+
+2006-11-15  Simon Josefsson <simon@josefsson.org>
+
+	* java/gnu/inet/encoding/IDNA.java: Fix non-ascii dot in strings,
+	tiny patch from "Stephane Mikaty" <mikaty@ecircle-ag.com>.
+
+2006-11-15  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2006-11-15  Simon Josefsson <simon@josefsson.org>
+
+	* gnupload, gl/Makefile.am, gl/getopt_.h, gl/gettext.h,
+	gl/m4/gnulib-comp.m4, lib/gl/Makefile.am, lib/gl/gettext.h,
+	lib/gl/stdint_.h, lib/gl/m4/gnulib-comp.m4, lib/gl/m4/lib-link.m4,
+	lib/gl/m4/longlong.m4: Update.
+
+2006-10-31  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS, configure.ac: Bump versions.
+
+2006-10-31  Simon Josefsson <simon@josefsson.org>
+
+	* gl/Makefile.am, gl/gettext.h, gl/m4/gnulib-comp.m4,
+	lib/gl/Makefile.am, lib/gl/gettext.h, lib/gl/iconvme.c,
+	lib/gl/stdint_.h, lib/gl/m4/gnulib-comp.m4, lib/gl/m4/lib-link.m4:
+	Update.
+
 2006-10-18  Simon Josefsson <simon@josefsson.org>
 
 	* po/da.po, po/de.po, po/eo.po, po/fr.po, po/it.po, po/ja.po,
