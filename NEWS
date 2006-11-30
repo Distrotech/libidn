@@ -9,6 +9,8 @@ Reported and fixed by "Stephane Mikaty" <mikaty@ecircle-ag.com>.
 
 ** Update gnulib files.
 
+** Bump tool versions to autoconf 2.61, automake 1.10, and gettext 0.16.
+
 ** API and ABI is backwards compatible with the previous version.
 
 * Version 0.6.8 (released 2006-10-18)
