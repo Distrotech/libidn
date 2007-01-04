@@ -1,3 +1,86 @@
+2007-01-04  Simon Josefsson <simon@josefsson.org>
+
+	* po/da.po, po/de.po, po/eo.po, po/fr.po, po/it.po, po/ja.po,
+	po/nl.po, po/pl.po, po/ro.po, po/rw.po, po/sr.po, po/sv.po,
+	po/vi.po, po/zh_CN.po: Generated.
+
+2007-01-04  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Version 0.6.10.
+
+2007-01-04  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2007-01-04  Simon Josefsson <simon@josefsson.org>
+
+	* FAQ, NEWS, README, README-alpha, THANKS, TODO, configure.ac,
+	libidn.pc.in, maint-cfg.mk, csharp/CombiningClass.cs,
+	csharp/Composition.cs, csharp/DecompositionKeys.cs,
+	csharp/DecompositionMappings.cs, csharp/IDNA.cs,
+	csharp/IDNAException.cs, csharp/Makefile.am, csharp/NFKC.cs,
+	csharp/Punycode.cs, csharp/PunycodeException.cs, csharp/RFC3454.cs,
+	csharp/Stringprep.cs, csharp/StringprepException.cs,
+	doc/Makefile.am, doc/Makefile.gdoci, doc/gdoc, doc/libidn.texi,
+	doc/tld/Makefile.am, doc/tld/README, examples/Makefile.am,
+	examples/README, examples/example.c, examples/example2.c,
+	examples/example3.c, examples/example4.c, examples/example5.c,
+	java/Makefile.am, java/gnu/inet/encoding/CombiningClass.java,
+	java/gnu/inet/encoding/Composition.java,
+	java/gnu/inet/encoding/DecompositionKeys.java,
+	java/gnu/inet/encoding/DecompositionMappings.java,
+	java/gnu/inet/encoding/IDNA.java,
+	java/gnu/inet/encoding/IDNAException.java,
+	java/gnu/inet/encoding/Makefile.am,
+	java/gnu/inet/encoding/NFKC.java,
+	java/gnu/inet/encoding/Punycode.java,
+	java/gnu/inet/encoding/PunycodeException.java,
+	java/gnu/inet/encoding/RFC3454.java,
+	java/gnu/inet/encoding/Stringprep.java,
+	java/gnu/inet/encoding/StringprepException.java,
+	java/misc/GenerateNFKC.java, java/misc/GenerateRFC3454.java,
+	java/misc/Makefile.am, java/misc/TestIDNA.java,
+	java/misc/TestNFKC.java, lib/Makefile.am,
+	lib/gen-stringprep-tables.pl, lib/gen-tld-tables.pl,
+	lib/gen-unicode-tables.pl, lib/idn-free.c, lib/idn-free.h,
+	lib/idna.c, lib/idna.h, lib/nfkc.c, lib/pr29.c, lib/pr29.h,
+	lib/profiles.c, lib/punycode.c, lib/punycode.h,
+	lib/strerror-idna.c, lib/strerror-pr29.c, lib/strerror-punycode.c,
+	lib/strerror-stringprep.c, lib/strerror-tld.c, lib/stringprep.c,
+	lib/stringprep.h.in, lib/tld.c, lib/tld.h, lib/toutf8.c,
+	lib/version.c, po/POTFILES.in, src/Makefile.am, src/idn.c,
+	src/idn.ggo, src/idna.el, src/punycode.el, tests/Makefile.am,
+	tests/tst_idna.c, tests/tst_idna2.c, tests/tst_nfkc.c,
+	tests/tst_pr29.c, tests/tst_punycode.c, tests/tst_strerror.c,
+	tests/tst_stringprep.c, tests/tst_tld.c, tests/utils.c,
+	tests/utils.h: Bump copyright years (also add older years which I
+	forgot to add earlier).
+
+2007-01-04  Simon Josefsson <simon@josefsson.org>
+
+	* AUTHORS: Update PGP key.
+
+2007-01-03  Simon Josefsson <simon@josefsson.org>
+
+	* gl/Makefile.am, gl/m4/gnulib-cache.m4, gl/m4/gnulib-comp.m4,
+	lib/gl/Makefile.am, lib/gl/m4/gnulib-cache.m4,
+	lib/gl/m4/gnulib-comp.m4, lib/gl/m4/lib-link.m4, announce-gen:
+	Update.
+
+2006-12-28  Simon Josefsson <simon@josefsson.org>
+
+	* announce-gen, gl/Makefile.am, gl/m4/gnulib-cache.m4,
+	gl/m4/gnulib-comp.m4: Add.
+
+2006-12-28  Simon Josefsson <simon@josefsson.org>
+
+	* lib/gl/iconvme.c, lib/gl/strdup.h, lib/gl/m4/lib-link.m4,
+	lib/gl/m4/stdint.m4: Update.
+
+2006-12-10  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS, configure.ac: Bump versions.
+
 2006-11-30  Simon Josefsson <simon@josefsson.org>
 
 	* po/da.po, po/de.po, po/eo.po, po/fr.po, po/it.po, po/ja.po,
