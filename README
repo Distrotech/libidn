@@ -1,5 +1,5 @@
 Libidn README -- Important introductory notes.
-Copyright (C) 2002, 2003, 2004, 2005, 2006 Simon Josefsson
+Copyright (C) 2002, 2003, 2004, 2005, 2006, 2007 Simon Josefsson
 See the end for copying conditions.
 
 Libidn is a package for internationalized string handling based on the
