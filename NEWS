@@ -6,6 +6,10 @@ See the end for copying conditions.
 
 ** Corrected year in copyright notices.
 
+** Update gnulib files.
+Including the code to convert strings between different encodings
+(noted in case this introduces problems).
+
 ** API and ABI is backwards compatible with the previous version.
 
 * Version 0.6.9 (released 2006-11-30)
