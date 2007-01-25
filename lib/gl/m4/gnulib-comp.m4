@@ -38,31 +38,16 @@ AC_DEFUN([lgl_INIT],
   AM_CONDITIONAL([GL_COND_LIBTOOL], [true])
   gl_cond_libtool=true
   gl_source_base='lib/gl'
-    AC_DEFINE([GNULIB_ABSOLUTE_HEADER], [1],
-      [Define to 1 when using the gnulib module absolute-header.])
-    AC_DEFINE([GNULIB_GETTEXT_H], [1],
-      [Define to 1 when using the gnulib module gettext-h.])
-    AC_DEFINE([GNULIB_HAVELIB], [1],
-      [Define to 1 when using the gnulib module havelib.])
   AM_ICONV
-    AC_DEFINE([GNULIB_ICONV], [1],
-      [Define to 1 when using the gnulib module iconv.])
   gl_ICONVME
   if test $gl_cond_libtool = false; then
     gl_ltlibdeps="$gl_ltlibdeps $LTLIBICONV"
     gl_libdeps="$gl_libdeps $LIBICONV"
   fi
-    AC_DEFINE([GNULIB_ICONVME], [1],
-      [Define to 1 when using the gnulib module iconvme.])
   gl_STDINT_H
-    AC_DEFINE([GNULIB_STDINT], [1],
-      [Define to 1 when using the gnulib module stdint.])
   gl_FUNC_STRDUP
-    AC_DEFINE([GNULIB_STRDUP], [1],
-      [Define to 1 when using the gnulib module strdup.])
   gl_FUNC_STRVERSCMP
-    AC_DEFINE([GNULIB_STRVERSCMP], [1],
-      [Define to 1 when using the gnulib module strverscmp.])
+  gl_WCHAR_H
   m4_popdef([AC_LIBSOURCES])
   m4_popdef([AC_REPLACE_FUNCS])
   m4_popdef([AC_LIBOBJ])
@@ -109,7 +94,9 @@ AC_DEFUN([lgl_FILE_LIST], [
   lib/strdup.h
   lib/strverscmp.c
   lib/strverscmp.h
+  lib/wchar_.h
   m4/absolute-header.m4
+  m4/gnulib-common.m4
   m4/iconv.m4
   m4/iconvme.m4
   m4/lib-ld.m4
@@ -120,4 +107,5 @@ AC_DEFUN([lgl_FILE_LIST], [
   m4/strdup.m4
   m4/strverscmp.m4
   m4/ulonglong.m4
+  m4/wchar.m4
 ])

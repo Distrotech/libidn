@@ -59,8 +59,7 @@ BUILT_SOURCES += $(STDINT_H)
 stdint.h: stdint_.h
 	rm -f $@-t $@
 	{ echo '/* DO NOT EDIT! GENERATED AUTOMATICALLY! */'; \
-	  sed -e 's/@''HAVE_WCHAR_H''@/$(HAVE_WCHAR_H)/g' \
-	      -e 's/@''HAVE_STDINT_H''@/$(HAVE_STDINT_H)/g' \
+	  sed -e 's/@''HAVE_STDINT_H''@/$(HAVE_STDINT_H)/g' \
 	      -e 's|@''ABSOLUTE_STDINT_H''@|$(ABSOLUTE_STDINT_H)|g' \
 	      -e 's/@''HAVE_SYS_TYPES_H''@/$(HAVE_SYS_TYPES_H)/g' \
 	      -e 's/@''HAVE_INTTYPES_H''@/$(HAVE_INTTYPES_H)/g' \
@@ -107,6 +106,25 @@ EXTRA_DIST += strverscmp.c strverscmp.h
 EXTRA_libgnu_la_SOURCES += strverscmp.c
 
 ## end   gnulib module strverscmp
+
+## begin gnulib module wchar
+
+BUILT_SOURCES += $(WCHAR_H)
+
+# We need the following in order to create <wchar.h> when the system
+# version does not work standalone.
+wchar.h: wchar_.h
+	rm -f $@-t $@
+	{ echo '/* DO NOT EDIT! GENERATED AUTOMATICALLY! */'; \
+	  sed -e 's|@''ABSOLUTE_WCHAR_H''@|$(ABSOLUTE_WCHAR_H)|g' \
+	    < $(srcdir)/wchar_.h; \
+	} > $@-t
+	mv $@-t $@
+MOSTLYCLEANFILES += wchar.h wchar.h-t
+
+EXTRA_DIST += wchar_.h
+
+## end   gnulib module wchar
 
 
 mostlyclean-local: mostlyclean-generic

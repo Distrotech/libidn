@@ -37,37 +37,11 @@ AC_DEFUN([gl_INIT],
   AM_CONDITIONAL([GL_COND_LIBTOOL], [true])
   gl_cond_libtool=true
   gl_source_base='gl'
-    AC_DEFINE([GNULIB_ANNOUNCE_GEN], [1],
-      [Define to 1 when using the gnulib module announce-gen.])
   AC_REQUIRE([gt_CSHARPCOMP])
   AC_CONFIG_FILES([csharpcomp.sh:./csharpcomp.sh.in])
-    AC_DEFINE([GNULIB_CSHARPCOMP_SCRIPT], [1],
-      [Define to 1 when using the gnulib module csharpcomp-script.])
   gl_ERROR
-    AC_DEFINE([GNULIB_ERROR], [1],
-      [Define to 1 when using the gnulib module error.])
-    AC_DEFINE([GNULIB_FDL], [1],
-      [Define to 1 when using the gnulib module fdl.])
-    AC_DEFINE([GNULIB_GENDOCS], [1],
-      [Define to 1 when using the gnulib module gendocs.])
   gl_GETOPT
-    AC_DEFINE([GNULIB_GETOPT], [1],
-      [Define to 1 when using the gnulib module getopt.])
-    AC_DEFINE([GNULIB_GETTEXT_H], [1],
-      [Define to 1 when using the gnulib module gettext-h.])
-    AC_DEFINE([GNULIB_GNUPLOAD], [1],
-      [Define to 1 when using the gnulib module gnupload.])
-    AC_DEFINE([GNULIB_GPL], [1],
-      [Define to 1 when using the gnulib module gpl.])
-    AC_DEFINE([GNULIB_LGPL], [1],
-      [Define to 1 when using the gnulib module lgpl.])
-    AC_DEFINE([GNULIB_MAINTAINER_MAKEFILE], [1],
-      [Define to 1 when using the gnulib module maintainer-makefile.])
   gl_HEADER_UNISTD
-    AC_DEFINE([GNULIB_UNISTD], [1],
-      [Define to 1 when using the gnulib module unistd.])
-    AC_DEFINE([GNULIB_DUMMY], [1],
-      [Define to 1 when using the gnulib module dummy.])
   m4_popdef([AC_LIBSOURCES])
   m4_popdef([AC_REPLACE_FUNCS])
   m4_popdef([AC_LIBOBJ])
@@ -123,9 +97,12 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/getopt_.h
   lib/getopt_int.h
   lib/gettext.h
+  lib/unistd_.h
+  m4/absolute-header.m4
   m4/csharp.m4
   m4/csharpcomp.m4
   m4/error.m4
   m4/getopt.m4
+  m4/gnulib-common.m4
   m4/unistd_h.m4
 ])
