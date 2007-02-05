@@ -36,7 +36,7 @@
 #include <string.h>
 
 /* Get iconv_string. */
-#include "iconvme.h"
+#include "striconv.h"
 
 #ifdef _LIBC
 # define HAVE_ICONV 1
@@ -111,7 +111,7 @@ stringprep_convert (const char *str,
 		    const char *to_codeset, const char *from_codeset)
 {
 #if HAVE_ICONV
-  return iconv_string (str, from_codeset, to_codeset);
+  return str_iconv (str, from_codeset, to_codeset);
 #else
   char *p;
   fprintf (stderr, "libidn: warning: libiconv not installed, cannot "

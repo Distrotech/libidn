@@ -40,14 +40,14 @@ AC_DEFUN([lgl_INIT],
   gl_cond_libtool=true
   gl_source_base='lib/gl'
   AM_ICONV
-  gl_ICONVME
+  AM_STDBOOL_H
+  gl_STDINT_H
+  gl_FUNC_STRDUP
+  gl_STRING_MODULE_INDICATOR([strdup])
   if test $gl_cond_libtool = false; then
     gl_ltlibdeps="$gl_ltlibdeps $LTLIBICONV"
     gl_libdeps="$gl_libdeps $LIBICONV"
   fi
-  gl_STDINT_H
-  gl_FUNC_STRDUP
-  gl_STRING_MODULE_INDICATOR([strdup])
   gl_HEADER_STRING_H
   gl_FUNC_STRVERSCMP
   gl_WCHAR_H
@@ -89,11 +89,17 @@ AC_DEFUN([lgl_LIBSOURCES],
 # gnulib-tool and may be removed by future gnulib-tool invocations.
 AC_DEFUN([lgl_FILE_LIST], [
   build-aux/config.rpath
+  lib/c-ctype.c
+  lib/c-ctype.h
+  lib/c-strcase.h
+  lib/c-strcasecmp.c
+  lib/c-strncasecmp.c
   lib/gettext.h
-  lib/iconvme.c
-  lib/iconvme.h
+  lib/stdbool_.h
   lib/stdint_.h
   lib/strdup.c
+  lib/striconv.c
+  lib/striconv.h
   lib/string_.h
   lib/strverscmp.c
   lib/strverscmp.h
@@ -102,11 +108,11 @@ AC_DEFUN([lgl_FILE_LIST], [
   m4/extensions.m4
   m4/gnulib-common.m4
   m4/iconv.m4
-  m4/iconvme.m4
   m4/lib-ld.m4
   m4/lib-link.m4
   m4/lib-prefix.m4
   m4/longlong.m4
+  m4/stdbool.m4
   m4/stdint.m4
   m4/strdup.m4
   m4/string_h.m4
