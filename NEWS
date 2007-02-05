@@ -5,6 +5,11 @@ See the end for copying conditions.
 * Version 0.6.11 (unreleased)
 
 ** Update gnulib files.
+We now use the "striconv" module instead of the "iconvme", which
+causes a slight increase of code size (from 303kb to 319kb with
+debugging symbols on i386).  The reason is the use of a new locale
+independent strcasecmp, which may cause faster operation in some
+locales where, e.g., "ASCII" and "ascii" are not treated as the same.
 
 ** API and ABI is backwards compatible with the previous version.
 
