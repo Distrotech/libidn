@@ -6,3 +6,4 @@ getopt.h
 *.la
 *.lo
 stdint.h
+unistd.h
