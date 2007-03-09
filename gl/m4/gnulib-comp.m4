@@ -38,10 +38,10 @@ AC_DEFUN([gl_INIT],
   gl_cond_libtool=true
   gl_source_base='gl'
   AC_REQUIRE([gt_CSHARPCOMP])
-  AC_CONFIG_FILES([csharpcomp.sh:./csharpcomp.sh.in])
+  AC_CONFIG_FILES([csharpcomp.sh:build-aux/csharpcomp.sh.in])
   gl_ERROR
   gl_GETOPT
-  gl_HEADER_UNISTD
+  gl_UNISTD_H
   m4_popdef([AC_LIBSOURCES])
   m4_popdef([AC_REPLACE_FUNCS])
   m4_popdef([AC_LIBOBJ])
@@ -84,6 +84,7 @@ AC_DEFUN([gl_FILE_LIST], [
   build-aux/csharpcomp.sh.in
   build-aux/gendocs.sh
   build-aux/gnupload
+  build-aux/link-warning.h
   build-aux/maint.mk
   doc/fdl.texi
   doc/gendocs_template

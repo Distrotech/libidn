@@ -15,7 +15,7 @@
 
 
 # Specification in the form of a command-line invocation:
-#   gnulib-tool --import --dir=. --lib=libgnu --source-base=lib/gl --m4-base=lib/gl/m4 --doc-base=doc --aux-dir=. --lgpl --libtool --macro-prefix=lgl gettext-h stdint striconv strverscmp
+#   gnulib-tool --import --dir=. --lib=libgnu --source-base=lib/gl --m4-base=lib/gl/m4 --doc-base=doc --aux-dir=build-aux --lgpl --libtool --macro-prefix=lgl gettext-h stdint striconv strverscmp
 
 # Specification in the form of a few gnulib-tool.m4 macro invocations:
 gl_LOCAL_DIR([])

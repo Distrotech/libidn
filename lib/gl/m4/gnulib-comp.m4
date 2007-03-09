@@ -89,6 +89,7 @@ AC_DEFUN([lgl_LIBSOURCES],
 # gnulib-tool and may be removed by future gnulib-tool invocations.
 AC_DEFUN([lgl_FILE_LIST], [
   build-aux/config.rpath
+  build-aux/link-warning.h
   lib/c-ctype.c
   lib/c-ctype.h
   lib/c-strcase.h

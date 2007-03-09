@@ -15,7 +15,7 @@
 
 
 # Specification in the form of a command-line invocation:
-#   gnulib-tool --import --dir=. --local-dir=gl/override --lib=libgnu --source-base=gl --m4-base=gl/m4 --doc-base=doc --aux-dir=. --lgpl --libtool --macro-prefix=gl announce-gen csharpcomp-script error fdl gendocs getopt gnupload gpl lgpl maintainer-makefile
+#   gnulib-tool --import --dir=. --local-dir=gl/override --lib=libgnu --source-base=gl --m4-base=gl/m4 --doc-base=doc --aux-dir=build-aux --lgpl --libtool --macro-prefix=gl announce-gen csharpcomp-script error fdl gendocs getopt gnupload gpl lgpl maintainer-makefile
 
 # Specification in the form of a few gnulib-tool.m4 macro invocations:
 gl_LOCAL_DIR([gl/override])
