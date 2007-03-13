@@ -26,7 +26,7 @@ SOURCES = AssemblyInfo.cs IDNA.cs RFC3454.cs CombiningClass.cs	\
 	StringprepException.cs DecompositionKeys.cs Punycode.cs	\
 	DecompositionMappings.cs PunycodeException.cs
 
-GEN_SOURCES = generate/AssemblyInfo.cs \
+SOURCES_GENERATE = generate/AssemblyInfo.cs \
 	generate/GenerateNFKC.cs generate/GenerateRFC3454.cs \
 	generate/HashSet.cs generate/Program.cs generate/Tokenizer.cs
 
@@ -53,9 +53,21 @@ Libidn.dll: $(SOURCES)
 	$(CSHARPCOMP) $(CSHARPCOMPFLAGS) -o $@ \
 		`for src in $(SOURCES); do echo $(srcdir)/$$src; done`
 
-GenerateTables:
+SPEC = $(top_srcdir)/doc/specifications
+
+GenerateTables: $(SOURCES_GENERATE)
 	$(CSHARPCOMP) $(CSHARPCOMPFLAGS) -o $@ \
-		`for src in $(GEN_SOURCES); do echo $(srcdir)/$$src; done`
+		`for src in $(SOURCES_GENERATE); do echo $(srcdir)/$$src; done`
+	ln -s $(SPEC)/rfc3454.txt . \
+		|| cp $(SPEC)/rfc3454.txt .
+	ln -s $(SPEC)/UnicodeData-3.2.0.txt UnicodeData.txt \
+		|| cp $(SPEC)/UnicodeData-3.2.0.txt UnicodeData.txt
+	ln -s $(SPEC)/CompositionExclusions-3.2.0.txt CompositionExclusions.txt \
+		|| cp $(SPEC)/CompositionExclusions-3.2.0.txt CompositionExclusions.txt
+	./GenerateTables
+
+RFC3454.cs CombiningClass.cs DecompositionKeys.cs DecompositionMappings.cs Composition.cs: $(GEN_SOURCES)
+	make GenerateTables
 
 install-dll-dir:
 	$(mkinstalldirs) $(DESTDIR)$(libdir)
