@@ -9,8 +9,10 @@ BSD-Port-URL: http://www.freshports.org/devel/libidn/
 CVS-URL: http://josefsson.org/cgi-bin/viewcvs.cgi/libidn/
 Mirror-Site-URL: http://josefsson.org/libidn
 Demo-URL: http://josefsson.org/idn.php
-Version: 0.6.10
-Release-Focus: Minor bugfixes
-Hide: Y
+Version: 0.6.11
+Release-Focus: Minor feature enhancements
 
-Corrected year in copyright notices.  Update gnulib files.
+Update of the C# Libidn port, by Alexander Gnauck.  Update gnulib
+files, inluding use of the "striconv" module instead of the "iconvme",
+which causes a slight increase of code size (from 303kb to 319kb with
+debugging symbols on i386).
