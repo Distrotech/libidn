@@ -1,4 +1,4 @@
-/// <summary> Copyright (C) 2004  Free Software Foundation, Inc.
+/// <summary> Copyright (C) 2004, 2007  Free Software Foundation, Inc.
 /// *
 /// Author: Alexander Gnauck AG-Software
 /// *
@@ -199,7 +199,7 @@ namespace gnu.inet.encoding.misc
                         else if (5 == l.Length)
                         {
                             //Char
-                            o1.AppendLine("\t/* Skip characters outside the range of .NET unicode " + line.Trim() + " */");
+                            o1.Append("\t/* Skip characters outside the range of .NET unicode " + line.Trim() + " */\n");
                             //Console.WriteLine("Skip: " + l);                            
                             // Skip characters outside the range of Java unicode
                         }
@@ -214,7 +214,7 @@ namespace gnu.inet.encoding.misc
                         }
                         else if (11 == l.Length)
                         {
-                            o1.AppendLine("\t/* Skip characters outside the range of .NET unicode " + line.Trim() + " */");
+                            o1.Append("\t/* Skip characters outside the range of .NET unicode " + line.Trim() + " */\n");
                             //o1.AppendLine("// " + l);
                             // Console.WriteLine("Skip: " + l);
                             // Skip characters outside the range of Java unicode
