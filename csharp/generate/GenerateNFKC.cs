@@ -1,4 +1,4 @@
-/// <summary> Copyright (C) 2004  Free Software Foundation, Inc.
+/// <summary> Copyright (C) 2004, 2007  Free Software Foundation, Inc.
 /// *
 /// Author: Alexander Gnauck AG-Software
 /// *
@@ -678,8 +678,7 @@ namespace gnu.inet.encoding.misc
             }
 
             //Console.WriteLine(" Ok.");             
-            Console.WriteLine("Fineshed, Press Return to exit!");
-            Console.ReadLine();
+            Console.WriteLine("Finshed!");
         }
     }
 }
