@@ -4,6 +4,10 @@ See the end for copying conditions.
 
 * Version 0.6.11 (unreleased)
 
+** Update of the C# Libidn port, by Alexander Gnauck.
+The code has been refactored and the namespace has been modified to
+comply with .NET naming conventions.  An IDNA bug was fixed.
+
 ** Update gnulib files.
 We now use the "striconv" module instead of the "iconvme", which
 causes a slight increase of code size (from 303kb to 319kb with
