@@ -54,7 +54,7 @@ namespace gnu.inet.encoding.misc
             w.WriteLine();
             w.WriteLine("using System;");
             w.WriteLine();
-            w.WriteLine("namespace gnu.inet.encoding{");
+            w.WriteLine("namespace Gnu.Inet.Encoding{");
             w.WriteLine();
             w.WriteLine("public class RFC3454");
 
