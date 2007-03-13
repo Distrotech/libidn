@@ -58,16 +58,22 @@ SPEC = $(top_srcdir)/doc/specifications
 GenerateTables: $(SOURCES_GENERATE)
 	$(CSHARPCOMP) $(CSHARPCOMPFLAGS) -o $@ \
 		`for src in $(SOURCES_GENERATE); do echo $(srcdir)/$$src; done`
-	ln -s $(SPEC)/rfc3454.txt . \
-		|| cp $(SPEC)/rfc3454.txt .
-	ln -s $(SPEC)/UnicodeData-3.2.0.txt UnicodeData.txt \
-		|| cp $(SPEC)/UnicodeData-3.2.0.txt UnicodeData.txt
-	ln -s $(SPEC)/CompositionExclusions-3.2.0.txt CompositionExclusions.txt \
-		|| cp $(SPEC)/CompositionExclusions-3.2.0.txt CompositionExclusions.txt
-	./GenerateTables
+	if ! -f rfc3454.txt; then \
+		ln -s $(SPEC)/rfc3454.txt . \
+		|| cp $(SPEC)/rfc3454.txt .; \
+	fi
+	if ! -f UnicodeData.txt; then \
+		ln -s $(SPEC)/UnicodeData-3.2.0.txt UnicodeData.txt \
+		|| cp $(SPEC)/UnicodeData-3.2.0.txt UnicodeData.txt; \
+	fi
+	if ! -f CompositionExclusions; then \
+		ln -s $(SPEC)/CompositionExclusions-3.2.0.txt CompositionExclusions.txt \
+		|| cp $(SPEC)/CompositionExclusions-3.2.0.txt CompositionExclusions.txt; \
+	fi
 
 RFC3454.cs CombiningClass.cs DecompositionKeys.cs DecompositionMappings.cs Composition.cs: $(GEN_SOURCES)
 	make GenerateTables
+	./GenerateTables
 
 install-dll-dir:
 	$(mkinstalldirs) $(DESTDIR)$(libdir)
