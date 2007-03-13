@@ -26,6 +26,10 @@ SOURCES = AssemblyInfo.cs IDNA.cs RFC3454.cs CombiningClass.cs	\
 	StringprepException.cs DecompositionKeys.cs Punycode.cs	\
 	DecompositionMappings.cs PunycodeException.cs
 
+GEN_SOURCES = generate/AssemblyInfo.cs \
+	generate/GenerateNFKC.cs generate/GenerateRFC3454.cs \
+	generate/HashSet.cs generate/Program.cs generate/Tokenizer.cs
+
 MSVSC = libidn.csproj libidn.csproj.user libidn_PPC.csdproj	\
 	libidn_PPC.csdproj.user libidn_PPC.sln libidn_PPC.suo	\
 	libidn.sln libidn.suo
@@ -48,6 +52,10 @@ UNINSTALL_LOCAL_TARGETS += uninstall-dll
 Libidn.dll: $(SOURCES)
 	$(CSHARPCOMP) $(CSHARPCOMPFLAGS) -o $@ \
 		`for src in $(SOURCES); do echo $(srcdir)/$$src; done`
+
+GenerateTables:
+	$(CSHARPCOMP) $(CSHARPCOMPFLAGS) -o $@ \
+		`for src in $(GEN_SOURCES); do echo $(srcdir)/$$src; done`
 
 install-dll-dir:
 	$(mkinstalldirs) $(DESTDIR)$(libdir)
