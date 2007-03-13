@@ -678,7 +678,7 @@ namespace gnu.inet.encoding.misc
             }
 
             //Console.WriteLine(" Ok.");             
-            Console.WriteLine("Finshed!");
+            Console.WriteLine("Finished!");
         }
     }
 }
