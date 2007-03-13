@@ -1,3 +1,165 @@
+2007-03-13  Simon Josefsson <simon@josefsson.org>
+
+	* po/da.po, po/de.po, po/eo.po, po/fr.po, po/it.po, po/ja.po,
+	po/nl.po, po/pl.po, po/ro.po, po/rw.po, po/sr.po, po/sv.po,
+	po/vi.po, po/zh_CN.po: Generated.
+
+2007-03-13  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Version 0.6.11.
+
+2007-03-13  Simon Josefsson <simon@josefsson.org>
+
+	* csharp/Makefile.am: Fix path to csharpcomp.
+
+2007-03-13  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2007-03-13  Simon Josefsson <simon@josefsson.org>
+
+	* csharp/Makefile.am: Dist more.
+
+2007-03-13  Simon Josefsson <simon@josefsson.org>
+
+	* csharp/Makefile.am: Fix tests.
+
+2007-03-13  Simon Josefsson <simon@josefsson.org>
+
+	* csharp/Makefile.am: fix
+
+2007-03-13  Simon Josefsson <simon@josefsson.org>
+
+	* csharp/generate/GenerateNFKC.cs: Fix typo.
+
+2007-03-13  Simon Josefsson <simon@josefsson.org>
+
+	* csharp/generate/GenerateNFKC.cs: Don't wait for newline from user
+	(breaks batch usage).  Fix typo.
+
+2007-03-13  Simon Josefsson <simon@josefsson.org>
+
+	* csharp/generate/GenerateRFC3454.cs: Don't wait for return from
+	user (breaks batch usage).
+
+2007-03-13  Simon Josefsson <simon@josefsson.org>
+
+	* csharp/generate/GenerateRFC3454.cs: Fix namespace.
+
+2007-03-13  Simon Josefsson <simon@josefsson.org>
+
+	* csharp/IDNA.cs, csharp/IDNAException.cs, csharp/NFKC.cs,
+	csharp/Punycode.cs, csharp/PunycodeException.cs,
+	csharp/Stringprep.cs, csharp/StringprepException.cs,
+	csharp/libidn.cmbx, csharp/libidn.csproj,
+	csharp/libidn.csproj.user, csharp/libidn.prjx, csharp/libidn.sln,
+	csharp/libidn.suo, csharp/libidn_PPC.suo: Update, from Alexander
+	Gnauck <gnauck@ag-software.de>.
+
+2007-03-13  Simon Josefsson <simon@josefsson.org>
+
+	* csharp/CombiningClass.cs, csharp/Composition.cs,
+	csharp/DecompositionKeys.cs, csharp/DecompositionMappings.cs,
+	csharp/RFC3454.cs: Remove.
+
+2007-03-13  Simon Josefsson <simon@josefsson.org>
+
+	* csharp/Makefile.am: Generate generated files.
+
+2007-03-13  Simon Josefsson <simon@josefsson.org>
+
+	* csharp/generate/GenerateRFC3454.cs: AppendLine isn't supported by
+	cscc, use Append+\n.
+
+2007-03-13  Simon Josefsson <simon@josefsson.org>
+
+	* csharp/Makefile.am, csharp/generate/AssemblyInfo.cs,
+	csharp/generate/GenerateNFKC.cs,
+	csharp/generate/GenerateRFC3454.cs, csharp/generate/HashSet.cs,
+	csharp/generate/Program.cs, csharp/generate/Tokenizer.cs: Add code
+	to generate tables, from Alexander Gnauck <gnauck@ag-software.de>.
+
+2007-03-13  Simon Josefsson <simon@josefsson.org>
+
+	* gl/dummy.c, gl/getopt_.h, lib/gl/stdint_.h: Update.
+
+2007-03-09  Simon Josefsson <simon@josefsson.org>
+
+	* po/da.po, po/de.po, po/eo.po, po/fr.po, po/it.po, po/ja.po,
+	po/nl.po, po/pl.po, po/ro.po, po/rw.po, po/sr.po, po/vi.po,
+	po/zh_CN.po: Sync with TP.
+
+2007-03-09  Simon Josefsson <simon@josefsson.org>
+
+	* configure.ac: Bump versions.
+
+2007-03-09  Simon Josefsson <simon@josefsson.org>
+
+	* csharp/Makefile.am: Revert.
+
+2007-03-09  Simon Josefsson <simon@josefsson.org>
+
+	* lib/gl/string.h: Update.
+
+2007-03-09  Simon Josefsson <simon@josefsson.org>
+
+	* Makefile.am, csharp/Makefile.am: Update gnulib.
+
+2007-03-09  Simon Josefsson <simon@josefsson.org>
+
+	* GNUmakefile, announce-gen, csharpcomp.sh.in, gendocs.sh,
+	gnupload, maint-cfg.mk, maint.mk, build-aux/GNUmakefile,
+	build-aux/announce-gen, build-aux/config.rpath,
+	build-aux/csharpcomp.sh.in, build-aux/gendocs.sh,
+	build-aux/gnupload, build-aux/link-warning.h, build-aux/maint.mk,
+	gl/Makefile.am, gl/unistd_.h, gl/m4/gnulib-cache.m4,
+	gl/m4/gnulib-comp.m4, gl/m4/unistd_h.m4, lib/gl/Makefile.am,
+	lib/gl/string_.h, lib/gl/m4/gnulib-cache.m4,
+	lib/gl/m4/gnulib-comp.m4, lib/gl/m4/string_h.m4: Update.
+
+2007-03-09  Simon Josefsson <simon@josefsson.org>
+
+	* configure.ac: Use build-aux.
+
+2007-02-06  Simon Josefsson <simon@josefsson.org>
+
+	* lib/gl/Makefile.am, lib/gl/string_.h, lib/gl/m4/string_h.m4:
+	Update.
+
+2007-02-05  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2007-02-05  Simon Josefsson <simon@josefsson.org>
+
+	* lib/toutf8.c, lib/gl/Makefile.am, lib/gl/c-ctype.c,
+	lib/gl/c-ctype.h, lib/gl/c-strcase.h, lib/gl/c-strcasecmp.c,
+	lib/gl/c-strncasecmp.c, lib/gl/iconvme.c, lib/gl/iconvme.h,
+	lib/gl/stdbool_.h, lib/gl/striconv.c, lib/gl/striconv.h,
+	lib/gl/string.h, lib/gl/m4/gnulib-cache.m4,
+	lib/gl/m4/gnulib-comp.m4, lib/gl/m4/iconvme.m4,
+	lib/gl/m4/stdbool.m4: Update.
+
+2007-02-05  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2007-02-05  Simon Josefsson <simon@josefsson.org>
+
+	* gl/m4/unistd_h.m4, lib/gl/Makefile.am, lib/gl/iconvme.c,
+	lib/gl/strdup.c, lib/gl/strdup.h, lib/gl/string_.h,
+	lib/gl/m4/extensions.m4, lib/gl/m4/gnulib-comp.m4,
+	lib/gl/m4/strdup.m4, lib/gl/m4/string_h.m4: Update.
+
+2007-01-25  Simon Josefsson <simon@josefsson.org>
+
+	* gl/Makefile.am, gl/unistd_.h, gl/m4/absolute-header.m4,
+	gl/m4/gnulib-common.m4, gl/m4/gnulib-comp.m4, gl/m4/unistd_h.m4,
+	lib/gl/Makefile.am, lib/gl/stdint_.h, lib/gl/wchar_.h,
+	lib/gl/m4/gnulib-common.m4, lib/gl/m4/gnulib-comp.m4,
+	lib/gl/m4/lib-link.m4, lib/gl/m4/stdint.m4, lib/gl/m4/wchar.m4:
+	Update.
+
 2007-01-04  Simon Josefsson <simon@josefsson.org>
 
 	* po/da.po, po/de.po, po/eo.po, po/fr.po, po/it.po, po/ja.po,
