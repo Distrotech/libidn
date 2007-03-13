@@ -2,3 +2,9 @@ Libidn.dll
 Libidn.dll.mdb
 Makefile
 Makefile.in
+CombiningClass.cs
+Composition.cs
+DecompositionKeys.cs
+DecompositionMappings.cs
+GenerateTables
+RFC3454.cs
