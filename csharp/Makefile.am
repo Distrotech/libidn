@@ -34,7 +34,7 @@ MSVSC = libidn.csproj libidn.csproj.user libidn_PPC.csdproj	\
 	libidn_PPC.csdproj.user libidn_PPC.sln libidn_PPC.suo	\
 	libidn.sln libidn.suo
 
-EXTRA_DIST = $(SOURCES) $(MSVSC)
+EXTRA_DIST = $(SOURCES) $(SOURCES_GENERATE) $(MSVSC)
 
 CLEANFILES = Libidn.dll
 
