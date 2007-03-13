@@ -9,10 +9,8 @@ BSD-Port-URL: http://www.freshports.org/devel/libidn/
 CVS-URL: http://josefsson.org/cgi-bin/viewcvs.cgi/libidn/
 Mirror-Site-URL: http://josefsson.org/libidn
 Demo-URL: http://josefsson.org/idn.php
-Version: 0.6.9
+Version: 0.6.10
 Release-Focus: Minor bugfixes
 Hide: Y
 
-The Java code is fixed to properly translate any non-ASCII dot into
-'.'.  Bump tool versions to autoconf 2.61, automake 1.10, and gettext
-0.16.  Update gnulib files.
+Corrected year in copyright notices.  Update gnulib files.
