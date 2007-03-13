@@ -37,8 +37,6 @@ namespace gnu.inet.encoding.misc
                 Console.WriteLine("Unable to find rfc3454.txt.");
                 Console.WriteLine("Please download this file from:");
                 Console.WriteLine("http://www.ietf.org/rfc/rfc3454.txt");
-                Console.WriteLine("Press Return to exit");
-                Console.ReadLine();
                 
                 return;                
             }
