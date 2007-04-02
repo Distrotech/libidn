@@ -66,7 +66,7 @@ GenerateTables: $(SOURCES_GENERATE)
 		ln -s $(SPEC)/UnicodeData-3.2.0.txt UnicodeData.txt \
 		|| cp $(SPEC)/UnicodeData-3.2.0.txt UnicodeData.txt; \
 	fi
-	if ! test -f CompositionExclusions; then \
+	if ! test -f CompositionExclusions.txt; then \
 		ln -s $(SPEC)/CompositionExclusions-3.2.0.txt CompositionExclusions.txt \
 		|| cp $(SPEC)/CompositionExclusions-3.2.0.txt CompositionExclusions.txt; \
 	fi
