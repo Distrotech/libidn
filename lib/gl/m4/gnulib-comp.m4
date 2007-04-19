@@ -39,7 +39,11 @@ AC_DEFUN([lgl_INIT],
   AM_CONDITIONAL([GL_COND_LIBTOOL], [true])
   gl_cond_libtool=true
   gl_source_base='lib/gl'
+  AC_SUBST([LIBINTL])
+  AC_SUBST([LTLIBINTL])
   AM_ICONV
+  gl_ICONV_H
+  gl_FUNC_ICONV_OPEN
   AM_STDBOOL_H
   gl_STDINT_H
   gl_FUNC_STRDUP
@@ -96,6 +100,12 @@ AC_DEFUN([lgl_FILE_LIST], [
   lib/c-strcasecmp.c
   lib/c-strncasecmp.c
   lib/gettext.h
+  lib/iconv_.h
+  lib/iconv_open-aix.gperf
+  lib/iconv_open-hpux.gperf
+  lib/iconv_open-irix.gperf
+  lib/iconv_open-osf.gperf
+  lib/iconv_open.c
   lib/stdbool_.h
   lib/stdint_.h
   lib/strdup.c
@@ -109,6 +119,8 @@ AC_DEFUN([lgl_FILE_LIST], [
   m4/extensions.m4
   m4/gnulib-common.m4
   m4/iconv.m4
+  m4/iconv_h.m4
+  m4/iconv_open.m4
   m4/lib-ld.m4
   m4/lib-link.m4
   m4/lib-prefix.m4
