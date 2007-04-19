@@ -7,8 +7,7 @@ libgnu.la
 stdint.h
 string.h
 iconv_.h
-iconv_open-aix.gperf
-iconv_open-hpux.gperf
-iconv_open-irix.gperf
-iconv_open-osf.gperf
-iconv_open.c
+iconv_open-aix.h
+iconv_open-hpux.h
+iconv_open-irix.h
+iconv_open-osf.h
