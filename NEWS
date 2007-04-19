@@ -4,6 +4,8 @@ See the end for copying conditions.
 
 * Version 0.6.12 (unreleased)
 
+** Update gnulib files.
+
 ** API and ABI is backwards compatible with the previous version.
 
 * Version 0.6.11 (released 2007-03-13)
