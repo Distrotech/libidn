@@ -18,7 +18,7 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA
 
 JAVAROOT = $(top_builddir)/java/misc
-JAVACFLAGS = -classpath $(top_builddir)/java/libidn-@VERSION@.jar:$(top_srcdir)/java/libidn-@VERSION@.jar
+AM_JAVACFLAGS = -classpath $(top_builddir)/java/libidn-@VERSION@.jar:$(top_srcdir)/java/libidn-@VERSION@.jar
 
 if JAVA
 dist_noinst_JAVA = GenerateRFC3454.java GenerateNFKC.java	\
