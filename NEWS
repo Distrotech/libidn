@@ -4,6 +4,9 @@ See the end for copying conditions.
 
 * Version 0.6.12 (unreleased)
 
+** Use AM_JAVACFLAGS instead of JAVACFLAGS in java/misc/Makefile.am.
+Reported by Petteri Räty <betelgeuse@gentoo.org>.
+
 ** Update gnulib files.
 
 ** API and ABI is backwards compatible with the previous version.
