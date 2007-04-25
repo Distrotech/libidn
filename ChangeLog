@@ -1,3 +1,58 @@
+2007-04-25  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Version 0.6.12.
+
+2007-04-25  Simon Josefsson <simon@josefsson.org>
+
+	* po/da.po, po/de.po, po/eo.po, po/fr.po, po/it.po, po/ja.po,
+	po/nl.po, po/pl.po, po/ro.po, po/rw.po, po/sr.po, po/vi.po,
+	po/zh_CN.po: Sync with TP.
+
+2007-04-24  Simon Josefsson <simon@josefsson.org>
+
+	* THANKS, NEWS: Add.
+
+2007-04-24  Simon Josefsson <simon@josefsson.org>
+
+	* java/misc/Makefile.am: Use AM_JAVACFLAGS instead of JAVACFLAGS.
+	See
+
+	<http://ftp.gnu.org/gnu/Manuals/automake-1.7.2/html_node/automake_78.html>.Tiny patch from Petteri Räty <betelgeuse@gentoo.org>.
+
+2007-04-19  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2007-04-19  Simon Josefsson <simon@josefsson.org>
+
+	* build-aux/gendocs.sh, gl/dummy.c, gl/m4/gnulib-comp.m4,
+	lib/gl/Makefile.am, lib/gl/iconv_.h, lib/gl/iconv_open-aix.gperf,
+	lib/gl/iconv_open-hpux.gperf, lib/gl/iconv_open-irix.gperf,
+	lib/gl/iconv_open-osf.gperf, lib/gl/iconv_open.c,
+	lib/gl/stdbool_.h, lib/gl/string_.h, lib/gl/wchar_.h,
+	lib/gl/m4/gnulib-comp.m4, lib/gl/m4/iconv.m4, lib/gl/m4/stdint.m4,
+	lib/gl/m4/iconv_h.m4, lib/gl/m4/iconv_open.m4: Update.
+
+2007-04-02  Simon Josefsson <simon@josefsson.org>
+
+	* csharp/Makefile.am: Fix typo.
+
+2007-03-13  Simon Josefsson <simon@josefsson.org>
+
+	* libidn.fms: 0.6.11.
+
+2007-03-13  Simon Josefsson <simon@josefsson.org>
+
+	* libidn.fms: 0.6.10.
+
+2007-03-13  Simon Josefsson <simon@josefsson.org>
+
+	* libidn.fms: 0.6.9.
+
+2007-03-13  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS, configure.ac: Bump versions.
+
 2007-03-13  Simon Josefsson <simon@josefsson.org>
 
 	* po/da.po, po/de.po, po/eo.po, po/fr.po, po/it.po, po/ja.po,
