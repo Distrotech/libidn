@@ -20,14 +20,14 @@ dnl the Free Software Foundation, Inc., 51 Franklin Street, Fifth
 dnl Floor, Boston, MA 02110-1301, USA.
 
 AC_PREREQ(2.61)
-AC_INIT([libidn], [0.6.12], [bug-libidn@gnu.org])
+AC_INIT([libidn], [0.6.13], [bug-libidn@gnu.org])
 
 # Library code modified:                              REVISION++
 # Interfaces changed/added/removed:   CURRENT++       REVISION=0
 # Interfaces added:                             AGE++
 # Interfaces removed:                           AGE=0
 AC_SUBST(LT_CURRENT, 16)
-AC_SUBST(LT_REVISION, 26)
+AC_SUBST(LT_REVISION, 27)
 AC_SUBST(LT_AGE, 5)
 
 AC_CONFIG_AUX_DIR([build-aux])
