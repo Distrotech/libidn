@@ -129,7 +129,7 @@ Libidn is developed for the GNU/Linux system, but runs on over 20 Unix
 platforms (including Solaris, IRIX, AIX, and Tru64) and Windows.
 Libidn is written in C and (parts of) the API is accessible from C,
 C++, Emacs Lisp, Python and Java.  A native Java and C# port is also
-provided, also licensed under the GNU Lesser General Public License
+provided, licensed under the GNU Lesser General Public License
 (@pxref{GNU LGPL}).
 
 @menu
