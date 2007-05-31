@@ -48,7 +48,7 @@ IGNORE_HFILES=gunibreak.h gunicomp.h gunidecomp.h idn-int.h idn-free.h	\
 
 # Images to copy into HTML directory.
 # e.g. HTML_IMAGES=$(top_srcdir)/gtk/stock-icons/stock_about_24.png
-HTML_IMAGES=../components.png
+HTML_IMAGES=../libidn-components.png
 
 # Extra SGML files that are included by $(DOC_MAIN_SGML_FILE).
 # e.g. content_files=running.sgml building.sgml changes-2.0.sgml
