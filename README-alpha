@@ -16,8 +16,9 @@ securely in-place.
 
 It will not become stable without help.  Donate time or money.
 
-To compile from CVS, you may need recent versions of perl, texinfo (>=
-4.7), gengetopt (>= 2.13), gettext (>= 0.14.1), cvs2cl, help2man,
+To compile from version controlled sources rather than a
+libidn-*.tar.gz archive, you may need recent versions of perl, texinfo
+(>= 4.7), gengetopt (>= 2.13), gettext (>= 0.14.1), git2cl, help2man,
 autoconf (>= 2.59), automake (>= 1.9), libtool (>= 1.5.2), fig2dev
 (transfig), pkg-config, gtk-doc, doxygen, gcj, gjdoc, mono or pnet.
 
