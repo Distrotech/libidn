@@ -29,6 +29,9 @@ info_TEXINFOS = libidn.texi
 libidn_TEXINFOS = fdl.texi $(gdoc_TEXINFOS) \
 	libidn-components.eps libidn-components.png libidn-components.pdf
 
+imagesdir = $(infodir)
+images_DATA = libidn-components.png
+
 libidn-components.eps: components.fig
 	fig2dev -L eps $< $@
 
