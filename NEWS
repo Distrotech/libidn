@@ -2,6 +2,12 @@ Libidn NEWS -- History of user-visible changes.                 -*- outline -*-
 Copyright (C) 2002, 2003, 2004, 2005, 2006, 2007 Simon Josefsson
 See the end for copying conditions.
 
+* Version 0.6.14 (unreleased)
+
+** Libidn is now developed using Git instead of CVS.
+A public git mirror is available from
+<http://repo.or.cz/w/libidn.git>.
+
 * Version 0.6.13 (released 2007-05-31)
 
 ** Documentation fixes.
