@@ -8,6 +8,8 @@ See the end for copying conditions.
 A public git mirror is available from
 <http://repo.or.cz/w/libidn.git>.
 
+** API and ABI is backwards compatible with the previous version.
+
 * Version 0.6.13 (released 2007-05-31)
 
 ** Documentation fixes.
