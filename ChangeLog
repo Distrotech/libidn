@@ -1,3 +1,74 @@
+2007-05-31  Simon Josefsson <simon@josefsson.org>
+
+	* po/da.po, po/de.po, po/eo.po, po/fr.po, po/it.po, po/ja.po,
+	po/nl.po, po/pl.po, po/ro.po, po/rw.po, po/sr.po, po/sv.po,
+	po/vi.po, po/zh_CN.po: Generated.
+
+2007-05-31  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Version 0.6.13.
+
+2007-05-31  Simon Josefsson <simon@josefsson.org>
+
+	* doc/Makefile.am: Install libidn-components.png in infodir, fixes
+	broken image in the info manual.
+
+2007-05-31  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2007-05-31  Simon Josefsson <simon@josefsson.org>
+
+	* doc/reference/libidn-docs.sgml, doc/reference/Makefile.am: Fix
+	image filename.
+
+2007-05-31  Simon Josefsson <simon@josefsson.org>
+
+	* doc/Makefile.am, doc/libidn.texi: Rename @image files so that
+	they are prefixed with $PROJECT, so they can be installed in
+	$infodir without collisions.
+
+2007-05-31  Simon Josefsson <simon@josefsson.org>
+
+	* po/pl.po, po/vi.po: Sync with TP.
+
+2007-05-31  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Fix.
+
+2007-05-31  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2007-05-31  Simon Josefsson <simon@josefsson.org>
+
+	* gl/Makefile.am, gl/unistd_.h, gl/m4/unistd_h.m4,
+	lib/gl/Makefile.am, lib/gl/iconv_.h, lib/gl/stdint_.h,
+	lib/gl/string_.h, lib/gl/wchar_.h, lib/gl/m4/iconv.m4,
+	lib/gl/m4/stdint.m4, gl/override/doc/gendocs_template,
+	gl/override/doc/gendocs_template.diff, doc/gendocs_template:
+	Update.
+
+2007-05-30  Simon Josefsson <simon@josefsson.org>
+
+	* configure.ac: Bump versions.
+
+2007-05-30  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2007-05-30  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi: Typo.
+
+2007-05-30  Simon Josefsson <simon@josefsson.org>
+
+	* README: Clarify license of C# port.
+
+2007-05-30  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi: Clarify license of java/csharp implementation.
+
 2007-04-25  Simon Josefsson <simon@josefsson.org>
 
 	* NEWS: Version 0.6.12.
