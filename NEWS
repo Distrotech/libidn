@@ -14,6 +14,11 @@ applies to the C# and Java library, please let me know.
 Thanks to Jakub Bogusz <qboosh@pld-linux.org> and Clytie Siddall
 <clytie@riverland.net.au>.
 
+** Install images for the manual in $infodir.
+This fixes the broken image in the info manual.  Image files will be
+called libidn-*.png to avoid namespace collisions with images from
+other info manuals.
+
 ** Update gnulib files.
 
 ** API and ABI is backwards compatible with the previous version.
