@@ -40,27 +40,23 @@ pkgconfig_DATA = libidn.pc
 # Maintainer targets
 
 update-po: refresh-po
-	cvs add `ls po/*.po | grep -v quot.po` || true && \
+	git-update-index --add `ls po/*.po | grep -v quot.po` || true && \
 	echo sv >> po/LINGUAS && \
-	cvs commit -m "Sync with TP." po/LINGUAS `ls po/*.po | grep -v quot.po`
+	git-commit -m "Sync with TP." po/LINGUAS `ls po/*.po | grep -v quot.po`
 
 ChangeLog:
-	cvs2cl --FSF --fsf --usermap .cvsusers -I ChangeLog -I .cvs \
-		-I autogen.sh -I contrib -I doc/specifications/ -I draft- && \
+	git log --pretty --numstat --summary | git2cl > ChangeLog
 	cat .cvscopying >> ChangeLog
 
 tag = $(PACKAGE)-`echo $(VERSION) | sed 's/\./-/g'`
 htmldir = ../www-$(PACKAGE)
 
 release:
-	cvs upd -p -r HEAD NEWS > /dev/null
-	if cvs upd -p -r $(tag) NEWS > /dev/null; then false else true; fi
-	rm -f ChangeLog && cvs upd ChangeLog
-	cvs commit
+	! git-tag -l $(tag) > /dev/null
 	rm -f ChangeLog
 	$(MAKE) ChangeLog distcheck
-	cvs commit -m "" ChangeLog
-	cvs rtag $(tag) $(PACKAGE)
+	git commit -m Generated. ChangeLog
+	git-tag -u b565716f! -m $(VERSION) $(tag)
 	build-aux/gnupload --to alpha.gnu.org:libidn $(distdir).tar.gz
 	cd doc && env MAKEINFO="makeinfo -I ../examples" \
 		      TEXI2DVI="texi2dvi -I ../examples" \
