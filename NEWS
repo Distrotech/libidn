@@ -10,6 +10,10 @@ Earlier, some places incorrectly said that these were licensed under
 the GPL.  If you encounter other places that still suggest that GPL
 applies to the C# and Java library, please let me know.
 
+** Updated Polish and Vietnamese translations.
+Thanks to Jakub Bogusz <qboosh@pld-linux.org> and Clytie Siddall
+<clytie@riverland.net.au>.
+
 ** Update gnulib files.
 
 ** API and ABI is backwards compatible with the previous version.
