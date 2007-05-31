@@ -215,7 +215,7 @@ and in turn Nameprep uses the generic StringPrep interface.  The
 interfaces to all components are available for applications, no
 component within the library is hidden from the application.
 
-@image{components}
+@image{libidn-components}
 
 @node Supported Platforms
 @section Supported Platforms

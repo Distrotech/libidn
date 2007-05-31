@@ -27,16 +27,16 @@ EXTRA_DIST = gdoc libidn.html libidn.ps libidn.pdf gpl.texi lgpl.texi	\
 
 info_TEXINFOS = libidn.texi
 libidn_TEXINFOS = fdl.texi $(gdoc_TEXINFOS) \
-	components.eps components.png components.pdf
+	libidn-components.eps libidn-components.png libidn-components.pdf
 
-components.eps: components.fig
-	fig2dev -L eps components.fig components.eps
+libidn-components.eps: components.fig
+	fig2dev -L eps $< $@
 
-components.png: components.fig
-	fig2dev -L png components.fig components.png
+libidn-components.png: components.fig
+	fig2dev -L png $< $@
 
-components.pdf: components.fig
-	fig2dev -L pdf components.fig components.pdf
+libidn-components.pdf: components.fig
+	fig2dev -L pdf $< $@
 
 AM_MAKEINFOFLAGS = -I $(top_builddir)/doc -I $(top_srcdir)/examples
 TEXI2DVI = texi2dvi $(AM_MAKEINFOFLAGS)
