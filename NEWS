@@ -6,7 +6,7 @@ See the end for copying conditions.
 
 ** Command-line tools, examples, etc are now licensed under GPL version 3.
 The library is still licensed under LGPL v2.1 for compatibility
-reasons.
+reasons (it is included in glibc).
 
 ** API and ABI is backwards compatible with the previous version.
 
