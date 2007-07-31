@@ -2,7 +2,7 @@ Libidn NEWS -- History of user-visible changes.                 -*- outline -*-
 Copyright (C) 2002, 2003, 2004, 2005, 2006, 2007 Simon Josefsson
 See the end for copying conditions.
 
-* Version 0.6.15 (unreleased)
+* Version 1.0 (unreleased)
 
 ** Command-line tools, examples, etc are now licensed under GPL version 3.
 The library is still licensed under LGPL v2.1 for compatibility
