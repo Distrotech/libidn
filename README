@@ -10,9 +10,11 @@ manual in various formats (including Info, HTML, PostScript, and PDF).
 
 The C library (libidn.a), C# library (Libidn.dll) and Java library
 (libidn-*.jar) are licensed under the GNU Lesser General Public
-License (see the file COPYING.LIB).  The command line tool, self
-tests, examples, and other auxilliary files, are licensed under the
-GNU General Public License (see the file COPYING).
+License version 2.1.  See the file COPYING.LIB.
+
+The command line tool, self tests, examples, and other auxilliary
+files, are licensed under the GNU General Public License version 3.0.
+See the file COPYING.
 
 Libidn will not be stable without your help.  Report bugs, proof read
 the manual, or make a monetary donation.
