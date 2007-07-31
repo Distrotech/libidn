@@ -8,6 +8,10 @@ See the end for copying conditions.
 The library is still licensed under LGPL v2.1 for compatibility
 reasons (it is included in glibc).
 
+** Updated documentation as per license change.
+
+** Update gnulib files.
+
 ** API and ABI is backwards compatible with the previous version.
 
 * Version 0.6.14 (released 2007-05-31)
