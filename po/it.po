@@ -1,13 +1,13 @@
 # Italian messages for libidn.
-# Copyright (C) 2004 Free Software Foundation, Inc.
+# Copyright (C) 2004, 2007 Free Software Foundation, Inc.
 # This file is distributed under the same license as the libidn package.
-# Marco Colombo <m.colombo@ed.ac.uk>, 2004.
+# Marco Colombo <m.colombo@ed.ac.uk>, 2004, 2007.
 msgid ""
 msgstr ""
-"Project-Id-Version: libidn 0.5.12\n"
+"Project-Id-Version: libidn 0.6.12\n"
 "Report-Msgid-Bugs-To: bug-libidn@gnu.org\n"
-"POT-Creation-Date: 2007-05-31 12:17+0200\n"
-"PO-Revision-Date: 2004-12-28 20:48+0000\n"
+"POT-Creation-Date: 2007-04-25 11:37+0200\n"
+"PO-Revision-Date: 2007-06-05 16:32+0100\n"
 "Last-Translator: Marco Colombo <m.colombo@ed.ac.uk>\n"
 "Language-Team: Italian <tp@lists.linux.it>\n"
 "MIME-Version: 1.0\n"
@@ -67,10 +67,10 @@ msgid "String size limit exceeded"
 msgstr "Limite di grandezza della stringa superato"
 
 msgid "Forbidden unassigned code points in input"
-msgstr "Codici punto non assegnati proibiti nell'input"
+msgstr "Codepoints non assegnati proibiti nell'input"
 
 msgid "Prohibited code points in input"
-msgstr "Codici punto proibiti nell'input"
+msgstr "Codepoints proibiti nell'input"
 
 msgid "Conflicting bidirectional properties in input"
 msgstr "Proprietà bidirezionali in conflitto nell'input"
@@ -79,7 +79,7 @@ msgid "Malformed bidirectional string"
 msgstr "Stringa bidirezionale malformata"
 
 msgid "Prohibited bidirectional code points in input"
-msgstr "Codici punto bidirezionali proibiti nell'input"
+msgstr "Codepoints bidirezionali proibiti nell'input"
 
 msgid "Error in stringprep profile definition"
 msgstr "Errore nella definizione del profilo di stringprep"
@@ -94,7 +94,7 @@ msgid "Unicode normalization failed (internal error)"
 msgstr "Normalizzazione Unicode non riuscita (errore interno)"
 
 msgid "Code points prohibited by top-level domain"
-msgstr "Codici punto proibiti dal dominio di primo livello"
+msgstr "Codepoints proibiti dal dominio di primo livello"
 
 msgid "Missing input"
 msgstr "Input mancante"
@@ -110,12 +110,8 @@ msgid "Charset `%s'.\n"
 msgstr "Charset `%s'.\n"
 
 #, c-format
-msgid ""
-"Type each input string on a line by itself, terminated by a newline "
-"character.\n"
-msgstr ""
-"Scrivere ogni stringa di input in una riga a sé, terminata da un carattere "
-"di newline.\n"
+msgid "Type each input string on a line by itself, terminated by a newline character.\n"
+msgstr "Scrivere ogni stringa di input in una riga a sé, terminata da un carattere di newline.\n"
 
 msgid "Input error"
 msgstr "Errore di input"
@@ -127,17 +123,17 @@ msgstr "Impossibile convertire da %s a UTF-8."
 msgid "Could not convert from UTF-8 to UCS-4."
 msgstr "Impossibile convertire da UTF-8 a UCS-4."
 
-#, fuzzy, c-format
+#, c-format
 msgid "input[%lu] = U+%04x\n"
-msgstr "input[%d] = U+%04x\n"
+msgstr "input[%lu] = U+%04x\n"
 
 #, c-format
 msgid "stringprep_profile: %s"
 msgstr "stringprep_profile: %s"
 
-#, fuzzy, c-format
+#, c-format
 msgid "output[%lu] = U+%04x\n"
-msgstr "output[%d] = U+%04x\n"
+msgstr "output[%lu] = U+%04x\n"
 
 #, c-format
 msgid "Could not convert from UTF-8 to %s."
@@ -165,13 +161,13 @@ msgstr "idna_to_ascii_4z: %s"
 msgid "idna_to_unicode_8z4z (TLD): %s"
 msgstr "idna_to_unicode_8z4z (TLD): %s"
 
-#, fuzzy, c-format
+#, c-format
 msgid "tld[%lu] = U+%04x\n"
-msgstr "tld[%d] = U+%04x\n"
+msgstr "tld[%lu] = U+%04x\n"
 
-#, fuzzy, c-format
+#, c-format
 msgid "tld_check_4z (position %lu): %s"
-msgstr "tld_check_4z (posizione %d): %s"
+msgstr "tld_check_4z (posizione %lu): %s"
 
 #, c-format
 msgid "tld_check_4z: %s"
