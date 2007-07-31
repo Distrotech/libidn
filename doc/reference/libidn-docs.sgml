@@ -60,7 +60,7 @@ C#, C++, Emacs Lisp, Python and Java.
     <para>
 Also included is a command line tool, several self tests, code
 examples, and more, all licensed under the GNU General Public License
-version 3.0 (@pxref{GNU GPL}).
+version 3.0.
     </para>
 
     <para>The internal layout of the library, and how your application
