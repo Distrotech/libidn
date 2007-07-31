@@ -90,8 +90,8 @@ AC_DEFUN([gl_FILE_LIST], [
   build-aux/maint.mk
   doc/fdl.texi
   doc/gendocs_template
-  doc/gpl.texi
-  doc/lgpl.texi
+  doc/gpl-3.0.texi
+  doc/lgpl-2.1.texi
   lib/dummy.c
   lib/error.c
   lib/error.h
@@ -101,11 +101,11 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/getopt_int.h
   lib/gettext.h
   lib/unistd_.h
-  m4/absolute-header.m4
   m4/csharp.m4
   m4/csharpcomp.m4
   m4/error.m4
   m4/getopt.m4
   m4/gnulib-common.m4
+  m4/include_next.m4
   m4/unistd_h.m4
 ])

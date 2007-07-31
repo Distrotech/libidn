@@ -4,6 +4,10 @@ See the end for copying conditions.
 
 * Version 0.6.15 (unreleased)
 
+** Command-line tools, examples, etc are now licensed under GPL version 3.
+The library is still licensed under LGPL v2.1 for compatibility
+reasons.
+
 ** API and ABI is backwards compatible with the previous version.
 
 * Version 0.6.14 (released 2007-05-31)

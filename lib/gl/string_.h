@@ -19,11 +19,7 @@
 #ifndef _GL_STRING_H
 
 /* The include_next requires a split double-inclusion guard.  */
-#if @HAVE_INCLUDE_NEXT@
-# include_next <string.h>
-#else
-# include @ABSOLUTE_STRING_H@
-#endif
+#@INCLUDE_NEXT@ @NEXT_STRING_H@
 
 #ifndef _GL_STRING_H
 #define _GL_STRING_H
@@ -399,6 +395,12 @@ extern char *strtok_r (char *restrict s, char const *restrict delim,
 /* Return the number of multibyte characters in the character string STRING.
    This considers multibyte characters, unlike strlen, which counts bytes.  */
 extern size_t mbslen (const char *string);
+#endif
+
+#if @GNULIB_MBSNLEN@
+/* Return the number of multibyte characters in the character string starting
+   at STRING and ending at STRING + LEN.  */
+extern size_t mbsnlen (const char *string, size_t len);
 #endif
 
 #if @GNULIB_MBSCHR@

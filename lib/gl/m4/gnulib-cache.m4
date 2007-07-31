@@ -23,6 +23,7 @@ gl_MODULES([gettext-h stdint striconv strverscmp])
 gl_AVOID([])
 gl_SOURCE_BASE([lib/gl])
 gl_M4_BASE([lib/gl/m4])
+gl_PO_BASE([])
 gl_DOC_BASE([doc])
 gl_TESTS_BASE([tests])
 gl_LIB([libgnu])
@@ -30,3 +31,4 @@ gl_LGPL
 gl_MAKEFILE_NAME([])
 gl_LIBTOOL
 gl_MACRO_PREFIX([lgl])
+gl_PO_DOMAIN([])
