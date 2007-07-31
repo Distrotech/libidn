@@ -1,3 +1,122 @@
+2007-07-31  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2007-07-31  Simon Josefsson <simon@josefsson.org>
+
+	* po/da.po, po/de.po, po/eo.po, po/fr.po, po/it.po, po/ja.po,
+	po/nl.po, po/pl.po, po/ro.po, po/rw.po, po/sr.po, po/vi.po,
+	po/zh_CN.po: Sync with TP.
+
+2007-07-31  Simon Josefsson <simon@josefsson.org>
+
+	* doc/reference/libidn-docs.sgml: Fix.
+
+2007-07-31  Simon Josefsson <simon@josefsson.org>
+
+	* doc/reference/libidn-docs.sgml: Sync with libidn.texi.
+
+2007-07-31  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi: Fix intro.
+
+2007-07-31  Simon Josefsson <simon@josefsson.org>
+
+	* doc/Makefile.am: Fix gpl/lgpl filenames.
+
+2007-07-31  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Version 1.0.
+
+2007-07-31  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2007-07-31  Simon Josefsson <simon@josefsson.org>
+
+	* AUTHORS: Update PGP key.
+
+2007-07-31  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS, configure.ac: Bump versions.
+
+2007-07-31  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Fix.
+
+2007-07-31  Simon Josefsson <simon@josefsson.org>
+
+	* doc/Makefile.gdoci: Update license to GPLv3.
+
+2007-07-31  Simon Josefsson <simon@josefsson.org>
+
+	* doc/reference/libidn-docs.sgml: Update, sync with libidn.texi.
+
+2007-07-31  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi: Clarify license versions.
+
+2007-07-31  Simon Josefsson <simon@josefsson.org>
+
+	* examples/example.c, examples/example2.c, examples/example3.c,
+	examples/example4.c, examples/example5.c: Relicense examples/* to
+	GPLv3.
+
+2007-07-31  Simon Josefsson <simon@josefsson.org>
+
+	* src/idn.c, src/idn.ggo, src/idna.el, src/punycode.el,
+	tests/tst_idna.c, tests/tst_idna2.c, tests/tst_nfkc.c,
+	tests/tst_pr29.c, tests/tst_punycode.c, tests/tst_strerror.c,
+	tests/tst_stringprep.c, tests/tst_tld.c, tests/utils.c,
+	tests/utils.h: Relicense src/ and tests/ stuff to GPLv3.
+
+2007-07-31  Simon Josefsson <simon@josefsson.org>
+
+	* Makefile.am, configure.ac, contrib/java/Makefile.am,
+	doc/Makefile.am, doc/java/Makefile.am,
+	doc/specifications/Makefile.am, doc/tld/Makefile.am,
+	examples/Makefile.am, src/Makefile.am, tests/Makefile.am: Relicense
+	Makefile.am and configure.ac to GPLv3.
+
+2007-07-31  Simon Josefsson <simon@josefsson.org>
+
+	* README: Clarify licenses.
+
+2007-07-31  Simon Josefsson <simon@josefsson.org>
+
+	* COPYING: Use GPLv3.
+
+2007-07-31  Simon Josefsson <simon@josefsson.org>
+
+	* gl/m4/include_next.m4: Update gnulib files.
+
+2007-07-31  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS, build-aux/announce-gen, build-aux/config.rpath,
+	build-aux/gendocs.sh, build-aux/gnupload, build-aux/maint.mk,
+	doc/fdl.texi, doc/gendocs_template, doc/gpl-3.0.texi, doc/gpl.texi,
+	doc/lgpl-2.1.texi, doc/lgpl.texi, doc/libidn.texi, gl/Makefile.am,
+	gl/error.c, gl/m4/gnulib-cache.m4, gl/m4/gnulib-comp.m4,
+	gl/m4/unistd_h.m4, gl/override/doc/gpl.texi.diff,
+	gl/override/doc/lgpl.texi.diff, gl/unistd_.h, lib/gl/Makefile.am,
+	lib/gl/iconv_.h, lib/gl/m4/gnulib-cache.m4,
+	lib/gl/m4/gnulib-comp.m4, lib/gl/m4/iconv_h.m4,
+	lib/gl/m4/include_next.m4, lib/gl/m4/stdint.m4,
+	lib/gl/m4/string_h.m4, lib/gl/m4/wchar.m4, lib/gl/stdint_.h,
+	lib/gl/string_.h, lib/gl/wchar_.h: Update gnulib files.
+
+2007-06-04  Simon Josefsson <jas@mocca.josefsson.org>
+
+	* NEWS, configure.ac: Bump versions.
+
+2007-05-31  Simon Josefsson <jas@mocca.josefsson.org>
+
+	* .cvscopying: Add year 2007.
+
+2007-05-31  Simon Josefsson <jas@mocca.josefsson.org>
+
+	* ChangeLog: Generated.
+
 2007-05-31  Simon Josefsson <jas@mocca.josefsson.org>
 
 	* NEWS: Version 0.6.14.
@@ -9745,8 +9864,12 @@
 
 	* ChangeLog: [no log message]
 
+2002-11-05  Simon Josefsson <simon@josefsson.org>
+
+	* Initial version.
+
 	----------------------------------------------------------------------
-	Copyright 2002, 2003, 2004, 2005, 2006  Simon Josefsson
+	Copyright 2002, 2003, 2004, 2005, 2006, 2007  Simon Josefsson
 	Copying and distribution of this file, with or without modification,
 	are permitted in any medium without royalty provided the copyright
 	notice and this notice are preserved.
