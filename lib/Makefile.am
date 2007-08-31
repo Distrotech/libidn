@@ -37,7 +37,7 @@ nodist_include_HEADERS = $(idn_int)
 
 idn-int.h:
 	if test -n "$(STDINT_H)"; then \
-		cp gl/stdint.h idn-int.h; \
+		sed -e s/include_next/include/ gl/stdint.h > idn-int.h; \
 	else \
 		echo '#include <stdint.h>' > idn-int.h; \
 	fi
