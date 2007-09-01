@@ -1,3 +1,69 @@
+2007-09-01  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Version 1.1.
+
+2007-09-01  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2007-09-01  Simon Josefsson <simon@josefsson.org>
+
+	* po/nl.po: Sync with TP.
+
+2007-09-01  Simon Josefsson <simon@josefsson.org>
+
+	* configure.ac: Wrap.
+
+2007-09-01  Simon Josefsson <simon@josefsson.org>
+
+	* configure.ac: Bump versions.
+
+2007-09-01  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2007-09-01  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2007-08-31  Simon Josefsson <simon@josefsson.org>
+
+	* configure.ac: Drop gnits mode.
+
+2007-08-31  Simon Josefsson <simon@josefsson.org>
+
+	* lib/Makefile.am: Define LIBIDN_BUILDING, for Windows hack in
+	stringprep.h.in. Inspired by report and patch by "Christian
+	Ehrlicher" <Ch.Ehrlicher@gmx.de>, see
+
+	<http://lists.gnu.org/archive/html/help-libidn/2007-08/msg00003.html>.
+
+2007-08-31  Simon Josefsson <simon@josefsson.org>
+
+	* lib/stringprep.h.in: Mark variables with __declspec(import) on
+	Windows. Inspired by report and patch by "Christian Ehrlicher"
+	<Ch.Ehrlicher@gmx.de>, see
+
+	<http://lists.gnu.org/archive/html/help-libidn/2007-08/msg00003.html>.
+
+2007-08-31  Simon Josefsson <simon@josefsson.org>
+
+	* lib/Makefile.am: Avoid using #include_next in idn-int.h when
+	looking for stdint.h. Reported by Remko van der Vossen
+	<wich@stack.nl> in
+	<http://thread.gmane.org/gmane.comp.gnu.libidn.general/65>, this
+	tiny patch was suggested by Bruno Haible in
+	<http://permalink.gmane.org/gmane.comp.lib.gnulib.bugs/10602>.
+
+2007-08-31  Simon Josefsson <simon@josefsson.org>
+
+	* build-aux/GNUmakefile, build-aux/maint.mk, lib/gl/m4/stdint.m4: 
+	Update gnulib files.
+
+2007-07-31  Simon Josefsson <simon@josefsson.org>
+
+	* ChangeLog: Generated.
+
 2007-07-31  Simon Josefsson <simon@josefsson.org>
 
 	* NEWS: Add.
