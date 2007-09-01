@@ -4,6 +4,20 @@ See the end for copying conditions.
 
 * Version 1.0 (released 2007-07-31)
 
+** Fix compilation error in idn-int.h.
+The error would typically be 'error: no include path in which to
+search for stdint.h'.  Reported by Remko van der Vossen
+<wich@stack.nl>, see
+<http://thread.gmane.org/gmane.comp.gnu.libidn.general/65> and
+<http://bugs.sourcemage.org/show_bug.cgi?id=13857>.
+
+** Declare external variables with __declspec(import) for Windows.
+Apparently this is required for variables in DLL's on Windows.  This
+is enabled if __DECLSPEC_SUPPORTED is defined (MinGW), or if _MSC_VER
+and_DLL is defined (MSVC).
+
+* Version 1.0 (released 2007-07-31)
+
 ** Command-line tools, examples, etc are now licensed under GPL version 3.
 The library is still licensed under LGPL v2.1 for compatibility
 reasons (it is included in glibc).
