@@ -18,6 +18,8 @@ and_DLL is defined (MSVC).
 
 ** Update gnulib files.
 
+** Update translations.
+
 ** API and ABI is backwards compatible with the previous version.
 
 * Version 1.0 (released 2007-07-31)
