@@ -2,7 +2,7 @@ Libidn NEWS -- History of user-visible changes.                 -*- outline -*-
 Copyright (C) 2002, 2003, 2004, 2005, 2006, 2007 Simon Josefsson
 See the end for copying conditions.
 
-* Version 1.0 (released 2007-07-31)
+* Version 1.1 (unreleased)
 
 ** Fix compilation error in idn-int.h.
 The error would typically be 'error: no include path in which to
@@ -15,6 +15,10 @@ search for stdint.h'.  Reported by Remko van der Vossen
 Apparently this is required for variables in DLL's on Windows.  This
 is enabled if __DECLSPEC_SUPPORTED is defined (MinGW), or if _MSC_VER
 and_DLL is defined (MSVC).
+
+** Update gnulib files.
+
+** API and ABI is backwards compatible with the previous version.
 
 * Version 1.0 (released 2007-07-31)
 
