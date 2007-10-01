@@ -1,9 +1,0 @@
-.deps
-.libs
-Makefile
-Makefile.in
-getopt.h
-*.la
-*.lo
-stdint.h
-unistd.h
