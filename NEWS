@@ -4,6 +4,9 @@ See the end for copying conditions.
 
 * Version 1.2 (unreleased)
 
+** Development git tree moved to savannah.
+See <https://savannah.gnu.org/projects/libidn/>.
+
 ** Update gnulib files.
 Including mono detection fixes.
 
