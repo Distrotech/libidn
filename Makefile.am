@@ -39,7 +39,6 @@ pkgconfig_DATA = libidn.pc
 
 update-po: refresh-po
 	git-update-index --add `ls po/*.po | grep -v quot.po` || true && \
-	echo sv >> po/LINGUAS && \
 	git-commit -m "Sync with TP." po/LINGUAS `ls po/*.po | grep -v quot.po`
 
 ChangeLog:
