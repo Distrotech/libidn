@@ -54,7 +54,7 @@ release:
 	$(MAKE) ChangeLog distcheck
 	git commit -m Generated. ChangeLog
 	git-tag -u b565716f! -m $(VERSION) $(tag)
-	build-aux/gnupload --to alpha.gnu.org:libidn $(distdir).tar.gz
+	build-aux/gnupload --to ftp.gnu.org:libidn --to alpha.gnu.org:libidn $(distdir).tar.gz
 	cd doc && env MAKEINFO="makeinfo -I ../examples" \
 		      TEXI2DVI="texi2dvi -I ../examples" \
 		../build-aux/gendocs.sh --html "--css-include=texinfo.css" \
