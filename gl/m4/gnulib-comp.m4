@@ -25,6 +25,7 @@ AC_DEFUN([gl_EARLY],
   m4_pattern_allow([^gl_LIBOBJS$])dnl a variable
   m4_pattern_allow([^gl_LTLIBOBJS$])dnl a variable
   AC_REQUIRE([AC_PROG_RANLIB])
+  AC_REQUIRE([gl_USE_SYSTEM_EXTENSIONS])
 ])
 
 # This macro should be invoked from ./configure.ac, in the section
@@ -43,6 +44,9 @@ AC_DEFUN([gl_INIT],
   gl_GETOPT
   AC_SUBST([LIBINTL])
   AC_SUBST([LTLIBINTL])
+  gl_FUNC_STRERROR
+  gl_STRING_MODULE_INDICATOR([strerror])
+  gl_HEADER_STRING_H
   gl_UNISTD_H
   m4_popdef([AC_LIBSOURCES])
   m4_popdef([AC_REPLACE_FUNCS])
@@ -65,18 +69,27 @@ AC_DEFUN([gl_INIT],
 
 # Like AC_LIBOBJ, except that the module name goes
 # into gl_LIBOBJS instead of into LIBOBJS.
-AC_DEFUN([gl_LIBOBJ],
-  [gl_LIBOBJS="$gl_LIBOBJS $1.$ac_objext"])
+AC_DEFUN([gl_LIBOBJ], [
+  AS_LITERAL_IF([$1], [gl_LIBSOURCES([$1.c])])dnl
+  gl_LIBOBJS="$gl_LIBOBJS $1.$ac_objext"
+])
 
 # Like AC_REPLACE_FUNCS, except that the module name goes
 # into gl_LIBOBJS instead of into LIBOBJS.
-AC_DEFUN([gl_REPLACE_FUNCS],
-  [AC_CHECK_FUNCS([$1], , [gl_LIBOBJ($ac_func)])])
+AC_DEFUN([gl_REPLACE_FUNCS], [
+  m4_foreach_w([gl_NAME], [$1], [AC_LIBSOURCES(gl_NAME[.c])])dnl
+  AC_CHECK_FUNCS([$1], , [gl_LIBOBJ($ac_func)])
+])
 
-# Like AC_LIBSOURCES, except that it does nothing.
+# Like AC_LIBSOURCES, except check for typos now.
 # We rely on EXTRA_lib..._SOURCES instead.
-AC_DEFUN([gl_LIBSOURCES],
-  [])
+AC_DEFUN([gl_LIBSOURCES], [
+  m4_foreach([_gl_NAME], [$1], [
+    m4_syscmd([test -r gl/]_gl_NAME[ || test ! -d gl])dnl
+    m4_if(m4_sysval, [0], [],
+      [AC_FATAL([missing gl/]_gl_NAME)])
+  ])
+])
 
 # This macro records the list of files which have been installed by
 # gnulib-tool and may be removed by future gnulib-tool invocations.
@@ -100,12 +113,17 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/getopt_.h
   lib/getopt_int.h
   lib/gettext.h
+  lib/strerror.c
+  lib/string_.h
   lib/unistd_.h
   m4/csharp.m4
   m4/csharpcomp.m4
   m4/error.m4
+  m4/extensions.m4
   m4/getopt.m4
   m4/gnulib-common.m4
   m4/include_next.m4
+  m4/strerror.m4
+  m4/string_h.m4
   m4/unistd_h.m4
 ])

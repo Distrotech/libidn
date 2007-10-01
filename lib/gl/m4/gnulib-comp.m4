@@ -44,8 +44,11 @@ AC_DEFUN([lgl_INIT],
   AM_ICONV
   gl_ICONV_H
   gl_FUNC_ICONV_OPEN
+  gl_FUNC_MALLOC_POSIX
+  gl_STDLIB_MODULE_INDICATOR([malloc-posix])
   AM_STDBOOL_H
   gl_STDINT_H
+  gl_STDLIB_H
   gl_FUNC_STRDUP
   gl_STRING_MODULE_INDICATOR([strdup])
   if test $gl_cond_libtool = false; then
@@ -54,6 +57,7 @@ AC_DEFUN([lgl_INIT],
   fi
   gl_HEADER_STRING_H
   gl_FUNC_STRVERSCMP
+  gl_UNISTD_H
   gl_WCHAR_H
   m4_popdef([AC_LIBSOURCES])
   m4_popdef([AC_REPLACE_FUNCS])
@@ -76,18 +80,27 @@ AC_DEFUN([lgl_INIT],
 
 # Like AC_LIBOBJ, except that the module name goes
 # into lgl_LIBOBJS instead of into LIBOBJS.
-AC_DEFUN([lgl_LIBOBJ],
-  [lgl_LIBOBJS="$lgl_LIBOBJS $1.$ac_objext"])
+AC_DEFUN([lgl_LIBOBJ], [
+  AS_LITERAL_IF([$1], [lgl_LIBSOURCES([$1.c])])dnl
+  lgl_LIBOBJS="$lgl_LIBOBJS $1.$ac_objext"
+])
 
 # Like AC_REPLACE_FUNCS, except that the module name goes
 # into lgl_LIBOBJS instead of into LIBOBJS.
-AC_DEFUN([lgl_REPLACE_FUNCS],
-  [AC_CHECK_FUNCS([$1], , [lgl_LIBOBJ($ac_func)])])
+AC_DEFUN([lgl_REPLACE_FUNCS], [
+  m4_foreach_w([gl_NAME], [$1], [AC_LIBSOURCES(gl_NAME[.c])])dnl
+  AC_CHECK_FUNCS([$1], , [lgl_LIBOBJ($ac_func)])
+])
 
-# Like AC_LIBSOURCES, except that it does nothing.
+# Like AC_LIBSOURCES, except check for typos now.
 # We rely on EXTRA_lib..._SOURCES instead.
-AC_DEFUN([lgl_LIBSOURCES],
-  [])
+AC_DEFUN([lgl_LIBSOURCES], [
+  m4_foreach([_gl_NAME], [$1], [
+    m4_syscmd([test -r lib/gl/]_gl_NAME[ || test ! -d lib/gl])dnl
+    m4_if(m4_sysval, [0], [],
+      [AC_FATAL([missing lib/gl/]_gl_NAME)])
+  ])
+])
 
 # This macro records the list of files which have been installed by
 # gnulib-tool and may be removed by future gnulib-tool invocations.
@@ -106,15 +119,19 @@ AC_DEFUN([lgl_FILE_LIST], [
   lib/iconv_open-irix.gperf
   lib/iconv_open-osf.gperf
   lib/iconv_open.c
+  lib/malloc.c
   lib/stdbool_.h
   lib/stdint_.h
+  lib/stdlib_.h
   lib/strdup.c
   lib/striconv.c
   lib/striconv.h
   lib/string_.h
   lib/strverscmp.c
   lib/strverscmp.h
+  lib/unistd_.h
   lib/wchar_.h
+  m4/absolute-header.m4
   m4/extensions.m4
   m4/gnulib-common.m4
   m4/iconv.m4
@@ -125,11 +142,14 @@ AC_DEFUN([lgl_FILE_LIST], [
   m4/lib-link.m4
   m4/lib-prefix.m4
   m4/longlong.m4
+  m4/malloc.m4
   m4/stdbool.m4
   m4/stdint.m4
+  m4/stdlib_h.m4
   m4/strdup.m4
   m4/string_h.m4
   m4/strverscmp.m4
   m4/ulonglong.m4
+  m4/unistd_h.m4
   m4/wchar.m4
 ])
