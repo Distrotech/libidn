@@ -1,3 +1,85 @@
+2007-10-01  Simon Josefsson <simon@josefsson.org>
+
+	* Makefile.am: Fix git-tag -l in release target.
+
+2007-10-01  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Version 1.2.
+
+2007-10-01  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2007-10-01  Simon Josefsson <simon@josefsson.org>
+
+	* README-alpha: Remove README-alpha.
+
+2007-10-01  Simon Josefsson <simon@josefsson.org>
+
+	* Makefile.am: Also upload to ftp.gnu.org.
+
+2007-10-01  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2007-10-01  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2007-10-01  Simon Josefsson <simon@josefsson.org>
+
+	* configure.ac: Re-order to avoid autoreconf warning.
+
+2007-10-01  Simon Josefsson <simon@josefsson.org>
+
+	* Makefile.am: Remove sv.
+
+2007-10-01  Simon Josefsson <simon@josefsson.org>
+
+	* po/LINGUAS: Sync with TP.
+
+2007-10-01  Simon Josefsson <simon@josefsson.org>
+
+	* po/sv.po: Remove (not part of translation project).
+
+2007-10-01  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS, configure.ac: Bump versions.
+
+2007-10-01  Simon Josefsson <simon@josefsson.org>
+
+	* gl/Makefile.am, gl/m4/csharpcomp.m4, gl/m4/gnulib-comp.m4,
+	lib/gl/Makefile.am, lib/gl/m4/absolute-header.m4,
+	lib/gl/m4/extensions.m4, lib/gl/m4/gnulib-comp.m4,
+	lib/gl/m4/string_h.m4, lib/gl/m4/strverscmp.m4, lib/gl/string_.h: 
+	Update gnulib files.
+
+2007-10-01  Simon Josefsson <simon@josefsson.org>
+
+	* gl/m4/extensions.m4, gl/m4/strerror.m4, gl/m4/string_h.m4,
+	gl/strerror.c, gl/string_.h, lib/gl/m4/malloc.m4,
+	lib/gl/m4/stdlib_h.m4, lib/gl/m4/unistd_h.m4, lib/gl/malloc.c,
+	lib/gl/stdlib_.h, lib/gl/unistd_.h: Update gnulib files.
+
+2007-10-01  Simon Josefsson <simon@josefsson.org>
+
+	* .cvsignore, build-aux/.cvsignore, contrib/doxygen/.cvsignore,
+	contrib/java/.cvsignore, csharp/.cvsignore, doc/.cvsignore,
+	doc/java/.cvsignore, doc/java/gnu/inet/encoding/.cvsignore,
+	doc/java/resources/.cvsignore, doc/man/.cvsignore,
+	doc/reference/.cvsignore, doc/reference/tmpl/.cvsignore,
+	doc/specifications/.cvsignore, doc/tld/.cvsignore,
+	examples/.cvsignore, gl/.cvsignore, java/.cvsignore,
+	java/gnu/.cvsignore, java/gnu/inet/.cvsignore,
+	java/gnu/inet/encoding/.cvsignore, java/misc/.cvsignore,
+	lib/.cvsignore, lib/gl/.cvsignore, libc/.cvsignore, m4/.cvsignore,
+	po/.cvsignore, src/.cvsignore, tests/.cvsignore: Remove unused
+	.cvsignore's.
+
+2007-09-01  Simon Josefsson <simon@josefsson.org>
+
+	* ChangeLog: Generated.
+
 2007-09-01  Simon Josefsson <simon@josefsson.org>
 
 	* NEWS: Version 1.1.
