@@ -445,7 +445,7 @@ The package can be downloaded from several places, including:
 @url{http://josefsson.org/libidn/releases/}
 
 The latest version is stored in a file, e.g.,
-@samp{gsasl-@value{VERSION}.tar.gz} where the @samp{@value{VERSION}}
+@samp{libidn-@value{VERSION}.tar.gz} where the @samp{@value{VERSION}}
 value is the highest version number in the directory.
 
 The package is then extracted, configured and built like many other
@@ -486,8 +486,8 @@ are building on a memory restricted platforms.  @xref{TLD Functions},
 for more information.
 
 @item --enable-csharp[=IMPL]
-Build the C3 port into a *.DLL file.  @xref{C# API}, for more
-information.  Here, @code{IMPL} is @code{pnet} or @code{mono},
+Build the @code{C#} port into a @code{*.DLL} file.  @xref{C# API}, for
+more information.  Here, @code{IMPL} is @code{pnet} or @code{mono},
 indicating whether the PNET @command{cscc} compiler or the Mono
 @command{mcs} compiler should be used, respectively.
 
@@ -495,6 +495,17 @@ indicating whether the PNET @command{cscc} compiler or the Mono
 
 For the complete list, refer to the output from @code{configure
 --help}.
+
+@subsection Installing under Windows
+
+Currently there is no native Visual Studio C++ port of Libidn.
+
+However, you can build a Libidn DLL using MinGW and use it from other
+applications.  If you build Libidn under minGW, it should install a
+DLL by default.
+
+For information on how to use the DLL in other applications, see:
+@url{http://www.mingw.org/mingwfaq.shtml#faq-msvcdll}.
 
 @node Bug Reports
 @section Bug Reports
