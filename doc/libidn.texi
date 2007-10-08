@@ -501,7 +501,7 @@ For the complete list, refer to the output from @code{configure
 Currently there is no native Visual Studio C++ port of Libidn.
 
 However, you can build a Libidn DLL using MinGW and use it from other
-applications.  If you build Libidn under minGW, it should install a
+applications.  If you build Libidn under MinGW, it should install a
 DLL by default.
 
 For information on how to use the DLL in other applications, see:
