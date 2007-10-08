@@ -92,13 +92,17 @@ AC_DEFUN([lgl_REPLACE_FUNCS], [
   AC_CHECK_FUNCS([$1], , [lgl_LIBOBJ($ac_func)])
 ])
 
-# Like AC_LIBSOURCES, except check for typos now.
-# We rely on EXTRA_lib..._SOURCES instead.
+# Like AC_LIBSOURCES, except the directory where the source file is
+# expected is derived from the gnulib-tool parametrization,
+# and alloca is special cased (for the alloca-opt module).
+# We could also entirely rely on EXTRA_lib..._SOURCES.
 AC_DEFUN([lgl_LIBSOURCES], [
   m4_foreach([_gl_NAME], [$1], [
-    m4_syscmd([test -r lib/gl/]_gl_NAME[ || test ! -d lib/gl])dnl
-    m4_if(m4_sysval, [0], [],
-      [AC_FATAL([missing lib/gl/]_gl_NAME)])
+    m4_if(_gl_NAME, [alloca.c], [], [
+      m4_syscmd([test -r lib/gl/]_gl_NAME[ || test ! -d lib/gl])dnl
+      m4_if(m4_sysval, [0], [],
+        [AC_FATAL([missing lib/gl/]_gl_NAME)])
+    ])
   ])
 ])
 
@@ -113,24 +117,24 @@ AC_DEFUN([lgl_FILE_LIST], [
   lib/c-strcasecmp.c
   lib/c-strncasecmp.c
   lib/gettext.h
-  lib/iconv_.h
+  lib/iconv.in.h
   lib/iconv_open-aix.gperf
   lib/iconv_open-hpux.gperf
   lib/iconv_open-irix.gperf
   lib/iconv_open-osf.gperf
   lib/iconv_open.c
   lib/malloc.c
-  lib/stdbool_.h
-  lib/stdint_.h
-  lib/stdlib_.h
+  lib/stdbool.in.h
+  lib/stdint.in.h
+  lib/stdlib.in.h
   lib/strdup.c
   lib/striconv.c
   lib/striconv.h
-  lib/string_.h
+  lib/string.in.h
   lib/strverscmp.c
   lib/strverscmp.h
-  lib/unistd_.h
-  lib/wchar_.h
+  lib/unistd.in.h
+  lib/wchar.in.h
   m4/absolute-header.m4
   m4/extensions.m4
   m4/gnulib-common.m4

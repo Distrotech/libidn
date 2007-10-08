@@ -75,13 +75,13 @@ BUILT_SOURCES += $(ICONV_H)
 
 # We need the following in order to create <iconv.h> when the system
 # doesn't have one that works with the given compiler.
-iconv.h: iconv_.h
+iconv.h: iconv.in.h
 	rm -f $@-t $@
 	{ echo '/* DO NOT EDIT! GENERATED AUTOMATICALLY! */' && \
 	  sed -e 's/@''INCLUDE_NEXT''@/$(INCLUDE_NEXT)/g' \
 	      -e 's|@''NEXT_ICONV_H''@|$(NEXT_ICONV_H)|g' \
 	      -e 's|@''REPLACE_ICONV_OPEN''@|$(REPLACE_ICONV_OPEN)|g' \
-	      < $(srcdir)/iconv_.h; \
+	      < $(srcdir)/iconv.in.h; \
 	} > $@-t
 	mv $@-t $@
 MOSTLYCLEANFILES += iconv.h iconv.h-t
@@ -104,7 +104,7 @@ MOSTLYCLEANFILES     += iconv_open-aix.h-t iconv_open-hpux.h-t iconv_open-irix.h
 MAINTAINERCLEANFILES += iconv_open-aix.h iconv_open-hpux.h iconv_open-irix.h iconv_open-osf.h
 EXTRA_DIST           += iconv_open-aix.h iconv_open-hpux.h iconv_open-irix.h iconv_open-osf.h
 
-EXTRA_DIST += iconv_.h iconv_open-aix.gperf iconv_open-hpux.gperf iconv_open-irix.gperf iconv_open-osf.gperf iconv_open.c
+EXTRA_DIST += iconv.in.h iconv_open-aix.gperf iconv_open-hpux.gperf iconv_open-irix.gperf iconv_open-osf.gperf iconv_open.c
 
 EXTRA_libgnu_la_SOURCES += iconv_open.c
 
@@ -133,15 +133,15 @@ BUILT_SOURCES += $(STDBOOL_H)
 
 # We need the following in order to create <stdbool.h> when the system
 # doesn't have one that works.
-stdbool.h: stdbool_.h
+stdbool.h: stdbool.in.h
 	rm -f $@-t $@
 	{ echo '/* DO NOT EDIT! GENERATED AUTOMATICALLY! */'; \
-	  sed -e 's/@''HAVE__BOOL''@/$(HAVE__BOOL)/g' < $(srcdir)/stdbool_.h; \
+	  sed -e 's/@''HAVE__BOOL''@/$(HAVE__BOOL)/g' < $(srcdir)/stdbool.in.h; \
 	} > $@-t
 	mv $@-t $@
 MOSTLYCLEANFILES += stdbool.h stdbool.h-t
 
-EXTRA_DIST += stdbool_.h
+EXTRA_DIST += stdbool.in.h
 
 ## end   gnulib module stdbool
 
@@ -151,7 +151,7 @@ BUILT_SOURCES += $(STDINT_H)
 
 # We need the following in order to create <stdint.h> when the system
 # doesn't have one that works with the given compiler.
-stdint.h: stdint_.h
+stdint.h: stdint.in.h
 	rm -f $@-t $@
 	{ echo '/* DO NOT EDIT! GENERATED AUTOMATICALLY! */'; \
 	  sed -e 's/@''HAVE_STDINT_H''@/$(HAVE_STDINT_H)/g' \
@@ -176,12 +176,12 @@ stdint.h: stdint_.h
 	      -e 's/@''BITSIZEOF_WINT_T''@/$(BITSIZEOF_WINT_T)/g' \
 	      -e 's/@''HAVE_SIGNED_WINT_T''@/$(HAVE_SIGNED_WINT_T)/g' \
 	      -e 's/@''WINT_T_SUFFIX''@/$(WINT_T_SUFFIX)/g' \
-	      < $(srcdir)/stdint_.h; \
+	      < $(srcdir)/stdint.in.h; \
 	} > $@-t
 	mv $@-t $@
 MOSTLYCLEANFILES += stdint.h stdint.h-t
 
-EXTRA_DIST += stdint_.h
+EXTRA_DIST += stdint.in.h
 
 ## end   gnulib module stdint
 
@@ -191,7 +191,7 @@ BUILT_SOURCES += stdlib.h
 
 # We need the following in order to create <stdlib.h> when the system
 # doesn't have one that works with the given compiler.
-stdlib.h: stdlib_.h
+stdlib.h: stdlib.in.h
 	rm -f $@-t $@
 	{ echo '/* DO NOT EDIT! GENERATED AUTOMATICALLY! */' && \
 	  sed -e 's/@''INCLUDE_NEXT''@/$(INCLUDE_NEXT)/g' \
@@ -209,12 +209,12 @@ stdlib.h: stdlib_.h
 	      -e 's|@''HAVE_REALLOC_POSIX''@|$(HAVE_REALLOC_POSIX)|g' \
 	      -e 's|@''REPLACE_MKSTEMP''@|$(REPLACE_MKSTEMP)|g' \
 	      -e '/definition of GL_LINK_WARNING/r $(LINK_WARNING_H)' \
-	      < $(srcdir)/stdlib_.h; \
+	      < $(srcdir)/stdlib.in.h; \
 	} > $@-t
 	mv $@-t $@
 MOSTLYCLEANFILES += stdlib.h stdlib.h-t
 
-EXTRA_DIST += stdlib_.h
+EXTRA_DIST += stdlib.in.h
 
 ## end   gnulib module stdlib
 
@@ -242,7 +242,7 @@ BUILT_SOURCES += string.h
 
 # We need the following in order to create <string.h> when the system
 # doesn't have one that works with the given compiler.
-string.h: string_.h
+string.h: string.in.h
 	rm -f $@-t $@
 	{ echo '/* DO NOT EDIT! GENERATED AUTOMATICALLY! */' && \
 	  sed -e 's/@''INCLUDE_NEXT''@/$(INCLUDE_NEXT)/g' \
@@ -294,12 +294,12 @@ string.h: string_.h
 	      -e 's|@''HAVE_DECL_STRERROR''@|$(HAVE_DECL_STRERROR)|g' \
 	      -e 's|@''REPLACE_STRERROR''@|$(REPLACE_STRERROR)|g' \
 	      -e '/definition of GL_LINK_WARNING/r $(LINK_WARNING_H)' \
-	      < $(srcdir)/string_.h; \
+	      < $(srcdir)/string.in.h; \
 	} > $@-t
 	mv $@-t $@
 MOSTLYCLEANFILES += string.h string.h-t
 
-EXTRA_DIST += string_.h
+EXTRA_DIST += string.in.h
 
 ## end   gnulib module string
 
@@ -318,7 +318,7 @@ BUILT_SOURCES += unistd.h
 
 # We need the following in order to create an empty placeholder for
 # <unistd.h> when the system doesn't have one.
-unistd.h: unistd_.h
+unistd.h: unistd.in.h
 	rm -f $@-t $@
 	{ echo '/* DO NOT EDIT! GENERATED AUTOMATICALLY! */'; \
 	  sed -e 's|@''HAVE_UNISTD_H''@|$(HAVE_UNISTD_H)|g' \
@@ -344,12 +344,12 @@ unistd.h: unistd_.h
 	      -e 's|@''REPLACE_GETCWD''@|$(REPLACE_GETCWD)|g' \
 	      -e 's|@''REPLACE_LCHOWN''@|$(REPLACE_LCHOWN)|g' \
 	      -e 's|@''REPLACE_LSEEK''@|$(REPLACE_LSEEK)|g' \
-	      < $(srcdir)/unistd_.h; \
+	      < $(srcdir)/unistd.in.h; \
 	} > $@-t
 	mv $@-t $@
 MOSTLYCLEANFILES += unistd.h unistd.h-t
 
-EXTRA_DIST += unistd_.h
+EXTRA_DIST += unistd.in.h
 
 ## end   gnulib module unistd
 
@@ -359,7 +359,7 @@ BUILT_SOURCES += $(WCHAR_H)
 
 # We need the following in order to create <wchar.h> when the system
 # version does not work standalone.
-wchar.h: wchar_.h
+wchar.h: wchar.in.h
 	rm -f $@-t $@
 	{ echo '/* DO NOT EDIT! GENERATED AUTOMATICALLY! */'; \
 	  sed -e 's/@''INCLUDE_NEXT''@/$(INCLUDE_NEXT)/g' \
@@ -369,12 +369,12 @@ wchar.h: wchar_.h
 	      -e 's|@''HAVE_DECL_WCWIDTH''@|$(HAVE_DECL_WCWIDTH)|g' \
 	      -e 's|@''REPLACE_WCWIDTH''@|$(REPLACE_WCWIDTH)|g' \
 	      -e '/definition of GL_LINK_WARNING/r $(LINK_WARNING_H)' \
-	    < $(srcdir)/wchar_.h; \
+	    < $(srcdir)/wchar.in.h; \
 	} > $@-t
 	mv $@-t $@
 MOSTLYCLEANFILES += wchar.h wchar.h-t
 
-EXTRA_DIST += wchar_.h
+EXTRA_DIST += wchar.in.h
 
 ## end   gnulib module wchar
 

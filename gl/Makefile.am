@@ -71,14 +71,14 @@ BUILT_SOURCES += $(GETOPT_H)
 
 # We need the following in order to create <getopt.h> when the system
 # doesn't have one that works with the given compiler.
-getopt.h: getopt_.h
+getopt.h: getopt.in.h
 	{ echo '/* DO NOT EDIT! GENERATED AUTOMATICALLY! */'; \
-	  cat $(srcdir)/getopt_.h; \
+	  cat $(srcdir)/getopt.in.h; \
 	} > $@-t
 	mv -f $@-t $@
 MOSTLYCLEANFILES += getopt.h getopt.h-t
 
-EXTRA_DIST += getopt.c getopt1.c getopt_.h getopt_int.h
+EXTRA_DIST += getopt.c getopt.in.h getopt1.c getopt_int.h
 
 EXTRA_libgnu_la_SOURCES += getopt.c getopt1.c
 
@@ -126,7 +126,7 @@ BUILT_SOURCES += string.h
 
 # We need the following in order to create <string.h> when the system
 # doesn't have one that works with the given compiler.
-string.h: string_.h
+string.h: string.in.h
 	rm -f $@-t $@
 	{ echo '/* DO NOT EDIT! GENERATED AUTOMATICALLY! */' && \
 	  sed -e 's/@''INCLUDE_NEXT''@/$(INCLUDE_NEXT)/g' \
@@ -178,12 +178,12 @@ string.h: string_.h
 	      -e 's|@''HAVE_DECL_STRERROR''@|$(HAVE_DECL_STRERROR)|g' \
 	      -e 's|@''REPLACE_STRERROR''@|$(REPLACE_STRERROR)|g' \
 	      -e '/definition of GL_LINK_WARNING/r $(LINK_WARNING_H)' \
-	      < $(srcdir)/string_.h; \
+	      < $(srcdir)/string.in.h; \
 	} > $@-t
 	mv $@-t $@
 MOSTLYCLEANFILES += string.h string.h-t
 
-EXTRA_DIST += string_.h
+EXTRA_DIST += string.in.h
 
 ## end   gnulib module string
 
@@ -193,7 +193,7 @@ BUILT_SOURCES += unistd.h
 
 # We need the following in order to create an empty placeholder for
 # <unistd.h> when the system doesn't have one.
-unistd.h: unistd_.h
+unistd.h: unistd.in.h
 	rm -f $@-t $@
 	{ echo '/* DO NOT EDIT! GENERATED AUTOMATICALLY! */'; \
 	  sed -e 's|@''HAVE_UNISTD_H''@|$(HAVE_UNISTD_H)|g' \
@@ -219,12 +219,12 @@ unistd.h: unistd_.h
 	      -e 's|@''REPLACE_GETCWD''@|$(REPLACE_GETCWD)|g' \
 	      -e 's|@''REPLACE_LCHOWN''@|$(REPLACE_LCHOWN)|g' \
 	      -e 's|@''REPLACE_LSEEK''@|$(REPLACE_LSEEK)|g' \
-	      < $(srcdir)/unistd_.h; \
+	      < $(srcdir)/unistd.in.h; \
 	} > $@-t
 	mv $@-t $@
 MOSTLYCLEANFILES += unistd.h unistd.h-t
 
-EXTRA_DIST += unistd_.h
+EXTRA_DIST += unistd.in.h
 
 ## end   gnulib module unistd
 

@@ -81,13 +81,17 @@ AC_DEFUN([gl_REPLACE_FUNCS], [
   AC_CHECK_FUNCS([$1], , [gl_LIBOBJ($ac_func)])
 ])
 
-# Like AC_LIBSOURCES, except check for typos now.
-# We rely on EXTRA_lib..._SOURCES instead.
+# Like AC_LIBSOURCES, except the directory where the source file is
+# expected is derived from the gnulib-tool parametrization,
+# and alloca is special cased (for the alloca-opt module).
+# We could also entirely rely on EXTRA_lib..._SOURCES.
 AC_DEFUN([gl_LIBSOURCES], [
   m4_foreach([_gl_NAME], [$1], [
-    m4_syscmd([test -r gl/]_gl_NAME[ || test ! -d gl])dnl
-    m4_if(m4_sysval, [0], [],
-      [AC_FATAL([missing gl/]_gl_NAME)])
+    m4_if(_gl_NAME, [alloca.c], [], [
+      m4_syscmd([test -r gl/]_gl_NAME[ || test ! -d gl])dnl
+      m4_if(m4_sysval, [0], [],
+        [AC_FATAL([missing gl/]_gl_NAME)])
+    ])
   ])
 ])
 
@@ -109,13 +113,13 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/error.c
   lib/error.h
   lib/getopt.c
+  lib/getopt.in.h
   lib/getopt1.c
-  lib/getopt_.h
   lib/getopt_int.h
   lib/gettext.h
   lib/strerror.c
-  lib/string_.h
-  lib/unistd_.h
+  lib/string.in.h
+  lib/unistd.in.h
   m4/csharp.m4
   m4/csharpcomp.m4
   m4/error.m4
