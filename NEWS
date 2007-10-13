@@ -10,6 +10,9 @@ files used by the core library are still under LGPLv2.1+.)
 
 ** Some hints on Windows installation in the manual.
 
+** Update translations.
+Added Czech translation, thanks to Petr Pisar.
+
 ** API and ABI is backwards compatible with the previous version.
 
 * Version 1.2 (released 2007-10-01)
