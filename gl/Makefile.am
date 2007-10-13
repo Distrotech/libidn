@@ -97,6 +97,13 @@ EXTRA_DIST += $(top_srcdir)/build-aux/gnupload
 
 ## end   gnulib module gnupload
 
+## begin gnulib module intprops
+
+
+EXTRA_DIST += intprops.h
+
+## end   gnulib module intprops
+
 ## begin gnulib module link-warning
 
 LINK_WARNING_H=$(top_srcdir)/build-aux/link-warning.h
