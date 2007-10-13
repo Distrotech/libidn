@@ -4,10 +4,11 @@ See the end for copying conditions.
 
 The punycode code was taken from the IETF IDN Punycode specification,
 by Adam M. Costello.  The TLD code was contributed by Thomas Jacob.
-The Java implementation was contributed by Oliver Hitz.  The Unicode
+The Java implementation was contributed by Oliver Hitz.  The C#
+implementation was contributed by Alexander Gnauck.  The Unicode
 tables were provided by Unicode, Inc.  Some functions for dealing with
-Unicode (see nfkc.c and toutf8.c) has been borrowed from GLib
-downloaded from www.gtk.org.
+Unicode (see nfkc.c and toutf8.c) are borrowed from GLib downloaded
+from www.gtk.org.
 
 Suggestions, bug reports, patches, translations, test vectors or other
 contributions were also received from or written by:
