@@ -153,7 +153,6 @@ AC_DEFUN([lgl_FILE_LIST], [
   m4/strdup.m4
   m4/string_h.m4
   m4/strverscmp.m4
-  m4/ulonglong.m4
   m4/unistd_h.m4
   m4/wchar.m4
 ])
