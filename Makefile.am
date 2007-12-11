@@ -54,7 +54,6 @@ release:
 	$(MAKE) ChangeLog distcheck
 	git commit -m Generated. ChangeLog
 	git-tag -u b565716f! -m $(VERSION) $(tag)
-	build-aux/gnupload --to ftp.gnu.org:libidn --to alpha.gnu.org:libidn $(distdir).tar.gz
 	cd doc && env MAKEINFO="makeinfo -I ../examples" \
 		      TEXI2DVI="texi2dvi -I ../examples" \
 		../build-aux/gendocs.sh --html "--css-include=texinfo.css" \
@@ -63,6 +62,9 @@ release:
 	cp -v doc/reference/html/*.{html,png,devhelp,css} $(htmldir)/reference/
 	cd contrib/doxygen && doxygen && cd ../.. && cp -v contrib/doxygen/html/* $(htmldir)/doxygen/ && cd contrib/doxygen/latex && make refman.pdf && cd ../../../ && cp contrib/doxygen/latex/refman.pdf $(htmldir)/doxygen/$(PACKAGE).pdf
 	cp -v doc/java/*.html $(htmldir)/javadoc/
+	git-push
+	git-push --tags
+	build-aux/gnupload --to ftp.gnu.org:libidn --to alpha.gnu.org:libidn $(distdir).tar.gz
 	cd $(htmldir) && cvs add -kb releases/$(distdir).tar.gz{,.sig} && \
 		cvs commit -m "Update." manual/ javadoc/ reference/ \
 					doxygen/ releases/
