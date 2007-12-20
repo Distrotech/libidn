@@ -33,11 +33,11 @@ AC_DEFUN([lgl_EARLY],
 # "Check for header files, types and library functions".
 AC_DEFUN([lgl_INIT],
 [
+  AM_CONDITIONAL([GL_COND_LIBTOOL], [true])
+  gl_cond_libtool=true
   m4_pushdef([AC_LIBOBJ], m4_defn([lgl_LIBOBJ]))
   m4_pushdef([AC_REPLACE_FUNCS], m4_defn([lgl_REPLACE_FUNCS]))
   m4_pushdef([AC_LIBSOURCES], m4_defn([lgl_LIBSOURCES]))
-  AM_CONDITIONAL([GL_COND_LIBTOOL], [true])
-  gl_cond_libtool=true
   gl_source_base='lib/gl'
   AC_SUBST([LIBINTL])
   AC_SUBST([LTLIBINTL])
@@ -76,6 +76,29 @@ AC_DEFUN([lgl_INIT],
     AC_SUBST([lgl_LIBOBJS], [$lgl_libobjs])
     AC_SUBST([lgl_LTLIBOBJS], [$lgl_ltlibobjs])
   ])
+  gltests_libdeps=
+  gltests_ltlibdeps=
+  m4_pushdef([AC_LIBOBJ], m4_defn([lgltests_LIBOBJ]))
+  m4_pushdef([AC_REPLACE_FUNCS], m4_defn([lgltests_REPLACE_FUNCS]))
+  m4_pushdef([AC_LIBSOURCES], m4_defn([lgltests_LIBSOURCES]))
+  gl_source_base='tests'
+  m4_popdef([AC_LIBSOURCES])
+  m4_popdef([AC_REPLACE_FUNCS])
+  m4_popdef([AC_LIBOBJ])
+  AC_CONFIG_COMMANDS_PRE([
+    lgltests_libobjs=
+    lgltests_ltlibobjs=
+    if test -n "$lgltests_LIBOBJS"; then
+      # Remove the extension.
+      sed_drop_objext='s/\.o$//;s/\.obj$//'
+      for i in `for i in $lgltests_LIBOBJS; do echo "$i"; done | sed "$sed_drop_objext" | sort | uniq`; do
+        lgltests_libobjs="$lgltests_libobjs $i.$ac_objext"
+        lgltests_ltlibobjs="$lgltests_ltlibobjs $i.lo"
+      done
+    fi
+    AC_SUBST([lgltests_LIBOBJS], [$lgltests_libobjs])
+    AC_SUBST([lgltests_LTLIBOBJS], [$lgltests_ltlibobjs])
+  ])
 ])
 
 # Like AC_LIBOBJ, except that the module name goes
@@ -84,6 +107,13 @@ AC_DEFUN([lgl_LIBOBJ], [
   AS_LITERAL_IF([$1], [lgl_LIBSOURCES([$1.c])])dnl
   lgl_LIBOBJS="$lgl_LIBOBJS $1.$ac_objext"
 ])
+
+# m4_foreach_w is provided by autoconf-2.59c and later.
+# This definition is to accommodate developers using versions
+# of autoconf older than that.
+m4_ifndef([m4_foreach_w],
+  [m4_define([m4_foreach_w],
+    [m4_foreach([$1], m4_split(m4_normalize([$2]), [ ]), [$3])])])
 
 # Like AC_REPLACE_FUNCS, except that the module name goes
 # into lgl_LIBOBJS instead of into LIBOBJS.
@@ -102,6 +132,41 @@ AC_DEFUN([lgl_LIBSOURCES], [
       m4_syscmd([test -r lib/gl/]_gl_NAME[ || test ! -d lib/gl])dnl
       m4_if(m4_sysval, [0], [],
         [AC_FATAL([missing lib/gl/]_gl_NAME)])
+    ])
+  ])
+])
+
+# Like AC_LIBOBJ, except that the module name goes
+# into lgltests_LIBOBJS instead of into LIBOBJS.
+AC_DEFUN([lgltests_LIBOBJ], [
+  AS_LITERAL_IF([$1], [lgltests_LIBSOURCES([$1.c])])dnl
+  lgltests_LIBOBJS="$lgltests_LIBOBJS $1.$ac_objext"
+])
+
+# m4_foreach_w is provided by autoconf-2.59c and later.
+# This definition is to accommodate developers using versions
+# of autoconf older than that.
+m4_ifndef([m4_foreach_w],
+  [m4_define([m4_foreach_w],
+    [m4_foreach([$1], m4_split(m4_normalize([$2]), [ ]), [$3])])])
+
+# Like AC_REPLACE_FUNCS, except that the module name goes
+# into lgltests_LIBOBJS instead of into LIBOBJS.
+AC_DEFUN([lgltests_REPLACE_FUNCS], [
+  m4_foreach_w([gl_NAME], [$1], [AC_LIBSOURCES(gl_NAME[.c])])dnl
+  AC_CHECK_FUNCS([$1], , [lgltests_LIBOBJ($ac_func)])
+])
+
+# Like AC_LIBSOURCES, except the directory where the source file is
+# expected is derived from the gnulib-tool parametrization,
+# and alloca is special cased (for the alloca-opt module).
+# We could also entirely rely on EXTRA_lib..._SOURCES.
+AC_DEFUN([lgltests_LIBSOURCES], [
+  m4_foreach([_gl_NAME], [$1], [
+    m4_if(_gl_NAME, [alloca.c], [], [
+      m4_syscmd([test -r tests/]_gl_NAME[ || test ! -d tests])dnl
+      m4_if(m4_sysval, [0], [],
+        [AC_FATAL([missing tests/]_gl_NAME)])
     ])
   ])
 ])
