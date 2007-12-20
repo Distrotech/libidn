@@ -55,7 +55,7 @@ Libidn.dll: $(SOURCES)
 
 SPEC = $(top_srcdir)/doc/specifications
 
-GenerateTables: $(SOURCES_GENERATE)
+GenerateTables.exe: $(SOURCES_GENERATE)
 	$(CSHARPCOMP) $(CSHARPCOMPFLAGS) -o $@ \
 		`for src in $(SOURCES_GENERATE); do echo $(srcdir)/$$src; done`
 	if ! test -f rfc3454.txt; then \
@@ -72,8 +72,8 @@ GenerateTables: $(SOURCES_GENERATE)
 	fi
 
 RFC3454.cs CombiningClass.cs DecompositionKeys.cs DecompositionMappings.cs Composition.cs: $(GEN_SOURCES)
-	make GenerateTables
-	./GenerateTables
+	make GenerateTables.exe
+	./GenerateTables.exe
 
 install-dll-dir:
 	$(mkinstalldirs) $(DESTDIR)$(libdir)
