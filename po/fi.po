@@ -1,0 +1,188 @@
+# translation of libidn-1.3.pot to Finnish
+# Copyright © 2008 Free Software Foundation, Inc.
+# Copyright © 2007 Simon Josefsson
+# This file is distributed under the same license as the libidn package.
+#
+# Jorma Karvonen <karvjorm@users.sf.net>, 2008.
+msgid ""
+msgstr ""
+"Project-Id-Version: libidn 1.3\n"
+"Report-Msgid-Bugs-To: bug-libidn@gnu.org\n"
+"POT-Creation-Date: 2007-12-11 15:54+0100\n"
+"PO-Revision-Date: 2008-01-02 07:50+0200\n"
+"Last-Translator: Jorma Karvonen <karvjorm@users.sf.net>\n"
+"Language-Team: Finnish <translation-team-fi@lists.sourceforge.net>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.4\n"
+
+msgid "Success"
+msgstr "Onnistui"
+
+msgid "String preparation failed"
+msgstr "Merkkijonon valmistelu ei onnistunut"
+
+#  Wikipedia: Punycode is a computer programming encoding syntax by which a Unicode string of characters can be translated into the more-limited character set permitted in network host names.
+msgid "Punycode failed"
+msgstr "Punycode-koodaus ei onnistunut"
+
+msgid "Non-digit/letter/hyphen in input"
+msgstr "Ei-numero/kirjain/välimerkki syötteessä"
+
+msgid "Forbidden leading or trailing minus sign (`-')"
+msgstr "Kielletty edeltävä tai jäljessä oleva miinusmerkki (”-”)"
+
+msgid "Output would be too large or too small"
+msgstr "Tuloste olisi liian suuri tai liian pieni"
+
+msgid "Input does not start with ACE prefix (`xn--')"
+msgstr "Syöte ei ala ACE-prefiksillä (”xn--”)"
+
+#  Yksinkertaisesti selitettynä idempotentti on matemaattinen termi, joka tarkoittaa, että jonkun toiminnon tulos on aina sama kun toiminto toistetaan kahdesti (tai useammin).
+msgid "String not idempotent under ToASCII"
+msgstr "Merkkijono ei ole idempotentti ToASCII-toiminnon aikana"
+
+msgid "Input already contain ACE prefix (`xn--')"
+msgstr "Syöte jo sisältää ACE-prefiksin (”xn--”)"
+
+msgid "System iconv failed"
+msgstr "Järjestelmän iconv-käsky ei onnistunut"
+
+msgid "Cannot allocate memory"
+msgstr "Ei voida varata muistia"
+
+msgid "System dlopen failed"
+msgstr "Järjestelmän dlopen-käsky ei onnistunut"
+
+msgid "Unknown error"
+msgstr "Tuntematon virhe"
+
+msgid "String not idempotent under Unicode NFKC normalization"
+msgstr "Merkkijono ei ole idempotentti Unicode NFKC-normeerauksen aikana"
+
+msgid "Invalid input"
+msgstr "Virheellinen syöte"
+
+msgid "Output would exceed the buffer space provided"
+msgstr "Tuloste ylittäisi varatun puskurin tilan"
+
+msgid "String size limit exceeded"
+msgstr "Merkkijonon koko ylitettiin"
+
+#  Code point is any value in the Unicode codespace; that is, the range of integers from 0 to hexadecimal 10FFFF.
+msgid "Forbidden unassigned code points in input"
+msgstr "Kiellettyjä määräämättömiä code points-skalaariarvoja syötteessä"
+
+msgid "Prohibited code points in input"
+msgstr "Kiellettyjä code points-skalaariarvoja syötteessä"
+
+msgid "Conflicting bidirectional properties in input"
+msgstr "Ristiriitaisia kaksisuuntaisia ominaisuuksia syötteessä"
+
+msgid "Malformed bidirectional string"
+msgstr "Väärän muotoinen kaksisuuntainen merkkijono"
+
+msgid "Prohibited bidirectional code points in input"
+msgstr "Kiellettyjä kaksisuuntaisia code points-skalaariarvoja syötteessä"
+
+msgid "Error in stringprep profile definition"
+msgstr "Virhe strngprep-profiilimäärittelyssä"
+
+msgid "Flag conflict with profile"
+msgstr "Lippu ristiriidassa profiilin kanssa"
+
+msgid "Unknown profile"
+msgstr "Tuntematon profiili"
+
+msgid "Unicode normalization failed (internal error)"
+msgstr "Unicode-normeeraus ei onnistunut (sisäinen virhe)"
+
+msgid "Code points prohibited by top-level domain"
+msgstr "Code points-skalaariarvot kiellettyjä ylätason domainissa"
+
+msgid "Missing input"
+msgstr "Syöte puuttuu"
+
+msgid "No top-level domain found in input"
+msgstr "Syötteestä ei löytynyt ylätason domainia"
+
+#, c-format
+msgid "Only one of -s, -e, -d, -a or -u can be specified."
+msgstr "Vain yksi valitsimista -s, -e, -d, -a or -u voidaan määritellä"
+
+#, c-format
+msgid "Charset `%s'.\n"
+msgstr "Merkistö ”%s”\n"
+
+#, c-format
+msgid "Type each input string on a line by itself, terminated by a newline character.\n"
+msgstr "Kirjoita jokainen merkkijono omalle rivilleen ja lopeta rivi rivinvaihdolla.\n"
+
+#, c-format
+msgid "Input error"
+msgstr "Syötevirhe"
+
+#, c-format
+msgid "Could not convert from %s to UTF-8."
+msgstr "Ei voitu muuntaa %s-merkistöstä UTF-8-merkistöön"
+
+#, c-format
+msgid "Could not convert from UTF-8 to UCS-4."
+msgstr "Ei voitu muuntaa UTF-8-merkistöstä UCS-4-merkistöön"
+
+#, c-format
+msgid "input[%lu] = U+%04x\n"
+msgstr "syöte[%lu] = U+%04x\n"
+
+#, c-format
+msgid "stringprep_profile: %s"
+msgstr "stringprep_profile: %s"
+
+#, c-format
+msgid "output[%lu] = U+%04x\n"
+msgstr "tuloste[%lu] = U+%04x\n"
+
+#, c-format
+msgid "Could not convert from UTF-8 to %s."
+msgstr "Ei voitu muuntaa UTF-8-merkistöstä %s-merkistöön."
+
+#, c-format
+msgid "punycode_encode: %s"
+msgstr "punycode_encode: %s"
+
+#, c-format
+msgid "malloc"
+msgstr "malloc-käsky"
+
+#, c-format
+msgid "punycode_decode: %s"
+msgstr "punycode_decode: %s"
+
+#, c-format
+msgid "Could not convert from UCS-4 to UTF-8."
+msgstr "Ei voitu muuntaa UCS-4-merkistöstä UTF-8-merkistöön."
+
+#, c-format
+msgid "idna_to_ascii_4z: %s"
+msgstr "idna_to_ascii_4z: %s"
+
+#, c-format
+msgid "idna_to_unicode_8z4z (TLD): %s"
+msgstr "idna_to_unicode_8z4z (TLD): %s"
+
+#, c-format
+msgid "tld[%lu] = U+%04x\n"
+msgstr "tld[%lu] = U+%04x\n"
+
+#, c-format
+msgid "tld_check_4z (position %lu): %s"
+msgstr "tld_check_4z (sijainti %lu): %s"
+
+#, c-format
+msgid "tld_check_4z: %s"
+msgstr "tld_check_4z: %s"
+
+#, c-format
+msgid "idna_to_unicode_8z4z: %s"
+msgstr "idna_to_unicode_8z4z: %s"
