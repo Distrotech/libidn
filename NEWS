@@ -1,10 +1,14 @@
 Libidn NEWS -- History of user-visible changes.                 -*- outline -*-
-Copyright (C) 2002, 2003, 2004, 2005, 2006, 2007 Simon Josefsson
+Copyright (C) 2002, 2003, 2004, 2005, 2006, 2007, 2008 Simon Josefsson
 See the end for copying conditions.
 
 * Version 1.4 (unreleased)
 
 ** Fixes to make the C# port compile under Mono.
+
+** Update translations.
+Added Finish translation, thanks to Jorma Karvonen.  Updated Dutch and
+Vietnamese.
 
 ** API and ABI is backwards compatible with the previous version.
 
