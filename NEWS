@@ -6,6 +6,8 @@ See the end for copying conditions.
 
 ** Fixes to make the C# port compile under Mono.
 
+** Update gnulib files.
+
 ** Update translations.
 Added Finish translation, thanks to Jorma Karvonen.  Updated Dutch and
 Vietnamese.
