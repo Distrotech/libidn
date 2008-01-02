@@ -1,6 +1,6 @@
 dnl Process this file with autoconf to produce a configure script.
 
-dnl Copyright (C) 2002, 2003, 2004, 2005, 2006, 2007 Simon Josefsson.
+dnl Copyright (C) 2002, 2003, 2004, 2005, 2006, 2007, 2008 Simon Josefsson.
 dnl
 dnl This file is part of GNU Libidn.
 dnl
@@ -18,7 +18,7 @@ dnl You should have received a copy of the GNU General Public License
 dnl along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 AC_PREREQ(2.61)
-AC_INIT([libidn], [1.4], [bug-libidn@gnu.org])
+AC_INIT([GNU Libidn], [1.4], [bug-libidn@gnu.org])
 
 # Library code modified:                              REVISION++
 # Interfaces changed/added/removed:   CURRENT++       REVISION=0
