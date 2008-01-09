@@ -103,7 +103,7 @@ Mandatory arguments to long options are mandatory for short options too.\n\
   -s, --stringprep         Prepare string according to nameprep profile\n\
   -d, --punycode-decode    Decode Punycode\n\
   -e, --punycode-encode    Encode Punycode\n\
-  -a, --idna-to-ascii      Convert to ACE according to IDNA (default)\n\
+  -a, --idna-to-ascii      Convert to ACE according to IDNA (default mode)\n\
   -u, --idna-to-unicode    Convert from ACE according to IDNA\n\
 "), stdout);
       fputs (_("\
@@ -115,7 +115,7 @@ Mandatory arguments to long options are mandatory for short options too.\n\
                              Only for --idna-to-ascii and --idna-to-unicode\n\
 "), stdout);
       fputs (_("\
-  -p, --profile=STRING     Use specified stringprep profile instead\n	\
+  -p, --profile=STRING     Use specified stringprep profile instead\n\
                              Valid stringprep profiles: `Nameprep',\n\
                              `iSCSI', `Nodeprep', `Resourceprep', \n\
                              `trace', `SASLprep'\n\
