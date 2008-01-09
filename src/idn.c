@@ -1,5 +1,5 @@
 /* idn.c --- Command line interface to libidn.
- * Copyright (C) 2003, 2004, 2005, 2006, 2007  Simon Josefsson
+ * Copyright (C) 2003, 2004, 2005, 2006, 2007, 2008  Simon Josefsson
  *
  * This file is part of GNU Libidn.
  *
@@ -32,6 +32,13 @@
 #include "error.h"
 #include "gettext.h"
 #define _(String) dgettext (PACKAGE, String)
+
+#include "version-etc.h"
+const char version_etc_copyright[] =
+  /* Do *not* mark this string for translation.  %s is a copyright
+     symbol suitable for this locale, and %d is the copyright
+     year.  */
+  "Copyright %s %d Simon Josefsson.";
 
 /* Libidn headers. */
 #include <stringprep.h>
@@ -70,6 +77,13 @@ main (int argc, char *argv[])
 
   if (cmdline_parser (argc, argv, &args_info) != 0)
     return EXIT_FAILURE;
+
+  if (args_info.version_given)
+    {
+      version_etc (stdout, "idn", PACKAGE_NAME, VERSION,
+		   "Simon Josefsson", (char*) NULL);
+      return EXIT_SUCCESS;
+    }
 
   if (!args_info.stringprep_given &&
       !args_info.punycode_encode_given && !args_info.punycode_decode_given &&
