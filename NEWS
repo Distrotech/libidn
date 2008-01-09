@@ -8,6 +8,8 @@ See the end for copying conditions.
 
 ** Update gnulib files.
 
+** Improve `idn --version' output to confirm with GNU standards.
+
 ** Update translations.
 Added Finish translation, thanks to Jorma Karvonen.  Updated Dutch and
 Vietnamese.
