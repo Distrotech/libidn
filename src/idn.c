@@ -32,13 +32,8 @@
 #include "error.h"
 #include "gettext.h"
 #define _(String) dgettext (PACKAGE, String)
-
+#include "progname.h"
 #include "version-etc.h"
-const char version_etc_copyright[] =
-  /* Do *not* mark this string for translation.  %s is a copyright
-     symbol suitable for this locale, and %d is the copyright
-     year.  */
-  "Copyright %s %d Simon Josefsson.";
 
 /* Libidn headers. */
 #include <stringprep.h>
@@ -57,8 +52,82 @@ const char version_etc_copyright[] =
   "the GNU Lesser General Public License.  For more information\n"	\
   "about these matters, see the file named COPYING.LIB.\n"
 
-/* For error.c */
-char *program_name;
+const char version_etc_copyright[] =
+  /* Do *not* mark this string for translation.  %s is a copyright
+     symbol suitable for this locale, and %d is the copyright
+     year.  */
+  "Copyright %s %d Simon Josefsson.";
+
+static void
+emit_bug_reporting_address (void)
+{
+  /* TRANSLATORS: The placeholder indicates the bug-reporting address
+     for this package.  Please add _another line_ saying
+     "Report translation bugs to <...>\n" with the address for translation
+     bugs (typically your translation team's web or email address).  */
+  printf (_("\nReport bugs to <%s>.\n"), PACKAGE_BUGREPORT);
+}
+
+static void
+usage (int status)
+{
+  if (status != EXIT_SUCCESS)
+    fprintf (stderr, _("Try `%s --help' for more information.\n"),
+	     program_name);
+  else
+    {
+      printf (_("\
+Usage: %s [OPTION]... [STRINGS]...\n\
+"), program_name);
+      fputs (_("\
+Internationalized Domain Name (IDN) convert STRINGS, or standard input.\n\
+\n\
+"), stdout);
+      fputs (_("\
+Command line interface to the internationalized domain name library.\n\
+\n\
+All strings are expected to be encoded in the preferred charset used\n\
+by your locale.  Use `--debug' to find out what this charset is.  You\n\
+can override the charset used by setting environment variable CHARSET.\n\
+\n\
+To process a string that starts with `-', for example `-foo', use `--'\n\
+to signal the end of parameters, as in `idn --quiet -a -- -foo'.\n\
+\n\
+Mandatory arguments to long options are mandatory for short options too.\n\
+"), stdout);
+      fputs (_("\
+  -h, --help               Print help and exit\n\
+  -V, --version            Print version and exit\n\
+"), stdout);
+      fputs (_("\
+  -s, --stringprep         Prepare string according to nameprep profile\n\
+  -d, --punycode-decode    Decode Punycode\n\
+  -e, --punycode-encode    Encode Punycode\n\
+  -a, --idna-to-ascii      Convert to ACE according to IDNA (default)\n\
+  -u, --idna-to-unicode    Convert from ACE according to IDNA\n\
+"), stdout);
+      fputs (_("\
+      --allow-unassigned   Toggle IDNA AllowUnassigned flag\n\
+      --usestd3asciirules  Toggle IDNA UseSTD3ASCIIRules flag\n\
+"), stdout);
+      fputs (_("\
+  -t, --tld                Check string for TLD specific rules\n\
+                             Only for --idna-to-ascii and --idna-to-unicode\n\
+"), stdout);
+      fputs (_("\
+  -p, --profile=STRING     Use specified stringprep profile instead\n	\
+                             Valid stringprep profiles: `Nameprep',\n\
+                             `iSCSI', `Nodeprep', `Resourceprep', \n\
+                             `trace', `SASLprep'\n\
+"), stdout);
+      fputs (_("\
+      --debug              Print debugging information\n\
+      --quiet              Silent operation\n\
+"), stdout);
+      emit_bug_reporting_address ();
+    }
+  exit (status);
+}
 
 int
 main (int argc, char *argv[])
@@ -71,7 +140,7 @@ main (int argc, char *argv[])
   int rc;
 
   setlocale (LC_ALL, "");
-  program_name = argv[0];
+  set_program_name (argv[0]);
   bindtextdomain (PACKAGE, LOCALEDIR);
   textdomain (PACKAGE);
 
@@ -81,9 +150,12 @@ main (int argc, char *argv[])
   if (args_info.version_given)
     {
       version_etc (stdout, "idn", PACKAGE_NAME, VERSION,
-		   "Simon Josefsson", (char*) NULL);
+		   "Simon Josefsson", (char *) NULL);
       return EXIT_SUCCESS;
     }
+
+  if (args_info.help_given)
+    usage (EXIT_SUCCESS);
 
   if (!args_info.stringprep_given &&
       !args_info.punycode_encode_given && !args_info.punycode_decode_given &&
@@ -97,8 +169,7 @@ main (int argc, char *argv[])
       (args_info.idna_to_unicode_given ? 1 : 0) != 1)
     {
       error (0, 0, _("Only one of -s, -e, -d, -a or -u can be specified."));
-      cmdline_parser_print_help ();
-      return EXIT_FAILURE;
+      usage (EXIT_FAILURE);
     }
 
   if (!args_info.quiet_given)
@@ -402,7 +473,8 @@ main (int argc, char *argv[])
 	      if (rc == TLD_INVALID)
 		{
 		  free (q);
-		  error (EXIT_FAILURE, 0, _("tld_check_4z (position %lu): %s"),
+		  error (EXIT_FAILURE, 0,
+			 _("tld_check_4z (position %lu): %s"),
 			 (unsigned long) errpos, tld_strerror (rc));
 		}
 	      if (rc != TLD_SUCCESS)
