@@ -191,6 +191,8 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/getopt_int.h
   lib/gettext.h
   lib/intprops.h
+  lib/progname.c
+  lib/progname.h
   lib/strerror.c
   lib/string.in.h
   lib/unistd.in.h
