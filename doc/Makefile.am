@@ -1,5 +1,5 @@
 ## Process this file with automake to produce Makefile.in
-# Copyright (C) 2002, 2003, 2004, 2005, 2006, 2007 Simon Josefsson.
+# Copyright (C) 2002, 2003, 2004, 2005, 2006, 2007, 2008 Simon Josefsson.
 #
 # This file is part of GNU Libidn.
 #
@@ -70,6 +70,6 @@ GDOC_TEXI_PREFIX = texi/
 GDOC_MAN_PREFIX = man/
 GDOC_MAN_EXTRA_ARGS = -module $(PACKAGE) -sourceversion $(VERSION) \
 	-bugsto $(PACKAGE_BUGREPORT) -includefuncprefix -seeinfo $(PACKAGE) \
-	-copyright "2002, 2003, 2004, 2005, 2006, 2007 Simon Josefsson" \
+	-copyright "2002, 2003, 2004, 2005, 2006, 2007, 2008 Simon Josefsson" \
 	-verbatimcopying
 include $(srcdir)/Makefile.gdoci
