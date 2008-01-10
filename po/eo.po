@@ -2,14 +2,14 @@
 # Esperantaj mesaĝoj por libidn.
 # Copyright (C) 2004 Free Software Foundation, Inc.
 # This file is distributed under the same license as the libidn package.
-# Edmund GRIMLEY EVANS <edmundo@rano.org>, 2004-2005, 2007.
+# Edmund GRIMLEY EVANS <edmundo@rano.org>, 2004-2005, 2007-2008.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: libidn 0.6.12\n"
+"Project-Id-Version: libidn 1.4\n"
 "Report-Msgid-Bugs-To: bug-libidn@gnu.org\n"
-"POT-Creation-Date: 2007-04-25 11:37+0200\n"
-"PO-Revision-Date: 2007-07-09 22:23+0100\n"
+"POT-Creation-Date: 2008-01-09 15:27+0100\n"
+"PO-Revision-Date: 2008-01-10 17:44+0000\n"
 "Last-Translator: Edmund GRIMLEY EVANS <edmundo@rano.org>\n"
 "Language-Team: Esperanto <translation-team-eo@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -103,6 +103,110 @@ msgstr "Mankanta enigo"
 msgid "No top-level domain found in input"
 msgstr "Nenia supera retregiono trovita en enigo"
 
+#. TRANSLATORS: The placeholder indicates the bug-reporting address
+#. for this package.  Please add _another line_ saying
+#. "Report translation bugs to <...>\n" with the address for translation
+#. bugs (typically your translation team's web or email address).
+#, c-format
+msgid ""
+"\n"
+"Report bugs to <%s>.\n"
+msgstr ""
+"\n"
+"Raportu cimojn al <%s>.\n"
+"Raportu erarojn en la traduko al <translation-team-eo@lists.sourceforge.net>.\n"
+
+#, c-format
+msgid "Try `%s --help' for more information.\n"
+msgstr "Provu '%s --help' por pliaj informoj.\n"
+
+#, c-format
+msgid "Usage: %s [OPTION]... [STRINGS]...\n"
+msgstr "Uzado: %s [OPCIO]... [ĈENOJ]...\n"
+
+msgid ""
+"Internationalized Domain Name (IDN) convert STRINGS, or standard input.\n"
+"\n"
+msgstr ""
+"Internaciigitaj retnomoj (IDN) konverti ĈENOJn, aŭ la normalan enigon.\n"
+"\n"
+
+msgid ""
+"Command line interface to the internationalized domain name library.\n"
+"\n"
+"All strings are expected to be encoded in the preferred charset used\n"
+"by your locale.  Use `--debug' to find out what this charset is.  You\n"
+"can override the charset used by setting environment variable CHARSET.\n"
+"\n"
+"To process a string that starts with `-', for example `-foo', use `--'\n"
+"to signal the end of parameters, as in `idn --quiet -a -- -foo'.\n"
+"\n"
+"Mandatory arguments to long options are mandatory for short options too.\n"
+msgstr ""
+"Komandlinia interfaco al la biblioteko por internaciigitaj retnomoj.\n"
+"\n"
+"Ĉiuj ĉenoj estu koditaj per la preferata signaro de via\n"
+"lokaĵaro. Uzu '--debug' por eltrovi, kiu ĝi estas. Vi\n"
+"povas specifi alian signaron per la media variablo CHARSET.\n"
+"\n"
+"Por trakti ĉenon, kiu komenciĝas per '-', ekzemple '-foo', uzu '--'\n"
+"por indiki la finon de la parametroj, kiel en 'idn --quiet -a -- -foo'.\n"
+"Devigaj argumentoj por longaj opcioj estas devigaj ankaŭ por mallongaj\n"
+"opcioj.\n"
+
+msgid ""
+"  -h, --help               Print help and exit\n"
+"  -V, --version            Print version and exit\n"
+msgstr ""
+"  -h, --help               Montri helpon kaj eliri\n"
+"  -V, --version            Montri version kaj eliri\n"
+
+msgid ""
+"  -s, --stringprep         Prepare string according to nameprep profile\n"
+"  -d, --punycode-decode    Decode Punycode\n"
+"  -e, --punycode-encode    Encode Punycode\n"
+"  -a, --idna-to-ascii      Convert to ACE according to IDNA (default mode)\n"
+"  -u, --idna-to-unicode    Convert from ACE according to IDNA\n"
+msgstr ""
+"  -s, --stringprep         Pretigi ĉenon laŭ la profilo nameprop\n"
+"  -d, --punycode-decode    Malkodi Punycode\n"
+"  -e, --punycode-encode    Kodi Punycode\n"
+"  -a, --idna-to-ascii      Konverti al ACE laŭ IDNA (implicita reĝimo)\n"
+"  -u, --idna-to-unicode    Konverti de ACE laŭ IDNA\n"
+
+msgid ""
+"      --allow-unassigned   Toggle IDNA AllowUnassigned flag\n"
+"      --usestd3asciirules  Toggle IDNA UseSTD3ASCIIRules flag\n"
+msgstr ""
+"      --allow-unassigned   Ŝanĝi la flagon IDNA AllowUnassigned\n"
+"      --usestd3asciirules  Ŝanĝi la flagon IDNA UseSTD3ASCIIRules\n"
+
+msgid ""
+"  -t, --tld                Check string for TLD specific rules\n"
+"                             Only for --idna-to-ascii and --idna-to-unicode\n"
+msgstr ""
+"  -t, --tld                Kontroli ĉeno pri TLD-specifaj reguloj\n"
+"                             Nur por --idna-to-ascii kaj --idna-to-unicode\n"
+
+msgid ""
+"  -p, --profile=STRING     Use specified stringprep profile instead\n"
+"                             Valid stringprep profiles: `Nameprep',\n"
+"                             `iSCSI', `Nodeprep', `Resourceprep', \n"
+"                             `trace', `SASLprep'\n"
+msgstr ""
+"  -p, --profile=ĈENO       Uzi specifitan stringprep-profilon anstataŭe\n"
+"                             Validaj stringprep-profiloj: 'Nameprep',\n"
+"                             'iSCSI', 'Nodeprep', 'Resourceprep',\n"
+"                             'trace', 'SASLprep'\n"
+
+msgid ""
+"      --debug              Print debugging information\n"
+"      --quiet              Silent operation\n"
+msgstr ""
+"      --debug              Montri informojn por erarspurado\n"
+"      --quiet              Silenta funkciado\n"
+
+#, c-format
 msgid "Only one of -s, -e, -d, -a or -u can be specified."
 msgstr "Nur unu el -s, -e -d, -a aŭ -u povas esti donita."
 
@@ -116,6 +220,7 @@ msgstr ""
 "Tajpu ĉiun enigan ĉenon en propra linio, kun linifina signo ĉe la\n"
 "fino.\n"
 
+#, c-format
 msgid "Input error"
 msgstr "Enig-eraro"
 
@@ -123,6 +228,7 @@ msgstr "Enig-eraro"
 msgid "Could not convert from %s to UTF-8."
 msgstr "Ne povis konverti de %s al UTF-8."
 
+#, c-format
 msgid "Could not convert from UTF-8 to UCS-4."
 msgstr "Ne povis konverti de UTF-8 al UCS-4."
 
@@ -146,6 +252,7 @@ msgstr "Ne povis konverti de UTF-8 al %s."
 msgid "punycode_encode: %s"
 msgstr "punycode_encode: %s"
 
+#, c-format
 msgid "malloc"
 msgstr "malloc"
 
@@ -153,6 +260,7 @@ msgstr "malloc"
 msgid "punycode_decode: %s"
 msgstr "punycode_decode: %s"
 
+#, c-format
 msgid "Could not convert from UCS-4 to UTF-8."
 msgstr "Ne povis konverti de UCS-4 al UTF-8."
 
