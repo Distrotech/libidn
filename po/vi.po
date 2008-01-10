@@ -1,13 +1,14 @@
 # Vietnamese Translation for LibIDN
-# Copyright © 2007 Free Software Foundation, Inc.
-# Clytie Siddall <clytie@riverland.net.au>, 2005-2007.
+# Copyright © 2008 Free Software Foundation, Inc.
+# This file is distributed under the same license as the libidn-1.4 package.
+# Clytie Siddall <clytie@riverland.net.au>, 2005-2008.
 # 
 msgid ""
 msgstr ""
-"Project-Id-Version: libidn 1.3\n"
+"Project-Id-Version: libidn 1.4\n"
 "Report-Msgid-Bugs-To: bug-libidn@gnu.org\n"
-"POT-Creation-Date: 2007-12-11 15:54+0100\n"
-"PO-Revision-Date: 2007-12-21 13:28+1030\n"
+"POT-Creation-Date: 2008-01-09 15:27+0100\n"
+"PO-Revision-Date: 2008-01-10 17:10+1030\n"
 "Last-Translator: Clytie Siddall <clytie@riverland.net.au>\n"
 "Language-Team: Vietnamese <vi-VN@googlegroups.com> \n"
 "MIME-Version: 1.0\n"
@@ -102,6 +103,106 @@ msgstr "Thiếu dữ liệu nhập"
 
 msgid "No top-level domain found in input"
 msgstr "Không tìm thấy miền cấp đầu trong dữ liệu nhập"
+
+#. TRANSLATORS: The placeholder indicates the bug-reporting address
+#. for this package.  Please add _another line_ saying
+#. "Report translation bugs to <...>\n" with the address for translation
+#. bugs (typically your translation team's web or email address).
+#, c-format
+msgid ""
+"\n"
+"Report bugs to <%s>.\n"
+msgstr ""
+"\n"
+"Thông báo lỗi cho <%s>.\n"
+
+#, c-format
+msgid "Try `%s --help' for more information.\n"
+msgstr "Thử lệnh « %s --help » để xem thêm thông tin.\n"
+
+#, c-format
+msgid "Usage: %s [OPTION]... [STRINGS]...\n"
+msgstr "Sử dụng: %s [TÙY_CHỌN]... [CHUỖI]...\n"
+
+msgid ""
+"Internationalized Domain Name (IDN) convert STRINGS, or standard input.\n"
+"\n"
+msgstr "Chuyển đổi các chuỗi sang IDN (tên miền đã quốc tế hoá), hoặc đầu vào tiêu chuẩn.\n"
+
+msgid ""
+"Command line interface to the internationalized domain name library.\n"
+"\n"
+"All strings are expected to be encoded in the preferred charset used\n"
+"by your locale.  Use `--debug' to find out what this charset is.  You\n"
+"can override the charset used by setting environment variable CHARSET.\n"
+"\n"
+"To process a string that starts with `-', for example `-foo', use `--'\n"
+"to signal the end of parameters, as in `idn --quiet -a -- -foo'.\n"
+"\n"
+"Mandatory arguments to long options are mandatory for short options too.\n"
+msgstr ""
+"Giao diện dòng lệnh với thư viện tên miền đã quốc tế hoá.\n"
+"\n"
+"Mọi chuỗi nên được mã hoá theo bộ ký tự đã thích trong miền địa phương\n"
+"của bạn. Hãy dùng tùy chọn « --debug » (gỡ lỗi) để tìm biết bộ ký tự nào.\n"
+"Bạn cũng có thể ghi đè lên bộ ký tự này bằng cách đặt biến môi trường\n"
+"CHARSET.\n"
+"\n"
+"Để xử lý một chuỗi bắt đầu với « - », v.d. « -foo », dùng « -- » để ngụ ý kết thúc các tham số, như trong « idn --quiet -a -- -foo ».\n"
+"\n"
+"Mọi đối số bắt buộc phải sử dụng với tùy chọn dài cũng bắt buộc với tùy chọn ngắn.\n"
+
+msgid ""
+"  -h, --help               Print help and exit\n"
+"  -V, --version            Print version and exit\n"
+msgstr ""
+"  -h, --help               In ra trợ giúp, rồi thoát\n"
+"  -V, --version            In ra số thứ tự phiên bản, rồi thoát\n"
+
+msgid ""
+"  -s, --stringprep         Prepare string according to nameprep profile\n"
+"  -d, --punycode-decode    Decode Punycode\n"
+"  -e, --punycode-encode    Encode Punycode\n"
+"  -a, --idna-to-ascii      Convert to ACE according to IDNA (default mode)\n"
+"  -u, --idna-to-unicode    Convert from ACE according to IDNA\n"
+msgstr ""
+"  -s, --stringprep         Chuẩn bị chuỗi tùy theo hồ sơ nameprep\n"
+"  -d, --punycode-decode    Giải mã Punycode\n"
+"  -e, --punycode-encode    Mã hoá Punycode\n"
+"  -a, --idna-to-ascii      Chuyển đổi sang ACE tùy theo IDNA (chế độ mặc định)\n"
+"  -u, --idna-to-unicode    Chuyển đổi từ ACE tùy theo IDNA\n"
+
+msgid ""
+"      --allow-unassigned   Toggle IDNA AllowUnassigned flag\n"
+"      --usestd3asciirules  Toggle IDNA UseSTD3ASCIIRules flag\n"
+msgstr ""
+"      --allow-unassigned   Bật/tắt cờ IDNA AllowUnassigned\n"
+"      --usestd3asciirules  Bật/tắt cờ IDNA UseSTD3ASCIIRules\n"
+
+msgid ""
+"  -t, --tld                Check string for TLD specific rules\n"
+"                             Only for --idna-to-ascii and --idna-to-unicode\n"
+msgstr ""
+"  -t, --tld                Kiểm tra chuỗi có quy tắc đặc trưng cho TLD không\n"
+"                             Chỉ cho « --idna-to-ascii » và « --idna-to-unicode »\n"
+
+msgid ""
+"  -p, --profile=STRING     Use specified stringprep profile instead\n"
+"                             Valid stringprep profiles: `Nameprep',\n"
+"                             `iSCSI', `Nodeprep', `Resourceprep', \n"
+"                             `trace', `SASLprep'\n"
+msgstr ""
+"  -p, --profile=CHUỖI     Dùng hồ sơ stringprep đã ghi rõ thay vào đó\n"
+"                             Các hồ sơ stringprep hợp lệ: `Nameprep',\n"
+"                             `iSCSI', `Nodeprep', `Resourceprep', \n"
+"                             `trace', `SASLprep'\n"
+
+msgid ""
+"      --debug              Print debugging information\n"
+"      --quiet              Silent operation\n"
+msgstr ""
+"      --debug              In ra thông tin gỡ lỗi\n"
+"      --quiet              Không xuất thông điệp\n"
 
 #, c-format
 msgid "Only one of -s, -e, -d, -a or -u can be specified."

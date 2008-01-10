@@ -1,15 +1,15 @@
-# Translation of libidn-1.3 to Dutch.
+# Translation of libidn-1.4 to Dutch.
 # Copyright (C) 2004, 2005, 2007 Free Software Foundation, Inc.
 # This file is distributed under the same license as the libidn package.
 #
 # Elros Cyriatan <cyriatan@fastmail.fm>, 2004.
-# Benno Schulenberg <benno@vertaalt.nl>, 2005, 2007.
+# Benno Schulenberg <benno@vertaalt.nl>, 2005, 2007, 2008.
 msgid ""
 msgstr ""
-"Project-Id-Version: libidn-1.3\n"
+"Project-Id-Version: libidn-1.4\n"
 "Report-Msgid-Bugs-To: bug-libidn@gnu.org\n"
-"POT-Creation-Date: 2007-12-11 15:54+0100\n"
-"PO-Revision-Date: 2007-12-20 22:27+0100\n"
+"POT-Creation-Date: 2008-01-09 15:27+0100\n"
+"PO-Revision-Date: 2008-01-10 15:07+0100\n"
 "Last-Translator: Benno Schulenberg <benno@vertaalt.nl>\n"
 "Language-Team: Dutch <vertaling@vrijschrift.org>\n"
 "MIME-Version: 1.0\n"
@@ -22,7 +22,7 @@ msgid "Success"
 msgstr "Gelukt"
 
 msgid "String preparation failed"
-msgstr "Voorbereiden van tekenreeks is mislukt"
+msgstr "Voorbewerken van tekenreeks is mislukt"
 
 msgid "Punycode failed"
 msgstr "Punycodering is mislukt"
@@ -58,7 +58,9 @@ msgid "Unknown error"
 msgstr "Onbekende fout"
 
 msgid "String not idempotent under Unicode NFKC normalization"
-msgstr "Tekenreeks is problematisch bij normalisering volgens Unicode-NFKC: er zijn verschillende mogelijkheden"
+msgstr ""
+"Tekenreeks is problematisch bij normalisering volgens Unicode-NFKC:\n"
+"er zijn verschillende mogelijkheden"
 
 msgid "Invalid input"
 msgstr "Ongeldige invoer"
@@ -104,6 +106,106 @@ msgstr "Ontbrekende invoer"
 
 msgid "No top-level domain found in input"
 msgstr "Geen topdomein gevonden in de invoer"
+
+#. TRANSLATORS: The placeholder indicates the bug-reporting address
+#. for this package.  Please add _another line_ saying
+#. "Report translation bugs to <...>\n" with the address for translation
+#. bugs (typically your translation team's web or email address).
+#, c-format
+msgid ""
+"\n"
+"Report bugs to <%s>.\n"
+msgstr ""
+"\n"
+"Rapporteer gebreken in het programma aan <%s>;\n"
+"meld fouten in de vertaling aan <vertaling@vrijschrift.org>.\n"
+
+#, c-format
+msgid "Try `%s --help' for more information.\n"
+msgstr "Typ '%s --help' voor meer informatie.\n"
+
+#, c-format
+msgid "Usage: %s [OPTION]... [STRINGS]...\n"
+msgstr "Gebruik:  %s [OPTIE]... [TEKENREEKS]...\n"
+
+msgid ""
+"Internationalized Domain Name (IDN) convert STRINGS, or standard input.\n"
+"\n"
+msgstr ""
+"De gegeven TEKENREEKS (of standaardinvoer) omzetten volgens de regels\n"
+"die gelden voor geïnternationaliseerde domeinnamen.\n"
+
+msgid ""
+"Command line interface to the internationalized domain name library.\n"
+"\n"
+"All strings are expected to be encoded in the preferred charset used\n"
+"by your locale.  Use `--debug' to find out what this charset is.  You\n"
+"can override the charset used by setting environment variable CHARSET.\n"
+"\n"
+"To process a string that starts with `-', for example `-foo', use `--'\n"
+"to signal the end of parameters, as in `idn --quiet -a -- -foo'.\n"
+"\n"
+"Mandatory arguments to long options are mandatory for short options too.\n"
+msgstr ""
+"Alle tekenreeksen worden verwacht in de voorkeurstekenset van uw locale;\n"
+"gebruik '--debug' om te zien welke tekenset dit is.  U kunt een andere\n"
+"tekenset afdwingen door de omgevingsvariabele CHARSET in te stellen.\n"
+"\n"
+"Om een tekenreeks die begint met '-' om te zetten, gebruikt u '--', dat het\n"
+"einde van de opties aangeeft.  Bijvoorbeeld: 'idn --quiet -a -- -foo'.\n"
+"\n"
+"(Een verplicht argument bij een lange optie geldt ook voor de korte vorm.)\n"
+
+msgid ""
+"  -h, --help               Print help and exit\n"
+"  -V, --version            Print version and exit\n"
+msgstr ""
+"  -h, --help               deze hulptekst tonen en stoppen\n"
+"  -V, --version            versie-informatie tonen en stoppen\n"
+
+msgid ""
+"  -s, --stringprep         Prepare string according to nameprep profile\n"
+"  -d, --punycode-decode    Decode Punycode\n"
+"  -e, --punycode-encode    Encode Punycode\n"
+"  -a, --idna-to-ascii      Convert to ACE according to IDNA (default mode)\n"
+"  -u, --idna-to-unicode    Convert from ACE according to IDNA\n"
+msgstr ""
+"  -s, --stringprep         tekenreeks volgens 'Nameprep'-profiel voorbewerken\n"
+"  -d, --punycode-decode    uit 'Punycode' decoderen\n"
+"  -e, --punycode-encode    naar 'Punycode' coderen\n"
+"  -a, --idna-to-ascii      naar ACE omzetten volgens IDNA (standaardmodus)\n"
+"  -u, --idna-to-unicode    uit ACE omzetten volgens IDNA\n"
+
+msgid ""
+"      --allow-unassigned   Toggle IDNA AllowUnassigned flag\n"
+"      --usestd3asciirules  Toggle IDNA UseSTD3ASCIIRules flag\n"
+msgstr ""
+"      --allow-unassigned   de IDNA-vlag 'AllowUnassigned' omschakelen\n"
+"      --usestd3asciirules  de IDNA-vlag 'UseSTD3ASCIIRules' omschakelen\n"
+
+msgid ""
+"  -t, --tld                Check string for TLD specific rules\n"
+"                             Only for --idna-to-ascii and --idna-to-unicode\n"
+msgstr ""
+"  -t, --tld                tekst aan topleveldomein-specifieke regels toetsen;\n"
+"                             alleen bij --idna-to-ascii en --idna-to-unicode\n"
+
+msgid ""
+"  -p, --profile=STRING     Use specified stringprep profile instead\n"
+"                             Valid stringprep profiles: `Nameprep',\n"
+"                             `iSCSI', `Nodeprep', `Resourceprep', \n"
+"                             `trace', `SASLprep'\n"
+msgstr ""
+"  -p, --profile=NAAM       dit tekenreeks-voorbewerkingsprofiel gebruiken;\n"
+"                             geldige profielnamen zijn: 'Nameprep', 'iSCSI',\n"
+"                             'Nodeprep', 'Resourceprep', 'trace', 'SASLprep'\n"
+
+msgid ""
+"      --debug              Print debugging information\n"
+"      --quiet              Silent operation\n"
+msgstr ""
+"      --debug              debuginformatie weergeven\n"
+"      --quiet              geen meldingen produceren\n"
 
 #, c-format
 msgid "Only one of -s, -e, -d, -a or -u can be specified."
