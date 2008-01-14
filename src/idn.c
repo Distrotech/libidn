@@ -370,8 +370,10 @@ main (int argc, char *argv[])
 				 (args_info.allow_unassigned_given ?
 				  IDNA_ALLOW_UNASSIGNED : 0) |
 				 (args_info.usestd3asciirules_given ?
-				  IDNA_USE_STD3_ASCII_RULES : 0));
-	  free (q);
+				  IDNA_USE_STD3_ASCII_RULES : 0) |
+				 (args_info.treatu2024asdot_given ?
+				  IDNA_TREAT_U2024_AS_DOT : 0));
+      free (q);
 	  if (rc != IDNA_SUCCESS)
 	    error (EXIT_FAILURE, 0, _("idna_to_ascii_4z: %s"),
 		   idna_strerror (rc));
@@ -385,7 +387,9 @@ main (int argc, char *argv[])
 					 (args_info.allow_unassigned_given ?
 					  IDNA_ALLOW_UNASSIGNED : 0) |
 					 (args_info.usestd3asciirules_given ?
-					  IDNA_USE_STD3_ASCII_RULES : 0));
+					  IDNA_USE_STD3_ASCII_RULES : 0) |
+					 (args_info.treatu2024asdot_given ?
+					  IDNA_TREAT_U2024_AS_DOT : 0));
 	      if (rc != IDNA_SUCCESS)
 		error (EXIT_FAILURE, 0, _("idna_to_unicode_8z4z (TLD): %s"),
 		       idna_strerror (rc));
@@ -450,7 +454,9 @@ main (int argc, char *argv[])
 				     (args_info.allow_unassigned_given ?
 				      IDNA_ALLOW_UNASSIGNED : 0) |
 				     (args_info.usestd3asciirules_given ?
-				      IDNA_USE_STD3_ASCII_RULES : 0));
+				      IDNA_USE_STD3_ASCII_RULES : 0) |
+				     (args_info.treatu2024asdot_given ?
+				      IDNA_TREAT_U2024_AS_DOT : 0));
 	  free (p);
 	  if (rc != IDNA_SUCCESS)
 	    error (EXIT_FAILURE, 0, _("idna_to_unicode_8z4z: %s"),

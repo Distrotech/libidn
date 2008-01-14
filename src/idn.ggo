@@ -1,4 +1,4 @@
-# Copyright (C) 2003, 2004, 2005, 2006, 2007 Simon Josefsson.
+# Copyright (C) 2003, 2004, 2005, 2006, 2007, 2008 Simon Josefsson.
 #
 # This file is part of GNU Libidn.
 #
@@ -31,6 +31,7 @@ option "idna-to-ascii"   a "Convert to ACE according to IDNA (default)" no
 option "idna-to-unicode" u "Convert from ACE according to IDNA" no
 option "allow-unassigned" - "Toggle IDNA AllowUnassigned flag" flag off
 option "usestd3asciirules" - "Toggle IDNA UseSTD3ASCIIRules flag" flag off
+option "treatu2024asdot" - "Toggle IDNA TreatU2024AsDot flag" flag off
 option "tld" t "Check string for TLD specific rules\nOnly for --idna-to-ascii and --idna-to-unicode" flag on
 option "profile" p "Use specified stringprep profile instead\nValid stringprep profiles are `Nameprep', `iSCSI', `Nodeprep', `Resourceprep', `trace', and `SASLprep'." string no
 option "debug" - "Print debugging information" flag off

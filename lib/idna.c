@@ -1,5 +1,5 @@
 /* idna.c --- Convert to or from IDN strings.
- * Copyright (C) 2002, 2003, 2004, 2005, 2006, 2007  Simon Josefsson
+ * Copyright (C) 2002, 2003, 2004, 2005, 2006, 2007, 2008  Simon Josefsson
  *
  * This file is part of GNU Libidn.
  *
@@ -30,8 +30,9 @@
 
 #include "idna.h"
 
-#define DOTP(c) ((c) == 0x002E || (c) == 0x3002 ||	\
-		 (c) == 0xFF0E || (c) == 0xFF61)
+#define DOTP(c, flags) ((c) == 0x002E || (c) == 0x3002 ||	\
+			(c) == 0xFF0E || (c) == 0xFF61 ||		\
+			((flags & IDNA_TREAT_U2024_AS_DOT) && (c) == 0x2024))
 
 /* Core functions */
 
@@ -475,7 +476,7 @@ idna_to_ascii_4z (const uint32_t * input, char **output, int flags)
       return IDNA_SUCCESS;
     }
 
-  if (DOTP (input[0]) && input[1] == 0)
+  if (DOTP (input[0], flags) && input[1] == 0)
     {
       /* Handle explicit zero-length root label. */
       *output = malloc (2);
@@ -490,7 +491,7 @@ idna_to_ascii_4z (const uint32_t * input, char **output, int flags)
     {
       end = start;
 
-      for (; *end && !DOTP (*end); end++)
+      for (; *end && !DOTP (*end, flags); end++)
 	;
 
       if (*end == '\0' && start == end)
@@ -628,7 +629,7 @@ idna_to_unicode_4z4z (const uint32_t * input, uint32_t ** output, int flags)
     {
       end = start;
 
-      for (; *end && !DOTP (*end); end++)
+      for (; *end && !DOTP (*end, flags); end++)
 	;
 
       buflen = end - start;

@@ -1,5 +1,5 @@
 /* idna.h --- Declarations for Internationalized Domain Name in Applications.
- * Copyright (C) 2002, 2003, 2004, 2005, 2006, 2007  Simon Josefsson
+ * Copyright (C) 2002, 2003, 2004, 2005, 2006, 2007, 2008  Simon Josefsson
  *
  * This file is part of GNU Libidn.
  *
@@ -54,7 +54,8 @@ extern "C"
   typedef enum
   {
     IDNA_ALLOW_UNASSIGNED = 0x0001,
-    IDNA_USE_STD3_ASCII_RULES = 0x0002
+    IDNA_USE_STD3_ASCII_RULES = 0x0002,
+    IDNA_TREAT_U2024_AS_DOT = 0x0004
   } Idna_flags;
 
 # ifndef IDNA_ACE_PREFIX
