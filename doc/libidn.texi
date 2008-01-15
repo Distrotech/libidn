@@ -2051,7 +2051,7 @@ The DNS query they perform are @code{@{3@}hi5@{3@}com} and
 leads to a better user experience, and suggests that the IDNA
 specification is sub-optimal in this area.
 
-@subsection Recommended Workaround
+@section Recommended Workaround
 
 It has been suggested to normalize the entire input string using NFKC
 before passing it to IDNA ToASCII.  You may use
