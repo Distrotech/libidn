@@ -30,18 +30,19 @@ header("Content-Type: text/html; charset=$charset");
     <p>This page allows you to try the string preparation, punycode
     encode/decode and ToASCII/ToUnicode operations of <a
     href="http://www.gnu.org/software/libidn/">GNU Libidn</a>.  If you
-    encounter a problem with this page, report a thorough analyse of
-    it to <A HREF="mailto:bug-libidn@gnu.org">bug-libidn@gnu.org</A>.
+    encounter a problem with this page, write a (detailed!) report to
+    <A HREF="mailto:bug-libidn@gnu.org">bug-libidn@gnu.org</A>.
 
-    <p>If you are interested in commercial support of Libidn and/or
-    proprietary customizations, you can <a
-    href="mailto:simon@josefsson.org">contact me</a>.
+    <p>If you are interested in commercial support or enhancement of
+    Libidn, you can <a href="mailto:simon@josefsson.org">contact
+    me</a>.
 
 <?php if (!$lastcharset && !$mode) { ?>
 
     <p>Free shrimp sandwiches are <a
     href="http://xn--rksmrgs-5wao1o.josefsson.org/">served over
-    here</a>.
+    here</a> (or <a href="http://räksmörgås.josefsson.org/">here</a>
+    if you want the experimental flavour).
 
     <p>This page ignores any Accept-Charset headers sent by your
     browser.  Instead, the Unicode repertoire encoded as UTF-8 is
@@ -314,6 +315,7 @@ header("Content-Type: text/html; charset=$charset");
 	<li><a href="http://josefsson.org/idn.php?data=bon%F5usa%B1%B1a&amp;mode=toascii&amp;charset=ISO-8859-3">ISO-8859-3 Maltese Malti (same as previous)</a>
 	<li><a href="http://josefsson.org/idn.php?data=%CE%B5%CE%BB%CE%BB%CE%B7%CE%BD%CE%B9%CE%BA%CE%AC&amp;mode=toascii&amp;charset=UTF-8">UTF-8 Greek</a>
 	<li><a href="http://josefsson.org/idn.php?data=%E5%EB%EB%E7%ED%E9%EA%DC&amp;mode=toascii&amp;charset=ISO-8859-7">ISO-8859-7 Greek (same as previous)</a>
+	<li><a href="http://josefsson.org/idn.php/?data=%E5%8D%81%E2%80%A4com&profile=Nameprep&mode=toascii&debug=on&charset=UTF-8&lastcharset=UTF-8">U+2024 dot separator example</a>
     </ul>
 
 
