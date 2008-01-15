@@ -3,6 +3,7 @@
 @c See below for copyright and license.
 
 @setfilename libidn.info
+@documentencoding ISO-8859-1
 @include version.texi
 @settitle GNU Libidn
 @finalout
@@ -79,6 +80,7 @@ section entitled ``GNU Free Documentation License''.
 Appendices
 
 * PR29 discussion::             Implementation aspects of the PR29 flaw.
+* On Label Separators::         Discussions of a flaw in the IDNA spec.
 * Copying Information::		License text covering the Libidn library.
 
 Indices
@@ -2003,6 +2005,63 @@ somewhere, for technically interested readers.
 Regards,
 Simon
 @end verbatim
+
+@node On Label Separators
+@appendix On Label Separators
+
+Some strings contains characters whose NFKC normalized form contain
+the ASCII dot (0x2E, ``.'').  Examples of these characters are U+2024
+(ONE DOT LEADER) and U+248C (DIGIT FIVE FULL STOP).  The strings have
+the interesting property that their IDNA ToASCII output will contain
+embedded dots.  For example:
+
+@example
+ToASCII (hi U+248C com) = hi5.com
+ToASCII (r@"aksm@"org@aa{}s U+2024 com) = xn--rksmrgs.com-l8as9u
+@end example
+
+This demonstrate the two general cases: The first where the ASCII dot
+is part of an output that do not begin with the IDN prefix ``xn--''.
+The second example illustrate when the dot is part of IDN prefixed
+with ``xn--''.
+
+The input strings are, from the DNS point of view, a single label.
+The IDNA algorithm translate one label at a time.  Thus, the output is
+expected to be only one label.  What is important here is to make sure
+the DNS resolver receives the correct query.  The DNS protocol does
+not use the dot to delimit labels on the wire, rather it uses
+length-value pairs.  Thus the correct query would be for
+@code{@{7@}hi5.com} and @code{@{22@}xn--rksmrgs.com-l8as9u}
+respectively.
+
+Some implementations @footnote{Notably Microsoft's Internet Explorer
+and Mozilla's Firefox, but not Apple's Safari.} have decided that
+these inputs strings are potentially confusing for the user.  The
+string ``hi U+248C com'' looks like ``hi5.com'' on systems that
+support Unicode properly.  These implementations do not follow RFC
+3490.  They yield:
+
+@example
+ToASCII (hi U+248C com) = hi5.com
+ToASCII (r@"aksm@"org@aa{}s U+2024 com) = xn--rksmrgs-5wao1o.com
+@end example
+
+The DNS query they perform are @code{@{3@}hi5@{3@}com} and
+@code{@{18@}xn--rksmrgs-5wao1o@{3@}com} respectively.  Arguably, this
+leads to a better user experience, and suggests that the IDNA
+specification is sub-optimal in this area.
+
+@subsection Recommended Workaround
+
+It has been suggested to normalize the entire input string using NFKC
+before passing it to IDNA ToASCII.  You may use
+@code{stringprep_utf8_nfkc_normalize} or
+@code{stringprep_ucs4_nfkc_normalize}.  This will avoid the problem,
+and appears to lead to similar behaviour as IE/Firefox.
+
+Alternative workarounds are being considered.  Eventually Libidn may
+implement a new flag to the @code{idna_*} functions that implements a
+recommended way to work around this problem.
 
 @node Copying Information
 @appendix Copying Information
