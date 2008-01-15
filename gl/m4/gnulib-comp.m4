@@ -173,7 +173,6 @@ AC_DEFUN([gltests_LIBSOURCES], [
 # gnulib-tool and may be removed by future gnulib-tool invocations.
 AC_DEFUN([gl_FILE_LIST], [
   build-aux/GNUmakefile
-  build-aux/announce-gen
   build-aux/csharpcomp.sh.in
   build-aux/gendocs.sh
   build-aux/gnupload
