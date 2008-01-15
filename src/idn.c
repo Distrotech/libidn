@@ -112,7 +112,7 @@ Mandatory arguments to long options are mandatory for short options too.\n\
 "), stdout);
       fputs (_("\
       --treatu2024asdot    Toggle IDNA TreatU2024AsDot flag\n\
-", stdout);
+"), stdout);
       fputs (_("\
   -t, --tld                Check string for TLD specific rules\n\
                              Only for --idna-to-ascii and --idna-to-unicode\n\
