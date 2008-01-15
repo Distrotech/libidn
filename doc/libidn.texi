@@ -1894,6 +1894,9 @@ Version 0.6.0 released on 2005-12-03.
 @item Windows support through cross-compilation.
 Version 0.6.1 released on 2006-01-20.
 
+@item Library declared stable by releasing v1.0.
+Version 1.0 released on 2007-07-31.
+
 @end table
 
 @node PR29 discussion
