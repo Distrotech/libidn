@@ -1860,7 +1860,7 @@ Version 0.0.0 released on 2002-11-05.
 @item IDNA and Punycode implementations, part of the GNU project.
 Version 0.1.0 released on 2003-01-05.
 
-@item Uses official IDNA ACE prefix 'xn--'.
+@item Uses official IDNA ACE prefix @code{xn--}.
 Version 0.1.7 released on 2003-02-12.
 
 @item Command line interface.
@@ -2024,9 +2024,9 @@ ToASCII (r@"aksm@"org@aa{}s U+2024 com) = xn--rksmrgs.com-l8as9u
 @end example
 
 This demonstrate the two general cases: The first where the ASCII dot
-is part of an output that do not begin with the IDN prefix ``xn--''.
-The second example illustrate when the dot is part of IDN prefixed
-with ``xn--''.
+is part of an output that do not begin with the IDN prefix
+@code{xn--}.  The second example illustrate when the dot is part of
+IDN prefixed with @code{xn--}.
 
 The input strings are, from the DNS point of view, a single label.
 The IDNA algorithm translate one label at a time.  Thus, the output is
@@ -2040,7 +2040,7 @@ respectively.
 Some implementations @footnote{Notably Microsoft's Internet Explorer
 and Mozilla's Firefox, but not Apple's Safari.} have decided that
 these inputs strings are potentially confusing for the user.  The
-string ``hi U+248C com'' looks like ``hi5.com'' on systems that
+string @code{hi U+248C com} looks like @code{hi5.com} on systems that
 support Unicode properly.  These implementations do not follow RFC
 3490.  They yield:
 
