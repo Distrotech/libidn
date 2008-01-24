@@ -2059,8 +2059,9 @@ specification is sub-optimal in this area.
 It has been suggested to normalize the entire input string using NFKC
 before passing it to IDNA ToASCII.  You may use
 @code{stringprep_utf8_nfkc_normalize} or
-@code{stringprep_ucs4_nfkc_normalize}.  This will avoid the problem,
-and appears to lead to similar behaviour as IE/Firefox.
+@code{stringprep_ucs4_nfkc_normalize}.  This appears to lead to
+similar behaviour as IE/Firefox, which would avoid the problem, but
+this needs to be confirmed.  Feel free to discuss the issue with us.
 
 Alternative workarounds are being considered.  Eventually Libidn may
 implement a new flag to the @code{idna_*} functions that implements a
