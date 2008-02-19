@@ -11,7 +11,8 @@ Mike Frysinger <vapier@gentoo.org>, see
 
 ** Added appendix 'On Label Separators' to the manual.
 Thanks to Erik van der Poel <erikv@google.com> for bringing the issue
-to our attention and for discussing the matter.
+to our attention and for discussing the matter.  See
+<http://thread.gmane.org/gmane.comp.gnu.libidn.general/96>.
 
 ** Improved rendering of non-ASCII in the info manual.
 Done by adding a @documentencoding ISO-8859-1.
