@@ -65,7 +65,7 @@ release:
 	git-push
 	git-push --tags
 	build-aux/gnupload --to ftp.gnu.org:libidn --to alpha.gnu.org:libidn $(distdir).tar.gz
-	cp -v $(distdir).tar.gz.sig $(htmldir)/releases/
+	cp -v $(distdir).tar.gz $(distdir).tar.gz.sig $(htmldir)/releases/
 	cd $(htmldir) && \
 		cvs add -kb releases/$(distdir).tar.gz \
 			releases/$(distdir).tar.gz.sig && \
