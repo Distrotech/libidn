@@ -3,7 +3,7 @@
 @c See below for copyright and license.
 
 @setfilename libidn.info
-@documentencoding ISO-8859-1
+@documentencoding UTF-8
 @include version.texi
 @settitle GNU Libidn
 @finalout

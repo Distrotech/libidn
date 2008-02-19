@@ -1,5 +1,5 @@
 /* example.c --- Example code showing how to use stringprep().
- * Copyright (C) 2002, 2003, 2004, 2005, 2006, 2007  Simon Josefsson
+ * Copyright (C) 2002, 2003, 2004, 2005, 2006, 2007, 2008  Simon Josefsson
  *
  * This file is part of GNU Libidn.
  *
@@ -29,7 +29,7 @@
  *
  * $ libtool cc -o example example.c `pkg-config --cflags --libs libidn`
  * $ ./example
- * Input string encoded as `ISO-8859-1': ª
+ * Input string encoded as `ISO-8859-1': Âª
  * Before locale2utf8 (length 2): aa 0a
  * Before stringprep (length 3): c2 aa 0a
  * After stringprep (length 2): 61 0a
