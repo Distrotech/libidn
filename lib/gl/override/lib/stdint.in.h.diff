@@ -1,0 +1,12 @@
+--- stdint.in.h.orig	2008-02-19 17:38:54.000000000 +0100
++++ stdint.in.h	2008-02-19 17:39:46.000000000 +0100
+@@ -90,7 +90,8 @@
+ 
+ /* Get WCHAR_MIN, WCHAR_MAX.  */
+ # if ! (defined WCHAR_MIN && defined WCHAR_MAX)
+-#  include <wchar.h>
++/*  We don't need WCHAR_* in libidn, so to avoid problems with
++    missing wchar.h, don't include wchar.h here.  */
+ # endif
+ 
+ #endif

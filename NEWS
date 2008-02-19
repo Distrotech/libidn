@@ -4,6 +4,11 @@ See the end for copying conditions.
 
 * Version 1.5 (unreleased)
 
+** Don't include wchar.h in idn-int.h.
+Fixes problems on uClibc systems which lack a wchar.h.  Reported by
+Mike Frysinger <vapier@gentoo.org>, see
+<http://thread.gmane.org/gmane.comp.gnu.libidn.general/118>.
+
 ** Added appendix 'On Label Separators' to the manual.
 Thanks to Erik van der Poel <erikv@google.com> for bringing the issue
 to our attention and for discussing the matter.
