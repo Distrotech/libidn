@@ -1,3 +1,142 @@
+2008-02-19  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Version 1.5.
+
+2008-02-19  Simon Josefsson <simon@josefsson.org>
+
+	* po/LINGUAS: Sync with TP.
+
+2008-02-19  Simon Josefsson <simon@josefsson.org>
+
+	* po/LINGUAS: Sync with TP.
+
+2008-02-19  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Fix charset info.
+
+2008-02-19  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi, examples/example.c, examples/example3.c,
+	examples/example4.c, examples/example5.c: Fix encoding.
+
+2008-02-19  Simon Josefsson <simon@josefsson.org>
+
+	* lib/gl/Makefile.am, lib/gl/m4/gnulib-cache.m4, lib/gl/stdint.in.h: 
+	Update gnulib files.
+
+2008-02-19  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add link.
+
+2008-02-19  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS, THANKS, lib/gl/override/lib/stdint.in.h.diff: Don't include
+	wchar.h, we don't need it.  Reported by Mike Frysinger
+	<vapier@gentoo.org>, see
+	<http://thread.gmane.org/gmane.comp.gnu.libidn.general/118>.
+
+2008-02-06  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2008-02-06  Simon Josefsson <simon@josefsson.org>
+
+	* GNUmakefile, Makefile.am, maint-cfg.mk: Brace expansion is not
+	POSIX portable.
+
+2008-02-03  Simon Josefsson <simon@josefsson.org>
+
+	* build-aux/gnupload: Update gnulib files.
+
+2008-01-24  Simon Josefsson <simon@josefsson.org>
+
+	* po/LINGUAS, po/fi.po: Sync with TP.
+
+2008-01-24  Simon Josefsson <simon@josefsson.org>
+
+	* po/LINGUAS: Sync with TP.
+
+2008-01-24  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi: Fix.
+
+2008-01-15  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2008-01-15  Simon Josefsson <simon@josefsson.org>
+
+	* gl/Makefile.am, gl/m4/gnulib-cache.m4, gl/m4/gnulib-comp.m4: 
+	Update gnulib files.
+
+2008-01-15  Simon Josefsson <simon@josefsson.org>
+
+	* build-aux/announce-gen: Update gnulib files.
+
+2008-01-15  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2008-01-15  Simon Josefsson <simon@josefsson.org>
+
+	* contrib/web/idn.php: Back-port from josefsson.org.
+
+2008-01-15  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi: Fix markup.
+
+2008-01-15  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi: Mention v1.0 as milestone.
+
+2008-01-15  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2008-01-15  Simon Josefsson <simon@josefsson.org>
+
+	* THANKS: Add.
+
+2008-01-15  Simon Josefsson <simon@josefsson.org>
+
+	* po/it.po: Sync with TP.
+
+2008-01-15  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi: Fix markup.
+
+2008-01-15  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi: Add 'On Label Separators' section.  Add
+	@documentencoding.
+
+2008-01-15  Simon Josefsson <simon@josefsson.org>
+
+	* GNUmakefile, maint-cfg.mk: Re-add config.rpath hack.
+
+2008-01-15  Simon Josefsson <simon@josefsson.org>
+
+	* build-aux/announce-gen, build-aux/config.rpath,
+	build-aux/gendocs.sh, gl/Makefile.am, gl/error.h,
+	gl/m4/string_h.m4, gl/string.in.h, lib/gl/Makefile.am,
+	lib/gl/m4/string_h.m4, lib/gl/string.in.h: Update gnulib files.
+
+2008-01-10  Simon Josefsson <simon@josefsson.org>
+
+	* po/eo.po: Sync with TP.
+
+2008-01-10  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS, configure.ac: Bump versions.
+
+2008-01-10  Simon Josefsson <simon@josefsson.org>
+
+	* po/cs.po, po/nl.po, po/pl.po, po/vi.po: Sync with TP.
+
+2008-01-09  Simon Josefsson <simon@josefsson.org>
+
+	* ChangeLog: Generated.
+
 2008-01-09  Simon Josefsson <simon@josefsson.org>
 
 	* NEWS: Version 1.4.
