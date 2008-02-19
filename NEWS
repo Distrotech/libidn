@@ -15,7 +15,9 @@ to our attention and for discussing the matter.  See
 <http://thread.gmane.org/gmane.comp.gnu.libidn.general/96>.
 
 ** Improved rendering of non-ASCII in the info manual.
-Done by adding a @documentencoding ISO-8859-1.
+Done by adding a @documentencoding UTF-8.  This affect how the
+examples are encoded, the files examples/*.c are now encoded using
+UTF-8 instead of a mix of ISO-8859-1 and ISO-8859-15.
 
 ** Fix non-portable use of brace expansion in makefiles.
 
