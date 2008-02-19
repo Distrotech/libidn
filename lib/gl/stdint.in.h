@@ -90,7 +90,8 @@
 
 /* Get WCHAR_MIN, WCHAR_MAX.  */
 # if ! (defined WCHAR_MIN && defined WCHAR_MAX)
-#  include <wchar.h>
+/*  We don't need WCHAR_* in libidn, so to avoid problems with
+    missing wchar.h, don't include wchar.h here.  */
 # endif
 
 #endif

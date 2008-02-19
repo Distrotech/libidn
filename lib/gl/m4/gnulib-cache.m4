@@ -15,10 +15,10 @@
 
 
 # Specification in the form of a command-line invocation:
-#   gnulib-tool --import --dir=. --lib=libgnu --source-base=lib/gl --m4-base=lib/gl/m4 --doc-base=doc --aux-dir=build-aux --lgpl=2 --libtool --macro-prefix=lgl gettext-h stdint striconv strverscmp
+#   gnulib-tool --import --dir=. --local-dir=lib/gl/override --lib=libgnu --source-base=lib/gl --m4-base=lib/gl/m4 --doc-base=doc --aux-dir=build-aux --lgpl=2 --libtool --macro-prefix=lgl gettext-h stdint striconv strverscmp
 
 # Specification in the form of a few gnulib-tool.m4 macro invocations:
-gl_LOCAL_DIR([])
+gl_LOCAL_DIR([lib/gl/override])
 gl_MODULES([gettext-h stdint striconv strverscmp])
 gl_AVOID([])
 gl_SOURCE_BASE([lib/gl])
