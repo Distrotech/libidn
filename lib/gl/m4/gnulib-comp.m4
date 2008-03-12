@@ -200,7 +200,6 @@ AC_DEFUN([lgl_FILE_LIST], [
   lib/strverscmp.h
   lib/unistd.in.h
   lib/wchar.in.h
-  m4/absolute-header.m4
   m4/extensions.m4
   m4/gnulib-common.m4
   m4/iconv.m4

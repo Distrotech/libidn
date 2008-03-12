@@ -192,6 +192,7 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/intprops.h
   lib/progname.c
   lib/progname.h
+  lib/stdarg.in.h
   lib/strerror.c
   lib/string.in.h
   lib/unistd.in.h
