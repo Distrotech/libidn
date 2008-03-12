@@ -1,1246 +1,91 @@
-
-
-
-
-
-
-Network Working Group                                         P. Hoffman
-Request for Comments: 3454                                    IMC & VPNC
-Category: Standards Track                                    M. Blanchet
-                                                                Viagenie
-                                                           December 2002
-
-
-        Preparation of Internationalized Strings ("stringprep")
-
-Status of this Memo
-
-   This document specifies an Internet standards track protocol for the
-   Internet community, and requests discussion and suggestions for
-   improvements.  Please refer to the current edition of the "Internet
-   Official Protocol Standards" (STD 1) for the standardization state
-   and status of this protocol.  Distribution of this memo is unlimited.
-
-Copyright Notice
+Below there are data tables extracted from RFC 3454.  The license for
+RFC 3454 is:
 
    Copyright (C) The Internet Society (2002).  All Rights Reserved.
 
-Abstract
-
-   This document describes a framework for preparing Unicode text
-   strings in order to increase the likelihood that string input and
-   string comparison work in ways that make sense for typical users
-   throughout the world.  The stringprep protocol is useful for protocol
-   identifier values, company and personal names, internationalized
-   domain names, and other text strings.
-
-   This document does not specify how protocols should prepare text
-   strings.  Protocols must create profiles of stringprep in order to
-   fully specify the processing options.
-
-Table of Contents
-
-   1. Introduction....................................................3
-     1.1 Terminology..................................................4
-     1.2 Using stringprep in protocols................................4
-   2. Preparation Overview............................................6
-   3. Mapping.........................................................7
-     3.1 Commonly mapped to nothing...................................7
-     3.2 Case folding.................................................8
-   4. Normalization...................................................9
-   5. Prohibited Output..............................................10
-     5.1 Space characters............................................11
-     5.2 Control characters..........................................11
-     5.3 Private use.................................................12
-
-
-
-Hoffman & Blanchet          Standards Track                     [Page 1]
-
-RFC 3454        Preparation of Internationalized Strings   December 2002
-
-
-     5.4 Non-character code points...................................12
-     5.5 Surrogate codes.............................................13
-     5.6 Inappropriate for plain text................................13
-     5.7 Inappropriate for canonical representation..................13
-     5.8 Change display properties or deprecated.....................13
-     5.9 Tagging characters..........................................14
-   6. Bidirectional Characters.......................................14
-   7. Unassigned Code Points in Stringprep Profiles..................15
-     7.1 Categories of code points...................................16
-     7.2 Reasons for difference between stored strings and queries...17
-     7.3 Versions of applications and stored strings.................18
-   8. References.....................................................19
-     8.1 Normative references........................................19
-     8.2 Informative references......................................19
-   9. Security Considerations........................................19
-     9.1 Stringprep-specific security considerations.................19
-     9.2 Generic Unicode security considerations.....................20
-   10. IANA Considerations...........................................21
-   11. Acknowledgements..............................................22
-   A. Unicode repertoires............................................23
-     A.1 Unassigned code points in Unicode 3.2.......................23
-   B. Mapping Tables.................................................31
-     B.1 Commonly mapped to nothing..................................31
-     B.2 Mapping for case-folding used with NFKC.....................32
-     B.3 Mapping for case-folding used with no normalization.........61
-   C. Prohibition tables.............................................78
-     C.1 Space characters............................................78
-       C.1.1 ASCII space characters..................................78
-       C.1.2 Non-ASCII space characters..............................79
-     C.2 Control characters..........................................79
-       C.2.1 ASCII control characters................................79
-       C.2.2 Non-ASCII control characters............................79
-     C.3 Private use.................................................80
-     C.4 Non-character code points...................................80
-     C.5 Surrogate codes.............................................80
-     C.6 Inappropriate for plain text................................80
-     C.7 Inappropriate for canonical representation..................81
-     C.8 Change display properties or are deprecated.................81
-     C.9 Tagging characters..........................................81
-   D. Bidirectional tables...........................................81
-     D.1 Characters with bidirectional property "R" or "AL"..........81
-     D.2 Characters with bidirectional property "L"..................82
-   Authors' Addresses................................................90
-   Full Copyright Statement..........................................91
-
-
-
-
-
-
-
-Hoffman & Blanchet          Standards Track                     [Page 2]
-
-RFC 3454        Preparation of Internationalized Strings   December 2002
-
-
-1. Introduction
-
-   Application programs can display text in many different ways.
-   Similarly, a user can enter text into an application program in a
-   myriad of fashions.  Internationalized text (that is, text that is
-   not restricted to the narrow set of US-ASCII characters) has many
-   input and display behaviors that make it difficult to compare text in
-   a consistent fashion.
-
-   This document specifies a framework of processing rules for Unicode
-   text.  Other protocols can create profiles of these rules; these
-   profiles will allow users to enter internationalized text strings in
-   applications and have the highest chance of getting the content of
-   the strings correct.  In this case, "correct" means that if two
-   different people enter what they think is the same string into two
-   different input mechanisms, the strings should match on a character-
-   by-character basis.
-
-   This framework does not describe how data is transcoded from other
-   character sets into Unicode.  In systems that uses non-Unicode
-   character sets, the transcoding algorithm is a critical part of
-   enabling secure and "correct" operation of internationalized text
-   strings.
-
-   In addition to helping string matching, profiles of stringprep can
-   also exclude characters that should not normally appear in text that
-   is used in the protocol.  The profile can prevent such characters by
-   changing the characters to be excluded to other characters, by
-   removing those characters, or by causing an error if the characters
-   would appear in the output.  For example, because the backspace
-   character can cause unpredictable display results, a profile can
-   specify that a string containing a backspace character would cause an
-   error.
-
-   A profile of stringprep converts a single string of input characters
-   to a string of output characters, or returns an error if the output
-   string would contain a prohibited character.  Stringprep profiles
-   cannot both emit a string and return an error.
-
-   Stringprep profiles cannot account for all of the variations that
-   might occur or that a user might expect.  In particular, a profile
-   will not be able to account for choice of spellings in all languages
-   for all scripts because the number of alternative spellings of words
-   and phrases is immense.  Users would probably expect all spelling
-   equivalents to be made equivalent, or none of them to be.  Examples
-   of spelling equivalents include "theater" vs. "theatre", and
-   "hemoglobin" vs. "h<U+00E6>moglobin" in American vs. British English.
-   Other examples are simplified Chinese spellings of names (for
-
-
-
-Hoffman & Blanchet          Standards Track                     [Page 3]
-
-RFC 3454        Preparation of Internationalized Strings   December 2002
-
-
-   example,"<U+7EDF><U+4E00><U+7801>") vs. the equivalent traditional
-   Chinese spelling (for example, "<U+7D71><U+4E00><U+78BC>").
-   Language-specific equivalences such as "Aepfel" vs. "<U+00C4>pfel",
-   which are sometimes considered equivalent in German, may not be
-   considered equivalent in other languages.
-
-1.1 Terminology
-
-   The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
-   "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
-   document are to be interpreted as described in BCP 14, RFC 2119
-   [RFC2119].
-
-   Note: A glossary of terms used in Unicode and ISO/IEC 10646 can be
-   found in [Glossary].  Information on the 10646/Unicode character
-   encoding model can be found in [CharModel].
-
-   Character names in this document use the notation for code points and
-   names from the Unicode Standard [Unicode3.2] and ISO/IEC 10646
-   [ISO10646].  For example, the letter "a" may be represented as either
-   "U+0061" or "LATIN SMALL LETTER A".  In the lists of mappings and the
-   prohibited characters, the "U+" is left off to make the lists easier
-   to read.  The comments for character ranges are shown in square
-   brackets (such as "[CONTROL CHARACTERS]") and do not come from the
-   standards.
-
-1.2 Using stringprep in protocols
-
-   The stringprep protocol does not stand on its own; it has to be used
-   by other protocols at precisely-defined places in those other
-   protocols.  For example, a protocol that has strings that come from
-   the entire ISO/IEC 10646 [ISO10646] character repertoire might
-   specify that only strings that have been processed with a particular
-   profile of stringprep are legal.  Another example would be a protocol
-   that does string comparison as a step in the protocol; that protocol
-   might specify that such comparison is done only after processing the
-   strings with a specific profile of stringprep.
-
-   When two protocols that use different profiles of stringprep
-   interoperate, there may be conflict about what characters are and are
-   not allowed in the final string.  Thus, protocol developers should
-   strongly consider re-using existing profiles of stringprep.
-
-   When developers wish to allow users as wide of a range of characters
-   as possible in input text strings, they should, where possible, cause
-   stringprep to convert characters from the input string to a canonical
-   form instead of prohibiting them.
-
-
-
-
-Hoffman & Blanchet          Standards Track                     [Page 4]
-
-RFC 3454        Preparation of Internationalized Strings   December 2002
-
-
-   Although it would be easy to use the stringprep process to "correct"
-   perceived mis-features or bugs in the current character standards,
-   stringprep profiles SHOULD NOT do so.
-
-   A profile of stringprep can create tables different from those in the
-   appendixes of this document, but it will be an exception when they
-   do.  The intention of stringprep is to define the tables and have the
-   profiles of stringprep select among those defined tables.
-
-   A profile of stringprep MUST include all of the following:
-
-   - The intended applicability of the profile
-
-   - The character repertoire that is the input and output to stringprep
-     (which is Unicode 3.2 for this version of stringprep)
-
-   - The mapping tables from this document used (as described in section
-     3)
-
-   - Any additional mapping tables specific to the profile
-
-   - The Unicode normalization used, if any (as described in section 4)
-
-   - The tables from this document of characters that are prohibited as
-     output (as described in section 5)
-
-   - The bidirectional string testing used, if any (as described in
-     section 6)
-
-   - Any additional characters that are prohibited as output specific to
-     the profile
-
-   Each profile MUST state the character repertoire on which the profile
-   will operate.  Appendix A lists the Unicode repertoires that can be
-   selected.  No repertoire is ever complete, and it is expected that
-   characters will be added to the Unicode repertoire for the
-   foreseeable future.  Section 7 of this document describes how to
-   handle characters that are assigned in later versions of the Unicode
-   repertories.  Subsections of appendix A also list unassigned code
-   points for each repertoire.
-
-   This document is for Unicode version 3.2, and should not be
-   considered to automatically apply to later Unicode versions.  The
-   IETF, through an explicit standards action, may update this document
-   as appropriate to handle later Unicode versions.
-
-
-
-
-
-
-Hoffman & Blanchet          Standards Track                     [Page 5]
-
-RFC 3454        Preparation of Internationalized Strings   December 2002
-
-
-   This document lists the unassigned code points in the range 0 to
-   10FFFF for Unicode 3.2 in appendix A.  The list in appendix A MUST be
-   used by implementations of this specification.  If there are any
-   discrepancies between the list in appendix A and the Unicode 3.2
-   specification, the list in appendix A always takes precedence.
-
-   Each profile of stringprep MUST be registered with IANA.  The
-   registration procedure is described in the IANA Considerations
-   appendix; basically, the IESG must review each profile of stringprep.
-   Protocol developers are strongly encouraged to look through the IANA
-   profile registry when creating new profiles for stringprep, and to
-   re-use logic from earlier profiles where possible in new profiles.
-   In some cases, an existing profile can be reused by a different
-   protocol.
-
-2. Preparation Overview
-
-   The steps for preparing strings are:
-
-   1) Map -- For each character in the input, check if it has a mapping
-      and, if so, replace it with its mapping.  This is described in
-      section 3.
-
-   2) Normalize -- Possibly normalize the result of step 1 using Unicode
-      normalization.  This is described in section 4.
-
-   3) Prohibit -- Check for any characters that are not allowed in the
-      output.  If any are found, return an error.  This is described in
-      section 5.
-
-   4) Check bidi -- Possibly check for right-to-left characters, and if
-      any are found, make sure that the whole string satisfies the
-      requirements for bidirectional strings.  If the string does not
-      satisfy the requirements for bidirectional strings, return an
-      error.  This is described in section 6.
-
-   The above steps MUST be performed in the order given to comply with
-   this specification.
-
-   The mappings described in section 3, and the optional Unicode
-   normalization described in section 4, can be one-to-none, one-to-one,
-   one-to-many, many-to-one, or many-to-many.  That is, some characters
-   might be eliminated or replaced by more than one character, and the
-   output of this step might be shorter or longer than the input.
-   Because of this, the system using stringprep MUST be prepared to
-   receive a longer or shorter string than the one input in the
-   stringprep algorithm.
-
-
-
-
-Hoffman & Blanchet          Standards Track                     [Page 6]
-
-RFC 3454        Preparation of Internationalized Strings   December 2002
-
-
-3. Mapping
-
-   Each character in the input stream MUST be checked against a mapping
-   table.  The mapping table SHOULD come from this document, although
-   the mapping table MAY be added to or altered by the profile.  The
-   mapping tables are subsections of appendix B.
-
-   The lists in appendix B MUST be used by implementations of this
-   specification.  If there are any discrepancies between the lists in
-   appendix B and subsections below, the lists in appendix B always
-   takes precedence.
-
-   For any individual character, the mapping table MAY specify that a
-   character be mapped to nothing, or mapped to one other character, or
-   mapped to a string of other characters.
-
-   Mapped characters are not re-scanned during the mapping step.  That
-   is, if character A at position X is mapped to character B, character
-   B which is now at position X is not checked against the mapping
-   table.
-
-3.1 Commonly mapped to nothing
-
-   The following characters are simply deleted from the input (that is,
-   they are mapped to nothing) because their presence or absence in
-   protocol identifiers should not make two strings different.  They are
-   listed in Table B.1.
-
-   Some characters are only useful in line-based text, and are otherwise
-   invisible and ignored.
-
-   00AD; SOFT HYPHEN
-   1806; MONGOLIAN TODO SOFT HYPHEN
-   200B; ZERO WIDTH SPACE
-   2060; WORD JOINER
-   FEFF; ZERO WIDTH NO-BREAK SPACE
-
-   Some characters affect glyph choice and glyph placement, but do not
-   bear semantics.
-
-   034F; COMBINING GRAPHEME JOINER
-   180B; MONGOLIAN FREE VARIATION SELECTOR ONE
-   180C; MONGOLIAN FREE VARIATION SELECTOR TWO
-   180D; MONGOLIAN FREE VARIATION SELECTOR THREE
-   200C; ZERO WIDTH NON-JOINER
-   200D; ZERO WIDTH JOINER
-   FE00; VARIATION SELECTOR-1
-   FE01; VARIATION SELECTOR-2
-
-
-
-Hoffman & Blanchet          Standards Track                     [Page 7]
-
-RFC 3454        Preparation of Internationalized Strings   December 2002
-
-
-   FE02; VARIATION SELECTOR-3
-   FE03; VARIATION SELECTOR-4
-   FE04; VARIATION SELECTOR-5
-   FE05; VARIATION SELECTOR-6
-   FE06; VARIATION SELECTOR-7
-   FE07; VARIATION SELECTOR-8
-   FE08; VARIATION SELECTOR-9
-   FE09; VARIATION SELECTOR-10
-   FE0A; VARIATION SELECTOR-11
-   FE0B; VARIATION SELECTOR-12
-   FE0C; VARIATION SELECTOR-13
-   FE0D; VARIATION SELECTOR-14
-   FE0E; VARIATION SELECTOR-15
-   FE0F; VARIATION SELECTOR-16
-
-3.2 Case folding
-
-   If a profile is going to map characters for case-insensitive
-   comparison, that profile SHOULD map using either appendix B.2 or
-   appendix B.3.  appendix B.2 is for profiles that also use Unicode
-   normalization form KC, while appendix  B.3 is for profiles that do
-   not use Unicode normalization.  These tables map from uppercase to
-   lowercase characters.  Note that this could have been "change all
-   lowercase characters into uppercase characters".  However, the
-   upper-to-lower folding was chosen because there is a tradition of
-   using lowercase in current Internet applications and protocols.
-
-   If a profile creates its own mapping tables for case folding, they
-   SHOULD be based on [UTR21], and SHOULD map from uppercase characters
-   to lowercase.  The "CaseFolding.txt" file from the Unicode database
-   SHOULD be used to prepare the mapping table. The profile SHOULD do
-   full case mapping (that is, using statuses C, F, and I).
-
-   If the profile is using Unicode normalization form KC (as described
-   in section 4 of this document), it is important to note that there
-   are some characters that do not have mappings in [UTR21] but still
-   need processing.  These characters include a few Greek characters and
-   many symbols that contain Latin characters.  The list of characters
-   to add to the mapping table can determined by the following
-   algorithm:
-
-   b = NormalizeWithKC(Fold(a));
-   c = NormalizeWithKC(Fold(b));
-   if c is not the same as b, add a mapping for "a to c".
-
-   Because NormalizeWithKC(Fold(c)) always equals c, the table is stable
-   from that point on.
-
-
-
-
-Hoffman & Blanchet          Standards Track                     [Page 8]
-
-RFC 3454        Preparation of Internationalized Strings   December 2002
-
-
-   Appendix B.3 is derived from the CaseFolding-3.txt file associated
-   with Unicode 3.2; appendix B.2 is based on appendix B.3 with the
-   additional characters added from the algorithm above.
-
-   Authors of profiles of this document need to consider the effects of
-   changing the mapping of any currently-assigned character when
-   updating their profiles.  Adding a new mapping for a currently-
-   assigned character, or changing an existing mapping, could cause a
-   variance between the behavior of systems that have been updated and
-   systems that have not been updated.
-
-4. Normalization
-
-   The output of the mapping step is optionally normalized using one of
-   the Unicode normalization forms, as described in [UAX15].  A profile
-   can specify one of two options for Unicode normalization:
-
-   - no normalization
-
-   - Unicode normalization with form KC
-
-   A profile MAY choose to do no normalization.  However, such a profile
-   can easily yield results that will be surprising to typical users,
-   depending on the input mechanism they use.  For example, some input
-   mechanisms enter compatibility characters that look exactly like the
-   underlying characters, but have different code points.  Another
-   example of where Unicode normalization helps create predictable
-   results is with characters that have multiple combining diacritics:
-   normalization orders those diacritics in a predictable fashion.
-
-   On the other hand, Unicode normalization requires fairly large tables
-   and somewhat complicated character reordering logic.  The size and
-   complexity should not be considered daunting except in the most
-   restricted of environments, and needs to be weighed against the
-   problems of user surprise from comparing unnormalized strings.  Note
-   that the tables used for normalization are not given in this
-   document, but instead must be derived from the Unicode database, as
-   described in [UAX15].
-
-   There is a third form of normalization, Unicode normalization with
-   form C.  If a profile is going to use a Unicode normalization, it
-   MUST use Unicode normalization form KC.  Form KC maps many
-   "compatibility characters" to their equivalents.  Some user interface
-   systems make it possible to enter compatibility characters instead of
-   the base equivalents.  Thus, using form KC instead of form C will
-   cause more strings that users would expect to match to actually
-   match.
-
-
-
-
-Hoffman & Blanchet          Standards Track                     [Page 9]
-
-RFC 3454        Preparation of Internationalized Strings   December 2002
-
-
-   A profile that specifies Unicode normalization MUST use the
-   normalization in [UAX15] that is associated with the version of the
-   Unicode character set specified for the profile.
-
-   The composition process described in [UAX15] requires a fixed
-   composition version of Unicode to ensure that strings normalized
-   under one version of Unicode remain normalized under all future
-   versions of Unicode.
-
-   The IETF is relying on Unicode not to change the normalization of
-   currently-assigned characters in future versions of normalization.
-   If a future version of the normalization tables changes the
-   normalized value of an existing character, authors of profiles of
-   this document have to look at the changes very carefully before they
-   update their normalization tables.  Such a change could cause a
-   variance between the behavior of systems that have been updated and
-   systems that have not been updated.
-
-5. Prohibited Output
-
-   Before the text can be emitted, it MUST be checked for prohibited
-   code points.  There are a variety of prohibited code points, as
-   described in this section.  A profile of this document MAY use all or
-   some of the tables in appendix C.
-
-   The stringprep process never emits both an error and a string.  If an
-   error is detected during the checking for prohibited code points,
-   only an error is returned.
-
-   Note that the subsections below describe how the tables in appendix C
-   were formed.  They are here for people who want to understand more,
-   but they should be ignored by implementors.  Implementations that use
-   tables MUST map based on the tables themselves, not based on the
-   descriptions in this section of how the tables were created.
-
-   The lists in appendix C MUST be used by implementations of this
-   specification.  If there are any discrepancies between the lists in
-   appendix C and subsections below, the lists in appendix C always take
-   precedence.
-
-   Some code points listed in one section may also appear in other
-   sections.
-
-   It is important to note that a profile of this document MAY prohibit
-   additional characters.
-
-
-
-
-
-
-Hoffman & Blanchet          Standards Track                    [Page 10]
-
-RFC 3454        Preparation of Internationalized Strings   December 2002
-
-
-   Each subsection of this section has a matching subsection in appendix
-   C.  For example, the characters listed in section 5.1 are listed in
-   appendix C.1.
-
-5.1 Space characters
-
-   Space characters can make accurate visual transcription of strings
-   nearly impossible and could lead to user entry errors in many ways.
-   Note that the list below is split into two tables in appendix C:
-   Table C.1.1 contains the ASCII code points, while Table C.1.2
-   contains the non-ASCII code points.  Most profiles of this document
-   that want to prohibit space characters will want to include both
-   tables.
-
-   0020; SPACE
-   00A0; NO-BREAK SPACE
-   1680; OGHAM SPACE MARK
-   2000; EN QUAD
-   2001; EM QUAD
-   2002; EN SPACE
-   2003; EM SPACE
-   2004; THREE-PER-EM SPACE
-   2005; FOUR-PER-EM SPACE
-   2006; SIX-PER-EM SPACE
-   2007; FIGURE SPACE
-   2008; PUNCTUATION SPACE
-   2009; THIN SPACE
-   200A; HAIR SPACE
-   200B; ZERO WIDTH SPACE
-   202F; NARROW NO-BREAK SPACE
-   205F; MEDIUM MATHEMATICAL SPACE
-   3000; IDEOGRAPHIC SPACE
-
-5.2 Control characters
-
-   Control characters (or characters with control function) cannot be
-   seen and can cause unpredictable results when displayed.  Note that
-   the list below is split into two tables in appendix C: Table C.2.1
-   contains the ASCII code points, while Table C.2.2 contains the non-
-   ASCII code points.  Most profiles of this document that want to
-   prohibit control characters will want to include both tables.
-
-   0000-001F; [CONTROL CHARACTERS]
-   007F; DELETE
-   0080-009F; [CONTROL CHARACTERS]
-   06DD; ARABIC END OF AYAH
-   070F; SYRIAC ABBREVIATION MARK
-   180E; MONGOLIAN VOWEL SEPARATOR
-
-
-
-Hoffman & Blanchet          Standards Track                    [Page 11]
-
-RFC 3454        Preparation of Internationalized Strings   December 2002
-
-
-   200C; ZERO WIDTH NON-JOINER
-   200D; ZERO WIDTH JOINER
-   2028; LINE SEPARATOR
-   2029; PARAGRAPH SEPARATOR
-   2060; WORD JOINER
-   2061; FUNCTION APPLICATION
-   2062; INVISIBLE TIMES
-   2063; INVISIBLE SEPARATOR
-   206A-206F; [CONTROL CHARACTERS]
-   FEFF; ZERO WIDTH NO-BREAK SPACE
-   FFF9-FFFC; [CONTROL CHARACTERS]
-   1D173-1D17A; [MUSICAL CONTROL CHARACTERS]
-
-5.3 Private use
-
-   Because private-use characters do not have defined meanings, they are
-   likely to be prohibited.  The private-use characters are:
-
-   E000-F8FF; [PRIVATE USE, PLANE 0]
-   F0000-FFFFD; [PRIVATE USE, PLANE 15]
-   100000-10FFFD; [PRIVATE USE, PLANE 16]
-
-5.4 Non-character code points
-
-   Non-character code points are code points that have been allocated in
-   ISO/IEC 10646 but are not characters.  Because they are already
-   assigned, they are guaranteed not to later change into characters.
-
-   FDD0-FDEF; [NONCHARACTER CODE POINTS]
-   FFFE-FFFF; [NONCHARACTER CODE POINTS]
-   1FFFE-1FFFF; [NONCHARACTER CODE POINTS]
-   2FFFE-2FFFF; [NONCHARACTER CODE POINTS]
-   3FFFE-3FFFF; [NONCHARACTER CODE POINTS]
-   4FFFE-4FFFF; [NONCHARACTER CODE POINTS]
-   5FFFE-5FFFF; [NONCHARACTER CODE POINTS]
-   6FFFE-6FFFF; [NONCHARACTER CODE POINTS]
-   7FFFE-7FFFF; [NONCHARACTER CODE POINTS]
-   8FFFE-8FFFF; [NONCHARACTER CODE POINTS]
-   9FFFE-9FFFF; [NONCHARACTER CODE POINTS]
-   AFFFE-AFFFF; [NONCHARACTER CODE POINTS]
-   BFFFE-BFFFF; [NONCHARACTER CODE POINTS]
-   CFFFE-CFFFF; [NONCHARACTER CODE POINTS]
-   DFFFE-DFFFF; [NONCHARACTER CODE POINTS]
-   EFFFE-EFFFF; [NONCHARACTER CODE POINTS]
-   FFFFE-FFFFF; [NONCHARACTER CODE POINTS]
-   10FFFE-10FFFF; [NONCHARACTER CODE POINTS]
-
-
-
-
-
-Hoffman & Blanchet          Standards Track                    [Page 12]
-
-RFC 3454        Preparation of Internationalized Strings   December 2002
-
-
-   The non-character code points are listed in the PropList.txt file
-   from the Unicode database.
-
-5.5 Surrogate codes
-
-   The following code points are permanently reserved for use as
-   surrogate code values in the UTF-16 encoding, will never be assigned
-   to characters in the Unicode repertoire, and are therefore
-   prohibited:
-
-   D800-DFFF; [SURROGATE CODES]
-
-5.6 Inappropriate for plain text
-
-   The following characters do not appear in regular text.
-
-   FFF9; INTERLINEAR ANNOTATION ANCHOR
-   FFFA; INTERLINEAR ANNOTATION SEPARATOR
-   FFFB; INTERLINEAR ANNOTATION TERMINATOR
-   FFFC; OBJECT REPLACEMENT CHARACTER
-
-   Although the replacement character (U+FFFD) might be used when a
-   string is displayed,  it doesn't make sense for it to be part of the
-   string itself.  It is often displayed by renderers to indicate "there
-   would be some character here, but it cannot be rendered".  For
-   example, on a computer with no Asian fonts, a string with three
-   ideographs might be rendered with three replacement characters.
-
-   FFFD; REPLACEMENT CHARACTER
-
-5.7 Inappropriate for canonical representation
-
-   The ideographic description characters allow different sequences of
-   characters to be rendered the same way, which makes them
-   inappropriate for strings that have to have a single canonical
-   representation.
-
-   2FF0-2FFB; [IDEOGRAPHIC DESCRIPTION CHARACTERS]
-
-5.8 Change display properties or are deprecated
-
-   The following characters can cause changes in display or the order in
-   which characters appear when rendered, or are deprecated in Unicode.
-
-   0340; COMBINING GRAVE TONE MARK
-   0341; COMBINING ACUTE TONE MARK
-   200E; LEFT-TO-RIGHT MARK
-   200F; RIGHT-TO-LEFT MARK
-
-
-
-Hoffman & Blanchet          Standards Track                    [Page 13]
-
-RFC 3454        Preparation of Internationalized Strings   December 2002
-
-
-   202A; LEFT-TO-RIGHT EMBEDDING
-   202B; RIGHT-TO-LEFT EMBEDDING
-   202C; POP DIRECTIONAL FORMATTING
-   202D; LEFT-TO-RIGHT OVERRIDE
-   202E; RIGHT-TO-LEFT OVERRIDE
-   206A; INHIBIT SYMMETRIC SWAPPING
-   206B; ACTIVATE SYMMETRIC SWAPPING
-   206C; INHIBIT ARABIC FORM SHAPING
-   206D; ACTIVATE ARABIC FORM SHAPING
-   206E; NATIONAL DIGIT SHAPES
-   206F; NOMINAL DIGIT SHAPES
-
-5.9 Tagging characters
-
-   The following characters are used for tagging text and are invisible.
-
-   E0001; LANGUAGE TAG
-   E0020-E007F; [TAGGING CHARACTERS]
-
-6. Bidirectional Characters
-
-   Most characters are displayed from left to right, but some are
-   displayed from right to left.  This feature of Unicode is called
-   "bidirectional text", or "bidi" for short.  The Unicode standard has
-   an extensive discussion of how to reorder glyphs for display when
-   dealing with bidirectional text such as Arabic or Hebrew.  See [UAX9]
-   for more information.  In particular, all Unicode text is stored in
-   logical order.
-
-   A profile MAY choose to ignore bidirectional text.  However, ignoring
-   bidirectional text can cause display ambiguities.  For example, it is
-   quite easy to create two different strings with the same characters
-   (but in different order) that are correctly displayed identically.
-   Therefore, in order to avoid most problems with ambiguous
-   bidirectional text display, profile creators should strongly consider
-   including the bidirectional character handling described in this
-   section in their profile.
-
-   The stringprep process never emits both an error and a string.  If an
-   error is detected during the checking of bidirectional strings, only
-   an error is returned.
-
-   [Unicode3.2] defines several bidirectional categories; each character
-   has one bidirectional category assigned to it.  For the purposes of
-   the requirements below, an "RandALCat character" is a character that
-   has Unicode bidirectional categories "R" or "AL"; an "LCat character"
-   is a character that has Unicode bidirectional category "L".  Note
-
-
-
-
-Hoffman & Blanchet          Standards Track                    [Page 14]
-
-RFC 3454        Preparation of Internationalized Strings   December 2002
-
-
-   that there are many characters which fall in neither of the above
-   definitions; Latin digits (<U+0030> through <U+0039>) are examples of
-   this because they have bidirectional category "EN".
-
-   In any profile that specifies bidirectional character handling, all
-   three of the following requirements MUST be met:
-
-   1) The characters in section 5.8 MUST be prohibited.
-
-   2) If a string contains any RandALCat character, the string MUST NOT
-      contain any LCat character.
-
-   3) If a string contains any RandALCat character, a RandALCat
-      character MUST be the first character of the string, and a
-      RandALCat character MUST be the last character of the string.
-
-   Note that requirement 3 prohibits strings such as <U+0627><U+0031>
-   ("aleph 1") but allows strings such as <U+0627><U+0031><U+0628>
-   ("aleph 1 beh").  [UAX9] goes into great detail about the display
-   order of strings that contain particular categories of characters in
-   particular sequences.
-
-   Table D.1 lists the characters that belong to Unicode bidirectional
-   categories "R" and "AL".  Table D.2 lists all the characters that
-   belong to Unicode bidirectonal category "L".  These tables are
-   derived from [Unicode3.2].
-
-7. Unassigned Code Points in Stringprep Profiles
-
-   This section describes two different types of strings in typical
-   protocols where internationalized strings are used: "stored strings"
-   and "queries".  Of course, different Internet protocols use strings
-   very differently, so these terms cannot be used exactly in every
-   protocol that needs to use stringprep.  In general, "stored strings"
-   are strings that are used in protocol identifiers and named entities,
-   such as names in digital certificates and DNS domain name parts.
-   "Queries" are strings that are used to match against strings that are
-   stored identifiers, such as user-entered names for digital
-   certificate authorities and DNS lookups.
-
-   All code points not assigned in the character repertoire named in a
-   stringprep profile are called "unassigned code points".  Stored
-   strings using the profile MUST NOT contain any unassigned code
-   points.  Queries for matching strings MAY contain unassigned code
-   points.  Note that this is the only part of this document where the
-   requirements for queries differs from the requirements for stored
-   strings.
-
-
-
-
-Hoffman & Blanchet          Standards Track                    [Page 15]
-
-RFC 3454        Preparation of Internationalized Strings   December 2002
-
-
-   Using two different policies for where unassigned code points can
-   appear removes the need for versioning in protocols that use
-   stringprep profiles.  This is very useful since it makes the overall
-   processing simpler and does not impose a "protocol" to handle
-   versioning.  It is expected that the ISO/IEC 10646 and Unicode
-   repertoires will be updated fairly frequently; at the time that this
-   document is being written, it has happened approximately once a year.
-   Each time a new version of a repertoire appears, a new version of a
-   profile MAY be created.  Some end users will want to use the new code
-   points as soon as they are defined.
-
-   The list of unassigned code points MUST be given in a profile, and
-   that list MUST be used by implementations of the profile.
-
-   The goal of the requirements in this section is to prevent
-   comparisons between two strings that were both permitted to contain
-   unassigned code points.  When two strings X and Y are compared and
-   string Y was prepared in a way that permits unassigned code points, a
-   negative result to the comparison is not definitive; it's possible
-   that the strings don't match even though they would match if a more
-   recent version of the profile were used for Y.  However, if both X
-   and Y were prepared in a way that permits unassigned code points,
-   something worse can happen: even a positive result for the comparison
-   is not definitive.  It is possible that the strings do match even
-   though they would not match if a more recent version of the profile
-   were used (one that prohibits a code point appearing in both X and
-   Y).
-
-   Due to the way that versioning is handled in this section, stored
-   strings that are embedded in structures that cannot be changed (such
-   as the signed parts of digital certificates) MUST NOT contain any
-   unassigned code points.
-
-7.1 Categories of code points
-
-   Each code point in a repertoire named by a profile of stringprep can
-   be categorized by how it acts in the process described in earlier
-   sections of this document:
-
-      AO      Code points that can be in the output
-
-      MN      Code points that cannot be in the output because they
-              never appear as output from mapping or normalization
-
-      D       Code points that cannot be in the output because they are
-              disallowed in the prohibition step
-
-      U       Unassigned code points
-
-
-
-Hoffman & Blanchet          Standards Track                    [Page 16]
-
-RFC 3454        Preparation of Internationalized Strings   December 2002
-
-
-   A subsequent version of a profile that references a newer version of
-   a repertoire with new code points will inherently have some code
-   points move from category U to either D, MN, or AO.  For backwards
-   compatibility, a subsequent version of a profile MUST NOT move code
-   points from any other category.  That is, current AO, MN, or D code
-   points MUST NOT ever change to a different category.
-
-   Stored strings MUST NOT contain any code points outside of AO for the
-   latest version of a profile.  That is, they are forbidden to contain
-   code points from the MN, D, or U categories.
-
-   Applications creating queries MUST treat U code points as if they
-   were AO when preparing the query to be entered in the process
-   described by a profile of stringprep.  Those applications MAY
-   optionally have a preprocessor that provide stricter checks: treating
-   unassigned code points in the input as errors, or warning the user
-   about the fact that the code point is unassigned in the version of a
-   profile that the software is based on; such a choice is a local
-   matter for the software.
-
-7.2 Reasons for the difference between stored strings and queries
-
-   Different software using different versions of a stringprep profile
-   need to interoperate with maximal compatibility.  The scheme
-   described in this section (stored strings MUST NOT contain unassigned
-   code points, queries MAY include unassigned code points) allows that
-   compatibility without introducing any known security or
-   interoperability issues.
-
-   The list below shows what happens if a query contains a code point
-   from category U that is allowed in a newer version of a profile.  The
-   query either matches the string that was intended, or matches no
-   string at all.  In this list, the query comes from an application
-   using version "oldVersion" of a profile, the stored string was
-   created using version "newVersion" of the same profile, and the code
-   point X was in category U in oldVersion, and has changed category to
-   AO, MN, or D.  There are 3 possible scenarios:
-
-   1. X is assigned to AO -- In newVersion, X is in category AO.
-      Because the application passed X through, it gets back a positive
-      match with the stored string.  There is one exceptional case,
-      where X is a combining mark.
-
-      The order of combining marks is normalized, so if another
-      combining mark Y has a lower combining class than X then XY will
-      be put in the canonical order YX.  (Unassigned code points are
-      never reordered, so this doesn't happen in oldVersion).  If the
-      query contains YX, the query will get positive match with the
-
-
-
-Hoffman & Blanchet          Standards Track                    [Page 17]
-
-RFC 3454        Preparation of Internationalized Strings   December 2002
-
-
-      stored string.  However, no string can be stored with XY, so a
-      query with XY will get a negative answer to the test for matching.
-
-   2. X is assigned to MN -- In newVersion, X is normalized to code
-      point "nX" and therefore X is now put in category MN.  This cannot
-      exist in any stored string, so any query containing X will get a
-      negative answer to the test for matching.  Note, however, if the
-      query had contained the letter nX, it would have positively
-      matched.
-
-   3. X is assigned to D -- In newVersion, X is in category D.  This
-      cannot exist in any stored string, so any query containing X will
-      get a negative answer to the test for matching.
-
-   In none of the cases does the query get data for a stored string
-   other than the one it actually tried to match against.
-
-   Profiles are stable between versions in the following sense: If a
-   string S has been prepared using newVersion, then it will not change
-   if it is subsequently prepared using oldVersion.
-
-7.3 Versions of applications and stored strings
-
-   Another way to see that this versioning system works is to compare
-   what happens when an application uses a newer or older version of a
-   profile.
-
-   Newer query application -- Suppose that a querying application is
-   using version newVersion and the stored string was created using
-   version oldVersion.  This case is simple: there will be no characters
-   in the stored string that cannot be queried by the application
-   because the new profile uses a superset of the code points used for
-   making the stored string.
-
-   Newer stored string -- Suppose that a querying application is using
-   oldVersion and the stored string was created using a profile that
-   uses newVersion.  Because the querying application let unassigned
-   code points pass through, the user can query on stored strings that
-   use code points in newVersion.  No stored strings can have code
-   points that are unassigned in newVersion, since that is illegal.  In
-   order to get a match, the querying application has to enter the
-   unassigned code points in the proper order, and has to use unassigned
-   code points that would make it through both the mapping and the
-   normalization steps.
-
-
-
-
-
-
-
-Hoffman & Blanchet          Standards Track                    [Page 18]
-
-RFC 3454        Preparation of Internationalized Strings   December 2002
-
-
-8. References
-
-8.1 Normative references
-
-   [UAX15]      Mark Davis and Martin Duerst. Unicode Standard Annex
-                #15:  Unicode Normalization Forms, Version 3.2.0.
-                <http://www.unicode.org/unicode/reports/tr15/tr15-
-                22.html>.
-
-   [Unicode3.2] The Unicode Consortium. The Unicode Standard, Version
-                3.2.0 is defined by The Unicode Standard, Version 3.0
-                (Reading, MA, Addison-Wesley, 2000. ISBN 0-201-61633-5),
-                as amended by the Unicode Standard Annex #27: Unicode
-                3.1 (http://www.unicode.org/reports/tr27/) and by the
-                Unicode Standard Annex #28: Unicode 3.2
-                (http://www.unicode.org/reports/tr28/).
-
-   [RFC2119]    Bradner, S., "Key words for use in RFCs to Indicate
-                Requirement Levels", BCP 14, RFC 2119, March 1997.
-
-8.2 Informative references
-
-   [CharModel]  Unicode Technical Report;17, Character Encoding Model.
-                <http://www.unicode.org/unicode/reports/tr17/>.
-
-   [Glossary]   Unicode Glossary, <http://www.unicode.org/glossary/>.
-
-   [ISO10646]   ISO/IEC, "Information Technology - Universal Multiple-
-                Octet Coded Character Set (UCS) - Part 1: Architecture
-                and Basic Multilingual Plane", ISO/IEC 10646-1:2000,
-                October 2000.
-
-   [RFC2434]    Narten, T. and H. Alvestrand, "Guidelines for IANA
-                Considerations", BCP 26, RFC 2434, October 1998.
-
-   [UAX9]       The Unicode Consortium. Unicode Standard Annex #9, The
-                Bidirectional Algorithm,
-                <http://www.unicode.org/unicode/reports/tr9/>.
-
-   [UTR21]      Mark Davis. Case Mappings. Unicode Technical Report 21.
-                <http://www.unicode.org/unicode/reports/tr21/>.
-
-9. Security Considerations
-
-   Stringprep is used with Unicode characters.  There are security
-   considerations that are specific to stringprep, and others that are
-   generic to using Unicode.
-
-
-
-
-Hoffman & Blanchet          Standards Track                    [Page 19]
-
-RFC 3454        Preparation of Internationalized Strings   December 2002
-
-
-9.1 Stringprep-specific security considerations
-
-   The Unicode and ISO/IEC 10646 repertoires have many characters that
-   look similar.  In many cases, users of security protocols might do
-   visual matching, such as when comparing the names of trusted third
-   parties.  Because it is impossible to map similar-looking characters
-   without a great deal of context such as knowing the fonts used,
-   stringprep does nothing to map similar-looking characters together
-   nor to prohibit some characters because they look like others.  User
-   applications can help disambiguate some similar-looking characters by
-   showing the user when a string changes between scripts.
-
-   Most profiles of stringprep can cause changes in strings that are
-   input to stringprep.  Because of this, protocols that have sets of
-   non-allowed characters or sequences MUST check for the non-allowed
-   characters or sequences after the stringprep processing.
-
-   This document does not mandate the checking of bidirectional
-   characters in section 6.  If the requirements in section 6 are not
-   used in a profile of stringprep, it is easy to create many strings
-   whose characters are in different order but are displayed
-   identically.  This can cause security-related user confusion similar
-   to look-alike characters, as described above.
-
-   Stringprep does not do anything to assure that any algorithms
-   translating characters from non-Unicode into Unicode produce the same
-   output in all implementations.
-
-   Some Unicode codepoints are invisible.  Protocols that allow these
-   characters (that is, do not map them out or prohibit them in
-   stringprep) can cause users confusion when two identical-looking
-   strings do not match.
-
-9.2 Generic Unicode security considerations
-
-   Using Unicode characters explicitly forces applications to use
-   multi-octet characters.  Converting an application from one that uses
-   single-octet characters to one that uses multi-octet characters must
-   be done very carefully, particularly in an application that checks
-   for values of characters or sorts characters.
-
-   Protocols that use stringprep usually also use encodings of Unicode,
-   such as UTF-8 or UTF-16.  Some applications using those encodings
-   have been known to not check for illegal or ill-formed sequences in
-   the encodings, and thereby have not detected sequences of octets that
-   would have been detected if they used just ASCII.  For example, in
-
-
-
-
-
-Hoffman & Blanchet          Standards Track                    [Page 20]
-
-RFC 3454        Preparation of Internationalized Strings   December 2002
-
-
-   UTF-8 the octet sequence "0xC0 0xAB" is an illegal formation of
-   U+002B (plus sign).  All programs should reject any string that is an
-   illegal or ill-formed octet sequence for the encoding being used.
-
-   Both Unicode normalization and conversion between Unicode encodings
-   can cause strings to grow or shrink.  Programs that used fixed-size
-   buffers, or that make assumptions that buffers will always be greater
-   than or less than particular sizes, are likely to fail in insecure
-   fashions when using Unicode normalization or encoding conversions.
-
-   Covering an extensive list of security threats and considerations on
-   the use of current and future versions of Unicode is outside of the
-   scope of this document.
-
-10. IANA Considerations
-
-   Stringprep profiles MUST have IETF consensus as described in
-   [RFC2434].  Each profile MUST be reviewed by the IESG before it is
-   registered.  The IESG MAY change a profile before registration.
-
-   IANA has set up a registry of stringprep profiles.  This registry is
-   a single text file that lists the known profiles.  Each entry in the
-   registry has three fields:
-
-   - Profile name
-
-   - RFC in which the profile is defined
-
-   - Indicator whether or not this is the newest version of the profile
-
-   Each version of a profile will remain listed in the registry forever.
-   That is, if a new version of a profile supersedes an earlier version,
-   both versions will continue to be listed in the registry, but the
-   current version indicator will be turned off for the earlier version
-   and turned on for the newer version.
-
-   It is probably harmful if a large number of profiles of stringprep
-   proliferate.  Therefore, the IESG may reject proposals for new
-   profiles and instead suggest that protocols reuse existing profiles.
-
-
-
-
-
-
-
-
-
-
-
-
-Hoffman & Blanchet          Standards Track                    [Page 21]
-
-RFC 3454        Preparation of Internationalized Strings   December 2002
-
-
-11. Acknowledgements
-
-   Many people from the IETF IDN Working Group and the Unicode Technical
-   Committee contributed ideas that went into the first document of this
-   document.  Mark Davis and Patrik Faltstrom were particularly helpful
-   in some of the ideas, such as the versioning description.
-
-   The IDN nameprep design team made many useful changes to the first
-   document.  That team and its advisors include:
-
-   Asmus Freytag
-   Cathy Wissink
-   Francois Yergeau
-   James Seng
-   Marc Blanchet
-   Mark Davis
-   Martin Duerst
-   Patrik Faltstrom
-   Paul Hoffman
-
-   Additional significant improvements were proposed by:
-
-   Jonathan Rosenne
-   Kent Karlsson
-   Scott Hollenbeck
-   Dave Crocker
-   Erik Nordmark
-   Matitiahu Allouche
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Hoffman & Blanchet          Standards Track                    [Page 22]
-
-RFC 3454        Preparation of Internationalized Strings   December 2002
-
-
-A. Unicode repertoires
-
-   The following is the only repertoire covered in this document:
-
-   Unicode 3.2, as defined in [Unicode3.2].
+   This document and translations of it may be copied and furnished to
+   others, and derivative works that comment on or otherwise explain it
+   or assist in its implementation may be prepared, copied, published
+   and distributed, in whole or in part, without restriction of any
+   kind, provided that the above copyright notice and this paragraph are
+   included on all such copies and derivative works.  However, this
+   document itself may not be modified in any way, such as by removing
+   the copyright notice or references to the Internet Society or other
+   Internet organizations, except as needed for the purpose of
+   developing Internet standards in which case the procedures for
+   copyrights defined in the Internet Standards process must be
+   followed, or as required to translate it into languages other than
+   English.
+
+   The limited permissions granted above are perpetual and will not be
+   revoked by the Internet Society or its successors or assigns.
+
+   This document and the information contained herein is provided on an
+   "AS IS" basis and THE INTERNET SOCIETY AND THE INTERNET ENGINEERING
+   TASK FORCE DISCLAIMS ALL WARRANTIES, EXPRESS OR IMPLIED, INCLUDING
+   BUT NOT LIMITED TO ANY WARRANTY THAT THE USE OF THE INFORMATION
+   HEREIN WILL NOT INFRINGE ANY RIGHTS OR ANY IMPLIED WARRANTIES OF
+   MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE.
+
+Unfortunately, that license is non-free according to
+licensing@fsf.org:
+
+ From: "Dave Turner via RT" <licensing@fsf.org>
+ Date: Thu, 08 Dec 2005 16:33:57 -0500
+ Subject: [gnu.org #211910] Are RFC specifications freely licensed? 
+
+ > Hi Dave!  I know this is an old issue (last post in this thread was
+ > about a year ago), but have you heard back from the licensing
+ > committee on the RFC 2026 and RFC 3978 licenses?
+
+ Sorry for the delay.  The old terms are officially non-free.
+
+However, to be copyrightable there needs to be some originality, which
+isn't present here, see:
+
+ From: "novalis@fsf.org via RT" <licensing@fsf.org>
+ Subject: Re: [gnu.org #211910] Are RFC specifications freely licensed?
+ Date: Thu, 06 Jan 2005 18:32:02 -0500
+
+ >> >> > If not, it's entirely possible that they're not copyrightable, or that
+ >> >> > they have very thin protection.  I would need to see them specifically
+ >> >> > to be able to determine this.
+ >> >> 
+ >> >> The table fall under the old license.  The ASN.1 schema fall under the
+ >> >> new license.  I'm attaching the tables, and the ASN.1 schema below.
+ >> >> If it matters: Some tables are derived from Unicode tables, and some
+ >> >> were probably created by hand.
+ >> >
+ >> > It looks to me like these tables do not have enough originality to be
+ >> > copyrightable.  The text surrounding them ("The following is the mapping
+ >> > table from section 3....") is probably minimally original and should be
+ >> > removed.
+ >> 
+ >> Are you sure about this?  I'm looking for something strong than "It
+ >> looks".  The tables were not trivial to create, it took the IETF some
+ >> time (years) to arrive with the final tables.  Perhaps the tables
+ >> could be argued to contain some artistic value.  But I'm not an expert
+ >> on this, so these are just my thoughts.
+ >
+ > I'm not a lawyer.  This isn't legal advice.  If you need legal advice,
+ > talk to a lawyer.  I can get a second opinion on this from our lawyers,
+ > if you think it's important, but it still won't be legal advice.
+ > 
+ > From a copyright perspective, the time and effort ("sweat of the brow")
+ > that a given thing takes don't matter (Fiest v. Rural Telephone
+ > Service).  What matters is the originality.  
+ >
+ > I don't see a lot here that's original.  The names are probably
+ > original, but names are generally unprotected.  And if the names are
+ > needed for compatibility, the scenes a faire doctrine comes into play.  
+
+ Right, the names are not required, only the actual numbers are.
+
+ Thanks, this information seem to solve my problem for the source code
+ in libidn.
+
+So we can use this material.  There may be other legal analysis that
+also reach the same conclusion.
 
 A.1 Unassigned code points in Unicode 3.2
 
@@ -1284,14 +129,6 @@ A.1 Unassigned code points in Unicode 3.2
    072D-072F
    074B-077F
    07B2-0900
-
-
-
-Hoffman & Blanchet          Standards Track                    [Page 23]
-
-RFC 3454        Preparation of Internationalized Strings   December 2002
-
-
    0904
    093A-093B
    094E-094F
@@ -1340,14 +177,6 @@ RFC 3454        Preparation of Internationalized Strings   December 2002
    0ACE-0ACF
    0AD1-0ADF
    0AE1-0AE5
-
-
-
-Hoffman & Blanchet          Standards Track                    [Page 24]
-
-RFC 3454        Preparation of Internationalized Strings   December 2002
-
-
    0AF0-0B00
    0B04
    0B0D-0B0E
@@ -1396,14 +225,6 @@ RFC 3454        Preparation of Internationalized Strings   December 2002
    0C91
    0CA9
    0CB4
-
-
-
-Hoffman & Blanchet          Standards Track                    [Page 25]
-
-RFC 3454        Preparation of Internationalized Strings   December 2002
-
-
    0CBA-0CBD
    0CC5
    0CC9
@@ -1452,14 +273,6 @@ RFC 3454        Preparation of Internationalized Strings   December 2002
    0EC5
    0EC7
    0ECE-0ECF
-
-
-
-Hoffman & Blanchet          Standards Track                    [Page 26]
-
-RFC 3454        Preparation of Internationalized Strings   December 2002
-
-
    0EDA-0EDB
    0EDE-0EFF
    0F48
@@ -1508,14 +321,6 @@ RFC 3454        Preparation of Internationalized Strings   December 2002
    135B-1360
    137D-139F
    13F5-1400
-
-
-
-Hoffman & Blanchet          Standards Track                    [Page 27]
-
-RFC 3454        Preparation of Internationalized Strings   December 2002
-
-
    1677-167F
    169D-169F
    16F1-16FF
@@ -1564,14 +369,6 @@ RFC 3454        Preparation of Internationalized Strings   December 2002
    2427-243F
    244B-245F
    24FF
-
-
-
-Hoffman & Blanchet          Standards Track                    [Page 28]
-
-RFC 3454        Preparation of Internationalized Strings   December 2002
-
-
    2614-2615
    2618
    267E-267F
@@ -1620,14 +417,6 @@ RFC 3454        Preparation of Internationalized Strings   December 2002
    FB3D
    FB3F
    FB42
-
-
-
-Hoffman & Blanchet          Standards Track                    [Page 29]
-
-RFC 3454        Preparation of Internationalized Strings   December 2002
-
-
    FB45
    FBB2-FBD2
    FD40-FD4F
@@ -1676,14 +465,6 @@ RFC 3454        Preparation of Internationalized Strings   December 2002
    1D53A
    1D53F
    1D545
-
-
-
-Hoffman & Blanchet          Standards Track                    [Page 30]
-
-RFC 3454        Preparation of Internationalized Strings   December 2002
-
-
    1D547-1D549
    1D551
    1D6A4-1D6A7
@@ -1732,14 +513,6 @@ B.1 Commonly mapped to nothing
    200B; ; Map to nothing
    200C; ; Map to nothing
    200D; ; Map to nothing
-
-
-
-Hoffman & Blanchet          Standards Track                    [Page 31]
-
-RFC 3454        Preparation of Internationalized Strings   December 2002
-
-
    2060; ; Map to nothing
    FE00; ; Map to nothing
    FE01; ; Map to nothing
@@ -1788,14 +561,6 @@ B.2 Mapping for case-folding used with NFKC
    0057; 0077; Case map
    0058; 0078; Case map
    0059; 0079; Case map
-
-
-
-Hoffman & Blanchet          Standards Track                    [Page 32]
-
-RFC 3454        Preparation of Internationalized Strings   December 2002
-
-
    005A; 007A; Case map
    00B5; 03BC; Case map
    00C0; 00E0; Case map
@@ -1844,14 +609,6 @@ RFC 3454        Preparation of Internationalized Strings   December 2002
    0118; 0119; Case map
    011A; 011B; Case map
    011C; 011D; Case map
-
-
-
-Hoffman & Blanchet          Standards Track                    [Page 33]
-
-RFC 3454        Preparation of Internationalized Strings   December 2002
-
-
    011E; 011F; Case map
    0120; 0121; Case map
    0122; 0123; Case map
@@ -1900,14 +657,6 @@ RFC 3454        Preparation of Internationalized Strings   December 2002
    0178; 00FF; Case map
    0179; 017A; Case map
    017B; 017C; Case map
-
-
-
-Hoffman & Blanchet          Standards Track                    [Page 34]
-
-RFC 3454        Preparation of Internationalized Strings   December 2002
-
-
    017D; 017E; Case map
    017F; 0073; Case map
    0181; 0253; Case map
@@ -1956,14 +705,6 @@ RFC 3454        Preparation of Internationalized Strings   December 2002
    01CF; 01D0; Case map
    01D1; 01D2; Case map
    01D3; 01D4; Case map
-
-
-
-Hoffman & Blanchet          Standards Track                    [Page 35]
-
-RFC 3454        Preparation of Internationalized Strings   December 2002
-
-
    01D5; 01D6; Case map
    01D7; 01D8; Case map
    01D9; 01DA; Case map
@@ -2012,14 +753,6 @@ RFC 3454        Preparation of Internationalized Strings   December 2002
    022C; 022D; Case map
    022E; 022F; Case map
    0230; 0231; Case map
-
-
-
-Hoffman & Blanchet          Standards Track                    [Page 36]
-
-RFC 3454        Preparation of Internationalized Strings   December 2002
-
-
    0232; 0233; Case map
    0345; 03B9; Case map
    037A; 0020 03B9; Additional folding
@@ -2068,14 +801,6 @@ RFC 3454        Preparation of Internationalized Strings   December 2002
    03D6; 03C0; Case map
    03D8; 03D9; Case map
    03DA; 03DB; Case map
-
-
-
-Hoffman & Blanchet          Standards Track                    [Page 37]
-
-RFC 3454        Preparation of Internationalized Strings   December 2002
-
-
    03DC; 03DD; Case map
    03DE; 03DF; Case map
    03E0; 03E1; Case map
@@ -2124,14 +849,6 @@ RFC 3454        Preparation of Internationalized Strings   December 2002
    041E; 043E; Case map
    041F; 043F; Case map
    0420; 0440; Case map
-
-
-
-Hoffman & Blanchet          Standards Track                    [Page 38]
-
-RFC 3454        Preparation of Internationalized Strings   December 2002
-
-
    0421; 0441; Case map
    0422; 0442; Case map
    0423; 0443; Case map
@@ -2180,14 +897,6 @@ RFC 3454        Preparation of Internationalized Strings   December 2002
    04A4; 04A5; Case map
    04A6; 04A7; Case map
    04A8; 04A9; Case map
-
-
-
-Hoffman & Blanchet          Standards Track                    [Page 39]
-
-RFC 3454        Preparation of Internationalized Strings   December 2002
-
-
    04AA; 04AB; Case map
    04AC; 04AD; Case map
    04AE; 04AF; Case map
@@ -2236,14 +945,6 @@ RFC 3454        Preparation of Internationalized Strings   December 2002
    050E; 050F; Case map
    0531; 0561; Case map
    0532; 0562; Case map
-
-
-
-Hoffman & Blanchet          Standards Track                    [Page 40]
-
-RFC 3454        Preparation of Internationalized Strings   December 2002
-
-
    0533; 0563; Case map
    0534; 0564; Case map
    0535; 0565; Case map
@@ -2292,14 +993,6 @@ RFC 3454        Preparation of Internationalized Strings   December 2002
    1E10; 1E11; Case map
    1E12; 1E13; Case map
    1E14; 1E15; Case map
-
-
-
-Hoffman & Blanchet          Standards Track                    [Page 41]
-
-RFC 3454        Preparation of Internationalized Strings   December 2002
-
-
    1E16; 1E17; Case map
    1E18; 1E19; Case map
    1E1A; 1E1B; Case map
@@ -2348,14 +1041,6 @@ RFC 3454        Preparation of Internationalized Strings   December 2002
    1E70; 1E71; Case map
    1E72; 1E73; Case map
    1E74; 1E75; Case map
-
-
-
-Hoffman & Blanchet          Standards Track                    [Page 42]
-
-RFC 3454        Preparation of Internationalized Strings   December 2002
-
-
    1E76; 1E77; Case map
    1E78; 1E79; Case map
    1E7A; 1E7B; Case map
@@ -2404,14 +1089,6 @@ RFC 3454        Preparation of Internationalized Strings   December 2002
    1ECE; 1ECF; Case map
    1ED0; 1ED1; Case map
    1ED2; 1ED3; Case map
-
-
-
-Hoffman & Blanchet          Standards Track                    [Page 43]
-
-RFC 3454        Preparation of Internationalized Strings   December 2002
-
-
    1ED4; 1ED5; Case map
    1ED6; 1ED7; Case map
    1ED8; 1ED9; Case map
@@ -2460,14 +1137,6 @@ RFC 3454        Preparation of Internationalized Strings   December 2002
    1F3C; 1F34; Case map
    1F3D; 1F35; Case map
    1F3E; 1F36; Case map
-
-
-
-Hoffman & Blanchet          Standards Track                    [Page 44]
-
-RFC 3454        Preparation of Internationalized Strings   December 2002
-
-
    1F3F; 1F37; Case map
    1F48; 1F40; Case map
    1F49; 1F41; Case map
@@ -2516,14 +1185,6 @@ RFC 3454        Preparation of Internationalized Strings   December 2002
    1F96; 1F26 03B9; Case map
    1F97; 1F27 03B9; Case map
    1F98; 1F20 03B9; Case map
-
-
-
-Hoffman & Blanchet          Standards Track                    [Page 45]
-
-RFC 3454        Preparation of Internationalized Strings   December 2002
-
-
    1F99; 1F21 03B9; Case map
    1F9A; 1F22 03B9; Case map
    1F9B; 1F23 03B9; Case map
@@ -2572,14 +1233,6 @@ RFC 3454        Preparation of Internationalized Strings   December 2002
    1FD3; 03B9 0308 0301; Case map
    1FD6; 03B9 0342; Case map
    1FD7; 03B9 0308 0342; Case map
-
-
-
-Hoffman & Blanchet          Standards Track                    [Page 46]
-
-RFC 3454        Preparation of Internationalized Strings   December 2002
-
-
    1FD8; 1FD0; Case map
    1FD9; 1FD1; Case map
    1FDA; 1F76; Case map
@@ -2628,14 +1281,6 @@ RFC 3454        Preparation of Internationalized Strings   December 2002
    2124; 007A; Additional folding
    2126; 03C9; Case map
    2128; 007A; Additional folding
-
-
-
-Hoffman & Blanchet          Standards Track                    [Page 47]
-
-RFC 3454        Preparation of Internationalized Strings   December 2002
-
-
    212A; 006B; Case map
    212B; 00E5; Case map
    212C; 0062; Additional folding
@@ -2684,14 +1329,6 @@ RFC 3454        Preparation of Internationalized Strings   December 2002
    24C9; 24E3; Case map
    24CA; 24E4; Case map
    24CB; 24E5; Case map
-
-
-
-Hoffman & Blanchet          Standards Track                    [Page 48]
-
-RFC 3454        Preparation of Internationalized Strings   December 2002
-
-
    24CC; 24E6; Case map
    24CD; 24E7; Case map
    24CE; 24E8; Case map
@@ -2740,14 +1377,6 @@ RFC 3454        Preparation of Internationalized Strings   December 2002
    33C9; 0067 0079; Additional folding
    33CB; 0068 0070; Additional folding
    33CD; 006B 006B; Additional folding
-
-
-
-Hoffman & Blanchet          Standards Track                    [Page 49]
-
-RFC 3454        Preparation of Internationalized Strings   December 2002
-
-
    33CE; 006B 006D; Additional folding
    33D7; 0070 0068; Additional folding
    33D9; 0070 0070 006D; Additional folding
@@ -2796,14 +1425,6 @@ RFC 3454        Preparation of Internationalized Strings   December 2002
    10401; 10429; Case map
    10402; 1042A; Case map
    10403; 1042B; Case map
-
-
-
-Hoffman & Blanchet          Standards Track                    [Page 50]
-
-RFC 3454        Preparation of Internationalized Strings   December 2002
-
-
    10404; 1042C; Case map
    10405; 1042D; Case map
    10406; 1042E; Case map
@@ -2852,14 +1473,6 @@ RFC 3454        Preparation of Internationalized Strings   December 2002
    1D40B; 006C; Additional folding
    1D40C; 006D; Additional folding
    1D40D; 006E; Additional folding
-
-
-
-Hoffman & Blanchet          Standards Track                    [Page 51]
-
-RFC 3454        Preparation of Internationalized Strings   December 2002
-
-
    1D40E; 006F; Additional folding
    1D40F; 0070; Additional folding
    1D410; 0071; Additional folding
@@ -2908,14 +1521,6 @@ RFC 3454        Preparation of Internationalized Strings   December 2002
    1D46F; 0068; Additional folding
    1D470; 0069; Additional folding
    1D471; 006A; Additional folding
-
-
-
-Hoffman & Blanchet          Standards Track                    [Page 52]
-
-RFC 3454        Preparation of Internationalized Strings   December 2002
-
-
    1D472; 006B; Additional folding
    1D473; 006C; Additional folding
    1D474; 006D; Additional folding
@@ -2964,14 +1569,6 @@ RFC 3454        Preparation of Internationalized Strings   December 2002
    1D4DB; 006C; Additional folding
    1D4DC; 006D; Additional folding
    1D4DD; 006E; Additional folding
-
-
-
-Hoffman & Blanchet          Standards Track                    [Page 53]
-
-RFC 3454        Preparation of Internationalized Strings   December 2002
-
-
    1D4DE; 006F; Additional folding
    1D4DF; 0070; Additional folding
    1D4E0; 0071; Additional folding
@@ -3020,14 +1617,6 @@ RFC 3454        Preparation of Internationalized Strings   December 2002
    1D54A; 0073; Additional folding
    1D54B; 0074; Additional folding
    1D54C; 0075; Additional folding
-
-
-
-Hoffman & Blanchet          Standards Track                    [Page 54]
-
-RFC 3454        Preparation of Internationalized Strings   December 2002
-
-
    1D54D; 0076; Additional folding
    1D54E; 0077; Additional folding
    1D54F; 0078; Additional folding
@@ -3076,14 +1665,6 @@ RFC 3454        Preparation of Internationalized Strings   December 2002
    1D5AF; 0070; Additional folding
    1D5B0; 0071; Additional folding
    1D5B1; 0072; Additional folding
-
-
-
-Hoffman & Blanchet          Standards Track                    [Page 55]
-
-RFC 3454        Preparation of Internationalized Strings   December 2002
-
-
    1D5B2; 0073; Additional folding
    1D5B3; 0074; Additional folding
    1D5B4; 0075; Additional folding
@@ -3132,14 +1713,6 @@ RFC 3454        Preparation of Internationalized Strings   December 2002
    1D613; 006C; Additional folding
    1D614; 006D; Additional folding
    1D615; 006E; Additional folding
-
-
-
-Hoffman & Blanchet          Standards Track                    [Page 56]
-
-RFC 3454        Preparation of Internationalized Strings   December 2002
-
-
    1D616; 006F; Additional folding
    1D617; 0070; Additional folding
    1D618; 0071; Additional folding
@@ -3188,14 +1761,6 @@ RFC 3454        Preparation of Internationalized Strings   December 2002
    1D677; 0068; Additional folding
    1D678; 0069; Additional folding
    1D679; 006A; Additional folding
-
-
-
-Hoffman & Blanchet          Standards Track                    [Page 57]
-
-RFC 3454        Preparation of Internationalized Strings   December 2002
-
-
    1D67A; 006B; Additional folding
    1D67B; 006C; Additional folding
    1D67C; 006D; Additional folding
@@ -3244,14 +1809,6 @@ RFC 3454        Preparation of Internationalized Strings   December 2002
    1D6E5; 03B4; Additional folding
    1D6E6; 03B5; Additional folding
    1D6E7; 03B6; Additional folding
-
-
-
-Hoffman & Blanchet          Standards Track                    [Page 58]
-
-RFC 3454        Preparation of Internationalized Strings   December 2002
-
-
    1D6E8; 03B7; Additional folding
    1D6E9; 03B8; Additional folding
    1D6EA; 03B9; Additional folding
@@ -3300,14 +1857,6 @@ RFC 3454        Preparation of Internationalized Strings   December 2002
    1D747; 03C3; Additional folding
    1D756; 03B1; Additional folding
    1D757; 03B2; Additional folding
-
-
-
-Hoffman & Blanchet          Standards Track                    [Page 59]
-
-RFC 3454        Preparation of Internationalized Strings   December 2002
-
-
    1D758; 03B3; Additional folding
    1D759; 03B4; Additional folding
    1D75A; 03B5; Additional folding
@@ -3356,14 +1905,6 @@ RFC 3454        Preparation of Internationalized Strings   December 2002
    1D7A5; 03C6; Additional folding
    1D7A6; 03C7; Additional folding
    1D7A7; 03C8; Additional folding
-
-
-
-Hoffman & Blanchet          Standards Track                    [Page 60]
-
-RFC 3454        Preparation of Internationalized Strings   December 2002
-
-
    1D7A8; 03C9; Additional folding
    1D7BB; 03C3; Additional folding
    ----- End Table B.2 -----
@@ -3412,14 +1953,6 @@ B.3 Mapping for case-folding used with no normalization
    00CB; 00EB; Case map
    00CC; 00EC; Case map
    00CD; 00ED; Case map
-
-
-
-Hoffman & Blanchet          Standards Track                    [Page 61]
-
-RFC 3454        Preparation of Internationalized Strings   December 2002
-
-
    00CE; 00EE; Case map
    00CF; 00EF; Case map
    00D0; 00F0; Case map
@@ -3468,14 +2001,6 @@ RFC 3454        Preparation of Internationalized Strings   December 2002
    0139; 013A; Case map
    013B; 013C; Case map
    013D; 013E; Case map
-
-
-
-Hoffman & Blanchet          Standards Track                    [Page 62]
-
-RFC 3454        Preparation of Internationalized Strings   December 2002
-
-
    013F; 0140; Case map
    0141; 0142; Case map
    0143; 0144; Case map
@@ -3524,14 +2049,6 @@ RFC 3454        Preparation of Internationalized Strings   December 2002
    0191; 0192; Case map
    0193; 0260; Case map
    0194; 0263; Case map
-
-
-
-Hoffman & Blanchet          Standards Track                    [Page 63]
-
-RFC 3454        Preparation of Internationalized Strings   December 2002
-
-
    0196; 0269; Case map
    0197; 0268; Case map
    0198; 0199; Case map
@@ -3580,14 +2097,6 @@ RFC 3454        Preparation of Internationalized Strings   December 2002
    01F0; 006A 030C; Case map
    01F1; 01F3; Case map
    01F2; 01F3; Case map
-
-
-
-Hoffman & Blanchet          Standards Track                    [Page 64]
-
-RFC 3454        Preparation of Internationalized Strings   December 2002
-
-
    01F4; 01F5; Case map
    01F6; 0195; Case map
    01F7; 01BF; Case map
@@ -3636,14 +2145,6 @@ RFC 3454        Preparation of Internationalized Strings   December 2002
    0394; 03B4; Case map
    0395; 03B5; Case map
    0396; 03B6; Case map
-
-
-
-Hoffman & Blanchet          Standards Track                    [Page 65]
-
-RFC 3454        Preparation of Internationalized Strings   December 2002
-
-
    0397; 03B7; Case map
    0398; 03B8; Case map
    0399; 03B9; Case map
@@ -3692,14 +2193,6 @@ RFC 3454        Preparation of Internationalized Strings   December 2002
    0402; 0452; Case map
    0403; 0453; Case map
    0404; 0454; Case map
-
-
-
-Hoffman & Blanchet          Standards Track                    [Page 66]
-
-RFC 3454        Preparation of Internationalized Strings   December 2002
-
-
    0405; 0455; Case map
    0406; 0456; Case map
    0407; 0457; Case map
@@ -3748,14 +2241,6 @@ RFC 3454        Preparation of Internationalized Strings   December 2002
    0464; 0465; Case map
    0466; 0467; Case map
    0468; 0469; Case map
-
-
-
-Hoffman & Blanchet          Standards Track                    [Page 67]
-
-RFC 3454        Preparation of Internationalized Strings   December 2002
-
-
    046A; 046B; Case map
    046C; 046D; Case map
    046E; 046F; Case map
@@ -3804,14 +2289,6 @@ RFC 3454        Preparation of Internationalized Strings   December 2002
    04CD; 04CE; Case map
    04D0; 04D1; Case map
    04D2; 04D3; Case map
-
-
-
-Hoffman & Blanchet          Standards Track                    [Page 68]
-
-RFC 3454        Preparation of Internationalized Strings   December 2002
-
-
    04D4; 04D5; Case map
    04D6; 04D7; Case map
    04D8; 04D9; Case map
@@ -3860,14 +2337,6 @@ RFC 3454        Preparation of Internationalized Strings   December 2002
    0544; 0574; Case map
    0545; 0575; Case map
    0546; 0576; Case map
-
-
-
-Hoffman & Blanchet          Standards Track                    [Page 69]
-
-RFC 3454        Preparation of Internationalized Strings   December 2002
-
-
    0547; 0577; Case map
    0548; 0578; Case map
    0549; 0579; Case map
@@ -3916,14 +2385,6 @@ RFC 3454        Preparation of Internationalized Strings   December 2002
    1E38; 1E39; Case map
    1E3A; 1E3B; Case map
    1E3C; 1E3D; Case map
-
-
-
-Hoffman & Blanchet          Standards Track                    [Page 70]
-
-RFC 3454        Preparation of Internationalized Strings   December 2002
-
-
    1E3E; 1E3F; Case map
    1E40; 1E41; Case map
    1E42; 1E43; Case map
@@ -3972,14 +2433,6 @@ RFC 3454        Preparation of Internationalized Strings   December 2002
    1E97; 0074 0308; Case map
    1E98; 0077 030A; Case map
    1E99; 0079 030A; Case map
-
-
-
-Hoffman & Blanchet          Standards Track                    [Page 71]
-
-RFC 3454        Preparation of Internationalized Strings   December 2002
-
-
    1E9A; 0061 02BE; Case map
    1E9B; 1E61; Case map
    1EA0; 1EA1; Case map
@@ -4028,14 +2481,6 @@ RFC 3454        Preparation of Internationalized Strings   December 2002
    1EF6; 1EF7; Case map
    1EF8; 1EF9; Case map
    1F08; 1F00; Case map
-
-
-
-Hoffman & Blanchet          Standards Track                    [Page 72]
-
-RFC 3454        Preparation of Internationalized Strings   December 2002
-
-
    1F09; 1F01; Case map
    1F0A; 1F02; Case map
    1F0B; 1F03; Case map
@@ -4084,14 +2529,6 @@ RFC 3454        Preparation of Internationalized Strings   December 2002
    1F6A; 1F62; Case map
    1F6B; 1F63; Case map
    1F6C; 1F64; Case map
-
-
-
-Hoffman & Blanchet          Standards Track                    [Page 73]
-
-RFC 3454        Preparation of Internationalized Strings   December 2002
-
-
    1F6D; 1F65; Case map
    1F6E; 1F66; Case map
    1F6F; 1F67; Case map
@@ -4140,14 +2577,6 @@ RFC 3454        Preparation of Internationalized Strings   December 2002
    1FAA; 1F62 03B9; Case map
    1FAB; 1F63 03B9; Case map
    1FAC; 1F64 03B9; Case map
-
-
-
-Hoffman & Blanchet          Standards Track                    [Page 74]
-
-RFC 3454        Preparation of Internationalized Strings   December 2002
-
-
    1FAD; 1F65 03B9; Case map
    1FAE; 1F66 03B9; Case map
    1FAF; 1F67 03B9; Case map
@@ -4196,14 +2625,6 @@ RFC 3454        Preparation of Internationalized Strings   December 2002
    1FF6; 03C9 0342; Case map
    1FF7; 03C9 0342 03B9; Case map
    1FF8; 1F78; Case map
-
-
-
-Hoffman & Blanchet          Standards Track                    [Page 75]
-
-RFC 3454        Preparation of Internationalized Strings   December 2002
-
-
    1FF9; 1F79; Case map
    1FFA; 1F7C; Case map
    1FFB; 1F7D; Case map
@@ -4252,14 +2673,6 @@ RFC 3454        Preparation of Internationalized Strings   December 2002
    24CC; 24E6; Case map
    24CD; 24E7; Case map
    24CE; 24E8; Case map
-
-
-
-Hoffman & Blanchet          Standards Track                    [Page 76]
-
-RFC 3454        Preparation of Internationalized Strings   December 2002
-
-
    24CF; 24E9; Case map
    FB00; 0066 0066; Case map
    FB01; 0066 0069; Case map
@@ -4308,14 +2721,6 @@ RFC 3454        Preparation of Internationalized Strings   December 2002
    10406; 1042E; Case map
    10407; 1042F; Case map
    10408; 10430; Case map
-
-
-
-Hoffman & Blanchet          Standards Track                    [Page 77]
-
-RFC 3454        Preparation of Internationalized Strings   December 2002
-
-
    10409; 10431; Case map
    1040A; 10432; Case map
    1040B; 10433; Case map
@@ -4361,16 +2766,6 @@ C.1.1 ASCII space characters
    ----- Start Table C.1.1 -----
    0020; SPACE
    ----- End Table C.1.1 -----
-
-
-
-
-
-
-Hoffman & Blanchet          Standards Track                    [Page 78]
-
-RFC 3454        Preparation of Internationalized Strings   December 2002
-
 
 C.1.2 Non-ASCII space characters
    ----- Start Table C.1.2 -----
@@ -4420,14 +2815,6 @@ C.2.2 Non-ASCII control characters
    206A-206F; [CONTROL CHARACTERS]
    FEFF; ZERO WIDTH NO-BREAK SPACE
    FFF9-FFFC; [CONTROL CHARACTERS]
-
-
-
-Hoffman & Blanchet          Standards Track                    [Page 79]
-
-RFC 3454        Preparation of Internationalized Strings   December 2002
-
-
    1D173-1D17A; [MUSICAL CONTROL CHARACTERS]
    ----- End Table C.2.2 -----
 
@@ -4476,14 +2863,6 @@ C.6 Inappropriate for plain text
    FFFB; INTERLINEAR ANNOTATION TERMINATOR
    FFFC; OBJECT REPLACEMENT CHARACTER
    FFFD; REPLACEMENT CHARACTER
-
-
-
-Hoffman & Blanchet          Standards Track                    [Page 80]
-
-RFC 3454        Preparation of Internationalized Strings   December 2002
-
-
    ----- End Table C.6 -----
 
 C.7 Inappropriate for canonical representation
@@ -4532,14 +2911,6 @@ D.1 Characters with bidirectional property "R" or "AL"
    061B
    061F
    0621-063A
-
-
-
-Hoffman & Blanchet          Standards Track                    [Page 81]
-
-RFC 3454        Preparation of Internationalized Strings   December 2002
-
-
    0640-064A
    066D-066F
    0671-06D5
@@ -4588,14 +2959,6 @@ D.2 Characters with bidirectional property "L"
    02EE
    037A
    0386
-
-
-
-Hoffman & Blanchet          Standards Track                    [Page 82]
-
-RFC 3454        Preparation of Internationalized Strings   December 2002
-
-
    0388-038A
    038C
    038E-03A1
@@ -4644,14 +3007,6 @@ RFC 3454        Preparation of Internationalized Strings   December 2002
    0A5E
    0A66-0A6F
    0A72-0A74
-
-
-
-Hoffman & Blanchet          Standards Track                    [Page 83]
-
-RFC 3454        Preparation of Internationalized Strings   December 2002
-
-
    0A83
    0A85-0A8B
    0A8D
@@ -4700,14 +3055,6 @@ RFC 3454        Preparation of Internationalized Strings   December 2002
    0BE7-0BF2
    0C01-0C03
    0C05-0C0C
-
-
-
-Hoffman & Blanchet          Standards Track                    [Page 84]
-
-RFC 3454        Preparation of Internationalized Strings   December 2002
-
-
    0C0E-0C10
    0C12-0C28
    0C2A-0C33
@@ -4756,14 +3103,6 @@ RFC 3454        Preparation of Internationalized Strings   December 2002
    0E81-0E82
    0E84
    0E87-0E88
-
-
-
-Hoffman & Blanchet          Standards Track                    [Page 85]
-
-RFC 3454        Preparation of Internationalized Strings   December 2002
-
-
    0E8A
    0E8D
    0E94-0E97
@@ -4812,14 +3151,6 @@ RFC 3454        Preparation of Internationalized Strings   December 2002
    1258
    125A-125D
    1260-1286
-
-
-
-Hoffman & Blanchet          Standards Track                    [Page 86]
-
-RFC 3454        Preparation of Internationalized Strings   December 2002
-
-
    1288
    128A-128D
    1290-12AE
@@ -4868,14 +3199,6 @@ RFC 3454        Preparation of Internationalized Strings   December 2002
    1F59
    1F5B
    1F5D
-
-
-
-Hoffman & Blanchet          Standards Track                    [Page 87]
-
-RFC 3454        Preparation of Internationalized Strings   December 2002
-
-
    1F5F-1F7D
    1F80-1FB4
    1FB6-1FBC
@@ -4924,14 +3247,6 @@ RFC 3454        Preparation of Internationalized Strings   December 2002
    327F-32B0
    32C0-32CB
    32D0-32FE
-
-
-
-Hoffman & Blanchet          Standards Track                    [Page 88]
-
-RFC 3454        Preparation of Internationalized Strings   December 2002
-
-
    3300-3376
    337B-33DD
    33E0-33FE
@@ -4980,14 +3295,6 @@ RFC 3454        Preparation of Internationalized Strings   December 2002
    1D53B-1D53E
    1D540-1D544
    1D546
-
-
-
-Hoffman & Blanchet          Standards Track                    [Page 89]
-
-RFC 3454        Preparation of Internationalized Strings   December 2002
-
-
    1D54A-1D550
    1D552-1D6A3
    1D6A8-1D7C9
@@ -4996,104 +3303,3 @@ RFC 3454        Preparation of Internationalized Strings   December 2002
    F0000-FFFFD
    100000-10FFFD
    ----- End Table D.2 -----
-
-Authors' Addresses
-
-   Paul Hoffman
-   Internet Mail Consortium and VPN Consortium
-   127 Segre Place
-   Santa Cruz, CA  95060 USA
-
-   EMail: paul.hoffman@imc.org and paul.hoffman@vpnc.org
-
-
-   Marc Blanchet
-   Viagenie inc.
-   2875 boul. Laurier, bur. 300
-   Ste-Foy, Quebec, Canada, G1V 2M2
-
-   EMail: Marc.Blanchet@viagenie.qc.ca
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Hoffman & Blanchet          Standards Track                    [Page 90]
-
-RFC 3454        Preparation of Internationalized Strings   December 2002
-
-
-Full Copyright Statement
-
-   Copyright (C) The Internet Society (2002).  All Rights Reserved.
-
-   This document and translations of it may be copied and furnished to
-   others, and derivative works that comment on or otherwise explain it
-   or assist in its implementation may be prepared, copied, published
-   and distributed, in whole or in part, without restriction of any
-   kind, provided that the above copyright notice and this paragraph are
-   included on all such copies and derivative works.  However, this
-   document itself may not be modified in any way, such as by removing
-   the copyright notice or references to the Internet Society or other
-   Internet organizations, except as needed for the purpose of
-   developing Internet standards in which case the procedures for
-   copyrights defined in the Internet Standards process must be
-   followed, or as required to translate it into languages other than
-   English.
-
-   The limited permissions granted above are perpetual and will not be
-   revoked by the Internet Society or its successors or assigns.
-
-   This document and the information contained herein is provided on an
-   "AS IS" basis and THE INTERNET SOCIETY AND THE INTERNET ENGINEERING
-   TASK FORCE DISCLAIMS ALL WARRANTIES, EXPRESS OR IMPLIED, INCLUDING
-   BUT NOT LIMITED TO ANY WARRANTY THAT THE USE OF THE INFORMATION
-   HEREIN WILL NOT INFRINGE ANY RIGHTS OR ANY IMPLIED WARRANTIES OF
-   MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE.
-
-Acknowledgement
-
-   Funding for the RFC Editor function is currently provided by the
-   Internet Society.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Hoffman & Blanchet          Standards Track                    [Page 91]
-
