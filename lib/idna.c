@@ -1,5 +1,5 @@
 /* idna.c --- Convert to or from IDN strings.
- * Copyright (C) 2002, 2003, 2004, 2005, 2006, 2007  Simon Josefsson
+ * Copyright (C) 2002, 2003, 2004, 2005, 2006, 2007, 2008  Simon Josefsson
  *
  * This file is part of GNU Libidn.
  *
@@ -44,10 +44,10 @@
  * @flags: an #Idna_flags value, e.g., %IDNA_ALLOW_UNASSIGNED or
  *   %IDNA_USE_STD3_ASCII_RULES.
  *
- * The ToASCII operation takes a sequence of Unicode code points that make
- * up one label and transforms it into a sequence of code points in the
- * ASCII range (0..7F). If ToASCII succeeds, the original sequence and the
- * resulting sequence are equivalent labels.
+ * The ToASCII operation takes a sequence of Unicode code points that
+ * make up one domain label and transforms it into a sequence of code
+ * points in the ASCII range (0..7F). If ToASCII succeeds, the
+ * original sequence and the resulting sequence are equivalent labels.
  *
  * It is important to note that the ToASCII operation can fail. ToASCII
  * fails if any step of it fails. If any step of the ToASCII operation
@@ -387,8 +387,8 @@ step3:
  *   %IDNA_USE_STD3_ASCII_RULES.
  *
  * The ToUnicode operation takes a sequence of Unicode code points
- * that make up one label and returns a sequence of Unicode code
- * points. If the input sequence is a label in ACE form, then the
+ * that make up one domain label and returns a sequence of Unicode
+ * code points. If the input sequence is a label in ACE form, then the
  * result is an equivalent internationalized label that is not in ACE
  * form, otherwise the original sequence is returned unaltered.
  *
@@ -439,7 +439,7 @@ idna_to_unicode_44i (const uint32_t * in, size_t inlen,
 /* Wrappers that handle several labels */
 
 /**
- * idna_to_ascii_4z - convert Unicode domain name label to text
+ * idna_to_ascii_4z - convert Unicode domain name to text
  * @input: zero terminated input Unicode string.
  * @output: pointer to newly allocated output string.
  * @flags: an #Idna_flags value, e.g., %IDNA_ALLOW_UNASSIGNED or
@@ -535,7 +535,7 @@ idna_to_ascii_4z (const uint32_t * input, char **output, int flags)
 }
 
 /**
- * idna_to_ascii_8z - convert Unicode domain name label to text
+ * idna_to_ascii_8z - convert Unicode domain name to text
  * @input: zero terminated input UTF-8 string.
  * @output: pointer to newly allocated output string.
  * @flags: an #Idna_flags value, e.g., %IDNA_ALLOW_UNASSIGNED or
@@ -567,7 +567,7 @@ idna_to_ascii_8z (const char *input, char **output, int flags)
 }
 
 /**
- * idna_to_ascii_lz - convert Unicode domain name label to text
+ * idna_to_ascii_lz - convert Unicode domain name to text
  * @input: zero terminated input string encoded in the current locale's
  *   character set.
  * @output: pointer to newly allocated output string.
@@ -598,7 +598,7 @@ idna_to_ascii_lz (const char *input, char **output, int flags)
 }
 
 /**
- * idna_to_unicode_4z4z - convert domain name label to Unicode
+ * idna_to_unicode_4z4z - convert domain name to Unicode
  * @input: zero-terminated Unicode string.
  * @output: pointer to newly allocated output Unicode string.
  * @flags: an #Idna_flags value, e.g., %IDNA_ALLOW_UNASSIGNED or
@@ -674,7 +674,7 @@ idna_to_unicode_4z4z (const uint32_t * input, uint32_t ** output, int flags)
 }
 
 /**
- * idna_to_unicode_8z4z - convert domain name label to Unicode
+ * idna_to_unicode_8z4z - convert domain name to Unicode
  * @input: zero-terminated UTF-8 string.
  * @output: pointer to newly allocated output Unicode string.
  * @flags: an #Idna_flags value, e.g., %IDNA_ALLOW_UNASSIGNED or
@@ -705,7 +705,7 @@ idna_to_unicode_8z4z (const char *input, uint32_t ** output, int flags)
 }
 
 /**
- * idna_to_unicode_8z8z - convert domain name label to Unicode
+ * idna_to_unicode_8z8z - convert domain name to Unicode
  * @input: zero-terminated UTF-8 string.
  * @output: pointer to newly allocated output UTF-8 string.
  * @flags: an #Idna_flags value, e.g., %IDNA_ALLOW_UNASSIGNED or
@@ -735,7 +735,7 @@ idna_to_unicode_8z8z (const char *input, char **output, int flags)
 }
 
 /**
- * idna_to_unicode_8zlz - convert domain name label to Unicode
+ * idna_to_unicode_8zlz - convert domain name to Unicode
  * @input: zero-terminated UTF-8 string.
  * @output: pointer to newly allocated output string encoded in the
  *   current locale's character set.
@@ -766,7 +766,7 @@ idna_to_unicode_8zlz (const char *input, char **output, int flags)
 }
 
 /**
- * idna_to_unicode_lzlz - convert domain name label to Unicode
+ * idna_to_unicode_lzlz - convert domain name to Unicode
  * @input: zero-terminated string encoded in the current locale's
  *   character set.
  * @output: pointer to newly allocated output string encoded in the
