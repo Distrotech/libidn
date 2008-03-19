@@ -4,6 +4,9 @@ See the end for copying conditions.
 
 * Version 1.6 (unreleased)
 
+** Add native Windows Visual Studio project files.
+Contributed by Adam Strzelecki <ono@java.pl>.
+
 ** Remove non-free portions of RFC 3454 in doc/specifications/rfc3454.txt.
 
 ** Update gnulib files.

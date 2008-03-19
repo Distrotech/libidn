@@ -500,14 +500,30 @@ For the complete list, refer to the output from @code{configure
 
 @subsection Installing under Windows
 
-Currently there is no native Visual Studio C++ port of Libidn.
+There are two ways to build Libidn on Windows: via MinGW or via Visual
+Studio C++.
 
-However, you can build a Libidn DLL using MinGW and use it from other
-applications.  If you build Libidn under MinGW, it should install a
-DLL by default.
+With MinGW, you can build a Libidn DLL and use it from other
+applications.  After installing MinGW (@url{http://mingw.org/}) follow
+the generic installation instructions (@pxref{Downloading and
+Installing}).  The DLL is installed by default.
 
 For information on how to use the DLL in other applications, see:
 @url{http://www.mingw.org/mingwfaq.shtml#faq-msvcdll}.
+
+You can build Libidn as a native Visual Studio C++ project.  This
+allows you to build the code for other platforms that VS supports,
+such as Windows Mobile.  You need Visual Studio 2005 or later, and a
+Perl interpreter such as ActiveState Perl.
+
+First download and unpack the archive as described in the generic
+installation instructions (@pxref{Downloading and Installing}).  Don't
+run @code{./configure}.  Instead, start Visual Studio and open the
+project file @file{win32/libidn.sln} inside the Libidn directory.  You
+should be able to build the project using VS.
+
+Output libraries will be written into the @code{win32/lib} (or
+@code{win32/lib/debug} for Debug versions) folder.
 
 @node Bug Reports
 @section Bug Reports
