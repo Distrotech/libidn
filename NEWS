@@ -8,6 +8,10 @@ See the end for copying conditions.
 
 ** Update gnulib files.
 
+** Doc fixes in IDNA to clarify that some functions operate on
+** just one domain labels and some operate on domain name (which
+** can contain several domain labels).
+
 ** API and ABI is backwards compatible with the previous version.
 
 * Version 1.5 (released 2008-02-19)
