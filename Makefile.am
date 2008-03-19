@@ -32,6 +32,12 @@ EXTRA_DIST = FAQ libc/README libc/getaddrinfo-idn.txt libc/example.c \
 	contrib/doxygen/Doxyfile.in contrib/doxygen/Doxyfile.orig \
 	contrib/doxygen/gdoc2doxygen
 
+# Visual Studio project files.
+EXTRA_DIST += win32/libidn.sln win32/include/idn-int.h			\
+	win32/include/Wild.pm win32/include/stdbool.h			\
+	win32/include/ac-stdint.h win32/include/gen-win32-headers.pl	\
+	win32/libidn.vcproj
+
 pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = libidn.pc
 
