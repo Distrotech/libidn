@@ -498,6 +498,7 @@ indicating whether the PNET @command{cscc} compiler or the Mono
 For the complete list, refer to the output from @code{configure
 --help}.
 
+@node Installing under Windows
 @subsection Installing under Windows
 
 There are two ways to build Libidn on Windows: via MinGW or via Visual
