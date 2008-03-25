@@ -27,6 +27,7 @@ doc/Makefile.gdoc:
 	printf "gdoc_MANS =\ngdoc_TEXINFOS =\n" > doc/Makefile.gdoc
 
 autoreconf: doc/Makefile.gdoc
+	mv build-aux/config.rpath build-aux/config.rpath-
 	test -f ./configure || autoreconf --install
 	mv build-aux/config.rpath- build-aux/config.rpath
 
