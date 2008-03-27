@@ -498,6 +498,10 @@ indicating whether the PNET @command{cscc} compiler or the Mono
 For the complete list, refer to the output from @code{configure
 --help}.
 
+@menu
+* Installing under Windows::    Windows specific build instructions.
+@end menu
+
 @node Installing under Windows
 @subsection Installing under Windows
 
