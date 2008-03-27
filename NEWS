@@ -4,6 +4,8 @@ See the end for copying conditions.
 
 * Version 1.7 (unreleased)
 
+** idn: new parameter --nfkc to process string with Unicode v3.2 NFKC.
+
 ** Update gnulib files.
 
 ** API and ABI is backwards compatible with the previous version.

@@ -46,7 +46,7 @@
 #include "idn_cmd.h"
 
 #define GREETING \
-  "Copyright 2002, 2003, 2004, 2005, 2006, 2007 Simon Josefsson.\n"	\
+  "Copyright 2002, 2003, 2004, 2005, 2006, 2007, 2008 Simon Josefsson.\n" \
   "GNU Libidn comes with NO WARRANTY, to the extent permitted by law.\n" \
   "You may redistribute copies of GNU Libidn under the terms of\n"	\
   "the GNU Lesser General Public License.  For more information\n"	\
@@ -115,6 +115,9 @@ Mandatory arguments to long options are mandatory for short options too.\n\
                              Only for --idna-to-ascii and --idna-to-unicode\n\
 "), stdout);
       fputs (_("\
+  -n, --nfkc               Normalize string according to Unicode v3.2 NFKC\n\
+"), stdout);
+      fputs (_("\
   -p, --profile=STRING     Use specified stringprep profile instead\n\
                              Valid stringprep profiles: `Nameprep',\n\
                              `iSCSI', `Nodeprep', `Resourceprep', \n\
@@ -159,16 +162,18 @@ main (int argc, char *argv[])
 
   if (!args_info.stringprep_given &&
       !args_info.punycode_encode_given && !args_info.punycode_decode_given &&
-      !args_info.idna_to_ascii_given && !args_info.idna_to_unicode_given)
+      !args_info.idna_to_ascii_given && !args_info.idna_to_unicode_given &&
+      !args_info.nfkc_given)
     args_info.idna_to_ascii_given = 1;
 
   if ((args_info.stringprep_given ? 1 : 0) +
       (args_info.punycode_encode_given ? 1 : 0) +
       (args_info.punycode_decode_given ? 1 : 0) +
       (args_info.idna_to_ascii_given ? 1 : 0) +
-      (args_info.idna_to_unicode_given ? 1 : 0) != 1)
+      (args_info.idna_to_unicode_given ? 1 : 0) +
+      (args_info.nfkc_given ? 1 : 0) != 1)
     {
-      error (0, 0, _("Only one of -s, -e, -d, -a or -u can be specified."));
+      error (0, 0, _("Only one of -s, -e, -d, -a, -u or -n can be specified."));
       usage (EXIT_FAILURE);
     }
 
@@ -495,6 +500,67 @@ main (int argc, char *argv[])
 	  p = stringprep_utf8_to_locale (r);
 	  free (r);
 	  if (!r)
+	    error (EXIT_FAILURE, 0, _("Could not convert from UTF-8 to %s."),
+		   stringprep_locale_charset ());
+
+	  fprintf (stdout, "%s\n", p);
+
+	  free (p);
+	}
+
+      if (args_info.nfkc_given)
+	{
+	  p = stringprep_locale_to_utf8 (readbuf);
+	  if (!p)
+	    error (EXIT_FAILURE, 0, _("Could not convert from %s to UTF-8."),
+		   stringprep_locale_charset ());
+
+	  if (args_info.debug_given)
+	    {
+	      size_t i;
+
+	      q = stringprep_utf8_to_ucs4 (p, -1, NULL);
+	      if (!q)
+		{
+		  free (p);
+		  error (EXIT_FAILURE, 0,
+			 _("Could not convert from UTF-8 to UCS-4."));
+		}
+
+	      for (i = 0; q[i]; i++)
+		fprintf (stderr, _("input[%lu] = U+%04x\n"),
+			 (unsigned long) i, q[i]);
+
+	      free (q);
+	    }
+
+	  r = stringprep_utf8_nfkc_normalize (p, -1);
+	  free (p);
+	  if (!r)
+	    error (EXIT_FAILURE, 0, _("nfkc: %s"), stringprep_strerror (rc));
+
+	  if (args_info.debug_given)
+	    {
+	      size_t i;
+
+	      q = stringprep_utf8_to_ucs4 (r, -1, NULL);
+	      if (!q)
+		{
+		  free (r);
+		  error (EXIT_FAILURE, 0,
+			 _("Could not convert from UTF-8 to UCS-4."));
+		}
+
+	      for (i = 0; q[i]; i++)
+		fprintf (stderr, _("output[%lu] = U+%04x\n"),
+			 (unsigned long) i, q[i]);
+
+	      free (q);
+	    }
+
+	  p = stringprep_utf8_to_locale (r);
+	  free (r);
+	  if (!p)
 	    error (EXIT_FAILURE, 0, _("Could not convert from UTF-8 to %s."),
 		   stringprep_locale_charset ());
 
