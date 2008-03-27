@@ -6,6 +6,8 @@ See the end for copying conditions.
 
 ** idn: new parameter --nfkc to process string with Unicode v3.2 NFKC.
 
+** idn: new parameter --nfc to process string with Unicode v3.2 NFC.
+
 ** Update gnulib files.
 
 ** API and ABI is backwards compatible with the previous version.

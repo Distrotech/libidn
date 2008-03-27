@@ -116,6 +116,7 @@ Mandatory arguments to long options are mandatory for short options too.\n\
 "), stdout);
       fputs (_("\
   -n, --nfkc               Normalize string according to Unicode v3.2 NFKC\n\
+  -c, --nfc                Normalize string according to Unicode v3.2 NFC\n \
 "), stdout);
       fputs (_("\
   -p, --profile=STRING     Use specified stringprep profile instead\n\
@@ -163,7 +164,7 @@ main (int argc, char *argv[])
   if (!args_info.stringprep_given &&
       !args_info.punycode_encode_given && !args_info.punycode_decode_given &&
       !args_info.idna_to_ascii_given && !args_info.idna_to_unicode_given &&
-      !args_info.nfkc_given)
+      !args_info.nfkc_given && !args_info.nfc_given)
     args_info.idna_to_ascii_given = 1;
 
   if ((args_info.stringprep_given ? 1 : 0) +
@@ -171,9 +172,11 @@ main (int argc, char *argv[])
       (args_info.punycode_decode_given ? 1 : 0) +
       (args_info.idna_to_ascii_given ? 1 : 0) +
       (args_info.idna_to_unicode_given ? 1 : 0) +
-      (args_info.nfkc_given ? 1 : 0) != 1)
+      (args_info.nfkc_given ? 1 : 0) +
+      (args_info.nfc_given ? 1 : 0) != 1)
     {
-      error (0, 0, _("Only one of -s, -e, -d, -a, -u or -n can be specified."));
+      error (0, 0,
+	     _("Only one of -s, -e, -d, -a, -u, -n or -c can be specified."));
       usage (EXIT_FAILURE);
     }
 
@@ -508,7 +511,7 @@ main (int argc, char *argv[])
 	  free (p);
 	}
 
-      if (args_info.nfkc_given)
+      if (args_info.nfkc_given || args_info.nfc_given)
 	{
 	  p = stringprep_locale_to_utf8 (readbuf);
 	  if (!p)
@@ -534,10 +537,22 @@ main (int argc, char *argv[])
 	      free (q);
 	    }
 
-	  r = stringprep_utf8_nfkc_normalize (p, -1);
-	  free (p);
-	  if (!r)
-	    error (EXIT_FAILURE, 0, _("nfkc: %s"), stringprep_strerror (rc));
+	  if (args_info.nfkc_given)
+	    {
+	      r = stringprep_utf8_nfkc_normalize (p, -1);
+	      free (p);
+	      if (!r)
+		error (EXIT_FAILURE, 0, _("nfkc: %s"),
+		       stringprep_strerror (rc));
+	    }
+	  else
+	    {
+	      r = stringprep_utf8_nfc_normalize (p, -1);
+	      free (p);
+	      if (!r)
+		error (EXIT_FAILURE, 0, _("nfc: %s"),
+		       stringprep_strerror (rc));
+	    }
 
 	  if (args_info.debug_given)
 	    {
