@@ -1442,6 +1442,8 @@ To process a string that starts with @code{-}, for example
                              Only for --idna-to-ascii and --idna-to-unicode
                              (default=on)
 
+  -n, --nfkc               Normalize string according to Unicode v3.2 NFKC
+
   -p, --profile=STRING     Use specified stringprep profile instead
                              Valid stringprep profiles are `Nameprep',
                              `iSCSI', `Nodeprep', `Resourceprep', `trace', and
