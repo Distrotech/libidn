@@ -1,3 +1,80 @@
+2008-04-10  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Version 1.7.
+
+2008-04-10  Simon Josefsson <simon@josefsson.org>
+
+	* gl/m4/include_next.m4, lib/gl/m4/include_next.m4,
+	lib/gl/m4/stdint.m4: Update gnulib files.
+
+2008-04-07  Simon Josefsson <simon@josefsson.org>
+
+	* GNUmakefile, build-aux/gnupload: Update gnulib files.
+
+2008-04-02  Simon Josefsson <simon@josefsson.org>
+
+	* Makefile.am, NEWS, win32/include/unistd.h: Need dummy unistd.h for
+	native Win32 builds.  Reported by Adam Strzelecki <ono@java.pl>.
+
+2008-04-01  Simon Josefsson <simon@josefsson.org>
+
+	* lib/strerror-idna.c, lib/strerror-pr29.c,
+	lib/strerror-punycode.c, lib/strerror-stringprep.c,
+	lib/strerror-tld.c: Fix syntax-check warnings.
+
+2008-04-01  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi: Mention idn --nfkc.
+
+2008-04-01  Simon Josefsson <simon@josefsson.org>
+
+	* gl/Makefile.am, lib/gl/Makefile.am, lib/gl/m4/stdlib_h.m4,
+	lib/gl/stdlib.in.h, lib/gl/wchar.in.h: Update gnulib files.
+
+2008-03-27  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS, src/idn.c, src/idn.ggo: Add --nfkc parameter to idn tool.
+
+2008-03-27  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi: Need @menu for Windows installation @node.
+
+2008-03-25  Simon Josefsson <simon@josefsson.org>
+
+	* cfg.mk: Need config.rpath workaround here.
+
+2008-03-25  Simon Josefsson <simon@josefsson.org>
+
+	* GNUmakefile, build-aux/GNUmakefile, build-aux/maint.mk,
+	gl/Makefile.am, gl/m4/gnulib-cache.m4, gl/m4/gnulib-comp.m4,
+	lib/gl/Makefile.am, lib/gl/m4/gnulib-cache.m4, maint.mk: Update
+	gnulib files, reverts local GNUmakefile hack.
+
+2008-03-20  Simon Josefsson <simon@josefsson.org>
+
+	* build-aux/GNUmakefile: Update gnulib files.
+
+2008-03-20  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi: Make windows installation instructions a separate
+	node, for easy referencing.
+
+2008-03-20  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Fix.
+
+2008-03-20  Simon Josefsson <simon@josefsson.org>
+
+	* build-aux/GNUmakefile, cfg.mk, maint-cfg.mk: Update gnulib files.
+
+2008-03-19  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS, configure.ac: Bump versions.
+
+2008-03-19  Simon Josefsson <simon@josefsson.org>
+
+	* ChangeLog: Generated.
+
 2008-03-19  Simon Josefsson <simon@josefsson.org>
 
 	* NEWS: Version 1.6.
