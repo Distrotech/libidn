@@ -2,7 +2,7 @@ Libidn NEWS -- History of user-visible changes.                 -*- outline -*-
 Copyright (C) 2002, 2003, 2004, 2005, 2006, 2007, 2008 Simon Josefsson
 See the end for copying conditions.
 
-* Version 1.7 (unreleased)
+* Version 1.7 (released 2008-04-10)
 
 ** idn: new parameter --nfkc to process string with Unicode v3.2 NFKC.
 
