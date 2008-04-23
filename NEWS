@@ -5,6 +5,8 @@ See the end for copying conditions.
 * Version 1.8 (unreleased)
 
 ** Translations files not stored directly in git to avoid merge conflicts.
+This allows us to avoid use of --no-location which makes the
+translation teams happier.
 
 ** Update gnulib files.
 
