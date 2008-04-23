@@ -1,3 +1,50 @@
+2008-04-23  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Version 1.8.
+
+2008-04-23  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2008-04-23  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2008-04-23  Simon Josefsson <simon@josefsson.org>
+
+	* gl/m4/extensions.m4, gl/m4/getopt.m4, gl/m4/gnulib-common.m4,
+	gl/m4/gnulib-comp.m4, gl/m4/strerror.m4, lib/gl/m4/extensions.m4,
+	lib/gl/m4/gnulib-common.m4, lib/gl/m4/gnulib-comp.m4,
+	lib/gl/m4/stdint.m4, lib/gl/wchar.in.h: Update gnulib files.
+
+2008-04-13  Simon Josefsson <simon@josefsson.org>
+
+	* configure.ac: Bump versions.
+
+2008-04-13  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2008-04-13  Simon Josefsson <simon@josefsson.org>
+
+	* po/nl.po.in: Sync with TP.
+
+2008-04-13  Simon Josefsson <simon@josefsson.org>
+
+	* Makefile.am, cfg.mk, po/Makevars, po/cs.po, po/cs.po.in,
+	po/da.po, po/da.po.in, po/de.po, po/de.po.in, po/eo.po,
+	po/eo.po.in, po/fi.po, po/fi.po.in, po/fr.po, po/fr.po.in,
+	po/it.po, po/it.po.in, po/ja.po, po/ja.po.in, po/nl.po,
+	po/nl.po.in, po/pl.po, po/pl.po.in, po/ro.po, po/ro.po.in,
+	po/rw.po, po/rw.po.in, po/sr.po, po/sr.po.in, po/vi.po,
+	po/vi.po.in, po/zh_CN.po, po/zh_CN.po.in: Move translations to
+	*.po.in to avoid merge conflicts.  This allows us to avoid
+	--no-location as well.
+
+2008-04-10  Simon Josefsson <simon@josefsson.org>
+
+	* ChangeLog: Generated.
+
 2008-04-10  Simon Josefsson <simon@josefsson.org>
 
 	* NEWS: Version 1.7.
