@@ -38,6 +38,7 @@ AC_DEFUN([lgl_INIT],
   m4_pushdef([AC_LIBOBJ], m4_defn([lgl_LIBOBJ]))
   m4_pushdef([AC_REPLACE_FUNCS], m4_defn([lgl_REPLACE_FUNCS]))
   m4_pushdef([AC_LIBSOURCES], m4_defn([lgl_LIBSOURCES]))
+  gl_COMMON
   gl_source_base='lib/gl'
   AC_SUBST([LIBINTL])
   AC_SUBST([LTLIBINTL])
@@ -81,6 +82,7 @@ AC_DEFUN([lgl_INIT],
   m4_pushdef([AC_LIBOBJ], m4_defn([lgltests_LIBOBJ]))
   m4_pushdef([AC_REPLACE_FUNCS], m4_defn([lgltests_REPLACE_FUNCS]))
   m4_pushdef([AC_LIBSOURCES], m4_defn([lgltests_LIBSOURCES]))
+  gl_COMMON
   gl_source_base='tests'
   m4_popdef([AC_LIBSOURCES])
   m4_popdef([AC_REPLACE_FUNCS])
