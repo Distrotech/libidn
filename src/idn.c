@@ -537,7 +537,7 @@ main (int argc, char *argv[])
 	  r = stringprep_utf8_nfkc_normalize (p, -1);
 	  free (p);
 	  if (!r)
-	    error (EXIT_FAILURE, 0, _("nfkc: %s"), stringprep_strerror (rc));
+	    error (EXIT_FAILURE, 0, _("Could not do NFKC normalization."));
 
 	  if (args_info.debug_given)
 	    {
