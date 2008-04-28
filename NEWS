@@ -4,7 +4,7 @@ See the end for copying conditions.
 
 * Version 1.9 (unreleased)
 
-** idn: fix error message when NFKC fails.
+** idn: fix error message when NFKC fails, and some other translation fixes.
 Reported by Benno Schulenberg <coordinator@translationproject.org>.
 
 ** API and ABI is backwards compatible with the previous version.
