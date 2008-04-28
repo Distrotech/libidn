@@ -39,4 +39,4 @@ idn_cmd.c idn_cmd.h: idn.ggo Makefile.am
 		test -f idn_cmd.h -a -f idn_cmd.c || \
 		cp $(srcdir)/idn_cmd.h $(srcdir)/idn_cmd.h .
 	perl -pi -e 's/\[OPTIONS\]/\[OPTION\]/g' idn_cmd.c
-	perl -pi -e 's/\[FILES\]/\[STRINGS\]/g' idn_cmd.c
+	perl -pi -e 's/\[FILES\]/\[STRING\]/g' idn_cmd.c
