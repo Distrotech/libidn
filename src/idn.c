@@ -314,7 +314,7 @@ main (int argc, char *argv[])
 	  len = BUFSIZ;
 	  q = (uint32_t *) malloc (len * sizeof (q[0]));
 	  if (!q)
-	    error (EXIT_FAILURE, ENOMEM, _("malloc"));
+	    error (EXIT_FAILURE, ENOMEM, "malloc");
 
 	  rc = punycode_decode (strlen (readbuf), readbuf, &len, q, NULL);
 	  if (rc != PUNYCODE_SUCCESS)
