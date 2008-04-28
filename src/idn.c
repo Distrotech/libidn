@@ -224,7 +224,7 @@ main (int argc, char *argv[])
 	    {
 	      size_t i;
 	      for (i = 0; q[i]; i++)
-		fprintf (stderr, _("input[%lu] = U+%04x\n"),
+		fprintf (stderr, "input[%lu] = U+%04x\n",
 			 (unsigned long) i, q[i]);
 	    }
 	  free (q);
@@ -249,7 +249,7 @@ main (int argc, char *argv[])
 	    {
 	      size_t i;
 	      for (i = 0; q[i]; i++)
-		fprintf (stderr, _("output[%lu] = U+%04x\n"),
+		fprintf (stderr, "output[%lu] = U+%04x\n",
 			 (unsigned long) i, q[i]);
 	    }
 	  free (q);
@@ -284,7 +284,7 @@ main (int argc, char *argv[])
 	    {
 	      size_t i;
 	      for (i = 0; i < len; i++)
-		fprintf (stderr, _("input[%lu] = U+%04x\n"),
+		fprintf (stderr, "input[%lu] = U+%04x\n",
 			 (unsigned long) i, q[i]);
 	    }
 
@@ -328,7 +328,7 @@ main (int argc, char *argv[])
 	    {
 	      size_t i;
 	      for (i = 0; i < len; i++)
-		fprintf (stderr, _("output[%lu] = U+%04x\n"),
+		fprintf (stderr, "output[%lu] = U+%04x\n",
 			 (unsigned long) i, q[i]);
 	    }
 
@@ -367,7 +367,7 @@ main (int argc, char *argv[])
 	    {
 	      size_t i;
 	      for (i = 0; q[i]; i++)
-		fprintf (stderr, _("input[%lu] = U+%04x\n"),
+		fprintf (stderr, "input[%lu] = U+%04x\n",
 			 (unsigned long) i, q[i]);
 	    }
 
@@ -399,7 +399,7 @@ main (int argc, char *argv[])
 		{
 		  size_t i;
 		  for (i = 0; q[i]; i++)
-		    fprintf (stderr, _("tld[%lu] = U+%04x\n"),
+		    fprintf (stderr, "tld[%lu] = U+%04x\n",
 			     (unsigned long) i, q[i]);
 		}
 
@@ -418,7 +418,7 @@ main (int argc, char *argv[])
 	    {
 	      size_t i;
 	      for (i = 0; p[i]; i++)
-		fprintf (stderr, _("output[%lu] = U+%04x\n"),
+		fprintf (stderr, "output[%lu] = U+%04x\n",
 			 (unsigned long) i, p[i]);
 	    }
 
@@ -446,7 +446,7 @@ main (int argc, char *argv[])
 	    {
 	      size_t i;
 	      for (i = 0; q[i]; i++)
-		fprintf (stderr, _("input[%lu] = U+%04x\n"),
+		fprintf (stderr, "input[%lu] = U+%04x\n",
 			 (unsigned long) i, q[i]);
 	    }
 	  free (q);
@@ -465,7 +465,7 @@ main (int argc, char *argv[])
 	    {
 	      size_t i;
 	      for (i = 0; q[i]; i++)
-		fprintf (stderr, _("output[%lu] = U+%04x\n"),
+		fprintf (stderr, "output[%lu] = U+%04x\n",
 			 (unsigned long) i, q[i]);
 	    }
 
@@ -528,7 +528,7 @@ main (int argc, char *argv[])
 		}
 
 	      for (i = 0; q[i]; i++)
-		fprintf (stderr, _("input[%lu] = U+%04x\n"),
+		fprintf (stderr, "input[%lu] = U+%04x\n",
 			 (unsigned long) i, q[i]);
 
 	      free (q);
@@ -552,7 +552,7 @@ main (int argc, char *argv[])
 		}
 
 	      for (i = 0; q[i]; i++)
-		fprintf (stderr, _("output[%lu] = U+%04x\n"),
+		fprintf (stderr, "output[%lu] = U+%04x\n",
 			 (unsigned long) i, q[i]);
 
 	      free (q);
