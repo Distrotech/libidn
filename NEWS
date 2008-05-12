@@ -7,6 +7,8 @@ See the end for copying conditions.
 ** idn: fix error message when NFKC fails, and some other translation fixes.
 Reported by Benno Schulenberg <coordinator@translationproject.org>.
 
+** Update gnulib files.
+
 ** API and ABI is backwards compatible with the previous version.
 
 * Version 1.8 (released 2008-04-23)
