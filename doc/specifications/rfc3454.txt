@@ -87,8 +87,6 @@ isn't present here, see:
 So we can use this material.  There may be other legal analysis that
 also reach the same conclusion.
 
-A.1 Unassigned code points in Unicode 3.2
-
    ----- Start Table A.1 -----
    0221
    0234-024F
@@ -488,21 +486,6 @@ A.1 Unassigned code points in Unicode 3.2
    E0080-EFFFD
    ----- End Table A.1 -----
 
-B. Mapping Tables
-
-   The following is the mapping table from section 3.  The table has
-   three columns:
-
-   - the code point that is mapped from
-   - the zero or more code points that it is mapped to
-   - the reason for the mapping
-
-   The columns are separated by semicolons.  Note that the second column
-   may be empty, or it may have one code point, or it may have more than
-   one code point, with each code point separated by a space.
-
-B.1 Commonly mapped to nothing
-
    ----- Start Table B.1 -----
    00AD; ; Map to nothing
    034F; ; Map to nothing
@@ -532,8 +515,6 @@ B.1 Commonly mapped to nothing
    FE0F; ; Map to nothing
    FEFF; ; Map to nothing
    ----- End Table B.1 -----
-
-B.2 Mapping for case-folding used with NFKC
 
    ----- Start Table B.2 -----
    0041; 0061; Case map
@@ -1909,8 +1890,6 @@ B.2 Mapping for case-folding used with NFKC
    1D7BB; 03C3; Additional folding
    ----- End Table B.2 -----
 
-B.3 Mapping for case-folding used with no normalization
-
    ----- Start Table B.3 -----
    0041; 0061; Case map
    0042; 0062; Case map
@@ -2752,22 +2731,10 @@ B.3 Mapping for case-folding used with no normalization
    10425; 1044D; Case map
    ----- End Table B.3 -----
 
-C. Prohibition tables
-
-   The tables in this appendix consist of lines with one prohibited code
-   point per line.  The format of the lines are the value of the code
-   point, a semicolon, and a comment which is the name of the code
-   point.
-
-C.1 Space characters
-
-C.1.1 ASCII space characters
-
    ----- Start Table C.1.1 -----
    0020; SPACE
    ----- End Table C.1.1 -----
 
-C.1.2 Non-ASCII space characters
    ----- Start Table C.1.2 -----
    00A0; NO-BREAK SPACE
    1680; OGHAM SPACE MARK
@@ -2788,16 +2755,10 @@ C.1.2 Non-ASCII space characters
    3000; IDEOGRAPHIC SPACE
    ----- End Table C.1.2 -----
 
-C.2 Control characters
-
-C.2.1 ASCII control characters
-
    ----- Start Table C.2.1 -----
    0000-001F; [CONTROL CHARACTERS]
    007F; DELETE
    ----- End Table C.2.1 -----
-
-C.2.2 Non-ASCII control characters
 
    ----- Start Table C.2.2 -----
    0080-009F; [CONTROL CHARACTERS]
@@ -2818,15 +2779,11 @@ C.2.2 Non-ASCII control characters
    1D173-1D17A; [MUSICAL CONTROL CHARACTERS]
    ----- End Table C.2.2 -----
 
-C.3 Private use
-
    ----- Start Table C.3 -----
    E000-F8FF; [PRIVATE USE, PLANE 0]
    F0000-FFFFD; [PRIVATE USE, PLANE 15]
    100000-10FFFD; [PRIVATE USE, PLANE 16]
    ----- End Table C.3 -----
-
-C.4 Non-character code points
 
    ----- Start Table C.4 -----
    FDD0-FDEF; [NONCHARACTER CODE POINTS]
@@ -2849,13 +2806,9 @@ C.4 Non-character code points
    10FFFE-10FFFF; [NONCHARACTER CODE POINTS]
    ----- End Table C.4 -----
 
-C.5 Surrogate codes
-
    ----- Start Table C.5 -----
    D800-DFFF; [SURROGATE CODES]
    ----- End Table C.5 -----
-
-C.6 Inappropriate for plain text
 
    ----- Start Table C.6 -----
    FFF9; INTERLINEAR ANNOTATION ANCHOR
@@ -2865,13 +2818,9 @@ C.6 Inappropriate for plain text
    FFFD; REPLACEMENT CHARACTER
    ----- End Table C.6 -----
 
-C.7 Inappropriate for canonical representation
-
    ----- Start Table C.7 -----
    2FF0-2FFB; [IDEOGRAPHIC DESCRIPTION CHARACTERS]
    ----- End Table C.7 -----
-
-C.8 Change display properties or are deprecated
 
    ----- Start Table C.8 -----
    0340; COMBINING GRAVE TONE MARK
@@ -2891,16 +2840,10 @@ C.8 Change display properties or are deprecated
    206F; NOMINAL DIGIT SHAPES
    ----- End Table C.8 -----
 
-C.9 Tagging characters
-
    ----- Start Table C.9 -----
    E0001; LANGUAGE TAG
    E0020-E007F; [TAGGING CHARACTERS]
    ----- End Table C.9 -----
-
-D. Bidirectional tables
-
-D.1 Characters with bidirectional property "R" or "AL"
 
    ----- Start Table D.1 -----
    05BE
@@ -2938,8 +2881,6 @@ D.1 Characters with bidirectional property "R" or "AL"
    FE70-FE74
    FE76-FEFC
    ----- End Table D.1 -----
-
-D.2 Characters with bidirectional property "L"
 
    ----- Start Table D.2 -----
    0041-005A
