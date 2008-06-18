@@ -7,6 +7,9 @@ See the end for copying conditions.
 ** idn: fix error message when NFKC fails, and some other translation fixes.
 Reported by Benno Schulenberg <coordinator@translationproject.org>.
 
+** C# Libidn.dll: Work around bug that cause a failure during C# compilation.
+See <https://bugzilla.novell.com/show_bug.cgi?id=372483>.
+
 ** Update gnulib files.
 
 ** API and ABI is backwards compatible with the previous version.

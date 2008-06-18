@@ -129,7 +129,9 @@ namespace gnu.inet.encoding.misc
             //getting the token
             while (System.Array.IndexOf(delimiters, this.chars[this.currentPos]) == -1)
             {
-                token += this.chars[this.currentPos];
+		// don't use += to work around bug in compiler
+		// see https://bugzilla.novell.com/show_bug.cgi?id=372483
+                token = token + this.chars[this.currentPos];
                 //the last one is not a delimiter
                 if (++this.currentPos == this.chars.Length)
                     break;
