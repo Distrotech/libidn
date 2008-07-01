@@ -1,5 +1,13 @@
 2008-07-01  Simon Josefsson <simon@josefsson.org>
 
+	* Makefile.am, configure.ac: Add gltests/ directories.
+
+2008-07-01  Simon Josefsson <simon@josefsson.org>
+
+	* ChangeLog: Generated.
+
+2008-07-01  Simon Josefsson <simon@josefsson.org>
+
 	* NEWS: Version 1.9.
 
 2008-07-01  Simon Josefsson <simon@josefsson.org>
