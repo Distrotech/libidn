@@ -1,3 +1,107 @@
+2008-07-01  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Version 1.9.
+
+2008-07-01  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2008-07-01  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Fix.
+
+2008-07-01  Simon Josefsson <simon@josefsson.org>
+
+	* po/cs.po.in, po/nl.po.in, po/pl.po.in, po/vi.po.in: Sync with TP.
+
+2008-07-01  Simon Josefsson <simon@josefsson.org>
+
+	* GNUmakefile, gl/Makefile.am, gl/m4/gnulib-cache.m4,
+	gl/m4/gnulib-comp.m4, gl/m4/gnulib-tool.m4, gltests/Makefile.am,
+	gltests/test-strerror.c, gltests/test-string.c,
+	gltests/test-unistd.c, lib/gl/Makefile.am,
+	lib/gl/m4/gnulib-cache.m4, lib/gl/m4/gnulib-comp.m4,
+	lib/gl/m4/gnulib-tool.m4, lib/gl/m4/locale-fr.m4,
+	lib/gl/m4/locale-tr.m4, lib/gl/m4/wchar_t.m4, lib/gl/m4/wint_t.m4,
+	lib/gltests/Makefile.am, lib/gltests/dummy.c,
+	lib/gltests/intprops.h, lib/gltests/test-c-ctype.c,
+	lib/gltests/test-c-strcase.sh, lib/gltests/test-c-strcasecmp.c,
+	lib/gltests/test-c-strncasecmp.c, lib/gltests/test-iconv.c,
+	lib/gltests/test-stdbool.c, lib/gltests/test-stdint.c,
+	lib/gltests/test-stdlib.c, lib/gltests/test-striconv.c,
+	lib/gltests/test-string.c, lib/gltests/test-unistd.c,
+	lib/gltests/test-wchar.c, lib/gltests/verify.h: Update gnulib files.
+
+2008-06-18  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS, csharp/generate/Tokenizer.cs: Work around C# compiler bug.
+
+2008-06-17  Simon Josefsson <simon@josefsson.org>
+
+	* GNUmakefile, doc/gendocs_template: Update gnulib files.
+
+2008-06-10  Simon Josefsson <simon@josefsson.org>
+
+	* doc/specifications/rfc3454.txt: Remove more text.
+
+2008-06-02  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi: Drop invariant sections.
+
+2008-05-30  Simon Josefsson <simon@josefsson.org>
+
+	* lib/gl/stdbool.in.h, maint.mk: Update gnulib files.
+
+2008-05-19  Simon Josefsson <simon@josefsson.org>
+
+	* gl/m4/gnulib-common.m4, gl/m4/gnulib-comp.m4,
+	lib/gl/m4/gnulib-common.m4, lib/gl/m4/gnulib-comp.m4: Update gnulib
+	files.
+
+2008-05-12  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2008-05-12  Simon Josefsson <simon@josefsson.org>
+
+	* gl/Makefile.am, gl/m4/string_h.m4, gl/string.in.h,
+	lib/gl/Makefile.am, lib/gl/m4/stdlib_h.m4, lib/gl/m4/string_h.m4,
+	lib/gl/stdlib.in.h, lib/gl/string.in.h: Update gnulib files.
+
+2008-04-28  Simon Josefsson <simon@josefsson.org>
+
+	* build-aux/gendocs.sh: Update gnulib files.
+
+2008-04-28  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2008-04-28  Simon Josefsson <simon@josefsson.org>
+
+	* src/Makefile.am: Use singularis STRING.  Suggested by Benno
+	Schulenberg <coordinator@translationproject.org>.
+
+2008-04-28  Simon Josefsson <simon@josefsson.org>
+
+	* src/idn.c: Don't gettext error code.
+
+2008-04-28  Simon Josefsson <simon@josefsson.org>
+
+	* src/idn.c: Don't gettextize debug messages.
+
+2008-04-24  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS, THANKS, src/idn.c: idn: fix error message when NFKC fails.
+	Reported by Benno Schulenberg <coordinator@translationproject.org>.
+
+2008-04-24  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS, configure.ac: Bump versions.
+
+2008-04-23  Simon Josefsson <simon@josefsson.org>
+
+	* ChangeLog: Generated.
+
 2008-04-23  Simon Josefsson <simon@josefsson.org>
 
 	* NEWS: Version 1.8.
