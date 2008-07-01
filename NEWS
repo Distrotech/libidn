@@ -10,7 +10,9 @@ Reported by Benno Schulenberg <coordinator@translationproject.org>.
 ** C# Libidn.dll: Work around bug that cause a failure during C# compilation.
 See <https://bugzilla.novell.com/show_bug.cgi?id=372483>.
 
-** Update gnulib files.
+** Update gnulib files, and include gnulib self-tests.
+
+** Update translations.
 
 ** API and ABI is backwards compatible with the previous version.
 
