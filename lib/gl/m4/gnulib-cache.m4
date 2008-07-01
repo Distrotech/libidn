@@ -15,17 +15,23 @@
 
 
 # Specification in the form of a command-line invocation:
-#   gnulib-tool --import --dir=. --local-dir=lib/gl/override --lib=libgnu --source-base=lib/gl --m4-base=lib/gl/m4 --doc-base=doc --aux-dir=build-aux --lgpl=2 --libtool --macro-prefix=lgl --no-vc-files gettext-h stdint striconv strverscmp
+#   gnulib-tool --import --dir=. --local-dir=lib/gl/override --lib=libgnu --source-base=lib/gl --m4-base=lib/gl/m4 --doc-base=doc --aux-dir=build-aux --with-tests --lgpl=2 --libtool --macro-prefix=lgl --no-vc-files gettext-h stdint striconv strverscmp
 
 # Specification in the form of a few gnulib-tool.m4 macro invocations:
 gl_LOCAL_DIR([lib/gl/override])
-gl_MODULES([gettext-h stdint striconv strverscmp])
+gl_MODULES([
+  gettext-h
+  stdint
+  striconv
+  strverscmp
+])
 gl_AVOID([])
 gl_SOURCE_BASE([lib/gl])
 gl_M4_BASE([lib/gl/m4])
 gl_PO_BASE([])
 gl_DOC_BASE([doc])
-gl_TESTS_BASE([tests])
+gl_TESTS_BASE([lib/gltests])
+gl_WITH_TESTS
 gl_LIB([libgnu])
 gl_LGPL([2])
 gl_MAKEFILE_NAME([])

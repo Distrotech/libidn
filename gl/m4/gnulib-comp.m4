@@ -108,7 +108,7 @@ AC_DEFUN([gl_INIT],
   m4_pushdef([gltests_LIBSOURCES_LIST], [])
   m4_pushdef([gltests_LIBSOURCES_DIR], [])
   gl_COMMON
-  gl_source_base='gl/tests'
+  gl_source_base='gltests'
   m4_ifval(gltests_LIBSOURCES_LIST, [
     m4_syscmd([test ! -d ]gltests_LIBSOURCES_DIR[ ||
       for gl_file in ]gltests_LIBSOURCES_LIST[ ; do
@@ -189,7 +189,7 @@ AC_DEFUN([gltests_REPLACE_FUNCS], [
 AC_DEFUN([gltests_LIBSOURCES], [
   m4_foreach([_gl_NAME], [$1], [
     m4_if(_gl_NAME, [alloca.c], [], [
-      m4_define([gltests_LIBSOURCES_DIR], [gl/tests])
+      m4_define([gltests_LIBSOURCES_DIR], [gltests])
       m4_append([gltests_LIBSOURCES_LIST], _gl_NAME, [ ])
     ])
   ])
@@ -233,6 +233,9 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/strerror.m4
   m4/string_h.m4
   m4/unistd_h.m4
+  tests/test-strerror.c
+  tests/test-string.c
+  tests/test-unistd.c
   top/GNUmakefile
   top/maint.mk
 ])
