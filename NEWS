@@ -10,6 +10,9 @@ Reported by Benno Schulenberg <coordinator@translationproject.org>.
 ** C# Libidn.dll: Work around bug that cause a failure during C# compilation.
 See <https://bugzilla.novell.com/show_bug.cgi?id=372483>.
 
+** Remove more non-free text from doc/specifications/rfc3454.txt.
+The remaining data tables are not copyrightable.
+
 ** Update gnulib files, and include gnulib self-tests.
 
 ** Update translations.
