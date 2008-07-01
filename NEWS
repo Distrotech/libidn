@@ -2,7 +2,7 @@ Libidn NEWS -- History of user-visible changes.                 -*- outline -*-
 Copyright (C) 2002, 2003, 2004, 2005, 2006, 2007, 2008 Simon Josefsson
 See the end for copying conditions.
 
-* Version 1.9 (unreleased)
+* Version 1.9 (released 2008-07-01)
 
 ** idn: fix error message when NFKC fails, and some other translation fixes.
 Reported by Benno Schulenberg <coordinator@translationproject.org>.
