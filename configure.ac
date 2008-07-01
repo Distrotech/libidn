@@ -123,6 +123,7 @@ AC_MSG_RESULT($ac_result)
 
 AC_CONFIG_FILES([Makefile libidn.pc doc/reference/Makefile doc/java/Makefile \
 		gl/Makefile lib/gl/Makefile lib/stringprep.h \
+		gltests/Makefile lib/gltests/Makefile \
 		contrib/doxygen/Doxyfile \
 		doc/Makefile doc/specifications/Makefile doc/tld/Makefile \
 		lib/Makefile src/Makefile tests/Makefile examples/Makefile \

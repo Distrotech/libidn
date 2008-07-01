@@ -16,7 +16,8 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-SUBDIRS = gl lib/gl lib po src doc tests examples java csharp
+SUBDIRS = gl lib/gl lib po src doc gltests lib/gltests tests examples	\
+	java csharp
 
 ACLOCAL_AMFLAGS = -I m4 -I gl/m4 -I lib/gl/m4
 DISTCHECK_CONFIGURE_FLAGS = --enable-gtk-doc
