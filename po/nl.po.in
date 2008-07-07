@@ -6,10 +6,10 @@
 # Benno Schulenberg <benno@vertaalt.nl>, 2005, 2007, 2008.
 msgid ""
 msgstr ""
-"Project-Id-Version: libidn-1.8\n"
+"Project-Id-Version: libidn-1.9\n"
 "Report-Msgid-Bugs-To: bug-libidn@gnu.org\n"
-"POT-Creation-Date: 2008-04-23 09:32+0200\n"
-"PO-Revision-Date: 2008-04-23 23:49+0200\n"
+"POT-Creation-Date: 2008-07-01 18:15+0200\n"
+"PO-Revision-Date: 2008-07-02 22:58+0200\n"
 "Last-Translator: Benno Schulenberg <benno@vertaalt.nl>\n"
 "Language-Team: Dutch <vertaling@vrijschrift.org>\n"
 "MIME-Version: 1.0\n"
@@ -286,20 +286,10 @@ msgstr "Conversie van %s naar UTF-8 is mislukt."
 msgid "Could not convert from UTF-8 to UCS-4."
 msgstr "Conversie van UTF-8 naar UCS-4 is mislukt."
 
-#: src/idn.c:227 src/idn.c:287 src/idn.c:370 src/idn.c:449 src/idn.c:531
-#, c-format
-msgid "input[%lu] = U+%04x\n"
-msgstr "## invoer[%lu] = U+%04x\n"
-
 #: src/idn.c:237
 #, c-format
 msgid "stringprep_profile: %s"
 msgstr "## stringprep_profile(): %s"
-
-#: src/idn.c:252 src/idn.c:331 src/idn.c:421 src/idn.c:468 src/idn.c:555
-#, c-format
-msgid "output[%lu] = U+%04x\n"
-msgstr "## uitvoer[%lu] = U+%04x\n"
 
 #: src/idn.c:260 src/idn.c:302 src/idn.c:345 src/idn.c:503 src/idn.c:564
 #, c-format
@@ -310,11 +300,6 @@ msgstr "Conversie van UTF-8 naar %s is mislukt."
 #, c-format
 msgid "punycode_encode: %s"
 msgstr "## punycode_encode(): %s"
-
-#: src/idn.c:317
-#, c-format
-msgid "malloc"
-msgstr "Onvoldoende geheugen beschikbaar"
 
 #: src/idn.c:323
 #, c-format
@@ -336,11 +321,6 @@ msgstr "## idna_to_ascii_4z(): %s"
 msgid "idna_to_unicode_8z4z (TLD): %s"
 msgstr "## idna_to_unicode_8z4z (TLD): %s"
 
-#: src/idn.c:402
-#, c-format
-msgid "tld[%lu] = U+%04x\n"
-msgstr "## topdomein[%lu] = U+%04x\n"
-
 #: src/idn.c:409 src/idn.c:482
 #, c-format
 msgid "tld_check_4z (position %lu): %s"
@@ -358,5 +338,5 @@ msgstr "## idna_to_unicode_8z4z(): %s"
 
 #: src/idn.c:540
 #, c-format
-msgid "nfkc: %s"
-msgstr "nfkc: %s"
+msgid "Could not do NFKC normalization."
+msgstr "Kan NFKC-normalisering niet uitvoeren."
