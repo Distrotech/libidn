@@ -62,15 +62,12 @@ release:
 		../build-aux/gendocs.sh --html "--css-include=texinfo.css" \
 		-o ../$(htmldir)/manual/ $(PACKAGE) "GNU Libidn"
 	cd contrib/doxygen && doxygen && cd ../.. && cp -v contrib/doxygen/html/* $(htmldir)/doxygen/ && cd contrib/doxygen/latex && make refman.pdf && cd ../../../ && cp contrib/doxygen/latex/refman.pdf $(htmldir)/doxygen/$(PACKAGE).pdf
-	cp -v $(distdir).tar.gz $(htmldir)/releases/
 	cp -v doc/reference/html/*.html doc/reference/html/*.png doc/reference/html/*.devhelp doc/reference/html/*.css $(htmldir)/reference/
 	cp -v doc/java/*.html $(htmldir)/javadoc/
 	git-push
 	git-push --tags
 	build-aux/gnupload --to ftp.gnu.org:libidn --to alpha.gnu.org:libidn $(distdir).tar.gz
-	cp -v $(distdir).tar.gz $(distdir).tar.gz.sig $(htmldir)/releases/
 	cd $(htmldir) && \
 		cvs add -kb releases/$(distdir).tar.gz \
 			releases/$(distdir).tar.gz.sig && \
-		cvs commit -m "Update." manual/ javadoc/ reference/ \
-					doxygen/ releases/
+		cvs commit -m "Update." manual/ javadoc/ reference/ doxygen/
