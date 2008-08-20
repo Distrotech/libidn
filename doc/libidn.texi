@@ -225,7 +225,8 @@ component within the library is hidden from the application.
 @section Supported Platforms
 
 Libidn has at some point in time been tested on the following
-platforms.
+platforms.  Online build reports for each platforms and Libidn version
+is available at @url{http://autobuild.josefsson.org/libidn/}.
 
 @enumerate
 
@@ -444,7 +445,7 @@ to be mentioned here, contact the author (@pxref{Bug Reports}).
 
 The package can be downloaded from several places, including:
 
-@url{http://josefsson.org/libidn/releases/}
+@url{ftp://alpha.gnu.org/pub/gnu/libidn/}
 
 The latest version is stored in a file, e.g.,
 @samp{libidn-@value{VERSION}.tar.gz} where the @samp{@value{VERSION}}
@@ -460,7 +461,7 @@ and install the package.  You will need a few basic tools, such as
 @samp{sh}, @samp{make} and @samp{cc}.
 
 @example
-$ wget -q http://josefsson.org/libidn/releases/libidn-@value{VERSION}.tar.gz
+$ wget -q ftp://alpha.gnu.org/pub/gnu/libidn/libidn-@value{VERSION}.tar.gz
 $ tar xfz libidn-@value{VERSION}.tar.gz
 $ cd libidn-@value{VERSION}/
 $ ./configure
