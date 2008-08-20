@@ -4,6 +4,8 @@ See the end for copying conditions.
 
 * Version 1.10 (unreleased)
 
+** Update gnulib files.
+
 ** Update translations.
 
 ** API and ABI is backwards compatible with the previous version.
