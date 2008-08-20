@@ -15,11 +15,12 @@
 
 
 # Specification in the form of a command-line invocation:
-#   gnulib-tool --import --dir=. --local-dir=gl/override --lib=libgnu --source-base=gl --m4-base=gl/m4 --doc-base=doc --aux-dir=build-aux --with-tests --libtool --macro-prefix=gl --no-vc-files csharpcomp-script error fdl gendocs getopt gnupload gpl-3.0 lgpl-2.1 maintainer-makefile progname version-etc
+#   gnulib-tool --import --dir=. --local-dir=gl/override --lib=libgnu --source-base=gl --m4-base=gl/m4 --doc-base=doc --aux-dir=build-aux --with-tests --libtool --macro-prefix=gl --no-vc-files autobuild csharpcomp-script error fdl gendocs getopt gnupload gpl-3.0 lgpl-2.1 maintainer-makefile progname version-etc
 
 # Specification in the form of a few gnulib-tool.m4 macro invocations:
 gl_LOCAL_DIR([gl/override])
 gl_MODULES([
+  autobuild
   csharpcomp-script
   error
   fdl
