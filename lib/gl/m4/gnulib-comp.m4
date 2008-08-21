@@ -60,6 +60,7 @@ AC_DEFUN([lgl_INIT],
   fi
   gl_HEADER_STRING_H
   gl_FUNC_STRVERSCMP
+  gl_STRING_MODULE_INDICATOR([strverscmp])
   gl_UNISTD_H
   gl_WCHAR_H
   m4_ifval(lgl_LIBSOURCES_LIST, [
@@ -219,7 +220,6 @@ AC_DEFUN([lgl_FILE_LIST], [
   lib/striconv.h
   lib/string.in.h
   lib/strverscmp.c
-  lib/strverscmp.h
   lib/unistd.in.h
   lib/wchar.in.h
   m4/extensions.m4
@@ -255,6 +255,7 @@ AC_DEFUN([lgl_FILE_LIST], [
   tests/test-stdlib.c
   tests/test-striconv.c
   tests/test-string.c
+  tests/test-strverscmp.c
   tests/test-unistd.c
   tests/test-wchar.c
   tests=lib/dummy.c
