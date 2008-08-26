@@ -160,6 +160,12 @@ main (int argc, char *argv[])
   if (args_info.help_given)
     usage (EXIT_SUCCESS);
 
+  /* Backwards compatibility: -n has always been the documented short
+     form for --nfkc but, before v1.10, -k was the implemented short
+     form.  We now accept both to avoid documentation changes.  */
+  if (args_info.hidden_nfkc_given)
+    args_info.nfkc_given = 1;
+
   if (!args_info.stringprep_given &&
       !args_info.punycode_encode_given && !args_info.punycode_decode_given &&
       !args_info.idna_to_ascii_given && !args_info.idna_to_unicode_given &&
