@@ -46,7 +46,7 @@ pkgconfig_DATA = libidn.pc
 
 ChangeLog:
 	git log --pretty --numstat --summary | git2cl > ChangeLog
-	cat .cvscopying >> ChangeLog
+	cat .clcopying >> ChangeLog
 
 tag = $(PACKAGE)-`echo $(VERSION) | sed 's/\./-/g'`
 htmldir = ../www-$(PACKAGE)
