@@ -61,13 +61,13 @@ release:
 	cd doc && env MAKEINFO="makeinfo -I ../examples" \
 		      TEXI2DVI="texi2dvi -I ../examples" \
 		../build-aux/gendocs.sh --html "--css-include=texinfo.css" \
-		-o ../$(htmldir)/manual/ $(PACKAGE) "GNU Libidn"
+		-o ../$(htmldir)/manual/ $(PACKAGE) $(PACKAGE_NAME)
 	cd contrib/doxygen && doxygen && cd ../.. && cp -v contrib/doxygen/html/* $(htmldir)/doxygen/ && cd contrib/doxygen/latex && make refman.pdf && cd ../../../ && cp contrib/doxygen/latex/refman.pdf $(htmldir)/doxygen/$(PACKAGE).pdf
 	cp -v doc/reference/html/*.html doc/reference/html/*.png doc/reference/html/*.devhelp doc/reference/html/*.css $(htmldir)/reference/
 	cp -rv doc/java/* $(htmldir)/javadoc/
 	git-push
 	git-push --tags
-	build-aux/gnupload --to ftp.gnu.org:libidn --to alpha.gnu.org:libidn $(distdir).tar.gz
-	cp $(distdir).tar.gz $(distdir).tar.gz.sig ../releases/libidn/
+	build-aux/gnupload --to ftp.gnu.org:$(PACKAGE) --to alpha.gnu.org:$(PACKAGE) $(distdir).tar.gz
+	cp $(distdir).tar.gz $(distdir).tar.gz.sig ../releases/$(PACKAGE)/
 	cd $(htmldir) && \
 		cvs commit -m "Update." manual/ javadoc/ reference/ doxygen/
