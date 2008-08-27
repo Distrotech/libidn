@@ -46,7 +46,7 @@ pkgconfig_DATA = libidn.pc
 # Maintainer targets
 
 ChangeLog:
-	git log --pretty --numstat --summary | git2cl > ChangeLog
+	git2cl > ChangeLog
 	cat .clcopying >> ChangeLog
 
 tag = $(PACKAGE)-`echo $(VERSION) | sed 's/\./-/g'`
