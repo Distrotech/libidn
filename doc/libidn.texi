@@ -95,10 +95,10 @@ Indices
 @chapter Introduction
 
 GNU Libidn is a fully documented implementation of the Stringprep,
-Punycode and IDNA specifications defined by the IETF Internationalized
-Domain Names (IDN) working group, used for internationalized domain
-names.  The native C, C# and Java libraries are available under the
-GNU Lesser General Public License version 2.1 (@pxref{GNU LGPL}).
+Punycode and IDNA specifications.  Libidn's purpose is to encode and
+decode internationalized domain names.  The native C, C# and Java
+libraries are available under the GNU Lesser General Public License
+version 2.1 or later (@pxref{GNU LGPL}).
 
 The library contains a generic Stringprep implementation that does
 Unicode 3.2 NFKC normalization, mapping and prohibitation of
@@ -134,7 +134,7 @@ C#, C++, Emacs Lisp, Python and Java.
 
 Also included is a command line tool, several self tests, code
 examples, and more, all licensed under the GNU General Public License
-version 3.0 (@pxref{GNU GPL}).
+version 3.0 or later (@pxref{GNU GPL}).
 
 @menu
 * Getting Started::
@@ -178,7 +178,8 @@ doing a similar job.
 @table @asis
 @item It's Free Software
 Anybody can use, modify, and redistribute it under the terms of the
-GNU Lesser General Public License version 2.1 (@pxref{GNU LGPL}).
+GNU Lesser General Public License version 2.1 or later (@pxref{GNU
+LGPL}).
 
 @item It's thread-safe
 No global state is kept in the library.  All functions are reentrant.
