@@ -1,5 +1,5 @@
 /* stringprep.c --- Core stringprep implementation.
- * Copyright (C) 2002, 2003, 2004, 2005, 2006, 2007  Simon Josefsson
+ * Copyright (C) 2002, 2003, 2004, 2005, 2006, 2007, 2008  Simon Josefsson
  *
  * This file is part of GNU Libidn.
  *
@@ -216,8 +216,8 @@ stringprep_4i (uint32_t * ucs4, size_t * len, size_t maxucs4len,
 	    int done_prohibited = 0;
 	    int done_ral = 0;
 	    int done_l = 0;
-	    int contains_ral = -1;
-	    int contains_l = -1;
+	    size_t contains_ral = -1;
+	    size_t contains_l = -1;
 
 	    for (j = 0; profile[j].operation; j++)
 	      if (profile[j].operation == STRINGPREP_BIDI_PROHIBIT_TABLE)
