@@ -24,16 +24,15 @@ EXTRA_DIST = cfg.mk maint.mk .clcopying
 ACLOCAL_AMFLAGS = -I m4 -I gl/m4 -I lib/gl/m4
 DISTCHECK_CONFIGURE_FLAGS = --enable-gtk-doc
 
-EXTRA_DIST = FAQ libc/README libc/getaddrinfo-idn.txt libc/example.c \
-	contrib/README contrib/idn-python/README contrib/idn-python/Makefile \
-	contrib/idn-python/idn.c contrib/idn-python/test.py \
-	contrib/web/idn.php \
-	contrib/java/README contrib/java/autogen.sh \
-	contrib/java/configure.ac contrib/java/Makefile.am \
-	contrib/java/ExampleIDNA.java contrib/java/IDNA.java \
-	contrib/java/IDNA.c \
-	contrib/doxygen/Doxyfile.in contrib/doxygen/Doxyfile.orig \
-	contrib/doxygen/gdoc2doxygen
+EXTRA_DIST += FAQ libc/README libc/getaddrinfo-idn.txt libc/example.c	\
+	contrib/README contrib/idn-python/README			\
+	contrib/idn-python/Makefile contrib/idn-python/idn.c		\
+	contrib/idn-python/test.py contrib/web/idn.php			\
+	contrib/java/README contrib/java/autogen.sh			\
+	contrib/java/configure.ac contrib/java/Makefile.am		\
+	contrib/java/ExampleIDNA.java contrib/java/IDNA.java		\
+	contrib/java/IDNA.c contrib/doxygen/Doxyfile.in			\
+	contrib/doxygen/Doxyfile.orig contrib/doxygen/gdoc2doxygen
 
 # Visual Studio project files.
 EXTRA_DIST += win32/libidn.sln win32/libidn.vcproj			\
