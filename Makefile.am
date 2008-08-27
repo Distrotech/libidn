@@ -68,5 +68,6 @@ release:
 	git-push
 	git-push --tags
 	build-aux/gnupload --to ftp.gnu.org:libidn --to alpha.gnu.org:libidn $(distdir).tar.gz
+	cp $(distdir).tar.gz $(distdir).tar.gz.sig ../releases/libidn/
 	cd $(htmldir) && \
 		cvs commit -m "Update." manual/ javadoc/ reference/ doxygen/
