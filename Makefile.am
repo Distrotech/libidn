@@ -19,6 +19,8 @@
 SUBDIRS = gl lib/gl lib po src doc gltests lib/gltests tests examples	\
 	java csharp
 
+EXTRA_DIST = cfg.mk maint.mk .clcopying
+
 ACLOCAL_AMFLAGS = -I m4 -I gl/m4 -I lib/gl/m4
 DISTCHECK_CONFIGURE_FLAGS = --enable-gtk-doc
 
