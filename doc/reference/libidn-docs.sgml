@@ -21,11 +21,11 @@ version 2.1 or later.
 The library contains a generic Stringprep implementation that does
 Unicode 3.2 NFKC normalization, mapping and prohibitation of
 characters, and bidirectional character handling.  Profiles for
-Nameprep, iSCSI, SASL and XMPP are included.  Punycode and ASCII
-Compatible Encoding (ACE) via IDNA are supported.  A mechanism to
-define Top-Level Domain (TLD) specific validation tables, and to
-compare strings against those tables, is included.  Default tables for
-some TLDs are also included.
+Nameprep, iSCSI, SASL, XMPP and Kerberos V5 are included.  Punycode
+and ASCII Compatible Encoding (ACE) via IDNA are supported.  A
+mechanism to define Top-Level Domain (TLD) specific validation tables,
+and to compare strings against those tables, is included.  Default
+tables for some TLDs are also included.
     </para>
 
     <para>
@@ -63,7 +63,8 @@ examples, and more, all licensed under the GNU General Public License
 version 3.0 or later.
     </para>
 
-    <para>The internal layout of the library, and how your application
+    <para>
+      The internal layout of the library, and how your application
       interact with the various parts of the library, are shown in
       <xref linkend="components"/>.
     </para>
