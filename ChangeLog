@@ -1,3 +1,108 @@
+2008-08-27  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Version 1.10.
+
+2008-08-27  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2008-08-27  Simon Josefsson <simon@josefsson.org>
+
+	* win32/include/gen-win32-headers.pl: Declare strverscmp.
+
+2008-08-27  Simon Josefsson <simon@josefsson.org>
+
+	* lib/stringprep.c: Fix warnings.
+
+2008-08-26  Simon Josefsson <simon@josefsson.org>
+
+	* libidn.fms: Remove freshmeat-submit template, no longer used.
+
+2008-08-26  Simon Josefsson <simon@josefsson.org>
+
+	* .clcopying, .cvscopying, .cvsusers, Makefile.am: Rename
+	.cvscopying to .clcopying.
+
+2008-08-26  Simon Josefsson <simon@josefsson.org>
+
+	* GNUmakefile: Update gnulib files.
+
+2008-08-26  Simon Josefsson <simon@josefsson.org>
+
+	* lib/gunibreak.h, lib/gunicomp.h, lib/gunidecomp.h: Add generated
+	files because perl 5.10 breaks gen-unicode-tables.pl.
+
+2008-08-26  Simon Josefsson <simon@josefsson.org>
+
+	* po/LINGUAS, po/id.po.in: Sync with TP.
+
+2008-08-26  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS, THANKS, src/idn.c, src/idn.ggo: idn: accept -n as short form
+	for --nfkc.  Before '-k' was used as the short form, but all
+	documentation has said '-n'.  We now accept both short forms, and -n
+	remains the documented short form.  Reported by John McGowan
+	<jmcgowan@inch.com> in
+
+	<http://lists.gnu.org/archive/html/help-libidn/2008-08/msg00000.html>.
+
+2008-08-21  Simon Josefsson <simon@josefsson.org>
+
+	* gl/Makefile.am, gl/m4/autobuild.m4, gl/m4/string_h.m4,
+	gl/string.in.h, lib/gl/Makefile.am, lib/gl/m4/gnulib-comp.m4,
+	lib/gl/m4/string_h.m4, lib/gl/m4/strverscmp.m4, lib/gl/string.in.h,
+	lib/gl/strverscmp.h, lib/gltests/Makefile.am,
+	lib/gltests/test-strverscmp.c, lib/version.c: Update gnulib files.
+
+2008-08-20  Simon Josefsson <simon@josefsson.org>
+
+	* Makefile.am: Don't try to add tar in www dir.
+
+2008-08-20  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2008-08-20  Simon Josefsson <simon@josefsson.org>
+
+	* configure.ac, gl/Makefile.am, gl/m4/autobuild.m4,
+	gl/m4/gnulib-cache.m4, gl/m4/gnulib-comp.m4, m4/autobuild.m4: Update
+	gnulib files.
+
+2008-08-20  Simon Josefsson <simon@josefsson.org>
+
+	* README: Fix URLs.
+
+2008-08-20  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi: Fix URLs.
+
+2008-08-18  Simon Josefsson <simon@josefsson.org>
+
+	* Makefile.am: Don't put releases in www directory, after discussion
+	with Savannah admins.
+
+2008-08-06  Simon Josefsson <simon@josefsson.org>
+
+	* GNUmakefile, build-aux/gnupload, gl/m4/gnulib-comp.m4,
+	lib/gl/m4/gnulib-comp.m4: Update gnulib files.
+
+2008-07-07  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2008-07-07  Simon Josefsson <simon@josefsson.org>
+
+	* po/LINGUAS, po/cs.po.in, po/it.po.in, po/nl.po.in, po/pl.po.in,
+	po/vi.po.in, po/zh_CN.po.in: Sync with TP.
+
+2008-07-07  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS, configure.ac: Bump versions.
+
+2008-07-01  Simon Josefsson <simon@josefsson.org>
+
+	* ChangeLog: Generated.
+
 2008-07-01  Simon Josefsson <simon@josefsson.org>
 
 	* Makefile.am, configure.ac: Add gltests/ directories.
@@ -10671,8 +10776,10 @@
 
 	* Initial version.
 
-	----------------------------------------------------------------------
-	Copyright 2002, 2003, 2004, 2005, 2006, 2007  Simon Josefsson
-	Copying and distribution of this file, with or without modification,
-	are permitted in any medium without royalty provided the copyright
-	notice and this notice are preserved.
+	-----
+
+	Copyright (C) 2002, 2003, 2004, 2005, 2006, 2007, 2008 Simon Josefsson
+
+	Copying and distribution of this file, with or without
+	modification, are permitted provided the copyright notice
+	and this notice are preserved.
