@@ -216,8 +216,8 @@ stringprep_4i (uint32_t * ucs4, size_t * len, size_t maxucs4len,
 	    int done_prohibited = 0;
 	    int done_ral = 0;
 	    int done_l = 0;
-	    size_t contains_ral = -1;
-	    size_t contains_l = -1;
+	    size_t contains_ral = SIZE_MAX;
+	    size_t contains_l = SIZE_MAX;
 
 	    for (j = 0; profile[j].operation; j++)
 	      if (profile[j].operation == STRINGPREP_BIDI_PROHIBIT_TABLE)
@@ -247,10 +247,10 @@ stringprep_4i (uint32_t * ucs4, size_t * len, size_t maxucs4len,
 	    if (!done_prohibited || !done_ral || !done_l)
 	      return STRINGPREP_PROFILE_ERROR;
 
-	    if (contains_ral != -1 && contains_l != -1)
+	    if (contains_ral != SIZE_MAX && contains_l != SIZE_MAX)
 	      return STRINGPREP_BIDI_BOTH_L_AND_RAL;
 
-	    if (contains_ral != -1)
+	    if (contains_ral != SIZE_MAX)
 	      {
 		if (!(stringprep_find_character_in_table
 		      (ucs4[0], profile[contains_ral].table) != -1 &&
