@@ -47,13 +47,8 @@ AC_DEFUN([lgl_INIT],
   AM_ICONV
   gl_ICONV_H
   gl_FUNC_ICONV_OPEN
-  gl_FUNC_MALLOC_POSIX
-  gl_STDLIB_MODULE_INDICATOR([malloc-posix])
   AM_STDBOOL_H
   gl_STDINT_H
-  gl_STDLIB_H
-  gl_FUNC_STRDUP
-  gl_STRING_MODULE_INDICATOR([strdup])
   if test $gl_cond_libtool = false; then
     gl_ltlibdeps="$gl_ltlibdeps $LTLIBICONV"
     gl_libdeps="$gl_libdeps $LIBICONV"
@@ -61,7 +56,6 @@ AC_DEFUN([lgl_INIT],
   gl_HEADER_STRING_H
   gl_FUNC_STRVERSCMP
   gl_STRING_MODULE_INDICATOR([strverscmp])
-  gl_UNISTD_H
   gl_WCHAR_H
   m4_ifval(lgl_LIBSOURCES_LIST, [
     m4_syscmd([test ! -d ]m4_defn([lgl_LIBSOURCES_DIR])[ ||
@@ -211,16 +205,12 @@ AC_DEFUN([lgl_FILE_LIST], [
   lib/iconv_open-irix.gperf
   lib/iconv_open-osf.gperf
   lib/iconv_open.c
-  lib/malloc.c
   lib/stdbool.in.h
   lib/stdint.in.h
-  lib/stdlib.in.h
-  lib/strdup.c
   lib/striconv.c
   lib/striconv.h
   lib/string.in.h
   lib/strverscmp.c
-  lib/unistd.in.h
   lib/wchar.in.h
   m4/extensions.m4
   m4/gnulib-common.m4
@@ -234,14 +224,10 @@ AC_DEFUN([lgl_FILE_LIST], [
   m4/locale-fr.m4
   m4/locale-tr.m4
   m4/longlong.m4
-  m4/malloc.m4
   m4/stdbool.m4
   m4/stdint.m4
-  m4/stdlib_h.m4
-  m4/strdup.m4
   m4/string_h.m4
   m4/strverscmp.m4
-  m4/unistd_h.m4
   m4/wchar.m4
   m4/wchar_t.m4
   m4/wint_t.m4
@@ -252,11 +238,9 @@ AC_DEFUN([lgl_FILE_LIST], [
   tests/test-iconv.c
   tests/test-stdbool.c
   tests/test-stdint.c
-  tests/test-stdlib.c
   tests/test-striconv.c
   tests/test-string.c
   tests/test-strverscmp.c
-  tests/test-unistd.c
   tests/test-wchar.c
   tests=lib/dummy.c
   tests=lib/intprops.h

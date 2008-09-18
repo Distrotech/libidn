@@ -95,15 +95,6 @@ EXTRA_DIST += test-stdint.c
 
 ## end   gnulib module stdint-tests
 
-## begin gnulib module stdlib-tests
-
-TESTS += test-stdlib
-check_PROGRAMS += test-stdlib
-
-EXTRA_DIST += test-stdlib.c
-
-## end   gnulib module stdlib-tests
-
 ## begin gnulib module striconv-tests
 
 TESTS += test-striconv
@@ -130,15 +121,6 @@ check_PROGRAMS += test-strverscmp
 EXTRA_DIST += test-strverscmp.c
 
 ## end   gnulib module strverscmp-tests
-
-## begin gnulib module unistd-tests
-
-TESTS += test-unistd
-check_PROGRAMS += test-unistd
-
-EXTRA_DIST += test-unistd.c
-
-## end   gnulib module unistd-tests
 
 ## begin gnulib module verify
 
