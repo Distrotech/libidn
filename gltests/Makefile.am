@@ -35,6 +35,15 @@ AM_CPPFLAGS = \
 
 LDADD = ../gl/libgnu.la
 
+## begin gnulib module errno-tests
+
+TESTS += test-errno
+check_PROGRAMS += test-errno
+
+EXTRA_DIST += test-errno.c
+
+## end   gnulib module errno-tests
+
 ## begin gnulib module strerror-tests
 
 TESTS += test-strerror

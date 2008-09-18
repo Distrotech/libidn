@@ -49,6 +49,7 @@ AC_DEFUN([gl_INIT],
   gl_source_base='gl'
   AC_REQUIRE([gt_CSHARPCOMP])
   AC_CONFIG_FILES([csharpcomp.sh:build-aux/csharpcomp.sh.in])
+  gl_HEADER_ERRNO_H
   gl_ERROR
   m4_ifdef([AM_XGETTEXT_OPTION],
     [AM_XGETTEXT_OPTION([--flag=error:3:c-format])
@@ -207,6 +208,7 @@ AC_DEFUN([gl_FILE_LIST], [
   doc/gendocs_template
   doc/gpl-3.0.texi
   doc/lgpl-2.1.texi
+  lib/errno.in.h
   lib/error.c
   lib/error.h
   lib/getopt.c
@@ -226,6 +228,7 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/autobuild.m4
   m4/csharp.m4
   m4/csharpcomp.m4
+  m4/errno_h.m4
   m4/error.m4
   m4/extensions.m4
   m4/getopt.m4
@@ -235,6 +238,7 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/strerror.m4
   m4/string_h.m4
   m4/unistd_h.m4
+  tests/test-errno.c
   tests/test-strerror.c
   tests/test-string.c
   tests/test-unistd.c
