@@ -22,7 +22,8 @@ SUBDIRS = gl lib/gl lib po src doc gltests lib/gltests tests examples	\
 EXTRA_DIST = cfg.mk maint.mk .clcopying
 
 ACLOCAL_AMFLAGS = -I m4 -I gl/m4 -I lib/gl/m4
-DISTCHECK_CONFIGURE_FLAGS = --enable-gtk-doc
+DISTCHECK_CONFIGURE_FLAGS = --enable-gtk-doc \
+	WARN_CFLAGS="-Wall -Werror"
 
 EXTRA_DIST += FAQ libc/README libc/getaddrinfo-idn.txt libc/example.c	\
 	contrib/README contrib/idn-python/README			\

@@ -1,5 +1,5 @@
 ## Process this file with automake to produce Makefile.in
-# Copyright (C) 2002, 2003, 2004, 2006, 2007 Simon Josefsson.
+# Copyright (C) 2002, 2003, 2004, 2006, 2007, 2008 Simon Josefsson.
 #
 # This file is part of GNU Libidn.
 #
@@ -16,8 +16,10 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+AM_CFLAGS = $(WARN_CFLAGS)
 AM_CPPFLAGS = -I$(top_srcdir)/lib -I../lib -I$(top_srcdir)/gl -I../gl
 AM_LDFLAGS = -no-install
+
 LDADD = ../lib/libidn.la libutils.la
 
 noinst_LTLIBRARIES = libutils.la

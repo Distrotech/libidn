@@ -120,6 +120,12 @@ else
 fi
 AC_MSG_RESULT($ac_result)
 
+# Make it possible to pass -Werror when building relevant parts of
+# the library.  Normally, -Werror breaks when running autoconf tests.
+AC_ARG_VAR(WARN_CFLAGS, [Flags to enable compiler warnings])
+AC_MSG_CHECKING([what compiler warning flags we will use])
+AC_MSG_RESULT($WARN_CFLAGS)
+
 AC_CONFIG_FILES([Makefile libidn.pc doc/reference/Makefile doc/java/Makefile \
 		gl/Makefile lib/gl/Makefile lib/stringprep.h \
 		gltests/Makefile lib/gltests/Makefile \

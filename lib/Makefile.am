@@ -1,5 +1,5 @@
 ## Process this file with automake to produce Makefile.in
-# Copyright (C) 2002, 2003, 2004, 2005, 2006, 2007 Simon Josefsson.
+# Copyright (C) 2002, 2003, 2004, 2005, 2006, 2007, 2008 Simon Josefsson.
 # Copyright (C) 2004 Free Software Foundation, Inc.
 #
 # This file is part of GNU Libidn.
@@ -20,6 +20,7 @@
 
 EXTRA_DIST = gen-stringprep-tables.pl gen-unicode-tables.pl gen-tld-tables.pl
 
+AM_CFLAGS = $(WARN_CFLAGS)
 AM_CPPFLAGS = -I$(srcdir)/gl -Igl
 DEFS = -DLIBIDN_BUILDING -DLOCALEDIR=\"$(localedir)\" @DEFS@
 
