@@ -19,6 +19,7 @@ dnl along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 AC_PREREQ(2.61)
 AC_INIT([GNU Libidn], [1.11], [bug-libidn@gnu.org])
+AC_COPYRIGHT([Copyright (c) 2002-2008 Simon Josefsson <simon@josefsson.org>.])
 
 # Library code modified:                              REVISION++
 # Interfaces changed/added/removed:   CURRENT++       REVISION=0
