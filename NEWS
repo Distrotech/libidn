@@ -7,6 +7,10 @@ See the end for copying conditions.
 ** The library now assumes the system has strdup.
 Let me know if there still are any systems out there without strdup.
 
+** New WARN_CFLAGS configure variable.
+It is used internally to add -Werror and other warnings flags, to
+catch coding mistakes before releases.
+
 ** API and ABI is backwards compatible with the previous version.
 
 * Version 1.10 (released 2008-08-27)
