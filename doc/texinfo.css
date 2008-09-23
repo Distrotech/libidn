@@ -4,7 +4,6 @@ body {
 	background: #f2f2f9;
 }
 h1,h2,h3,h4,h5 {
-    padding: 0.5em 0 0 5%;
     font-family: Tahoma, Verdana, sans-serif;
     font-weight: bold;
 }
@@ -12,7 +11,9 @@ h1 {
     padding: 0.5em 0 0.5em 5%;
     color: white;
     background: #3366cc;
-    border-bottom: solid 1px black;
+    text-align: center;
+    letter-spacing: 3px; 
+}
 }
 h2 { text-decoration: underline; }
 h4 { font-style: italic; }
