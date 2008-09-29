@@ -30,6 +30,7 @@ AC_SUBST(LT_REVISION, 40)
 AC_SUBST(LT_AGE, 5)
 
 AC_CONFIG_AUX_DIR([build-aux])
+AC_CONFIG_MACRO_DIR([m4])
 AM_INIT_AUTOMAKE([1.10 -Wall -Werror -Wno-override])
 AC_CONFIG_HEADERS(config.h)
 
