@@ -140,6 +140,23 @@ extern int dup2 (int, int);
 #endif
 
 
+#if @GNULIB_FSYNC@
+/* Synchronize changes to a file.
+   Return 0 if successful, otherwise -1 and errno set.
+   See POSIX:2001 specification
+   <http://www.opengroup.org/susv3xsh/fsync.html>.  */
+# if !@HAVE_FSYNC@
+extern int fsync (int fd);
+# endif
+#elif defined GNULIB_POSIXCHECK
+# undef fsync
+# define fsync(fd) \
+    (GL_LINK_WARNING ("fsync is unportable - " \
+                      "use gnulib module fsync for portability"), \
+     fsync (fd))
+#endif
+
+
 #if @GNULIB_FTRUNCATE@
 # if !@HAVE_FTRUNCATE@
 /* Change the size of the file to which FD is opened to become equal to LENGTH.
@@ -181,6 +198,20 @@ extern char * getcwd (char *buf, size_t size);
     (GL_LINK_WARNING ("getcwd is unportable - " \
                       "use gnulib module getcwd for portability"), \
      getcwd (b, s))
+#endif
+
+
+#if @GNULIB_GETDTABLESIZE@
+# if !@HAVE_GETDTABLESIZE@
+/* Return the maximum number of file descriptors in the current process.  */
+extern int getdtablesize (void);
+# endif
+#elif defined GNULIB_POSIXCHECK
+# undef getdtablesize
+# define getdtablesize() \
+    (GL_LINK_WARNING ("getdtablesize is unportable - " \
+                      "use gnulib module getdtablesize for portability"), \
+     getdtablesize ())
 #endif
 
 
