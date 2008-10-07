@@ -67,6 +67,7 @@ AC_DEFUN([gl_INIT],
   	m4_defn([m4_PACKAGE_VERSION])), [1], [],
         [AC_CONFIG_LINKS([$GNUmakefile:$GNUmakefile], [],
   	[GNUmakefile=$GNUmakefile])])
+  gl_PMCCABE2HTML
   gl_STDARG_H
   gl_FUNC_STRERROR
   gl_STRING_MODULE_INDICATOR([strerror])
@@ -204,6 +205,8 @@ AC_DEFUN([gl_FILE_LIST], [
   build-aux/gendocs.sh
   build-aux/gnupload
   build-aux/link-warning.h
+  build-aux/pmccabe.css
+  build-aux/pmccabe2html
   doc/fdl.texi
   doc/gendocs_template
   doc/gpl-3.0.texi
@@ -234,6 +237,7 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/getopt.m4
   m4/gnulib-common.m4
   m4/include_next.m4
+  m4/pmccabe2html.m4
   m4/stdarg.m4
   m4/strerror.m4
   m4/string_h.m4
