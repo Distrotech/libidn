@@ -25,6 +25,5 @@ libidn-cyclo.html:
 			-v lang=html -v name="$(PACKAGE_NAME)" \
 			-v vcurl="http://git.savannah.gnu.org/gitweb/?p=libidn.git;a=blob;f=%FILENAME%;hb=HEAD" \
 			-v url="http://www.gnu.org/software/libidn/" \
-			-v css="${top_srcdir}/build-aux/pmccabe.css" \
 			> tmp
 	mv tmp libidn-cyclo.html
