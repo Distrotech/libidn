@@ -4,12 +4,15 @@ See the end for copying conditions.
 
 * Version 1.11 (unreleased)
 
-** The library now assumes the system has strdup.
+** libidn: The library now assumes the system has strdup.
 Let me know if there still are any systems out there without strdup.
 
 ** New WARN_CFLAGS configure variable.
 It is used internally to add -Werror and other warnings flags, to
 catch coding mistakes before releases.
+
+** Included cyclomatic code complexity charts of the library code.
+See doc/prmgt/.
 
 ** Update gnulib files and translations.
 
