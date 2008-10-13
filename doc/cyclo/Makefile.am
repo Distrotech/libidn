@@ -16,9 +16,9 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-EXTRA_DIST = libidn-cyclo.html
+EXTRA_DIST = cyclo-libidn.html
 
-libidn-cyclo.html:
+cyclo-libidn.html:
 	$(PMCCABE) ${top_srcdir}/lib/*.[ch] \
 		| sort -nr \
 		| $(AWK) -f ${top_srcdir}/build-aux/pmccabe2html \
@@ -26,4 +26,4 @@ libidn-cyclo.html:
 			-v vcurl="http://git.savannah.gnu.org/gitweb/?p=libidn.git;a=blob;f=%FILENAME%;hb=HEAD" \
 			-v url="http://www.gnu.org/software/libidn/" \
 			> tmp
-	mv tmp libidn-cyclo.html
+	mv tmp $@

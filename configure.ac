@@ -129,7 +129,7 @@ AC_MSG_CHECKING([what compiler warning flags we will use])
 AC_MSG_RESULT($WARN_CFLAGS)
 
 AC_CONFIG_FILES([Makefile libidn.pc \
-		doc/reference/Makefile doc/java/Makefile doc/prmgt/Makefile \
+		doc/reference/Makefile doc/java/Makefile doc/cyclo/Makefile \
 		gl/Makefile lib/gl/Makefile lib/stringprep.h \
 		gltests/Makefile lib/gltests/Makefile \
 		contrib/doxygen/Doxyfile \

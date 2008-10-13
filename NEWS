@@ -12,7 +12,7 @@ It is used internally to add -Werror and other warnings flags, to
 catch coding mistakes before releases.
 
 ** Included cyclomatic code complexity charts of the library code.
-See doc/prmgt/.
+See doc/cyclo/.
 
 ** Update gnulib files and translations.
 
