@@ -1,4 +1,4 @@
-/* stringprep.h --- Header file for stringprep functions.             -*- c -*-
+/* stringprep.h --- Header file for stringprep functions.
  * Copyright (C) 2002, 2003, 2004, 2005, 2006, 2007, 2008  Simon Josefsson
  *
  * This file is part of GNU Libidn.
@@ -19,17 +19,17 @@
  *
  */
 
-#ifndef _STRINGPREP_H
-#define _STRINGPREP_H
+#ifndef STRINGPREP_H
+#define STRINGPREP_H
+
+#include <stddef.h>		/* size_t */
+#include <unistd.h>		/* ssize_t */
+#include <idn-int.h>		/* uint32_t */
 
 #ifdef __cplusplus
 extern "C"
 {
 #endif
-
-#include <stddef.h>		/* size_t */
-#include <unistd.h>		/* ssize_t */
-#include <idn-int.h>		/* uint32_t */
 
   /* On Windows, variables that may be in a DLL must be marked
    * specially.  This is only active when not building libidn itself
@@ -220,4 +220,5 @@ extern "C"
 #ifdef __cplusplus
 }
 #endif
-#endif				/* _STRINGPREP_H */
+
+#endif				/* STRINGPREP_H */
