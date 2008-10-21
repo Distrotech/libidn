@@ -141,7 +141,7 @@ AC_MSG_RESULT($WARN_CFLAGS)
 
 AC_CONFIG_FILES([Makefile libidn.pc \
 		doc/reference/Makefile doc/java/Makefile doc/cyclo/Makefile \
-		gl/Makefile lib/gl/Makefile lib/stringprep.h \
+		gl/Makefile lib/gl/Makefile \
 		gltests/Makefile lib/gltests/Makefile \
 		contrib/doxygen/Doxyfile \
 		doc/Makefile doc/specifications/Makefile doc/tld/Makefile \
