@@ -7,11 +7,15 @@ See the end for copying conditions.
 ** libidn: The library now assumes the system has strdup.
 Let me know if there still are any systems out there without strdup.
 
-** New WARN_CFLAGS configure variable.
+** libidn: New WARN_CFLAGS configure variable.
 It is used internally to add -Werror and other warnings flags, to
 catch coding mistakes before releases.
 
-** Included cyclomatic code complexity charts of the library code.
+** Win32: Perl is no longer required to build Libidn in Visual Studio.
+
+** Win32: Functions in idna.h are also exported.
+
+** doc: Included cyclomatic code complexity charts of the library code.
 See doc/cyclo/.
 
 ** Update gnulib files and translations.
