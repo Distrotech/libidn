@@ -1,5 +1,5 @@
 /* idna.h --- Declarations for Internationalized Domain Name in Applications.
- * Copyright (C) 2002, 2003, 2004, 2005, 2006, 2007  Simon Josefsson
+ * Copyright (C) 2002, 2003, 2004, 2005, 2006, 2007, 2008  Simon Josefsson
  *
  * This file is part of GNU Libidn.
  *
@@ -19,16 +19,16 @@
  *
  */
 
-#ifndef _IDNA_H
-# define _IDNA_H
+#ifndef IDNA_H
+# define IDNA_H
+
+# include <stddef.h>		/* size_t */
+# include <idn-int.h>		/* uint32_t */
 
 # ifdef __cplusplus
 extern "C"
 {
 # endif
-
-# include <stddef.h>		/* size_t */
-# include <idn-int.h>		/* uint32_t */
 
   /* Error codes. */
   typedef enum
@@ -97,4 +97,5 @@ extern "C"
 # ifdef __cplusplus
 }
 # endif
-#endif				/* _IDNA_H */
+
+#endif				/* IDNA_H */
