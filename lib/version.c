@@ -42,8 +42,8 @@
 const char *
 stringprep_check_version (const char *req_version)
 {
-  if (!req_version || strverscmp (req_version, PACKAGE_VERSION) <= 0)
-    return PACKAGE_VERSION;
+  if (!req_version || strverscmp (req_version, STRINGPREP_VERSION) <= 0)
+    return STRINGPREP_VERSION;
 
   return NULL;
 }
