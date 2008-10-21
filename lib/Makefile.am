@@ -45,7 +45,7 @@ idn-int.h:
 
 libidn_la_SOURCES = gunibreak.h gunicomp.h gunidecomp.h \
 	nfkc.c toutf8.c version.c \
-	stringprep.h.in stringprep.c rfc3454.c profiles.c \
+	stringprep.h stringprep.c rfc3454.c profiles.c \
 	punycode.h punycode.c \
 	idna.h idna.c \
 	pr29.h pr29.c \

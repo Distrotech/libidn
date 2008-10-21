@@ -122,6 +122,17 @@ else
 fi
 AC_MSG_RESULT($ac_result)
 
+# Update version number in lib/stringprep.h.
+if ! sed 's/STRINGPREP_VERSION ".*"/STRINGPREP_VERSION "'$PACKAGE_VERSION'"/' \
+    $srcdir/lib/stringprep.h > fixhdr.tmp; then
+  AC_MSG_ERROR([[*** Failed to update version number in lib/stringprep.h...]])
+fi
+if cmp -s $srcdir/lib/stringprep.h fixhdr.tmp 2>/dev/null; then
+  rm -f fixhdr.tmp
+elif ! mv fixhdr.tmp $srcdir/lib/stringprep.h; then
+  AC_MSG_ERROR([[*** Failed to move fixhdr.tmp to lib/stringprep.h...]])
+fi
+
 # Make it possible to pass -Werror when building relevant parts of
 # the library.  Normally, -Werror breaks when running autoconf tests.
 AC_ARG_VAR(WARN_CFLAGS, [Flags to enable compiler warnings])

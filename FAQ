@@ -1,5 +1,5 @@
 Libidn FAQ -- Anticipated Frequently Asked Questions.
-Copyright (C) 2002, 2003, 2004, 2005, 2006, 2007 Simon Josefsson
+Copyright (C) 2002, 2003, 2004, 2005, 2006, 2007, 2008 Simon Josefsson
 See the end for copying conditions.
 
 Q#1: Why doesn't Libidn use a separate library for the Unicode
@@ -36,7 +36,7 @@ A#3: The reasoning for this was for libraries that provide unique
 Q#4: How do I add a new stringprep profile?
 
 A#4: Add the profile definition to profiles.c, export the symbol and
-     optionally add a CPP macro in stringprep.h.in (and document it in
+     optionally add a CPP macro in stringprep.h (and document it in
      stringprep.c).  If you want to add self tests, do it through
      tst_stringprep.c.  Mention it in NEWS.
 
