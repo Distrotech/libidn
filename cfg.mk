@@ -45,10 +45,10 @@ update-po: refresh-po
 bootstrap: autoreconf
 	./configure $(CFGFLAGS)
 
-W32ROOT ?= $(HOME)/w32root
+W32ROOT ?= $(HOME)/gnutls4win/inst
 
 mingw32: autoreconf 
-	./configure --enable-gtk-doc --host=i586-mingw32msvc --build=`./config.guess` --prefix=$(W32ROOT)
+	./configure --enable-gtk-doc --host=i586-mingw32msvc --build=`build-aux/config.guess` --prefix=$(W32ROOT)
 
 ChangeLog:
 	git2cl > ChangeLog
