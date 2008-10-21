@@ -14,6 +14,7 @@ catch coding mistakes before releases.
 ** Win32: Perl is no longer required to build Libidn in Visual Studio.
 
 ** Win32: Functions in idna.h are also exported.
+Reported by Adam Strzelecki <adam.strzelecki@java.pl>.
 
 ** doc: Included cyclomatic code complexity charts of the library code.
 See doc/cyclo/.
