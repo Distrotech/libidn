@@ -19,6 +19,8 @@ Reported by Adam Strzelecki <adam.strzelecki@java.pl>.
 ** doc: Included cyclomatic code complexity charts of the library code.
 See doc/cyclo/.
 
+** doc: Clarify copyright and license for gdoc and man pages.
+
 ** Update gnulib files and translations.
 
 ** API and ABI is backwards compatible with the previous version.
