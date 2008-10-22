@@ -1,12 +1,12 @@
 #!/usr/bin/perl
 
-## Copyright (c) 1998 Michael Zucchi
-## Copyright (c) 2001, 2002 Nikos Mavrogiannopoulos
-##                    added -tex
 ## Copyright (c) 2002, 2003, 2004, 2005, 2006, 2007, 2008 Simon Josefsson
 ##                    added -texinfo, -listfunc
 ##                    man page revamp
 ##                    various improvements
+## Copyright (c) 2001, 2002 Nikos Mavrogiannopoulos
+##                    added -tex
+## Copyright (c) 1998 Michael Zucchi
 
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -311,24 +311,6 @@ sub repstr {
     $return;
 }
 
-sub output_highlight {
-    my $contents = join "\n", @_;
-    my $line;
-
-    foreach $pattern (keys %highlights) {
-#	print "scanning pattern $pattern ($highlights{$pattern})\n";
-	$contents =~ s:$pattern:repstr($pattern, $highlights{$pattern}, $1, $2, $3, $4):gse;
-    }
-    foreach $line (split "\n", $contents) {
-	if ($line eq ""){
-	    print $lineprefix, $blankline;
-	} else {
-	    print $lineprefix, $line;
-	}
-	print "\n";
-    }
-}
-
 sub just_highlight {
     my $contents = join "\n", @_;
     my $line;
@@ -348,6 +330,10 @@ sub just_highlight {
     }
 
     return $ret;
+}
+
+sub output_highlight {
+    print (just_highlight (@_));
 }
 
 # output in texinfo
