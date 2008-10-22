@@ -619,7 +619,9 @@ sub output_man {
     print ".SH ARGUMENTS\n";
     foreach $parameter (@{$args{'parameterlist'}}) {
 	print ".IP \"".$args{'parametertypes'}{$parameter}." ".$parameter."\" 12\n";
-	output_highlight($args{'parameters'}{$parameter});
+	$param = $args{'parameters'}{$parameter};
+	$param =~ s/-/\\-/g;
+	output_highlight($param);
     }
     foreach $section (@{$args{'sectionlist'}}) {
 	print ".SH \"" . uc($section) . "\"\n";
