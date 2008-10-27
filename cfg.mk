@@ -43,6 +43,21 @@ update-po: refresh-po
 bootstrap: autoreconf
 	./configure $(CFGFLAGS)
 
+init-coverage:
+	make clean
+	lcov --directory . --zerocounters
+
+build-coverage:
+	make CFLAGS="-g -fprofile-arcs -ftest-coverage" VALGRIND= check
+	mkdir -p doc/coverage
+	lcov --directory . --output-file doc/coverage/libidn.info --capture
+
+gen-coverage:
+	genhtml --output-directory doc/coverage doc/coverage/libidn.info \
+		--highlight --frames --legend --title "$(PACKAGE_NAME)"
+
+coverage: init-coverage build-coverage gen-coverage
+
 W32ROOT ?= $(HOME)/gnutls4win/inst
 
 mingw32: autoreconf 
