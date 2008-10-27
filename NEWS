@@ -4,9 +4,6 @@ See the end for copying conditions.
 
 * Version 1.11 (unreleased)
 
-** libidn: The library now assumes the system has strdup.
-Let me know if there still are any systems out there without strdup.
-
 ** libidn: New WARN_CFLAGS configure variable.
 It is used internally to add -Werror and other warnings flags, to
 catch coding mistakes before releases.
