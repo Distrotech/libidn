@@ -19,7 +19,7 @@ Reported by Adam Strzelecki <adam.strzelecki@java.pl>.
 ** doc: Included cyclomatic code complexity charts of the library code.
 See doc/cyclo/.
 
-** doc: Clarify copyright and license for gdoc and man pages.
+** Clarify copyright and license for gdoc, man pages, and C# port.
 
 ** Update gnulib files and translations.
 
