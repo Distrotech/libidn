@@ -19,7 +19,8 @@ See doc/cyclo/.
 ** tests: Add more self-tests to get more self-test code coverage.
 
 ** tests: New 'make coverage' command to generate code coverage reports.
-The output is created in doc/coverage/.  Requires the LCOV tools.
+The output is created in doc/coverage/.  Requires the LCOV tools.  See
+http://www.gnu.org/software/libidn/coverage/ for a pre-generated copy.
 
 ** Clarify copyright and license for gdoc, man pages, and C# port.
 
