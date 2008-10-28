@@ -1,5 +1,5 @@
 /* tst_strerror.c --- Self tests for *_strerror().
- * Copyright (C) 2004, 2005, 2006, 2007  Simon Josefsson.
+ * Copyright (C) 2004, 2005, 2006, 2007, 2008  Simon Josefsson.
  *
  * This file is part of GNU Libidn.
  *
@@ -106,4 +106,81 @@ doit (void)
     fail ("tld_strerror (42) failed: %s\n", p);
   if (debug)
     printf ("tld_strerror (42) OK\n");
+
+  /* Iterate through all error codes. */
+
+  {
+    size_t i;
+    const char *p, *last_p = NULL;
+
+    for (i = 0;; i++)
+      {
+	p = idna_strerror (i);
+	if (p == last_p)
+	  break;
+	if (debug)
+	  printf ("idna %d: %s\n", i, p);
+	last_p = p;
+      }
+  }
+
+  {
+    size_t i;
+    const char *p, *last_p = NULL;
+
+    for (i = 0;; i++)
+      {
+	p = pr29_strerror (i);
+	if (p == last_p)
+	  break;
+	if (debug)
+	  printf ("pr29 %d: %s\n", i, p);
+	last_p = p;
+      }
+  }
+
+  {
+    size_t i;
+    const char *p, *last_p = NULL;
+
+    for (i = 0;; i++)
+      {
+	p = punycode_strerror (i);
+	if (p == last_p)
+	  break;
+	if (debug)
+	  printf ("punycode %d: %s\n", i, p);
+	last_p = p;
+      }
+  }
+
+  {
+    size_t i;
+    const char *p, *last_p = NULL;
+
+    for (i = 0;; i++)
+      {
+	p = stringprep_strerror (i);
+	if (p == last_p)
+	  break;
+	if (debug)
+	  printf ("stringprep %d: %s\n", i, p);
+	last_p = p;
+      }
+  }
+
+  {
+    size_t i;
+    const char *p, *last_p = NULL;
+
+    for (i = 0;; i++)
+      {
+	p = tld_strerror (i);
+	if (p == last_p)
+	  break;
+	if (debug)
+	  printf ("tld %d: %s\n", i, p);
+	last_p = p;
+      }
+  }
 }
