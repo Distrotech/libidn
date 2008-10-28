@@ -117,7 +117,14 @@ doit (void)
       {
 	p = idna_strerror (i);
 	if (p == last_p)
-	  break;
+	  {
+	    if (i == 11)
+	      {
+		i = 200;
+		continue;
+	      }
+	    break;
+	  }
 	if (debug)
 	  printf ("idna %d: %s\n", i, p);
 	last_p = p;
@@ -162,7 +169,19 @@ doit (void)
       {
 	p = stringprep_strerror (i);
 	if (p == last_p)
-	  break;
+	  {
+	    if (i == 7)
+	      {
+		i = 99;
+		continue;
+	      }
+	    else if (i == 105)
+	      {
+		i = 199;
+		continue;
+	      }
+	    break;
+	  }
 	if (debug)
 	  printf ("stringprep %d: %s\n", i, p);
 	last_p = p;

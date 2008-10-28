@@ -1,5 +1,5 @@
 /* tst_idna.c --- Self tests for idna_to_ascii().
- * Copyright (C) 2002, 2003, 2004, 2005, 2006, 2007  Simon Josefsson
+ * Copyright (C) 2002, 2003, 2004, 2005, 2006, 2007, 2008  Simon Josefsson
  *
  * This file is part of GNU Libidn.
  *
@@ -29,6 +29,7 @@
 
 #include <stringprep.h>
 #include <idna.h>
+#include <idn-free.h>
 
 #include "utils.h"
 
@@ -266,7 +267,7 @@ doit (void)
 	printf ("OK\n");
 
       if (ucs4label)
-	free (ucs4label);
+	idn_free (ucs4label);
 
       ucs4label = stringprep_utf8_to_ucs4 (idna[i].out, -1, &len);
 
@@ -321,5 +322,5 @@ doit (void)
     }
 
   if (ucs4label)
-    free (ucs4label);
+    idn_free (ucs4label);
 }

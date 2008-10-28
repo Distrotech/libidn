@@ -25,9 +25,9 @@ LDADD = ../lib/libidn.la libutils.la
 noinst_LTLIBRARIES = libutils.la
 libutils_la_SOURCES = utils.h utils.c
 
-ctests = tst_stringprep$(EXEEXT) tst_punycode$(EXEEXT)		\
-	tst_idna$(EXEEXT) tst_idna2$(EXEEXT) tst_nfkc$(EXEEXT)	\
-	tst_pr29$(EXEEXT) tst_strerror$(EXEEXT)
+ctests = tst_stringprep$(EXEEXT) tst_punycode$(EXEEXT)			\
+	tst_idna$(EXEEXT) tst_idna2$(EXEEXT) tst_nfkc$(EXEEXT)		\
+	tst_pr29$(EXEEXT) tst_strerror$(EXEEXT) tst_toutf8$(EXEEXT)
 if TLD
 ctests += tst_tld$(EXEEXT)
 endif

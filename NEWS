@@ -16,8 +16,10 @@ Reported by Adam Strzelecki <adam.strzelecki@java.pl>.
 ** doc: Included cyclomatic code complexity charts of the library code.
 See doc/cyclo/.
 
-** New 'make coverage' command to generate LCOV self-test coverage reports.
-The output is created in doc/coverage/.
+** tests: Add more self-tests to get more self-test code coverage.
+
+** tests: New 'make coverage' command to generate code coverage reports.
+The output is created in doc/coverage/.  Requires the LCOV tools.
 
 ** Clarify copyright and license for gdoc, man pages, and C# port.
 
