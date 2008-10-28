@@ -1,5 +1,5 @@
 /* tst_tld.c --- Self tests for tld_*().
- * Copyright (C) 2004, 2005, 2006, 2007  Simon Josefsson.
+ * Copyright (C) 2004, 2005, 2006, 2007, 2008  Simon Josefsson.
  *
  * This file is part of GNU Libidn.
  *
@@ -36,6 +36,7 @@ struct tld
 {
   const char *name;
   const char *tld;
+  const char *example;
   size_t inlen;
   uint32_t in[100];
   int rc;
@@ -46,12 +47,14 @@ static const struct tld tld[] = {
   {
    "Simple valid French domain",
    "fr",
+   "example.fr",
    3,
    {0x00E0, 0x00E2, 0x00E6},
    TLD_SUCCESS},
   {
    "Simple invalid French domain",
    "fr",
+   "ªexample.fr",
    5,
    {0x00E0, 0x00E2, 0x00E6, 0x4711, 0x0042},
    TLD_INVALID,
@@ -65,6 +68,18 @@ doit (void)
   const Tld_table *tldtable;
   size_t errpos;
   int rc;
+
+  tldtable = tld_get_table (NULL, NULL);
+  if (tldtable != NULL)
+    fail ("FAIL: tld_get_table (NULL, NULL) != NULL\n");
+
+  tldtable = tld_get_table ("nonexisting", NULL);
+  if (tldtable != NULL)
+    fail ("FAIL: tld_get_table (\"nonexisting\", NULL) != NULL\n");
+
+  tldtable = tld_default_table (NULL, NULL);
+  if (tldtable != NULL)
+    fail ("FAIL: tld_default_table (NULL, NULL) != NULL\n");
 
   for (i = 0; i < sizeof (tld) / sizeof (tld[0]); i++)
     {
@@ -120,5 +135,18 @@ doit (void)
 	}
       else if (debug)
 	printf ("OK\n");
+
+      {
+	size_t errpos;
+	rc = tld_check_8z (tld[i].example, &errpos, NULL);
+	if (rc != tld[i].rc)
+	  {
+	    fail ("TLD entry %d failed\n", i);
+	    if (debug)
+	      printf ("ERROR\n");
+	  }
+	if (debug)
+	  printf ("TLD entry %d tld_check_8z (%s)\n", i, tld[i].example);
+      }
     }
 }
