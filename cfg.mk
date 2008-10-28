@@ -59,8 +59,8 @@ gen-coverage:
 coverage: init-coverage build-coverage gen-coverage
 
 web-coverage:
-	rm -f `find $(htmldir)/coverage -type f | grep -v CVS`
-	cp -r doc/coverage/ $(htmldir)/coverage/
+	rm -fv `find $(htmldir)/coverage -type f | grep -v CVS`
+	cp -rv doc/coverage/* $(htmldir)/coverage/
 
 upload-web-coverage:
 	cd $(htmldir) && \
