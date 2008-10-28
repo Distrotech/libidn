@@ -50,10 +50,10 @@ init-coverage:
 build-coverage:
 	make CFLAGS="-g -fprofile-arcs -ftest-coverage" VALGRIND= check
 	mkdir -p doc/coverage
-	lcov --directory . --output-file doc/coverage/libidn.info --capture
+	lcov --directory . --output-file doc/coverage/$(PACKAGE).info --capture
 
 gen-coverage:
-	genhtml --output-directory doc/coverage doc/coverage/libidn.info \
+	genhtml --output-directory doc/coverage doc/coverage/$(PACKAGE).info \
 		--highlight --frames --legend --title "$(PACKAGE_NAME)"
 
 coverage: init-coverage build-coverage gen-coverage
