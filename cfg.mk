@@ -58,6 +58,14 @@ gen-coverage:
 
 coverage: init-coverage build-coverage gen-coverage
 
+web-coverage:
+	rm -f `find $(htmldir)/coverage -type f | grep -v CVS`
+	cp -r doc/coverage/ $(htmldir)/coverage/
+
+upload-web-coverage:
+	cd $(htmldir) && \
+		cvs commit -m "Update." coverage
+
 W32ROOT ?= $(HOME)/gnutls4win/inst
 
 mingw32: autoreconf 
@@ -70,21 +78,22 @@ ChangeLog:
 tag = $(PACKAGE)-`echo $(VERSION) | sed 's/\./-/g'`
 htmldir = ../www-$(PACKAGE)
 
-release: upload webdocs
+release: prepare upload web upload-web
 
-upload:
+prepare:
 	! git-tag -l $(tag) | grep $(PACKAGE) > /dev/null
 	rm -f ChangeLog
 	$(MAKE) ChangeLog distcheck
 	git commit -m Generated. ChangeLog
 	git-tag -u b565716f! -m $(VERSION) $(tag)
+
+upload:
 	git-push
 	git-push --tags
 	build-aux/gnupload --to ftp.gnu.org:$(PACKAGE) --to alpha.gnu.org:$(PACKAGE) $(distdir).tar.gz
 	cp $(distdir).tar.gz $(distdir).tar.gz.sig ../releases/$(PACKAGE)/
-	make webdocs
 
-webdocs:
+web:
 	cd doc && env MAKEINFO="makeinfo -I ../examples" \
 		      TEXI2DVI="texi2dvi -I ../examples" \
 		../build-aux/gendocs.sh --html "--css-include=texinfo.css" \
@@ -92,5 +101,7 @@ webdocs:
 	cd contrib/doxygen && doxygen && cd ../.. && cp -v contrib/doxygen/html/* $(htmldir)/doxygen/ && cd contrib/doxygen/latex && make refman.pdf && cd ../../../ && cp contrib/doxygen/latex/refman.pdf $(htmldir)/doxygen/$(PACKAGE).pdf
 	cp -v doc/reference/html/*.html doc/reference/html/*.png doc/reference/html/*.devhelp doc/reference/html/*.css $(htmldir)/reference/
 	cp -rv doc/java/* $(htmldir)/javadoc/
+
+upload-web:
 	cd $(htmldir) && \
 		cvs commit -m "Update." manual/ javadoc/ reference/ doxygen/
