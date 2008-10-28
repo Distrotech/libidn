@@ -207,7 +207,13 @@ doit (void)
   size_t i;
 
   if (!stringprep_check_version (STRINGPREP_VERSION))
-    fail ("stringprep_check_version() failed\n");
+    fail ("stringprep_check_version(%s) failed\n", STRINGPREP_VERSION);
+
+  if (!stringprep_check_version (NULL))
+    fail ("stringprep_check_version(NULL) failed\n");
+
+  if (stringprep_check_version ("100.100"))
+    fail ("stringprep_check_version(\"100.100\") failed\n");
 
   for (i = 0; i < sizeof (strprep) / sizeof (strprep[0]); i++)
     {
