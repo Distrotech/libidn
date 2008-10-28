@@ -1,5 +1,5 @@
 /* tst_pr29.c --- Self tests for pr29_*().
- * Copyright (C) 2004, 2005, 2006, 2007  Simon Josefsson.
+ * Copyright (C) 2004, 2005, 2006, 2007, 2008  Simon Josefsson.
  *
  * This file is part of GNU Libidn.
  *
@@ -116,6 +116,28 @@ doit (void)
 	    printf ("FATAL\n");
 	  continue;
 	}
+
+      {
+	char *p;
+	size_t items_read, items_written;
+
+	p = stringprep_ucs4_to_utf8 (tv[i].in, tv[i].inlen,
+				     &items_read, &items_written);
+	if (p == NULL)
+	  fail ("FAIL: stringprep_ucs4_to_utf8(tv[%d]) == NULL\n", i);
+	if (debug)
+	  hexprint (p, strlen (p));
+
+	rc = pr29_8z (p);
+	free (p);
+	if (rc != tv[i].rc)
+	  {
+	    fail ("PR29 entry %d failed (expected %d): %d\n", i, tv[i].rc, rc);
+	    if (debug)
+	      printf ("FATAL\n");
+	    continue;
+	  }
+      }
 
       if (debug)
 	printf ("OK\n");
