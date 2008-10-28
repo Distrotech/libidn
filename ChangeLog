@@ -1,3 +1,396 @@
+2008-10-28  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Version 1.11.
+
+2008-10-28  Simon Josefsson <simon@josefsson.org>
+
+	* doc/texinfo.css: Use white background.
+
+2008-10-28  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Fix.
+
+2008-10-28  Simon Josefsson <simon@josefsson.org>
+
+	* gltests/Makefile.am, lib/gltests/Makefile.am: Update gnulib files.
+
+2008-10-28  Simon Josefsson <simon@josefsson.org>
+
+	* cfg.mk: Sync with gnutls.
+
+2008-10-28  Simon Josefsson <simon@josefsson.org>
+
+	* cfg.mk: Generalize coverage rules.
+
+2008-10-28  Simon Josefsson <simon@josefsson.org>
+
+	* tests/tst_tld.c: Increase code coverage.
+
+2008-10-28  Simon Josefsson <simon@josefsson.org>
+
+	* tests/tst_pr29.c: Increase code coverage.
+
+2008-10-28  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS, tests/Makefile.am, tests/tst_idna.c, tests/tst_strerror.c,
+	tests/tst_toutf8.c: Increase code coverage in self-tests.
+
+2008-10-28  Simon Josefsson <simon@josefsson.org>
+
+	* tests/tst_strerror.c: Increase code coverage.
+
+2008-10-28  Simon Josefsson <simon@josefsson.org>
+
+	* tests/tst_stringprep.c: Increase code coverage.
+
+2008-10-28  Simon Josefsson <simon@josefsson.org>
+
+	* cfg.mk: Fix web-coverage rule.
+
+2008-10-28  Simon Josefsson <simon@josefsson.org>
+
+	* cfg.mk: Fix release target.  Add web-coverage targets.
+
+2008-10-27  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2008-10-27  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS, gltests/Makefile.am, lib/gl/Makefile.am,
+	lib/gl/m4/gnulib-cache.m4, lib/gl/m4/gnulib-comp.m4,
+	lib/gl/m4/strdup.m4, lib/gl/strdup.c, lib/gltests/Makefile.am: 
+	Revert gnulib avoid of strdup.
+
+2008-10-27  Simon Josefsson <simon@josefsson.org>
+
+	* cfg.mk: Add coverage rules.
+
+2008-10-27  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS, csharp/IDNA.cs, csharp/IDNAException.cs,
+	csharp/Makefile.am, csharp/NFKC.cs, csharp/Punycode.cs,
+	csharp/PunycodeException.cs, csharp/Stringprep.cs,
+	csharp/StringprepException.cs, csharp/generate/AssemblyInfo.cs,
+	csharp/generate/GenerateNFKC.cs,
+	csharp/generate/GenerateRFC3454.cs, csharp/generate/HashSet.cs,
+	csharp/generate/Program.cs, csharp/generate/Tokenizer.cs: Re-add
+	lost copyright headers for C# port.
+
+2008-10-27  Simon Josefsson <simon@josefsson.org>
+
+	* gl/unistd.in.h: Update gnulib files.
+
+2008-10-22  Simon Josefsson <simon@josefsson.org>
+
+	* cfg.mk: Re-license under GPLv3.
+
+2008-10-22  Simon Josefsson <simon@josefsson.org>
+
+	* doc/gdoc: Replace - with \- in man page output in more places.
+
+2008-10-22  Simon Josefsson <simon@josefsson.org>
+
+	* doc/gdoc: Reduce code duplication.
+
+2008-10-22  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2008-10-22  Simon Josefsson <simon@josefsson.org>
+
+	* doc/gdoc: Use GPLv3.  Clarify copyright and license.  Use GAP for
+	man page license.
+
+2008-10-21  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2008-10-21  Simon Josefsson <simon@josefsson.org>
+
+	* cfg.mk: Fix mingw32 rule.
+
+2008-10-21  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2008-10-21  Simon Josefsson <simon@josefsson.org>
+
+	* lib/version.c: Use STRINGPREP_VERSION instead of PACKAGE_VERSION
+	for MSVS builds.
+
+2008-10-21  Simon Josefsson <simon@josefsson.org>
+
+	* Makefile.am: Change win32 files.
+
+2008-10-21  Simon Josefsson <simon@josefsson.org>
+
+	* win32/include/config.h: Extracted from gen-win32-headers.pl.
+
+2008-10-21  Simon Josefsson <simon@josefsson.org>
+
+	* win32/include/Wild.pm: Rm.
+
+2008-10-21  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi, lib/idna.h, lib/stringprep.h,
+	win32/include/gen-win32-headers.pl, win32/libidn.vcproj: Avoid perl
+	dependency on Windows.
+
+2008-10-21  Simon Josefsson <simon@josefsson.org>
+
+	* lib/stringprep.h: Cleanups, preparing for Win32 fixes.
+
+2008-10-21  Simon Josefsson <simon@josefsson.org>
+
+	* lib/idna.h: Cleanups, preparing for Win32 fixes.
+
+2008-10-21  Simon Josefsson <simon@josefsson.org>
+
+	* configure.ac: Fix last commit.
+
+2008-10-21  Simon Josefsson <simon@josefsson.org>
+
+	* FAQ, configure.ac, lib/Makefile.am, lib/stringprep.h,
+	lib/stringprep.h.in: Don't use substition for stringprep.h header
+	file.
+
+2008-10-21  Simon Josefsson <simon@josefsson.org>
+
+	* gl/Makefile.am, gl/errno.in.h, gl/m4/gnulib-common.m4,
+	gl/m4/unistd_h.m4, gl/stdarg.in.h, gl/string.in.h, gl/unistd.in.h,
+	lib/gl/iconv.in.h, lib/gl/m4/gnulib-common.m4, lib/gl/stdint.in.h,
+	lib/gl/string.in.h, lib/gl/wchar.in.h: Update gnulib files.
+
+2008-10-13  Simon Josefsson <simon@josefsson.org>
+
+	* build-aux/pmccabe2html: Update gnulib files.
+
+2008-10-13  Simon Josefsson <simon@josefsson.org>
+
+	* doc/cyclo/Makefile.am: Update gnulib files.
+
+2008-10-13  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS, configure.ac, doc/Makefile.am, doc/cyclo/Makefile.am,
+	doc/prmgt/Makefile.am: Rename doc/prmgt/ to doc/cyclo/.
+
+2008-10-13  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2008-10-13  Simon Josefsson <simon@josefsson.org>
+
+	* GNUmakefile, gl/Makefile.am, gl/m4/unistd_h.m4, gl/unistd.in.h: 
+	Update gnulib files.
+
+2008-10-07  Simon Josefsson <simon@josefsson.org>
+
+	* doc/prmgt/Makefile.am: Fix.
+
+2008-10-07  Simon Josefsson <simon@josefsson.org>
+
+	* doc/Makefile.am: Add prmgt/.
+
+2008-10-07  Simon Josefsson <simon@josefsson.org>
+
+	* doc/prmgt/Makefile, doc/prmgt/Makefile.am~,
+	doc/prmgt/Makefile.in, doc/prmgt/libidn-cyclo.html,
+	doc/prmgt/pmccabe.css: Remove accidentally added files.
+
+2008-10-07  Simon Josefsson <simon@josefsson.org>
+
+	* build-aux/pmccabe.css, build-aux/pmccabe2html,
+	gl/m4/pmccabe2html.m4: Update gnulib files.
+
+2008-10-07  Simon Josefsson <simon@josefsson.org>
+
+	* configure.ac, doc/prmgt/Makefile, doc/prmgt/Makefile.am,
+	doc/prmgt/Makefile.am~, doc/prmgt/Makefile.in,
+	doc/prmgt/libidn-cyclo.html, doc/prmgt/pmccabe.css, gl/Makefile.am,
+	gl/m4/gnulib-cache.m4, gl/m4/gnulib-comp.m4: Use pmccabe2html.
+
+2008-10-07  Simon Josefsson <simon@josefsson.org>
+
+	* gl/Makefile.am, gl/errno.in.h, gl/m4/unistd_h.m4, gl/strerror.c,
+	gl/unistd.in.h, lib/gl/c-ctype.h: Update gnulib files.
+
+2008-09-30  Simon Josefsson <simon@josefsson.org>
+
+	* gl/Makefile.am, gl/m4/unistd_h.m4, gl/unistd.in.h,
+	lib/gl/m4/iconv_h.m4, lib/gl/m4/iconv_open.m4, lib/gl/m4/wchar.m4: 
+	Update gnulib files.
+
+2008-09-29  Simon Josefsson <simon@josefsson.org>
+
+	* configure.ac: Need AC_CONFIG_MACRO_DIR too, to avoid libtool
+	warnings, sigh.
+
+2008-09-26  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2008-09-26  Simon Josefsson <simon@josefsson.org>
+
+	* po/eo.po.in, po/fr.po.in: Sync with TP.
+
+2008-09-26  Simon Josefsson <simon@josefsson.org>
+
+	* gl/Makefile.am, gl/m4/gnulib-cache.m4, lib/gl/Makefile.am,
+	lib/gl/m4/gnulib-cache.m4: Update gnulib files.
+
+2008-09-23  Simon Josefsson <simon@josefsson.org>
+
+	* configure.ac, doc/reference/Makefile.am: Enable automake warnings.
+
+2008-09-23  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2008-09-23  Simon Josefsson <simon@josefsson.org>
+
+	* README: Say 'or later' wrt licenses.
+
+2008-09-23  Simon Josefsson <simon@josefsson.org>
+
+	* doc/texinfo.css: Improve cosmetics.
+
+2008-09-23  Simon Josefsson <simon@josefsson.org>
+
+	* doc/texinfo.css: Minor cosmetic fixes.
+
+2008-09-23  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2008-09-23  Simon Josefsson <simon@josefsson.org>
+
+	* configure.ac: Add AC_COPYRIGHT.
+
+2008-09-23  Simon Josefsson <simon@josefsson.org>
+
+	* Makefile.am, cfg.mk, configure.ac, examples/Makefile.am,
+	lib/Makefile.am, src/Makefile.am, tests/Makefile.am: Support a
+	WARN_CFLAGS to trigger compiler warnings.
+
+2008-09-22  Simon Josefsson <simon@josefsson.org>
+
+	* : Touch.
+
+2008-09-18  Simon Josefsson <simon@josefsson.org>
+
+	* contrib/doxygen/gdoc2doxygen, lib/gen-stringprep-tables.pl,
+	lib/gen-tld-tables.pl, lib/gen-unicode-tables.pl: Remove final
+	references to GPLv2.
+
+2008-09-18  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS, lib/gl/Makefile.am, lib/gl/m4/gnulib-cache.m4,
+	lib/gl/m4/gnulib-comp.m4, lib/gl/m4/malloc.m4,
+	lib/gl/m4/stdlib_h.m4, lib/gl/m4/strdup.m4, lib/gl/m4/unistd_h.m4,
+	lib/gl/malloc.c, lib/gl/stdlib.in.h, lib/gl/strdup.c,
+	lib/gl/unistd.in.h, lib/gltests/Makefile.am,
+	lib/gltests/test-stdlib.c, lib/gltests/test-unistd.c: Assume strdup.
+
+2008-09-18  Simon Josefsson <simon@josefsson.org>
+
+	* gl/errno.in.h, gl/m4/errno_h.m4, gltests/test-errno.c: Add.
+
+2008-09-18  Simon Josefsson <simon@josefsson.org>
+
+	* gl/Makefile.am, gl/m4/gnulib-comp.m4, gl/m4/strerror.m4,
+	gl/strerror.c, gltests/Makefile.am, gltests/test-strerror.c: Update
+	gnulib files.
+
+2008-09-12  Simon Josefsson <simon@josefsson.org>
+
+	* build-aux/config.rpath, gl/m4/include_next.m4,
+	lib/gl/m4/include_next.m4: Update gnulib files.
+
+2008-09-02  Simon Josefsson <simon@josefsson.org>
+
+	* gl/Makefile.am, gl/m4/include_next.m4, gl/stdarg.in.h,
+	gl/string.in.h, gl/unistd.in.h, lib/gl/Makefile.am,
+	lib/gl/iconv.in.h, lib/gl/m4/include_next.m4,
+	lib/gl/m4/lib-link.m4, lib/gl/m4/lib-prefix.m4, lib/gl/stdint.in.h,
+	lib/gl/stdlib.in.h, lib/gl/string.in.h, lib/gl/unistd.in.h,
+	lib/gl/wchar.in.h: Update gnulib files.
+
+2008-08-29  Simon Josefsson <simon@josefsson.org>
+
+	* maint.mk: Update gnulib files.
+
+2008-08-29  Simon Josefsson <simon@josefsson.org>
+
+	* lib/stringprep.c: Don't store negativa values in a size_t.
+
+2008-08-27  Simon Josefsson <simon@josefsson.org>
+
+	* doc/reference/libidn-docs.sgml: Sync.
+
+2008-08-27  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi: Improve.
+
+2008-08-27  Simon Josefsson <simon@josefsson.org>
+
+	* doc/reference/libidn-docs.sgml: Sync.
+
+2008-08-27  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi: Mention krb5 profile.
+
+2008-08-27  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi, doc/reference/libidn-docs.sgml: Add "or later"
+	clauses when talking about license versions Suggested by
+	karl@freefriends.org (Karl Berry).
+
+2008-08-27  Simon Josefsson <simon@josefsson.org>
+
+	* Makefile.am, cfg.mk: Move maintainer targets from Makefile.am to
+	cfg.mk.
+
+2008-08-27  Simon Josefsson <simon@josefsson.org>
+
+	* Makefile.am: Use git2cl directly.
+
+2008-08-27  Simon Josefsson <simon@josefsson.org>
+
+	* Makefile.am: Typo.
+
+2008-08-27  Simon Josefsson <simon@josefsson.org>
+
+	* Makefile.am: Split release target.
+
+2008-08-27  Simon Josefsson <simon@josefsson.org>
+
+	* Makefile.am: Generalize release target.
+
+2008-08-27  Simon Josefsson <simon@josefsson.org>
+
+	* Makefile.am: Create a copy of released files.
+
+2008-08-27  Simon Josefsson <simon@josefsson.org>
+
+	* Makefile.am: Copy all of javadoc.
+
+2008-08-27  Simon Josefsson <simon@josefsson.org>
+
+	* Makefile.am: Fix typo.
+
+2008-08-27  Simon Josefsson <simon@josefsson.org>
+
+	* Makefile.am: Dist more.
+
+2008-08-27  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS, configure.ac: Bump versions.
+
+2008-08-27  Simon Josefsson <simon@josefsson.org>
+
+	* ChangeLog: Generated.
+
 2008-08-27  Simon Josefsson <simon@josefsson.org>
 
 	* NEWS: Version 1.10.
