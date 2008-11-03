@@ -23,6 +23,15 @@
 
 package gnu.inet.encoding;
 
+/**
+ * This class offers static methods for encoding/decoding strings
+ * using the Punycode algorithm:
+ * <ul>
+ * <li>RFC3492 Punycode
+ * </ul>
+ * Note that this implementation only supports 16-bit Unicode code
+ * points.
+ */
 public class Punycode
 {
   /* Punycode parameters */
@@ -178,7 +187,7 @@ public class Punycode
 	if (digit < t) {
 	  break;
 	}
-	w = w * (BASE - t);	
+	w = w * (BASE - t);
       }
 
       bias = adapt(i - oldi, output.length()+1, oldi == 0);

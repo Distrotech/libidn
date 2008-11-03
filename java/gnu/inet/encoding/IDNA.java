@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2004, 2005, 2006, 2007  Free Software Foundation, Inc.
+ * Copyright (C) 2004, 2005, 2006, 2007, 2008  Free Software Foundation, Inc.
  *
  * Author: Oliver Hitz
  *
@@ -23,6 +23,15 @@
 
 package gnu.inet.encoding;
 
+/**
+ * This class offers static methods for converting internationalized
+ * domain names to ACE and back.
+ * <ul>
+ * <li>RFC3490 IDNA
+ * </ul>
+ * Note that this implementation only supports 16-bit Unicode code
+ * points.
+ */
 public class IDNA
 {
   public final static String ACE_PREFIX = "xn--";
@@ -101,8 +110,8 @@ public class IDNA
     if (useSTD3ASCIIRules) {
       for (int i = 0; i < input.length(); i++) {
 	int c = input.charAt(i);
-	if ((c <= 0x2c) || 
-	    (c >= 0x2e && c <= 0x2f) || 
+	if ((c <= 0x2c) ||
+	    (c >= 0x2e && c <= 0x2f) ||
 	    (c >= 0x3a && c <= 0x40) ||
 	    (c >= 0x5b && c <= 0x60) ||
 	    (c >= 0x7b && c <= 0x7f)) {
@@ -136,7 +145,7 @@ public class IDNA
       if (input.startsWith(ACE_PREFIX)) {
 	throw new IDNAException(IDNAException.CONTAINS_ACE_PREFIX);
       }
-      
+
       // Step 6: Punycode
 
       try {
