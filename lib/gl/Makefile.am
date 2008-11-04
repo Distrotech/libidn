@@ -179,15 +179,6 @@ EXTRA_DIST += stdint.in.h
 
 ## end   gnulib module stdint
 
-## begin gnulib module strdup
-
-
-EXTRA_DIST += strdup.c
-
-EXTRA_libgnu_la_SOURCES += strdup.c
-
-## end   gnulib module strdup
-
 ## begin gnulib module striconv
 
 libgnu_la_SOURCES += striconv.h striconv.c

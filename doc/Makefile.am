@@ -25,7 +25,7 @@ EXTRA_DIST = gdoc libidn.html libidn.ps libidn.pdf texinfo.css	\
 	components.fig
 
 info_TEXINFOS = libidn.texi
-libidn_TEXINFOS = fdl.texi gpl-3.0.texi lgpl-2.1.texi $(gdoc_TEXINFOS) \
+libidn_TEXINFOS = fdl-1.3.texi gpl-3.0.texi lgpl-2.1.texi $(gdoc_TEXINFOS) \
 	libidn-components.eps libidn-components.png libidn-components.pdf
 
 imagesdir = $(infodir)

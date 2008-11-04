@@ -49,8 +49,6 @@ AC_DEFUN([lgl_INIT],
   gl_FUNC_ICONV_OPEN
   AM_STDBOOL_H
   gl_STDINT_H
-  gl_FUNC_STRDUP
-  gl_STRING_MODULE_INDICATOR([strdup])
   if test $gl_cond_libtool = false; then
     gl_ltlibdeps="$gl_ltlibdeps $LTLIBICONV"
     gl_libdeps="$gl_libdeps $LIBICONV"
@@ -209,7 +207,6 @@ AC_DEFUN([lgl_FILE_LIST], [
   lib/iconv_open.c
   lib/stdbool.in.h
   lib/stdint.in.h
-  lib/strdup.c
   lib/striconv.c
   lib/striconv.h
   lib/string.in.h
@@ -229,7 +226,6 @@ AC_DEFUN([lgl_FILE_LIST], [
   m4/longlong.m4
   m4/stdbool.m4
   m4/stdint.m4
-  m4/strdup.m4
   m4/string_h.m4
   m4/strverscmp.m4
   m4/wchar.m4

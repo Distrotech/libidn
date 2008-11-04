@@ -2104,7 +2104,7 @@ recommended way to work around this problem.
 
 @cindex FDL, GNU Free Documentation License
 
-@include fdl.texi
+@include fdl-1.3.texi
 
 @node GNU LGPL
 @appendixsec GNU Lesser General Public License
