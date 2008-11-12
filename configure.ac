@@ -70,23 +70,6 @@ lgl_INIT
 # Check if locale stuff works
 AM_LANGINFO_CODESET
 
-# Run self-tests under valgrind?
-if test "$cross_compiling" = no; then
-  AC_CHECK_PROGS(VALGRIND, valgrind)
-fi
-if test -n "$VALGRIND" && $VALGRIND true > /dev/null 2>&1; then
-  opt_valgrind_tests=yes
-else
-  opt_valgrind_tests=no
-  VALGRIND=
-fi 
-AC_MSG_CHECKING([whether self tests are run under valgrind])
-AC_ARG_ENABLE(valgrind-tests,
-	AS_HELP_STRING([--enable-valgrind-tests],
-                       [run self tests under valgrind]),
-  opt_valgrind_tests=$enableval)
-AC_MSG_RESULT($opt_valgrind_tests)
-
 # Make it possible to disable TLD code.
 AC_ARG_ENABLE(tld, AC_HELP_STRING([--disable-tld], [disable TLD code]),
 		enable_tld=$enableval, enable_tld=yes)
@@ -122,16 +105,8 @@ else
 fi
 AC_MSG_RESULT($ac_result)
 
-# Update version number in lib/stringprep.h.
-if ! sed 's/STRINGPREP_VERSION ".*"/STRINGPREP_VERSION "'$PACKAGE_VERSION'"/' \
-    $srcdir/lib/stringprep.h > fixhdr.tmp; then
-  AC_MSG_ERROR([[*** Failed to update version number in lib/stringprep.h...]])
-fi
-if cmp -s $srcdir/lib/stringprep.h fixhdr.tmp 2>/dev/null; then
-  rm -f fixhdr.tmp
-elif ! mv fixhdr.tmp $srcdir/lib/stringprep.h; then
-  AC_MSG_ERROR([[*** Failed to move fixhdr.tmp to lib/stringprep.h...]])
-fi
+sj_VALGRIND
+sj_UPDATE_HEADER_VERSION([$srcdir/lib/stringprep.h])
 
 gl_WARN_ADD([-Wall])
 gl_WARN_ADD([-Wpointer-arith])
