@@ -133,11 +133,10 @@ elif ! mv fixhdr.tmp $srcdir/lib/stringprep.h; then
   AC_MSG_ERROR([[*** Failed to move fixhdr.tmp to lib/stringprep.h...]])
 fi
 
-# Make it possible to pass -Werror when building relevant parts of
-# the library.  Normally, -Werror breaks when running autoconf tests.
-AC_ARG_VAR(WARN_CFLAGS, [Flags to enable compiler warnings])
-AC_MSG_CHECKING([what compiler warning flags we will use])
-AC_MSG_RESULT($WARN_CFLAGS)
+gl_WARN_ADD([-Wall])
+gl_WARN_ADD([-Wpointer-arith])
+gl_WARN_ADD([-Wstrict-prototypes])
+gl_WARN_ADD([-Wno-pointer-sign])
 
 AC_CONFIG_FILES([
   Makefile
@@ -166,3 +165,15 @@ AC_CONFIG_FILES([
   tests/Makefile
 ])
 AC_OUTPUT
+
+AC_MSG_NOTICE([summary of build options:
+
+  version:          ${VERSION} shared $LT_CURRENT:$LT_REVISION:$LT_AGE
+  Host type:        ${host}
+  Install prefix:   ${prefix}
+  Compiler:         ${CC}
+  Warning flags:    ${WARN_CFLAGS}
+  Library types:    Shared=${enable_shared}, Static=${enable_static}
+  Valgrind:         ${VALGRIND}
+  Linker script:    $have_ld_version_script
+])

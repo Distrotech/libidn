@@ -242,6 +242,7 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/strerror.m4
   m4/string_h.m4
   m4/unistd_h.m4
+  m4/warnings.m4
   tests/test-errno.c
   tests/test-strerror.c
   tests/test-string.c
