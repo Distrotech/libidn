@@ -1,5 +1,5 @@
 # Process this file with autoconf to produce a pkg-config metadata file.
-# Copyright 2002, 2004, 2005, 2006, 2007  Simon Josefsson
+# Copyright 2002, 2004, 2005, 2006, 2007, 2008  Simon Josefsson
 # 
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -16,6 +16,7 @@ includedir=@includedir@
 
 Name: Libidn
 Description: IETF stringprep, nameprep, punycode, IDNA text processing.
+URL: http://www.gnu.org/software/libidn/
 Version: @VERSION@
 Libs: -L${libdir} -lidn
 Cflags: -I${includedir}
