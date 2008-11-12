@@ -139,15 +139,30 @@ AC_ARG_VAR(WARN_CFLAGS, [Flags to enable compiler warnings])
 AC_MSG_CHECKING([what compiler warning flags we will use])
 AC_MSG_RESULT($WARN_CFLAGS)
 
-AC_CONFIG_FILES([Makefile libidn.pc \
-		doc/reference/Makefile doc/java/Makefile doc/cyclo/Makefile \
-		gl/Makefile lib/gl/Makefile \
-		gltests/Makefile lib/gltests/Makefile \
-		contrib/doxygen/Doxyfile \
-		doc/Makefile doc/specifications/Makefile doc/tld/Makefile \
-		lib/Makefile src/Makefile tests/Makefile examples/Makefile \
-		java/Makefile java/gnu/Makefile java/gnu/inet/Makefile \
-		java/gnu/inet/encoding/Makefile java/misc/Makefile \
-		csharp/Makefile \
-		po/Makefile.in])
+AC_CONFIG_FILES([
+  Makefile
+  libidn.pc
+  csharp/Makefile
+  contrib/doxygen/Doxyfile
+  doc/Makefile
+  doc/cyclo/Makefile
+  doc/java/Makefile
+  doc/reference/Makefile
+  doc/specifications/Makefile
+  doc/tld/Makefile
+  examples/Makefile
+  gl/Makefile
+  gltests/Makefile
+  java/Makefile
+  java/gnu/Makefile
+  java/gnu/inet/Makefile
+  java/gnu/inet/encoding/Makefile
+  java/misc/Makefile
+  lib/Makefile
+  lib/gl/Makefile
+  lib/gltests/Makefile
+  po/Makefile.in
+  src/Makefile
+  tests/Makefile
+])
 AC_OUTPUT
