@@ -73,6 +73,7 @@ AC_DEFUN([gl_INIT],
   gl_STRING_MODULE_INDICATOR([strerror])
   gl_HEADER_STRING_H
   gl_UNISTD_H
+  AC_SUBST([WARN_CFLAGS])
   m4_ifval(gl_LIBSOURCES_LIST, [
     m4_syscmd([test ! -d ]m4_defn([gl_LIBSOURCES_DIR])[ ||
       for gl_file in ]gl_LIBSOURCES_LIST[ ; do
