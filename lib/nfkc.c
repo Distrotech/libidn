@@ -171,7 +171,7 @@ static const gchar utf8_skip_data[256] = {
 
 static const gchar *const g_utf8_skip = utf8_skip_data;
 
-#define g_utf8_next_char(p) (char *)((p) + g_utf8_skip[*(guchar *)(p)])
+#define g_utf8_next_char(p) ((p) + g_utf8_skip[*(const guchar *)(p)])
 
 /*
  * g_utf8_strlen:
