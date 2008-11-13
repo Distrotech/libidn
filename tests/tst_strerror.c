@@ -111,7 +111,7 @@ doit (void)
 
   {
     size_t i;
-    const char *p, *last_p = NULL;
+    const char *last_p = NULL;
 
     for (i = 0;; i++)
       {
@@ -133,7 +133,7 @@ doit (void)
 
   {
     size_t i;
-    const char *p, *last_p = NULL;
+    const char *last_p = NULL;
 
     for (i = 0;; i++)
       {
@@ -148,7 +148,7 @@ doit (void)
 
   {
     size_t i;
-    const char *p, *last_p = NULL;
+    const char *last_p = NULL;
 
     for (i = 0;; i++)
       {
@@ -163,7 +163,7 @@ doit (void)
 
   {
     size_t i;
-    const char *p, *last_p = NULL;
+    const char *last_p = NULL;
 
     for (i = 0;; i++)
       {
@@ -190,7 +190,7 @@ doit (void)
 
   {
     size_t i;
-    const char *p, *last_p = NULL;
+    const char *last_p = NULL;
 
     for (i = 0;; i++)
       {

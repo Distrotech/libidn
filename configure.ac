@@ -108,10 +108,10 @@ AC_MSG_RESULT($ac_result)
 sj_VALGRIND
 sj_UPDATE_HEADER_VERSION([$srcdir/lib/stringprep.h])
 
-gl_WARN_ADD([-Wall])
-gl_WARN_ADD([-Wpointer-arith])
-gl_WARN_ADD([-Wstrict-prototypes])
-gl_WARN_ADD([-Wno-pointer-sign])
+# Not added due to ERROR_WORKAROUNDS = -Woverlength-strings -Wundef -Wno-switch-enum
+for w in -Wall -W -Wformat-y2k -Wformat-nonliteral -Wformat-security -Winit-self -Wmissing-include-dirs -Wswitch-default -Wunused-parameter -Wunused -Wunknown-pragmas -Wstrict-aliasing -Wstrict-overflow -Wfloat-equal -Wtraditional-conversion -Wdeclaration-after-statement -Wshadow -Wunsafe-loop-optimizations -Wpointer-arith -Wbad-function-cast -Wcast-qual -Wcast-align -Wwrite-strings -Wconversion -Wsign-conversion -Wlogical-op -Waggregate-return -Wstrict-prototypes -Wold-style-definition -Wmissing-prototypes -Wmissing-declarations -Wmissing-noreturn -Wmissing-format-attribute -Wpacked -Wpadded -Wredundant-decls -Wnested-externs -Wunreachable-code -Winline -Winvalid-pch -Wlong-long -Wvla -Wvolatile-register-var -Wdisabled-optimization -Wstack-protector -Wno-missing-field-initializers; do
+  gl_WARN_ADD([$w])
+done
 
 AC_CONFIG_FILES([
   Makefile

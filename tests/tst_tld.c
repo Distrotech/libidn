@@ -40,7 +40,7 @@ struct tld
   size_t inlen;
   uint32_t in[100];
   int rc;
-  int errpos;
+  size_t errpos;
 };
 
 static const struct tld tld[] = {
@@ -137,7 +137,6 @@ doit (void)
 	printf ("OK\n");
 
       {
-	size_t errpos;
 	rc = tld_check_8z (tld[i].example, &errpos, NULL);
 	if (rc != tld[i].rc)
 	  {
