@@ -108,9 +108,12 @@ AC_MSG_RESULT($ac_result)
 sj_VALGRIND
 sj_UPDATE_HEADER_VERSION([$srcdir/lib/stringprep.h])
 
-gl_WARN_SUPPORTED([WARN_CFLAGS])
+gl_WARN_SUPPORTED([WARNINGS])
 USELESS_WARNINGS="-Wswitch-enum -Wsystem-headers -Wtraditional -Wc++-compat -Wunreachable-code -Woverlength-strings "
-gl_WARN_COMPLEMENT(WARN_CFLAGS, [$WARN_CFLAGS], [$USELESS_WARNINGS])
+gl_WARN_COMPLEMENT(WARNINGS, [$WARNINGS], [$USELESS_WARNINGS])
+for w in $WARNINGS; do
+  gl_WARN_ADD([$w])
+done
 gl_WARN_ADD([-Wno-missing-field-initializers])
 
 AC_CONFIG_FILES([
