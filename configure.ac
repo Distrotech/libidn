@@ -108,25 +108,20 @@ AC_MSG_RESULT($ac_result)
 sj_VALGRIND
 sj_UPDATE_HEADER_VERSION([$srcdir/lib/stringprep.h])
 
+# Disable useless warnings.
+W=
+W="$W -Wsystem-headers"         # Don't let system headers trigger warnings
+W="$W -Wc++-compat"             # We don't care strongly about C++ compilers
+W="$W -Woverlength-strings"     # Some of our strings are too large
+W="$W -Wsign-conversion"        # Too many warnings for now
+W="$W -Wconversion"             # Too many warnings for now
+W="$W -Wtraditional"            # Warns on #elif which we use often
+W="$W -Wtraditional-conversion" # Too many warnings for now
+W="$W -Wmissing-noreturn"       # Too many warnings for now
+W="$W -Wunreachable-code"       # Too many false positives
+W="$W -Wlogical-op"             # Too many false positives
 gl_WARN_SUPPORTED([WARNINGS])
-
-# Useless warnings for libidn.
-USELESS_WARNINGS=" \
-  -Wsystem-headers \
-  -Wc++-compat \
-  -Woverlength-strings"
-gl_WARN_COMPLEMENT(WARNINGS, [$WARNINGS], [$USELESS_WARNINGS])
-# Review these from time to time.
-USELESS_WARNINGS=" \
-  -Wsign-conversion \
-  -Wconversion \
-  -Wtraditional \
-  -Wtraditional-conversion \
-  -Wmissing-noreturn \
-  -Wunreachable-code \
-  -Wlogical-op"
-gl_WARN_COMPLEMENT(WARNINGS, [$WARNINGS], [$USELESS_WARNINGS])
-
+gl_WARN_COMPLEMENT(WARNINGS, [$WARNINGS], [$W])
 for w in $WARNINGS; do
   gl_WARN_ADD([$w])
 done
