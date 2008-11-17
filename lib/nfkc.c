@@ -266,7 +266,6 @@ g_unichar_to_utf8 (gunichar c, gchar * outbuf)
 {
   guint len = 0;
   int first;
-  int i;
 
   if (c < 0x80)
     {
@@ -301,6 +300,7 @@ g_unichar_to_utf8 (gunichar c, gchar * outbuf)
 
   if (outbuf)
     {
+      guint i;
       for (i = len - 1; i > 0; --i)
 	{
 	  outbuf[i] = (c & 0x3f) | 0x80;
@@ -364,7 +364,7 @@ g_utf8_to_ucs4_fast (const gchar * str, glong len, glong * items_written)
   p = str;
   for (i = 0; i < n_chars; i++)
     {
-      gunichar wc = ((unsigned char *) p)[0];
+      gunichar wc = ((const unsigned char *) p)[0];
 
       if (wc < 0x80)
 	{
@@ -402,7 +402,7 @@ g_utf8_to_ucs4_fast (const gchar * str, glong len, glong * items_written)
 	  for (j = 1; j < charlen; j++)
 	    {
 	      wc <<= 6;
-	      wc |= ((unsigned char *) p)[j] & 0x3f;
+	      wc |= ((const unsigned char *) p)[j] & 0x3f;
 	    }
 
 	  result[i] = wc;

@@ -15,7 +15,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-CFGFLAGS ?= --enable-java --enable-gtk-doc WARN_CFLAGS="-Werror -Wno-error=cast-qual -Wno-error=sign-conversion -Wno-error=conversion -Wno-error=traditional-conversion -Wno-error=unreachable-code -Wno-error=vla -Wno-error=missing-noreturn -Wno-error=unused-parameter -Wno-error=logical-op -Wno-error=missing-format-attribute"
+CFGFLAGS ?= --enable-java --enable-gtk-doc WARN_CFLAGS="-Werror -Wno-error=sign-conversion -Wno-error=conversion -Wno-error=traditional-conversion -Wno-error=unreachable-code -Wno-error=vla -Wno-error=missing-noreturn -Wno-error=unused-parameter -Wno-error=logical-op -Wno-error=missing-format-attribute"
 
 ifeq ($(.DEFAULT_GOAL),abort-due-to-no-makefile)
 .DEFAULT_GOAL := bootstrap

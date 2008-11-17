@@ -109,7 +109,7 @@ idna_to_ascii_4i (const uint32_t * in, size_t inlen, char *out, int flags)
   {
     char *p;
 
-    p = stringprep_ucs4_to_utf8 (in, inlen, NULL, NULL);
+    p = stringprep_ucs4_to_utf8 (in, (ssize_t) inlen, NULL, NULL);
     if (p == NULL)
       return IDNA_MALLOC_ERROR;
 
@@ -419,7 +419,7 @@ idna_to_unicode_44i (const uint32_t * in, size_t inlen,
   size_t outlensave = *outlen;
   char *p;
 
-  p = stringprep_ucs4_to_utf8 (in, inlen, NULL, NULL);
+  p = stringprep_ucs4_to_utf8 (in, (ssize_t) inlen, NULL, NULL);
   if (p == NULL)
     return IDNA_MALLOC_ERROR;
 
@@ -500,7 +500,7 @@ idna_to_ascii_4z (const uint32_t * input, char **output, int flags)
 	}
       else
 	{
-	  rc = idna_to_ascii_4i (start, end - start, buf, flags);
+	  rc = idna_to_ascii_4i (start, (size_t) (end - start), buf, flags);
 	  if (rc != IDNA_SUCCESS)
 	    return rc;
 	}
@@ -631,12 +631,13 @@ idna_to_unicode_4z4z (const uint32_t * input, uint32_t ** output, int flags)
       for (; *end && !DOTP (*end); end++)
 	;
 
-      buflen = end - start;
+      buflen = (size_t) (end - start);
       buf = malloc (sizeof (buf[0]) * (buflen + 1));
       if (!buf)
 	return IDNA_MALLOC_ERROR;
 
-      rc = idna_to_unicode_44i (start, end - start, buf, &buflen, flags);
+      rc = idna_to_unicode_44i (start, (size_t) (end - start),
+				buf, &buflen, flags);
       /* don't check rc as per specification! */
 
       if (out)
