@@ -1,0 +1,11 @@
+--- gl/progname.h.orig	2008-11-17 17:34:13.000000000 +0100
++++ gl/progname.h	2008-11-17 17:34:33.000000000 +0100
+@@ -34,7 +34,7 @@
+ /* Set program_name, based on argv[0].  */
+ extern void set_program_name (const char *argv0);
+ 
+-#if ENABLE_RELOCATABLE
++#if defined(ENABLE_RELOCATABLE) && ENABLE_RELOCATABLE
+ 
+ /* Set program_name, based on argv[0], and original installation prefix and
+    directory, for relocatability.  */
