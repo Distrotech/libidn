@@ -109,8 +109,24 @@ sj_VALGRIND
 sj_UPDATE_HEADER_VERSION([$srcdir/lib/stringprep.h])
 
 gl_WARN_SUPPORTED([WARNINGS])
-USELESS_WARNINGS="-Wswitch-enum -Wsystem-headers -Wtraditional -Wc++-compat -Wunreachable-code -Woverlength-strings "
+
+# Useless warnings for libidn.
+USELESS_WARNINGS=" \
+  -Wsystem-headers \
+  -Wc++-compat \
+  -Woverlength-strings"
 gl_WARN_COMPLEMENT(WARNINGS, [$WARNINGS], [$USELESS_WARNINGS])
+# Review these from time to time.
+USELESS_WARNINGS=" \
+  -Wsign-conversion \
+  -Wconversion \
+  -Wtraditional \
+  -Wtraditional-conversion \
+  -Wmissing-noreturn \
+  -Wunreachable-code \
+  -Wlogical-op"
+gl_WARN_COMPLEMENT(WARNINGS, [$WARNINGS], [$USELESS_WARNINGS])
+
 for w in $WARNINGS; do
   gl_WARN_ADD([$w])
 done
