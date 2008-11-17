@@ -1,5 +1,5 @@
 /* tst_nfkc.c --- Self tests for stringprep_utf8_nfkc_normalize().
- * Copyright (C) 2002, 2003, 2004, 2006, 2006, 2007  Simon Josefsson
+ * Copyright (C) 2002, 2003, 2004, 2006, 2006, 2007, 2008  Simon Josefsson
  *
  * This file is part of GNU Libidn.
  *
@@ -75,7 +75,8 @@ doit (void)
       if (debug)
 	printf ("NFKC entry %d\n", i);
 
-      out = stringprep_utf8_nfkc_normalize (nfkc[i].in, strlen (nfkc[i].in));
+      out = stringprep_utf8_nfkc_normalize (nfkc[i].in,
+					    (ssize_t) strlen (nfkc[i].in));
       if (out == NULL)
 	{
 	  fail ("NFKC entry %d failed fatally\n", i);

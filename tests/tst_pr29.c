@@ -121,7 +121,7 @@ doit (void)
 	char *p;
 	size_t items_read, items_written;
 
-	p = stringprep_ucs4_to_utf8 (tv[i].in, tv[i].inlen,
+	p = stringprep_ucs4_to_utf8 (tv[i].in, (ssize_t) tv[i].inlen,
 				     &items_read, &items_written);
 	if (p == NULL)
 	  fail ("FAIL: stringprep_ucs4_to_utf8(tv[%d]) == NULL\n", i);
