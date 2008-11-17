@@ -39,7 +39,7 @@
  */
 
 int
-main (int argc, char *argv[])
+main (void)
 {
   char buf[BUFSIZ];
   char *p;

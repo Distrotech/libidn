@@ -22,16 +22,17 @@ AM_CPPFLAGS = -I$(top_srcdir)/lib -I../lib -I$(top_srcdir)/gl -I../gl
 dist_lisp_DATA = punycode.el idna.el
 
 bin_PROGRAMS = idn
-
-BUILT_SOURCES = idn_cmd.c idn_cmd.h
-idn_SOURCES = idn.c idn.ggo idn_cmd.c idn_cmd.h
-DISTCLEANFILES = $(BUILT_SOURCES)
-idn_LDADD = ../lib/libidn.la ../gl/libgnu.la $(LTLIBINTL)
+idn_SOURCES = idn.c
+idn_LDADD = libidn_cmd.la ../lib/libidn.la ../gl/libgnu.la $(LTLIBINTL)
 
 localedir = $(datadir)/locale
 DEFS = -DLOCALEDIR=\"$(localedir)\" @DEFS@
 
 idn.c: $(BUILT_SOURCES)
+
+noinst_LTLIBRARIES = libidn_cmd.la
+libidn_cmd_la_SOURCES =  idn.ggo idn_cmd.c idn_cmd.h
+libidn_cmd_la_CFLAGS =
 
 idn_cmd.c idn_cmd.h: idn.ggo Makefile.am
 	gengetopt --unamed-opts --no-handle-version --no-handle-help \
@@ -41,3 +42,6 @@ idn_cmd.c idn_cmd.h: idn.ggo Makefile.am
 		cp $(srcdir)/idn_cmd.h $(srcdir)/idn_cmd.h .
 	perl -pi -e 's/\[OPTIONS\]/\[OPTION\]/g' idn_cmd.c
 	perl -pi -e 's/\[FILES\]/\[STRING\]/g' idn_cmd.c
+
+BUILT_SOURCES = idn_cmd.c idn_cmd.h
+DISTCLEANFILES = $(BUILT_SOURCES)
