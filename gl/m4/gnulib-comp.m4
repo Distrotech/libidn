@@ -238,6 +238,7 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/getopt.m4
   m4/gnulib-common.m4
   m4/include_next.m4
+  m4/manywarnings.m4
   m4/pmccabe2html.m4
   m4/stdarg.m4
   m4/strerror.m4

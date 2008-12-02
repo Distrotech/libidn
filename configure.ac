@@ -120,8 +120,8 @@ W="$W -Wtraditional-conversion" # Too many warnings for now
 W="$W -Wmissing-noreturn"       # Too many warnings for now
 W="$W -Wunreachable-code"       # Too many false positives
 W="$W -Wlogical-op"             # Too many false positives
-gl_WARN_SUPPORTED([WARNINGS])
-gl_WARN_COMPLEMENT(WARNINGS, [$WARNINGS], [$W])
+gl_MANYWARN_ALL_GCC([WARNINGS])
+gl_MANYWARN_COMPLEMENT(WARNINGS, [$WARNINGS], [$W])
 for w in $WARNINGS; do
   gl_WARN_ADD([$w])
 done
