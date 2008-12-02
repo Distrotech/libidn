@@ -1691,7 +1691,7 @@ pending.
 
 The Java library, if Libidn has been built with Java support
 (@pxref{Downloading and Installing}), will be placed in
-@file{java/libidn.jar}.  The source code is located in
+@file{java/libidn-@value{VERSION}.jar}.  The source code is located in
 @file{java/gnu/inet/encoding/}.
 
 @section Overview
