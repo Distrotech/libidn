@@ -8,6 +8,8 @@ See the end for copying conditions.
 
 ** doc: Change license on the manual to GFDLv1.3+.
 
+** doc: Improve JavaDoc output.
+
 ** Build with more warnings.
 
 ** API and ABI is backwards compatible with the previous version.

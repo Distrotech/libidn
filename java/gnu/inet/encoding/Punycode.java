@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2004, 2005, 2006, 2007  Free Software Foundation, Inc.
+ * Copyright (C) 2004, 2005, 2006, 2007, 2008  Free Software Foundation, Inc.
  *
  * Author: Oliver Hitz
  *
@@ -25,7 +25,7 @@ package gnu.inet.encoding;
 
 /**
  * This class offers static methods for encoding/decoding strings
- * using the Punycode algorithm:
+ * using the Punycode algorithm.
  * <ul>
  * <li>RFC3492 Punycode
  * </ul>
