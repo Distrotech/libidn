@@ -109,20 +109,19 @@ sj_VALGRIND
 sj_UPDATE_HEADER_VERSION([$srcdir/lib/stringprep.h])
 
 # Disable useless warnings.
-W=
-W="$W -Wsystem-headers"         # Don't let system headers trigger warnings
-W="$W -Wc++-compat"             # We don't care strongly about C++ compilers
-W="$W -Woverlength-strings"     # Some of our strings are too large
-W="$W -Wsign-conversion"        # Too many warnings for now
-W="$W -Wconversion"             # Too many warnings for now
-W="$W -Wtraditional"            # Warns on #elif which we use often
-W="$W -Wtraditional-conversion" # Too many warnings for now
-W="$W -Wmissing-noreturn"       # Too many warnings for now
-W="$W -Wunreachable-code"       # Too many false positives
-W="$W -Wlogical-op"             # Too many false positives
-gl_MANYWARN_ALL_GCC([WARNINGS])
-gl_MANYWARN_COMPLEMENT(WARNINGS, [$WARNINGS], [$W])
-for w in $WARNINGS; do
+nw="$nw -Wsystem-headers"         # Don't let system headers trigger warnings
+nw="$nw -Wc++-compat"             # We don't care strongly about C++ compilers
+nw="$nw -Woverlength-strings"     # Some of our strings are too large
+nw="$nw -Wsign-conversion"        # Too many warnings for now
+nw="$nw -Wconversion"             # Too many warnings for now
+nw="$nw -Wtraditional"            # Warns on #elif which we use often
+nw="$nw -Wtraditional-conversion" # Too many warnings for now
+nw="$nw -Wmissing-noreturn"       # Too many warnings for now
+nw="$nw -Wunreachable-code"       # Too many false positives
+nw="$nw -Wlogical-op"             # Too many false positives
+gl_MANYWARN_ALL_GCC([ws])
+gl_MANYWARN_COMPLEMENT(ws, [$ws], [$nw])
+for w in $ws; do
   gl_WARN_ADD([$w])
 done
 gl_WARN_ADD([-Wno-missing-field-initializers])
