@@ -126,6 +126,7 @@ for w in $WARNINGS; do
   gl_WARN_ADD([$w])
 done
 gl_WARN_ADD([-Wno-missing-field-initializers])
+gl_WARN_ADD([-fdiagnostics-show-option])
 
 AC_CONFIG_FILES([
   Makefile
