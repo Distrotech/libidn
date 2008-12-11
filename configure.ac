@@ -108,7 +108,7 @@ AC_MSG_RESULT($ac_result)
 sj_VALGRIND
 sj_UPDATE_HEADER_VERSION([$srcdir/lib/stringprep.h])
 
-# Disable useless warnings.
+# Add many warnings, except some...
 nw="$nw -Wsystem-headers"         # Don't let system headers trigger warnings
 nw="$nw -Wc++-compat"             # We don't care strongly about C++ compilers
 nw="$nw -Woverlength-strings"     # Some of our strings are too large
