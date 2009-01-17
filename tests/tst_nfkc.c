@@ -1,5 +1,5 @@
 /* tst_nfkc.c --- Self tests for stringprep_utf8_nfkc_normalize().
- * Copyright (C) 2002, 2003, 2004, 2006, 2006, 2007, 2008  Simon Josefsson
+ * Copyright (C) 2002, 2003, 2004, 2006, 2006, 2007, 2008, 2009 Simon Josefsson
  *
  * This file is part of GNU Libidn.
  *
