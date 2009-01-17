@@ -1,0 +1,12 @@
+--- stdint.in.h.orig	2009-01-17 15:38:14.000000000 +0100
++++ stdint.in.h	2009-01-17 15:38:29.000000000 +0100
+@@ -479,7 +479,8 @@
+    <stdint.h> and assumes its types are already defined.  */
+ #if ! (defined WCHAR_MIN && defined WCHAR_MAX)
+ # define _GL_JUST_INCLUDE_SYSTEM_WCHAR_H
+-# include <wchar.h>
++/*  We don't need WCHAR_* in libidn, so to avoid problems with
++    missing wchar.h, don't include wchar.h here.  */
+ # undef _GL_JUST_INCLUDE_SYSTEM_WCHAR_H
+ #endif
+ #undef WCHAR_MIN

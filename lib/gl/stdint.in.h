@@ -479,7 +479,8 @@ typedef int _verify_intmax_size[2 * (sizeof (intmax_t) == sizeof (uintmax_t)) - 
    <stdint.h> and assumes its types are already defined.  */
 #if ! (defined WCHAR_MIN && defined WCHAR_MAX)
 # define _GL_JUST_INCLUDE_SYSTEM_WCHAR_H
-# include <wchar.h>
+/*  We don't need WCHAR_* in libidn, so to avoid problems with
+    missing wchar.h, don't include wchar.h here.  */
 # undef _GL_JUST_INCLUDE_SYSTEM_WCHAR_H
 #endif
 #undef WCHAR_MIN
