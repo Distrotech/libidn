@@ -69,7 +69,8 @@ GDOC_SRC = $(top_srcdir)/lib/idna.c $(top_srcdir)/lib/nfkc.c	\
 GDOC_TEXI_PREFIX = texi/
 GDOC_MAN_PREFIX = man/
 GDOC_MAN_EXTRA_ARGS = -module $(PACKAGE) -sourceversion $(VERSION) \
-	-bugsto $(PACKAGE_BUGREPORT) -includefuncprefix -seeinfo $(PACKAGE) \
+	-bugsto $(PACKAGE_BUGREPORT) -pkg-name "$(PACKAGE_NAME)" \
+	-includefuncprefix -seeinfo $(PACKAGE) \
 	-copyright "2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009 Simon Josefsson" \
 	-verbatimcopying
 include $(srcdir)/Makefile.gdoci
