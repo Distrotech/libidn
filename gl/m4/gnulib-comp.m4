@@ -49,7 +49,7 @@ AC_DEFUN([gl_INIT],
   gl_source_base='gl'
   AC_REQUIRE([gt_CSHARPCOMP])
   AC_CONFIG_FILES([csharpcomp.sh:build-aux/csharpcomp.sh.in])
-  gl_HEADER_ERRNO_H
+  AC_REQUIRE([gl_HEADER_ERRNO_H])
   gl_ERROR
   m4_ifdef([AM_XGETTEXT_OPTION],
     [AM_XGETTEXT_OPTION([--flag=error:3:c-format])

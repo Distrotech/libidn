@@ -25,7 +25,6 @@ AC_DEFUN([lgl_EARLY],
   m4_pattern_allow([^gl_LIBOBJS$])dnl a variable
   m4_pattern_allow([^gl_LTLIBOBJS$])dnl a variable
   AC_REQUIRE([AC_PROG_RANLIB])
-  AC_REQUIRE([AC_GNU_SOURCE])
   AC_REQUIRE([gl_USE_SYSTEM_EXTENSIONS])
 ])
 
@@ -47,7 +46,7 @@ AC_DEFUN([lgl_INIT],
   AM_ICONV
   gl_ICONV_H
   gl_FUNC_ICONV_OPEN
-  gl_MULTIARCH
+  AC_REQUIRE([gl_MULTIARCH])
   AM_STDBOOL_H
   gl_STDINT_H
   if test $gl_cond_libtool = false; then
