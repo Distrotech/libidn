@@ -69,7 +69,6 @@ emit_bug_reporting_address (void)
   printf (_("%s home page: http://www.gnu.org/software/%s/\n"),
 	  PACKAGE_NAME, PACKAGE);
   printf (_("General help using GNU software: http://www.gnu.org/gethelp/\n"));
-
 }
 
 static void
