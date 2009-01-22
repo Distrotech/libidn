@@ -110,11 +110,11 @@ Mandatory arguments to long options are mandatory for short options too.\n\
   -u, --idna-to-unicode    Convert from ACE according to IDNA\n\
 "), stdout);
       fputs (_("\
-      --allow-unassigned   Toggle IDNA AllowUnassigned flag\n\
-      --usestd3asciirules  Toggle IDNA UseSTD3ASCIIRules flag\n\
+      --allow-unassigned   Toggle IDNA AllowUnassigned flag (default off)\n\
+      --usestd3asciirules  Toggle IDNA UseSTD3ASCIIRules flag (default off)\n\
 "), stdout);
       fputs (_("\
-  -t, --tld                Check string for TLD specific rules\n\
+      --no-tld             Don't check string for TLD specific rules\n\
                              Only for --idna-to-ascii and --idna-to-unicode\n\
 "), stdout);
       fputs (_("\
@@ -391,7 +391,7 @@ main (int argc, char *argv[])
 		   idna_strerror (rc));
 
 #ifdef WITH_TLD
-	  if (args_info.tld_flag)
+	  if (args_info.tld_flag && !args_info.no_tld_flag)
 	    {
 	      size_t errpos;
 

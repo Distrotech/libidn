@@ -4,6 +4,13 @@ See the end for copying conditions.
 
 * Version 1.12 (unreleased)
 
+** idn: New parameter --no-tld to deprecate the old parameter --tld.
+The new parameter --no-tld disable TLD checking of the input string.
+The --tld parameter was broken; it behaved opposite to its documented
+behaviour.  To avoid confusion over what --tld means, we decided to
+deprecate it.  Now --tld is not printed in the idn --help output, but
+will continue to work as before.
+
 ** doc: Modernize doxygen configuration.
 
 ** doc: Change license on the manual to GFDLv1.3+.

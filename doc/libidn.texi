@@ -1430,28 +1430,27 @@ To process a string that starts with @code{-}, for example
 
   -e, --punycode-encode    Encode Punycode
 
-  -a, --idna-to-ascii      Convert to ACE according to IDNA (default)
+  -a, --idna-to-ascii      Convert to ACE according to IDNA (default mode)
 
   -u, --idna-to-unicode    Convert from ACE according to IDNA
 
-      --allow-unassigned   Toggle IDNA AllowUnassigned flag  (default=off)
+      --allow-unassigned   Toggle IDNA AllowUnassigned flag (default off)
 
-      --usestd3asciirules  Toggle IDNA UseSTD3ASCIIRules flag  (default=off)
+      --usestd3asciirules  Toggle IDNA UseSTD3ASCIIRules flag (default off)
 
-  -t, --tld                Check string for TLD specific rules
+      --no-tld             Don't check string for TLD specific rules
                              Only for --idna-to-ascii and --idna-to-unicode
-                             (default=on)
 
   -n, --nfkc               Normalize string according to Unicode v3.2 NFKC
 
   -p, --profile=STRING     Use specified stringprep profile instead
-                             Valid stringprep profiles are `Nameprep',
-                             `iSCSI', `Nodeprep', `Resourceprep', `trace', and
-                             `SASLprep'.
+                             Valid stringprep profiles: `Nameprep',
+                             `iSCSI', `Nodeprep', `Resourceprep', 
+                             `trace', `SASLprep'
 
-      --debug              Print debugging information  (default=off)
+      --debug              Print debugging information
 
-      --quiet              Silent operation  (default=off)
+      --quiet              Silent operation
 @end verbatim
 
 @section Environment Variables
