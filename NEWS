@@ -17,6 +17,8 @@ will continue to work as before.
 
 ** doc: Improve JavaDoc output.
 
+** Update gnulib files and translations.
+
 ** Build with more warnings.
 
 ** API and ABI is backwards compatible with the previous version.
