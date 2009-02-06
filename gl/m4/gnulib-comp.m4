@@ -229,6 +229,7 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/unistd.in.h
   lib/version-etc.c
   lib/version-etc.h
+  m4/00gnulib.m4
   m4/autobuild.m4
   m4/csharp.m4
   m4/csharpcomp.m4

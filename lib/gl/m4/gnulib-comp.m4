@@ -212,6 +212,7 @@ AC_DEFUN([lgl_FILE_LIST], [
   lib/string.in.h
   lib/strverscmp.c
   lib/wchar.in.h
+  m4/00gnulib.m4
   m4/codeset.m4
   m4/extensions.m4
   m4/gnulib-common.m4
