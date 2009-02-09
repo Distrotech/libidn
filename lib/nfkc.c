@@ -964,7 +964,7 @@ stringprep_unichar_to_utf8 (uint32_t c, char *outbuf)
  * This function does no error checking on the input.
  *
  * Return value: a pointer to a newly allocated UCS-4 string.
- *               This value must be freed with free().
+ *               This value must be deallocated by the caller.
  **/
 uint32_t *
 stringprep_utf8_to_ucs4 (const char *str, ssize_t len, size_t * items_written)
@@ -986,9 +986,9 @@ stringprep_utf8_to_ucs4 (const char *str, ssize_t len, size_t * items_written)
  * to UTF-8. The result will be terminated with a 0 byte.
  *
  * Return value: a pointer to a newly allocated UTF-8 string.
- *               This value must be freed with free(). If an
- *               error occurs, %NULL will be returned and
- *               @error set.
+ *               This value must be deallocated by the caller.
+ *               If an error occurs, %NULL will be returned and @error
+ *               set.
  **/
 char *
 stringprep_ucs4_to_utf8 (const uint32_t * str, ssize_t len,

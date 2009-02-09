@@ -4,6 +4,9 @@ See the end for copying conditions.
 
 * Version 1.13 (unreleased)
 
+** doc: The idn_free function is now documented.
+Suggested by "Sisyphus" <sisyphus1@optusnet.com.au>.
+
 * Version 1.12 (released 2009-01-23)
 
 ** idn: New parameter --no-tld to deprecate the old parameter --tld.

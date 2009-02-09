@@ -530,6 +530,10 @@ should be able to build the project using Build Project.
 Output libraries will be written into the @code{win32/lib} (or
 @code{win32/lib/debug} for Debug versions) folder.
 
+When working with Windows you may want to look into the special memory
+handling functions that may be needed (@pxref{Memory handling under
+Windows}).
+
 @node Bug Reports
 @section Bug Reports
 @cindex Reporting Bugs
@@ -649,6 +653,7 @@ A faster way to find out how to adapt your application for use with
 * Version Check::
 * Building the source::
 * Autoconf tests::
+* Memory handling under Windows::
 @end menu
 
 @node Header
@@ -721,6 +726,12 @@ The name space of the PR29 part of Libidn is @code{pr29_*} for
 function names, @code{Pr29_*} for data types and @code{PR29_*} for
 other symbols.  In addition, @code{_pr29*} is reserved for internal
 use and should never be used by applications.
+
+@item idn-free.h
+
+The entry point to the Windows memory de-allocation function
+(@pxref{Memory handling under Windows}).  It contains only one
+function @code{idn_free}.
 
 @end table
 
@@ -861,6 +872,36 @@ fi
 AC_MSG_CHECKING([if Libidn should be used])
 AC_MSG_RESULT($libidn)
 @end example
+
+@node Memory handling under Windows
+@section Memory handling under Windows
+@cindex free
+@cindex Memory handling
+@cindex de-allocation
+@cindex heap memory
+
+Several functions in the library allocates memory.  The memory is
+expected to be de-allocated using the @code{free} function.  Under
+Windows, it is sometimes necessary to de-allocate memory in the same
+module that allocated a memory region.  The reason is that different
+modules use separate heap memory regions.  To solve this problem we
+provide a function to de-allocate memory inside the library.
+
+Note that we do not recommend using this interface generally if you do
+not care about Windows portability.
+
+@section Header file @code{idn-free.h}
+
+To use the function explained in this chapter, you need to include the
+file @file{idn-free.h} using:
+
+@example
+#include <idn-free.h>
+@end example
+
+@section Memory de-allocation function
+
+@include texi/idn_free.texi
 
 @c **********************************************************
 @c ********************  Utility Functions ******************

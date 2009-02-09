@@ -62,6 +62,7 @@ GDOC_SRC = $(top_srcdir)/lib/idna.c $(top_srcdir)/lib/nfkc.c	\
 	$(top_srcdir)/lib/pr29.c $(top_srcdir)/lib/punycode.c	\
 	$(top_srcdir)/lib/stringprep.c $(top_srcdir)/lib/tld.c	\
 	$(top_srcdir)/lib/toutf8.c $(top_srcdir)/lib/version.c \
+	$(top_srcdir)/lib/idn-free.c \
 	$(top_srcdir)/lib/strerror-idna.c $(top_srcdir)/lib/strerror-pr29.c \
 	$(top_srcdir)/lib/strerror-punycode.c \
 	$(top_srcdir)/lib/strerror-stringprep.c \

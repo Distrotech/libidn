@@ -26,6 +26,19 @@
 /* Get free. */
 #include <stdlib.h>
 
+/**
+ * idn_free:
+ * @ptr: memory region to deallocate, or %NULL.
+ *
+ * Deallocates memory region by calling free().  If @ptr is %NULL no
+ * operation is performed.
+ *
+ * Normally applications de-allocate strings allocated by libidn by
+ * calling free() directly.  Under Windows, different parts of the
+ * same application may use different heap memory, and then it is
+ * important to deallocate memory allocated within the same module
+ * that allocated it.  This function makes that possible.
+ **/
 void
 idn_free (void *ptr)
 {

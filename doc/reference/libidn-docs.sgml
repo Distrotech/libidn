@@ -78,5 +78,6 @@ version 3.0 or later.
     <xi:include href="xml/punycode.xml"/>
     <xi:include href="xml/tld.xml"/>
     <xi:include href="xml/stringprep.xml"/>
+    <xi:include href="xml/idn-free.xml"/>
   </chapter>
 </book>
