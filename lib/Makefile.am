@@ -43,7 +43,8 @@ idn-int.h:
 		echo '#include <stdint.h>' > idn-int.h; \
 	fi
 
-libidn_la_SOURCES = gunibreak.h gunicomp.h gunidecomp.h \
+libidn_la_SOURCES = libidn.map \
+	gunibreak.h gunicomp.h gunidecomp.h \
 	nfkc.c toutf8.c version.c \
 	stringprep.h stringprep.c rfc3454.c profiles.c \
 	punycode.h punycode.c \
@@ -58,8 +59,11 @@ libidn_la_SOURCES += tld.h tld.c tlds.c
 endif
 libidn_la_LIBADD = $(LTLIBICONV) $(LTLIBINTL) gl/libgnu.la
 libidn_la_LDFLAGS = \
-	-export-symbols-regex '^(idn|pr29_|punycode_|stringprep|tld_).*' \
 	-version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE) -no-undefined
+
+if HAVE_LD_VERSION_SCRIPT
+libidn_la_LDFLAGS += -Wl,--version-script=$(srcdir)/libidn.map
+endif
 
 nfkc.c: gunibreak.h gunicomp.h gunidecomp.h
 
