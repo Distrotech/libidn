@@ -57,6 +57,7 @@ AC_DEFUN([lgl_INIT],
   gl_HEADER_STRING_H
   gl_FUNC_STRVERSCMP
   gl_STRING_MODULE_INDICATOR([strverscmp])
+  gl_VISIBILITY
   gl_WCHAR_H
   m4_ifval(lgl_LIBSOURCES_LIST, [
     m4_syscmd([test ! -d ]m4_defn([lgl_LIBSOURCES_DIR])[ ||
@@ -233,6 +234,7 @@ AC_DEFUN([lgl_FILE_LIST], [
   m4/stdint.m4
   m4/string_h.m4
   m4/strverscmp.m4
+  m4/visibility.m4
   m4/wchar.m4
   m4/wchar_t.m4
   m4/wint_t.m4
