@@ -23,18 +23,30 @@
  */
 
 #ifndef _TLD_H
-#define _TLD_H
+# define _TLD_H
 
-#ifdef __cplusplus
+# ifndef LIBIDN_API
+#  if LIBIDN_BUILDING && HAVE_VISIBILITY
+#   define LIBIDN_API __attribute__((__visibility__("default")))
+#  elif LIBIDN_BUILDING && defined _MSC_VER && ! defined LIBIDN_STATIC
+#   define LIBIDN_API __declspec(dllexport)
+#  elif defined _MSC_VER && ! defined LIBIDN_STATIC
+#   define LIBIDN_API __declspec(dllimport)
+#  else
+#   define LIBIDN_API
+#  endif
+# endif
+
+# ifdef __cplusplus
 extern "C"
 {
-#endif
+# endif
 
   /* Get size_t. */
-#include <stdlib.h>
+# include <stdlib.h>
 
   /* Get uint32_t. */
-#include <idn-int.h>
+# include <idn-int.h>
 
   /* Interval of valid code points in the TLD. */
   struct Tld_table_element
@@ -67,45 +79,49 @@ extern "C"
     TLD_NOTLD = TLD_NO_TLD
   } Tld_rc;
 
-  extern const char *tld_strerror (Tld_rc rc);
+  extern LIBIDN_API const char *tld_strerror (Tld_rc rc);
 
   /* Extract TLD, as ASCII string, of UCS4 domain name into "out". */
-  int tld_get_4 (const uint32_t * in, size_t inlen, char **out);
-  int tld_get_4z (const uint32_t * in, char **out);
-  int tld_get_z (const char *in, char **out);
+  extern LIBIDN_API int tld_get_4 (const uint32_t * in, size_t inlen,
+				   char **out);
+  extern LIBIDN_API int tld_get_4z (const uint32_t * in, char **out);
+  extern LIBIDN_API int tld_get_z (const char *in, char **out);
 
   /* Return structure corresponding to the named TLD from specified
    * list of TLD tables, or return NULL if no matching TLD can be
    * found. */
-  const Tld_table *tld_get_table (const char *tld, const Tld_table ** tables);
+  extern LIBIDN_API const Tld_table *tld_get_table (const char *tld,
+						    const Tld_table ** tables);
 
   /* Return structure corresponding to the named TLD, first looking
    * thru overrides then thru built-in list, or return NULL if no
    * matching TLD can be found. */
-  const Tld_table *tld_default_table (const char *tld,
-				      const Tld_table ** overrides);
+  extern LIBIDN_API const Tld_table * tld_default_table (const char *tld,
+						const Tld_table ** overrides);
 
   /* Check NAMEPREPPED domain name for valid characters as defined by
    * the relevant registering body (plus [a-z0-9.-]).  If error is
    * TLD_INVALID, set errpos to position of offending character. */
-  int tld_check_4t (const uint32_t * in, size_t inlen, size_t * errpos,
-		    const Tld_table * tld);
-  int tld_check_4tz (const uint32_t * in, size_t * errpos,
-		     const Tld_table * tld);
+  extern LIBIDN_API int tld_check_4t (const uint32_t * in, size_t inlen,
+				      size_t * errpos, const Tld_table * tld);
+  extern LIBIDN_API int tld_check_4tz (const uint32_t * in, size_t * errpos,
+				       const Tld_table * tld);
 
   /* Utility interfaces that uses tld_get_4* to find TLD of string,
      then tld_default_table (with overrides) to find proper TLD table
      for the string, and then hands over to tld_check_4t*. */
-  int tld_check_4 (const uint32_t * in, size_t inlen, size_t * errpos,
-		   const Tld_table ** overrides);
-  int tld_check_4z (const uint32_t * in, size_t * errpos,
-		    const Tld_table ** overrides);
-  int tld_check_8z (const char *in, size_t * errpos,
-		    const Tld_table ** overrides);
-  int tld_check_lz (const char *in, size_t * errpos,
-		    const Tld_table ** overrides);
+  extern LIBIDN_API int tld_check_4 (const uint32_t * in, size_t inlen,
+				     size_t * errpos,
+				     const Tld_table ** overrides);
+  extern LIBIDN_API int tld_check_4z (const uint32_t * in, size_t * errpos,
+				      const Tld_table ** overrides);
+  extern LIBIDN_API int tld_check_8z (const char *in, size_t * errpos,
+				      const Tld_table ** overrides);
+  extern LIBIDN_API int tld_check_lz (const char *in, size_t * errpos,
+				      const Tld_table ** overrides);
 
-#ifdef __cplusplus
+# ifdef __cplusplus
 }
-#endif
-#endif				/* _TLD_H */
+# endif
+
+#endif /* _TLD_H */
