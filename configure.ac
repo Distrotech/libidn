@@ -99,11 +99,11 @@ AC_MSG_RESULT($enable_java)
 AM_CONDITIONAL(CSHARP, test -n "$HAVE_CSHARPCOMP")
 AC_MSG_CHECKING([[if implementation in C# should be built]])
 if test -n "$HAVE_CSHARPCOMP"; then
-  ac_result=yes
+  enable_csharp=yes
 else
-  ac_result=no
+  enable_csharp=no
 fi
-AC_MSG_RESULT($ac_result)
+AC_MSG_RESULT($enable_csharp)
 
 sj_VALGRIND
 sj_UPDATE_HEADER_VERSION([$srcdir/lib/stringprep.h])
@@ -165,4 +165,7 @@ AC_MSG_NOTICE([summary of build options:
   Library types:    Shared=${enable_shared}, Static=${enable_static}
   Valgrind:         ${VALGRIND}
   Version script:   $have_ld_version_script
+  TLD code:         $enable_tld
+  Build Java port:  $enable_java
+  Build C# port:    $enable_csharp
 ])
