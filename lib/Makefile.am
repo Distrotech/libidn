@@ -63,6 +63,9 @@ libidn_la_LDFLAGS = \
 
 if HAVE_LD_VERSION_SCRIPT
 libidn_la_LDFLAGS += -Wl,--version-script=$(srcdir)/libidn.map
+else
+libidn_la_LDFLAGS += -export-symbols-regex
+			'^(idn|pr29_|punycode_|stringprep|tld_).*'
 endif
 
 nfkc.c: gunibreak.h gunicomp.h gunidecomp.h

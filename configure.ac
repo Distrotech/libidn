@@ -106,7 +106,6 @@ fi
 AC_MSG_RESULT($ac_result)
 
 sj_VALGRIND
-sj_LINKER_SCRIPT([$srcdir/lib/libidn.map])
 sj_UPDATE_HEADER_VERSION([$srcdir/lib/stringprep.h])
 
 # Add many warnings, except some...
