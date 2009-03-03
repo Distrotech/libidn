@@ -4,7 +4,8 @@ See the end for copying conditions.
 
 * Version 1.13 (unreleased)
 
-** libidn: Use a LD version script.
+** libidn: Use a LD version script on platforms where it is supported.
+Currently only GNU LD and the Solaris linker supports it.
 
 ** doc: The idn_free function is now documented.
 Suggested by "Sisyphus" <sisyphus1@optusnet.com.au>.
