@@ -22,22 +22,20 @@
 #ifndef IDNA_H
 # define IDNA_H
 
-# include <stddef.h>		/* size_t */
-# include <idn-int.h>		/* uint32_t */
-
-/* Libidn Windows DLL.  Only needed when this file is used in Visual
-   Studio.  Export and import happens automatically in MinGW. */
-# ifndef IDNA_API
-#  if defined(_MSC_VER) && !defined(IDNA_STATIC)
-#   ifdef IDNA_EXPORTS
-#    define IDNA_API __declspec(dllexport)
-#   else
-#    define IDNA_API __declspec(dllimport)
-#   endif
+# ifndef IDNAPI
+#  if defined LIBIDN_BUILDING && defined HAVE_VISIBILITY && HAVE_VISIBILITY
+#   define IDNAPI __attribute__((__visibility__("default")))
+#  elif defined LIBIDN_BUILDING && defined _MSC_VER && ! defined LIBIDN_STATIC
+#   define IDNAPI __declspec(dllexport)
+#  elif defined _MSC_VER && ! defined LIBIDN_STATIC
+#   define IDNAPI __declspec(dllimport)
 #  else
-#   define IDNA_API
+#   define IDNAPI
 #  endif
 # endif
+
+# include <stddef.h>		/* size_t */
+# include <idn-int.h>		/* uint32_t */
 
 # ifdef __cplusplus
 extern "C"
@@ -75,40 +73,40 @@ extern "C"
 #  define IDNA_ACE_PREFIX "xn--"
 # endif
 
-  extern IDNA_API const char *idna_strerror (Idna_rc rc);
+  extern IDNAPI const char *idna_strerror (Idna_rc rc);
 
   /* Core functions */
-  extern IDNA_API int idna_to_ascii_4i (const uint32_t * in, size_t inlen,
-					char *out, int flags);
-  extern IDNA_API int idna_to_unicode_44i (const uint32_t * in, size_t inlen,
-					   uint32_t * out, size_t * outlen,
-					   int flags);
+  extern IDNAPI int idna_to_ascii_4i (const uint32_t * in, size_t inlen,
+				      char *out, int flags);
+  extern IDNAPI int idna_to_unicode_44i (const uint32_t * in, size_t inlen,
+					 uint32_t * out, size_t * outlen,
+					 int flags);
 
   /* Wrappers that handle several labels */
 
-  extern IDNA_API int idna_to_ascii_4z (const uint32_t * input,
-					char **output, int flags);
+  extern IDNAPI int idna_to_ascii_4z (const uint32_t * input,
+				      char **output, int flags);
 
-  extern IDNA_API int idna_to_ascii_8z (const char *input, char **output,
-					int flags);
+  extern IDNAPI int idna_to_ascii_8z (const char *input, char **output,
+				      int flags);
 
-  extern IDNA_API int idna_to_ascii_lz (const char *input, char **output,
-					int flags);
+  extern IDNAPI int idna_to_ascii_lz (const char *input, char **output,
+				      int flags);
 
-  extern IDNA_API int idna_to_unicode_4z4z (const uint32_t * input,
-					    uint32_t ** output, int flags);
+  extern IDNAPI int idna_to_unicode_4z4z (const uint32_t * input,
+					  uint32_t ** output, int flags);
 
-  extern IDNA_API int idna_to_unicode_8z4z (const char *input,
-					    uint32_t ** output, int flags);
+  extern IDNAPI int idna_to_unicode_8z4z (const char *input,
+					  uint32_t ** output, int flags);
 
-  extern IDNA_API int idna_to_unicode_8z8z (const char *input,
-					    char **output, int flags);
+  extern IDNAPI int idna_to_unicode_8z8z (const char *input,
+					  char **output, int flags);
 
-  extern IDNA_API int idna_to_unicode_8zlz (const char *input,
-					    char **output, int flags);
+  extern IDNAPI int idna_to_unicode_8zlz (const char *input,
+					  char **output, int flags);
 
-  extern IDNA_API int idna_to_unicode_lzlz (const char *input,
-					    char **output, int flags);
+  extern IDNAPI int idna_to_unicode_lzlz (const char *input,
+					  char **output, int flags);
 
 # ifdef __cplusplus
 }

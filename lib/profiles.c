@@ -19,6 +19,7 @@
  *
  */
 
+#include <config.h>
 #include "stringprep.h"
 
 const Stringprep_profiles stringprep_profiles[] = {

@@ -59,6 +59,7 @@
  * MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE.
  */
 
+#include <config.h>
 #include <string.h>
 
 #include "punycode.h"

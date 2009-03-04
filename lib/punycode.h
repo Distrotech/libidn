@@ -62,6 +62,18 @@
 #ifndef _PUNYCODE_H
 #define _PUNYCODE_H
 
+# ifndef IDNAPI
+#  if defined LIBIDN_BUILDING && defined HAVE_VISIBILITY && HAVE_VISIBILITY
+#   define IDNAPI __attribute__((__visibility__("default")))
+#  elif defined LIBIDN_BUILDING && defined _MSC_VER && ! defined LIBIDN_STATIC
+#   define IDNAPI __declspec(dllexport)
+#  elif defined _MSC_VER && ! defined LIBIDN_STATIC
+#   define IDNAPI __declspec(dllimport)
+#  else
+#   define IDNAPI
+#  endif
+# endif
+
 #ifdef __cplusplus
 extern "C"
 {
@@ -86,17 +98,17 @@ extern "C"
     PUNYCODE_OVERFLOW = punycode_overflow
   } Punycode_status;
 
-  extern const char *punycode_strerror (Punycode_status rc);
+  extern IDNAPI const char *punycode_strerror (Punycode_status rc);
 
 /* punycode_uint needs to be unsigned and needs to be */
 /* at least 26 bits wide.                             */
 
   typedef uint32_t punycode_uint;
 
-  extern int punycode_encode (size_t input_length,
-			      const punycode_uint input[],
-			      const unsigned char case_flags[],
-			      size_t * output_length, char output[]);
+  extern IDNAPI int punycode_encode (size_t input_length,
+				     const punycode_uint input[],
+				     const unsigned char case_flags[],
+				     size_t * output_length, char output[]);
 
 /*
     punycode_encode() converts a sequence of code points (presumed to be
@@ -153,11 +165,11 @@ extern "C"
         and output might contain garbage.
 */
 
-  extern int punycode_decode (size_t input_length,
-			      const char input[],
-			      size_t * output_length,
-			      punycode_uint output[],
-			      unsigned char case_flags[]);
+  extern IDNAPI int punycode_decode (size_t input_length,
+				     const char input[],
+				     size_t * output_length,
+				     punycode_uint output[],
+				     unsigned char case_flags[]);
 
 /*
     punycode_decode() converts Punycode to a sequence of code points
