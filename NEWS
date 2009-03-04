@@ -6,7 +6,8 @@ See the end for copying conditions.
 
 ** libidn: Use a LD version script on platforms where it is supported.
 Currently only GNU LD and the Solaris linker supports it.  This helps
-Debian package tools to produce better dependencies.
+Debian package tools to produce better dependencies.  For platforms
+that don't support it, we use Libtool -export-symbols-regex as before.
 
 ** libidn: Compiled with -fvisibility=hidden by default if supported.
 Currently only GCC supports it for ELF targets.  This hides internal
