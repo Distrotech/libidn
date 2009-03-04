@@ -49,7 +49,8 @@
  * worth enough to motivate recommending this interface over calling
  * `free' directly, though.
  *
- * If you have any thoughts or comments on this, please let me know.
+ * See the manual section 'Memory handling under Windows' for more
+ * information.
  */
 
 extern void IDNAPI idn_free (void *ptr);
