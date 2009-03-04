@@ -5,7 +5,13 @@ See the end for copying conditions.
 * Version 1.13 (unreleased)
 
 ** libidn: Use a LD version script on platforms where it is supported.
-Currently only GNU LD and the Solaris linker supports it.
+Currently only GNU LD and the Solaris linker supports it.  This helps
+Debian package tools to produce better dependencies.
+
+** libidn: Compiled with -fvisibility=hidden by default if supported.
+Currently only GCC supports it for ELF targets.  This hides internal
+symbols and has other advantages, see
+<http://gcc.gnu.org/wiki/Visibility>.
 
 ** doc: The idn_free function is now documented.
 Suggested by "Sisyphus" <sisyphus1@optusnet.com.au>.
