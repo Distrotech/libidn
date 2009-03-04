@@ -19,6 +19,8 @@
  *
  */
 
+#include <config.h>
+
 #include "pr29.h"
 
 /* Get stringprep_utf8_to_ucs4. */

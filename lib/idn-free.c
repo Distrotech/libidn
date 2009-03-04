@@ -20,6 +20,8 @@
  *
  */
 
+#include <config.h>
+
 /* Get specification. */
 #include "idn-free.h"
 
