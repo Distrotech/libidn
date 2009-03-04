@@ -735,6 +735,9 @@ function @code{idn_free}.
 
 @end table
 
+All header files defined and use the symbol @code{IDNAPI} to decorate
+the API functions.
+
 @node Initialization
 @section Initialization
 

@@ -22,8 +22,8 @@
  *
  */
 
-#ifndef _TLD_H
-# define _TLD_H
+#ifndef TLD_H
+# define TLD_H
 
 # ifndef IDNAPI
 #  if defined LIBIDN_BUILDING && defined HAVE_VISIBILITY && HAVE_VISIBILITY
@@ -124,4 +124,4 @@ extern "C"
 }
 # endif
 
-#endif /* _TLD_H */
+#endif /* TLD_H */

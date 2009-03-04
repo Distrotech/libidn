@@ -59,8 +59,8 @@
  * MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE.
  */
 
-#ifndef _PUNYCODE_H
-#define _PUNYCODE_H
+#ifndef PUNYCODE_H
+# define PUNYCODE_H
 
 # ifndef IDNAPI
 #  if defined LIBIDN_BUILDING && defined HAVE_VISIBILITY && HAVE_VISIBILITY
@@ -227,4 +227,4 @@ extern "C"
 #ifdef __cplusplus
 }
 #endif
-#endif				/* _PUNYCODE_H */
+#endif				/* PUNYCODE_H */
