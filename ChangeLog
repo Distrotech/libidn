@@ -1,3 +1,177 @@
+2009-03-06  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Version 1.13.
+
+2009-03-06  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS, THANKS: Add credits.
+
+2009-03-06  Simon Josefsson <simon@josefsson.org>
+
+	* configure.ac: Don't use warnings unless we are using GCC.
+
+2009-03-06  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Fix.
+
+2009-03-06  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2009-03-06  Simon Josefsson <simon@josefsson.org>
+
+	* build-aux/gnupload: Update gnulib files.
+
+2009-03-04  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Fix.
+
+2009-03-04  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Clarify.
+
+2009-03-04  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi, lib/punycode.h, lib/tld.h: Namespace discussion.
+
+2009-03-04  Simon Josefsson <simon@josefsson.org>
+
+	* gl/Makefile.am, lib/gl/Makefile.am: Update gnulib files.
+
+2009-03-04  Simon Josefsson <simon@josefsson.org>
+
+	* lib/idn-free.h: Fix.
+
+2009-03-04  Simon Josefsson <simon@josefsson.org>
+
+	* lib/idn-free.c, lib/idn-free.h, lib/pr29.c, lib/pr29.h: Finish API
+	visibility markup.  Now passes self tests.
+
+2009-03-04  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Fix.
+
+2009-03-04  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2009-03-04  Simon Josefsson <simon@josefsson.org>
+
+	* lib/idna.h, lib/profiles.c, lib/punycode.c, lib/punycode.h,
+	lib/stringprep.h, lib/tld.c: Mark visibility of API functions.
+
+2009-03-04  Simon Josefsson <simon@josefsson.org>
+
+	* doc/reference/Makefile.am: Ignore decorators.
+
+2009-03-04  Simon Josefsson <simon@josefsson.org>
+
+	* lib/tld.h: Improve decorators.
+
+2009-03-04  Simon Josefsson <simon@josefsson.org>
+
+	* lib/tld.h: Add symbol visibility markup.
+
+2009-03-04  Simon Josefsson <simon@josefsson.org>
+
+	* lib/Makefile.am, lib/gl/m4/visibility.m4: Update gnulib files.
+
+2009-03-03  Simon Josefsson <simon@josefsson.org>
+
+	* m4/linker-script.m4: Remove.
+
+2009-03-03  Simon Josefsson <simon@josefsson.org>
+
+	* lib/Makefile.am, lib/gl/Makefile.am, lib/gl/m4/gnulib-cache.m4,
+	lib/gl/m4/gnulib-comp.m4, lib/gl/m4/visibility.m4: Use visibility
+	module.
+
+2009-03-03  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2009-03-03  Simon Josefsson <simon@josefsson.org>
+
+	* lib/Makefile.am: Typo.
+
+2009-03-03  Simon Josefsson <simon@josefsson.org>
+
+	* configure.ac: More debug info.
+
+2009-03-03  Simon Josefsson <simon@josefsson.org>
+
+	* configure.ac: Debug output about version script.
+
+2009-03-03  Simon Josefsson <simon@josefsson.org>
+
+	* configure.ac, lib/Makefile.am, lib/gl/Makefile.am,
+	lib/gl/m4/gnulib-cache.m4, lib/gl/m4/gnulib-comp.m4,
+	lib/gl/m4/ld-version-script.m4: Use gnulib ld-version-script module.
+	Re-add use of -export-symbols-regex for other platforms.
+
+2009-03-02  Simon Josefsson <simon@josefsson.org>
+
+	* lib/libidn.map: Add license.  Use v1.0 in name.
+
+2009-03-02  Simon Josefsson <simon@josefsson.org>
+
+	* lib/libidn.map: Add.
+
+2009-03-02  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS, configure.ac, lib/Makefile.am, m4/linker-script.m4: Use a
+	linker version script.
+
+2009-03-02  Simon Josefsson <simon@josefsson.org>
+
+	* gl/m4/gnulib-common.m4, gl/m4/stdarg.m4,
+	lib/gl/m4/gnulib-common.m4, lib/gl/m4/stdint.m4, lib/gl/stdint.in.h: 
+	Update gnulib files.
+
+2009-02-24  Simon Josefsson <simon@josefsson.org>
+
+	* gl/m4/include_next.m4, lib/gl/m4/include_next.m4: Update gnulib
+	files.
+
+2009-02-10  Simon Josefsson <simon@josefsson.org>
+
+	* src/Makefile.am: Don't remove idn_cmd.c and idn_cmd.h on
+	distclean, use maintainer-clean instead.  Reported by "Sisyphus"
+	<sisyphus1@optusnet.com.au> in
+	<http://thread.gmane.org/gmane.comp.gnu.libidn.general/178>.
+
+2009-02-09  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS, THANKS, doc/Makefile.am, doc/libidn.texi,
+	doc/reference/Makefile.am, doc/reference/libidn-docs.sgml,
+	lib/idn-free.c, lib/nfkc.c: Document the idn_free function.
+
+2009-02-09  Simon Josefsson <simon@josefsson.org>
+
+	* lib/stringprep.h: Bump version.
+
+2009-02-09  Simon Josefsson <simon@josefsson.org>
+
+	* src/idn.c: Drop emit_bug_reporting_address, it is now provided by
+	gnulib version-etc.
+
+2009-02-06  Simon Josefsson <simon@josefsson.org>
+
+	* build-aux/gnupload, gl/m4/00gnulib.m4, gl/m4/extensions.m4,
+	gl/m4/gnulib-common.m4, gl/m4/gnulib-comp.m4,
+	gl/m4/pmccabe2html.m4, gl/version-etc.c, gl/version-etc.h,
+	lib/gl/m4/00gnulib.m4, lib/gl/m4/extensions.m4,
+	lib/gl/m4/gnulib-common.m4, lib/gl/m4/gnulib-comp.m4,
+	lib/gl/m4/locale-fr.m4: Update gnulib files.
+
+2009-01-23  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS, configure.ac: Bump versions.
+
+2009-01-23  Simon Josefsson <simon@josefsson.org>
+
+	* ChangeLog: Generated.
+
 2009-01-23  Simon Josefsson <simon@josefsson.org>
 
 	* NEWS: Version 1.12.
