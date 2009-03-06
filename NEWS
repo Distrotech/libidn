@@ -16,6 +16,11 @@ Currently only GCC supports it for ELF targets.  This hides internal
 symbols and has other advantages, see
 <http://gcc.gnu.org/wiki/Visibility>.
 
+** libidn: Compiled with warning flags only when GCC is used.
+This avoids the problem that some flags confuse non-GCC compilers, for
+example -fdiagnostics-show-option.  Reported by
+jens.rehsack@bayerbbs.com.
+
 ** doc: The idn_free function is now documented.
 Suggested by "Sisyphus" <sisyphus1@optusnet.com.au>.
 

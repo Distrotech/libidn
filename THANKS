@@ -11,7 +11,9 @@ Unicode (see nfkc.c and toutf8.c) are borrowed from GLib downloaded
 from www.gtk.org.
 
 Suggestions, bug reports, patches, translations, test vectors or other
-contributions were also received from or written by:
+contributions were also received from or written by the people
+mentioned below.  If you have contributed and aren't mentioned here,
+please let us know!
 
 Stephane Bortzmeyer
 Seungho Lee
@@ -85,6 +87,7 @@ Adam Strzelecki
 Benno Schulenberg
 John McGowan
 Sisyphus
+Jens Rehsack <jens.rehsack@bayerbbs.com>
 
 ----------------------------------------------------------------------
 Copying and distribution of this file, with or without modification,
