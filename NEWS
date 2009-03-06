@@ -8,9 +8,8 @@ See the end for copying conditions.
 Currently only GNU LD and the Solaris linker supports it.  This helps
 Debian package tools to produce better dependencies.  Before we used
 Libtool -export-symbols-regex that created an anonymous version tag.
-We still fall back on -export-symbols-regex if the system does not
-support LD version scripts, although on most platforms this will just
-affect symbol visibility.
+Libidn uses -export-symbols-regex if the system does not support LD
+version scripts, but that only affect symbol visibility.
 
 ** libidn: Compiled with -fvisibility=hidden by default if supported.
 Currently only GCC supports it for ELF targets.  This hides internal
