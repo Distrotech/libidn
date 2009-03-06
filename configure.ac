@@ -109,23 +109,25 @@ sj_VALGRIND
 sj_UPDATE_HEADER_VERSION([$srcdir/lib/stringprep.h])
 
 # Add many warnings, except some...
-nw="$nw -Wsystem-headers"         # Don't let system headers trigger warnings
-nw="$nw -Wc++-compat"             # We don't care strongly about C++ compilers
-nw="$nw -Woverlength-strings"     # Some of our strings are too large
-nw="$nw -Wsign-conversion"        # Too many warnings for now
-nw="$nw -Wconversion"             # Too many warnings for now
-nw="$nw -Wtraditional"            # Warns on #elif which we use often
-nw="$nw -Wtraditional-conversion" # Too many warnings for now
-nw="$nw -Wmissing-noreturn"       # Too many warnings for now
-nw="$nw -Wunreachable-code"       # Too many false positives
-nw="$nw -Wlogical-op"             # Too many false positives
-gl_MANYWARN_ALL_GCC([ws])
-gl_MANYWARN_COMPLEMENT(ws, [$ws], [$nw])
-for w in $ws; do
-  gl_WARN_ADD([$w])
-done
-gl_WARN_ADD([-Wno-missing-field-initializers])
-gl_WARN_ADD([-fdiagnostics-show-option])
+if test "$GCC" = "yes"; then
+  nw="$nw -Wsystem-headers"         # Don't let system headers trigger warnings
+  nw="$nw -Wc++-compat"             # We don't care strongly about C++ compilers
+  nw="$nw -Woverlength-strings"     # Some of our strings are too large
+  nw="$nw -Wsign-conversion"        # Too many warnings for now
+  nw="$nw -Wconversion"             # Too many warnings for now
+  nw="$nw -Wtraditional"            # Warns on #elif which we use often
+  nw="$nw -Wtraditional-conversion" # Too many warnings for now
+  nw="$nw -Wmissing-noreturn"       # Too many warnings for now
+  nw="$nw -Wunreachable-code"       # Too many false positives
+  nw="$nw -Wlogical-op"             # Too many false positives
+  gl_MANYWARN_ALL_GCC([ws])
+  gl_MANYWARN_COMPLEMENT(ws, [$ws], [$nw])
+  for w in $ws; do
+    gl_WARN_ADD([$w])
+  done
+  gl_WARN_ADD([-Wno-missing-field-initializers])
+  gl_WARN_ADD([-fdiagnostics-show-option])
+fi
 
 AC_CONFIG_FILES([
   Makefile
