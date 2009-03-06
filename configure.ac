@@ -18,7 +18,7 @@ dnl You should have received a copy of the GNU General Public License
 dnl along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 AC_PREREQ(2.61)
-AC_INIT([GNU Libidn], [1.13], [bug-libidn@gnu.org])
+AC_INIT([GNU Libidn], [1.14], [bug-libidn@gnu.org])
 AC_COPYRIGHT([Copyright (c) 2002-2008 Simon Josefsson <simon@josefsson.org>.])
 
 # Library code modified:                              REVISION++
@@ -26,7 +26,7 @@ AC_COPYRIGHT([Copyright (c) 2002-2008 Simon Josefsson <simon@josefsson.org>.])
 # Interfaces added:                             AGE++
 # Interfaces removed:                           AGE=0
 AC_SUBST(LT_CURRENT, 16)
-AC_SUBST(LT_REVISION, 42)
+AC_SUBST(LT_REVISION, 43)
 AC_SUBST(LT_AGE, 5)
 
 AC_CONFIG_AUX_DIR([build-aux])
