@@ -4,6 +4,10 @@ See the end for copying conditions.
 
 * Version 1.14 (unreleased)
 
+** tests/tst_toutf8: Don't crash if stringprep_utf8_to_locale returns NULL.
+Reported by Dagobert Michelsen <dam@opencsw.org> in
+<http://thread.gmane.org/gmane.comp.gnu.libidn.general/192>.
+
 ** API and ABI is backwards compatible with the previous version.
 
 * Version 1.13 (released 2009-03-06)
