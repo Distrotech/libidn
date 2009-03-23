@@ -44,14 +44,14 @@ doit (void)
     printf ("PASS: stringprep_locale_charset == %s\n", q);
 
   p = stringprep_locale_to_utf8 ("foo");
-  if (memcmp (p, "foo",4) != 0)
+  if (!p || memcmp (p, "foo", 4) != 0)
     fail ("FAIL: stringprep_locale_to_utf8(\"foo\") == %s\n", p);
   if (debug)
     printf ("PASS: stringprep_locale_to_utf8(\"foo\") == %s\n", p);
   free (p);
 
   p = stringprep_utf8_to_locale ("foo");
-  if (memcmp (p, "foo",4) != 0)
+  if (!p || memcmp (p, "foo", 4) != 0)
     fail ("FAIL: stringprep_utf8_to_locale(\"foo\") == %s\n", p);
   if (debug)
     printf ("PASS: stringprep_utf8_to_locale(\"foo\") == %s\n", p);
