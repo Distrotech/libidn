@@ -44,9 +44,7 @@
 # define HAVE_LANGINFO_CODESET 1
 #endif
 
-#ifdef HAVE_LOCALE_H
-# include <locale.h>
-#endif
+#include <locale.h>
 
 #ifdef HAVE_LANGINFO_CODESET
 # include <langinfo.h>
