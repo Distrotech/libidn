@@ -68,6 +68,13 @@ libidn_la_LDFLAGS += -export-symbols-regex \
 			'^(idn|pr29_|punycode_|stringprep|tld_).*'
 endif
 
+if HAVE_LD_OUTPUT_DEF
+libidn_la_LDFLAGS += -Wl,--output-def,libidn-$(DLL_VERSION).def
+defexecdir = $(bindir)
+defexec_DATA = libidn-$(DLL_VERSION).def
+DISTCLEANFILES += $(defexec_DATA)
+endif
+
 nfkc.c: gunibreak.h gunicomp.h gunidecomp.h
 
 SPEC = $(top_srcdir)/doc/specifications

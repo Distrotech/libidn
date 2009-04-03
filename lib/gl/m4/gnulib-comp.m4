@@ -46,6 +46,7 @@ AC_DEFUN([lgl_INIT],
   AM_ICONV
   gl_ICONV_H
   gl_FUNC_ICONV_OPEN
+  gl_LD_OUTPUT_DEF
   gl_LD_VERSION_SCRIPT
   gl_VISIBILITY
   AC_REQUIRE([gl_MULTIARCH])
@@ -222,6 +223,7 @@ AC_DEFUN([lgl_FILE_LIST], [
   m4/iconv_h.m4
   m4/iconv_open.m4
   m4/include_next.m4
+  m4/ld-output-def.m4
   m4/ld-version-script.m4
   m4/lib-ld.m4
   m4/lib-link.m4

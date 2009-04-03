@@ -4,6 +4,10 @@ See the end for copying conditions.
 
 * Version 1.14 (unreleased)
 
+** libidn: Install a libidn-*.def file when building under MinGW.
+The file is useful if you develop programs in Visual Studio that links
+to libidn.
+
 ** tests/tst_toutf8: Don't crash if stringprep_utf8_to_locale returns NULL.
 Reported by Dagobert Michelsen <dam@opencsw.org> in
 <http://thread.gmane.org/gmane.comp.gnu.libidn.general/192>.
