@@ -1,3 +1,57 @@
+2009-04-03  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Version 1.14.
+
+2009-04-03  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS, configure.ac, lib/Makefile.am, lib/gl/Makefile.am,
+	lib/gl/m4/gnulib-cache.m4, lib/gl/m4/gnulib-comp.m4,
+	lib/gl/m4/ld-output-def.m4: Use --output-def.
+
+2009-04-03  Simon Josefsson <simon@josefsson.org>
+
+	* lib/gl/Makefile.am, lib/gl/m4/gnulib-cache.m4,
+	lib/gl/m4/gnulib-comp.m4: Update gnulib files.
+
+2009-04-01  Simon Josefsson <simon@josefsson.org>
+
+	* lib/toutf8.c: Assume locale.h.
+
+2009-03-25  Simon Josefsson <simon@josefsson.org>
+
+	* cfg.mk: Copy cyclo chart to webdir.
+
+2009-03-25  Simon Josefsson <simon@josefsson.org>
+
+	* gl/unistd.in.h: Update gnulib files.
+
+2009-03-23  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2009-03-23  Simon Josefsson <simon@josefsson.org>
+
+	* THANKS: Add.
+
+2009-03-23  Simon Josefsson <simon@josefsson.org>
+
+	* tests/tst_toutf8.c: Don't crash in memcmp if
+	stringprep_utf8_to_locale returns NULL.  Reported by Dagobert
+	Michelsen <dam@opencsw.org> in
+	<http://thread.gmane.org/gmane.comp.gnu.libidn.general/192>.
+
+2009-03-19  Simon Josefsson <simon@josefsson.org>
+
+	* GNUmakefile, build-aux/gnupload, maint.mk: Update gnulib files.
+
+2009-03-06  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS, configure.ac, lib/stringprep.h: Bump version.
+
+2009-03-06  Simon Josefsson <simon@josefsson.org>
+
+	* ChangeLog: Generated.
+
 2009-03-06  Simon Josefsson <simon@josefsson.org>
 
 	* NEWS: Version 1.13.
