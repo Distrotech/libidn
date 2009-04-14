@@ -55,7 +55,10 @@ public class TestIDNA
 	  "domain\uFF61invalid",
       };
       for ( int i = 0; i < tests.length ; i++ ) {
-	  assert IDNA.toASCII( tests[i] ).equals( "domain.invalid" );
+	  if (!IDNA.toASCII( tests[i] ).equals( "domain.invalid" )) {
+	      System.err.println("Dot-test failed");
+	      System.exit(1);
+	  }
       }
 
       if (args.length == 2) {
