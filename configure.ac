@@ -91,7 +91,7 @@ GTK_DOC_CHECK(1.1)
 AC_ARG_ENABLE(java, AC_HELP_STRING([--enable-java], [enable Java API]),,
 		enable_java=no)
 if test "$enable_java" != "no"; then
-	AC_PROG_JAVAC
+	AM_PROG_GCJ
 	AC_PROG_JAR
 	AM_MISSING_PROG(GJDOC, gjdoc, $missing_dir)
 fi
