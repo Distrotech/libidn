@@ -24,7 +24,9 @@ endif
 local-checks-to-skip = sc_prohibit_strcmp sc_prohibit_have_config_h	\
 	sc_require_config_h sc_require_config_h_first			\
 	sc_prohibit_HAVE_MBRTOWC sc_program_name sc_trailing_blank	\
-	sc_useless_cpp_parens sc_GPL_version sc_immutable_NEWS
+	sc_useless_cpp_parens sc_GPL_version sc_immutable_NEWS		\
+	sc_two_space_separator_in_usage sc_m4_quote_check sc_po_check	\
+	sc_copyright_check
 
 doc/Makefile.gdoc:
 	printf "gdoc_MANS =\ngdoc_TEXINFOS =\n" > doc/Makefile.gdoc

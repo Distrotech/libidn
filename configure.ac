@@ -79,7 +79,7 @@ AC_ARG_ENABLE(tld, AC_HELP_STRING([--disable-tld], [disable TLD code]),
 		enable_tld=$enableval, enable_tld=yes)
 AM_CONDITIONAL(TLD, test "$enable_tld" != "no")
 if test "$enable_tld" != "no"; then
-	AC_DEFINE(WITH_TLD, 1, [Define to 1 if you want TLD code.])
+	AC_DEFINE([WITH_TLD], 1, [Define to 1 if you want TLD code.])
 fi
 AC_MSG_CHECKING([if TLD API for specific TLD rules should be built])
 AC_MSG_RESULT($enable_tld)
