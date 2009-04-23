@@ -1,7 +1,5 @@
 #!/usr/bin/python
 
-# $Id$
-
 locale = "Latin-1"
 
 import idn

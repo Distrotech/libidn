@@ -12,5 +12,3 @@ install:
 
 clean:
 	rm -f *.so
-
-# $Id$

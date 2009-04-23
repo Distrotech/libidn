@@ -4,7 +4,6 @@
  *
  * Stephane Bortzmeyer <bortzmeyer@nic.fr>
  *
- * $Id$
  */
 
 #include <Python.h>

@@ -51,7 +51,6 @@
 #define g_malloc malloc
 #define g_free free
 #define GError void*
-#define g_set_error(a,b,c,d) (a = NULL)
 #define g_new(struct_type, n_structs)					\
   ((struct_type *) g_malloc (((gsize) sizeof (struct_type)) * ((gsize) (n_structs))))
 #  if defined (__GNUC__) && !defined (__STRICT_ANSI__) && !defined (__cplusplus)
@@ -452,9 +451,6 @@ g_ucs4_to_utf8 (const gunichar * str,
 	  if (items_read)
 	    *items_read = i;
 
-	  g_set_error (error, G_CONVERT_ERROR,
-		       G_CONVERT_ERROR_ILLEGAL_SEQUENCE,
-		       _("Character out of range for UTF-8"));
 	  goto err_out;
 	}
 

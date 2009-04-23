@@ -29,7 +29,7 @@
  * stringprep_check_version - check for library version
  * @req_version: Required version number, or NULL.
  *
- * Check that the the version of the library is at minimum the requested one
+ * Check that the version of the library is at minimum the requested one
  * and return the version string; return NULL if the condition is not
  * satisfied.  If a NULL is passed to this function, no check is done,
  * but the version string is simply returned.
