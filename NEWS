@@ -4,6 +4,12 @@ See the end for copying conditions.
 
 * Version 1.15 (unreleased)
 
+** Improved sections for the info manual.
+We now follow the advice given by the texinfo manual on which
+directory categories to use.  In particular, libidn moved from the
+'GNU Libraries' section to the 'Software libraries' and 'Invoking idn'
+moved from 'GNU utilities' to 'Localization'.
+
 ** API and ABI is backwards compatible with the previous version.
 
 * Version 1.14 (released 2009-04-03)

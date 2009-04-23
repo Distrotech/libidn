@@ -26,14 +26,14 @@ Documentation License''.
 @end quotation
 @end copying
 
-@dircategory GNU Libraries
+@dircategory Software libraries
 @direntry
 * libidn: (libidn).	Internationalized string processing library.
 @end direntry
 
-@dircategory GNU utilities
+@dircategory Localization
 @direntry
-* idn: (libidn)Invoking idn.		Command line interface to GNU Libidn.
+* idn: (libidn)Invoking idn.	Internationalized Domain Name (IDN) string conversion.
 @end direntry
 
 @dircategory Emacs
