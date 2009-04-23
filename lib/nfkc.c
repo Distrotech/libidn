@@ -50,7 +50,6 @@
 #define gssize ssize_t
 #define g_malloc malloc
 #define g_free free
-#define GError void*
 #define g_new(struct_type, n_structs)					\
   ((struct_type *) g_malloc (((gsize) sizeof (struct_type)) * ((gsize) (n_structs))))
 #  if defined (__GNUC__) && !defined (__STRICT_ANSI__) && !defined (__cplusplus)
@@ -433,7 +432,7 @@ g_utf8_to_ucs4_fast (const gchar * str, glong len, glong * items_written)
 static gchar *
 g_ucs4_to_utf8 (const gunichar * str,
 		glong len,
-		glong * items_read, glong * items_written, GError ** error)
+		glong * items_read, glong * items_written)
 {
   gint result_length;
   gchar *result = NULL;
@@ -906,7 +905,7 @@ g_utf8_normalize (const gchar * str, gssize len, GNormalizeMode mode)
   gunichar *result_wc = _g_utf8_normalize_wc (str, len, mode);
   gchar *result;
 
-  result = g_ucs4_to_utf8 (result_wc, -1, NULL, NULL, NULL);
+  result = g_ucs4_to_utf8 (result_wc, -1, NULL, NULL);
   g_free (result_wc);
 
   return result;
@@ -991,7 +990,7 @@ stringprep_ucs4_to_utf8 (const uint32_t * str, ssize_t len,
 			 size_t * items_read, size_t * items_written)
 {
   return g_ucs4_to_utf8 (str, len, (glong *) items_read,
-			 (glong *) items_written, NULL);
+			 (glong *) items_written);
 }
 
 /**
