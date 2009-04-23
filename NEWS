@@ -4,7 +4,7 @@ See the end for copying conditions.
 
 * Version 1.15 (unreleased)
 
-** Improved sections for the info manual.
+** doc: Improved sections for the info manual.
 We now follow the advice given by the texinfo manual on which
 directory categories to use.  In particular, libidn moved from the
 'GNU Libraries' section to the 'Software libraries' and 'Invoking idn'
