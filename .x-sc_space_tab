@@ -1,0 +1,6 @@
+^java
+^doc/specifications/
+^build-aux/csharpcomp.sh.in
+^gl/m4/gnulib-comp.m4
+^lib/gl/m4/lib-ld.m4
+^lib/gl/m4/lib-prefix.m4
