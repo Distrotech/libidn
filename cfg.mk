@@ -43,8 +43,8 @@ update-po: refresh-po
 	for f in `ls po/*.po | grep -v quot.po`; do \
 		cp $$f $$f.in; \
 	done
-	git-add po/*.po.in
-	git-commit -m "Sync with TP." po/LINGUAS po/*.po.in
+	git add po/*.po.in
+	git commit -m "Sync with TP." po/LINGUAS po/*.po.in
 
 bootstrap: autoreconf
 	./configure $(CFGFLAGS)
@@ -72,15 +72,15 @@ htmldir = ../www-$(PACKAGE)
 release: prepare upload web upload-web
 
 prepare:
-	! git-tag -l $(tag) | grep $(PACKAGE) > /dev/null
+	! git tag -l $(tag) | grep $(PACKAGE) > /dev/null
 	rm -f ChangeLog
 	$(MAKE) ChangeLog distcheck
 	git commit -m Generated. ChangeLog
-	git-tag -u b565716f! -m $(VERSION) $(tag)
+	git tag -u b565716f! -m $(VERSION) $(tag)
 
 upload:
-	git-push
-	git-push --tags
+	git push
+	git push --tags
 	build-aux/gnupload --to ftp.gnu.org:$(PACKAGE) --to alpha.gnu.org:$(PACKAGE) $(distdir).tar.gz
 	cp $(distdir).tar.gz $(distdir).tar.gz.sig ../releases/$(PACKAGE)/
 
