@@ -23,9 +23,9 @@ INSTALL_TARGETS =
 
 if JAVA
 libidn_jardir = $(datadir)/java
-dist_libidn_jar_DATA = libidn-@VERSION@.jar
+dist_libidn_jar_DATA = libidn-$(VERSION).jar
 
-libidn-@VERSION@.jar:
+libidn-$(VERSION).jar:
 	$(JAR) cf $@ gnu/inet/encoding/CombiningClass.class	\
 		gnu/inet/encoding/Composition.class		\
 		gnu/inet/encoding/DecompositionKeys.class	\
@@ -42,7 +42,7 @@ libidn-@VERSION@.jar:
 INSTALL_TARGETS += install-jar
 install-jar:
 	install -d -m 755 $(DESTDIR)$(libidn_jardir)
-	ln -sf libidn-@VERSION@.jar $(DESTDIR)$(libidn_jardir)/libidn.jar
+	ln -sf libidn-$(VERSION).jar $(DESTDIR)$(libidn_jardir)/libidn.jar
 
 clean-local:
 	rm -f $(libidn_jar_DATA)
