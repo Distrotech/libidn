@@ -17,22 +17,26 @@ We require several tools to build the software, including:
 - Gengetopt <http://www.gnu.org/software/gengetopt/>
 - Tar <http://www.gnu.org/software/tar/>
 - Gzip <http://www.gnu.org/software/gzip/>
-- Gcj <http://www.gnu.org/software/gcc/java/> (for java port)
-- Mono mcs <http://www.mono.org/> (for C# port)
 - Texlive & epsf <http://www.tug.org/texlive/> (for PDF manual)
 - CVS <http://www.gnu.org/software/cvs/> (for gettext autopoint)
 - GTK-DOC <http://www.gtk.org/gtk-doc/> (for API manual)
-- fig2dev <http://www-epb.lbl.gov/xfig/>
 - Git <http://git.or.cz/>
 - Perl <http://www.cpan.org/>
 - Valgrind <http://valgrind.org/> (optional)
+- Gcj <http://www.gnu.org/software/gcc/java/> (for java port)
+- gjdoc <http://www.gnu.org/software/classpath/cp-tools/> (for java port)
+- Mono mcs <http://www.mono.org/> (for C# port)
+- fig2dev <http://www-epb.lbl.gov/xfig/>
 
 The required software is typically disitributed with your operating
 system, and the instructions for installing them differ.  Here are
 some hints:
 
 gNewSense/Debian/Ubuntu:
-sudo apt-get install git-core autoconf automake libtool gettext cvs gcj gjdoc transfig texinfo help2man valgrind texlive texlive-generic-recommended gtk-doc-tools mono-mcs binfmt-support
+sudo apt-get install git-core autoconf automake libtool gettext cvs 
+sudo apt-get install texinfo texlive texlive-generic-recommended texlive-extra-utils
+sudo apt-get install help2man gtk-doc-tools valgrind
+sudo apt-get install gcj gjdoc transfig mono-mcs binfmt-support
 
 To download the version controlled sources:
 
