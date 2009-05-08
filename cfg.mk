@@ -15,7 +15,8 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-CFGFLAGS ?= --enable-java --enable-gtk-doc WARN_CFLAGS=-Werror
+WFLAGS ?= WARN_CFLAGS=-Werror
+CFGFLAGS ?= --enable-java --enable-gtk-doc $(WFLAGS)
 
 ifeq ($(.DEFAULT_GOAL),abort-due-to-no-makefile)
 .DEFAULT_GOAL := bootstrap
