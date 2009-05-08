@@ -49,7 +49,7 @@ AC_DEFUN([lgl_INIT],
   gl_LD_OUTPUT_DEF
   gl_LD_VERSION_SCRIPT
   gl_VISIBILITY
-  AC_REQUIRE([gl_MULTIARCH])
+  gl_MULTIARCH
   AM_STDBOOL_H
   gl_STDINT_H
   if test $gl_cond_libtool = false; then
