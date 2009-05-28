@@ -112,8 +112,20 @@ AC_MSG_RESULT($enable_csharp)
 sj_VALGRIND
 sj_UPDATE_HEADER_VERSION([$srcdir/lib/stringprep.h])
 
-# Add many warnings, except some...
-if test "$GCC" = "yes"; then
+AC_ARG_ENABLE([gcc-warnings],
+  [AS_HELP_STRING([--enable-gcc-warnings],
+		  [turn on lots of GCC warnings (for developers)])],
+  [case $enableval in
+     yes|no) ;;
+     *)      AC_MSG_ERROR([bad value $enableval for gcc-warnings option]) ;;
+   esac
+   gl_gcc_warnings=$enableval],
+  [gl_gcc_warnings=no]
+)
+
+if test "$gl_gcc_warnings" = yes; then
+  gl_WARN_ADD([-Werror], [WERROR_CFLAGS])
+
   nw="$nw -Wsystem-headers"         # Don't let system headers trigger warnings
   nw="$nw -Wc++-compat"             # We don't care strongly about C++ compilers
   nw="$nw -Woverlength-strings"     # Some of our strings are too large
@@ -124,11 +136,13 @@ if test "$GCC" = "yes"; then
   nw="$nw -Wmissing-noreturn"       # Too many warnings for now
   nw="$nw -Wunreachable-code"       # Too many false positives
   nw="$nw -Wlogical-op"             # Too many false positives
+
   gl_MANYWARN_ALL_GCC([ws])
   gl_MANYWARN_COMPLEMENT(ws, [$ws], [$nw])
   for w in $ws; do
     gl_WARN_ADD([$w])
   done
+
   gl_WARN_ADD([-Wno-missing-field-initializers])
   gl_WARN_ADD([-fdiagnostics-show-option])
 fi

@@ -21,7 +21,7 @@
 EXTRA_DIST = gen-stringprep-tables.pl gen-unicode-tables.pl gen-tld-tables.pl
 
 AM_CPPFLAGS = -I$(srcdir)/gl -Igl -DLIBIDN_BUILDING
-AM_CFLAGS = $(WARN_CFLAGS) $(CFLAG_VISIBILITY)
+AM_CFLAGS = $(WERROR_CFLAGS) $(WARN_CFLAGS) $(CFLAG_VISIBILITY)
 DEFS = -DLOCALEDIR=\"$(localedir)\" @DEFS@
 
 lib_LTLIBRARIES = libidn.la

@@ -18,7 +18,7 @@
 
 EXTRA_DIST = README
 
-AM_CFLAGS = $(WARN_CFLAGS)
+AM_CFLAGS = $(WERROR_CFLAGS) $(WARN_CFLAGS)
 AM_CPPFLAGS = -I$(top_srcdir)/lib -I../lib
 LDADD = ../lib/libidn.la
 
