@@ -30,6 +30,9 @@
 
 #include "idna.h"
 
+/* Get c_strcasecmp. */
+#include <c-strcase.h>
+
 #define DOTP(c) ((c) == 0x002E || (c) == 0x3002 ||	\
 		 (c) == 0xFF0E || (c) == 0xFF61)
 
@@ -363,7 +366,7 @@ step3:
    * step 3, using a case-insensitive ASCII comparison.
    */
 
-  if (strcasecmp (utf8in, tmpout + strlen (IDNA_ACE_PREFIX)) != 0)
+  if (c_strcasecmp (utf8in, tmpout + strlen (IDNA_ACE_PREFIX)) != 0)
     {
       free (utf8in);
       return IDNA_ROUNDTRIP_VERIFY_ERROR;
