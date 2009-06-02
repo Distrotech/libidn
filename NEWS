@@ -9,6 +9,8 @@ For portability to NetWare CLIB.  The specification wants a ASCII
 comparison, so it is more appropriate to use c_strcasecmp.  Reported
 by Guenter Knauf <gk@gknw.de>.
 
+** java: Fix some Java warnings.
+
 ** doc: Improved sections for the info manual.
 We now follow the advice given by the texinfo manual on which
 directory categories to use.  In particular, libidn moved from the
