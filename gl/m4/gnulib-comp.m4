@@ -73,6 +73,7 @@ AC_DEFUN([gl_INIT],
   gl_STRING_MODULE_INDICATOR([strerror])
   gl_HEADER_STRING_H
   gl_UNISTD_H
+  gl_VERSION_ETC
   AC_SUBST([WARN_CFLAGS])
   m4_ifval(gl_LIBSOURCES_LIST, [
     m4_syscmd([test ! -d ]m4_defn([gl_LIBSOURCES_DIR])[ ||
@@ -249,6 +250,7 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/strerror.m4
   m4/string_h.m4
   m4/unistd_h.m4
+  m4/version-etc.m4
   m4/warnings.m4
   tests/test-errno.c
   tests/test-strerror.c
