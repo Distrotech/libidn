@@ -17,6 +17,12 @@ directory categories to use.  In particular, libidn moved from the
 'GNU Libraries' section to the 'Software libraries' and 'Invoking idn'
 moved from 'GNU utilities' to 'Localization'.
 
+** New configure parameters to set packaging specific information.
+The parameters are --with-packager, --with-packager-version, and
+--with-packager-bug-reports.  See
+<http://article.gmane.org/gmane.comp.lib.gnulib.bugs/17791> for more
+details.
+
 ** API and ABI is backwards compatible with the previous version.
 
 * Version 1.14 (released 2009-04-03)
