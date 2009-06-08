@@ -9,7 +9,7 @@ For portability to NetWare CLIB.  The specification requires a ASCII
 comparison, so it is also more appropriate to use c_strcasecmp.
 Reported by Guenter Knauf <gk@gknw.de>.
 
-** java: Fix some Java warnings.
+** java: Fix some Java compiler warnings.
 
 ** doc: Improved sections for the info manual.
 We now follow the advice given by the texinfo manual on which
