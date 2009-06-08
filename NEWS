@@ -5,9 +5,9 @@ See the end for copying conditions.
 * Version 1.15 (unreleased)
 
 ** libidn: Use c_strcasecmp instead of strcasecmp.
-For portability to NetWare CLIB.  The specification wants a ASCII
-comparison, so it is more appropriate to use c_strcasecmp.  Reported
-by Guenter Knauf <gk@gknw.de>.
+For portability to NetWare CLIB.  The specification requires a ASCII
+comparison, so it is also more appropriate to use c_strcasecmp.
+Reported by Guenter Knauf <gk@gknw.de>.
 
 ** java: Fix some Java warnings.
 
