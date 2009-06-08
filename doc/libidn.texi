@@ -5,7 +5,7 @@
 @setfilename libidn.info
 @documentencoding UTF-8
 @include version.texi
-@settitle GNU Libidn
+@settitle GNU Libidn @value{VERSION}
 @finalout
 
 @syncodeindex pg cp
