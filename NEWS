@@ -2,7 +2,7 @@ Libidn NEWS -- History of user-visible changes.                 -*- outline -*-
 Copyright (C) 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009 Simon Josefsson
 See the end for copying conditions.
 
-* Version 1.15 (unreleased)
+* Version 1.15 (released 2009-06-08)
 
 ** libidn: Use c_strcasecmp instead of strcasecmp.
 For portability to NetWare CLIB.  The specification requires a ASCII
