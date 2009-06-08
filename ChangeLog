@@ -1,3 +1,209 @@
+2009-06-08  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Version 1.15.
+
+2009-06-08  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Fix.
+
+2009-06-08  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Fix.
+
+2009-06-05  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2009-06-05  Simon Josefsson <simon@josefsson.org>
+
+	* gl/m4/gnulib-comp.m4, gl/m4/version-etc.m4, gl/version-etc.c: 
+	Update gnulib files.
+
+2009-06-02  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS, java/misc/GenerateNFKC.java,
+	java/misc/GenerateRFC3454.java, java/misc/TestIDNA.java,
+	java/misc/TestNFKC.java: Fix some java warnings.
+
+2009-06-01  Simon Josefsson <simon@josefsson.org>
+
+	* configure.ac, lib/Makefile.am: Check stack usage in library.
+
+2009-06-01  Simon Josefsson <simon@josefsson.org>
+
+	* gl/m4/manywarnings.m4: Update gnulib files.
+
+2009-05-29  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS, THANKS, lib/idna.c: Use c_strcasecmp instead of strcasecmp.
+	Reported by Guenter Knauf <gk@gknw.de>.
+
+2009-05-28  Simon Josefsson <simon@josefsson.org>
+
+	* cfg.mk, configure.ac, examples/Makefile.am, lib/Makefile.am,
+	src/Makefile.am, tests/Makefile.am: Improve warning handling.
+
+2009-05-28  Simon Josefsson <simon@josefsson.org>
+
+	* build-aux/gnupload: Update gnulib files.
+
+2009-05-27  Simon Josefsson <simon@josefsson.org>
+
+	* gl/m4/include_next.m4, lib/gl/m4/include_next.m4: Update gnulib
+	files.
+
+2009-05-20  Simon Josefsson <simon@josefsson.org>
+
+	* m4/pkg.m4: Add.
+
+2009-05-20  Simon Josefsson <simon@josefsson.org>
+
+	* build-aux/gnupload, gltests/test-vc-list-files-git.sh, maint.mk: 
+	Update gnulib files.
+
+2009-05-11  Simon Josefsson <simon@josefsson.org>
+
+	* gtk-doc.make: Fix syntax-check.
+
+2009-05-11  Simon Josefsson <simon@josefsson.org>
+
+	* gtk-doc.make, m4/gtk-doc.m4: Upgrade gtk-doc files.
+
+2009-05-08  Simon Josefsson <simon@josefsson.org>
+
+	* build-aux/gnupload, gl/m4/errno_h.m4, gl/m4/gnulib-comp.m4,
+	lib/gl/Makefile.am, lib/gl/m4/gnulib-comp.m4,
+	lib/gl/m4/multiarch.m4, maint.mk: Update gnulib files.
+
+2009-05-08  Simon Josefsson <simon@josefsson.org>
+
+	* cfg.mk: Make -Werror more optional.
+
+2009-05-07  Simon Josefsson <simon@josefsson.org>
+
+	* README-alpha: Fix.
+
+2009-05-05  Simon Josefsson <simon@josefsson.org>
+
+	* README-alpha: Fix.
+
+2009-05-05  Simon Josefsson <simon@josefsson.org>
+
+	* README-alpha: Add.
+
+2009-05-03  Simon Josefsson <simon@josefsson.org>
+
+	* gl/gettext.h, lib/gl/Makefile.am, lib/gl/gettext.h,
+	lib/gl/m4/wchar.m4, lib/gl/wchar.in.h, maint.mk: Update gnulib
+	files.
+
+2009-04-27  Simon Josefsson <simon@josefsson.org>
+
+	* maint.mk: Update gnulib files.
+
+2009-04-27  Simon Josefsson <simon@josefsson.org>
+
+	* build-aux/vc-list-files, lib/gl/m4/lib-link.m4,
+	lib/gl/m4/lib-prefix.m4, maint.mk: Update gnulib files.
+
+2009-04-24  Simon Josefsson <simon@josefsson.org>
+
+	* .prev-version: Add.
+
+2009-04-24  Simon Josefsson <simon@josefsson.org>
+
+	* .x-sc_makefile-check~, .x-sc_makefile_check~, .x-sc_space_tab~: 
+	rm.
+
+2009-04-24  Simon Josefsson <simon@josefsson.org>
+
+	* .x-sc_avoid_if_before_free, .x-sc_makefile-check~,
+	.x-sc_makefile_check, .x-sc_makefile_check~, gltests/Makefile.am,
+	java/Makefile.am, java/misc/Makefile.am, maint.mk: Fix
+	syntax-checks.
+
+2009-04-24  Simon Josefsson <simon@josefsson.org>
+
+	* cfg.mk: Fix for modern git.
+
+2009-04-24  Simon Josefsson <simon@josefsson.org>
+
+	* build-aux/useless-if-before-free, build-aux/vc-list-files,
+	gl/Makefile.am, gl/m4/gnulib-cache.m4, gl/m4/gnulib-comp.m4,
+	gltests/Makefile.am, gltests/test-vc-list-files-cvs.sh,
+	gltests/test-vc-list-files-git.sh: Add modules, for syntax-check.
+
+2009-04-24  Simon Josefsson <simon@josefsson.org>
+
+	* lib/nfkc.c: Fix warnings.
+
+2009-04-24  Simon Josefsson <simon@josefsson.org>
+
+	* .x-sc_the_the, cfg.mk, configure.ac: Syntax check fixes.
+
+2009-04-24  Simon Josefsson <simon@josefsson.org>
+
+	* .x-sc_error_message_uppercase, .x-sc_file_system,
+	.x-sc_prohibit_atoi_atof, cfg.mk, contrib/idn-python/Makefile,
+	contrib/idn-python/idn.c, contrib/idn-python/test.py, gl/getopt1.c,
+	lib/nfkc.c, lib/version.c, m4/valgrind.m4, src/idn.c: Syntax check
+	fixes.
+
+2009-04-24  Simon Josefsson <simon@josefsson.org>
+
+	* .x-sc_space_tab, .x-sc_space_tab~, NEWS, gtk-doc.make,
+	m4/valgrind.m4: Syntax check fixes.
+
+2009-04-24  Simon Josefsson <simon@josefsson.org>
+
+	* .x-sc_avoid_if_before_free, .x-sc_cast_of_alloca_return_value,
+	lib/stringprep.c, maint.mk: Update gnulib files.
+
+2009-04-23  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Fix.
+
+2009-04-23  Simon Josefsson <simon@josefsson.org>
+
+	* doc/gendocs_template, maint.mk: Update gnulib files.
+
+2009-04-23  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS, doc/libidn.texi: Improve texinfo section names.
+
+2009-04-17  Simon Josefsson <simon@josefsson.org>
+
+	* configure.ac: AM_PROG_GCJ needs to be called unconditionally.
+	Sigh.  Otherwise you get this error: conditional "am__fastdepGCJ"
+	was never defined.
+
+2009-04-14  Simon Josefsson <simon@josefsson.org>
+
+	* configure.ac, m4/ac_prog_javac.m4, m4/ac_prog_javac_works.m4,
+	m4/ac_prog_javadoc.m4: Fix java detection.
+
+2009-04-14  Simon Josefsson <simon@josefsson.org>
+
+	* lib/stringprep.h: Bump version.
+
+2009-04-14  Simon Josefsson <simon@josefsson.org>
+
+	* java/misc/TestIDNA.java: Don't use assert keyword to avoid
+	compilation error.
+
+2009-04-14  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS, configure.ac: Bump versions.
+
+2009-04-14  Simon Josefsson <simon@josefsson.org>
+
+	* build-aux/gendocs.sh, doc/gendocs_template, doc/lgpl-2.1.texi,
+	lib/gl/m4/ld-version-script.m4, maint.mk: Update gnulib files.
+
+2009-04-03  Simon Josefsson <simon@josefsson.org>
+
+	* ChangeLog: Generated.
+
 2009-04-03  Simon Josefsson <simon@josefsson.org>
 
 	* NEWS: Version 1.14.
