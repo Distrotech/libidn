@@ -146,6 +146,8 @@ AC_DEFUN([gl_INIT],
     AC_SUBST([gltests_LIBOBJS], [$gltests_libobjs])
     AC_SUBST([gltests_LTLIBOBJS], [$gltests_ltlibobjs])
   ])
+  LIBTESTS_LIBDEPS="$gltests_libdeps"
+  AC_SUBST([LIBTESTS_LIBDEPS])
 ])
 
 # Like AC_LIBOBJ, except that the module name goes
@@ -258,6 +260,10 @@ AC_DEFUN([gl_FILE_LIST], [
   tests/test-unistd.c
   tests/test-vc-list-files-cvs.sh
   tests/test-vc-list-files-git.sh
+  tests/test-version-etc.c
+  tests/test-version-etc.sh
+  tests=lib/verify.h
+  tests=lib/version-etc-fsf.c
   top/GNUmakefile
   top/maint.mk
 ])

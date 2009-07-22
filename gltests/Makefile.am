@@ -19,6 +19,7 @@ noinst_PROGRAMS =
 check_PROGRAMS =
 noinst_HEADERS =
 noinst_LIBRARIES =
+check_LIBRARIES = libtests.a
 EXTRA_DIST =
 BUILT_SOURCES =
 SUFFIXES =
@@ -33,7 +34,13 @@ AM_CPPFLAGS = \
   -I.. -I$(srcdir)/.. \
   -I../gl -I$(srcdir)/../gl
 
-LDADD = ../gl/libgnu.la
+LDADD = libtests.a ../gl/libgnu.la libtests.a $(LIBTESTS_LIBDEPS)
+
+libtests_a_SOURCES =
+libtests_a_LIBADD = $(gltests_LIBOBJS)
+libtests_a_DEPENDENCIES = $(gltests_LIBOBJS)
+EXTRA_libtests_a_SOURCES =
+AM_LIBTOOLFLAGS = --preserve-dup-deps
 
 ## begin gnulib module errno-tests
 
@@ -78,6 +85,28 @@ TESTS_ENVIRONMENT += PATH='$(abs_aux_dir)'$(PATH_SEPARATOR)"$$PATH"
 EXTRA_DIST += test-vc-list-files-git.sh test-vc-list-files-cvs.sh
 
 ## end   gnulib module vc-list-files-tests
+
+## begin gnulib module verify
+
+libtests_a_SOURCES += verify.h
+
+## end   gnulib module verify
+
+## begin gnulib module version-etc-fsf
+
+libtests_a_SOURCES += version-etc-fsf.c
+
+## end   gnulib module version-etc-fsf
+
+## begin gnulib module version-etc-tests
+
+TESTS += test-version-etc.sh
+TESTS_ENVIRONMENT += EXEEXT='@EXEEXT@'
+check_PROGRAMS += test-version-etc
+test_version_etc_LDADD = $(LDADD) @LIBINTL@
+EXTRA_DIST += test-version-etc.c test-version-etc.sh
+
+## end   gnulib module version-etc-tests
 
 # Clean up after Solaris cc.
 clean-local:
