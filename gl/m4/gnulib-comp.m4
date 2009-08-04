@@ -116,6 +116,8 @@ AC_DEFUN([gl_INIT],
   gl_source_base='gltests'
   abs_aux_dir=`cd "$ac_aux_dir"; pwd`
   AC_SUBST([abs_aux_dir])
+  abs_aux_dir=`cd "$ac_aux_dir"; pwd`
+  AC_SUBST([abs_aux_dir])
   m4_ifval(gltests_LIBSOURCES_LIST, [
     m4_syscmd([test ! -d ]m4_defn([gltests_LIBSOURCES_DIR])[ ||
       for gl_file in ]gltests_LIBSOURCES_LIST[ ; do
@@ -213,6 +215,7 @@ AC_DEFUN([gl_FILE_LIST], [
   build-aux/link-warning.h
   build-aux/pmccabe.css
   build-aux/pmccabe2html
+  build-aux/update-copyright
   build-aux/useless-if-before-free
   build-aux/vc-list-files
   doc/fdl-1.3.texi
@@ -258,6 +261,7 @@ AC_DEFUN([gl_FILE_LIST], [
   tests/test-strerror.c
   tests/test-string.c
   tests/test-unistd.c
+  tests/test-update-copyright.sh
   tests/test-vc-list-files-cvs.sh
   tests/test-vc-list-files-git.sh
   tests/test-version-etc.c
