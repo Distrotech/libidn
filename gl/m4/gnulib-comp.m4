@@ -52,9 +52,11 @@ AC_DEFUN([gl_INIT],
   gl_HEADER_ERRNO_H
   gl_ERROR
   m4_ifdef([AM_XGETTEXT_OPTION],
-    [AM_XGETTEXT_OPTION([--flag=error:3:c-format])
-     AM_XGETTEXT_OPTION([--flag=error_at_line:5:c-format])])
-  gl_GETOPT
+    [AM_][XGETTEXT_OPTION([--flag=error:3:c-format])
+     AM_][XGETTEXT_OPTION([--flag=error_at_line:5:c-format])])
+  gl_FUNC_GETOPT_GNU
+  gl_MODULE_INDICATOR([getopt-gnu])
+  gl_FUNC_GETOPT_POSIX
   AC_SUBST([LIBINTL])
   AC_SUBST([LTLIBINTL])
   # Autoconf 2.61a.99 and earlier don't support linking a file only
@@ -114,10 +116,20 @@ AC_DEFUN([gl_INIT],
   m4_pushdef([gltests_LIBSOURCES_DIR], [])
   gl_COMMON
   gl_source_base='gltests'
+  gl_ENVIRON
+  gl_UNISTD_MODULE_INDICATOR([environ])
+  gl_MULTIARCH
+  gl_STDINT_H
+  gt_TYPE_WCHAR_T
+  gt_TYPE_WINT_T
+  gl_STDLIB_H
+  gl_FUNC_UNSETENV
+  gl_STDLIB_MODULE_INDICATOR([unsetenv])
   abs_aux_dir=`cd "$ac_aux_dir"; pwd`
   AC_SUBST([abs_aux_dir])
   abs_aux_dir=`cd "$ac_aux_dir"; pwd`
   AC_SUBST([abs_aux_dir])
+  gl_WCHAR_H
   m4_ifval(gltests_LIBSOURCES_LIST, [
     m4_syscmd([test ! -d ]m4_defn([gltests_LIBSOURCES_DIR])[ ||
       for gl_file in ]gltests_LIBSOURCES_LIST[ ; do
@@ -243,21 +255,36 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/autobuild.m4
   m4/csharp.m4
   m4/csharpcomp.m4
+  m4/environ.m4
   m4/errno_h.m4
   m4/error.m4
   m4/extensions.m4
   m4/getopt.m4
   m4/gnulib-common.m4
   m4/include_next.m4
+  m4/longlong.m4
   m4/manywarnings.m4
+  m4/multiarch.m4
   m4/pmccabe2html.m4
+  m4/setenv.m4
   m4/stdarg.m4
+  m4/stdint.m4
+  m4/stdlib_h.m4
   m4/strerror.m4
   m4/string_h.m4
   m4/unistd_h.m4
   m4/version-etc.m4
   m4/warnings.m4
+  m4/wchar.m4
+  m4/wchar_t.m4
+  m4/wint_t.m4
+  tests/test-environ.c
   tests/test-errno.c
+  tests/test-getopt.c
+  tests/test-getopt.h
+  tests/test-getopt_long.h
+  tests/test-stdint.c
+  tests/test-stdlib.c
   tests/test-strerror.c
   tests/test-string.c
   tests/test-unistd.c
@@ -266,8 +293,13 @@ AC_DEFUN([gl_FILE_LIST], [
   tests/test-vc-list-files-git.sh
   tests/test-version-etc.c
   tests/test-version-etc.sh
+  tests/test-wchar.c
+  tests=lib/stdint.in.h
+  tests=lib/stdlib.in.h
+  tests=lib/unsetenv.c
   tests=lib/verify.h
   tests=lib/version-etc-fsf.c
+  tests=lib/wchar.in.h
   top/GNUmakefile
   top/maint.mk
 ])

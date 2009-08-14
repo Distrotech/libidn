@@ -1,5 +1,5 @@
-/* Test of <string.h> substitute.
-   Copyright (C) 2007, 2009 Free Software Foundation, Inc.
+/* Test of <wchar.h> substitute.
+   Copyright (C) 2007-2008 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -18,13 +18,11 @@
 
 #include <config.h>
 
-#include <string.h>
+#include <wchar.h>
 
-#include "verify.h"
-
-/* Check that NULL can be passed through varargs as a pointer type,
-   per POSIX 2008.  */
-verify (sizeof (NULL) == sizeof (void *));
+/* Check that the types wchar_t and wint_t are defined.  */
+wchar_t a = 'c';
+wint_t b = 'x';
 
 int
 main ()

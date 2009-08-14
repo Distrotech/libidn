@@ -1,4 +1,4 @@
-/* Test of <string.h> substitute.
+/* Test of <stdlib.h> substitute.
    Copyright (C) 2007, 2009 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
@@ -18,9 +18,11 @@
 
 #include <config.h>
 
-#include <string.h>
+#include <stdlib.h>
 
 #include "verify.h"
+
+int exitcode;
 
 /* Check that NULL can be passed through varargs as a pointer type,
    per POSIX 2008.  */
@@ -29,5 +31,13 @@ verify (sizeof (NULL) == sizeof (void *));
 int
 main ()
 {
+  /* Check that some macros are defined and different integer constants.  */
+  switch (exitcode)
+    {
+    case EXIT_SUCCESS:
+    case EXIT_FAILURE:
+      break;
+    }
+
   return 0;
 }
