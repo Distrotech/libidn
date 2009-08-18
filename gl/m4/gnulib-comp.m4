@@ -71,6 +71,7 @@ AC_DEFUN([gl_INIT],
   	[GNUmakefile=$GNUmakefile])])
   gl_PMCCABE2HTML
   gl_STDARG_H
+  gl_STDDEF_H
   gl_FUNC_STRERROR
   gl_STRING_MODULE_INDICATOR([strerror])
   gl_HEADER_STRING_H
@@ -246,6 +247,7 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/progname.c
   lib/progname.h
   lib/stdarg.in.h
+  lib/stddef.in.h
   lib/strerror.c
   lib/string.in.h
   lib/unistd.in.h
@@ -268,6 +270,7 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/pmccabe2html.m4
   m4/setenv.m4
   m4/stdarg.m4
+  m4/stddef_h.m4
   m4/stdint.m4
   m4/stdlib_h.m4
   m4/strerror.m4
@@ -283,6 +286,7 @@ AC_DEFUN([gl_FILE_LIST], [
   tests/test-getopt.c
   tests/test-getopt.h
   tests/test-getopt_long.h
+  tests/test-stddef.c
   tests/test-stdint.c
   tests/test-stdlib.c
   tests/test-strerror.c

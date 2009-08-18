@@ -24,6 +24,23 @@ else
 fi
 
 TMP_BASE=update-copyright.test
+trap 'rm -f $TMP_BASE*' 0 1 2 3 15
+
+## --------------------------------- ##
+## Skip if user does not have perl.  ##
+## --------------------------------- ##
+
+TMP=$TMP_BASE
+s=$TMP-script
+printf '#!/usr/bin/perl -pi\ns/a/b/\n' > $s
+chmod a+x $s
+echo a > $TMP-in
+./$s $TMP-in 2>/dev/null && test b = "`cat $TMP-in 2>/dev/null`" ||
+  {
+    printf '%s\n' "$0: skipping this test;" \
+      'your system has insufficient support for Perl' 1>&2
+    exit 77
+  }
 
 ## ----------------------------- ##
 ## Examples from documentation.  ##
@@ -145,7 +162,7 @@ Copyright (C) 1990-2005, 2007-2009 Acme, Inc.
 # Copyright (C) 1990-2005, 2007-2010 Free Software Foundation, Inc.
 EOF
 
-UPDATE_COPYRIGHT_YEAR=2011 \
+UPDATE_COPYRIGHT_YEAR=2010 UPDATE_COPYRIGHT_FORCE=1 \
   update-copyright $TMP.* 1> $TMP-stdout 2> $TMP-stderr
 compare /dev/null $TMP-stdout || exit 1
 compare - $TMP-stderr <<EOF || exit 1
@@ -154,18 +171,18 @@ $TMP.5: warning: FSF copyright statement not found
 EOF
 compare - $TMP.1 <<EOF || exit 1
 Copyright @copyright{} 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997,
-1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2007, 2008, 2009, 2010,
-2011 Free Software Foundation, Inc.
+1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2007, 2008, 2009, 2010
+Free Software Foundation, Inc.
 EOF
 compare - $TMP.2 <<EOF || exit 1
 # Copyright (C) 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998,
-# 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2007, 2008, 2009, 2010, 2011
-# Free Software Foundation, Inc.
+# 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2007, 2008, 2009, 2010 Free
+# Software Foundation, Inc.
 EOF
 compare - $TMP.3 <<EOF || exit 1
 /*
- * Copyright &copy; 1990, 2005, 2007, 2008, 2009, 2010, 2011 Free
- * Software Foundation, Inc.
+ * Copyright &copy; 1990, 2005, 2007, 2008, 2009, 2010 Free Software
+ * Foundation, Inc.
  */
 EOF
 compare - $TMP.4 <<EOF || exit 1
@@ -180,15 +197,15 @@ compare - $TMP.6 <<EOF || exit 1
 #  Foundation, Inc.
 
 Copyright (C) 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998,
-1999, 2000, 2001, 2002, 2003, 2004, 2005, 2007, 2008, 2009, 2010, 2011
-Free Software Foundation, Inc.
+1999, 2000, 2001, 2002, 2003, 2004, 2005, 2007, 2008, 2009, 2010 Free
+Software Foundation, Inc.
 EOF
 compare - $TMP.7 <<EOF || exit 1
 Copyright (C) 1990-2005, 2007-2009 Acme, Inc.
 
 # Copyright (C) 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998,
-# 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2007, 2008, 2009, 2010, 2011
-# Free Software Foundation, Inc.
+# 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2007, 2008, 2009, 2010 Free
+# Software Foundation, Inc.
 EOF
 
 rm $TMP*

@@ -68,6 +68,15 @@ EXTRA_DIST += test-getopt.c test-getopt.h test-getopt_long.h
 
 ## end   gnulib module getopt-posix-tests
 
+## begin gnulib module stddef-tests
+
+TESTS += test-stddef
+check_PROGRAMS += test-stddef
+
+EXTRA_DIST += test-stddef.c
+
+## end   gnulib module stddef-tests
+
 ## begin gnulib module stdint
 
 BUILT_SOURCES += $(STDINT_H)

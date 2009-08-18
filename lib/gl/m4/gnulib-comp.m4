@@ -51,6 +51,7 @@ AC_DEFUN([lgl_INIT],
   gl_VISIBILITY
   gl_MULTIARCH
   AM_STDBOOL_H
+  gl_STDDEF_H
   gl_STDINT_H
   if test $gl_cond_libtool = false; then
     gl_ltlibdeps="$gl_ltlibdeps $LTLIBICONV"
@@ -209,6 +210,7 @@ AC_DEFUN([lgl_FILE_LIST], [
   lib/iconv_open-osf.gperf
   lib/iconv_open.c
   lib/stdbool.in.h
+  lib/stddef.in.h
   lib/stdint.in.h
   lib/striconv.c
   lib/striconv.h
@@ -233,6 +235,7 @@ AC_DEFUN([lgl_FILE_LIST], [
   m4/longlong.m4
   m4/multiarch.m4
   m4/stdbool.m4
+  m4/stddef_h.m4
   m4/stdint.m4
   m4/string_h.m4
   m4/strverscmp.m4
@@ -246,6 +249,7 @@ AC_DEFUN([lgl_FILE_LIST], [
   tests/test-c-strncasecmp.c
   tests/test-iconv.c
   tests/test-stdbool.c
+  tests/test-stddef.c
   tests/test-stdint.c
   tests/test-striconv.c
   tests/test-string.c
