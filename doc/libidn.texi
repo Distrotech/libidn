@@ -388,6 +388,12 @@ GCC 2.95 and GNU Make @code{arm-linux}.
 
 GCC 3.4.4 and GNU Make @code{i586-mingw32msvc}.
 
+@item OS/2
+@cindex OS/2
+@cindex IBM
+
+GCC.
+
 @end enumerate
 
 If you use Libidn on, or port Libidn to, a new platform please report
