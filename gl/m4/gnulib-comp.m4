@@ -70,6 +70,7 @@ AC_DEFUN([gl_INIT],
         [AC_CONFIG_LINKS([$GNUmakefile:$GNUmakefile], [],
   	[GNUmakefile=$GNUmakefile])])
   gl_PMCCABE2HTML
+  AC_CHECK_DECLS([program_invocation_name], [], [], [#include <errno.h>])
   gl_STDARG_H
   gl_STDDEF_H
   gl_FUNC_STRERROR
