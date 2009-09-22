@@ -4,6 +4,9 @@ See the end for copying conditions.
 
 * Version 1.16 (unreleased)
 
+** java: Add a Maven pom.xml project file.
+Contributed by Guus der Kinderen <guus.der.kinderen@gmail.com>.
+
 ** API and ABI is backwards compatible with the previous version.
 
 * Version 1.15 (released 2009-06-08)
