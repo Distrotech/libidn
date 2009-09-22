@@ -151,6 +151,7 @@ fi
 AC_CONFIG_FILES([
   Makefile
   libidn.pc
+  pom.xml
   csharp/Makefile
   contrib/doxygen/Doxyfile
   doc/Makefile
