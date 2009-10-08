@@ -32,6 +32,7 @@ idn.c: $(BUILT_SOURCES)
 
 noinst_LTLIBRARIES = libidn_cmd.la
 libidn_cmd_la_SOURCES =  idn.ggo idn_cmd.c idn_cmd.h
+libidn_cmd_la_LIBADD = ../gl/libgnu.la
 libidn_cmd_la_CFLAGS =
 
 idn_cmd.c idn_cmd.h: idn.ggo Makefile.am
