@@ -42,6 +42,33 @@ libtests_a_DEPENDENCIES = $(gltests_LIBOBJS)
 EXTRA_libtests_a_SOURCES =
 AM_LIBTOOLFLAGS = --preserve-dup-deps
 
+## begin gnulib module alloca-opt
+
+BUILT_SOURCES += $(ALLOCA_H)
+
+# We need the following in order to create <alloca.h> when the system
+# doesn't have one that works with the given compiler.
+alloca.h: alloca.in.h
+	$(AM_V_GEN)rm -f $@-t $@ && \
+	{ echo '/* DO NOT EDIT! GENERATED AUTOMATICALLY! */'; \
+	  cat $(srcdir)/alloca.in.h; \
+	} > $@-t && \
+	mv -f $@-t $@
+MOSTLYCLEANFILES += alloca.h alloca.h-t
+
+EXTRA_DIST += alloca.in.h
+
+## end   gnulib module alloca-opt
+
+## begin gnulib module alloca-opt-tests
+
+TESTS += test-alloca-opt
+check_PROGRAMS += test-alloca-opt
+
+EXTRA_DIST += test-alloca-opt.c
+
+## end   gnulib module alloca-opt-tests
+
 ## begin gnulib module environ-tests
 
 TESTS += test-environ
@@ -68,6 +95,40 @@ test_getopt_LDADD = $(LDADD) $(LIBINTL)
 EXTRA_DIST += test-getopt.c test-getopt.h test-getopt_long.h
 
 ## end   gnulib module getopt-posix-tests
+
+## begin gnulib module link-warning
+
+LINK_WARNING_H=$(top_srcdir)/build-aux/link-warning.h
+
+EXTRA_DIST += $(top_srcdir)/build-aux/link-warning.h
+
+## end   gnulib module link-warning
+
+## begin gnulib module malloca
+
+libtests_a_SOURCES += malloca.c
+
+EXTRA_DIST += malloca.h malloca.valgrind
+
+## end   gnulib module malloca
+
+## begin gnulib module malloca-tests
+
+TESTS += test-malloca
+check_PROGRAMS += test-malloca
+
+EXTRA_DIST += test-malloca.c
+
+## end   gnulib module malloca-tests
+
+## begin gnulib module setenv
+
+
+EXTRA_DIST += setenv.c
+
+EXTRA_libtests_a_SOURCES += setenv.c
+
+## end   gnulib module setenv
 
 ## begin gnulib module stddef-tests
 

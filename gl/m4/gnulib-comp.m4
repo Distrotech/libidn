@@ -71,6 +71,7 @@ AC_DEFUN([gl_INIT],
   	[GNUmakefile=$GNUmakefile])])
   gl_PMCCABE2HTML
   AC_CHECK_DECLS([program_invocation_name], [], [], [#include <errno.h>])
+  AC_CHECK_DECLS([program_invocation_short_name], [], [], [#include <errno.h>])
   gl_STDARG_H
   gl_STDDEF_H
   gl_FUNC_STRERROR
@@ -118,9 +119,13 @@ AC_DEFUN([gl_INIT],
   m4_pushdef([gltests_LIBSOURCES_DIR], [])
   gl_COMMON
   gl_source_base='gltests'
+  gl_FUNC_ALLOCA
   gl_ENVIRON
   gl_UNISTD_MODULE_INDICATOR([environ])
+  gl_MALLOCA
   gl_MULTIARCH
+  gl_FUNC_SETENV
+  gl_STDLIB_MODULE_INDICATOR([setenv])
   gl_STDINT_H
   gt_TYPE_WCHAR_T
   gt_TYPE_WINT_T
@@ -255,9 +260,11 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/version-etc.c
   lib/version-etc.h
   m4/00gnulib.m4
+  m4/alloca.m4
   m4/autobuild.m4
   m4/csharp.m4
   m4/csharpcomp.m4
+  m4/eealloc.m4
   m4/environ.m4
   m4/errno_h.m4
   m4/error.m4
@@ -266,6 +273,7 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/gnulib-common.m4
   m4/include_next.m4
   m4/longlong.m4
+  m4/malloca.m4
   m4/manywarnings.m4
   m4/multiarch.m4
   m4/pmccabe2html.m4
@@ -282,11 +290,13 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/wchar.m4
   m4/wchar_t.m4
   m4/wint_t.m4
+  tests/test-alloca-opt.c
   tests/test-environ.c
   tests/test-errno.c
   tests/test-getopt.c
   tests/test-getopt.h
   tests/test-getopt_long.h
+  tests/test-malloca.c
   tests/test-stddef.c
   tests/test-stdint.c
   tests/test-stdlib.c
@@ -299,6 +309,11 @@ AC_DEFUN([gl_FILE_LIST], [
   tests/test-version-etc.c
   tests/test-version-etc.sh
   tests/test-wchar.c
+  tests=lib/alloca.in.h
+  tests=lib/malloca.c
+  tests=lib/malloca.h
+  tests=lib/malloca.valgrind
+  tests=lib/setenv.c
   tests=lib/stdint.in.h
   tests=lib/stdlib.in.h
   tests=lib/unsetenv.c
