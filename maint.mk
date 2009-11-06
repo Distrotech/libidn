@@ -156,6 +156,12 @@ sc_prohibit_strcmp:
 	  { echo '$(ME): use STREQ in place of the above uses of str''cmp' \
 		1>&2; exit 1; } || :
 
+# Pass EXIT_*, not number, to usage, exit, and error (when exiting)
+sc_prohibit_magic_number_exit:
+	@re='\<(usage|exit) ?\([0-9]|\<error ?\([1-9][0-9]*,'		\
+	msg='use EXIT_* values rather than magic number'		\
+	  $(_prohibit_regexp)
+
 # Using EXIT_SUCCESS as the first argument to error is misleading,
 # since when that parameter is 0, error does not exit.  Use `0' instead.
 sc_error_exit_success:
@@ -250,6 +256,10 @@ endef
 # Prohibit the inclusion of assert.h without an actual use of assert.
 sc_prohibit_assert_without_use:
 	@h='<assert.h>' re='\<assert *\(' $(_header_without_use)
+
+# Prohibit the inclusion of close-stream.h without an actual use.
+sc_prohibit_close_stream_without_use:
+	@h='"close-stream.h"' re='\<close_stream *\(' $(_header_without_use)
 
 # Prohibit the inclusion of getopt.h without an actual use.
 sc_prohibit_getopt_without_use:

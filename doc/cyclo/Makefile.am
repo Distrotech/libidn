@@ -16,15 +16,15 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-EXTRA_DIST = cyclo-libidn.html
+EXTRA_DIST = cyclo-$(PROJECT).html
 
-cyclo-libidn.html:
+cyclo-$(PROJECT).html:
 	$(PMCCABE) ${top_srcdir}/lib/*.[ch] \
 		| sort -nr \
 		| $(AWK) -f ${top_srcdir}/build-aux/pmccabe2html \
 			-v lang=html -v name="$(PACKAGE_NAME)" \
-			-v vcurl="http://git.savannah.gnu.org/gitweb/?p=libidn.git;a=blob;f=%FILENAME%;hb=HEAD" \
-			-v url="http://www.gnu.org/software/libidn/" \
-			-v css=../../build-aux/pmccabe.css \
+			-v vcurl="http://git.savannah.gnu.org/gitweb/?p=$(PROJECT).git;a=blob;f=%FILENAME%;hb=HEAD" \
+			-v url="http://www.gnu.org/software/$(PROJECT)/" \
+                       -v css=${top_srcdir}/build-aux/pmccabe.css \
 			> tmp
 	mv tmp $@

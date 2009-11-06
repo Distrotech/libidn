@@ -69,7 +69,7 @@ AC_DEFUN([gl_INIT],
   	m4_defn([m4_PACKAGE_VERSION])), [1], [],
         [AC_CONFIG_LINKS([$GNUmakefile:$GNUmakefile], [],
   	[GNUmakefile=$GNUmakefile])])
-  gl_PMCCABE2HTML
+  AC_PATH_PROG([PMCCABE], [pmccabe], [false])
   AC_CHECK_DECLS([program_invocation_name], [], [], [#include <errno.h>])
   AC_CHECK_DECLS([program_invocation_short_name], [], [], [#include <errno.h>])
   gl_STDARG_H
@@ -276,7 +276,6 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/malloca.m4
   m4/manywarnings.m4
   m4/multiarch.m4
-  m4/pmccabe2html.m4
   m4/setenv.m4
   m4/stdarg.m4
   m4/stddef_h.m4
