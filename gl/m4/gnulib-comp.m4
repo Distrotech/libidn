@@ -122,8 +122,12 @@ AC_DEFUN([gl_INIT],
   gl_FUNC_ALLOCA
   gl_ENVIRON
   gl_UNISTD_MODULE_INDICATOR([environ])
+  gl_FUNC_MALLOC_POSIX
+  gl_STDLIB_MODULE_INDICATOR([malloc-posix])
   gl_MALLOCA
   gl_MULTIARCH
+  gl_FUNC_PUTENV
+  gl_STDLIB_MODULE_INDICATOR([putenv])
   gl_FUNC_SETENV
   gl_STDLIB_MODULE_INDICATOR([setenv])
   gl_STDINT_H
@@ -273,9 +277,11 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/gnulib-common.m4
   m4/include_next.m4
   m4/longlong.m4
+  m4/malloc.m4
   m4/malloca.m4
   m4/manywarnings.m4
   m4/multiarch.m4
+  m4/putenv.m4
   m4/setenv.m4
   m4/stdarg.m4
   m4/stddef_h.m4
@@ -296,12 +302,14 @@ AC_DEFUN([gl_FILE_LIST], [
   tests/test-getopt.h
   tests/test-getopt_long.h
   tests/test-malloca.c
+  tests/test-setenv.c
   tests/test-stddef.c
   tests/test-stdint.c
   tests/test-stdlib.c
   tests/test-strerror.c
   tests/test-string.c
   tests/test-unistd.c
+  tests/test-unsetenv.c
   tests/test-update-copyright.sh
   tests/test-vc-list-files-cvs.sh
   tests/test-vc-list-files-git.sh
@@ -309,9 +317,11 @@ AC_DEFUN([gl_FILE_LIST], [
   tests/test-version-etc.sh
   tests/test-wchar.c
   tests=lib/alloca.in.h
+  tests=lib/malloc.c
   tests=lib/malloca.c
   tests=lib/malloca.h
   tests=lib/malloca.valgrind
+  tests=lib/putenv.c
   tests=lib/setenv.c
   tests=lib/stdint.in.h
   tests=lib/stdlib.in.h

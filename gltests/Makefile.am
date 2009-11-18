@@ -14,6 +14,7 @@ AUTOMAKE_OPTIONS = 1.5 foreign
 
 SUBDIRS =
 TESTS =
+XFAIL_TESTS =
 TESTS_ENVIRONMENT =
 noinst_PROGRAMS =
 check_PROGRAMS =
@@ -104,6 +105,15 @@ EXTRA_DIST += $(top_srcdir)/build-aux/link-warning.h
 
 ## end   gnulib module link-warning
 
+## begin gnulib module malloc-posix
+
+
+EXTRA_DIST += malloc.c
+
+EXTRA_libtests_a_SOURCES += malloc.c
+
+## end   gnulib module malloc-posix
+
 ## begin gnulib module malloca
 
 libtests_a_SOURCES += malloca.c
@@ -121,6 +131,15 @@ EXTRA_DIST += test-malloca.c
 
 ## end   gnulib module malloca-tests
 
+## begin gnulib module putenv
+
+
+EXTRA_DIST += putenv.c
+
+EXTRA_libtests_a_SOURCES += putenv.c
+
+## end   gnulib module putenv
+
 ## begin gnulib module setenv
 
 
@@ -129,6 +148,14 @@ EXTRA_DIST += setenv.c
 EXTRA_libtests_a_SOURCES += setenv.c
 
 ## end   gnulib module setenv
+
+## begin gnulib module setenv-tests
+
+TESTS += test-setenv
+check_PROGRAMS += test-setenv
+EXTRA_DIST += test-setenv.c
+
+## end   gnulib module setenv-tests
 
 ## begin gnulib module stddef-tests
 
@@ -249,8 +276,9 @@ stdlib.h: stdlib.in.h
 	      -e 's|@''REPLACE_MKSTEMP''@|$(REPLACE_MKSTEMP)|g' \
 	      -e 's|@''REPLACE_PUTENV''@|$(REPLACE_PUTENV)|g' \
 	      -e 's|@''REPLACE_REALPATH''@|$(REPLACE_REALPATH)|g' \
+	      -e 's|@''REPLACE_SETENV''@|$(REPLACE_SETENV)|g' \
 	      -e 's|@''REPLACE_STRTOD''@|$(REPLACE_STRTOD)|g' \
-	      -e 's|@''VOID_UNSETENV''@|$(VOID_UNSETENV)|g' \
+	      -e 's|@''REPLACE_UNSETENV''@|$(REPLACE_UNSETENV)|g' \
 	      -e '/definition of GL_LINK_WARNING/r $(LINK_WARNING_H)' \
 	      < $(srcdir)/stdlib.in.h; \
 	} > $@-t && \
@@ -304,6 +332,14 @@ EXTRA_DIST += unsetenv.c
 EXTRA_libtests_a_SOURCES += unsetenv.c
 
 ## end   gnulib module unsetenv
+
+## begin gnulib module unsetenv-tests
+
+TESTS += test-unsetenv
+check_PROGRAMS += test-unsetenv
+EXTRA_DIST += test-unsetenv.c
+
+## end   gnulib module unsetenv-tests
 
 ## begin gnulib module update-copyright-tests
 

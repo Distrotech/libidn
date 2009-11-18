@@ -16,15 +16,15 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-EXTRA_DIST = cyclo-$(PROJECT).html
+EXTRA_DIST = cyclo-$(PACKAGE).html
 
-cyclo-$(PROJECT).html:
+cyclo-$(PACKAGE).html:
 	$(PMCCABE) ${top_srcdir}/lib/*.[ch] \
 		| sort -nr \
 		| $(AWK) -f ${top_srcdir}/build-aux/pmccabe2html \
 			-v lang=html -v name="$(PACKAGE_NAME)" \
-			-v vcurl="http://git.savannah.gnu.org/gitweb/?p=$(PROJECT).git;a=blob;f=%FILENAME%;hb=HEAD" \
-			-v url="http://www.gnu.org/software/$(PROJECT)/" \
+			-v vcurl="http://git.savannah.gnu.org/gitweb/?p=$(PACKAGE).git;a=blob;f=%FILENAME%;hb=HEAD" \
+			-v url="http://www.gnu.org/software/$(PACKAGE)/" \
                        -v css=${top_srcdir}/build-aux/pmccabe.css \
-			> tmp
-	mv tmp $@
+			> $@-tmp
+	mv $@-tmp $@

@@ -126,18 +126,16 @@ extern "C" {
 
 #if @GNULIB_CHOWN@
 # if @REPLACE_CHOWN@
-#  ifndef REPLACE_CHOWN
-#   define REPLACE_CHOWN 1
-#  endif
-#  if REPLACE_CHOWN
+#  undef chown
+#  define chown rpl_chown
+# endif
+# if !@HAVE_CHOWN@ || @REPLACE_CHOWN@
 /* Change the owner of FILE to UID (if UID is not -1) and the group of FILE
    to GID (if GID is not -1).  Follow symbolic links.
    Return 0 if successful, otherwise -1 and errno set.
    See the POSIX:2001 specification
    <http://www.opengroup.org/susv3xsh/chown.html>.  */
-#   define chown rpl_chown
 extern int chown (const char *file, uid_t uid, gid_t gid);
-#  endif
 # endif
 #elif defined GNULIB_POSIXCHECK
 # undef chown
@@ -406,6 +404,28 @@ extern int getdtablesize (void);
 #endif
 
 
+#if @GNULIB_GETGROUPS@
+# if @REPLACE_GETGROUPS@
+#  undef getgroups
+#  define getgroups rpl_getgroups
+# endif
+# if !@HAVE_GETGROUPS@ || @REPLACE_GETGROUPS@
+/* Return the supplemental groups that the current process belongs to.
+   It is unspecified whether the effective group id is in the list.
+   If N is 0, return the group count; otherwise, N describes how many
+   entries are available in GROUPS.  Return -1 and set errno if N is
+   not 0 and not large enough.  Fails with ENOSYS on some systems.  */
+int getgroups (int n, gid_t *groups);
+# endif
+#elif defined GNULIB_POSIXCHECK
+# undef getgroups
+# define getgroups(n,g)                                                 \
+    (GL_LINK_WARNING ("getgroups is unportable - "                      \
+                      "use gnulib module getgroups for portability"),   \
+     getgroups (n, g))
+#endif
+
+
 #if @GNULIB_GETHOSTNAME@
 /* Return the standard host name of the machine.
    WARNING! The host name may or may not be fully qualified.
@@ -545,12 +565,15 @@ extern void endusershell (void);
 
 #if @GNULIB_LCHOWN@
 # if @REPLACE_LCHOWN@
+#  undef lchown
+#  define lchown rpl_lchown
+# endif
+# if !@HAVE_LCHOWN@ || @REPLACE_LCHOWN@
 /* Change the owner of FILE to UID (if UID is not -1) and the group of FILE
    to GID (if GID is not -1).  Do not follow symbolic links.
    Return 0 if successful, otherwise -1 and errno set.
    See the POSIX:2001 specification
    <http://www.opengroup.org/susv3xsh/lchown.html>.  */
-#  define lchown rpl_lchown
 extern int lchown (char const *file, uid_t owner, gid_t group);
 # endif
 #elif defined GNULIB_POSIXCHECK
@@ -766,6 +789,27 @@ extern int unlinkat (int fd, char const *file, int flag);
     (GL_LINK_WARNING ("unlinkat is not portable - " \
                       "use gnulib module openat for portability"), \
      unlinkat (d, n, f))
+#endif
+
+
+#if @GNULIB_USLEEP@
+# if @REPLACE_USLEEP@
+#  undef usleep
+#  define usleep rpl_usleep
+# endif
+# if !@HAVE_USLEEP@ || @REPLACE_USLEEP@
+/* Pause the execution of the current thread for N microseconds.
+   Returns 0 on completion, or -1 on range error.
+   See the POSIX:2001 specification
+   <http://www.opengroup.org/susv3xsh/sleep.html>.  */
+extern int usleep (useconds_t n);
+# endif
+#elif defined GNULIB_POSIXCHECK
+# undef usleep
+# define usleep(n) \
+    (GL_LINK_WARNING ("usleep is unportable - " \
+                      "use gnulib module usleep for portability"), \
+     usleep (n))
 #endif
 
 
