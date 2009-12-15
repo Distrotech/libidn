@@ -102,7 +102,7 @@ AC_DEFUN([gl_INIT],
     if test -n "$gl_LIBOBJS"; then
       # Remove the extension.
       sed_drop_objext='s/\.o$//;s/\.obj$//'
-      for i in `for i in $gl_LIBOBJS; do echo "$i"; done | sed "$sed_drop_objext" | sort | uniq`; do
+      for i in `for i in $gl_LIBOBJS; do echo "$i"; done | sed -e "$sed_drop_objext" | sort | uniq`; do
         gl_libobjs="$gl_libobjs $i.$ac_objext"
         gl_ltlibobjs="$gl_ltlibobjs $i.lo"
       done
@@ -130,6 +130,7 @@ AC_DEFUN([gl_INIT],
   gl_STDLIB_MODULE_INDICATOR([putenv])
   gl_FUNC_SETENV
   gl_STDLIB_MODULE_INDICATOR([setenv])
+  AM_STDBOOL_H
   gl_STDINT_H
   gt_TYPE_WCHAR_T
   gt_TYPE_WINT_T
@@ -163,7 +164,7 @@ AC_DEFUN([gl_INIT],
     if test -n "$gltests_LIBOBJS"; then
       # Remove the extension.
       sed_drop_objext='s/\.o$//;s/\.obj$//'
-      for i in `for i in $gltests_LIBOBJS; do echo "$i"; done | sed "$sed_drop_objext" | sort | uniq`; do
+      for i in `for i in $gltests_LIBOBJS; do echo "$i"; done | sed -e "$sed_drop_objext" | sort | uniq`; do
         gltests_libobjs="$gltests_libobjs $i.$ac_objext"
         gltests_ltlibobjs="$gltests_ltlibobjs $i.lo"
       done
@@ -232,6 +233,7 @@ AC_DEFUN([gltests_LIBSOURCES], [
 # This macro records the list of files which have been installed by
 # gnulib-tool and may be removed by future gnulib-tool invocations.
 AC_DEFUN([gl_FILE_LIST], [
+  build-aux/arg-nonnull.h
   build-aux/csharpcomp.sh.in
   build-aux/gendocs.sh
   build-aux/gnupload
@@ -284,6 +286,7 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/putenv.m4
   m4/setenv.m4
   m4/stdarg.m4
+  m4/stdbool.m4
   m4/stddef_h.m4
   m4/stdint.m4
   m4/stdlib_h.m4
@@ -303,6 +306,7 @@ AC_DEFUN([gl_FILE_LIST], [
   tests/test-getopt_long.h
   tests/test-malloca.c
   tests/test-setenv.c
+  tests/test-stdbool.c
   tests/test-stddef.c
   tests/test-stdint.c
   tests/test-stdlib.c
@@ -323,6 +327,7 @@ AC_DEFUN([gl_FILE_LIST], [
   tests=lib/malloca.valgrind
   tests=lib/putenv.c
   tests=lib/setenv.c
+  tests=lib/stdbool.in.h
   tests=lib/stdint.in.h
   tests=lib/stdlib.in.h
   tests=lib/unsetenv.c

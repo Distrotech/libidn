@@ -28,15 +28,15 @@
 #include <string.h>
 
 #define ASSERT(expr) \
-  do									     \
-    {									     \
-      if (!(expr))							     \
-        {								     \
+  do                                                                         \
+    {                                                                        \
+      if (!(expr))                                                           \
+        {                                                                    \
           fprintf (stderr, "%s:%d: assertion failed\n", __FILE__, __LINE__); \
-          fflush (stderr);						     \
-          abort ();							     \
-        }								     \
-    }									     \
+          fflush (stderr);                                                   \
+          abort ();                                                          \
+        }                                                                    \
+    }                                                                        \
   while (0)
 
 /* The glibc/gnulib implementation of getopt supports setting optind = 0,
@@ -55,14 +55,18 @@
 int
 main (void)
 {
-  unsetenv ("POSIXLY_CORRECT");
-
+  setenv ("POSIXLY_CORRECT", "1", 1);
   test_getopt ();
+
+#if GNULIB_GETOPT_GNU
+  test_getopt_long_posix ();
+#endif
+
+  unsetenv ("POSIXLY_CORRECT");
+  test_getopt ();
+
 #if GNULIB_GETOPT_GNU
   test_getopt_long ();
-
-  setenv ("POSIXLY_CORRECT", "1", 0);
-  test_getopt_long_posix ();
 #endif
 
   return 0;

@@ -38,6 +38,25 @@ libgnu_la_DEPENDENCIES = $(lgl_LTLIBOBJS)
 EXTRA_libgnu_la_SOURCES =
 libgnu_la_LDFLAGS = $(AM_LDFLAGS)
 
+## begin gnulib module arg-nonnull
+
+BUILT_SOURCES += arg-nonnull.h
+# The arg-nonnull.h that gets inserted into generated .h files is the same as
+# build-aux/arg-nonnull.h, except that it has the copyright header cut off.
+arg-nonnull.h: $(top_srcdir)/build-aux/arg-nonnull.h
+	$(AM_V_GEN)rm -f $@-t $@ && \
+	sed -n -e '/GL_ARG_NONNULL/,$$p' \
+	  < $(top_srcdir)/build-aux/arg-nonnull.h \
+	  > $@-t && \
+	mv $@-t $@
+MOSTLYCLEANFILES += arg-nonnull.h arg-nonnull.h-t
+
+ARG_NONNULL_H=arg-nonnull.h
+
+EXTRA_DIST += $(top_srcdir)/build-aux/arg-nonnull.h
+
+## end   gnulib module arg-nonnull
+
 ## begin gnulib module c-ctype
 
 libgnu_la_SOURCES += c-ctype.h c-ctype.c
@@ -75,7 +94,7 @@ BUILT_SOURCES += $(ICONV_H)
 
 # We need the following in order to create <iconv.h> when the system
 # doesn't have one that works with the given compiler.
-iconv.h: iconv.in.h
+iconv.h: iconv.in.h $(ARG_NONNULL_H)
 	$(AM_V_GEN)rm -f $@-t $@ && \
 	{ echo '/* DO NOT EDIT! GENERATED AUTOMATICALLY! */' && \
 	  sed -e 's|@''INCLUDE_NEXT''@|$(INCLUDE_NEXT)|g' \
@@ -85,6 +104,7 @@ iconv.h: iconv.in.h
 	      -e 's|@''REPLACE_ICONV''@|$(REPLACE_ICONV)|g' \
 	      -e 's|@''REPLACE_ICONV_OPEN''@|$(REPLACE_ICONV_OPEN)|g' \
 	      -e 's|@''REPLACE_ICONV_UTF''@|$(REPLACE_ICONV_UTF)|g' \
+	      -e '/definition of _GL_ARG_NONNULL/r $(ARG_NONNULL_H)' \
 	      < $(srcdir)/iconv.in.h; \
 	} > $@-t && \
 	mv $@-t $@
@@ -128,7 +148,18 @@ AM_CFLAGS += $(CFLAG_VISIBILITY)
 
 ## begin gnulib module link-warning
 
-LINK_WARNING_H=$(top_srcdir)/build-aux/link-warning.h
+BUILT_SOURCES += link-warning.h
+# The link-warning.h that gets inserted into generated .h files is the same as
+# build-aux/link-warning.h, except that it has the copyright header cut off.
+link-warning.h: $(top_srcdir)/build-aux/link-warning.h
+	$(AM_V_GEN)rm -f $@-t $@ && \
+	sed -n -e '/GL_LINK_WARNING/,$$p' \
+	  < $(top_srcdir)/build-aux/link-warning.h \
+	  > $@-t && \
+	mv $@-t $@
+MOSTLYCLEANFILES += link-warning.h link-warning.h-t
+
+LINK_WARNING_H=link-warning.h
 
 EXTRA_DIST += $(top_srcdir)/build-aux/link-warning.h
 
@@ -232,7 +263,7 @@ BUILT_SOURCES += string.h
 
 # We need the following in order to create <string.h> when the system
 # doesn't have one that works with the given compiler.
-string.h: string.in.h
+string.h: string.in.h $(LINK_WARNING_H) $(ARG_NONNULL_H)
 	$(AM_V_GEN)rm -f $@-t $@ && \
 	{ echo '/* DO NOT EDIT! GENERATED AUTOMATICALLY! */' && \
 	  sed -e 's|@''INCLUDE_NEXT''@|$(INCLUDE_NEXT)|g' \
@@ -299,6 +330,7 @@ string.h: string.in.h
 	      -e 's|@''REPLACE_STRTOK_R''@|$(REPLACE_STRTOK_R)|g' \
 	      -e 's|@''UNDEFINE_STRTOK_R''@|$(UNDEFINE_STRTOK_R)|g' \
 	      -e '/definition of GL_LINK_WARNING/r $(LINK_WARNING_H)' \
+	      -e '/definition of _GL_ARG_NONNULL/r $(ARG_NONNULL_H)' \
 	      < $(srcdir)/string.in.h; \
 	} > $@-t && \
 	mv $@-t $@
@@ -323,7 +355,7 @@ BUILT_SOURCES += $(WCHAR_H)
 
 # We need the following in order to create <wchar.h> when the system
 # version does not work standalone.
-wchar.h: wchar.in.h
+wchar.h: wchar.in.h $(LINK_WARNING_H) $(ARG_NONNULL_H)
 	$(AM_V_GEN)rm -f $@-t $@ && \
 	{ echo '/* DO NOT EDIT! GENERATED AUTOMATICALLY! */'; \
 	  sed -e 's|@''INCLUDE_NEXT''@|$(INCLUDE_NEXT)|g' \
@@ -366,6 +398,7 @@ wchar.h: wchar.in.h
 	      -e 's|@''REPLACE_WCSNRTOMBS''@|$(REPLACE_WCSNRTOMBS)|g' \
 	      -e 's|@''REPLACE_WCWIDTH''@|$(REPLACE_WCWIDTH)|g' \
 	      -e '/definition of GL_LINK_WARNING/r $(LINK_WARNING_H)' \
+	      -e '/definition of _GL_ARG_NONNULL/r $(ARG_NONNULL_H)' \
 	    < $(srcdir)/wchar.in.h; \
 	} > $@-t && \
 	mv $@-t $@

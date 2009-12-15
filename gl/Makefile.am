@@ -38,6 +38,25 @@ libgnu_la_DEPENDENCIES = $(gl_LTLIBOBJS)
 EXTRA_libgnu_la_SOURCES =
 libgnu_la_LDFLAGS = $(AM_LDFLAGS)
 
+## begin gnulib module arg-nonnull
+
+BUILT_SOURCES += arg-nonnull.h
+# The arg-nonnull.h that gets inserted into generated .h files is the same as
+# build-aux/arg-nonnull.h, except that it has the copyright header cut off.
+arg-nonnull.h: $(top_srcdir)/build-aux/arg-nonnull.h
+	$(AM_V_GEN)rm -f $@-t $@ && \
+	sed -n -e '/GL_ARG_NONNULL/,$$p' \
+	  < $(top_srcdir)/build-aux/arg-nonnull.h \
+	  > $@-t && \
+	mv $@-t $@
+MOSTLYCLEANFILES += arg-nonnull.h arg-nonnull.h-t
+
+ARG_NONNULL_H=arg-nonnull.h
+
+EXTRA_DIST += $(top_srcdir)/build-aux/arg-nonnull.h
+
+## end   gnulib module arg-nonnull
+
 ## begin gnulib module csharpcomp-script
 
 
@@ -94,7 +113,7 @@ BUILT_SOURCES += $(GETOPT_H)
 
 # We need the following in order to create <getopt.h> when the system
 # doesn't have one that works with the given compiler.
-getopt.h: getopt.in.h
+getopt.h: getopt.in.h $(LINK_WARNING_H) $(ARG_NONNULL_H)
 	$(AM_V_GEN)rm -f $@-t $@ && \
 	{ echo '/* DO NOT EDIT! GENERATED AUTOMATICALLY! */'; \
 	  sed -e 's|@''HAVE_GETOPT_H''@|$(HAVE_GETOPT_H)|g' \
@@ -102,6 +121,7 @@ getopt.h: getopt.in.h
 	      -e 's|@''PRAGMA_SYSTEM_HEADER''@|@PRAGMA_SYSTEM_HEADER@|g' \
 	      -e 's|@''NEXT_GETOPT_H''@|$(NEXT_GETOPT_H)|g' \
 	      -e '/definition of GL_LINK_WARNING/r $(LINK_WARNING_H)' \
+	      -e '/definition of _GL_ARG_NONNULL/r $(ARG_NONNULL_H)' \
 	      < $(srcdir)/getopt.in.h; \
 	} > $@-t && \
 	mv -f $@-t $@
@@ -145,7 +165,18 @@ EXTRA_DIST += intprops.h
 
 ## begin gnulib module link-warning
 
-LINK_WARNING_H=$(top_srcdir)/build-aux/link-warning.h
+BUILT_SOURCES += link-warning.h
+# The link-warning.h that gets inserted into generated .h files is the same as
+# build-aux/link-warning.h, except that it has the copyright header cut off.
+link-warning.h: $(top_srcdir)/build-aux/link-warning.h
+	$(AM_V_GEN)rm -f $@-t $@ && \
+	sed -n -e '/GL_LINK_WARNING/,$$p' \
+	  < $(top_srcdir)/build-aux/link-warning.h \
+	  > $@-t && \
+	mv $@-t $@
+MOSTLYCLEANFILES += link-warning.h link-warning.h-t
+
+LINK_WARNING_H=link-warning.h
 
 EXTRA_DIST += $(top_srcdir)/build-aux/link-warning.h
 
@@ -229,7 +260,7 @@ BUILT_SOURCES += string.h
 
 # We need the following in order to create <string.h> when the system
 # doesn't have one that works with the given compiler.
-string.h: string.in.h
+string.h: string.in.h $(LINK_WARNING_H) $(ARG_NONNULL_H)
 	$(AM_V_GEN)rm -f $@-t $@ && \
 	{ echo '/* DO NOT EDIT! GENERATED AUTOMATICALLY! */' && \
 	  sed -e 's|@''INCLUDE_NEXT''@|$(INCLUDE_NEXT)|g' \
@@ -296,6 +327,7 @@ string.h: string.in.h
 	      -e 's|@''REPLACE_STRTOK_R''@|$(REPLACE_STRTOK_R)|g' \
 	      -e 's|@''UNDEFINE_STRTOK_R''@|$(UNDEFINE_STRTOK_R)|g' \
 	      -e '/definition of GL_LINK_WARNING/r $(LINK_WARNING_H)' \
+	      -e '/definition of _GL_ARG_NONNULL/r $(ARG_NONNULL_H)' \
 	      < $(srcdir)/string.in.h; \
 	} > $@-t && \
 	mv $@-t $@
@@ -311,7 +343,7 @@ BUILT_SOURCES += unistd.h
 
 # We need the following in order to create an empty placeholder for
 # <unistd.h> when the system doesn't have one.
-unistd.h: unistd.in.h
+unistd.h: unistd.in.h $(LINK_WARNING_H) $(ARG_NONNULL_H)
 	$(AM_V_GEN)rm -f $@-t $@ && \
 	{ echo '/* DO NOT EDIT! GENERATED AUTOMATICALLY! */'; \
 	  sed -e 's|@''HAVE_UNISTD_H''@|$(HAVE_UNISTD_H)|g' \
@@ -342,6 +374,7 @@ unistd.h: unistd.in.h
 	      -e 's|@''GNULIB_LINKAT''@|$(GNULIB_LINKAT)|g' \
 	      -e 's|@''GNULIB_LSEEK''@|$(GNULIB_LSEEK)|g' \
 	      -e 's|@''GNULIB_PIPE2''@|$(GNULIB_PIPE2)|g' \
+	      -e 's|@''GNULIB_PREAD''@|$(GNULIB_PREAD)|g' \
 	      -e 's|@''GNULIB_READLINK''@|$(GNULIB_READLINK)|g' \
 	      -e 's|@''GNULIB_READLINKAT''@|$(GNULIB_READLINKAT)|g' \
 	      -e 's|@''GNULIB_RMDIR''@|$(GNULIB_RMDIR)|g' \
@@ -372,6 +405,7 @@ unistd.h: unistd.in.h
 	      -e 's|@''HAVE_LINK''@|$(HAVE_LINK)|g' \
 	      -e 's|@''HAVE_LINKAT''@|$(HAVE_LINKAT)|g' \
 	      -e 's|@''HAVE_PIPE2''@|$(HAVE_PIPE2)|g' \
+	      -e 's|@''HAVE_PREAD''@|$(HAVE_PREAD)|g' \
 	      -e 's|@''HAVE_READLINK''@|$(HAVE_READLINK)|g' \
 	      -e 's|@''HAVE_READLINKAT''@|$(HAVE_READLINKAT)|g' \
 	      -e 's|@''HAVE_SLEEP''@|$(HAVE_SLEEP)|g' \
@@ -396,8 +430,10 @@ unistd.h: unistd.in.h
 	      -e 's|@''REPLACE_LINK''@|$(REPLACE_LINK)|g' \
 	      -e 's|@''REPLACE_LINKAT''@|$(REPLACE_LINKAT)|g' \
 	      -e 's|@''REPLACE_LSEEK''@|$(REPLACE_LSEEK)|g' \
+	      -e 's|@''REPLACE_PREAD''@|$(REPLACE_PREAD)|g' \
 	      -e 's|@''REPLACE_READLINK''@|$(REPLACE_READLINK)|g' \
 	      -e 's|@''REPLACE_RMDIR''@|$(REPLACE_RMDIR)|g' \
+	      -e 's|@''REPLACE_SLEEP''@|$(REPLACE_SLEEP)|g' \
 	      -e 's|@''REPLACE_SYMLINK''@|$(REPLACE_SYMLINK)|g' \
 	      -e 's|@''REPLACE_UNLINK''@|$(REPLACE_UNLINK)|g' \
 	      -e 's|@''REPLACE_UNLINKAT''@|$(REPLACE_UNLINKAT)|g' \
@@ -406,6 +442,7 @@ unistd.h: unistd.in.h
 	      -e 's|@''UNISTD_H_HAVE_WINSOCK2_H''@|$(UNISTD_H_HAVE_WINSOCK2_H)|g' \
 	      -e 's|@''UNISTD_H_HAVE_WINSOCK2_H_AND_USE_SOCKETS''@|$(UNISTD_H_HAVE_WINSOCK2_H_AND_USE_SOCKETS)|g' \
 	      -e '/definition of GL_LINK_WARNING/r $(LINK_WARNING_H)' \
+	      -e '/definition of _GL_ARG_NONNULL/r $(ARG_NONNULL_H)' \
 	      < $(srcdir)/unistd.in.h; \
 	} > $@-t && \
 	mv $@-t $@

@@ -80,7 +80,18 @@ EXTRA_DIST += intprops.h
 
 ## begin gnulib module link-warning
 
-LINK_WARNING_H=$(top_srcdir)/build-aux/link-warning.h
+BUILT_SOURCES += link-warning.h
+# The link-warning.h that gets inserted into generated .h files is the same as
+# build-aux/link-warning.h, except that it has the copyright header cut off.
+link-warning.h: $(top_srcdir)/build-aux/link-warning.h
+	$(AM_V_GEN)rm -f $@-t $@ && \
+	sed -n -e '/GL_LINK_WARNING/,$$p' \
+	  < $(top_srcdir)/build-aux/link-warning.h \
+	  > $@-t && \
+	mv $@-t $@
+MOSTLYCLEANFILES += link-warning.h link-warning.h-t
+
+LINK_WARNING_H=link-warning.h
 
 EXTRA_DIST += $(top_srcdir)/build-aux/link-warning.h
 
