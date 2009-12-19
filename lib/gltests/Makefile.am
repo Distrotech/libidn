@@ -43,6 +43,30 @@ libtests_a_DEPENDENCIES = $(lgltests_LIBOBJS)
 EXTRA_libtests_a_SOURCES =
 AM_LIBTOOLFLAGS = --preserve-dup-deps
 
+## begin gnulib module arg-nonnull
+
+# The BUILT_SOURCES created by this Makefile snippet are not used via #include
+# statements but through direct file reference. Therefore this snippet must be
+# present in all Makefile.am that need it. This is ensured by the applicability
+# 'all' defined above.
+
+BUILT_SOURCES += arg-nonnull.h
+# The arg-nonnull.h that gets inserted into generated .h files is the same as
+# build-aux/arg-nonnull.h, except that it has the copyright header cut off.
+arg-nonnull.h: $(top_srcdir)/build-aux/arg-nonnull.h
+	$(AM_V_GEN)rm -f $@-t $@ && \
+	sed -n -e '/GL_ARG_NONNULL/,$$p' \
+	  < $(top_srcdir)/build-aux/arg-nonnull.h \
+	  > $@-t && \
+	mv $@-t $@
+MOSTLYCLEANFILES += arg-nonnull.h arg-nonnull.h-t
+
+ARG_NONNULL_H=arg-nonnull.h
+
+EXTRA_DIST += $(top_srcdir)/build-aux/arg-nonnull.h
+
+## end   gnulib module arg-nonnull
+
 ## begin gnulib module c-ctype-tests
 
 TESTS += test-c-ctype
@@ -79,6 +103,11 @@ EXTRA_DIST += intprops.h
 ## end   gnulib module intprops
 
 ## begin gnulib module link-warning
+
+# The BUILT_SOURCES created by this Makefile snippet are not used via #include
+# statements but through direct file reference. Therefore this snippet must be
+# present in all Makefile.am that need it. This is ensured by the applicability
+# 'all' defined above.
 
 BUILT_SOURCES += link-warning.h
 # The link-warning.h that gets inserted into generated .h files is the same as

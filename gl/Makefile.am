@@ -40,6 +40,11 @@ libgnu_la_LDFLAGS = $(AM_LDFLAGS)
 
 ## begin gnulib module arg-nonnull
 
+# The BUILT_SOURCES created by this Makefile snippet are not used via #include
+# statements but through direct file reference. Therefore this snippet must be
+# present in all Makefile.am that need it. This is ensured by the applicability
+# 'all' defined above.
+
 BUILT_SOURCES += arg-nonnull.h
 # The arg-nonnull.h that gets inserted into generated .h files is the same as
 # build-aux/arg-nonnull.h, except that it has the copyright header cut off.
@@ -164,6 +169,11 @@ EXTRA_DIST += intprops.h
 ## end   gnulib module intprops
 
 ## begin gnulib module link-warning
+
+# The BUILT_SOURCES created by this Makefile snippet are not used via #include
+# statements but through direct file reference. Therefore this snippet must be
+# present in all Makefile.am that need it. This is ensured by the applicability
+# 'all' defined above.
 
 BUILT_SOURCES += link-warning.h
 # The link-warning.h that gets inserted into generated .h files is the same as
