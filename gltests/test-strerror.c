@@ -19,22 +19,14 @@
 
 #include <config.h>
 
-#include <errno.h>
-#include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
 
-#define ASSERT(expr) \
-  do                                                                         \
-    {                                                                        \
-      if (!(expr))                                                           \
-        {                                                                    \
-          fprintf (stderr, "%s:%d: assertion failed\n", __FILE__, __LINE__); \
-          fflush (stderr);                                                   \
-          abort ();                                                          \
-        }                                                                    \
-    }                                                                        \
-  while (0)
+#include "signature.h"
+SIGNATURE_CHECK (strerror, char *, (int));
+
+#include <errno.h>
+
+#include "macros.h"
 
 int
 main (void)

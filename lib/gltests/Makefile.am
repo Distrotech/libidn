@@ -72,7 +72,7 @@ EXTRA_DIST += $(top_srcdir)/build-aux/arg-nonnull.h
 TESTS += test-c-ctype
 check_PROGRAMS += test-c-ctype
 
-EXTRA_DIST += test-c-ctype.c
+EXTRA_DIST += test-c-ctype.c macros.h
 
 ## end   gnulib module c-ctype-tests
 
@@ -81,7 +81,7 @@ EXTRA_DIST += test-c-ctype.c
 TESTS += test-c-strcase.sh
 TESTS_ENVIRONMENT += EXEEXT='@EXEEXT@' LOCALE_FR='@LOCALE_FR@' LOCALE_TR_UTF8='@LOCALE_TR_UTF8@'
 check_PROGRAMS += test-c-strcasecmp test-c-strncasecmp
-EXTRA_DIST += test-c-strcase.sh test-c-strcasecmp.c test-c-strncasecmp.c
+EXTRA_DIST += test-c-strcase.sh test-c-strcasecmp.c test-c-strncasecmp.c macros.h
 
 ## end   gnulib module c-strcase-tests
 
@@ -91,7 +91,7 @@ TESTS += test-iconv
 check_PROGRAMS += test-iconv
 test_iconv_LDADD = $(LDADD) @LIBICONV@
 
-EXTRA_DIST += test-iconv.c
+EXTRA_DIST += test-iconv.c signature.h macros.h
 
 ## end   gnulib module iconv-tests
 
@@ -159,7 +159,7 @@ TESTS += test-striconv
 check_PROGRAMS += test-striconv
 test_striconv_LDADD = $(LDADD) @LIBICONV@
 
-EXTRA_DIST += test-striconv.c
+EXTRA_DIST += test-striconv.c macros.h
 
 ## end   gnulib module striconv-tests
 
@@ -176,7 +176,7 @@ EXTRA_DIST += test-string.c
 
 TESTS += test-strverscmp
 check_PROGRAMS += test-strverscmp
-EXTRA_DIST += test-strverscmp.c
+EXTRA_DIST += test-strverscmp.c signature.h macros.h
 
 ## end   gnulib module strverscmp-tests
 

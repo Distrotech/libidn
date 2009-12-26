@@ -245,6 +245,8 @@ AC_DEFUN([lgl_FILE_LIST], [
   m4/wchar.m4
   m4/wchar_t.m4
   m4/wint_t.m4
+  tests/macros.h
+  tests/signature.h
   tests/test-c-ctype.c
   tests/test-c-strcase.sh
   tests/test-c-strcasecmp.c

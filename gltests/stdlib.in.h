@@ -39,7 +39,7 @@
 #include <stddef.h>
 
 /* Solaris declares getloadavg() in <sys/loadavg.h>.  */
-#if @GNULIB_GETLOADAVG@ && @HAVE_SYS_LOADAVG_H@
+#if (@GNULIB_GETLOADAVG@ || defined GNULIB_POSIXCHECK) && @HAVE_SYS_LOADAVG_H@
 # include <sys/loadavg.h>
 #endif
 
@@ -49,7 +49,8 @@
 # include <random.h>
 #endif
 
-#if @GNULIB_RANDOM_R@ || !@HAVE_STRUCT_RANDOM_DATA@
+#if !@HAVE_STRUCT_RANDOM_DATA@ || (@GNULIB_RANDOM_R@ && !@HAVE_RANDOM_R@) \
+    || defined GNULIB_POSIXCHECK
 # include <stdint.h>
 #endif
 
@@ -64,6 +65,13 @@ struct random_data
   int rand_sep;                 /* Distance between front and rear.  */
   int32_t *end_ptr;             /* Pointer behind state table.  */
 };
+#endif
+
+#if (@GNULIB_MKSTEMP@ || @GNULIB_GETSUBOPT@ || defined GNULIB_POSIXCHECK) && ! defined __GLIBC__
+/* On MacOS X 10.3, only <unistd.h> declares mkstemp.  */
+/* On Cygwin 1.7.1, only <unistd.h> declares getsubopt.  */
+/* But avoid namespace pollution on glibc systems.  */
+# include <unistd.h>
 #endif
 
 /* The definition of GL_LINK_WARNING is copied here.  */
@@ -266,9 +274,6 @@ extern int mkostemps (char * /*template*/, int /*suffixlen*/, int /*flags*/)
    set.  */
 #  define mkstemp rpl_mkstemp
 extern int mkstemp (char * /*template*/) _GL_ARG_NONNULL ((1));
-# else
-/* On MacOS X 10.3, only <unistd.h> declares mkstemp.  */
-#  include <unistd.h>
 # endif
 #elif defined GNULIB_POSIXCHECK
 # undef mkstemp

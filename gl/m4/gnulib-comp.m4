@@ -120,21 +120,42 @@ AC_DEFUN([gl_INIT],
   gl_COMMON
   gl_source_base='gltests'
   gl_FUNC_ALLOCA
+  gl_CLOEXEC
+  gl_FUNC_DUP2
+  gl_UNISTD_MODULE_INDICATOR([dup2])
   gl_ENVIRON
   gl_UNISTD_MODULE_INDICATOR([environ])
+  gl_FUNC_FCNTL
+  gl_FCNTL_MODULE_INDICATOR([fcntl])
+  gl_FCNTL_H
+  gl_FUNC_GETDTABLESIZE
+  gl_UNISTD_MODULE_INDICATOR([getdtablesize])
+  gl_FUNC_LSTAT
+  gl_SYS_STAT_MODULE_INDICATOR([lstat])
   gl_FUNC_MALLOC_POSIX
   gl_STDLIB_MODULE_INDICATOR([malloc-posix])
   gl_MALLOCA
   gl_MULTIARCH
+  gl_FUNC_OPEN
+  gl_MODULE_INDICATOR([open])
+  gl_FCNTL_MODULE_INDICATOR([open])
+  gl_PATHMAX
   gl_FUNC_PUTENV
   gl_STDLIB_MODULE_INDICATOR([putenv])
   gl_FUNC_SETENV
   gl_STDLIB_MODULE_INDICATOR([setenv])
+  gl_FUNC_STAT
+  gl_SYS_STAT_MODULE_INDICATOR([stat])
   AM_STDBOOL_H
   gl_STDINT_H
   gt_TYPE_WCHAR_T
   gt_TYPE_WINT_T
   gl_STDLIB_H
+  gl_FUNC_SYMLINK
+  gl_UNISTD_MODULE_INDICATOR([symlink])
+  gl_HEADER_SYS_STAT_H
+  AC_PROG_MKDIR_P
+  gl_HEADER_TIME_H
   gl_FUNC_UNSETENV
   gl_STDLIB_MODULE_INDICATOR([unsetenv])
   abs_aux_dir=`cd "$ac_aux_dir"; pwd`
@@ -268,23 +289,35 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/00gnulib.m4
   m4/alloca.m4
   m4/autobuild.m4
+  m4/cloexec.m4
   m4/csharp.m4
   m4/csharpcomp.m4
+  m4/dos.m4
+  m4/dup2.m4
   m4/eealloc.m4
   m4/environ.m4
   m4/errno_h.m4
   m4/error.m4
   m4/extensions.m4
+  m4/fcntl-o.m4
+  m4/fcntl.m4
+  m4/fcntl_h.m4
+  m4/getdtablesize.m4
   m4/getopt.m4
   m4/gnulib-common.m4
   m4/include_next.m4
   m4/longlong.m4
+  m4/lstat.m4
   m4/malloc.m4
   m4/malloca.m4
   m4/manywarnings.m4
+  m4/mode_t.m4
   m4/multiarch.m4
+  m4/open.m4
+  m4/pathmax.m4
   m4/putenv.m4
   m4/setenv.m4
+  m4/stat.m4
   m4/stdarg.m4
   m4/stdbool.m4
   m4/stddef_h.m4
@@ -292,26 +325,48 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/stdlib_h.m4
   m4/strerror.m4
   m4/string_h.m4
+  m4/symlink.m4
+  m4/sys_stat_h.m4
+  m4/time_h.m4
   m4/unistd_h.m4
   m4/version-etc.m4
   m4/warnings.m4
   m4/wchar.m4
   m4/wchar_t.m4
   m4/wint_t.m4
+  tests/macros.h
+  tests/signature.h
   tests/test-alloca-opt.c
+  tests/test-binary-io.c
+  tests/test-binary-io.sh
+  tests/test-cloexec.c
+  tests/test-dup2.c
   tests/test-environ.c
   tests/test-errno.c
+  tests/test-fcntl-h.c
+  tests/test-fcntl.c
+  tests/test-getdtablesize.c
   tests/test-getopt.c
   tests/test-getopt.h
   tests/test-getopt_long.h
+  tests/test-lstat.c
+  tests/test-lstat.h
   tests/test-malloca.c
+  tests/test-open.c
+  tests/test-open.h
   tests/test-setenv.c
+  tests/test-stat.c
+  tests/test-stat.h
   tests/test-stdbool.c
   tests/test-stddef.c
   tests/test-stdint.c
   tests/test-stdlib.c
   tests/test-strerror.c
   tests/test-string.c
+  tests/test-symlink.c
+  tests/test-symlink.h
+  tests/test-sys_stat.c
+  tests/test-time.c
   tests/test-unistd.c
   tests/test-unsetenv.c
   tests/test-update-copyright.sh
@@ -321,15 +376,30 @@ AC_DEFUN([gl_FILE_LIST], [
   tests/test-version-etc.sh
   tests/test-wchar.c
   tests=lib/alloca.in.h
+  tests=lib/binary-io.h
+  tests=lib/cloexec.c
+  tests=lib/cloexec.h
+  tests=lib/dup2.c
+  tests=lib/fcntl.c
+  tests=lib/fcntl.in.h
+  tests=lib/getdtablesize.c
+  tests=lib/lstat.c
   tests=lib/malloc.c
   tests=lib/malloca.c
   tests=lib/malloca.h
   tests=lib/malloca.valgrind
+  tests=lib/open.c
+  tests=lib/pathmax.h
   tests=lib/putenv.c
+  tests=lib/same-inode.h
   tests=lib/setenv.c
+  tests=lib/stat.c
   tests=lib/stdbool.in.h
   tests=lib/stdint.in.h
   tests=lib/stdlib.in.h
+  tests=lib/symlink.c
+  tests=lib/sys_stat.in.h
+  tests=lib/time.in.h
   tests=lib/unsetenv.c
   tests=lib/verify.h
   tests=lib/version-etc-fsf.c

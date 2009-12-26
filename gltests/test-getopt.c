@@ -18,34 +18,47 @@
 
 #include <config.h>
 
+/* None of the files accessed by this test are large, so disable the
+   ftell link warning if we are not using the gnulib ftell module.  */
+#if !GNULIB_FTELL
+# undef GL_LINK_WARNING
+# define GL_LINK_WARNING(ignored) ((void) 0)
+#endif
+
 #if GNULIB_GETOPT_GNU
 # include <getopt.h>
+
+# ifndef __getopt_argv_const
+#  define __getopt_argv_const const
+# endif
+# include "signature.h"
+SIGNATURE_CHECK (getopt_long, int, (int, char *__getopt_argv_const *,
+                                    char const *, struct option const *,
+                                    int *));
+SIGNATURE_CHECK (getopt_long_only, int, (int, char *__getopt_argv_const *,
+                                         char const *, struct option const *,
+                                         int *));
+
 #endif
+
 #include <unistd.h>
+
+#include "signature.h"
+SIGNATURE_CHECK (getopt, int, (int, char * const[], char const *));
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
-#define ASSERT(expr) \
-  do                                                                         \
-    {                                                                        \
-      if (!(expr))                                                           \
-        {                                                                    \
-          fprintf (stderr, "%s:%d: assertion failed\n", __FILE__, __LINE__); \
-          fflush (stderr);                                                   \
-          abort ();                                                          \
-        }                                                                    \
-    }                                                                        \
-  while (0)
+/* This test intentionally remaps stderr.  So, we arrange to have fd 10
+   (outside the range of interesting fd's during the test) set up to
+   duplicate the original stderr.  */
 
-/* The glibc/gnulib implementation of getopt supports setting optind = 0,
-   but other implementations don't.  */
-#if defined __GETOPT_PREFIX || (__GLIBC__ >= 2)
-# define OPTIND_MIN 0
-#else
-# define OPTIND_MIN 1
-#endif
+#define BACKUP_STDERR_FILENO 10
+#define ASSERT_STREAM myerr
+#include "macros.h"
+
+static FILE *myerr;
 
 #include "test-getopt.h"
 #if GNULIB_GETOPT_GNU
@@ -55,6 +68,18 @@
 int
 main (void)
 {
+   /* This test validates that stderr is used correctly, so move the
+      original into fd 10.  */
+  if (dup2 (STDERR_FILENO, BACKUP_STDERR_FILENO) != BACKUP_STDERR_FILENO
+      || (myerr = fdopen (BACKUP_STDERR_FILENO, "w")) == NULL)
+    return 2;
+
+  ASSERT (freopen ("test-getopt.tmp", "w", stderr) == stderr);
+
+  /* These default values are required by POSIX.  */
+  ASSERT (optind == 1);
+  ASSERT (opterr != 0);
+
   setenv ("POSIXLY_CORRECT", "1", 1);
   test_getopt ();
 
@@ -67,7 +92,11 @@ main (void)
 
 #if GNULIB_GETOPT_GNU
   test_getopt_long ();
+  test_getopt_long_only ();
 #endif
+
+  ASSERT (fclose (stderr) == 0);
+  ASSERT (remove ("test-getopt.tmp") == 0);
 
   return 0;
 }
