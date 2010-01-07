@@ -1,6 +1,6 @@
 ## DO NOT EDIT! GENERATED AUTOMATICALLY!
 ## Process this file with automake to produce Makefile.in.
-# Copyright (C) 2002-2009 Free Software Foundation, Inc.
+# Copyright (C) 2002-2010 Free Software Foundation, Inc.
 #
 # This file is free software, distributed under the terms of the GNU
 # General Public License.  As a special exception to the GNU General
@@ -110,23 +110,6 @@ EXTRA_DIST += test-binary-io.sh test-binary-io.c macros.h
 
 ## end   gnulib module binary-io-tests
 
-## begin gnulib module cloexec
-
-
-EXTRA_DIST += cloexec.c cloexec.h
-
-EXTRA_libtests_a_SOURCES += cloexec.c
-
-## end   gnulib module cloexec
-
-## begin gnulib module cloexec-tests
-
-TESTS += test-cloexec
-check_PROGRAMS += test-cloexec
-EXTRA_DIST += test-cloexec.c macros.h
-
-## end   gnulib module cloexec-tests
-
 ## begin gnulib module dup2
 
 
@@ -161,15 +144,6 @@ check_PROGRAMS += test-errno
 EXTRA_DIST += test-errno.c
 
 ## end   gnulib module errno-tests
-
-## begin gnulib module fcntl
-
-
-EXTRA_DIST += fcntl.c
-
-EXTRA_libtests_a_SOURCES += fcntl.c
-
-## end   gnulib module fcntl
 
 ## begin gnulib module fcntl-h
 
@@ -206,35 +180,9 @@ EXTRA_DIST += fcntl.in.h
 
 TESTS += test-fcntl-h
 check_PROGRAMS += test-fcntl-h
-
 EXTRA_DIST += test-fcntl-h.c
 
 ## end   gnulib module fcntl-h-tests
-
-## begin gnulib module fcntl-tests
-
-TESTS += test-fcntl
-check_PROGRAMS += test-fcntl
-EXTRA_DIST += test-fcntl.c signature.h macros.h
-
-## end   gnulib module fcntl-tests
-
-## begin gnulib module getdtablesize
-
-
-EXTRA_DIST += getdtablesize.c
-
-EXTRA_libtests_a_SOURCES += getdtablesize.c
-
-## end   gnulib module getdtablesize
-
-## begin gnulib module getdtablesize-tests
-
-TESTS += test-getdtablesize
-check_PROGRAMS += test-getdtablesize
-EXTRA_DIST += test-getdtablesize.c signature.h macros.h
-
-## end   gnulib module getdtablesize-tests
 
 ## begin gnulib module getopt-posix-tests
 
@@ -408,7 +356,6 @@ EXTRA_DIST += stdbool.in.h
 
 TESTS += test-stdbool
 check_PROGRAMS += test-stdbool
-
 EXTRA_DIST += test-stdbool.c
 
 ## end   gnulib module stdbool-tests
@@ -417,7 +364,6 @@ EXTRA_DIST += test-stdbool.c
 
 TESTS += test-stddef
 check_PROGRAMS += test-stddef
-
 EXTRA_DIST += test-stddef.c
 
 ## end   gnulib module stddef-tests
@@ -468,7 +414,6 @@ EXTRA_DIST += stdint.in.h
 
 TESTS += test-stdint
 check_PROGRAMS += test-stdint
-
 EXTRA_DIST += test-stdint.c
 
 ## end   gnulib module stdint-tests
@@ -550,7 +495,6 @@ EXTRA_DIST += stdlib.in.h
 
 TESTS += test-stdlib
 check_PROGRAMS += test-stdlib
-
 EXTRA_DIST += test-stdlib.c
 
 ## end   gnulib module stdlib-tests
@@ -567,7 +511,6 @@ EXTRA_DIST += test-strerror.c signature.h macros.h
 
 TESTS += test-string
 check_PROGRAMS += test-string
-
 EXTRA_DIST += test-string.c
 
 ## end   gnulib module string-tests
@@ -650,7 +593,6 @@ EXTRA_DIST += sys_stat.in.h
 
 TESTS += test-sys_stat
 check_PROGRAMS += test-sys_stat
-
 EXTRA_DIST += test-sys_stat.c
 
 ## end   gnulib module sys_stat-tests
@@ -688,7 +630,6 @@ EXTRA_DIST += time.in.h
 
 TESTS += test-time
 check_PROGRAMS += test-time
-
 EXTRA_DIST += test-time.c
 
 ## end   gnulib module time-tests
@@ -697,7 +638,6 @@ EXTRA_DIST += test-time.c
 
 TESTS += test-unistd
 check_PROGRAMS += test-unistd
-
 EXTRA_DIST += test-unistd.c
 
 ## end   gnulib module unistd-tests
@@ -760,7 +700,7 @@ EXTRA_DIST += test-version-etc.c test-version-etc.sh
 
 ## begin gnulib module wchar
 
-BUILT_SOURCES += $(WCHAR_H)
+BUILT_SOURCES += wchar.h
 
 # We need the following in order to create <wchar.h> when the system
 # version does not work standalone.
@@ -821,7 +761,6 @@ EXTRA_DIST += wchar.in.h
 
 TESTS += test-wchar
 check_PROGRAMS += test-wchar
-
 EXTRA_DIST += test-wchar.c
 
 ## end   gnulib module wchar-tests

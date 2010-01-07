@@ -1,6 +1,6 @@
 ## DO NOT EDIT! GENERATED AUTOMATICALLY!
 ## Process this file with automake to produce Makefile.in.
-# Copyright (C) 2002-2009 Free Software Foundation, Inc.
+# Copyright (C) 2002-2010 Free Software Foundation, Inc.
 #
 # This file is free software, distributed under the terms of the GNU
 # General Public License.  As a special exception to the GNU General
@@ -130,7 +130,6 @@ EXTRA_DIST += $(top_srcdir)/build-aux/link-warning.h
 
 TESTS += test-stdbool
 check_PROGRAMS += test-stdbool
-
 EXTRA_DIST += test-stdbool.c
 
 ## end   gnulib module stdbool-tests
@@ -139,7 +138,6 @@ EXTRA_DIST += test-stdbool.c
 
 TESTS += test-stddef
 check_PROGRAMS += test-stddef
-
 EXTRA_DIST += test-stddef.c
 
 ## end   gnulib module stddef-tests
@@ -148,7 +146,6 @@ EXTRA_DIST += test-stddef.c
 
 TESTS += test-stdint
 check_PROGRAMS += test-stdint
-
 EXTRA_DIST += test-stdint.c
 
 ## end   gnulib module stdint-tests
@@ -167,7 +164,6 @@ EXTRA_DIST += test-striconv.c macros.h
 
 TESTS += test-string
 check_PROGRAMS += test-string
-
 EXTRA_DIST += test-string.c
 
 ## end   gnulib module string-tests
@@ -190,7 +186,6 @@ libtests_a_SOURCES += verify.h
 
 TESTS += test-wchar
 check_PROGRAMS += test-wchar
-
 EXTRA_DIST += test-wchar.c
 
 ## end   gnulib module wchar-tests

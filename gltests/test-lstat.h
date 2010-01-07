@@ -1,5 +1,5 @@
 /* Test of lstat() function.
-   Copyright (C) 2008, 2009 Free Software Foundation, Inc.
+   Copyright (C) 2008, 2009, 2010 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -27,9 +27,6 @@ test_lstat_func (int (*func) (char const *, struct stat *), bool print)
 {
   struct stat st1;
   struct stat st2;
-
-  /* Remove any leftovers from a previous partial run.  */
-  ASSERT (system ("rm -rf " BASE "*") == 0);
 
   /* Test for common directories.  */
   ASSERT (func (".", &st1) == 0);

@@ -1,5 +1,5 @@
 # DO NOT EDIT! GENERATED AUTOMATICALLY!
-# Copyright (C) 2002-2009 Free Software Foundation, Inc.
+# Copyright (C) 2002-2010 Free Software Foundation, Inc.
 #
 # This file is free software, distributed under the terms of the GNU
 # General Public License.  As a special exception to the GNU General
@@ -120,16 +120,11 @@ AC_DEFUN([gl_INIT],
   gl_COMMON
   gl_source_base='gltests'
   gl_FUNC_ALLOCA
-  gl_CLOEXEC
   gl_FUNC_DUP2
   gl_UNISTD_MODULE_INDICATOR([dup2])
   gl_ENVIRON
   gl_UNISTD_MODULE_INDICATOR([environ])
-  gl_FUNC_FCNTL
-  gl_FCNTL_MODULE_INDICATOR([fcntl])
   gl_FCNTL_H
-  gl_FUNC_GETDTABLESIZE
-  gl_UNISTD_MODULE_INDICATOR([getdtablesize])
   gl_FUNC_LSTAT
   gl_SYS_STAT_MODULE_INDICATOR([lstat])
   gl_FUNC_MALLOC_POSIX
@@ -289,7 +284,6 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/00gnulib.m4
   m4/alloca.m4
   m4/autobuild.m4
-  m4/cloexec.m4
   m4/csharp.m4
   m4/csharpcomp.m4
   m4/dos.m4
@@ -300,9 +294,7 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/error.m4
   m4/extensions.m4
   m4/fcntl-o.m4
-  m4/fcntl.m4
   m4/fcntl_h.m4
-  m4/getdtablesize.m4
   m4/getopt.m4
   m4/gnulib-common.m4
   m4/include_next.m4
@@ -339,13 +331,10 @@ AC_DEFUN([gl_FILE_LIST], [
   tests/test-alloca-opt.c
   tests/test-binary-io.c
   tests/test-binary-io.sh
-  tests/test-cloexec.c
   tests/test-dup2.c
   tests/test-environ.c
   tests/test-errno.c
   tests/test-fcntl-h.c
-  tests/test-fcntl.c
-  tests/test-getdtablesize.c
   tests/test-getopt.c
   tests/test-getopt.h
   tests/test-getopt_long.h
@@ -377,12 +366,8 @@ AC_DEFUN([gl_FILE_LIST], [
   tests/test-wchar.c
   tests=lib/alloca.in.h
   tests=lib/binary-io.h
-  tests=lib/cloexec.c
-  tests=lib/cloexec.h
   tests=lib/dup2.c
-  tests=lib/fcntl.c
   tests=lib/fcntl.in.h
-  tests=lib/getdtablesize.c
   tests=lib/lstat.c
   tests=lib/malloc.c
   tests=lib/malloca.c

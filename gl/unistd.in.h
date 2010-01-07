@@ -1,5 +1,5 @@
 /* Substitute for and wrapper around <unistd.h>.
-   Copyright (C) 2003-2009 Free Software Foundation, Inc.
+   Copyright (C) 2003-2010 Free Software Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -61,10 +61,8 @@
 # include <io.h>
 #endif
 
-#if ((@GNULIB_WRITE@ && @REPLACE_WRITE@ && @GNULIB_UNISTD_H_SIGPIPE@)   \
-     || (@GNULIB_READLINK@ && (!@HAVE_READLINK@ || @REPLACE_READLINK@)) \
-     || (@GNULIB_READLINKAT@ && !@HAVE_READLINKAT@) \
-     || defined GNULIB_POSIXCHECK)
+#if (@GNULIB_WRITE@ || @GNULIB_READLINK@ || @GNULIB_READLINKAT@ \
+     || @GNULIB_PREAD@ || defined GNULIB_POSIXCHECK)
 /* Get ssize_t.  */
 # include <sys/types.h>
 #endif
@@ -646,7 +644,7 @@ extern int linkat (int fd1, const char *path1, int fd2, const char *path2,
 # endif
 #elif defined GNULIB_POSIXCHECK
 # undef linkat
-# define link(f1,path1,f2,path2,f)              \
+# define linkat(f1,path1,f2,path2,f)              \
     (GL_LINK_WARNING ("linkat is unportable - " \
                       "use gnulib module linkat for portability"), \
      linkat (f1, path1, f2, path2,f))

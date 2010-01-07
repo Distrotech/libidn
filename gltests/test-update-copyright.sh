@@ -1,6 +1,6 @@
 #!/bin/sh
 # Test suite for update-copyright.
-# Copyright (C) 2009 Free Software Foundation, Inc.
+# Copyright (C) 2009-2010 Free Software Foundation, Inc.
 # This file is part of the GNUlib Library.
 #
 # This program is free software: you can redistribute it and/or modify
@@ -46,6 +46,10 @@ echo a > $TMP-in
       'your system has insufficient support for Perl' 1>&2
     exit 77
   }
+
+# Do not let a different envvar setting perturb results.
+UPDATE_COPYRIGHT_MAX_LINE_LENGTH=72
+export UPDATE_COPYRIGHT_MAX_LINE_LENGTH
 
 ## ----------------------------- ##
 ## Examples from documentation.  ##
