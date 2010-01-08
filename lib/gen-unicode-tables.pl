@@ -1,6 +1,6 @@
 #! /usr/bin/perl -w
 
-#    Copyright (C) 2004, 2005, 2006, 2007, 2008, 2009 Simon Josefsson
+#    Copyright (C) 2004, 2005, 2006, 2007, 2008, 2009, 2010 Simon Josefsson
 #    Copyright (C) 1998, 1999 Tom Tromey
 #    Copyright (C) 2001 Red Hat Software
 
@@ -29,6 +29,7 @@
 # FIXME:
 # * For decomp table it might make sense to use a shift count other
 #   than 8.  We could easily compute the perfect shift count.
+# * This script no longer works with Perl 5.10.  Sigh.
 
 # we use some perl unicode features
 require 5.006;
