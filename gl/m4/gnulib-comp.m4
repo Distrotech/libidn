@@ -259,6 +259,7 @@ AC_DEFUN([gl_FILE_LIST], [
   build-aux/update-copyright
   build-aux/useless-if-before-free
   build-aux/vc-list-files
+  build-aux/warn-on-use.h
   doc/fdl-1.3.texi
   doc/gendocs_template
   doc/gpl-3.0.texi
@@ -322,6 +323,7 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/time_h.m4
   m4/unistd_h.m4
   m4/version-etc.m4
+  m4/warn-on-use.m4
   m4/warnings.m4
   m4/wchar.m4
   m4/wchar_t.m4
