@@ -1,4 +1,4 @@
-# Copyright (C) 2006, 2007, 2008, 2009 Simon Josefsson
+# Copyright (C) 2006, 2007, 2008, 2009, 2010 Simon Josefsson
 #
 # This file is part of GNU Libidn.
 #
@@ -98,4 +98,5 @@ web:
 
 upload-web:
 	cd $(htmldir) && \
-		cvs commit -m "Update." manual/ javadoc/ reference/ doxygen/
+		cvs commit -m "Update." \
+			manual/ javadoc/ reference/ doxygen/ cyclo/
