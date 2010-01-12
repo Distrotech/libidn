@@ -1,1 +1,3 @@
 ^gl/error.c
+^gltests/malloca.h
+^gltests/setenv.c
