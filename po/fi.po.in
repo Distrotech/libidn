@@ -1,109 +1,142 @@
-# translation of libidn-1.4.pot to Finnish
-# Copyright © 2008 Free Software Foundation, Inc.
+# translation of libidn-1.9.pot to Finnish
+# Copyright © 2008, 2009 Free Software Foundation, Inc.
 # Copyright © 2007 Simon Josefsson
 # This file is distributed under the same license as the libidn package.
-#
 # Jorma Karvonen <karvjorm@users.sf.net>, 2008.
+# Jorma Karvonen <karvonen.jorma@gmail.com>, 2009
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: libidn 1.4\n"
+"Project-Id-Version: libidn 1.9\n"
 "Report-Msgid-Bugs-To: bug-libidn@gnu.org\n"
-"POT-Creation-Date: 2008-01-09 15:27+0100\n"
-"PO-Revision-Date: 2008-01-15 18:22+0200\n"
-"Last-Translator: Jorma Karvonen <karvjorm@users.sf.net>\n"
+"POT-Creation-Date: 2008-07-01 18:15+0200\n"
+"PO-Revision-Date: 2009-09-30 00:44+0200\n"
+"Last-Translator: Jorma Karvonen <karvonen.jorma@gmail.com>\n"
 "Language-Team: Finnish <translation-team-fi@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: KBabel 1.11.4\n"
 
+#: lib/strerror-idna.c:74 lib/strerror-pr29.c:58 lib/strerror-punycode.c:58
+#: lib/strerror-stringprep.c:78 lib/strerror-tld.c:60
 msgid "Success"
 msgstr "Onnistui"
 
+#: lib/strerror-idna.c:78 lib/strerror-pr29.c:66
 msgid "String preparation failed"
 msgstr "Merkkijonon valmistelu ei onnistunut"
 
 #  Wikipedia: Punycode is a computer programming encoding syntax by which a Unicode string of characters can be translated into the more-limited character set permitted in network host names.
+#: lib/strerror-idna.c:82
 msgid "Punycode failed"
 msgstr "Punycode-koodaus ei onnistunut"
 
+#: lib/strerror-idna.c:86
 msgid "Non-digit/letter/hyphen in input"
 msgstr "Syötteessä on merkki, joka ei ole numero/kirjain/tavuviiva"
 
+#: lib/strerror-idna.c:90
 msgid "Forbidden leading or trailing minus sign (`-')"
 msgstr "Ei saa alkaa tai loppua miinusmerkillä (”-”)"
 
+#: lib/strerror-idna.c:94
 msgid "Output would be too large or too small"
 msgstr "Tuloste olisi liian suuri tai liian pieni"
 
+#: lib/strerror-idna.c:98
 msgid "Input does not start with ACE prefix (`xn--')"
 msgstr "Syöte ei ala ACE-prefiksillä (”xn--”)"
 
 #  Yksinkertaisesti selitettynä idempotentti on matemaattinen termi, joka tarkoittaa, että jonkun toiminnon tulos on aina sama kun toiminto toistetaan kahdesti (tai useammin).
+#: lib/strerror-idna.c:102
 msgid "String not idempotent under ToASCII"
 msgstr "Merkkijono ei ole idempotentti ToASCII-toiminnon aikana"
 
+#: lib/strerror-idna.c:106
 msgid "Input already contain ACE prefix (`xn--')"
 msgstr "Syöte jo sisältää ACE-prefiksin (”xn--”)"
 
+#: lib/strerror-idna.c:110 lib/strerror-tld.c:76
 msgid "System iconv failed"
 msgstr "Järjestelmän iconv-käsky ei onnistunut"
 
+#: lib/strerror-idna.c:114 lib/strerror-stringprep.c:122 lib/strerror-tld.c:72
 msgid "Cannot allocate memory"
 msgstr "Ei voida varata muistia"
 
+#: lib/strerror-idna.c:118
 msgid "System dlopen failed"
 msgstr "Järjestelmän dlopen-käsky ei onnistunut"
 
+#: lib/strerror-idna.c:122 lib/strerror-pr29.c:70 lib/strerror-punycode.c:74
+#: lib/strerror-stringprep.c:126 lib/strerror-tld.c:84
 msgid "Unknown error"
 msgstr "Tuntematon virhe"
 
+#: lib/strerror-pr29.c:62
 msgid "String not idempotent under Unicode NFKC normalization"
 msgstr "Merkkijono ei ole idempotentti Unicode NFKC-normeerauksen aikana"
 
+#: lib/strerror-punycode.c:62
 msgid "Invalid input"
 msgstr "Virheellinen syöte"
 
+#: lib/strerror-punycode.c:66 lib/strerror-stringprep.c:102
 msgid "Output would exceed the buffer space provided"
 msgstr "Tuloste ylittäisi varatun puskurin tilan"
 
+#: lib/strerror-punycode.c:70
 msgid "String size limit exceeded"
 msgstr "Merkkijonon koko ylitettiin"
 
 #  Code point is any value in the Unicode codespace; that is, the range of integers from 0 to hexadecimal 10FFFF.
+#: lib/strerror-stringprep.c:82
 msgid "Forbidden unassigned code points in input"
 msgstr "Kiellettyjä määräämättömiä code points-skalaariarvoja syötteessä"
 
+#: lib/strerror-stringprep.c:86
 msgid "Prohibited code points in input"
 msgstr "Kiellettyjä code points-skalaariarvoja syötteessä"
 
+#: lib/strerror-stringprep.c:90
 msgid "Conflicting bidirectional properties in input"
 msgstr "Ristiriitaisia kaksisuuntaisia ominaisuuksia syötteessä"
 
+#: lib/strerror-stringprep.c:94
 msgid "Malformed bidirectional string"
 msgstr "Väärän muotoinen kaksisuuntainen merkkijono"
 
+#: lib/strerror-stringprep.c:98
 msgid "Prohibited bidirectional code points in input"
 msgstr "Kiellettyjä kaksisuuntaisia code points-skalaariarvoja syötteessä"
 
+#: lib/strerror-stringprep.c:106
 msgid "Error in stringprep profile definition"
 msgstr "Virhe strngprep-profiilimäärittelyssä"
 
+#: lib/strerror-stringprep.c:110
 msgid "Flag conflict with profile"
 msgstr "Lippu ristiriidassa profiilin kanssa"
 
+#: lib/strerror-stringprep.c:114
 msgid "Unknown profile"
 msgstr "Tuntematon profiili"
 
+#: lib/strerror-stringprep.c:118
 msgid "Unicode normalization failed (internal error)"
 msgstr "Unicode-normeeraus ei onnistunut (sisäinen virhe)"
 
+#: lib/strerror-tld.c:64
 msgid "Code points prohibited by top-level domain"
 msgstr "Code points-skalaariarvot kiellettyjä ylätason toimialueessa"
 
+#: lib/strerror-tld.c:68
 msgid "Missing input"
 msgstr "Syöte puuttuu"
 
+#: lib/strerror-tld.c:80
 msgid "No top-level domain found in input"
 msgstr "Syötteestä ei löytynyt ylätason toimialuetta"
 
@@ -111,6 +144,7 @@ msgstr "Syötteestä ei löytynyt ylätason toimialuetta"
 #. for this package.  Please add _another line_ saying
 #. "Report translation bugs to <...>\n" with the address for translation
 #. bugs (typically your translation team's web or email address).
+#: src/idn.c:68
 #, c-format
 msgid ""
 "\n"
@@ -120,15 +154,18 @@ msgstr ""
 "Ilmoita virheistä osoitteeseen <%s>.\n"
 "Ilmoita käännösvirheistä osoitteeseen <translation-team-fi@lists.sourceforge.net>.\n"
 
+#: src/idn.c:75
 #, c-format
 msgid "Try `%s --help' for more information.\n"
 msgstr "Lisätietoja käskyllä ”%s --help”.\n"
 
+#: src/idn.c:79
 #, c-format
 msgid "Usage: %s [OPTION]... [STRINGS]...\n"
 msgstr "Käyttö: %s [VALITSIN]... [MERKKIJONOT]...\n"
 
 #  convert -> converts ?
+#: src/idn.c:82
 msgid ""
 "Internationalized Domain Name (IDN) convert STRINGS, or standard input.\n"
 "\n"
@@ -136,6 +173,7 @@ msgstr ""
 "Kansainvälistetty verkkotunnus (IDN) muuntaa MERKKIJONOT tai vakiosyötteen.\n"
 "\n"
 
+#: src/idn.c:86
 msgid ""
 "Command line interface to the internationalized domain name library.\n"
 "\n"
@@ -162,6 +200,7 @@ msgstr ""
 "Pakolliset argumentit pitkille valitsimille ovat pakollisia myös lyhyille\n"
 "valitsimille.\n"
 
+#: src/idn.c:98
 msgid ""
 "  -h, --help               Print help and exit\n"
 "  -V, --version            Print version and exit\n"
@@ -169,6 +208,7 @@ msgstr ""
 "  -h, --help               Tulosta ohje ja poistu\n"
 "  -V, --version            Tulosta versio ja poistu\n"
 
+#: src/idn.c:102
 msgid ""
 "  -s, --stringprep         Prepare string according to nameprep profile\n"
 "  -d, --punycode-decode    Decode Punycode\n"
@@ -182,6 +222,7 @@ msgstr ""
 "  -a, --idna-to-ascii      Muunna ACE-koodiksi IDNA-koodista (oletustila)\n"
 "  -u, --idna-to-unicode    Muunna ACE-koodista IDNA-koodiksi\n"
 
+#: src/idn.c:109
 msgid ""
 "      --allow-unassigned   Toggle IDNA AllowUnassigned flag\n"
 "      --usestd3asciirules  Toggle IDNA UseSTD3ASCIIRules flag\n"
@@ -189,6 +230,7 @@ msgstr ""
 "      --allow-unassigned   Vaihda ”IDNA AllowUnassigned”-lipun tilaa\n"
 "      --usestd3asciirules  Vaihda ”IDNA UseSTD3ASCIIRules”-lipun tilaa\n"
 
+#: src/idn.c:113
 msgid ""
 "  -t, --tld                Check string for TLD specific rules\n"
 "                             Only for --idna-to-ascii and --idna-to-unicode\n"
@@ -196,6 +238,11 @@ msgstr ""
 "  -t, --tld                Etsi merkkijonosta TLD-kohtaisia sääntöjä\n"
 "                             Vain valitsimille ”--idna-to-ascii” ja ”--idna-to-unicode”\n"
 
+#: src/idn.c:117
+msgid "  -n, --nfkc               Normalize string according to Unicode v3.2 NFKC\n"
+msgstr "  -n, --nfkc               Normeeraa merkkijono ”Unicode v3.2 NFKC”-koodauksen mukaisesti\n"
+
+#: src/idn.c:120
 msgid ""
 "  -p, --profile=STRING     Use specified stringprep profile instead\n"
 "                             Valid stringprep profiles: `Nameprep',\n"
@@ -207,6 +254,7 @@ msgstr ""
 "                             ”iSCSI”, ”Nodeprep”, ”Resourceprep”, \n"
 "                             ”trace”, ”SASLprep”\n"
 
+#: src/idn.c:126
 msgid ""
 "      --debug              Print debugging information\n"
 "      --quiet              Silent operation\n"
@@ -214,82 +262,100 @@ msgstr ""
 "      --debug              Tulosta virheenjäljitystiedot\n"
 "      --quiet              Hiljainen toiminta\n"
 
+#: src/idn.c:176
 #, c-format
-msgid "Only one of -s, -e, -d, -a or -u can be specified."
-msgstr "Vain yksi valitsimista -s, -e, -d, -a or -u voidaan määritellä"
+msgid "Only one of -s, -e, -d, -a, -u or -n can be specified."
+msgstr "Vain yksi valitsimista -s, -e, -d, -a, -u tai -n voidaan määritellä"
 
+#: src/idn.c:184
 #, c-format
 msgid "Charset `%s'.\n"
 msgstr "Merkistö ”%s”\n"
 
+#: src/idn.c:187
 #, c-format
 msgid "Type each input string on a line by itself, terminated by a newline character.\n"
 msgstr "Kirjoita jokainen merkkijono omalle rivilleen ja lopeta rivi rivinvaihdolla.\n"
 
+#: src/idn.c:202
 #, c-format
 msgid "Input error"
 msgstr "Syötevirhe"
 
+#: src/idn.c:212 src/idn.c:274 src/idn.c:357 src/idn.c:434 src/idn.c:515
 #, c-format
 msgid "Could not convert from %s to UTF-8."
 msgstr "Ei voitu muuntaa %s-merkistöstä UTF-8-merkistöön"
 
+#: src/idn.c:220 src/idn.c:245 src/idn.c:281 src/idn.c:498 src/idn.c:527
+#: src/idn.c:551
 #, c-format
 msgid "Could not convert from UTF-8 to UCS-4."
 msgstr "Ei voitu muuntaa UTF-8-merkistöstä UCS-4-merkistöön"
 
-#, c-format
-msgid "input[%lu] = U+%04x\n"
-msgstr "syöte[%lu] = U+%04x\n"
-
+#: src/idn.c:237
 #, c-format
 msgid "stringprep_profile: %s"
 msgstr "stringprep_profile: %s"
 
-#, c-format
-msgid "output[%lu] = U+%04x\n"
-msgstr "tuloste[%lu] = U+%04x\n"
-
+#: src/idn.c:260 src/idn.c:302 src/idn.c:345 src/idn.c:503 src/idn.c:564
 #, c-format
 msgid "Could not convert from UTF-8 to %s."
 msgstr "Ei voitu muuntaa UTF-8-merkistöstä %s-merkistöön."
 
+#: src/idn.c:295
 #, c-format
 msgid "punycode_encode: %s"
 msgstr "punycode_encode: %s"
 
-#, c-format
-msgid "malloc"
-msgstr "malloc-käsky"
-
+#: src/idn.c:323
 #, c-format
 msgid "punycode_decode: %s"
 msgstr "punycode_decode: %s"
 
+#: src/idn.c:340 src/idn.c:364 src/idn.c:442
 #, c-format
 msgid "Could not convert from UCS-4 to UTF-8."
 msgstr "Ei voitu muuntaa UCS-4-merkistöstä UTF-8-merkistöön."
 
+#: src/idn.c:381
 #, c-format
 msgid "idna_to_ascii_4z: %s"
 msgstr "idna_to_ascii_4z: %s"
 
+#: src/idn.c:395
 #, c-format
 msgid "idna_to_unicode_8z4z (TLD): %s"
 msgstr "idna_to_unicode_8z4z (TLD): %s"
 
-#, c-format
-msgid "tld[%lu] = U+%04x\n"
-msgstr "tld[%lu] = U+%04x\n"
-
+#: src/idn.c:409 src/idn.c:482
 #, c-format
 msgid "tld_check_4z (position %lu): %s"
 msgstr "tld_check_4z (sijainti %lu): %s"
 
+#: src/idn.c:412 src/idn.c:488
 #, c-format
 msgid "tld_check_4z: %s"
 msgstr "tld_check_4z: %s"
 
+#: src/idn.c:461
 #, c-format
 msgid "idna_to_unicode_8z4z: %s"
 msgstr "idna_to_unicode_8z4z: %s"
+
+#: src/idn.c:540
+#, c-format
+msgid "Could not do NFKC normalization."
+msgstr "Ei voitu tehdä NFKC-normeerausta."
+
+#~ msgid "input[%lu] = U+%04x\n"
+#~ msgstr "syöte[%lu] = U+%04x\n"
+
+#~ msgid "output[%lu] = U+%04x\n"
+#~ msgstr "tuloste[%lu] = U+%04x\n"
+
+#~ msgid "malloc"
+#~ msgstr "malloc-käsky"
+
+#~ msgid "tld[%lu] = U+%04x\n"
+#~ msgstr "tld[%lu] = U+%04x\n"
