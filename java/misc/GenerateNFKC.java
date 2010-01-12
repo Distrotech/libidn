@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2004, 2005, 2006, 2007, 2008, 2009  Free Software Foundation, Inc.
+ * Copyright (C) 2004, 2005, 2006, 2007, 2008, 2009, 2010  Free Software Foundation, Inc.
  *
  * Author: Oliver Hitz
  *
@@ -204,7 +204,7 @@ public class GenerateNFKC
 	String k = (String) i.next();
 	String v = (String) compatibility.get(k);
 
- 	String d = decompose(v, compatibility);
+	String d = decompose(v, compatibility);
 	if (!d.equals(v)) {
 	  replaced = true;
 	  compatibility.put(k, d);
@@ -532,7 +532,7 @@ public class GenerateNFKC
 	String[] v = ((String[]) singleSecondComposition.get(k));
 	w.println("    { '"+toJavaString(v[0])+"', '"+toJavaString(v[1])+"' },");
 
- 	indices.put(new Integer(Integer.parseInt(k, 16)), new Integer(index));
+	indices.put(new Integer(Integer.parseInt(k, 16)), new Integer(index));
 	index++;
       }
       w.println("  };");

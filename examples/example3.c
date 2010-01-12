@@ -1,5 +1,5 @@
 /* example3.c --- Example ToASCII() code showing how to use Libidn.
- * Copyright (C) 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009 Simon Josefsson
+ * Copyright (C) 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010 Simon Josefsson
  *
  * This file is part of GNU Libidn.
  *
@@ -62,7 +62,7 @@ main (void)
   if (rc != IDNA_SUCCESS)
     {
       printf ("ToASCII() failed (%d): %s\n", rc, idna_strerror (rc));
-      exit (1);
+      return EXIT_FAILURE;
     }
 
   printf ("ACE label (length %d): '%s'\n", strlen (p), p);

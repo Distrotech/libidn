@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2004, 2005, 2006, 2007, 2008, 2009  Free Software Foundation, Inc.
+ * Copyright (C) 2004, 2005, 2006, 2007, 2008, 2009, 2010  Free Software Foundation, Inc.
  *
  * Author: Oliver Hitz
  *
@@ -68,16 +68,16 @@ public class NFKC
       int cc = combiningClass(out.charAt(i));
 
       if (i > 0 && (last_cc == 0 || last_cc != cc)) {
- 	// Try to combine characters
- 	char a = out.charAt(last_start);
- 	char b = out.charAt(i);
+	  // Try to combine characters
+	  char a = out.charAt(last_start);
+	  char b = out.charAt(i);
 
- 	int c = compose(a, b);
+	  int c = compose(a, b);
 
- 	if (c != -1) {
- 	  out.setCharAt(last_start, (char) c);
- 	  out.deleteCharAt(i);
- 	  i--;
+	  if (c != -1) {
+	      out.setCharAt(last_start, (char) c);
+	      out.deleteCharAt(i);
+	      i--;
 
 	  if (i == last_start) {
 	    last_cc = 0;
@@ -89,7 +89,7 @@ public class NFKC
       }
 
       if (cc == 0) {
- 	last_start = i;
+	  last_start = i;
       }
 
       last_cc = cc;

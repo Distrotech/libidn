@@ -1,6 +1,2 @@
-^gl/Makefile.am
-^gltests/Makefile.am
-^lib/gl/Makefile.am
-^lib/gltests/Makefile.am
 ^lib/Makefile.am
 ^src/Makefile.am

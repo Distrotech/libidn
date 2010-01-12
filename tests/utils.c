@@ -1,5 +1,5 @@
 /* utils.c --- Self test utilities.
- * Copyright (C) 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009 Simon Josefsson
+ * Copyright (C) 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010 Simon Josefsson
  *
  * This file is part of GNU Libidn.
  *
@@ -41,7 +41,7 @@ fail (const char *format, ...)
   va_end (arg_ptr);
   error_count++;
   if (break_on_error)
-    exit (1);
+    exit (EXIT_FAILURE);
 }
 
 void
