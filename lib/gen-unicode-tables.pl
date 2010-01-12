@@ -29,7 +29,7 @@
 # FIXME:
 # * For decomp table it might make sense to use a shift count other
 #   than 8.  We could easily compute the perfect shift count.
-# * This script no longer works with Perl 5.10.  Sigh.
+# * This script no longer works with Perl 5.10.  Sigh..
 
 # we use some perl unicode features
 require 5.006;
