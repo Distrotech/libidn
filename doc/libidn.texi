@@ -14,7 +14,7 @@
 This manual is last updated @value{UPDATED} for version
 @value{VERSION} of GNU Libidn.
 
-Copyright @copyright{} 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009 Simon Josefsson.
+Copyright @copyright{} 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010 Simon Josefsson.
 
 @quotation
 Permission is granted to copy, distribute and/or modify this document
@@ -768,7 +768,7 @@ following first in your @code{main}:
     @{
       printf ("stringprep_check_version() failed:\n"
               "Header file incompatible with shared library.\n");
-      exit(1);
+      exit(EXIT_FAILURE);
     @}
 @end example
 
