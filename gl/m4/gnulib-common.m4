@@ -52,6 +52,14 @@ m4_ifndef([m4_foreach_w],
   [m4_define([m4_foreach_w],
     [m4_foreach([$1], m4_split(m4_normalize([$2]), [ ]), [$3])])])
 
+# AS_VAR_IF(VAR, VALUE, [IF-MATCH], [IF-NOT-MATCH])
+# ----------------------------------------------------
+# Backport of autoconf-2.63b's macro.
+# Remove this macro when we can assume autoconf >= 2.64.
+m4_ifndef([AS_VAR_IF],
+[m4_define([AS_VAR_IF],
+[AS_IF([test x"AS_VAR_GET([$1])" = x""$2], [$3], [$4])])])
+
 # AC_PROG_MKDIR_P
 # is a backport of autoconf-2.60's AC_PROG_MKDIR_P.
 # Remove this macro when we can assume autoconf >= 2.60.
