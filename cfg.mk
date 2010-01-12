@@ -29,7 +29,7 @@ local-checks-to-skip = sc_prohibit_strcmp sc_prohibit_have_config_h	\
 	sc_useless_cpp_parens sc_GPL_version sc_immutable_NEWS		\
 	sc_two_space_separator_in_usage sc_m4_quote_check sc_po_check	\
 	sc_copyright_check
-VC_LIST_NEVER = ^((lib/)?(gl|gltests|build-aux))/.*
+VC_LIST_ALWAYS_EXCLUDE_REGEX = ^((lib/)?(gl|gltests|build-aux))/.*$
 
 doc/Makefile.gdoc:
 	printf "gdoc_MANS =\ngdoc_TEXINFOS =\n" > doc/Makefile.gdoc
