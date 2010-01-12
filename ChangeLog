@@ -1,3 +1,378 @@
+2010-01-12  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Version 1.16.
+
+2010-01-12  Simon Josefsson <simon@josefsson.org>
+
+	* gl/m4/open.m4, gl/override/m4/open.m4.diff: Add workaround for
+	Wine open failure.
+
+2010-01-12  Simon Josefsson <simon@josefsson.org>
+
+	* gl/override/tests/dup2.c.diff, gltests/dup2.c: Add workaround for
+	Wine dup2 failure.
+
+2010-01-12  Simon Josefsson <simon@josefsson.org>
+
+	* build-aux/warn-on-use.h, gl/Makefile.am, gl/m4/gnulib-comp.m4,
+	gl/m4/unistd_h.m4, gl/m4/warn-on-use.m4, gl/unistd.in.h,
+	gltests/Makefile.am, gltests/test-getopt.c, gltests/wchar.in.h,
+	lib/gl/wchar.in.h, maint.mk: Update gnulib files.
+
+2010-01-09  Simon Josefsson <simon@josefsson.org>
+
+	* gltests/dup2.c, maint.mk: Update gnulib files.
+
+2010-01-08  Simon Josefsson <simon@josefsson.org>
+
+	* lib/gunibreak.h, lib/gunicomp.h, lib/gunidecomp.h: Touch.
+
+2010-01-08  Simon Josefsson <simon@josefsson.org>
+
+	* lib/gen-unicode-tables.pl: Add comment.
+
+2010-01-08  Simon Josefsson <simon@josefsson.org>
+
+	* gl/Makefile.am, gl/m4/string_h.m4, gl/string.in.h,
+	lib/gl/Makefile.am, lib/gl/m4/string_h.m4, lib/gl/string.in.h: 
+	Update gnulib files.
+
+2010-01-07  Simon Josefsson <simon@josefsson.org>
+
+	* GNUmakefile, build-aux/arg-nonnull.h, build-aux/config.rpath,
+	build-aux/csharpcomp.sh.in, build-aux/gendocs.sh,
+	build-aux/link-warning.h, build-aux/pmccabe2html,
+	build-aux/update-copyright, build-aux/useless-if-before-free,
+	build-aux/vc-list-files, gl/Makefile.am, gl/errno.in.h, gl/error.c,
+	gl/error.h, gl/getopt.c, gl/getopt.in.h, gl/getopt1.c,
+	gl/getopt_int.h, gl/gettext.h, gl/intprops.h, gl/m4/00gnulib.m4,
+	gl/m4/alloca.m4, gl/m4/autobuild.m4, gl/m4/cloexec.m4,
+	gl/m4/csharp.m4, gl/m4/csharpcomp.m4, gl/m4/dos.m4, gl/m4/dup2.m4,
+	gl/m4/eealloc.m4, gl/m4/environ.m4, gl/m4/errno_h.m4,
+	gl/m4/error.m4, gl/m4/extensions.m4, gl/m4/fcntl-o.m4,
+	gl/m4/fcntl.m4, gl/m4/fcntl_h.m4, gl/m4/getdtablesize.m4,
+	gl/m4/getopt.m4, gl/m4/gnulib-cache.m4, gl/m4/gnulib-common.m4,
+	gl/m4/gnulib-comp.m4, gl/m4/gnulib-tool.m4, gl/m4/include_next.m4,
+	gl/m4/longlong.m4, gl/m4/lstat.m4, gl/m4/malloc.m4,
+	gl/m4/malloca.m4, gl/m4/manywarnings.m4, gl/m4/mode_t.m4,
+	gl/m4/multiarch.m4, gl/m4/open.m4, gl/m4/pathmax.m4,
+	gl/m4/putenv.m4, gl/m4/setenv.m4, gl/m4/stat.m4, gl/m4/stdarg.m4,
+	gl/m4/stdbool.m4, gl/m4/stddef_h.m4, gl/m4/stdint.m4,
+	gl/m4/stdlib_h.m4, gl/m4/strerror.m4, gl/m4/string_h.m4,
+	gl/m4/symlink.m4, gl/m4/sys_stat_h.m4, gl/m4/time_h.m4,
+	gl/m4/unistd_h.m4, gl/m4/version-etc.m4, gl/m4/warnings.m4,
+	gl/m4/wchar.m4, gl/m4/wchar_t.m4, gl/m4/wint_t.m4, gl/progname.c,
+	gl/progname.h, gl/stdarg.in.h, gl/stddef.in.h, gl/strerror.c,
+	gl/string.in.h, gl/unistd.in.h, gl/version-etc.c, gl/version-etc.h,
+	gltests/Makefile.am, gltests/alloca.in.h, gltests/binary-io.h,
+	gltests/cloexec.c, gltests/cloexec.h, gltests/dup2.c,
+	gltests/fcntl.c, gltests/fcntl.in.h, gltests/getdtablesize.c,
+	gltests/lstat.c, gltests/macros.h, gltests/malloc.c,
+	gltests/malloca.c, gltests/malloca.h, gltests/open.c,
+	gltests/pathmax.h, gltests/putenv.c, gltests/same-inode.h,
+	gltests/setenv.c, gltests/signature.h, gltests/stat.c,
+	gltests/stdbool.in.h, gltests/stdint.in.h, gltests/stdlib.in.h,
+	gltests/symlink.c, gltests/sys_stat.in.h,
+	gltests/test-alloca-opt.c, gltests/test-binary-io.c,
+	gltests/test-cloexec.c, gltests/test-dup2.c,
+	gltests/test-environ.c, gltests/test-errno.c,
+	gltests/test-fcntl-h.c, gltests/test-fcntl.c,
+	gltests/test-getdtablesize.c, gltests/test-getopt.c,
+	gltests/test-getopt.h, gltests/test-getopt_long.h,
+	gltests/test-lstat.c, gltests/test-lstat.h, gltests/test-malloca.c,
+	gltests/test-open.c, gltests/test-open.h, gltests/test-setenv.c,
+	gltests/test-stat.c, gltests/test-stat.h, gltests/test-stdbool.c,
+	gltests/test-stddef.c, gltests/test-stdint.c,
+	gltests/test-stdlib.c, gltests/test-strerror.c,
+	gltests/test-string.c, gltests/test-symlink.c,
+	gltests/test-symlink.h, gltests/test-sys_stat.c,
+	gltests/test-time.c, gltests/test-unistd.c,
+	gltests/test-unsetenv.c, gltests/test-update-copyright.sh,
+	gltests/test-vc-list-files-cvs.sh,
+	gltests/test-vc-list-files-git.sh, gltests/test-version-etc.c,
+	gltests/test-version-etc.sh, gltests/test-wchar.c,
+	gltests/time.in.h, gltests/unsetenv.c, gltests/verify.h,
+	gltests/version-etc-fsf.c, gltests/wchar.in.h, lib/gl/Makefile.am,
+	lib/gl/c-ctype.c, lib/gl/c-ctype.h, lib/gl/c-strcase.h,
+	lib/gl/c-strcasecmp.c, lib/gl/c-strncasecmp.c, lib/gl/gettext.h,
+	lib/gl/iconv.in.h, lib/gl/iconv_open.c, lib/gl/m4/00gnulib.m4,
+	lib/gl/m4/codeset.m4, lib/gl/m4/extensions.m4,
+	lib/gl/m4/gnulib-cache.m4, lib/gl/m4/gnulib-common.m4,
+	lib/gl/m4/gnulib-comp.m4, lib/gl/m4/gnulib-tool.m4,
+	lib/gl/m4/iconv.m4, lib/gl/m4/iconv_h.m4, lib/gl/m4/iconv_open.m4,
+	lib/gl/m4/include_next.m4, lib/gl/m4/ld-output-def.m4,
+	lib/gl/m4/ld-version-script.m4, lib/gl/m4/lib-ld.m4,
+	lib/gl/m4/lib-link.m4, lib/gl/m4/lib-prefix.m4,
+	lib/gl/m4/locale-fr.m4, lib/gl/m4/locale-tr.m4,
+	lib/gl/m4/longlong.m4, lib/gl/m4/multiarch.m4,
+	lib/gl/m4/stdbool.m4, lib/gl/m4/stddef_h.m4, lib/gl/m4/stdint.m4,
+	lib/gl/m4/string_h.m4, lib/gl/m4/strverscmp.m4,
+	lib/gl/m4/visibility.m4, lib/gl/m4/wchar.m4, lib/gl/m4/wchar_t.m4,
+	lib/gl/m4/wint_t.m4, lib/gl/stdbool.in.h, lib/gl/stddef.in.h,
+	lib/gl/stdint.in.h, lib/gl/striconv.c, lib/gl/striconv.h,
+	lib/gl/string.in.h, lib/gl/strverscmp.c, lib/gl/wchar.in.h,
+	lib/gltests/Makefile.am, lib/gltests/dummy.c,
+	lib/gltests/intprops.h, lib/gltests/macros.h,
+	lib/gltests/signature.h, lib/gltests/test-c-ctype.c,
+	lib/gltests/test-c-strcasecmp.c, lib/gltests/test-c-strncasecmp.c,
+	lib/gltests/test-iconv.c, lib/gltests/test-stdbool.c,
+	lib/gltests/test-stddef.c, lib/gltests/test-stdint.c,
+	lib/gltests/test-striconv.c, lib/gltests/test-string.c,
+	lib/gltests/test-strverscmp.c, lib/gltests/test-wchar.c,
+	lib/gltests/verify.h, maint.mk: Update gnulib files.
+
+2009-12-26  Simon Josefsson <simon@josefsson.org>
+
+	* build-aux/gnupload, gl/getopt.c, gl/getopt1.c, gl/getopt_int.h,
+	gl/m4/cloexec.m4, gl/m4/dos.m4, gl/m4/dup2.m4, gl/m4/extensions.m4,
+	gl/m4/fcntl-o.m4, gl/m4/fcntl.m4, gl/m4/fcntl_h.m4,
+	gl/m4/getdtablesize.m4, gl/m4/getopt.m4, gl/m4/gnulib-common.m4,
+	gl/m4/gnulib-comp.m4, gl/m4/lstat.m4, gl/m4/mode_t.m4,
+	gl/m4/open.m4, gl/m4/pathmax.m4, gl/m4/setenv.m4, gl/m4/stat.m4,
+	gl/m4/symlink.m4, gl/m4/sys_stat_h.m4, gl/m4/time_h.m4,
+	gl/m4/wchar.m4, gl/unistd.in.h, gltests/Makefile.am,
+	gltests/binary-io.h, gltests/cloexec.c, gltests/cloexec.h,
+	gltests/dup2.c, gltests/fcntl.c, gltests/fcntl.in.h,
+	gltests/getdtablesize.c, gltests/lstat.c, gltests/macros.h,
+	gltests/open.c, gltests/pathmax.h, gltests/same-inode.h,
+	gltests/signature.h, gltests/stat.c, gltests/stdlib.in.h,
+	gltests/symlink.c, gltests/sys_stat.in.h, gltests/test-binary-io.c,
+	gltests/test-binary-io.sh, gltests/test-cloexec.c,
+	gltests/test-dup2.c, gltests/test-fcntl-h.c, gltests/test-fcntl.c,
+	gltests/test-getdtablesize.c, gltests/test-getopt.c,
+	gltests/test-getopt.h, gltests/test-getopt_long.h,
+	gltests/test-lstat.c, gltests/test-lstat.h, gltests/test-open.c,
+	gltests/test-open.h, gltests/test-setenv.c, gltests/test-stat.c,
+	gltests/test-stat.h, gltests/test-strerror.c,
+	gltests/test-symlink.c, gltests/test-symlink.h,
+	gltests/test-sys_stat.c, gltests/test-time.c,
+	gltests/test-unsetenv.c, gltests/test-version-etc.c,
+	gltests/time.in.h, lib/gl/m4/extensions.m4,
+	lib/gl/m4/gnulib-common.m4, lib/gl/m4/gnulib-comp.m4,
+	lib/gl/m4/wchar.m4, lib/gltests/Makefile.am, lib/gltests/macros.h,
+	lib/gltests/signature.h, lib/gltests/test-c-ctype.c,
+	lib/gltests/test-c-strcasecmp.c, lib/gltests/test-c-strncasecmp.c,
+	lib/gltests/test-iconv.c, lib/gltests/test-striconv.c,
+	lib/gltests/test-strverscmp.c: Update gnulib files.
+
+2009-12-19  Simon Josefsson <simon@josefsson.org>
+
+	* gl/Makefile.am, gltests/Makefile.am, lib/gl/Makefile.am,
+	lib/gltests/Makefile.am: Update gnulib files.
+
+2009-12-16  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2009-12-16  Simon Josefsson <simon@josefsson.org>
+
+	* build-aux/arg-nonnull.h, gl/m4/stdbool.m4, gltests/stdbool.in.h,
+	gltests/test-stdbool.c: Update gnulib files.
+
+2009-12-16  Simon Josefsson <simon@josefsson.org>
+
+	* build-aux/gnupload, build-aux/link-warning.h, gl/Makefile.am,
+	gl/error.c, gl/error.h, gl/getopt.c, gl/getopt.in.h, gl/getopt1.c,
+	gl/getopt_int.h, gl/gettext.h, gl/intprops.h, gl/m4/error.m4,
+	gl/m4/extensions.m4, gl/m4/getopt.m4, gl/m4/gnulib-common.m4,
+	gl/m4/gnulib-comp.m4, gl/m4/include_next.m4, gl/m4/longlong.m4,
+	gl/m4/putenv.m4, gl/m4/setenv.m4, gl/m4/stdint.m4,
+	gl/m4/string_h.m4, gl/m4/unistd_h.m4, gl/m4/version-etc.m4,
+	gl/m4/warnings.m4, gl/m4/wchar.m4, gl/override/lib/gettext.h.diff,
+	gl/progname.c, gl/progname.h, gl/strerror.c, gl/string.in.h,
+	gl/unistd.in.h, gl/version-etc.c, gl/version-etc.h,
+	gltests/Makefile.am, gltests/malloca.c, gltests/malloca.h,
+	gltests/putenv.c, gltests/setenv.c, gltests/stdint.in.h,
+	gltests/stdlib.in.h, gltests/test-environ.c, gltests/test-getopt.c,
+	gltests/test-getopt.h, gltests/test-getopt_long.h,
+	gltests/test-setenv.c, gltests/test-strerror.c,
+	gltests/test-unsetenv.c, gltests/test-update-copyright.sh,
+	gltests/test-version-etc.sh, gltests/unsetenv.c, gltests/verify.h,
+	gltests/wchar.in.h, lib/gl/Makefile.am, lib/gl/c-strcasecmp.c,
+	lib/gl/c-strncasecmp.c, lib/gl/gettext.h, lib/gl/iconv.in.h,
+	lib/gl/iconv_open.c, lib/gl/m4/extensions.m4,
+	lib/gl/m4/gnulib-common.m4, lib/gl/m4/gnulib-comp.m4,
+	lib/gl/m4/iconv_h.m4, lib/gl/m4/iconv_open.m4,
+	lib/gl/m4/include_next.m4, lib/gl/m4/ld-version-script.m4,
+	lib/gl/m4/lib-ld.m4, lib/gl/m4/longlong.m4, lib/gl/m4/stdbool.m4,
+	lib/gl/m4/stdint.m4, lib/gl/m4/string_h.m4, lib/gl/m4/wchar.m4,
+	lib/gl/override/lib/gettext.h.diff, lib/gl/stdint.in.h,
+	lib/gl/striconv.c, lib/gl/striconv.h, lib/gl/string.in.h,
+	lib/gl/strverscmp.c, lib/gl/wchar.in.h, lib/gltests/Makefile.am,
+	lib/gltests/intprops.h, lib/gltests/test-c-ctype.c,
+	lib/gltests/test-c-strcasecmp.c, lib/gltests/test-c-strncasecmp.c,
+	lib/gltests/test-iconv.c, lib/gltests/test-striconv.c,
+	lib/gltests/test-strverscmp.c, lib/gltests/verify.h, maint.mk: 
+	Update gnulib files.
+
+2009-11-18  Simon Josefsson <simon@josefsson.org>
+
+	* build-aux/pmccabe2html, doc/cyclo/Makefile.am, gl/Makefile.am,
+	gl/intprops.h, gl/m4/environ.m4, gl/m4/gnulib-comp.m4,
+	gl/m4/malloc.m4, gl/m4/putenv.m4, gl/m4/setenv.m4,
+	gl/m4/stdlib_h.m4, gl/m4/unistd_h.m4, gl/unistd.in.h,
+	gl/version-etc.c, gltests/Makefile.am, gltests/malloc.c,
+	gltests/putenv.c, gltests/setenv.c, gltests/stdlib.in.h,
+	gltests/test-setenv.c, gltests/test-unsetenv.c, gltests/unsetenv.c,
+	lib/gltests/Makefile.am, lib/gltests/intprops.h, maint.mk: Update
+	gnulib files.
+
+2009-11-06  Simon Josefsson <simon@josefsson.org>
+
+	* build-aux/pmccabe2html, build-aux/update-copyright,
+	build-aux/useless-if-before-free, doc/cyclo/Makefile.am,
+	gl/getopt.c, gl/m4/gnulib-comp.m4, gl/m4/pmccabe2html.m4,
+	gl/m4/stdlib_h.m4, gltests/Makefile.am, gltests/stdlib.in.h,
+	gltests/test-getopt.c, gltests/test-getopt.h,
+	gltests/test-getopt_long.h, gltests/test-stddef.c,
+	gltests/test-stdint.c, gltests/test-stdlib.c,
+	gltests/test-strerror.c, gltests/test-string.c,
+	gltests/test-unistd.c, gltests/test-update-copyright.sh,
+	gltests/test-version-etc.c, gltests/test-wchar.c,
+	lib/gltests/test-stddef.c, lib/gltests/test-stdint.c,
+	lib/gltests/test-string.c, lib/gltests/test-strverscmp.c,
+	lib/gltests/test-wchar.c, maint.mk: Update gnulib files.
+
+2009-10-19  Simon Josefsson <simon@josefsson.org>
+
+	* gl/unistd.in.h: Update gnulib files.
+
+2009-10-08  Simon Josefsson <simon@josefsson.org>
+
+	* src/Makefile.am: Fix link error on mingw.
+
+2009-10-08  Simon Josefsson <simon@josefsson.org>
+
+	* gl/Makefile.am, gl/getopt.in.h, gl/getopt_int.h, gl/m4/alloca.m4,
+	gl/m4/eealloc.m4, gl/m4/getopt.m4, gl/m4/gnulib-comp.m4,
+	gl/m4/malloca.m4, gl/m4/unistd_h.m4, gl/progname.c, gl/unistd.in.h,
+	gltests/Makefile.am, gltests/alloca.in.h, gltests/malloca.c,
+	gltests/malloca.h, gltests/malloca.valgrind, gltests/setenv.c,
+	gltests/test-alloca-opt.c, gltests/test-getopt.c,
+	gltests/test-getopt_long.h, gltests/test-malloca.c,
+	lib/gltests/Makefile.am, maint.mk: Update gnulib files.
+
+2009-09-22  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2009-09-22  Simon Josefsson <simon@josefsson.org>
+
+	* build-aux/gendocs.sh, build-aux/update-copyright, gl/Makefile.am,
+	gl/m4/getopt.m4, gl/m4/gnulib-comp.m4, gl/m4/stdlib_h.m4,
+	gl/m4/string_h.m4, gl/m4/unistd_h.m4, gl/progname.c,
+	gl/string.in.h, gl/unistd.in.h, gltests/Makefile.am,
+	gltests/stdlib.in.h, lib/gl/Makefile.am,
+	lib/gl/iconv_open-solaris.gperf, lib/gl/iconv_open.c,
+	lib/gl/m4/gnulib-comp.m4, lib/gl/m4/iconv_open.m4,
+	lib/gl/m4/string_h.m4, lib/gl/string.in.h, maint.mk: Update gnulib
+	files.
+
+2009-09-22  Simon Josefsson <simon@josefsson.org>
+
+	* configure.ac, pom.xml.in: Add Maven pom.xml file.
+
+2009-09-07  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi: Note about OS/2 port.
+
+2009-08-20  Simon Josefsson <simon@josefsson.org>
+
+	* maint.mk: Update gnulib files.
+
+2009-08-18  Simon Josefsson <simon@josefsson.org>
+
+	* build-aux/update-copyright, gl/Makefile.am, gl/m4/gnulib-comp.m4,
+	gl/m4/stddef_h.m4, gl/m4/wchar.m4, gl/stddef.in.h, gl/string.in.h,
+	gl/unistd.in.h, gltests/Makefile.am, gltests/stdlib.in.h,
+	gltests/test-stddef.c, gltests/test-stdlib.c,
+	gltests/test-string.c, gltests/test-unistd.c,
+	gltests/test-update-copyright.sh, gltests/test-wchar.c,
+	lib/gl/Makefile.am, lib/gl/m4/gnulib-comp.m4,
+	lib/gl/m4/stddef_h.m4, lib/gl/m4/wchar.m4, lib/gl/stddef.in.h,
+	lib/gl/string.in.h, lib/gltests/Makefile.am,
+	lib/gltests/test-stddef.c, lib/gltests/test-string.c,
+	lib/gltests/test-wchar.c, maint.mk: Update gnulib files.
+
+2009-08-14  Simon Josefsson <simon@josefsson.org>
+
+	* build-aux/update-copyright, gl/Makefile.am, gl/m4/environ.m4,
+	gl/m4/getopt.m4, gl/m4/gnulib-cache.m4, gl/m4/gnulib-comp.m4,
+	gl/m4/longlong.m4, gl/m4/multiarch.m4, gl/m4/setenv.m4,
+	gl/m4/stdint.m4, gl/m4/stdlib_h.m4, gl/m4/unistd_h.m4,
+	gl/m4/wchar.m4, gl/m4/wchar_t.m4, gl/m4/wint_t.m4, gl/unistd.in.h,
+	gltests/Makefile.am, gltests/stdint.in.h, gltests/stdlib.in.h,
+	gltests/test-environ.c, gltests/test-getopt.c,
+	gltests/test-getopt.h, gltests/test-getopt_long.h,
+	gltests/test-stdint.c, gltests/test-stdlib.c,
+	gltests/test-string.c, gltests/test-unistd.c,
+	gltests/test-update-copyright.sh, gltests/test-version-etc.sh,
+	gltests/test-wchar.c, gltests/unsetenv.c, gltests/wchar.in.h,
+	lib/gltests/test-string.c: Update gnulib files.
+
+2009-08-07  Simon Josefsson <simon@josefsson.org>
+
+	* build-aux/update-copyright, gltests/test-update-copyright.sh,
+	maint.mk: Update gnulib files.
+
+2009-08-04  Simon Josefsson <simon@josefsson.org>
+
+	* gl/Makefile.am, gl/m4/gnulib-cache.m4, gl/m4/gnulib-comp.m4,
+	gltests/Makefile.am: Update gnulib files.
+
+2009-08-04  Simon Josefsson <simon@josefsson.org>
+
+	* lib/gl/m4/iconv.m4, maint.mk: Update gnulib files.
+
+2009-07-29  Simon Josefsson <simon@josefsson.org>
+
+	* README-alpha: Typo.
+
+2009-07-22  Simon Josefsson <simon@josefsson.org>
+
+	* build-aux/vc-list-files, gl/Makefile.am, gl/errno.in.h,
+	gl/error.c, gl/m4/errno_h.m4, gl/m4/gnulib-comp.m4,
+	gl/m4/unistd_h.m4, gl/strerror.c, gl/unistd.in.h, gl/version-etc.c,
+	gl/version-etc.h, gltests/Makefile.am, gltests/test-string.c,
+	gltests/test-unistd.c, gltests/test-version-etc.c,
+	gltests/test-version-etc.sh, gltests/verify.h,
+	gltests/version-etc-fsf.c, lib/gl/m4/lib-link.m4,
+	lib/gltests/test-string.c, maint.mk: Update gnulib files.
+
+2009-06-17  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi: Typo.
+
+2009-06-16  Simon Josefsson <simon@josefsson.org>
+
+	* gl/Makefile.am, gl/m4/string_h.m4, gl/string.in.h,
+	lib/gl/Makefile.am, lib/gl/m4/string_h.m4, lib/gl/string.in.h: 
+	Update gnulib files.
+
+2009-06-11  Simon Josefsson <simon@josefsson.org>
+
+	* doc/texinfo.css: Fix.
+
+2009-06-08  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi: Add version number to manual title.
+
+2009-06-08  Simon Josefsson <simon@josefsson.org>
+
+	* lib/stringprep.h: Generated.
+
+2009-06-08  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS, configure.ac: Bump versions.
+
+2009-06-08  Simon Josefsson <simon@josefsson.org>
+
+	* build-aux/gendocs.sh: Chmod +x.
+
+2009-06-08  Simon Josefsson <simon@josefsson.org>
+
+	* ChangeLog: Generated.
+
 2009-06-08  Simon Josefsson <simon@josefsson.org>
 
 	* NEWS: Version 1.15.
