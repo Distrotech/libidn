@@ -1,5 +1,5 @@
 ## Process this file with automake to produce Makefile.in
-# Copyright (C) 2002, 2003, 2004, 2006, 2007, 2008, 2009 Simon Josefsson
+# Copyright (C) 2002, 2003, 2004, 2006, 2007, 2008, 2009, 2010 Simon Josefsson
 #
 # This file is part of GNU Libidn.
 #
@@ -27,7 +27,8 @@ libutils_la_SOURCES = utils.h utils.c
 
 ctests = tst_stringprep$(EXEEXT) tst_punycode$(EXEEXT)			\
 	tst_idna$(EXEEXT) tst_idna2$(EXEEXT) tst_nfkc$(EXEEXT)		\
-	tst_pr29$(EXEEXT) tst_strerror$(EXEEXT) tst_toutf8$(EXEEXT)
+	tst_pr29$(EXEEXT) tst_strerror$(EXEEXT) tst_toutf8$(EXEEXT)	\
+	tst_symbols$(EXEEXT)
 if TLD
 ctests += tst_tld$(EXEEXT)
 endif

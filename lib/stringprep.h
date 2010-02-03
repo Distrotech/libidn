@@ -145,6 +145,7 @@ extern "C"
   /* SASL */
 
   extern IDNAPI const Stringprep_profile stringprep_saslprep[];
+  extern IDNAPI const Stringprep_table_element stringprep_saslprep_space_map[];
   extern IDNAPI const Stringprep_profile stringprep_plain[];
   extern IDNAPI const Stringprep_profile stringprep_trace[];
 
@@ -172,6 +173,7 @@ extern "C"
   /* iSCSI */
 
   extern IDNAPI const Stringprep_profile stringprep_iscsi[];
+  extern IDNAPI const Stringprep_table_element stringprep_iscsi_prohibit[];
 
 # define stringprep_iscsi(in, maxlen)		\
   stringprep(in, maxlen, 0, stringprep_iscsi)
