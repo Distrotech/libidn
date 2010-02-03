@@ -69,6 +69,8 @@ AC_DEFUN([gl_INIT],
   	m4_defn([m4_PACKAGE_VERSION])), [1], [],
         [AC_CONFIG_LINKS([$GNUmakefile:$GNUmakefile], [],
   	[GNUmakefile=$GNUmakefile])])
+  AC_CONFIG_COMMANDS_PRE([m4_ifdef([AH_HEADER],
+    [AC_SUBST([CONFIG_INCLUDE], m4_defn([AH_HEADER]))])])
   AC_PATH_PROG([PMCCABE], [pmccabe], [false])
   AC_CHECK_DECLS([program_invocation_name], [], [], [#include <errno.h>])
   AC_CHECK_DECLS([program_invocation_short_name], [], [], [#include <errno.h>])
@@ -125,6 +127,7 @@ AC_DEFUN([gl_INIT],
   gl_ENVIRON
   gl_UNISTD_MODULE_INDICATOR([environ])
   gl_FCNTL_H
+  AC_REQUIRE([AC_C_INLINE])
   gl_FUNC_LSTAT
   gl_SYS_STAT_MODULE_INDICATOR([lstat])
   gl_FUNC_MALLOC_POSIX
@@ -253,7 +256,6 @@ AC_DEFUN([gl_FILE_LIST], [
   build-aux/csharpcomp.sh.in
   build-aux/gendocs.sh
   build-aux/gnupload
-  build-aux/link-warning.h
   build-aux/pmccabe.css
   build-aux/pmccabe2html
   build-aux/update-copyright
@@ -370,6 +372,7 @@ AC_DEFUN([gl_FILE_LIST], [
   tests=lib/binary-io.h
   tests=lib/dup2.c
   tests=lib/fcntl.in.h
+  tests=lib/ignore-value.h
   tests=lib/lstat.c
   tests=lib/malloc.c
   tests=lib/malloca.c

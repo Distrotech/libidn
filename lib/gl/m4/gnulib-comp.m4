@@ -197,7 +197,7 @@ AC_DEFUN([lgltests_LIBSOURCES], [
 AC_DEFUN([lgl_FILE_LIST], [
   build-aux/arg-nonnull.h
   build-aux/config.rpath
-  build-aux/link-warning.h
+  build-aux/warn-on-use.h
   lib/c-ctype.c
   lib/c-ctype.h
   lib/c-strcase.h
@@ -242,6 +242,7 @@ AC_DEFUN([lgl_FILE_LIST], [
   m4/string_h.m4
   m4/strverscmp.m4
   m4/visibility.m4
+  m4/warn-on-use.m4
   m4/wchar.m4
   m4/wchar_t.m4
   m4/wint_t.m4

@@ -43,6 +43,8 @@ libtests_a_DEPENDENCIES = $(gltests_LIBOBJS)
 EXTRA_libtests_a_SOURCES =
 AM_LIBTOOLFLAGS = --preserve-dup-deps
 
+TESTS_ENVIRONMENT += EXEEXT='@EXEEXT@' srcdir='$(srcdir)'
+
 ## begin gnulib module alloca-opt
 
 BUILT_SOURCES += $(ALLOCA_H)
@@ -103,7 +105,6 @@ libtests_a_SOURCES += binary-io.h
 ## begin gnulib module binary-io-tests
 
 TESTS += test-binary-io.sh
-TESTS_ENVIRONMENT += EXEEXT='@EXEEXT@'
 check_PROGRAMS += test-binary-io
 
 EXTRA_DIST += test-binary-io.sh test-binary-io.c macros.h
@@ -151,7 +152,7 @@ BUILT_SOURCES += fcntl.h
 
 # We need the following in order to create <fcntl.h> when the system
 # doesn't have one that works with the given compiler.
-fcntl.h: fcntl.in.h $(LINK_WARNING_H) $(ARG_NONNULL_H)
+fcntl.h: fcntl.in.h $(WARN_ON_USE_H) $(ARG_NONNULL_H)
 	$(AM_V_GEN)rm -f $@-t $@ && \
 	{ echo '/* DO NOT EDIT! GENERATED AUTOMATICALLY! */'; \
 	  sed -e 's|@''INCLUDE_NEXT''@|$(INCLUDE_NEXT)|g' \
@@ -165,8 +166,8 @@ fcntl.h: fcntl.in.h $(LINK_WARNING_H) $(ARG_NONNULL_H)
 	      -e 's|@''REPLACE_FCNTL''@|$(REPLACE_FCNTL)|g' \
 	      -e 's|@''REPLACE_OPEN''@|$(REPLACE_OPEN)|g' \
 	      -e 's|@''REPLACE_OPENAT''@|$(REPLACE_OPENAT)|g' \
-	      -e '/definition of GL_LINK_WARNING/r $(LINK_WARNING_H)' \
 	      -e '/definition of _GL_ARG_NONNULL/r $(ARG_NONNULL_H)' \
+	      -e '/definition of _GL_WARN_ON_USE/r $(WARN_ON_USE_H)' \
 	      < $(srcdir)/fcntl.in.h; \
 	} > $@-t && \
 	mv $@-t $@
@@ -193,29 +194,11 @@ EXTRA_DIST += macros.h signature.h test-getopt.c test-getopt.h test-getopt_long.
 
 ## end   gnulib module getopt-posix-tests
 
-## begin gnulib module link-warning
+## begin gnulib module ignore-value
 
-# The BUILT_SOURCES created by this Makefile snippet are not used via #include
-# statements but through direct file reference. Therefore this snippet must be
-# present in all Makefile.am that need it. This is ensured by the applicability
-# 'all' defined above.
+libtests_a_SOURCES += ignore-value.h
 
-BUILT_SOURCES += link-warning.h
-# The link-warning.h that gets inserted into generated .h files is the same as
-# build-aux/link-warning.h, except that it has the copyright header cut off.
-link-warning.h: $(top_srcdir)/build-aux/link-warning.h
-	$(AM_V_GEN)rm -f $@-t $@ && \
-	sed -n -e '/GL_LINK_WARNING/,$$p' \
-	  < $(top_srcdir)/build-aux/link-warning.h \
-	  > $@-t && \
-	mv $@-t $@
-MOSTLYCLEANFILES += link-warning.h link-warning.h-t
-
-LINK_WARNING_H=link-warning.h
-
-EXTRA_DIST += $(top_srcdir)/build-aux/link-warning.h
-
-## end   gnulib module link-warning
+## end   gnulib module ignore-value
 
 ## begin gnulib module lstat
 
@@ -424,7 +407,7 @@ BUILT_SOURCES += stdlib.h
 
 # We need the following in order to create <stdlib.h> when the system
 # doesn't have one that works with the given compiler.
-stdlib.h: stdlib.in.h $(LINK_WARNING_H) $(ARG_NONNULL_H)
+stdlib.h: stdlib.in.h $(WARN_ON_USE_H) $(ARG_NONNULL_H)
 	$(AM_V_GEN)rm -f $@-t $@ && \
 	{ echo '/* DO NOT EDIT! GENERATED AUTOMATICALLY! */' && \
 	  sed -e 's|@''INCLUDE_NEXT''@|$(INCLUDE_NEXT)|g' \
@@ -480,8 +463,8 @@ stdlib.h: stdlib.in.h $(LINK_WARNING_H) $(ARG_NONNULL_H)
 	      -e 's|@''REPLACE_SETENV''@|$(REPLACE_SETENV)|g' \
 	      -e 's|@''REPLACE_STRTOD''@|$(REPLACE_STRTOD)|g' \
 	      -e 's|@''REPLACE_UNSETENV''@|$(REPLACE_UNSETENV)|g' \
-	      -e '/definition of GL_LINK_WARNING/r $(LINK_WARNING_H)' \
 	      -e '/definition of _GL_ARG_NONNULL/r $(ARG_NONNULL_H)' \
+	      -e '/definition of _GL_WARN_ON_USE/r $(WARN_ON_USE_H)' \
 	      < $(srcdir)/stdlib.in.h; \
 	} > $@-t && \
 	mv $@-t $@
@@ -538,7 +521,7 @@ BUILT_SOURCES += sys/stat.h
 
 # We need the following in order to create <sys/stat.h> when the system
 # has one that is incomplete.
-sys/stat.h: sys_stat.in.h $(LINK_WARNING_H) $(ARG_NONNULL_H)
+sys/stat.h: sys_stat.in.h $(WARN_ON_USE_H) $(ARG_NONNULL_H)
 	$(AM_V_at)$(MKDIR_P) sys
 	$(AM_V_GEN)rm -f $@-t $@ && \
 	{ echo '/* DO NOT EDIT! GENERATED AUTOMATICALLY! */'; \
@@ -577,8 +560,8 @@ sys/stat.h: sys_stat.in.h $(LINK_WARNING_H) $(ARG_NONNULL_H)
 	      -e 's|@''REPLACE_MKNOD''@|$(REPLACE_MKNOD)|g' \
 	      -e 's|@''REPLACE_STAT''@|$(REPLACE_STAT)|g' \
 	      -e 's|@''REPLACE_UTIMENSAT''@|$(REPLACE_UTIMENSAT)|g' \
-	      -e '/definition of GL_LINK_WARNING/r $(LINK_WARNING_H)' \
 	      -e '/definition of _GL_ARG_NONNULL/r $(ARG_NONNULL_H)' \
+	      -e '/definition of _GL_WARN_ON_USE/r $(WARN_ON_USE_H)' \
 	      < $(srcdir)/sys_stat.in.h; \
 	} > $@-t && \
 	mv $@-t $@
@@ -691,7 +674,6 @@ libtests_a_SOURCES += version-etc-fsf.c
 ## begin gnulib module version-etc-tests
 
 TESTS += test-version-etc.sh
-TESTS_ENVIRONMENT += EXEEXT='@EXEEXT@'
 check_PROGRAMS += test-version-etc
 test_version_etc_LDADD = $(LDADD) @LIBINTL@
 EXTRA_DIST += test-version-etc.c test-version-etc.sh
@@ -723,7 +705,7 @@ BUILT_SOURCES += wchar.h
 
 # We need the following in order to create <wchar.h> when the system
 # version does not work standalone.
-wchar.h: wchar.in.h $(LINK_WARNING_H) $(ARG_NONNULL_H)
+wchar.h: wchar.in.h $(WARN_ON_USE_H) $(ARG_NONNULL_H)
 	$(AM_V_GEN)rm -f $@-t $@ && \
 	{ echo '/* DO NOT EDIT! GENERATED AUTOMATICALLY! */'; \
 	  sed -e 's|@''INCLUDE_NEXT''@|$(INCLUDE_NEXT)|g' \
@@ -765,8 +747,8 @@ wchar.h: wchar.in.h $(LINK_WARNING_H) $(ARG_NONNULL_H)
 	      -e 's|@''REPLACE_WCSRTOMBS''@|$(REPLACE_WCSRTOMBS)|g' \
 	      -e 's|@''REPLACE_WCSNRTOMBS''@|$(REPLACE_WCSNRTOMBS)|g' \
 	      -e 's|@''REPLACE_WCWIDTH''@|$(REPLACE_WCWIDTH)|g' \
-	      -e '/definition of GL_LINK_WARNING/r $(LINK_WARNING_H)' \
 	      -e '/definition of _GL_ARG_NONNULL/r $(ARG_NONNULL_H)' \
+	      -e '/definition of _GL_WARN_ON_USE/r $(WARN_ON_USE_H)' \
 	    < $(srcdir)/wchar.in.h; \
 	} > $@-t && \
 	mv $@-t $@

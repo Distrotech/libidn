@@ -43,6 +43,8 @@ libtests_a_DEPENDENCIES = $(lgltests_LIBOBJS)
 EXTRA_libtests_a_SOURCES =
 AM_LIBTOOLFLAGS = --preserve-dup-deps
 
+TESTS_ENVIRONMENT += EXEEXT='@EXEEXT@' srcdir='$(srcdir)'
+
 ## begin gnulib module arg-nonnull
 
 # The BUILT_SOURCES created by this Makefile snippet are not used via #include
@@ -79,7 +81,7 @@ EXTRA_DIST += test-c-ctype.c macros.h
 ## begin gnulib module c-strcase-tests
 
 TESTS += test-c-strcase.sh
-TESTS_ENVIRONMENT += EXEEXT='@EXEEXT@' LOCALE_FR='@LOCALE_FR@' LOCALE_TR_UTF8='@LOCALE_TR_UTF8@'
+TESTS_ENVIRONMENT += LOCALE_FR='@LOCALE_FR@' LOCALE_TR_UTF8='@LOCALE_TR_UTF8@'
 check_PROGRAMS += test-c-strcasecmp test-c-strncasecmp
 EXTRA_DIST += test-c-strcase.sh test-c-strcasecmp.c test-c-strncasecmp.c macros.h
 
@@ -101,30 +103,6 @@ EXTRA_DIST += test-iconv.c signature.h macros.h
 EXTRA_DIST += intprops.h
 
 ## end   gnulib module intprops
-
-## begin gnulib module link-warning
-
-# The BUILT_SOURCES created by this Makefile snippet are not used via #include
-# statements but through direct file reference. Therefore this snippet must be
-# present in all Makefile.am that need it. This is ensured by the applicability
-# 'all' defined above.
-
-BUILT_SOURCES += link-warning.h
-# The link-warning.h that gets inserted into generated .h files is the same as
-# build-aux/link-warning.h, except that it has the copyright header cut off.
-link-warning.h: $(top_srcdir)/build-aux/link-warning.h
-	$(AM_V_GEN)rm -f $@-t $@ && \
-	sed -n -e '/GL_LINK_WARNING/,$$p' \
-	  < $(top_srcdir)/build-aux/link-warning.h \
-	  > $@-t && \
-	mv $@-t $@
-MOSTLYCLEANFILES += link-warning.h link-warning.h-t
-
-LINK_WARNING_H=link-warning.h
-
-EXTRA_DIST += $(top_srcdir)/build-aux/link-warning.h
-
-## end   gnulib module link-warning
 
 ## begin gnulib module stdbool-tests
 
@@ -181,6 +159,25 @@ EXTRA_DIST += test-strverscmp.c signature.h macros.h
 libtests_a_SOURCES += verify.h
 
 ## end   gnulib module verify
+
+## begin gnulib module warn-on-use
+
+BUILT_SOURCES += warn-on-use.h
+# The warn-on-use.h that gets inserted into generated .h files is the same as
+# build-aux/warn-on-use.h, except that it has the copyright header cut off.
+warn-on-use.h: $(top_srcdir)/build-aux/warn-on-use.h
+	$(AM_V_GEN)rm -f $@-t $@ && \
+	sed -n -e '/^.ifndef/,$$p' \
+	  < $(top_srcdir)/build-aux/warn-on-use.h \
+	  > $@-t && \
+	mv $@-t $@
+MOSTLYCLEANFILES += warn-on-use.h warn-on-use.h-t
+
+WARN_ON_USE_H=warn-on-use.h
+
+EXTRA_DIST += $(top_srcdir)/build-aux/warn-on-use.h
+
+## end   gnulib module warn-on-use
 
 ## begin gnulib module wchar-tests
 
