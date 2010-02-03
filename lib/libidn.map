@@ -1,4 +1,4 @@
-# Copyright (C) 2009 Simon Josefsson.
+# Copyright (C) 2009, 2010 Simon Josefsson.
 #
 # This file is part of GNU Libidn.
 #
@@ -16,7 +16,8 @@
 # License along with GNU Libidn; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA
 
-LIBIDN_1.0 {
+LIBIDN_1.0
+{
   global:
     idn_free;
     idna_strerror;
@@ -43,7 +44,6 @@ LIBIDN_1.0 {
     stringprep_check_version;
     stringprep_convert;
     stringprep_iscsi;
-    stringprep_iscsi_prohibit;
     stringprep_kerberos5;
     stringprep_locale_charset;
     stringprep_locale_to_utf8;
@@ -51,25 +51,7 @@ LIBIDN_1.0 {
     stringprep_plain;
     stringprep_profile;
     stringprep_profiles;
-    stringprep_rfc3454_A_1;
-    stringprep_rfc3454_B_1;
-    stringprep_rfc3454_B_2;
-    stringprep_rfc3454_B_3;
-    stringprep_rfc3454_C_1_1;
-    stringprep_rfc3454_C_1_2;
-    stringprep_rfc3454_C_2_1;
-    stringprep_rfc3454_C_2_2;
-    stringprep_rfc3454_C_3;
-    stringprep_rfc3454_C_4;
-    stringprep_rfc3454_C_5;
-    stringprep_rfc3454_C_6;
-    stringprep_rfc3454_C_7;
-    stringprep_rfc3454_C_8;
-    stringprep_rfc3454_C_9;
-    stringprep_rfc3454_D_1;
-    stringprep_rfc3454_D_2;
     stringprep_saslprep;
-    stringprep_saslprep_space_map;
     stringprep_strerror;
     stringprep_trace;
     stringprep_ucs4_nfkc_normalize;
@@ -98,3 +80,29 @@ LIBIDN_1.0 {
   local:
     *;
 };
+
+LIBIDN_1.17
+{
+  global:
+  # These symbols were intended to be exported from the beginning, but
+  # by accident they never were.  Version 1.17 exported them properly.
+    stringprep_iscsi_prohibit;
+    stringprep_rfc3454_A_1;
+    stringprep_rfc3454_B_1;
+    stringprep_rfc3454_B_2;
+    stringprep_rfc3454_B_3;
+    stringprep_rfc3454_C_1_1;
+    stringprep_rfc3454_C_1_2;
+    stringprep_rfc3454_C_2_1;
+    stringprep_rfc3454_C_2_2;
+    stringprep_rfc3454_C_3;
+    stringprep_rfc3454_C_4;
+    stringprep_rfc3454_C_5;
+    stringprep_rfc3454_C_6;
+    stringprep_rfc3454_C_7;
+    stringprep_rfc3454_C_8;
+    stringprep_rfc3454_C_9;
+    stringprep_rfc3454_D_1;
+    stringprep_rfc3454_D_2;
+    stringprep_saslprep_space_map;
+} LIBIDN_1.0;
