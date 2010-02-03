@@ -9,8 +9,10 @@ Symbol versioning was introduced in version 1.13 but by accident some
 symbols that were visible before that release were not exported, and
 the consequence was that those symbols were not available in version
 1.13 to 1.16.  This release fixes the problem, so the symbols are
-visible again, making this release backwards compatible with both
-version 1.13-1.16 and earlier releases.
+visible again, making this release backwards compatible with all
+earlier releases.  However, this means that applications (that use
+these rarely used variables) built with version 1.17 or later, or
+versions before 1.13, will not work on libidn versions 1.13 to 1.16.
 
 The affected symbols are the following variables:
 stringprep_iscsi_prohibit, stringprep_rfc3454_A_1,
