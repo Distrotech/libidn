@@ -25,9 +25,9 @@ AC_COPYRIGHT([Copyright (c) 2002-2008 Simon Josefsson <simon@josefsson.org>.])
 # Interfaces changed/added/removed:   CURRENT++       REVISION=0
 # Interfaces added:                             AGE++
 # Interfaces removed:                           AGE=0
-AC_SUBST(LT_CURRENT, 16)
-AC_SUBST(LT_REVISION, 46)
-AC_SUBST(LT_AGE, 5)
+AC_SUBST(LT_CURRENT, 17)
+AC_SUBST(LT_REVISION, 0)
+AC_SUBST(LT_AGE, 6)
 
 # For DEF file.
 DLL_VERSION=`expr ${LT_CURRENT} - ${LT_AGE}`
