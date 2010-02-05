@@ -30,7 +30,7 @@
 #define _(String) dgettext (PACKAGE, String)
 
 /**
- * tld_strerror - return string describing tld error code
+ * tld_strerror:
  * @rc: tld return code
  *
  * Convert a return code integer to a text string.  This string can be

@@ -27,7 +27,7 @@
 #include <string.h> /* for strverscmp */
 
 /**
- * stringprep_check_version - check for library version
+ * stringprep_check_version:
  * @req_version: Required version number, or NULL.
  *
  * Check that the version of the library is at minimum the requested one

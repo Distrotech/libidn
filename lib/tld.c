@@ -38,7 +38,7 @@
 extern const Tld_table *_tld_tables[];
 
 /**
- * tld_get_table - get table for a TLD name in table
+ * tld_get_table:
  * @tld: TLD name (e.g. "com") as zero terminated ASCII byte string.
  * @tables: Zero terminated array of #Tld_table info-structures for
  *   TLDs.
@@ -65,7 +65,7 @@ tld_get_table (const char *tld, const Tld_table ** tables)
 }
 
 /**
- * tld_default_table - get table for a TLD name
+ * tld_default_table:
  * @tld: TLD name (e.g. "com") as zero terminated ASCII byte string.
  * @overrides: Additional zero terminated array of #Tld_table
  *   info-structures for TLDs, or %NULL to only use library deault
@@ -99,7 +99,7 @@ tld_default_table (const char *tld, const Tld_table ** overrides)
 		 (c) == 0xFF0E || (c) == 0xFF61)
 
 /**
- * tld_get_4 - extract top level domain part in input Unicode string
+ * tld_get_4:
  * @in: Array of unicode code points to process. Does not need to be
  *   zero terminated.
  * @inlen: Number of unicode code points.
@@ -149,7 +149,7 @@ tld_get_4 (const uint32_t * in, size_t inlen, char **out)
 }
 
 /**
- * tld_get_4z - extract top level domain part in input Unicode string
+ * tld_get_4z:
  * @in: Zero terminated array of unicode code points to process.
  * @out: Zero terminated ascii result string pointer.
  *
@@ -174,7 +174,7 @@ tld_get_4z (const uint32_t * in, char **out)
 }
 
 /**
- * tld_get_z - extract top level domain part in input string
+ * tld_get_z:
  * @in: Zero terminated character array to process.
  * @out: Zero terminated ascii result string pointer.
  *
@@ -250,7 +250,7 @@ _tld_checkchar (uint32_t ch, const Tld_table * tld)
 }
 
 /**
- * tld_check_4t - verify that characters are permitted
+ * tld_check_4t:
  * @in: Array of unicode code points to process. Does not need to be
  *   zero terminated.
  * @inlen: Number of unicode code points.
@@ -294,7 +294,7 @@ tld_check_4t (const uint32_t * in, size_t inlen, size_t * errpos,
 }
 
 /**
- * tld_check_4tz - verify that characters are permitted
+ * tld_check_4tz:
  * @in: Zero terminated array of unicode code points to process.
  * @errpos: Position of offending character is returned here.
  * @tld: A #Tld_table data structure representing the restrictions for
@@ -325,7 +325,7 @@ tld_check_4tz (const uint32_t * in, size_t * errpos, const Tld_table * tld)
 }
 
 /**
- * tld_check_4 - verify that characters are permitted
+ * tld_check_4:
  * @in: Array of unicode code points to process. Does not need to be
  *   zero terminated.
  * @inlen: Number of unicode code points.
@@ -377,7 +377,7 @@ tld_check_4 (const uint32_t * in, size_t inlen, size_t * errpos,
 }
 
 /**
- * tld_check_4z - verify that characters are permitted
+ * tld_check_4z:
  * @in: Zero-terminated array of unicode code points to process.
  * @errpos: Position of offending character is returned here.
  * @overrides: A #Tld_table array of additional domain restriction
@@ -413,7 +413,7 @@ tld_check_4z (const uint32_t * in, size_t * errpos,
 }
 
 /**
- * tld_check_8z - verify that characters are permitted
+ * tld_check_8z:
  * @in: Zero-terminated UTF8 string to process.
  * @errpos: Position of offending character is returned here.
  * @overrides: A #Tld_table array of additional domain restriction
@@ -458,7 +458,7 @@ tld_check_8z (const char *in, size_t * errpos, const Tld_table ** overrides)
 }
 
 /**
- * tld_check_lz - verify that characters are permitted
+ * tld_check_lz:
  * @in: Zero-terminated string in the current locales encoding to process.
  * @errpos: Position of offending character is returned here.
  * @overrides: A #Tld_table array of additional domain restriction
@@ -511,6 +511,8 @@ tld_check_lz (const char *in, size_t * errpos, const Tld_table ** overrides)
  * @TLD_MALLOC_ERROR: Error during memory allocation.
  * @TLD_ICONV_ERROR: Error during iconv string conversion.
  * @TLD_NO_TLD: No top-level domain found in domain string.
+ * @TLD_NOTLD: Same as @TLD_NO_TLD, for compatibility
+ *   with typo in earlier versions.
  *
  * Enumerated return codes of the TLD checking functions.
  * The value 0 is guaranteed to always correspond to success.

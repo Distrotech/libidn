@@ -30,7 +30,7 @@
 #define _(String) dgettext (PACKAGE, String)
 
 /**
- * idna_strerror - return string describing idna error code
+ * idna_strerror:
  * @rc: an #Idna_rc return code.
  *
  * Convert a return code integer to a text string.  This string can be

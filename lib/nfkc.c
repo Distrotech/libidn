@@ -915,7 +915,7 @@ g_utf8_normalize (const gchar * str, gssize len, GNormalizeMode mode)
 /* Public Libidn API starts here. */
 
 /**
- * stringprep_utf8_to_unichar - convert UTF-8 to Unicode code point
+ * stringprep_utf8_to_unichar:
  * @p: a pointer to Unicode character encoded as UTF-8
  *
  * Converts a sequence of bytes encoded as UTF-8 to a Unicode character.
@@ -931,7 +931,7 @@ stringprep_utf8_to_unichar (const char *p)
 }
 
 /**
- * stringprep_unichar_to_utf8 - convert Unicode code point to UTF-8
+ * stringprep_unichar_to_utf8:
  * @c: a ISO10646 character code
  * @outbuf: output buffer, must have at least 6 bytes of space.
  *       If %NULL, the length will be computed and returned
@@ -948,7 +948,7 @@ stringprep_unichar_to_utf8 (uint32_t c, char *outbuf)
 }
 
 /**
- * stringprep_utf8_to_ucs4 - convert UTF-8 string to UCS-4
+ * stringprep_utf8_to_ucs4:
  * @str: a UTF-8 encoded string
  * @len: the maximum length of @str to use. If @len < 0, then
  *       the string is nul-terminated.
@@ -969,7 +969,7 @@ stringprep_utf8_to_ucs4 (const char *str, ssize_t len, size_t * items_written)
 }
 
 /**
- * stringprep_ucs4_to_utf8 - convert UCS-4 string to UTF-8
+ * stringprep_ucs4_to_utf8:
  * @str: a UCS-4 encoded string
  * @len: the maximum length of @str to use. If @len < 0, then
  *       the string is terminated with a 0 character.
@@ -995,7 +995,7 @@ stringprep_ucs4_to_utf8 (const uint32_t * str, ssize_t len,
 }
 
 /**
- * stringprep_utf8_nfkc_normalize - normalize Unicode string
+ * stringprep_utf8_nfkc_normalize:
  * @str: a UTF-8 encoded string.
  * @len: length of @str, in bytes, or -1 if @str is nul-terminated.
  *
@@ -1023,7 +1023,7 @@ stringprep_utf8_nfkc_normalize (const char *str, ssize_t len)
 }
 
 /**
- * stringprep_ucs4_nfkc_normalize - normalize Unicode string
+ * stringprep_ucs4_nfkc_normalize:
  * @str: a Unicode string.
  * @len: length of @str array, or -1 if @str is nul-terminated.
  *

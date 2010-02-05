@@ -30,7 +30,7 @@
 #define _(String) dgettext (PACKAGE, String)
 
 /**
- * pr29_strerror - return string describing pr29 error code
+ * pr29_strerror:
  * @rc: an #Pr29_rc return code.
  *
  * Convert a return code integer to a text string.  This string can be

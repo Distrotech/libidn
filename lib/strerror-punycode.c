@@ -30,7 +30,7 @@
 #define _(String) dgettext (PACKAGE, String)
 
 /**
- * punycode_strerror - return string describing punycode error code
+ * punycode_strerror:
  * @rc: an #Punycode_status return code.
  *
  * Convert a return code integer to a text string.  This string can be

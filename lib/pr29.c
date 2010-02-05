@@ -1223,7 +1223,7 @@ combinationclass (uint32_t c)
 }
 
 /**
- * pr29_4 - check if input trigger Unicode normalization bugs
+ * pr29_4:
  * @in: input array with unicode code points.
  * @len: length of input array with unicode code points.
  *
@@ -1265,7 +1265,7 @@ pr29_4 (const uint32_t * in, size_t len)
 }
 
 /**
- * pr29_4z - check if input trigger Unicode normalization bugs
+ * pr29_4z:
  * @in: zero terminated array of Unicode code points.
  *
  * Check the input to see if it may be normalized into different
@@ -1289,7 +1289,7 @@ pr29_4z (const uint32_t * in)
 }
 
 /**
- * pr29_8z - check if input trigger Unicode normalization bugs
+ * pr29_8z:
  * @in: zero terminated input UTF-8 string.
  *
  * Check the input to see if it may be normalized into different

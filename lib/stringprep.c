@@ -105,7 +105,7 @@ stringprep_apply_table_to_string (uint32_t * ucs4,
    ( INVERTED(profileflags) && (profileflags & flags)))
 
 /**
- * stringprep_4i - prepare internationalized string
+ * stringprep_4i:
  * @ucs4: input/output array with string to prepare.
  * @len: on input, length of input array with Unicode code points,
  *   on exit, length of output array with Unicode code points.
@@ -293,7 +293,7 @@ stringprep_4zi_1 (uint32_t * ucs4, size_t ucs4len, size_t maxucs4len,
 }
 
 /**
- * stringprep_4zi - prepare internationalized string
+ * stringprep_4zi:
  * @ucs4: input/output array with zero terminated string to prepare.
  * @maxucs4len: maximum length of input/output array.
  * @flags: a #Stringprep_profile_flags value, or 0.
@@ -330,7 +330,7 @@ stringprep_4zi (uint32_t * ucs4, size_t maxucs4len,
 }
 
 /**
- * stringprep - prepare internationalized string
+ * stringprep:
  * @in: input/ouput array with string to prepare.
  * @maxlen: maximum length of input/output array.
  * @flags: a #Stringprep_profile_flags value, or 0.
@@ -411,7 +411,7 @@ stringprep (char *in,
 }
 
 /**
- * stringprep_profile - prepare internationalized string
+ * stringprep_profile:
  * @in: input array with UTF-8 string to prepare.
  * @out: output variable with pointer to newly allocate string.
  * @profile: name of stringprep profile to use.
@@ -610,6 +610,14 @@ stringprep_profile (const char *in,
 
 /**
  * Stringprep_profile_steps:
+ * @STRINGPREP_NFKC: The NFKC step.
+ * @STRINGPREP_BIDI: The BIDI step.
+ * @STRINGPREP_MAP_TABLE: The MAP step.
+ * @STRINGPREP_UNASSIGNED_TABLE: The Unassigned step.
+ * @STRINGPREP_PROHIBIT_TABLE: The Prohibited step.
+ * @STRINGPREP_BIDI_PROHIBIT_TABLE: The BIDI-Prohibited step.
+ * @STRINGPREP_BIDI_RAL_TABLE: The BIDI-RAL step.
+ * @STRINGPREP_BIDI_L_TABLE: The BIDI-L step.
  *
  * Various steps in the stringprep algorithm.  You really want to
  * study the source code to understand this one.  Only useful if you

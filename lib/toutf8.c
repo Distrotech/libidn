@@ -55,7 +55,7 @@
 # define stringprep_locale_charset() nl_langinfo (CODESET)
 #else
 /**
- * stringprep_locale_charset - return charset used in current locale
+ * stringprep_locale_charset:
  *
  * Find out current locale charset.  The function respect the CHARSET
  * environment variable, but typically uses nl_langinfo(CODESET) when
@@ -94,7 +94,7 @@ stringprep_locale_charset (void)
 #endif
 
 /**
- * stringprep_convert - encode string using new character set
+ * stringprep_convert:
  * @str: input zero-terminated string.
  * @to_codeset: name of destination character set.
  * @from_codeset: name of origin character set, as used by @str.
@@ -123,7 +123,7 @@ stringprep_convert (const char *str,
 }
 
 /**
- * stringprep_locale_to_utf8 - convert locale encoded string to UTF-8
+ * stringprep_locale_to_utf8:
  * @str: input zero terminated string.
  *
  * Convert string encoded in the locale's character set into UTF-8 by
@@ -139,7 +139,7 @@ stringprep_locale_to_utf8 (const char *str)
 }
 
 /**
- * stringprep_utf8_to_locale - encode UTF-8 string to locale encoding
+ * stringprep_utf8_to_locale:
  * @str: input zero terminated string.
  *
  * Convert string encoded in UTF-8 into the locale's character set by
