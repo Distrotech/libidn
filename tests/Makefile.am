@@ -25,16 +25,13 @@ LDADD = ../lib/libidn.la libutils.la
 noinst_LTLIBRARIES = libutils.la
 libutils_la_SOURCES = utils.h utils.c
 
-TESTS = tst_stringprep tst_punycode tst_idna tst_idna2 tst_nfkc	\
+ctests = tst_stringprep tst_punycode tst_idna tst_idna2 tst_nfkc	\
 	tst_pr29 tst_strerror tst_toutf8 tst_symbols
 if TLD
-TESTS += tst_tld
+ctests += tst_tld
 endif
 
-check_PROGRAMS = tst_stringprep tst_punycode tst_idna tst_idna2	\
-	tst_nfkc tst_pr29 tst_strerror tst_toutf8 tst_symbols
-if TLD
-check_PROGRAMS += tst_tld
-endif
+TESTS = $(ctests)	
+check_PROGRAMS = $(ctests)
 
 TESTS_ENVIRONMENT = $(VALGRIND)
