@@ -1,3 +1,223 @@
+2010-02-05  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Version 1.17.
+
+2010-02-05  Simon Josefsson <simon@josefsson.org>
+
+	* cfg.mk: Make this an alpha release.
+
+2010-02-05  Simon Josefsson <simon@josefsson.org>
+
+	* po/cs.po.in, po/da.po.in, po/de.po.in, po/eo.po.in, po/id.po.in,
+	po/it.po.in, po/ja.po.in, po/nl.po.in, po/pl.po.in, po/ro.po.in,
+	po/sr.po.in, po/zh_CN.po.in: Sync with TP.
+
+2010-02-05  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2010-02-05  Simon Josefsson <simon@josefsson.org>
+
+	* lib/idna.c, lib/nfkc.c, lib/pr29.c, lib/punycode.c,
+	lib/strerror-idna.c, lib/strerror-pr29.c, lib/strerror-punycode.c,
+	lib/strerror-stringprep.c, lib/strerror-tld.c, lib/stringprep.c,
+	lib/tld.c, lib/toutf8.c, lib/version.c: Fix GTK-DOC syntax.
+	Unfortunately this looses some information.
+
+2010-02-05  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Clarify.
+
+2010-02-05  Simon Josefsson <simon@josefsson.org>
+
+	* tests/Makefile.am: Another test for MinGW builds.
+
+2010-02-05  Simon Josefsson <simon@josefsson.org>
+
+	* tests/Makefile.am: Don't use a libtool helper library, to
+	hopefully make MinGW builds work.
+
+2010-02-05  Simon Josefsson <simon@josefsson.org>
+
+	* tests/Makefile.am: Simplify.
+
+2010-02-05  Simon Josefsson <simon@josefsson.org>
+
+	* tests/Makefile.am: Check if this makes MinGW builds work better.
+
+2010-02-05  Simon Josefsson <simon@josefsson.org>
+
+	* tests/Makefile.am: Drop EXEEXT, to see if MinGW builds improve.
+
+2010-02-03  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Fix.
+
+2010-02-03  Simon Josefsson <simon@josefsson.org>
+
+	* AUTHORS, Makefile.am, NEWS, README, THANKS, TODO, libidn.pc.in,
+	m4/valgrind.m4: Bump copyright years.
+
+2010-02-03  Simon Josefsson <simon@josefsson.org>
+
+	* .clcopying, AUTHORS, ChangeLog, FAQ, Makefile.am, README,
+	README-alpha, THANKS, TODO, contrib/README,
+	contrib/doxygen/gdoc2doxygen, contrib/java/Makefile.am,
+	contrib/java/README, csharp/Makefile.am, doc/Makefile.gdoci,
+	doc/cyclo/Makefile.am, doc/gdoc, doc/java/Makefile.am,
+	doc/specifications/Makefile.am, doc/tld/Makefile.am,
+	doc/tld/README, doc/tld/fr.tld, examples/Makefile.am,
+	examples/README, examples/example.c, examples/example2.c,
+	examples/example5.c, java/Makefile.am,
+	java/gnu/inet/encoding/Makefile.am, lib/Makefile.am,
+	lib/gen-tld-tables.pl, lib/idn-free.c, lib/idn-free.h, lib/idna.c,
+	lib/idna.h, lib/nfkc.c, lib/pr29.c, lib/pr29.h, lib/profiles.c,
+	lib/punycode.c, lib/punycode.h, lib/strerror-idna.c,
+	lib/strerror-pr29.c, lib/strerror-punycode.c,
+	lib/strerror-stringprep.c, lib/strerror-tld.c, lib/stringprep.c,
+	lib/tld.c, lib/tld.h, lib/toutf8.c, lib/version.c, libc/README,
+	libc/example.c, libc/getaddrinfo-idn.txt, libidn.pc.in,
+	src/Makefile.am, src/idn.c, src/idn.ggo, src/idna.el,
+	src/punycode.el, tests/tst_idna.c, tests/tst_idna2.c,
+	tests/tst_nfkc.c, tests/tst_pr29.c, tests/tst_punycode.c,
+	tests/tst_strerror.c, tests/tst_stringprep.c, tests/tst_tld.c,
+	tests/tst_toutf8.c, tests/utils.h: Bump copyright years.
+
+2010-02-03  Simon Josefsson <simon@josefsson.org>
+
+	* configure.ac: Bump copyright years.
+
+2010-02-03  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2010-02-03  Simon Josefsson <simon@josefsson.org>
+
+	* configure.ac: Bump libtool version to indicated "added" symbols.
+
+2010-02-03  Simon Josefsson <simon@josefsson.org>
+
+	* doc/Makefile.am: Bump copyright years.
+
+2010-02-03  Simon Josefsson <simon@josefsson.org>
+
+	* lib/libidn.map: Bump shared library version tag on "new" symbols.
+
+2010-02-03  Simon Josefsson <simon@josefsson.org>
+
+	* lib/gen-stringprep-tables.pl, lib/stringprep.h,
+	tests/Makefile.am, tests/tst_symbols.c: Make sure all symbols are
+	exported.  Add self test to catch regressions.  See <http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=561291> and
+
+	<http://lists.gnu.org/archive/html/help-libidn/2010-02/msg00000.html>for background.
+
+2010-02-03  Simon Josefsson <simon@josefsson.org>
+
+	* build-aux/gnupload, build-aux/link-warning.h, gl/Makefile.am,
+	gl/error.h, gl/m4/fcntl_h.m4, gl/m4/gnulib-comp.m4,
+	gl/m4/stdlib_h.m4, gl/m4/string_h.m4, gl/m4/sys_stat_h.m4,
+	gl/m4/unistd_h.m4, gl/m4/wchar.m4, gl/string.in.h, gl/unistd.in.h,
+	gltests/Makefile.am, gltests/fcntl.in.h, gltests/ignore-value.h,
+	gltests/stdlib.in.h, gltests/sys_stat.in.h, gltests/test-lstat.c,
+	gltests/test-symlink.c, gltests/wchar.in.h, lib/gl/Makefile.am,
+	lib/gl/m4/gnulib-comp.m4, lib/gl/m4/string_h.m4,
+	lib/gl/m4/warn-on-use.m4, lib/gl/m4/wchar.m4, lib/gl/string.in.h,
+	lib/gl/wchar.in.h, lib/gltests/Makefile.am, maint.mk: Update gnulib
+	files.
+
+2010-01-12  Simon Josefsson <simon@josefsson.org>
+
+	* cfg.mk, maint.mk: Improve syntax-check exception stuff.
+
+2010-01-12  Simon Josefsson <simon@josefsson.org>
+
+	* gl/m4/gnulib-common.m4, lib/gl/m4/gnulib-common.m4: Update gnulib
+	files.
+
+2010-01-12  Simon Josefsson <simon@josefsson.org>
+
+	* gl/m4/gnulib-common.m4, gl/m4/warnings.m4: Check patch.
+
+2010-01-12  Simon Josefsson <simon@josefsson.org>
+
+	* m4/valgrind.m4: Fix valgrind.m4.
+
+2010-01-12  Simon Josefsson <simon@josefsson.org>
+
+	* doc/fdl-1.3.texi, doc/gendocs_template, doc/gpl-3.0.texi,
+	doc/lgpl-2.1.texi, gl/override/lib/dup2.c.diff,
+	gl/override/tests/dup2.c.diff: Update gnulib files.
+
+2010-01-12  Simon Josefsson <simon@josefsson.org>
+
+	* lib/gunibreak.h, lib/gunicomp.h, lib/gunidecomp.h: Touch.
+
+2010-01-12  Simon Josefsson <simon@josefsson.org>
+
+	* lib/gen-unicode-tables.pl: Touch.
+
+2010-01-12  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS, configure.ac, lib/stringprep.h: Bump versions.
+
+2010-01-12  Simon Josefsson <simon@josefsson.org>
+
+	* csharp/IDNA.cs, csharp/IDNAException.cs, csharp/NFKC.cs,
+	csharp/Punycode.cs, csharp/PunycodeException.cs,
+	csharp/Stringprep.cs, csharp/StringprepException.cs,
+	csharp/generate/AssemblyInfo.cs, csharp/generate/GenerateNFKC.cs,
+	csharp/generate/GenerateRFC3454.cs, csharp/generate/HashSet.cs,
+	csharp/generate/Program.cs, csharp/generate/Tokenizer.cs,
+	doc/fdl-1.3.texi, doc/gendocs_template, doc/gpl-3.0.texi,
+	doc/lgpl-2.1.texi, doc/tld/no.tld,
+	java/gnu/inet/encoding/IDNA.java,
+	java/gnu/inet/encoding/IDNAException.java,
+	java/gnu/inet/encoding/Punycode.java,
+	java/gnu/inet/encoding/PunycodeException.java,
+	java/gnu/inet/encoding/Stringprep.java,
+	java/gnu/inet/encoding/StringprepException.java,
+	java/misc/GenerateRFC3454.java, java/misc/TestIDNA.java,
+	java/misc/TestNFKC.java, lib/Makefile.am, lib/gen-tld-tables.pl,
+	lib/tld.c, lib/tld.h, m4/update-header-version.m4, m4/valgrind.m4,
+	po/cs.po.in, po/da.po.in, po/de.po.in, po/eo.po.in, po/id.po.in,
+	po/it.po.in, po/ja.po.in, po/nl.po.in, po/pl.po.in, po/ro.po.in,
+	po/rw.po.in, po/sr.po.in, po/zh_CN.po.in,
+	win32/include/ac-stdint.h, win32/include/idn-int.h,
+	win32/include/stdbool.h: Update copyright.
+
+2010-01-12  Simon Josefsson <simon@josefsson.org>
+
+	* po/de.po.in, po/fi.po.in, po/zh_CN.po.in: Sync with TP.
+
+2010-01-12  Simon Josefsson <simon@josefsson.org>
+
+	* .x-sc_avoid_if_before_free, .x-sc_cast_of_alloca_return_value,
+	.x-sc_error_message_uppercase, .x-sc_makefile_at_at_check,
+	.x-sc_makefile_check, .x-sc_space_tab, cfg.mk, examples/example3.c,
+	examples/example4.c, java/gnu/inet/encoding/NFKC.java,
+	java/misc/GenerateNFKC.java, lib/gl/striconv.c, maint.mk,
+	tests/utils.c: Fix syntax-check rules.
+
+2010-01-12  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi: Don't use exit(1).
+
+2010-01-12  Simon Josefsson <simon@josefsson.org>
+
+	* .x-sc_cast_of_alloca_return_value: Add.
+
+2010-01-12  Simon Josefsson <simon@josefsson.org>
+
+	* .x-sc_makefile_at_at_check: Add.
+
+2010-01-12  Simon Josefsson <simon@josefsson.org>
+
+	* cfg.mk: Commit cyclo/.
+
+2010-01-12  Simon Josefsson <simon@josefsson.org>
+
+	* ChangeLog: Generated.
+
 2010-01-12  Simon Josefsson <simon@josefsson.org>
 
 	* NEWS: Version 1.16.
