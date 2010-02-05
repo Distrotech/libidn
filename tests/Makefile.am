@@ -18,12 +18,11 @@
 
 AM_CFLAGS = $(WERROR_CFLAGS) $(WARN_CFLAGS)
 AM_CPPFLAGS = -I$(top_srcdir)/lib -I../lib -I$(top_srcdir)/gl -I../gl
-AM_LDFLAGS = -no-install
 
-LDADD = ../lib/libidn.la libutils.la
+LDADD = libutils.a ../lib/libidn.la
 
-noinst_LTLIBRARIES = libutils.la
-libutils_la_SOURCES = utils.h utils.c
+check_LIBRARIES = libutils.a
+libutils_a_SOURCES = utils.h utils.c
 
 ctests = tst_stringprep tst_punycode tst_idna tst_idna2 tst_nfkc	\
 	tst_pr29 tst_strerror tst_toutf8 tst_symbols
