@@ -31,6 +31,8 @@ Thanks to Marco d'Itri <md@linux.it> for reporting
 <http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=561291> that led to
 discovering this problem.
 
+** Really fix the link error of self-tests on MinGW.
+
 ** API and ABI is backwards compatible with the previous version.
 
 * Version 1.16 (released 2010-01-12)
