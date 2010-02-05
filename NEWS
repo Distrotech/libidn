@@ -2,7 +2,7 @@ Libidn NEWS -- History of user-visible changes.                 -*- outline -*-
 Copyright (C) 2002-2010 Simon Josefsson
 See the end for copying conditions.
 
-* Version 1.17 (unreleased)
+* Version 1.17 (released 2010-02-05)
 
 ** Fix symbol export problem for a few variables.
 Applications (that use these rarely used variables) built against
