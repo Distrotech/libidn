@@ -77,13 +77,6 @@ LIBIDN_1.0
     tld_get_z;
     tld_strerror;
 
-  local:
-    *;
-};
-
-LIBIDN_1.17
-{
-  global:
   # These symbols were intended to be exported from the beginning, but
   # by accident they never were.  Version 1.17 exported them properly.
     stringprep_iscsi_prohibit;
@@ -105,4 +98,7 @@ LIBIDN_1.17
     stringprep_rfc3454_D_1;
     stringprep_rfc3454_D_2;
     stringprep_saslprep_space_map;
-} LIBIDN_1.0;
+
+  local:
+    *;
+};
