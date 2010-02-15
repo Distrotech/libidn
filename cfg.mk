@@ -84,7 +84,7 @@ prepare:
 upload:
 	git push
 	git push --tags
-	build-aux/gnupload --to alpha.gnu.org:$(PACKAGE) $(distdir).tar.gz
+	build-aux/gnupload --to ftp.gnu.org:$(PACKAGE) $(distdir).tar.gz
 	cp $(distdir).tar.gz $(distdir).tar.gz.sig ../releases/$(PACKAGE)/
 
 web:
