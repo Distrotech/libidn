@@ -1,0 +1,155 @@
+To: help-libidn@gnu.org, info-gnu@gnu.org
+Subject: Libidn 1.18
+<#part sign=pgpmime>
+
+GNU Libidn is a fully documented implementation of the Stringprep,
+Punycode and IDNA specifications.  Libidn's purpose is to encode and
+decode internationalized domain names.  The native C, C# and Java
+libraries are available under the GNU Lesser General Public License
+version 2.1 or later.
+
+NEWS entries:
+
+* Version 1.18 (released 2010-02-15) [stable]
+
+** libidn: Put forgotten symbols under old namespace.
+Reverts one unnecessary change introduced in 1.17.  Suggested by Marco
+d'Itri <md@linux.it>.
+
+** API and ABI is backwards compatible with the previous version.
+
+* Version 1.17 (released 2010-02-05) [alpha]
+
+** libidn: Fix symbol export problem for a few variables.
+Applications (that use these rarely used variables) built against
+versions before 1.13 did not work with libidn versions 1.13 to 1.16.
+
+Symbol versioning was introduced in version 1.13 but by accident some
+symbols that were visible before that release were not exported, and
+the consequence was that those symbols were not available in version
+1.13 to 1.16.  This release fixes the problem, so the symbols are
+visible again, making this release backwards compatible with all
+earlier releases.
+
+The affected symbols are the following variables:
+stringprep_iscsi_prohibit, stringprep_rfc3454_A_1,
+stringprep_rfc3454_B_1, stringprep_rfc3454_B_2,
+stringprep_rfc3454_B_3, stringprep_rfc3454_C_1_1,
+stringprep_rfc3454_C_1_2, stringprep_rfc3454_C_2_1,
+stringprep_rfc3454_C_2_2, stringprep_rfc3454_C_3,
+stringprep_rfc3454_C_4, stringprep_rfc3454_C_5,
+stringprep_rfc3454_C_6, stringprep_rfc3454_C_7,
+stringprep_rfc3454_C_8, stringprep_rfc3454_C_9,
+stringprep_rfc3454_D_1, stringprep_rfc3454_D_2,
+stringprep_saslprep_space_map.
+
+Thanks to Marco d'Itri <md@linux.it> for reporting
+<http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=561291> that led to
+discovering this problem.
+
+** Really fix the link error of self-tests on MinGW.
+
+** API and ABI is backwards compatible with the previous version.
+
+The library contains a generic Stringprep implementation.  Profiles for
+Nameprep, iSCSI, SASL, XMPP and Kerberos V5 are included.  Punycode and
+ASCII Compatible Encoding (ACE) via IDNA are supported.  A mechanism to
+define Top-Level Domain (TLD) specific validation tables, and to compare
+strings against those tables, is included.  Default tables for some TLDs
+are also included.
+
+Libidn is developed for the GNU/Linux system, but runs on over 20 Unix
+platforms (including Solaris, IRIX, AIX, and Tru64) and Windows.  The
+library is written in C and (parts of) the API is also accessible from
+C++, Emacs Lisp, Python and Java.  A native Java and C# port is
+included.
+
+Also included is a command line tool, several self tests, code examples,
+and more, all licensed under the GNU General Public License version 3.0
+or later.
+
+Improving Libidn is costly, but you can help!  We are looking for
+organizations that find Libidn useful and wish to contribute back.  You
+can contribute by reporting bugs, improve the software, or donate money
+or equipment.
+
+Commercial support contracts for Libidn are available, and they help
+finance continued maintenance.  Simon Josefsson Datakonsult AB, a
+Stockholm based privately held company, is currently funding Libidn
+maintenance.  We are always looking for interesting development
+projects.  See http://josefsson.org/ for more details.
+
+The project page of the library is available at:
+  http://www.gnu.org/software/libidn/
+
+All manual formats are available from:
+  http://www.gnu.org/software/libidn/manual/
+
+Specifically, the following formats are available.
+
+The main manual:
+  http://www.gnu.org/software/libidn/manual/libidn.html - HTML format
+  http://www.gnu.org/software/libidn/manual/libidn.pdf - PDF format
+
+API Reference manual:
+  http://www.gnu.org/software/libidn/reference/ch01.html - GTK-DOC HTML
+
+Doxygen documentation:
+  http://www.gnu.org/software/libidn/doxygen/index.html - HTML format
+  http://www.gnu.org/software/libidn/doxygen/libidn.pdf - PDF format
+
+JavaDoc output for the Java API:
+  http://www.gnu.org/software/libidn/javadoc/
+
+If you need help to use Libidn, or want to help others, you are
+invited to join our help-libidn mailing list, see:
+<http://lists.gnu.org/mailman/listinfo/help-libidn>.
+
+Here are the compressed sources (2.9MB):
+  ftp://ftp.gnu.org/gnu/libidn/libidn-1.18.tar.gz
+  http://ftp.gnu.org/gnu/libidn/libidn-1.18.tar.gz
+
+Here are GPG detached signatures:
+  ftp://ftp.gnu.org/gnu/libidn/libidn-1.18.tar.gz.sig
+  http://ftp.gnu.org/gnu/libidn/libidn-1.18.tar.gz.sig
+
+We also provide pre-built Windows binaries:
+  http://josefsson.org/gnutls4win/libidn-1.18.zip
+  http://josefsson.org/gnutls4win/mingw32-libidn_1.18-1_all.deb
+
+Here are the build reports for various platforms:
+  http://autobuild.josefsson.org/libidn/
+
+Daily builds of the package are available from:
+  http://daily.josefsson.org/libidn/
+
+For code coverage and cyclomatic code complexity charts:
+  http://www.gnu.org/software/libidn/coverage/
+  http://www.gnu.org/software/libidn/cyclo/cyclo-libidn.html
+
+The software is cryptographically signed by the author using an
+OpenPGP key identified by the following information:
+
+pub   1280R/B565716F 2002-05-05 [expires: 2010-04-21]
+      Key fingerprint = 0424 D4EE 81A0 E3D1 19C6  F835 EDA2 1E94 B565 716F
+uid                  Simon Josefsson <simon@josefsson.org>
+uid                  Simon Josefsson <jas@extundo.com>
+sub   1280R/4D5D40AE 2002-05-05 [expires: 2010-04-21]
+
+The key is available from:
+  http://josefsson.org/key.txt
+  dns:b565716f.josefsson.org?TYPE=CERT
+
+Here are the SHA-1 and SHA-224 signatures:
+
+0b81360368e5100d1ec5261dea58fc72ef39ab6b  libidn-1.18.tar.gz
+650b19c0b4faf3e32902d1fa951d06f5a3a10f4a6d3ba2f5a6acdfaf  libidn-1.18.tar.gz
+
+882058221194080ff6b3b49d3726a2fe4d4979e3  libidn-1.18.zip
+c03cdf3deed3c788172c86c2b7a5032a1589623dac3d3004d84958d8  libidn-1.18.zip
+
+1a42948594e47f221feb0daf35928ecd274da098  mingw32-libidn_1.18-1_all.deb
+37543189ca03560184f02fce5a72cb8a6cb1f946af64436230b35e2b  mingw32-libidn_1.18-1_all.deb
+
+Happy hacking,
+Simon
