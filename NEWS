@@ -2,7 +2,7 @@ Libidn NEWS -- History of user-visible changes.                 -*- outline -*-
 Copyright (C) 2002-2010 Simon Josefsson
 See the end for copying conditions.
 
-* Version 1.18 (unreleased) [stable]
+* Version 1.18 (released 2010-02-15) [stable]
 
 ** libidn: Put forgotten symbols under old namespace.
 Reverts one unnecessary change introduced in 1.17.  Suggested by Marco
