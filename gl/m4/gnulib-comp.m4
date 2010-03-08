@@ -122,6 +122,7 @@ AC_DEFUN([gl_INIT],
   gl_COMMON
   gl_source_base='gltests'
   gl_FUNC_ALLOCA
+  gl_PROG_ANSI_CXX([CXX], [ANSICXX])
   gl_FUNC_DUP2
   gl_UNISTD_MODULE_INDICATOR([dup2])
   gl_ENVIRON
@@ -253,6 +254,7 @@ AC_DEFUN([gltests_LIBSOURCES], [
 # gnulib-tool and may be removed by future gnulib-tool invocations.
 AC_DEFUN([gl_FILE_LIST], [
   build-aux/arg-nonnull.h
+  build-aux/c++defs.h
   build-aux/csharpcomp.sh.in
   build-aux/gendocs.sh
   build-aux/gnupload
@@ -286,6 +288,7 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/version-etc.h
   m4/00gnulib.m4
   m4/alloca.m4
+  m4/ansi-c++.m4
   m4/autobuild.m4
   m4/csharp.m4
   m4/csharpcomp.m4
@@ -327,7 +330,7 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/version-etc.m4
   m4/warn-on-use.m4
   m4/warnings.m4
-  m4/wchar.m4
+  m4/wchar_h.m4
   m4/wchar_t.m4
   m4/wint_t.m4
   tests/macros.h
@@ -338,6 +341,7 @@ AC_DEFUN([gl_FILE_LIST], [
   tests/test-dup2.c
   tests/test-environ.c
   tests/test-errno.c
+  tests/test-fcntl-h-c++.cc
   tests/test-fcntl-h.c
   tests/test-getopt.c
   tests/test-getopt.h
@@ -353,13 +357,18 @@ AC_DEFUN([gl_FILE_LIST], [
   tests/test-stdbool.c
   tests/test-stddef.c
   tests/test-stdint.c
+  tests/test-stdlib-c++.cc
   tests/test-stdlib.c
   tests/test-strerror.c
+  tests/test-string-c++.cc
   tests/test-string.c
   tests/test-symlink.c
   tests/test-symlink.h
+  tests/test-sys_stat-c++.cc
   tests/test-sys_stat.c
+  tests/test-time-c++.cc
   tests/test-time.c
+  tests/test-unistd-c++.cc
   tests/test-unistd.c
   tests/test-unsetenv.c
   tests/test-update-copyright.sh
@@ -367,6 +376,7 @@ AC_DEFUN([gl_FILE_LIST], [
   tests/test-vc-list-files-git.sh
   tests/test-version-etc.c
   tests/test-version-etc.sh
+  tests/test-wchar-c++.cc
   tests/test-wchar.c
   tests=lib/alloca.in.h
   tests=lib/binary-io.h

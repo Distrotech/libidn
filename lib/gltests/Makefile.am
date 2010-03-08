@@ -69,6 +69,30 @@ EXTRA_DIST += $(top_srcdir)/build-aux/arg-nonnull.h
 
 ## end   gnulib module arg-nonnull
 
+## begin gnulib module c++defs
+
+# The BUILT_SOURCES created by this Makefile snippet are not used via #include
+# statements but through direct file reference. Therefore this snippet must be
+# present in all Makefile.am that need it. This is ensured by the applicability
+# 'all' defined above.
+
+BUILT_SOURCES += c++defs.h
+# The c++defs.h that gets inserted into generated .h files is the same as
+# build-aux/c++defs.h, except that it has the copyright header cut off.
+c++defs.h: $(top_srcdir)/build-aux/c++defs.h
+	$(AM_V_GEN)rm -f $@-t $@ && \
+	sed -n -e '/_GL_CXXDEFS/,$$p' \
+	  < $(top_srcdir)/build-aux/c++defs.h \
+	  > $@-t && \
+	mv $@-t $@
+MOSTLYCLEANFILES += c++defs.h c++defs.h-t
+
+CXXDEFS_H=c++defs.h
+
+EXTRA_DIST += $(top_srcdir)/build-aux/c++defs.h
+
+## end   gnulib module c++defs
+
 ## begin gnulib module c-ctype-tests
 
 TESTS += test-c-ctype
@@ -86,6 +110,20 @@ check_PROGRAMS += test-c-strcasecmp test-c-strncasecmp
 EXTRA_DIST += test-c-strcase.sh test-c-strcasecmp.c test-c-strncasecmp.c macros.h
 
 ## end   gnulib module c-strcase-tests
+
+## begin gnulib module iconv-h-tests
+
+TESTS += test-iconv-h
+check_PROGRAMS += test-iconv-h
+if ANSICXX
+TESTS += test-iconv-h-c++
+check_PROGRAMS += test-iconv-h-c++
+test_iconv_h_c___SOURCES = test-iconv-h-c++.cc
+test_iconv_h_c___LDADD = $(LDADD) $(LIBINTL) $(LIBICONV)
+endif
+EXTRA_DIST += test-iconv-h.c test-iconv-h-c++.cc signature.h
+
+## end   gnulib module iconv-h-tests
 
 ## begin gnulib module iconv-tests
 
@@ -142,7 +180,13 @@ EXTRA_DIST += test-striconv.c macros.h
 
 TESTS += test-string
 check_PROGRAMS += test-string
-EXTRA_DIST += test-string.c
+if ANSICXX
+TESTS += test-string-c++
+check_PROGRAMS += test-string-c++
+test_string_c___SOURCES = test-string-c++.cc
+test_string_c___LDADD = $(LDADD) $(LIBINTL)
+endif
+EXTRA_DIST += test-string.c test-string-c++.cc signature.h
 
 ## end   gnulib module string-tests
 
@@ -183,7 +227,13 @@ EXTRA_DIST += $(top_srcdir)/build-aux/warn-on-use.h
 
 TESTS += test-wchar
 check_PROGRAMS += test-wchar
-EXTRA_DIST += test-wchar.c
+if ANSICXX
+TESTS += test-wchar-c++
+check_PROGRAMS += test-wchar-c++
+test_wchar_c___SOURCES = test-wchar-c++.cc
+test_wchar_c___LDADD = $(LDADD) $(LIBINTL)
+endif
+EXTRA_DIST += test-wchar.c test-wchar-c++.cc signature.h
 
 ## end   gnulib module wchar-tests
 

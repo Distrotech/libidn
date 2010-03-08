@@ -100,6 +100,7 @@ AC_DEFUN([lgl_INIT],
   m4_pushdef([lgltests_LIBSOURCES_DIR], [])
   gl_COMMON
   gl_source_base='lib/gltests'
+  gl_PROG_ANSI_CXX([CXX], [ANSICXX])
   gt_LOCALE_FR
   gt_LOCALE_TR_UTF8
   gt_TYPE_WCHAR_T
@@ -196,6 +197,7 @@ AC_DEFUN([lgltests_LIBSOURCES], [
 # gnulib-tool and may be removed by future gnulib-tool invocations.
 AC_DEFUN([lgl_FILE_LIST], [
   build-aux/arg-nonnull.h
+  build-aux/c++defs.h
   build-aux/config.rpath
   build-aux/warn-on-use.h
   lib/c-ctype.c
@@ -220,6 +222,7 @@ AC_DEFUN([lgl_FILE_LIST], [
   lib/strverscmp.c
   lib/wchar.in.h
   m4/00gnulib.m4
+  m4/ansi-c++.m4
   m4/codeset.m4
   m4/extensions.m4
   m4/gnulib-common.m4
@@ -243,7 +246,7 @@ AC_DEFUN([lgl_FILE_LIST], [
   m4/strverscmp.m4
   m4/visibility.m4
   m4/warn-on-use.m4
-  m4/wchar.m4
+  m4/wchar_h.m4
   m4/wchar_t.m4
   m4/wint_t.m4
   tests/macros.h
@@ -252,13 +255,17 @@ AC_DEFUN([lgl_FILE_LIST], [
   tests/test-c-strcase.sh
   tests/test-c-strcasecmp.c
   tests/test-c-strncasecmp.c
+  tests/test-iconv-h-c++.cc
+  tests/test-iconv-h.c
   tests/test-iconv.c
   tests/test-stdbool.c
   tests/test-stddef.c
   tests/test-stdint.c
   tests/test-striconv.c
+  tests/test-string-c++.cc
   tests/test-string.c
   tests/test-strverscmp.c
+  tests/test-wchar-c++.cc
   tests/test-wchar.c
   tests=lib/dummy.c
   tests=lib/intprops.h
