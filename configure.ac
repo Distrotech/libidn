@@ -38,12 +38,16 @@ AC_CONFIG_MACRO_DIR([m4])
 AM_INIT_AUTOMAKE([1.10 -Wall -Werror -Wno-override])
 AC_CONFIG_HEADERS(config.h)
 
-# Checks for programs.
+# We can't replace this with LT_INIT([win32-dll]) yet.  For example,
+# the Ubuntu 8.04 LTS is still shipping a libtool version that doesn't
+# have it.
 AC_LIBTOOL_WIN32_DLL
+AC_PROG_LIBTOOL
+
+# Checks for programs.
 AC_PROG_CC
 lgl_EARLY
 gl_EARLY
-AC_PROG_LIBTOOL
 AM_MISSING_PROG(PERL, perl, $missing_dir)
 AM_MISSING_PROG(HELP2MAN, help2man, $missing_dir)
 AM_GNU_GETTEXT(external)
