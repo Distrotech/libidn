@@ -40,9 +40,9 @@ AC_CONFIG_HEADERS(config.h)
 
 # Checks for programs.
 AC_PROG_CC
-LT_INIT([win32-dll])
 lgl_EARLY
 gl_EARLY
+LT_INIT([win32-dll])
 AM_MISSING_PROG(PERL, perl, $missing_dir)
 AM_MISSING_PROG(HELP2MAN, help2man, $missing_dir)
 AM_GNU_GETTEXT(external)
