@@ -25,13 +25,100 @@ AC_DEFUN([gl_EARLY],
   m4_pattern_allow([^gl_LIBOBJS$])dnl a variable
   m4_pattern_allow([^gl_LTLIBOBJS$])dnl a variable
   AC_REQUIRE([AC_PROG_RANLIB])
+  # Code from module alloca-opt:
+  # Code from module alloca-opt-tests:
+  # Code from module ansi-c++-opt:
+  # Code from module arg-nonnull:
+  # Code from module autobuild:
   AB_INIT
+  # Code from module binary-io:
+  # Code from module binary-io-tests:
+  # Code from module c++defs:
+  # Code from module csharpcomp-script:
+  # Code from module dup2:
+  # Code from module dup2-tests:
+  # Code from module environ:
+  # Code from module environ-tests:
+  # Code from module errno:
+  # Code from module errno-tests:
+  # Code from module error:
+  # Code from module extensions:
   AC_REQUIRE([gl_USE_SYSTEM_EXTENSIONS])
+  # Code from module fcntl-h:
+  # Code from module fcntl-h-tests:
+  # Code from module fdl-1.3:
+  # Code from module gendocs:
+  # Code from module getopt-gnu:
+  # Code from module getopt-posix:
+  # Code from module getopt-posix-tests:
+  # Code from module gettext-h:
+  # Code from module gnumakefile:
+  # Code from module gnupload:
+  # Code from module gpl-3.0:
+  # Code from module ignore-value:
+  # Code from module include_next:
+  # Code from module intprops:
+  # Code from module lgpl-2.1:
+  # Code from module lstat:
+  # Code from module lstat-tests:
+  # Code from module maintainer-makefile:
+  # Code from module malloc-posix:
+  # Code from module malloca:
+  # Code from module malloca-tests:
+  # Code from module manywarnings:
+  # Code from module multiarch:
+  # Code from module open:
+  # Code from module open-tests:
+  # Code from module pathmax:
+  # Code from module pmccabe2html:
+  # Code from module progname:
+  # Code from module putenv:
+  # Code from module same-inode:
+  # Code from module setenv:
+  # Code from module setenv-tests:
+  # Code from module stat:
+  # Code from module stat-tests:
+  # Code from module stdarg:
   dnl Some compilers (e.g., AIX 5.3 cc) need to be in c99 mode
   dnl for the builtin va_copy to work.  With Autoconf 2.60 or later,
   dnl AC_PROG_CC_STDC arranges for this.  With older Autoconf AC_PROG_CC_STDC
   dnl shouldn't hurt, though installers are on their own to set c99 mode.
   AC_REQUIRE([AC_PROG_CC_STDC])
+  # Code from module stdbool:
+  # Code from module stdbool-tests:
+  # Code from module stddef:
+  # Code from module stddef-tests:
+  # Code from module stdint:
+  # Code from module stdint-tests:
+  # Code from module stdlib:
+  # Code from module stdlib-tests:
+  # Code from module strerror:
+  # Code from module strerror-tests:
+  # Code from module string:
+  # Code from module string-tests:
+  # Code from module symlink:
+  # Code from module symlink-tests:
+  # Code from module sys_stat:
+  # Code from module sys_stat-tests:
+  # Code from module time:
+  # Code from module time-tests:
+  # Code from module unistd:
+  # Code from module unistd-tests:
+  # Code from module unsetenv:
+  # Code from module unsetenv-tests:
+  # Code from module update-copyright:
+  # Code from module update-copyright-tests:
+  # Code from module useless-if-before-free:
+  # Code from module vc-list-files:
+  # Code from module vc-list-files-tests:
+  # Code from module verify:
+  # Code from module version-etc:
+  # Code from module version-etc-fsf:
+  # Code from module version-etc-tests:
+  # Code from module warn-on-use:
+  # Code from module warnings:
+  # Code from module wchar:
+  # Code from module wchar-tests:
 ])
 
 # This macro should be invoked from ./configure.ac, in the section
@@ -47,18 +134,31 @@ AC_DEFUN([gl_INIT],
   m4_pushdef([gl_LIBSOURCES_DIR], [])
   gl_COMMON
   gl_source_base='gl'
+  # Code from module arg-nonnull:
+  # Code from module autobuild:
+  # Code from module c++defs:
+  # Code from module csharpcomp-script:
   AC_REQUIRE([gt_CSHARPCOMP])
   AC_CONFIG_FILES([csharpcomp.sh:build-aux/csharpcomp.sh.in])
+  # Code from module errno:
   gl_HEADER_ERRNO_H
+  # Code from module error:
   gl_ERROR
   m4_ifdef([AM_XGETTEXT_OPTION],
     [AM_][XGETTEXT_OPTION([--flag=error:3:c-format])
      AM_][XGETTEXT_OPTION([--flag=error_at_line:5:c-format])])
+  # Code from module extensions:
+  # Code from module fdl-1.3:
+  # Code from module gendocs:
+  # Code from module getopt-gnu:
   gl_FUNC_GETOPT_GNU
   gl_MODULE_INDICATOR([getopt-gnu])
+  # Code from module getopt-posix:
   gl_FUNC_GETOPT_POSIX
+  # Code from module gettext-h:
   AC_SUBST([LIBINTL])
   AC_SUBST([LTLIBINTL])
+  # Code from module gnumakefile:
   # Autoconf 2.61a.99 and earlier don't support linking a file only
   # in VPATH builds.  But since GNUmakefile is for maintainer use
   # only, it does not matter if we skip the link with older autoconf.
@@ -69,19 +169,40 @@ AC_DEFUN([gl_INIT],
   	m4_defn([m4_PACKAGE_VERSION])), [1], [],
         [AC_CONFIG_LINKS([$GNUmakefile:$GNUmakefile], [],
   	[GNUmakefile=$GNUmakefile])])
+  # Code from module gnupload:
+  # Code from module gpl-3.0:
+  # Code from module include_next:
+  # Code from module intprops:
+  # Code from module lgpl-2.1:
+  # Code from module maintainer-makefile:
   AC_CONFIG_COMMANDS_PRE([m4_ifdef([AH_HEADER],
     [AC_SUBST([CONFIG_INCLUDE], m4_defn([AH_HEADER]))])])
+  # Code from module manywarnings:
+  # Code from module pmccabe2html:
   AC_PATH_PROG([PMCCABE], [pmccabe], [false])
+  # Code from module progname:
   AC_CHECK_DECLS([program_invocation_name], [], [], [#include <errno.h>])
   AC_CHECK_DECLS([program_invocation_short_name], [], [], [#include <errno.h>])
+  # Code from module stdarg:
   gl_STDARG_H
+  # Code from module stddef:
   gl_STDDEF_H
+  # Code from module strerror:
   gl_FUNC_STRERROR
   gl_STRING_MODULE_INDICATOR([strerror])
+  # Code from module string:
   gl_HEADER_STRING_H
+  # Code from module unistd:
   gl_UNISTD_H
+  # Code from module update-copyright:
+  # Code from module useless-if-before-free:
+  # Code from module vc-list-files:
+  # Code from module version-etc:
   gl_VERSION_ETC
+  # Code from module warn-on-use:
+  # Code from module warnings:
   AC_SUBST([WARN_CFLAGS])
+  # End of code from modules
   m4_ifval(gl_LIBSOURCES_LIST, [
     m4_syscmd([test ! -d ]m4_defn([gl_LIBSOURCES_DIR])[ ||
       for gl_file in ]gl_LIBSOURCES_LIST[ ; do

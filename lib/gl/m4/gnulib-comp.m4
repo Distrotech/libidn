@@ -25,7 +25,45 @@ AC_DEFUN([lgl_EARLY],
   m4_pattern_allow([^gl_LIBOBJS$])dnl a variable
   m4_pattern_allow([^gl_LTLIBOBJS$])dnl a variable
   AC_REQUIRE([AC_PROG_RANLIB])
+  # Code from module ansi-c++-opt:
+  # Code from module arg-nonnull:
+  # Code from module c++defs:
+  # Code from module c-ctype:
+  # Code from module c-ctype-tests:
+  # Code from module c-strcase:
+  # Code from module c-strcase-tests:
+  # Code from module extensions:
   AC_REQUIRE([gl_USE_SYSTEM_EXTENSIONS])
+  # Code from module gettext-h:
+  # Code from module gperf:
+  # Code from module havelib:
+  # Code from module iconv:
+  # Code from module iconv-h:
+  # Code from module iconv-h-tests:
+  # Code from module iconv-tests:
+  # Code from module iconv_open:
+  # Code from module include_next:
+  # Code from module intprops:
+  # Code from module lib-msvc-compat:
+  # Code from module lib-symbol-versions:
+  # Code from module lib-symbol-visibility:
+  # Code from module multiarch:
+  # Code from module stdbool:
+  # Code from module stdbool-tests:
+  # Code from module stddef:
+  # Code from module stddef-tests:
+  # Code from module stdint:
+  # Code from module stdint-tests:
+  # Code from module striconv:
+  # Code from module striconv-tests:
+  # Code from module string:
+  # Code from module string-tests:
+  # Code from module strverscmp:
+  # Code from module strverscmp-tests:
+  # Code from module verify:
+  # Code from module warn-on-use:
+  # Code from module wchar:
+  # Code from module wchar-tests:
 ])
 
 # This macro should be invoked from ./configure.ac, in the section
@@ -41,26 +79,51 @@ AC_DEFUN([lgl_INIT],
   m4_pushdef([lgl_LIBSOURCES_DIR], [])
   gl_COMMON
   gl_source_base='lib/gl'
+  # Code from module arg-nonnull:
+  # Code from module c++defs:
+  # Code from module c-ctype:
+  # Code from module c-strcase:
+  # Code from module extensions:
+  # Code from module gettext-h:
   AC_SUBST([LIBINTL])
   AC_SUBST([LTLIBINTL])
+  # Code from module gperf:
+  # Code from module havelib:
+  # Code from module iconv:
   AM_ICONV
+  # Code from module iconv-h:
   gl_ICONV_H
+  # Code from module iconv_open:
   gl_FUNC_ICONV_OPEN
+  # Code from module include_next:
+  # Code from module lib-msvc-compat:
   gl_LD_OUTPUT_DEF
+  # Code from module lib-symbol-versions:
   gl_LD_VERSION_SCRIPT
+  # Code from module lib-symbol-visibility:
   gl_VISIBILITY
+  # Code from module multiarch:
   gl_MULTIARCH
+  # Code from module stdbool:
   AM_STDBOOL_H
+  # Code from module stddef:
   gl_STDDEF_H
+  # Code from module stdint:
   gl_STDINT_H
+  # Code from module striconv:
   if test $gl_cond_libtool = false; then
     gl_ltlibdeps="$gl_ltlibdeps $LTLIBICONV"
     gl_libdeps="$gl_libdeps $LIBICONV"
   fi
+  # Code from module string:
   gl_HEADER_STRING_H
+  # Code from module strverscmp:
   gl_FUNC_STRVERSCMP
   gl_STRING_MODULE_INDICATOR([strverscmp])
+  # Code from module warn-on-use:
+  # Code from module wchar:
   gl_WCHAR_H
+  # End of code from modules
   m4_ifval(lgl_LIBSOURCES_LIST, [
     m4_syscmd([test ! -d ]m4_defn([lgl_LIBSOURCES_DIR])[ ||
       for gl_file in ]lgl_LIBSOURCES_LIST[ ; do
