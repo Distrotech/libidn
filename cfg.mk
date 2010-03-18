@@ -101,3 +101,9 @@ upload-web:
 	cd $(htmldir) && \
 		cvs commit -m "Update." \
 			manual/ javadoc/ reference/ doxygen/ cyclo/
+
+review-diff:
+	git diff `git describe --abbrev=0`.. \
+	| grep -v -e ^index -e '^diff --git' \
+	| filterdiff -p 1 -x 'build-aux/*' -x 'gl/*' -x 'gltests/*' -x 'lib/gl/*' -x 'lib/gltests/*' -x 'po/*' -x 'maint.mk' -x '.gitignore' -x '.x-sc*' -x ChangeLog -x GNUmakefile \
+	| less
