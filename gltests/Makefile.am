@@ -202,20 +202,6 @@ EXTRA_DIST += fcntl.in.h
 
 ## end   gnulib module fcntl-h
 
-## begin gnulib module fcntl-h-tests
-
-TESTS += test-fcntl-h
-check_PROGRAMS += test-fcntl-h
-if ANSICXX
-TESTS += test-fcntl-h-c++
-check_PROGRAMS += test-fcntl-h-c++
-test_fcntl_h_c___SOURCES = test-fcntl-h-c++.cc
-test_fcntl_h_c___LDADD = $(LDADD) $(LIBINTL) $(LIB_CLOCK_GETTIME)
-endif
-EXTRA_DIST += test-fcntl-h.c test-fcntl-h-c++.cc signature.h
-
-## end   gnulib module fcntl-h-tests
-
 ## begin gnulib module getopt-posix-tests
 
 TESTS += test-getopt
@@ -506,20 +492,6 @@ EXTRA_DIST += stdlib.in.h
 
 ## end   gnulib module stdlib
 
-## begin gnulib module stdlib-tests
-
-TESTS += test-stdlib
-check_PROGRAMS += test-stdlib
-if ANSICXX
-TESTS += test-stdlib-c++
-check_PROGRAMS += test-stdlib-c++
-test_stdlib_c___SOURCES = test-stdlib-c++.cc
-test_stdlib_c___LDADD = $(LDADD) $(LIBINTL) $(LIB_CLOCK_GETTIME)
-endif
-EXTRA_DIST += test-stdlib.c test-stdlib-c++.cc signature.h
-
-## end   gnulib module stdlib-tests
-
 ## begin gnulib module strerror-tests
 
 TESTS += test-strerror
@@ -527,20 +499,6 @@ check_PROGRAMS += test-strerror
 EXTRA_DIST += test-strerror.c signature.h macros.h
 
 ## end   gnulib module strerror-tests
-
-## begin gnulib module string-tests
-
-TESTS += test-string
-check_PROGRAMS += test-string
-if ANSICXX
-TESTS += test-string-c++
-check_PROGRAMS += test-string-c++
-test_string_c___SOURCES = test-string-c++.cc
-test_string_c___LDADD = $(LDADD) $(LIBINTL)
-endif
-EXTRA_DIST += test-string.c test-string-c++.cc signature.h
-
-## end   gnulib module string-tests
 
 ## begin gnulib module symlink
 
@@ -617,20 +575,6 @@ EXTRA_DIST += sys_stat.in.h
 
 ## end   gnulib module sys_stat
 
-## begin gnulib module sys_stat-tests
-
-TESTS += test-sys_stat
-check_PROGRAMS += test-sys_stat
-if ANSICXX
-TESTS += test-sys_stat-c++
-check_PROGRAMS += test-sys_stat-c++
-test_sys_stat_c___SOURCES = test-sys_stat-c++.cc
-test_sys_stat_c___LDADD = $(LDADD) $(LIBINTL) $(LIB_CLOCK_GETTIME)
-endif
-EXTRA_DIST += test-sys_stat.c test-sys_stat-c++.cc signature.h
-
-## end   gnulib module sys_stat-tests
-
 ## begin gnulib module time
 
 BUILT_SOURCES += time.h
@@ -647,6 +591,7 @@ time.h: time.in.h $(CXXDEFS_H) $(ARG_NONNULL_H) $(WARN_ON_USE_H)
 	      -e 's|@''GNULIB_NANOSLEEP''@|$(GNULIB_NANOSLEEP)|g' \
 	      -e 's|@''GNULIB_STRPTIME''@|$(GNULIB_STRPTIME)|g' \
 	      -e 's|@''GNULIB_TIMEGM''@|$(GNULIB_TIMEGM)|g' \
+	      -e 's|@''GNULIB_TIME_R''@|$(GNULIB_TIME_R)|g' \
 	      -e 's|@''REPLACE_LOCALTIME_R''@|$(REPLACE_LOCALTIME_R)|g' \
 	      -e 's|@''REPLACE_MKTIME''@|$(REPLACE_MKTIME)|g' \
 	      -e 's|@''REPLACE_NANOSLEEP''@|$(REPLACE_NANOSLEEP)|g' \
@@ -665,34 +610,6 @@ MOSTLYCLEANFILES += time.h time.h-t
 EXTRA_DIST += time.in.h
 
 ## end   gnulib module time
-
-## begin gnulib module time-tests
-
-TESTS += test-time
-check_PROGRAMS += test-time
-if ANSICXX
-TESTS += test-time-c++
-check_PROGRAMS += test-time-c++
-test_time_c___SOURCES = test-time-c++.cc
-test_time_c___LDADD = $(LDADD) $(LIBINTL) $(LIB_NANOSLEEP)
-endif
-EXTRA_DIST += test-time.c test-time-c++.cc signature.h
-
-## end   gnulib module time-tests
-
-## begin gnulib module unistd-tests
-
-TESTS += test-unistd
-check_PROGRAMS += test-unistd
-if ANSICXX
-TESTS += test-unistd-c++
-check_PROGRAMS += test-unistd-c++
-test_unistd_c___SOURCES = test-unistd-c++.cc
-test_unistd_c___LDADD = $(LDADD) $(LIBINTL) $(LIB_CLOCK_GETTIME)
-endif
-EXTRA_DIST += test-unistd.c test-unistd-c++.cc signature.h
-
-## end   gnulib module unistd-tests
 
 ## begin gnulib module unsetenv
 
@@ -827,20 +744,6 @@ MOSTLYCLEANFILES += wchar.h wchar.h-t
 EXTRA_DIST += wchar.in.h
 
 ## end   gnulib module wchar
-
-## begin gnulib module wchar-tests
-
-TESTS += test-wchar
-check_PROGRAMS += test-wchar
-if ANSICXX
-TESTS += test-wchar-c++
-check_PROGRAMS += test-wchar-c++
-test_wchar_c___SOURCES = test-wchar-c++.cc
-test_wchar_c___LDADD = $(LDADD) $(LIBINTL)
-endif
-EXTRA_DIST += test-wchar.c test-wchar-c++.cc signature.h
-
-## end   gnulib module wchar-tests
 
 # Clean up after Solaris cc.
 clean-local:

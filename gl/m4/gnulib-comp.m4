@@ -27,7 +27,6 @@ AC_DEFUN([gl_EARLY],
   AC_REQUIRE([AC_PROG_RANLIB])
   # Code from module alloca-opt:
   # Code from module alloca-opt-tests:
-  # Code from module ansi-c++-opt:
   # Code from module arg-nonnull:
   # Code from module autobuild:
   AB_INIT
@@ -45,7 +44,6 @@ AC_DEFUN([gl_EARLY],
   # Code from module extensions:
   AC_REQUIRE([gl_USE_SYSTEM_EXTENSIONS])
   # Code from module fcntl-h:
-  # Code from module fcntl-h-tests:
   # Code from module fdl-1.3:
   # Code from module gendocs:
   # Code from module getopt-gnu:
@@ -91,19 +89,14 @@ AC_DEFUN([gl_EARLY],
   # Code from module stdint:
   # Code from module stdint-tests:
   # Code from module stdlib:
-  # Code from module stdlib-tests:
   # Code from module strerror:
   # Code from module strerror-tests:
   # Code from module string:
-  # Code from module string-tests:
   # Code from module symlink:
   # Code from module symlink-tests:
   # Code from module sys_stat:
-  # Code from module sys_stat-tests:
   # Code from module time:
-  # Code from module time-tests:
   # Code from module unistd:
-  # Code from module unistd-tests:
   # Code from module unsetenv:
   # Code from module unsetenv-tests:
   # Code from module update-copyright:
@@ -118,7 +111,6 @@ AC_DEFUN([gl_EARLY],
   # Code from module warn-on-use:
   # Code from module warnings:
   # Code from module wchar:
-  # Code from module wchar-tests:
 ])
 
 # This macro should be invoked from ./configure.ac, in the section
@@ -243,7 +235,6 @@ AC_DEFUN([gl_INIT],
   gl_COMMON
   gl_source_base='gltests'
   gl_FUNC_ALLOCA
-  gl_PROG_ANSI_CXX([CXX], [ANSICXX])
   gl_FUNC_DUP2
   gl_UNISTD_MODULE_INDICATOR([dup2])
   gl_ENVIRON
@@ -409,7 +400,6 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/version-etc.h
   m4/00gnulib.m4
   m4/alloca.m4
-  m4/ansi-c++.m4
   m4/autobuild.m4
   m4/csharp.m4
   m4/csharpcomp.m4
@@ -462,8 +452,6 @@ AC_DEFUN([gl_FILE_LIST], [
   tests/test-dup2.c
   tests/test-environ.c
   tests/test-errno.c
-  tests/test-fcntl-h-c++.cc
-  tests/test-fcntl-h.c
   tests/test-getopt.c
   tests/test-getopt.h
   tests/test-getopt_long.h
@@ -478,27 +466,15 @@ AC_DEFUN([gl_FILE_LIST], [
   tests/test-stdbool.c
   tests/test-stddef.c
   tests/test-stdint.c
-  tests/test-stdlib-c++.cc
-  tests/test-stdlib.c
   tests/test-strerror.c
-  tests/test-string-c++.cc
-  tests/test-string.c
   tests/test-symlink.c
   tests/test-symlink.h
-  tests/test-sys_stat-c++.cc
-  tests/test-sys_stat.c
-  tests/test-time-c++.cc
-  tests/test-time.c
-  tests/test-unistd-c++.cc
-  tests/test-unistd.c
   tests/test-unsetenv.c
   tests/test-update-copyright.sh
   tests/test-vc-list-files-cvs.sh
   tests/test-vc-list-files-git.sh
   tests/test-version-etc.c
   tests/test-version-etc.sh
-  tests/test-wchar-c++.cc
-  tests/test-wchar.c
   tests=lib/alloca.in.h
   tests=lib/binary-io.h
   tests=lib/dup2.c
