@@ -25,7 +25,6 @@ AC_DEFUN([lgl_EARLY],
   m4_pattern_allow([^gl_LIBOBJS$])dnl a variable
   m4_pattern_allow([^gl_LTLIBOBJS$])dnl a variable
   AC_REQUIRE([AC_PROG_RANLIB])
-  # Code from module ansi-c++-opt:
   # Code from module arg-nonnull:
   # Code from module c++defs:
   # Code from module c-ctype:
@@ -39,7 +38,6 @@ AC_DEFUN([lgl_EARLY],
   # Code from module havelib:
   # Code from module iconv:
   # Code from module iconv-h:
-  # Code from module iconv-h-tests:
   # Code from module iconv-tests:
   # Code from module iconv_open:
   # Code from module include_next:
@@ -57,13 +55,11 @@ AC_DEFUN([lgl_EARLY],
   # Code from module striconv:
   # Code from module striconv-tests:
   # Code from module string:
-  # Code from module string-tests:
   # Code from module strverscmp:
   # Code from module strverscmp-tests:
   # Code from module verify:
   # Code from module warn-on-use:
   # Code from module wchar:
-  # Code from module wchar-tests:
 ])
 
 # This macro should be invoked from ./configure.ac, in the section
@@ -163,7 +159,6 @@ AC_DEFUN([lgl_INIT],
   m4_pushdef([lgltests_LIBSOURCES_DIR], [])
   gl_COMMON
   gl_source_base='lib/gltests'
-  gl_PROG_ANSI_CXX([CXX], [ANSICXX])
   gt_LOCALE_FR
   gt_LOCALE_TR_UTF8
   gt_TYPE_WCHAR_T
@@ -285,7 +280,6 @@ AC_DEFUN([lgl_FILE_LIST], [
   lib/strverscmp.c
   lib/wchar.in.h
   m4/00gnulib.m4
-  m4/ansi-c++.m4
   m4/codeset.m4
   m4/extensions.m4
   m4/gnulib-common.m4
@@ -318,18 +312,12 @@ AC_DEFUN([lgl_FILE_LIST], [
   tests/test-c-strcase.sh
   tests/test-c-strcasecmp.c
   tests/test-c-strncasecmp.c
-  tests/test-iconv-h-c++.cc
-  tests/test-iconv-h.c
   tests/test-iconv.c
   tests/test-stdbool.c
   tests/test-stddef.c
   tests/test-stdint.c
   tests/test-striconv.c
-  tests/test-string-c++.cc
-  tests/test-string.c
   tests/test-strverscmp.c
-  tests/test-wchar-c++.cc
-  tests/test-wchar.c
   tests=lib/dummy.c
   tests=lib/intprops.h
   tests=lib/verify.h

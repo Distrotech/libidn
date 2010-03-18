@@ -111,20 +111,6 @@ EXTRA_DIST += test-c-strcase.sh test-c-strcasecmp.c test-c-strncasecmp.c macros.
 
 ## end   gnulib module c-strcase-tests
 
-## begin gnulib module iconv-h-tests
-
-TESTS += test-iconv-h
-check_PROGRAMS += test-iconv-h
-if ANSICXX
-TESTS += test-iconv-h-c++
-check_PROGRAMS += test-iconv-h-c++
-test_iconv_h_c___SOURCES = test-iconv-h-c++.cc
-test_iconv_h_c___LDADD = $(LDADD) $(LIBINTL) $(LIBICONV)
-endif
-EXTRA_DIST += test-iconv-h.c test-iconv-h-c++.cc signature.h
-
-## end   gnulib module iconv-h-tests
-
 ## begin gnulib module iconv-tests
 
 TESTS += test-iconv
@@ -176,20 +162,6 @@ EXTRA_DIST += test-striconv.c macros.h
 
 ## end   gnulib module striconv-tests
 
-## begin gnulib module string-tests
-
-TESTS += test-string
-check_PROGRAMS += test-string
-if ANSICXX
-TESTS += test-string-c++
-check_PROGRAMS += test-string-c++
-test_string_c___SOURCES = test-string-c++.cc
-test_string_c___LDADD = $(LDADD) $(LIBINTL)
-endif
-EXTRA_DIST += test-string.c test-string-c++.cc signature.h
-
-## end   gnulib module string-tests
-
 ## begin gnulib module strverscmp-tests
 
 TESTS += test-strverscmp
@@ -222,20 +194,6 @@ WARN_ON_USE_H=warn-on-use.h
 EXTRA_DIST += $(top_srcdir)/build-aux/warn-on-use.h
 
 ## end   gnulib module warn-on-use
-
-## begin gnulib module wchar-tests
-
-TESTS += test-wchar
-check_PROGRAMS += test-wchar
-if ANSICXX
-TESTS += test-wchar-c++
-check_PROGRAMS += test-wchar-c++
-test_wchar_c___SOURCES = test-wchar-c++.cc
-test_wchar_c___LDADD = $(LDADD) $(LIBINTL)
-endif
-EXTRA_DIST += test-wchar.c test-wchar-c++.cc signature.h
-
-## end   gnulib module wchar-tests
 
 ## begin gnulib module dummy
 
