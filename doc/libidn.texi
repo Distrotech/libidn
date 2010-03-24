@@ -181,7 +181,7 @@ GNU Lesser General Public License version 2.1 or later (@pxref{GNU
 LGPL}).
 
 @item It's thread-safe
-No global state is kept in the library.  All functions are reentrant.
+No global state is kept in the library.  All functions are re-entrant.
 
 @item It's portable
 The code is intended to be written in pure ANSI C89.  It has been
@@ -225,8 +225,8 @@ component within the library is hidden from the application.
 @section Supported Platforms
 
 Libidn has at some point in time been tested on the following
-platforms.  Online build reports for each platforms and Libidn version
-is available at @url{http://autobuild.josefsson.org/libidn/}.
+platforms.  Build reports for each platforms and Libidn version is
+available at @url{http://autobuild.josefsson.org/libidn/}.
 
 @enumerate
 
@@ -433,7 +433,7 @@ need memory or size optimization.
 If you are interested, please write to:
 
 @verbatim
-Simon Josefsson Datakonsult
+Simon Josefsson Datakonsult AB
 Hagagatan 24
 113 47 Stockholm
 Sweden
@@ -804,7 +804,7 @@ the path to the library files has to be added to the library search
 path (via the @option{-L} option).  For this, the option
 @option{--libs} to @command{pkg-config libidn} can be used.  For
 convenience, this option also outputs all other options that are
-required to link the program with the `libidn' libarary.  The example
+required to link the program with the `libidn' library.  The example
 shows how to link @file{foo.o} with the `libidn' library to a program
 @command{foo}.
 
@@ -829,13 +829,13 @@ to check for installed libraries, you might find the following snippet
 illustrative.  It add a new @file{configure} parameter
 @code{--with-libidn}, and check for @file{idna.h} and @samp{-lidn}
 (possibly below the directory specified as the optional argument to
-@code{--with-libidn}), and define the @acronym{CPP} symbol
-@code{LIBIDN} if the library is found.  The default behaviour is to
-search for the library and enable the functionality (that is, define
-the symbol) when the library is found, but if you wish to make the
-default behaviour of your package be that Libidn is not used (even if
-it is installed on the system), change @samp{libidn=yes} to
-@samp{libidn=no} on the third line.
+@code{--with-libidn}), and define the CPP symbol @code{LIBIDN} if the
+library is found.  The default behaviour is to search for the library
+and enable the functionality (that is, define the symbol) when the
+library is found, but if you wish to make the default behaviour of
+your package be that Libidn is not used (even if it is installed on
+the system), change @samp{libidn=yes} to @samp{libidn=no} on the third
+line.
 
 @example
 AC_ARG_WITH(libidn, AC_HELP_STRING([--with-libidn=[DIR]],
@@ -1174,12 +1174,12 @@ the core IDNA primitives.  The @code{4} indicate that the function
 takes UCS-4 strings (i.e., Unicode code points encoded in a 32-bit
 unsigned integer type) of the specified length.  The @code{i} indicate
 that the data is written ``inline'' into the buffer.  This means the
-caller is responsible for allocating (and deallocating) the string,
+caller is responsible for allocating (and de-allocating) the string,
 and providing the library with the allocated length of the string.
 The output length is written in the output length variable.  The
 remaining functions all contain the @code{z} indicator, which means
 the strings are zero terminated.  All output strings are allocated by
-the library, and must be deallocated by the caller.  The @code{4}
+the library, and must be de-allocated by the caller.  The @code{4}
 indicator again means that the string is UCS-4, the @code{8} means the
 strings are UTF-8 and the @code{l} indicator means the strings are
 encoded in the encoding used by the current locale.
@@ -1214,23 +1214,23 @@ The functions provided are the following entry points:
 @chapter TLD Functions
 @cindex TLD Functions
 
-Organizations that manage some Top Level Domains (@acronym{TLD}s) have
-published tables with characters they accept within the domain.  The
-reason may be to reduce complexity that come from using the full
-Unicode range, and to protect themselves from future (backwards
-incompatible) changes in the IDN or Unicode specifications.  Libidn
-implement an infrastructure for defining and checking strings against
-such tables.  Libidn also ship some tables from @acronym{TLD}s that we
-have managed to get permission to use them from.  Because these tables
-are even less static than Unicode or StringPrep tables, it is likely
-that they will be updated from time to time (even in backwards
-incompatibe ways).  The Libidn interface provide a ``version'' field
-for each @acronym{TLD} table, which can be compared for equality to
-guarantee the same operation over time.
+Organizations that manage some Top Level Domains (TLDs) have published
+tables with characters they accept within the domain.  The reason may
+be to reduce complexity that come from using the full Unicode range,
+and to protect themselves from future (backwards incompatible) changes
+in the IDN or Unicode specifications.  Libidn implement an
+infrastructure for defining and checking strings against such tables.
+Libidn also ship some tables from TLDs that we have managed to get
+permission to use them from.  Because these tables are even less
+static than Unicode or StringPrep tables, it is likely that they will
+be updated from time to time (even in backwards incompatible ways).
+The Libidn interface provide a ``version'' field for each TLD table,
+which can be compared for equality to guarantee the same operation
+over time.
 
-From a design point of view, you can regard the @acronym{TLD} tables
-for IDN as the ``localization'' step that come after the
-``internationalization'' step provided by the IETF standards.
+From a design point of view, you can regard the TLD tables for IDN as
+the ``localization'' step that come after the ``internationalization''
+step provided by the IETF standards.
 
 The TLD functionality rely on up-to-date tables.  The latest version
 of Libidn aim to provide these, but tables with unclear copying
@@ -1495,7 +1495,7 @@ To process a string that starts with @code{-}, for example
 
   -p, --profile=STRING     Use specified stringprep profile instead
                              Valid stringprep profiles: `Nameprep',
-                             `iSCSI', `Nodeprep', `Resourceprep', 
+                             `iSCSI', `Nodeprep', `Resourceprep',
                              `trace', `SASLprep'
 
       --debug              Print debugging information
@@ -1592,23 +1592,23 @@ jas@@latte:~$
 
 The simplest explanation is that you haven't installed the
 @samp{iconv} conversion tools.  You can find it as a standalone
-library in @acronym{GNU} Libiconv
-(@uref{http://www.gnu.org/software/libiconv/}).  On many
-@acronym{GNU}/Linux systems, this library is part of the system, but
-you may have to install additional packages (e.g., @samp{glibc-locale}
-for Debian) to be able to use it.
+library in GNU Libiconv
+(@uref{http://www.gnu.org/software/libiconv/}).  On many GNU/Linux
+systems, this library is part of the system, but you may have to
+install additional packages (e.g., @samp{glibc-locale} for Debian) to
+be able to use it.
 
 Another explanation is that the error is correct and you are feeding
 @samp{idn} invalid data.  This can happen inadvertently if you are not
-careful with the character set encodings you use.  For example, if
-your shell run in a @code{ISO-8859-1} environment, and you invoke
+careful with the character set encoding you use.  For example, if your
+shell run in a @code{ISO-8859-1} environment, and you invoke
 @samp{idn} with the @samp{CHARSET} environment variable as follows,
 you will feed it @code{ISO-8859-1} characters but force it to believe
 they are @code{UTF-8}.  Naturally this will lead to an error, unless
-the byte sequences happen to be parsable as @code{UTF-8}.  Note that
-even if you don't get an error, the output may be incorrect in this
-situation, because @code{ISO-8859-1} and @code{UTF-8} does not in
-general encode the same characters as the same byte sequences.
+the byte sequences happen to be valid @code{UTF-8}.  Note that even if
+you don't get an error, the output may be incorrect in this situation,
+because @code{ISO-8859-1} and @code{UTF-8} does not in general encode
+the same characters as the same byte sequences.
 
 @example
 jas@@latte:~$ idn --quiet --debug ""
@@ -1807,7 +1807,7 @@ or against Simon Josefsson's test vectors.
 The test vectors can be found at the Libidn homepage,
 @url{http://www.gnu.org/software/libidn/}.
 
-To test the tranformation manually, use:
+To test the transformation manually, use:
 
 @example
 $ java -cp .:../libidn.jar TestIDNA -a <string to test>
@@ -1865,7 +1865,7 @@ require changes to this library.  See also the next section.
 
 @section A Note on Java and Unicode
 
-This library uses Java's builtin 'char' datatype. Up to Java 1.4, this
+This library uses Java's built-in 'char' datatype. Up to Java 1.4, this
 datatype only supports 16-bit Unicode code points, also called the
 Basic Multilingual Plane. For this reason, this library doesn't work
 for Supplementary Characters (i.e. characters from U+10000 to
@@ -1986,15 +1986,15 @@ Subject: Possible bug and status of PR 29 change(s)
 To: bug-libidn@gnu.org
 Date: Wed, 27 Oct 2004 14:49:17 -0700
 
-Hello. On behalf of the Unicode Consortium editorial committee, I would  
-like to find out more information about the PR 29 fixes, if any, and  
-functions in Libidn. Your implementation was listed in the text of PR29 as  
+Hello. On behalf of the Unicode Consortium editorial committee, I would
+like to find out more information about the PR 29 fixes, if any, and
+functions in Libidn. Your implementation was listed in the text of PR29 as
 needing investigation, so I am following up on several implementations.
 
-The UTC has accepted the proposed fix to D2 as outlined in PR29, and a new  
+The UTC has accepted the proposed fix to D2 as outlined in PR29, and a new
 draft of UAX #15 has been issued.
 
-I have looked at Libidn 0.5.8 (today), and there may still be a possible  
+I have looked at Libidn 0.5.8 (today), and there may still be a possible
 bug in NFKC.java and nfkc.c.
 
 ------------------------------------------------------
@@ -2019,9 +2019,9 @@ but I'm not sure of the sense of this comparison.
 		       &wc_buffer[last_start]))
 	    {
 
-This appears to have the same bug as the current Python implementation (in  
-Python 2.3.4). The code should be checking, as per new rule D2 UAX #15  
-update, that the next combining character is the same or HIGHER than the  
+This appears to have the same bug as the current Python implementation (in
+Python 2.3.4). The code should be checking, as per new rule D2 UAX #15
+update, that the next combining character is the same or HIGHER than the
 current one. It now checks to see if it's non-zero and not equal.
 
 The above line(s) should perhaps be changed to:
@@ -2034,8 +2034,8 @@ The above line(s) should perhaps be changed to:
 
 but I'm not sure of the sense of the comparison (< or > or <=?) here.
 
-In the text of PR29, I will be marking Libidn as "needs change" and adding  
-the version number that I checked. If any further change is made, please  
+In the text of PR29, I will be marking Libidn as "needs change" and adding
+the version number that I checked. If any further change is made, please
 let me know the release version, and I'll update again.
 
 Regards,
@@ -2051,15 +2051,15 @@ Date: Thu, 28 Oct 2004 09:47:47 +0200
 
 Rick McGowan <rick@unicode.org> writes:
 
-> Hello. On behalf of the Unicode Consortium editorial committee, I would  
-> like to find out more information about the PR 29 fixes, if any, and  
-> functions in Libidn. Your implementation was listed in the text of PR29 as  
+> Hello. On behalf of the Unicode Consortium editorial committee, I would
+> like to find out more information about the PR 29 fixes, if any, and
+> functions in Libidn. Your implementation was listed in the text of PR29 as
 > needing investigation, so I am following up on several implementations.
 >
-> The UTC has accepted the proposed fix to D2 as outlined in PR29, and a new  
+> The UTC has accepted the proposed fix to D2 as outlined in PR29, and a new
 > draft of UAX #15 has been issued.
 >
-> I have looked at Libidn 0.5.8 (today), and there may still be a possible  
+> I have looked at Libidn 0.5.8 (today), and there may still be a possible
 > bug in NFKC.java and nfkc.c.
 
 Hello Rick.
@@ -2180,3 +2180,5 @@ recommended way to work around this problem.
 @printindex cp
 
 @bye
+
+@c  LocalWords:  Kerberos Shishi getaddrinfo Slackware Cygwin WorkShop
