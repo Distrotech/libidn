@@ -452,6 +452,19 @@ sc_prohibit_signal_without_use:
 	re='\<($(_sig_function_re)) *\(|\<($(_sig_syms_re))\>'		\
 	  $(_header_without_use)
 
+# Get the list of symbol names with this:
+# perl -lne '/^# *define (\w+)\(/ and print $1' lib/intprops.h|grep -v '^s'|fmt
+_intprops_names =							\
+  TYPE_IS_INTEGER TYPE_TWOS_COMPLEMENT TYPE_ONES_COMPLEMENT		\
+  TYPE_SIGNED_MAGNITUDE TYPE_SIGNED TYPE_MINIMUM TYPE_MAXIMUM		\
+  INT_STRLEN_BOUND INT_BUFSIZE_BOUND
+_intprops_syms_re = $(subst $(_sp),|,$(strip $(_intprops_names)))
+# Prohibit the inclusion of intprops.h without an actual use.
+sc_prohibit_intprops_without_use:
+	@h='"intprops.h"'						\
+	re='\<($(_intprops_syms_re)) *\('				\
+	  $(_header_without_use)
+
 sc_obsolete_symbols:
 	@re='\<(HAVE''_FCNTL_H|O''_NDELAY)\>'				\
 	msg='do not use HAVE''_FCNTL_H or O'_NDELAY			\
@@ -547,6 +560,13 @@ _GFDL_regexp = (Free ''Documentation.*Version 1\.[^3]|Version 1\.[^3] or any)
 sc_GFDL_version:
 	@re='$(_GFDL_regexp)' msg='GFDL vN, N!=3'			\
 	  $(_prohibit_regexp)
+
+# Don't use Texinfo @acronym{} as it is not a good idea.
+sc_texinfo_acronym:
+	@grep -nE '@acronym{'						\
+	    $$($(VC_LIST_EXCEPT) | grep -E '\.texi$$') &&		\
+	  { echo '$(ME): found use of Texinfo @acronym{}' 1>&2;		\
+	    exit 1; } || :
 
 cvs_keywords = \
   Author|Date|Header|Id|Name|Locker|Log|RCSfile|Revision|Source|State
