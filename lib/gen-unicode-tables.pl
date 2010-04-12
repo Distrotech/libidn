@@ -1333,6 +1333,3 @@ EOT
    my $recordlen = (2+$casefoldlen+1) & ~1;
    printf "Generated %d bytes for casefold table\n", $recordlen * @casefold;
 }
-
-			     
-
