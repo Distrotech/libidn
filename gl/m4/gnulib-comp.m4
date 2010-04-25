@@ -451,6 +451,7 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/wchar_h.m4
   m4/wchar_t.m4
   m4/wint_t.m4
+  tests/init.sh
   tests/macros.h
   tests/signature.h
   tests/test-alloca-opt.c
