@@ -58,6 +58,7 @@ AC_DEFUN([lgl_EARLY],
   # Code from module strverscmp:
   # Code from module strverscmp-tests:
   # Code from module verify:
+  # Code from module verify-tests:
   # Code from module warn-on-use:
   # Code from module wchar:
 ])
@@ -314,6 +315,7 @@ AC_DEFUN([lgl_FILE_LIST], [
   m4/wchar_h.m4
   m4/wchar_t.m4
   m4/wint_t.m4
+  tests/init.sh
   tests/macros.h
   tests/signature.h
   tests/test-c-ctype.c
@@ -326,6 +328,8 @@ AC_DEFUN([lgl_FILE_LIST], [
   tests/test-stdint.c
   tests/test-striconv.c
   tests/test-strverscmp.c
+  tests/test-verify.c
+  tests/test-verify.sh
   tests=lib/dummy.c
   tests=lib/intprops.h
   tests=lib/verify.h

@@ -105,6 +105,7 @@ AC_DEFUN([gl_EARLY],
   # Code from module vc-list-files:
   # Code from module vc-list-files-tests:
   # Code from module verify:
+  # Code from module verify-tests:
   # Code from module version-etc:
   # Code from module version-etc-fsf:
   # Code from module version-etc-tests:
@@ -481,6 +482,8 @@ AC_DEFUN([gl_FILE_LIST], [
   tests/test-update-copyright.sh
   tests/test-vc-list-files-cvs.sh
   tests/test-vc-list-files-git.sh
+  tests/test-verify.c
+  tests/test-verify.sh
   tests/test-version-etc.c
   tests/test-version-etc.sh
   tests=lib/alloca.in.h
