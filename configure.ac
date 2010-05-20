@@ -114,7 +114,6 @@ else
 fi
 AC_MSG_RESULT($enable_csharp)
 
-sj_VALGRIND
 sj_UPDATE_HEADER_VERSION([$srcdir/lib/stringprep.h])
 
 AC_ARG_ENABLE([gcc-warnings],

@@ -102,6 +102,7 @@ AC_DEFUN([gl_EARLY],
   # Code from module update-copyright:
   # Code from module update-copyright-tests:
   # Code from module useless-if-before-free:
+  # Code from module valgrind-tests:
   # Code from module vc-list-files:
   # Code from module vc-list-files-tests:
   # Code from module verify:
@@ -190,6 +191,8 @@ AC_DEFUN([gl_INIT],
   gl_UNISTD_H
   # Code from module update-copyright:
   # Code from module useless-if-before-free:
+  # Code from module valgrind-tests:
+  gl_VALGRIND_TESTS
   # Code from module vc-list-files:
   # Code from module version-etc:
   gl_VERSION_ETC
@@ -278,6 +281,7 @@ changequote([, ])dnl
   gl_STDLIB_MODULE_INDICATOR([unsetenv])
   abs_aux_dir=`cd "$ac_aux_dir"; pwd`
   AC_SUBST([abs_aux_dir])
+  gl_VALGRIND_TESTS
   abs_aux_dir=`cd "$ac_aux_dir"; pwd`
   AC_SUBST([abs_aux_dir])
   gl_WCHAR_H
@@ -446,6 +450,7 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/sys_stat_h.m4
   m4/time_h.m4
   m4/unistd_h.m4
+  m4/valgrind-tests.m4
   m4/version-etc.m4
   m4/warn-on-use.m4
   m4/warnings.m4
