@@ -4,9 +4,11 @@ See the end for copying conditions.
 
 * Version 1.19 (unreleased) [?]
 
-** Update gnulib files.
+** doc: Fix typos etc.
 
-** Use valgrind -q to reduce verbosity.
+** build: Update gnulib files.
+
+** build: Use valgrind -q to reduce verbosity.
 
 ** API and ABI is backwards compatible with the previous version.
 
