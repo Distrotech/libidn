@@ -74,6 +74,7 @@ this helps support FSF activities.</p>
 <p>
 <ul>
   <li><a href="../reference/ch01.html">GTK-DOC HTML C/C++ API Reference Manual</a>.
+  <li><a href="../reference/%%PACKAGE%%.pdf">PDF Reference API Manual (GTK-DOC)</a>.
   <li><a href="../reference/libidn.devhelp">GTK-DOC DevHelp C/C++ API Reference Manual</a>.
 </ul>
 

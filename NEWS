@@ -4,7 +4,8 @@ See the end for copying conditions.
 
 * Version 1.19 (unreleased) [?]
 
-** doc: Fix typos etc.
+** doc: Typo fixes.  Added PDF version of API reference manual.
+See doc/reference/libidn.pdf.
 
 ** build: Update gnulib files.
 
