@@ -2,7 +2,7 @@ Libidn NEWS -- History of user-visible changes.                 -*- outline -*-
 Copyright (C) 2002-2010 Simon Josefsson
 See the end for copying conditions.
 
-* Version 1.19 (unreleased) [?]
+* Version 1.19 (released 2010-05-22) [stable]
 
 ** doc: Typo fixes.  Added PDF version of API reference manual.
 See doc/reference/libidn.pdf.
