@@ -1,3 +1,255 @@
+2010-05-22  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Version 1.19.
+
+2010-05-20  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS, cfg.mk, doc/gendocs_template, doc/reference/Makefile.am,
+	gl/override/doc/gendocs_template.diff, gtk-doc.make, m4/gtk-doc.m4: 
+	Update GTK-DOC files to enable PDF manual.
+
+2010-05-20  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2010-05-20  Simon Josefsson <simon@josefsson.org>
+
+	* configure.ac, doc/gendocs_template, gl/Makefile.am,
+	gl/m4/gnulib-cache.m4, gl/m4/gnulib-comp.m4,
+	gl/m4/valgrind-tests.m4, m4/valgrind.m4: Update gnulib files, use
+	new valgrind-tests module.
+
+2010-05-17  Simon Josefsson <simon@josefsson.org>
+
+	* build-aux/c++defs.h, build-aux/gendocs.sh, build-aux/gnupload,
+	gl/Makefile.am, gl/error.c, gl/m4/gnulib-common.m4,
+	gl/m4/gnulib-comp.m4, gl/m4/unistd_h.m4, gl/unistd.in.h,
+	gltests/Makefile.am, gltests/init.sh, gltests/test-verify.c,
+	gltests/test-verify.sh, gltests/verify.h, gltests/wchar.in.h,
+	lib/gl/m4/gnulib-common.m4, lib/gl/m4/gnulib-comp.m4,
+	lib/gl/m4/iconv.m4, lib/gl/wchar.in.h, lib/gltests/Makefile.am,
+	lib/gltests/init.sh, lib/gltests/test-verify.c,
+	lib/gltests/test-verify.sh, lib/gltests/verify.h, maint.mk: Update
+	gnulib files.
+
+2010-04-25  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2010-04-25  Simon Josefsson <simon@josefsson.org>
+
+	* build-aux/vc-list-files, gl/m4/gnulib-comp.m4,
+	gltests/Makefile.am, gltests/init.sh,
+	gltests/test-vc-list-files-cvs.sh,
+	gltests/test-vc-list-files-git.sh, maint.mk: Update gnulib files.
+
+2010-04-21  Simon Josefsson <simon@josefsson.org>
+
+	* lib/gl/m4/visibility.m4: Update gnulib files.
+
+2010-04-19  Simon Josefsson <simon@josefsson.org>
+
+	* gl/getopt.c, gl/getopt_int.h, gl/m4/getopt.m4, gltests/setenv.c,
+	gltests/stdbool.in.h, gltests/test-getopt.h,
+	gltests/test-getopt_long.h, gltests/test-stdbool.c,
+	gltests/test-stdint.c, lib/gl/stdbool.in.h,
+	lib/gltests/test-stdbool.c, lib/gltests/test-stdint.c, maint.mk: 
+	Update gnulib files.
+
+2010-04-13  Simon Josefsson <simon@josefsson.org>
+
+	* maint.mk: Update gnulib files.
+
+2010-04-12  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Add.
+
+2010-04-12  Simon Josefsson <simon@josefsson.org>
+
+	* .x-sc_prohibit_empty_lines_at_EOF: Fix syntax-check warnings.
+
+2010-04-12  Simon Josefsson <simon@josefsson.org>
+
+	* doc/reference/Makefile.am, lib/gen-unicode-tables.pl: Fix
+	syntax-check warnings.
+
+2010-04-12  Simon Josefsson <simon@josefsson.org>
+
+	* GNUmakefile, build-aux/c++defs.h, build-aux/warn-on-use.h,
+	gl/Makefile.am, gl/m4/gnulib-common.m4, gl/m4/gnulib-comp.m4,
+	gl/m4/stdlib_h.m4, gl/m4/string_h.m4, gl/m4/time_h.m4,
+	gl/m4/unistd_h.m4, gl/string.in.h, gl/unistd.in.h,
+	gltests/Makefile.am, gltests/stdlib.in.h, gltests/sys_stat.in.h,
+	gltests/time.in.h, gltests/wchar.in.h, lib/gl/Makefile.am,
+	lib/gl/m4/gnulib-common.m4, lib/gl/m4/gnulib-comp.m4,
+	lib/gl/m4/lib-link.m4, lib/gl/m4/string_h.m4, lib/gl/string.in.h,
+	lib/gl/wchar.in.h, lib/gltests/Makefile.am, maint.mk: Update gnulib
+	files.
+
+2010-03-30  Simon Josefsson <simon@josefsson.org>
+
+	* m4/valgrind.m4: Sync valgrind.m4.
+
+2010-03-30  Simon Josefsson <simon@josefsson.org>
+
+	* src/Makefile.am: Drop code (could never have worked anyway).
+
+2010-03-30  Simon Josefsson <simon@josefsson.org>
+
+	* gl/errno.in.h, gl/getopt.in.h, gl/m4/fcntl-o.m4,
+	gl/m4/fcntl_h.m4, gl/m4/gnulib-common.m4, gl/m4/gnulib-comp.m4,
+	gl/m4/stddef_h.m4, gl/m4/stdlib_h.m4, gl/m4/string_h.m4,
+	gl/m4/sys_stat_h.m4, gl/m4/time_h.m4, gl/m4/unistd_h.m4,
+	gl/m4/wchar_h.m4, gl/stdarg.in.h, gl/string.in.h, gl/unistd.in.h,
+	gltests/Makefile.am, gltests/stdint.in.h, gltests/sys_stat.in.h,
+	gltests/test-dup2.c, gltests/test-getopt.c, gltests/test-getopt.h,
+	gltests/time.in.h, lib/gl/iconv.in.h, lib/gl/m4/gnulib-common.m4,
+	lib/gl/m4/gnulib-comp.m4, lib/gl/m4/iconv_h.m4,
+	lib/gl/m4/stddef_h.m4, lib/gl/m4/string_h.m4,
+	lib/gl/m4/visibility.m4, lib/gl/m4/wchar_h.m4, lib/gl/stdint.in.h,
+	lib/gl/string.in.h, lib/gltests/Makefile.am, maint.mk: Update gnulib
+	files.
+
+2010-03-26  Simon Josefsson <simon@josefsson.org>
+
+	* gl/errno.in.h, gl/getopt.in.h, gl/gettext.h, gl/stdarg.in.h,
+	gl/string.in.h, gl/unistd.in.h, gltests/stdint.in.h,
+	lib/gl/gettext.h, lib/gl/iconv.in.h, lib/gl/stdint.in.h,
+	lib/gl/string.in.h, maint.mk: Update gnulib files.
+
+2010-03-24  Simon Josefsson <simon@josefsson.org>
+
+	* maint.mk: Update gnulib files.
+
+2010-03-24  Simon Josefsson <simon@josefsson.org>
+
+	* doc/libidn.texi: Fix typos.  Drop @acronym use.
+
+2010-03-24  Simon Josefsson <simon@josefsson.org>
+
+	* .x-sc_texinfo_acronym: Add.
+
+2010-03-24  Simon Josefsson <simon@josefsson.org>
+
+	* build-aux/warn-on-use.h, gl/Makefile.am, gl/getopt.c,
+	gl/m4/setenv.m4, gl/m4/stdlib_h.m4, gl/m4/unistd_h.m4,
+	gl/unistd.in.h, gltests/Makefile.am, gltests/stdlib.in.h,
+	gltests/test-vc-list-files-git.sh, gltests/time.in.h, maint.mk: 
+	Update gnulib files.
+
+2010-03-18  Simon Josefsson <simon@josefsson.org>
+
+	* cfg.mk, doc/ANNOUNCE, doc/announce.txt: Add review-diff.  Move
+	announce file to use consistent filenames.
+
+2010-03-18  Simon Josefsson <simon@josefsson.org>
+
+	* gl/Makefile.am, gl/m4/ansi-c++.m4, gl/m4/gnulib-cache.m4,
+	gl/m4/gnulib-comp.m4, gl/m4/time_h.m4, gl/string.in.h,
+	gltests/Makefile.am, gltests/test-fcntl-h-c++.cc,
+	gltests/test-fcntl-h.c, gltests/test-stdlib-c++.cc,
+	gltests/test-stdlib.c, gltests/test-string-c++.cc,
+	gltests/test-string.c, gltests/test-sys_stat-c++.cc,
+	gltests/test-sys_stat.c, gltests/test-time-c++.cc,
+	gltests/test-time.c, gltests/test-unistd-c++.cc,
+	gltests/test-unistd.c, gltests/test-wchar-c++.cc,
+	gltests/test-wchar.c, gltests/time.in.h: Drop self-tests with C++
+	code in them.
+
+2010-03-18  Simon Josefsson <simon@josefsson.org>
+
+	* build-aux/c++defs.h, build-aux/warn-on-use.h, lib/gl/Makefile.am,
+	lib/gl/m4/ansi-c++.m4, lib/gl/m4/gnulib-cache.m4,
+	lib/gl/m4/gnulib-comp.m4, lib/gl/string.in.h,
+	lib/gltests/Makefile.am, lib/gltests/test-iconv-h-c++.cc,
+	lib/gltests/test-iconv-h.c, lib/gltests/test-string-c++.cc,
+	lib/gltests/test-string.c, lib/gltests/test-wchar-c++.cc,
+	lib/gltests/test-wchar.c: Drop self-tests with C++ code in them.
+
+2010-03-18  Simon Josefsson <simon@josefsson.org>
+
+	* README-alpha: Mention gengetopt.
+
+2010-03-12  Simon Josefsson <simon@josefsson.org>
+
+	* gl/m4/gnulib-comp.m4, lib/gl/m4/gnulib-comp.m4: Update gnulib
+	files.
+
+2010-03-12  Simon Josefsson <simon@josefsson.org>
+
+	* configure.ac: Reorder to avoid bootstrap warnings.
+
+2010-03-12  Simon Josefsson <simon@josefsson.org>
+
+	* build-aux/c++defs.h, gl/string.in.h, lib/gl/string.in.h: Update
+	gnulib files.
+
+2010-03-09  Simon Josefsson <simon@josefsson.org>
+
+	* configure.ac: Explain deprecated libtool usage.
+
+2010-03-09  Simon Josefsson <simon@josefsson.org>
+
+	* configure.ac: Revert "Don't use deprecated libtool functions."
+	AC_PROG_LIBTOOL is required on older systems (e.g., latest Ubuntu
+	LTS).  This reverts commit bb239c491ba93a9d2cecf81b53855ecc46d86140.
+
+2010-03-09  Simon Josefsson <simon@josefsson.org>
+
+	* configure.ac: Revert "Reorder." AC_PROG_LIBTOOL is required on
+	older systems (e.g., latest Ubuntu LTS).  This reverts commit e085f872f2de2e9c33fa4b8c1df559584f375641.
+
+2010-03-09  Simon Josefsson <simon@josefsson.org>
+
+	* configure.ac: Reorder.
+
+2010-03-09  Simon Josefsson <simon@josefsson.org>
+
+	* configure.ac: Don't use deprecated libtool functions.
+
+2010-03-08  Simon Josefsson <simon@josefsson.org>
+
+	* build-aux/c++defs.h, gl/Makefile.am, gl/m4/ansi-c++.m4,
+	gl/m4/fcntl_h.m4, gl/m4/gnulib-comp.m4, gl/m4/stdlib_h.m4,
+	gl/m4/string_h.m4, gl/m4/sys_stat_h.m4, gl/m4/time_h.m4,
+	gl/m4/unistd_h.m4, gl/m4/wchar.m4, gl/m4/wchar_h.m4,
+	gl/string.in.h, gl/unistd.in.h, gltests/Makefile.am,
+	gltests/fcntl.in.h, gltests/stdlib.in.h, gltests/sys_stat.in.h,
+	gltests/test-fcntl-h-c++.cc, gltests/test-stdlib-c++.cc,
+	gltests/test-string-c++.cc, gltests/test-sys_stat-c++.cc,
+	gltests/test-time-c++.cc, gltests/test-unistd-c++.cc,
+	gltests/test-wchar-c++.cc, gltests/time.in.h, gltests/wchar.in.h,
+	lib/gl/Makefile.am, lib/gl/iconv.in.h, lib/gl/m4/ansi-c++.m4,
+	lib/gl/m4/gnulib-comp.m4, lib/gl/m4/iconv_open.m4,
+	lib/gl/m4/string_h.m4, lib/gl/m4/wchar.m4, lib/gl/m4/wchar_h.m4,
+	lib/gl/string.in.h, lib/gl/wchar.in.h, lib/gltests/Makefile.am,
+	lib/gltests/test-iconv-h-c++.cc, lib/gltests/test-iconv-h.c,
+	lib/gltests/test-string-c++.cc, lib/gltests/test-wchar-c++.cc: 
+	Update gnulib files.
+
+2010-02-24  Simon Josefsson <simon@josefsson.org>
+
+	* .gitignore: Add.
+
+2010-02-24  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS, configure.ac, lib/stringprep.h: Bump versions.
+
+2010-02-24  Simon Josefsson <simon@josefsson.org>
+
+	* build-aux/gendocs.sh, build-aux/vc-list-files,
+	gl/m4/gnulib-common.m4, gl/m4/warn-on-use.m4,
+	lib/gl/m4/gnulib-common.m4, lib/gl/m4/warn-on-use.m4: Update gnulib
+	files.
+
+2010-02-16  Simon Josefsson <simon@josefsson.org>
+
+	* doc/ANNOUNCE: Add.
+
+2010-02-15  Simon Josefsson <simon@josefsson.org>
+
+	* ChangeLog: Generated.
+
 2010-02-15  Simon Josefsson <simon@josefsson.org>
 
 	* cfg.mk: Release to ftp.gnu.org.
