@@ -1,3 +1,5 @@
+*.gcda
+*.gcno
 *~
 ABOUT-NLS
 INSTALL
@@ -19,6 +21,8 @@ config.log
 config.status
 configure
 contrib/doxygen/Doxyfile
+contrib/doxygen/html/
+contrib/doxygen/latex/
 csharp/CombiningClass.cs
 csharp/Composition.cs
 csharp/CompositionExclusions.txt
@@ -35,6 +39,7 @@ csharpcomp.sh
 doc/Makefile
 doc/Makefile.gdoc
 doc/Makefile.in
+doc/coverage/
 doc/cyclo/Makefile
 doc/cyclo/Makefile.in
 doc/cyclo/cyclo-libidn.html
@@ -86,9 +91,12 @@ doc/reference/libidn-unused.txt
 doc/reference/libidn.args
 doc/reference/libidn.hierarchy
 doc/reference/libidn.interfaces
+doc/reference/libidn.pdf
 doc/reference/libidn.prerequisites
 doc/reference/libidn.signals
 doc/reference/libidn.types
+doc/reference/pdf-build.stamp
+doc/reference/pdf.stamp
 doc/reference/scan-build.stamp
 doc/reference/sgml-build.stamp
 doc/reference/sgml.stamp
@@ -122,6 +130,12 @@ gl/.libs/
 gl/Makefile
 gl/Makefile.in
 gl/arg-nonnull.h
+gl/c++defs.h
+gl/getopt.h
+gl/getopt.lo
+gl/getopt.o
+gl/getopt1.lo
+gl/getopt1.o
 gl/libgnu.la
 gl/progname.lo
 gl/progname.o
@@ -135,6 +149,7 @@ gltests/Makefile
 gltests/Makefile.in
 gltests/alloca.h
 gltests/arg-nonnull.h
+gltests/c++defs.h
 gltests/fcntl.h
 gltests/libtests.a
 gltests/malloca.o
@@ -186,6 +201,7 @@ gltests/test-unistd
 gltests/test-unistd.o
 gltests/test-unsetenv
 gltests/test-unsetenv.o
+gltests/test-verify
 gltests/test-version-etc
 gltests/test-version-etc.o
 gltests/test-wchar
@@ -233,12 +249,14 @@ lib/gl/.libs/
 lib/gl/Makefile
 lib/gl/Makefile.in
 lib/gl/arg-nonnull.h
+lib/gl/c++defs.h
 lib/gl/c-ctype.lo
 lib/gl/c-ctype.o
 lib/gl/c-strcasecmp.lo
 lib/gl/c-strcasecmp.o
 lib/gl/c-strncasecmp.lo
 lib/gl/c-strncasecmp.o
+lib/gl/iconv.h
 lib/gl/iconv_open-aix.h
 lib/gl/iconv_open-hpux.h
 lib/gl/iconv_open-irix.h
@@ -254,6 +272,7 @@ lib/gltests/.deps/
 lib/gltests/Makefile
 lib/gltests/Makefile.in
 lib/gltests/arg-nonnull.h
+lib/gltests/c++defs.h
 lib/gltests/dummy.o
 lib/gltests/libtests.a
 lib/gltests/test-c-ctype
@@ -276,6 +295,7 @@ lib/gltests/test-string
 lib/gltests/test-string.o
 lib/gltests/test-strverscmp
 lib/gltests/test-strverscmp.o
+lib/gltests/test-verify
 lib/gltests/test-wchar
 lib/gltests/test-wchar.o
 lib/gltests/warn-on-use.h
@@ -317,7 +337,8 @@ lib/toutf8.lo
 lib/toutf8.o
 lib/version.lo
 lib/version.o
-libidn-1.19.tar.gz
+libidn-*.tar.gz
+libidn-*.tar.gz.sig
 libidn.pc
 libtool
 m4/codeset.m4
@@ -354,6 +375,8 @@ m4/visibility.m4
 m4/wchar_t.m4
 m4/wint_t.m4
 m4/xsize.m4
+po/*.gmo
+po/*.po
 po/Makefile
 po/Makefile.in
 po/Makefile.in.in
@@ -361,8 +384,6 @@ po/Makevars.template
 po/POTFILES
 po/Rules-quot
 po/boldquot.sed
-po/*.gmo
-po/*.po
 po/en@boldquot.header
 po/en@boldquot.insert-header
 po/en@quot.header
