@@ -12,7 +12,8 @@
 # This file represents the compiled summary of the specification in
 # gnulib-cache.m4. It lists the computed macro invocations that need
 # to be invoked from configure.ac.
-# In projects using CVS, this file can be treated like other built files.
+# In projects that use version control, this file can be treated like
+# other built files.
 
 
 # This macro should be invoked from ./configure.ac, in the section
@@ -95,6 +96,8 @@ AC_DEFUN([gl_EARLY],
   # Code from module symlink:
   # Code from module symlink-tests:
   # Code from module sys_stat:
+  # Code from module sys_wait:
+  # Code from module sys_wait-tests:
   # Code from module time:
   # Code from module unistd:
   # Code from module unsetenv:
@@ -276,6 +279,8 @@ changequote([, ])dnl
   gl_UNISTD_MODULE_INDICATOR([symlink])
   gl_HEADER_SYS_STAT_H
   AC_PROG_MKDIR_P
+  gl_SYS_WAIT_H
+  AC_PROG_MKDIR_P
   gl_HEADER_TIME_H
   gl_FUNC_UNSETENV
   gl_STDLIB_MODULE_INDICATOR([unsetenv])
@@ -448,6 +453,7 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/string_h.m4
   m4/symlink.m4
   m4/sys_stat_h.m4
+  m4/sys_wait_h.m4
   m4/time_h.m4
   m4/unistd_h.m4
   m4/valgrind-tests.m4
@@ -483,6 +489,8 @@ AC_DEFUN([gl_FILE_LIST], [
   tests/test-strerror.c
   tests/test-symlink.c
   tests/test-symlink.h
+  tests/test-sys_wait.c
+  tests/test-sys_wait.h
   tests/test-unsetenv.c
   tests/test-update-copyright.sh
   tests/test-vc-list-files-cvs.sh
@@ -512,6 +520,7 @@ AC_DEFUN([gl_FILE_LIST], [
   tests=lib/stdlib.in.h
   tests=lib/symlink.c
   tests=lib/sys_stat.in.h
+  tests=lib/sys_wait.in.h
   tests=lib/time.in.h
   tests=lib/unsetenv.c
   tests=lib/verify.h
