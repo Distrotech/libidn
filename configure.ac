@@ -129,9 +129,11 @@ AC_ARG_ENABLE([gcc-warnings],
 
 if test "$gl_gcc_warnings" = yes; then
   gl_WARN_ADD([-Werror], [WERROR_CFLAGS])
-  gl_WARN_ADD([-Wframe-larger-than=80], [WSTACK_CFLAGS])
+  gl_WARN_ADD([-Wframe-larger-than=112], [WSTACK_CFLAGS])
 
   nw="$nw -Wsystem-headers"         # Don't let system headers trigger warnings
+  nw="$nw -Wpadded"                 # Struct in src/idn_cmd.h is not padded
+  nw="$nw -Wformat"                 # Self tests and examples print size_t as %d
   nw="$nw -Wc++-compat"             # We don't care strongly about C++ compilers
   nw="$nw -Woverlength-strings"     # Some of our strings are too large
   nw="$nw -Wsign-conversion"        # Too many warnings for now
@@ -148,6 +150,7 @@ if test "$gl_gcc_warnings" = yes; then
     gl_WARN_ADD([$w])
   done
 
+  gl_WARN_ADD([-Wno-format])
   gl_WARN_ADD([-Wno-missing-field-initializers])
   gl_WARN_ADD([-fdiagnostics-show-option])
 fi
