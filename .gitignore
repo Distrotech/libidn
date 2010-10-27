@@ -195,6 +195,8 @@ gltests/test-symlink
 gltests/test-symlink.o
 gltests/test-sys_stat
 gltests/test-sys_stat.o
+gltests/test-sys_wait
+gltests/test-sys_wait.o
 gltests/test-time
 gltests/test-time.o
 gltests/test-unistd
@@ -231,7 +233,7 @@ java/gnu/inet/encoding/RFC3454.class
 java/gnu/inet/encoding/Stringprep.class
 java/gnu/inet/encoding/StringprepException.class
 java/gnu/inet/encoding/classdist_noinst.stamp
-java/libidn-1.19.jar
+java/libidn-*.jar
 java/misc/GenerateNFKC.class
 java/misc/GenerateRFC3454$Range.class
 java/misc/GenerateRFC3454.class
