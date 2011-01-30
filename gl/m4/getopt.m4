@@ -1,5 +1,5 @@
-# getopt.m4 serial 31
-dnl Copyright (C) 2002-2006, 2008-2010 Free Software Foundation, Inc.
+# getopt.m4 serial 34
+dnl Copyright (C) 2002-2006, 2008-2011 Free Software Foundation, Inc.
 dnl This file is free software; the Free Software Foundation
 dnl gives unlimited permission to copy and/or distribute it,
 dnl with or without modifications, as long as this notice is preserved.
@@ -56,7 +56,6 @@ AC_DEFUN([gl_GETOPT_CHECK_HEADERS],
   AC_REQUIRE([AC_USE_SYSTEM_EXTENSIONS])
 
   gl_CHECK_NEXT_HEADERS([getopt.h])
-  AC_CHECK_HEADERS_ONCE([getopt.h])
   if test $ac_cv_header_getopt_h = yes; then
     HAVE_GETOPT_H=1
   else
@@ -76,20 +75,6 @@ AC_DEFUN([gl_GETOPT_CHECK_HEADERS],
     AC_CHECK_FUNCS([getopt_long_only], [], [gl_replace_getopt=yes])
   fi
 
-  dnl BSD getopt_long uses an incompatible method to reset option processing.
-  dnl Existence of the variable, in and of itself, is not a reason to replace
-  dnl getopt, but knowledge of the variable is needed to determine how to
-  dnl reset and whether a reset reparses the environment.
-  dnl Solaris supports neither optreset nor optind=0, but keeps no state that
-  dnl needs a reset beyond setting optind=1; detect Solaris by getopt_clip.
-  if test -z "$gl_replace_getopt"; then
-    AC_CHECK_DECLS([optreset], [],
-      [AC_CHECK_DECLS([getopt_clip], [], [],
-        [[#include <getopt.h>]])
-      ],
-      [[#include <getopt.h>]])
-  fi
-
   dnl mingw's getopt (in libmingwex.a) does weird things when the options
   dnl strings starts with '+' and it's not the first call.  Some internal state
   dnl is left over from earlier calls, and neither setting optind = 0 nor
@@ -103,17 +88,33 @@ AC_DEFUN([gl_GETOPT_CHECK_HEADERS],
     AC_CACHE_CHECK([whether getopt is POSIX compatible],
       [gl_cv_func_getopt_posix],
       [
+        dnl BSD getopt_long uses an incompatible method to reset
+        dnl option processing.  Existence of the variable, in and of
+        dnl itself, is not a reason to replace getopt, but knowledge
+        dnl of the variable is needed to determine how to reset and
+        dnl whether a reset reparses the environment.  Solaris
+        dnl supports neither optreset nor optind=0, but keeps no state
+        dnl that needs a reset beyond setting optind=1; detect Solaris
+        dnl by getopt_clip.
+        AC_COMPILE_IFELSE(
+          [AC_LANG_PROGRAM(
+             [[#include <unistd.h>]],
+             [[int *p = &optreset; return optreset;]])],
+          [gl_optind_min=1],
+          [AC_COMPILE_IFELSE(
+             [AC_LANG_PROGRAM(
+                [[#include <getopt.h>]],
+                [[return !getopt_clip;]])],
+             [gl_optind_min=1],
+             [gl_optind_min=0])])
+
         dnl This test fails on mingw and succeeds on many other platforms.
+        gl_save_CPPFLAGS=$CPPFLAGS
+        CPPFLAGS="$CPPFLAGS -DOPTIND_MIN=$gl_optind_min"
         AC_RUN_IFELSE([AC_LANG_SOURCE([[
 #include <unistd.h>
 #include <stdlib.h>
 #include <string.h>
-
-#if !HAVE_DECL_OPTRESET && !HAVE_DECL_GETOPT_CLIP
-# define OPTIND_MIN 0
-#else
-# define OPTIND_MIN 1
-#endif
 
 int
 main ()
@@ -202,6 +203,7 @@ main ()
              *)              gl_cv_func_getopt_posix="guessing yes";;
            esac
           ])
+        CPPFLAGS=$gl_save_CPPFLAGS
       ])
     case "$gl_cv_func_getopt_posix" in
       *no) gl_replace_getopt=yes ;;
@@ -231,6 +233,7 @@ dnl is ambiguous with environment values that contain newlines.
                            #include <stddef.h>
                            #include <string.h>
            ]], [[
+             int result = 0;
              /* This code succeeds on glibc 2.8, OpenBSD 4.0, Cygwin, mingw,
                 and fails on MacOS X 10.5, AIX 5.2, HP-UX 11, IRIX 6.5,
                 OSF/1 5.1, Solaris 10.  */
@@ -241,7 +244,7 @@ dnl is ambiguous with environment values that contain newlines.
                myargv[2] = 0;
                opterr = 0;
                if (getopt (2, myargv, "+a") != '?')
-                 return 1;
+                 result |= 1;
              }
              /* This code succeeds on glibc 2.8, mingw,
                 and fails on MacOS X 10.5, OpenBSD 4.0, AIX 5.2, HP-UX 11,
@@ -251,33 +254,33 @@ dnl is ambiguous with environment values that contain newlines.
 
                optind = 1;
                if (getopt (4, argv, "p::") != 'p')
-                 return 2;
-               if (optarg != NULL)
-                 return 3;
-               if (getopt (4, argv, "p::") != -1)
-                 return 4;
-               if (optind != 2)
-                 return 5;
+                 result |= 2;
+               else if (optarg != NULL)
+                 result |= 4;
+               else if (getopt (4, argv, "p::") != -1)
+                 result |= 6;
+               else if (optind != 2)
+                 result |= 8;
              }
              /* This code succeeds on glibc 2.8 and fails on Cygwin 1.7.0.  */
              {
                char *argv[] = { "program", "foo", "-p", NULL };
                optind = 0;
                if (getopt (3, argv, "-p") != 1)
-                 return 6;
-               if (getopt (3, argv, "-p") != 'p')
-                 return 7;
+                 result |= 16;
+               else if (getopt (3, argv, "-p") != 'p')
+                 result |= 32;
              }
              /* This code fails on glibc 2.11.  */
              {
                char *argv[] = { "program", "-b", "-a", NULL };
                optind = opterr = 0;
                if (getopt (3, argv, "+:a:b") != 'b')
-                 return 8;
-               if (getopt (3, argv, "+:a:b") != ':')
-                 return 9;
+                 result |= 64;
+               else if (getopt (3, argv, "+:a:b") != ':')
+                 result |= 64;
              }
-             return 0;
+             return result;
            ]])],
         [gl_cv_func_getopt_gnu=yes],
         [gl_cv_func_getopt_gnu=no],

@@ -1,5 +1,5 @@
-# stdlib_h.m4 serial 30
-dnl Copyright (C) 2007-2010 Free Software Foundation, Inc.
+# stdlib_h.m4 serial 34
+dnl Copyright (C) 2007-2011 Free Software Foundation, Inc.
 dnl This file is free software; the Free Software Foundation
 dnl gives unlimited permission to copy and/or distribute it,
 dnl with or without modifications, as long as this notice is preserved.
@@ -7,7 +7,7 @@ dnl with or without modifications, as long as this notice is preserved.
 AC_DEFUN([gl_STDLIB_H],
 [
   AC_REQUIRE([gl_STDLIB_H_DEFAULTS])
-  gl_CHECK_NEXT_HEADERS([stdlib.h])
+  gl_NEXT_HEADERS([stdlib.h])
   AC_CHECK_HEADERS([random.h], [], [], [AC_INCLUDES_DEFAULT])
   if test $ac_cv_header_random_h = yes; then
     HAVE_RANDOM_H=1
@@ -73,6 +73,7 @@ AC_DEFUN([gl_STDLIB_H_DEFAULTS],
   GNULIB_STRTOD=0;        AC_SUBST([GNULIB_STRTOD])
   GNULIB_STRTOLL=0;       AC_SUBST([GNULIB_STRTOLL])
   GNULIB_STRTOULL=0;      AC_SUBST([GNULIB_STRTOULL])
+  GNULIB_SYSTEM_POSIX=0;  AC_SUBST([GNULIB_SYSTEM_POSIX])
   GNULIB_UNLOCKPT=0;      AC_SUBST([GNULIB_UNLOCKPT])
   GNULIB_UNSETENV=0;      AC_SUBST([GNULIB_UNSETENV])
   dnl Assume proper GNU behavior unless another module says otherwise.
@@ -92,13 +93,14 @@ AC_DEFUN([gl_STDLIB_H_DEFAULTS],
   HAVE_REALPATH=1;           AC_SUBST([HAVE_REALPATH])
   HAVE_RPMATCH=1;            AC_SUBST([HAVE_RPMATCH])
   HAVE_SETENV=1;             AC_SUBST([HAVE_SETENV])
+  HAVE_DECL_SETENV=1;        AC_SUBST([HAVE_DECL_SETENV])
   HAVE_STRTOD=1;             AC_SUBST([HAVE_STRTOD])
   HAVE_STRTOLL=1;            AC_SUBST([HAVE_STRTOLL])
   HAVE_STRTOULL=1;           AC_SUBST([HAVE_STRTOULL])
   HAVE_STRUCT_RANDOM_DATA=1; AC_SUBST([HAVE_STRUCT_RANDOM_DATA])
   HAVE_SYS_LOADAVG_H=0;      AC_SUBST([HAVE_SYS_LOADAVG_H])
   HAVE_UNLOCKPT=1;           AC_SUBST([HAVE_UNLOCKPT])
-  HAVE_UNSETENV=1;           AC_SUBST([HAVE_UNSETENV])
+  HAVE_DECL_UNSETENV=1;      AC_SUBST([HAVE_DECL_UNSETENV])
   REPLACE_CALLOC=0;          AC_SUBST([REPLACE_CALLOC])
   REPLACE_CANONICALIZE_FILE_NAME=0;  AC_SUBST([REPLACE_CANONICALIZE_FILE_NAME])
   REPLACE_MALLOC=0;          AC_SUBST([REPLACE_MALLOC])

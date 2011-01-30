@@ -2,7 +2,7 @@
 # This Makefile fragment tries to be general-purpose enough to be
 # used by many projects via the gnulib maintainer-makefile module.
 
-## Copyright (C) 2001-2010 Free Software Foundation, Inc.
+## Copyright (C) 2001-2011 Free Software Foundation, Inc.
 ##
 ## This program is free software: you can redistribute it and/or modify
 ## it under the terms of the GNU General Public License as published by
@@ -292,10 +292,10 @@ sc_prohibit_atoi_atof:
 
 # Use STREQ rather than comparing strcmp == 0, or != 0.
 sc_prohibit_strcmp:
-	@grep -nE '! *str''cmp *\(|\<str''cmp *\([^)]+\) *=='		\
+	@grep -nE '! *str''cmp *\(|\<str''cmp *\(.+\) *[!=]='	\
 	    $$($(VC_LIST_EXCEPT))					\
-	  | grep -vE ':# *define STREQ\(' &&				\
-	  { echo '$(ME): use STREQ in place of the above uses of str''cmp' \
+	  | grep -vE ':# *define STRN?EQ\(' &&				\
+	  { echo '$(ME): replace str''cmp calls above with STREQ/STRNEQ' \
 		1>&2; exit 1; } || :
 
 # Pass EXIT_*, not number, to usage, exit, and error (when exiting)
@@ -571,6 +571,13 @@ sc_prohibit_intprops_without_use:
 	re='\<($(_intprops_syms_re)) *\('				\
 	  $(_sc_header_without_use)
 
+_stddef_syms_re = NULL|offsetof|ptrdiff_t|size_t|wchar_t
+# Prohibit the inclusion of stddef.h without an actual use.
+sc_prohibit_stddef_without_use:
+	@h='<stddef.h>'							\
+	re='\<($(_stddef_syms_re)) *\('					\
+	  $(_sc_header_without_use)
+
 sc_obsolete_symbols:
 	@prohibit='\<(HAVE''_FCNTL_H|O''_NDELAY)\>'			\
 	halt='do not use HAVE''_FCNTL_H or O'_NDELAY			\
@@ -590,8 +597,17 @@ sc_changelog:
 sc_program_name:
 	@require='set_program_name *\(m?argv\[0\]\);'			\
 	in_vc_files='\.c$$'						\
-	containing='^main *('						\
+	containing='\<main *('						\
 	halt='the above files do not call set_program_name'		\
+	  $(_sc_search_regexp)
+
+# Ensure that each .c file containing a "main" function also
+# calls bindtextdomain.
+sc_bindtextdomain:
+	@require='bindtextdomain *\('					\
+	in_vc_files='\.c$$'						\
+	containing='\<main *('						\
+	halt='the above files do not call bindtextdomain'		\
 	  $(_sc_search_regexp)
 
 # Require that the final line of each test-lib.sh-using test be this one:
@@ -732,7 +748,8 @@ sc_GFDL_version:
 	halt='GFDL vN, N!=3'						\
 	  $(_sc_search_regexp)
 
-# Don't use Texinfo @acronym{} as it is not a good idea.
+# Don't use Texinfo's @acronym{}.
+# http://lists.gnu.org/archive/html/bug-gnulib/2010-03/msg00321.html
 texinfo_suffix_re_ ?= \.(txi|texi(nfo)?)$$
 sc_texinfo_acronym:
 	@prohibit='@acronym\{'						\
@@ -806,6 +823,13 @@ _ptm2 = use "test C1 || test C2", not "test C1 -''o C2"
 sc_prohibit_test_minus_ao:
 	@prohibit='(\<test| \[+) .+ -[ao] '				\
 	halt='$(_ptm1); $(_ptm2)'					\
+	  $(_sc_search_regexp)
+
+# Avoid a test bashism.
+sc_prohibit_test_double_equal:
+	@prohibit='(\<test| \[+) .+ == '				\
+	containing='#! */bin/[a-z]*sh'					\
+	halt='use "test x = x", not "test x =''= x"'			\
 	  $(_sc_search_regexp)
 
 # Each program that uses proper_name_utf8 must link with one of the
@@ -1081,7 +1105,6 @@ emit_upload_commands:
 	@echo =====================================
 	@echo =====================================
 
-noteworthy = * Noteworthy changes in release ?.? (????-??-??) [?]
 define emit-commit-log
   printf '%s\n' 'post-release administrivia' '' \
     '* NEWS: Add header line for next release.' \
@@ -1102,9 +1125,34 @@ no-submodule-changes:
 	  : ;								\
 	fi
 
+submodule-checks ?= no-submodule-changes public-submodule-commit
+
+# Ensure that each sub-module commit we're using is public.
+# Without this, it is too easy to tag and release code that
+# cannot be built from a fresh clone.
+.PHONY: public-submodule-commit
+public-submodule-commit:
+	$(AM_V_GEN)if test -d $(srcdir)/.git; then			\
+	  cd $(srcdir) &&						\
+	  git submodule --quiet foreach test '$$(git rev-parse $$sha1)'	\
+	      = '$$(git merge-base origin $$sha1)'			\
+	    || { echo '$(ME): found non-public submodule commit' >&2;	\
+		 exit 1; };						\
+	else								\
+	  : ;								\
+	fi
+# This rule has a high enough utility/cost ratio that it should be a
+# dependent of "check" by default.  However, some of us do occasionally
+# commit a temporary change that deliberately points to a non-public
+# submodule commit, and want to be able to use rules like "make check".
+# In that case, run e.g., "make check gl_public_submodule_commit="
+# to disable this test.
+gl_public_submodule_commit ?= public-submodule-commit
+check: $(gl_public_submodule_commit)
+
 .PHONY: alpha beta stable
 ALL_RECURSIVE_TARGETS += alpha beta stable
-alpha beta stable: $(local-check) writable-files no-submodule-changes
+alpha beta stable: $(local-check) writable-files $(submodule-checks)
 	test $@ = stable						\
 	  && { echo $(VERSION) | grep -E '^[0-9]+(\.[0-9]+)+$$'		\
 	       || { echo "invalid version string: $(VERSION)" 1>&2; exit 1;};}\
@@ -1119,6 +1167,7 @@ alpha beta stable: $(local-check) writable-files no-submodule-changes
 # Override this in cfg.mk if you follow different procedures.
 release-prep-hook ?= release-prep
 
+gl_noteworthy_news_ = * Noteworthy changes in release ?.? (????-??-??) [?]
 .PHONY: release-prep
 release-prep:
 	case $$RELEASE_TYPE in alpha|beta|stable) ;; \
@@ -1130,7 +1179,7 @@ release-prep:
 	fi
 	echo $(VERSION) > $(prev_version_file)
 	$(MAKE) update-NEWS-hash
-	perl -pi -e '$$. == 3 and print "$(noteworthy)\n\n\n"' NEWS
+	perl -pi -e '$$. == 3 and print "$(gl_noteworthy_news_)\n\n\n"' NEWS
 	$(emit-commit-log) > .ci-msg
 	$(VC) commit -F .ci-msg -a
 	rm .ci-msg

@@ -1,5 +1,5 @@
 /* Declarations for getopt.
-   Copyright (C) 1989-1994, 1996-1999, 2001, 2003-2007, 2009-2010 Free Software
+   Copyright (C) 1989-1994, 1996-1999, 2001, 2003-2007, 2009-2011 Free Software
    Foundation, Inc.
    This file is part of the GNU C Library.
 
@@ -21,6 +21,7 @@
 #if __GNUC__ >= 3
 @PRAGMA_SYSTEM_HEADER@
 #endif
+@PRAGMA_COLUMNS@
 
 /* The include_next requires a split double-inclusion guard.  We must
    also inform the replacement unistd.h to not recursively use
