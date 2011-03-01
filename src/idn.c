@@ -28,6 +28,7 @@
 #include <string.h>
 #include <errno.h>
 #include <locale.h>
+#include <unistd.h>
 
 /* Gnulib headers. */
 #include "error.h"
@@ -175,13 +176,17 @@ main (int argc, char *argv[])
       usage (EXIT_FAILURE);
     }
 
-  if (!args_info.quiet_given)
+  if (!args_info.quiet_given
+      && args_info.inputs_num == 0
+      && isatty (fileno (stdin)))
     fprintf (stderr, "%s %s\n" GREETING, PACKAGE, VERSION);
 
   if (args_info.debug_given)
     fprintf (stderr, _("Charset `%s'.\n"), stringprep_locale_charset ());
 
-  if (!args_info.quiet_given && args_info.inputs_num == 0)
+  if (!args_info.quiet_given
+      && args_info.inputs_num == 0
+      && isatty (fileno (stdin)))
     fprintf (stderr, _("Type each input string on a line by itself, "
 		       "terminated by a newline character.\n"));
 

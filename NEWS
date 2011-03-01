@@ -8,9 +8,14 @@ See the end for copying conditions.
 The problem is typically noticed when an upper ACE case string is
 converted to Unicode.  Before, this would return the input rather than
 converting the ACE form to Unicode.  Reported by Stepan Golosunov
-<stepan@golosunov.pp.ru>.
+<stepan@golosunov.pp.ru> in <http://bugs.debian.org/610617>.
 
 ** tests: Added self-test tst_idna3 to catch any regression of problem above.
+
+** idn: Only print copyright and license blurb when used interactively.
+Reported by "Andrew O. Shadoura" <bugzilla@tut.by> and Roman Mamedov
+<rm@romanrm.ru> in <http://bugs.debian.org/615947> and
+<http://bugs.debian.org/615949> respectively.
 
 ** Update gnulib files and translations.
 
