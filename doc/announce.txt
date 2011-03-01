@@ -1,5 +1,5 @@
 To: help-libidn@gnu.org, info-gnu@gnu.org
-Subject: Libidn 1.19 released
+Subject: Libidn 1.20 released
 <#part sign=pgpmime>
 GNU Libidn is a fully documented implementation of the Stringprep,
 Punycode and IDNA specifications.  Libidn's purpose is to encode and
@@ -9,14 +9,22 @@ version 2.1 or later.
 
 Noteworthy changes since the last release (from NEWS file):
 
-* Version 1.19 (released 2010-05-22) [stable]
+* Version 1.20 (released 2011-03-01) [stable]
 
-** doc: Typo fixes.  Added PDF version of API reference manual.
-See doc/reference/libidn.pdf.
+** libidn: Fix bug in ToUnicode to compare 'xn--' case-insensitively.
+The problem is typically noticed when an upper ACE case string is
+converted to Unicode.  Before, this would return the input rather than
+converting the ACE form to Unicode.  Reported by Stepan Golosunov
+<stepan@golosunov.pp.ru> in <http://bugs.debian.org/610617>.
 
-** build: Update gnulib files.
+** tests: Added self-test tst_idna3 to catch any regression of problem above.
 
-** build: Use valgrind -q to reduce verbosity.
+** idn: Only print copyright and license blurb when used interactively.
+Reported by "Andrew O. Shadoura" <bugzilla@tut.by> and Roman Mamedov
+<rm@romanrm.ru> in <http://bugs.debian.org/615947> and
+<http://bugs.debian.org/615949> respectively.
+
+** Update gnulib files and translations.
 
 ** API and ABI is backwards compatible with the previous version.
 
@@ -75,17 +83,13 @@ If you need help to use Libidn, or want to help others, you are
 invited to join our help-libidn mailing list, see:
 <http://lists.gnu.org/mailman/listinfo/help-libidn>.
 
-Here are the compressed sources (3.1MB):
-  ftp://ftp.gnu.org/gnu/libidn/libidn-1.19.tar.gz
-  http://ftp.gnu.org/gnu/libidn/libidn-1.19.tar.gz
+Here are the compressed sources (3.2MB):
+  ftp://ftp.gnu.org/gnu/libidn/libidn-1.20.tar.gz
+  http://ftp.gnu.org/gnu/libidn/libidn-1.20.tar.gz
 
 Here are GPG detached signatures:
-  ftp://ftp.gnu.org/gnu/libidn/libidn-1.19.tar.gz.sig
-  http://ftp.gnu.org/gnu/libidn/libidn-1.19.tar.gz.sig
-
-We also provide pre-built Windows binaries:
-  http://josefsson.org/gnutls4win/libidn-1.19.zip
-  http://josefsson.org/gnutls4win/mingw32-libidn_1.19-1_all.deb
+  ftp://ftp.gnu.org/gnu/libidn/libidn-1.20.tar.gz.sig
+  http://ftp.gnu.org/gnu/libidn/libidn-1.20.tar.gz.sig
 
 Here are the build reports for various platforms:
   http://autobuild.josefsson.org/libidn/
@@ -112,14 +116,9 @@ The key is available from:
 
 Here are the SHA-1 and SHA-224 signatures:
 
-2b6dcb500e8135a9444a250d7df76f545915f25f  libidn-1.19.tar.gz
-59d749f401aead61582020b4271b91a6de3ab8c6a2aebcf0db8ad423  libidn-1.19.tar.gz
+2518486487c275b9d6f133b4688318b951af1580  libidn-1.20.tar.gz
 
-ce1483f245fb24c92cb6c5800eb2676b2a3095c3  libidn-1.19.zip
-14a2424fd317cb40ac6318bc2d3df515e3189ec5210a5486795fe9ce  libidn-1.19.zip
-
-2127dbaf8d503c4e8ab47b81c3e6fd9b89223d9f  mingw32-libidn_1.19-1_all.deb
-9bbe53952de04e435124145225214ec8d2104d89655c533306308e49  mingw32-libidn_1.19-1_all.deb
+cfa4e765869da22ffa238b3442c992fc779a42d1539fb94896539131  libidn-1.20.tar.gz
 
 Happy hacking,
 Simon
