@@ -2,7 +2,7 @@ Libidn NEWS -- History of user-visible changes.                 -*- outline -*-
 Copyright (C) 2002-2011 Simon Josefsson
 See the end for copying conditions.
 
-* Version 1.20 (released 2011-03-01) [?]
+* Version 1.20 (released 2011-03-01) [stable]
 
 ** libidn: Fix bug in ToUnicode to compare 'xn--' case-insensitively.
 The problem is typically noticed when an upper ACE case string is
