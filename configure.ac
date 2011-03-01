@@ -1,6 +1,7 @@
 dnl Process this file with autoconf to produce a configure script.
 
-dnl Copyright (C) 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010 Simon Josefsson
+dnl Copyright (C) 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010,
+dnl 2011 Simon Josefsson
 dnl
 dnl This file is part of GNU Libidn.
 dnl

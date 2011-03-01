@@ -1,5 +1,5 @@
 /* strerror-stringprep.c --- Convert stringprep errors into text.
- * Copyright (C) 2004, 2005, 2006, 2007, 2008, 2009, 2010 Simon
+ * Copyright (C) 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011 Simon
  * Josefsson
  *
  * This file is part of GNU Libidn.

@@ -1,6 +1,6 @@
 Libidn FAQ -- Anticipated Frequently Asked Questions.
-Copyright (C) 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010 Simon
-Josefsson
+Copyright (C) 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011
+Simon Josefsson
 See the end for copying conditions.
 
 Q#1: Why doesn't Libidn use a separate library for the Unicode

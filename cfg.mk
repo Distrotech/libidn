@@ -1,4 +1,4 @@
-# Copyright (C) 2006, 2007, 2008, 2009, 2010 Simon Josefsson
+# Copyright (C) 2006, 2007, 2008, 2009, 2010, 2011 Simon Josefsson
 #
 # This file is part of GNU Libidn.
 #
@@ -31,6 +31,7 @@ local-checks-to-skip = sc_prohibit_strcmp sc_prohibit_have_config_h	\
 	sc_two_space_separator_in_usage sc_m4_quote_check sc_po_check	\
 	sc_copyright_check
 VC_LIST_ALWAYS_EXCLUDE_REGEX = ^((lib/)?(gl|gltests|build-aux))/.*$
+update-copyright-env = UPDATE_COPYRIGHT_HOLDER="Simon Josefsson"
 
 doc/Makefile.gdoc:
 	printf "gdoc_MANS =\ngdoc_TEXINFOS =\n" > doc/Makefile.gdoc

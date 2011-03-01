@@ -1,6 +1,6 @@
 ;;; idna.el --- Internationalizing Domain Names in Applications.
 
-;; Copyright (C) 2003, 2005, 2006, 2007, 2008, 2009, 2010 Simon
+;; Copyright (C) 2003, 2005, 2006, 2007, 2008, 2009, 2010, 2011 Simon
 ;; Josefsson
 ;; Keywords: idna, idn, domain name, internationalization
 
