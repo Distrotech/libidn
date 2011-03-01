@@ -35,6 +35,7 @@ AC_DEFUN([gl_EARLY],
   # Code from module binary-io-tests:
   # Code from module c++defs:
   # Code from module csharpcomp-script:
+  # Code from module dosname:
   # Code from module dup2:
   # Code from module dup2-tests:
   # Code from module environ:
@@ -66,7 +67,6 @@ AC_DEFUN([gl_EARLY],
   # Code from module malloca:
   # Code from module malloca-tests:
   # Code from module manywarnings:
-  # Code from module multiarch:
   # Code from module open:
   # Code from module open-tests:
   # Code from module pathmax:
@@ -88,8 +88,8 @@ AC_DEFUN([gl_EARLY],
   # Code from module stdbool-tests:
   # Code from module stddef:
   # Code from module stddef-tests:
-  # Code from module stdint:
-  # Code from module stdint-tests:
+  # Code from module stdio:
+  # Code from module stdio-tests:
   # Code from module stdlib:
   # Code from module strerror:
   # Code from module strerror-tests:
@@ -114,7 +114,6 @@ AC_DEFUN([gl_EARLY],
   # Code from module version-etc-tests:
   # Code from module warn-on-use:
   # Code from module warnings:
-  # Code from module wchar:
 ])
 
 # This macro should be invoked from ./configure.ac, in the section
@@ -259,7 +258,6 @@ changequote([, ])dnl
   gl_FUNC_MALLOC_POSIX
   gl_STDLIB_MODULE_INDICATOR([malloc-posix])
   gl_MALLOCA
-  gl_MULTIARCH
   gl_FUNC_OPEN
   gl_FCNTL_MODULE_INDICATOR([open])
   gl_PATHMAX
@@ -270,9 +268,7 @@ changequote([, ])dnl
   gl_FUNC_STAT
   gl_SYS_STAT_MODULE_INDICATOR([stat])
   AM_STDBOOL_H
-  gl_STDINT_H
-  gt_TYPE_WCHAR_T
-  gt_TYPE_WINT_T
+  gl_STDIO_H
   gl_STDLIB_H
   gl_FUNC_SYMLINK
   gl_UNISTD_MODULE_INDICATOR([symlink])
@@ -286,7 +282,6 @@ changequote([, ])dnl
   gl_VALGRIND_TESTS
   abs_aux_dir=`cd "$ac_aux_dir"; pwd`
   AC_SUBST([abs_aux_dir])
-  gl_WCHAR_H
   m4_popdef([gl_MODULE_INDICATOR_CONDITION])
   m4_ifval(gltests_LIBSOURCES_LIST, [
     m4_syscmd([test ! -d ]m4_defn([gltests_LIBSOURCES_DIR])[ ||
@@ -417,7 +412,6 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/autobuild.m4
   m4/csharp.m4
   m4/csharpcomp.m4
-  m4/dos.m4
   m4/dup2.m4
   m4/eealloc.m4
   m4/environ.m4
@@ -435,7 +429,6 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/malloca.m4
   m4/manywarnings.m4
   m4/mode_t.m4
-  m4/multiarch.m4
   m4/open.m4
   m4/pathmax.m4
   m4/putenv.m4
@@ -444,7 +437,7 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/stdarg.m4
   m4/stdbool.m4
   m4/stddef_h.m4
-  m4/stdint.m4
+  m4/stdio_h.m4
   m4/stdlib_h.m4
   m4/strerror.m4
   m4/string_h.m4
@@ -456,9 +449,7 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/version-etc.m4
   m4/warn-on-use.m4
   m4/warnings.m4
-  m4/wchar_h.m4
   m4/wchar_t.m4
-  m4/wint_t.m4
   tests/init.sh
   tests/macros.h
   tests/signature.h
@@ -482,7 +473,7 @@ AC_DEFUN([gl_FILE_LIST], [
   tests/test-stat.h
   tests/test-stdbool.c
   tests/test-stddef.c
-  tests/test-stdint.c
+  tests/test-stdio.c
   tests/test-strerror.c
   tests/test-symlink.c
   tests/test-symlink.h
@@ -496,6 +487,7 @@ AC_DEFUN([gl_FILE_LIST], [
   tests/test-version-etc.sh
   tests=lib/alloca.in.h
   tests=lib/binary-io.h
+  tests=lib/dosname.h
   tests=lib/dup2.c
   tests=lib/fcntl.in.h
   tests=lib/ignore-value.h
@@ -511,7 +503,7 @@ AC_DEFUN([gl_FILE_LIST], [
   tests=lib/setenv.c
   tests=lib/stat.c
   tests=lib/stdbool.in.h
-  tests=lib/stdint.in.h
+  tests=lib/stdio.in.h
   tests=lib/stdlib.in.h
   tests=lib/symlink.c
   tests=lib/sys_stat.in.h
@@ -519,7 +511,6 @@ AC_DEFUN([gl_FILE_LIST], [
   tests=lib/unsetenv.c
   tests=lib/verify.h
   tests=lib/version-etc-fsf.c
-  tests=lib/wchar.in.h
   top/GNUmakefile
   top/maint.mk
 ])

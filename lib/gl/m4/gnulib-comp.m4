@@ -26,12 +26,16 @@ AC_DEFUN([lgl_EARLY],
   m4_pattern_allow([^gl_LIBOBJS$])dnl a variable
   m4_pattern_allow([^gl_LTLIBOBJS$])dnl a variable
   AC_REQUIRE([AC_PROG_RANLIB])
+  # Code from module alloca-opt:
+  # Code from module alloca-opt-tests:
   # Code from module arg-nonnull:
   # Code from module c++defs:
   # Code from module c-ctype:
   # Code from module c-ctype-tests:
   # Code from module c-strcase:
   # Code from module c-strcase-tests:
+  # Code from module environ:
+  # Code from module environ-tests:
   # Code from module extensions:
   AC_REQUIRE([gl_USE_SYSTEM_EXTENSIONS])
   # Code from module gettext-h:
@@ -46,22 +50,45 @@ AC_DEFUN([lgl_EARLY],
   # Code from module lib-msvc-compat:
   # Code from module lib-symbol-versions:
   # Code from module lib-symbol-visibility:
+  # Code from module locale:
+  # Code from module locale-tests:
+  # Code from module localename:
+  # Code from module localename-tests:
+  # Code from module lock:
+  # Code from module lock-tests:
+  # Code from module malloc-posix:
+  # Code from module malloca:
+  # Code from module malloca-tests:
   # Code from module multiarch:
+  # Code from module putenv:
+  # Code from module setenv:
+  # Code from module setenv-tests:
+  # Code from module setlocale:
+  # Code from module setlocale-tests:
   # Code from module stdbool:
   # Code from module stdbool-tests:
   # Code from module stddef:
   # Code from module stddef-tests:
   # Code from module stdint:
   # Code from module stdint-tests:
+  # Code from module stdlib:
+  # Code from module stdlib-tests:
   # Code from module striconv:
   # Code from module striconv-tests:
   # Code from module string:
   # Code from module strverscmp:
   # Code from module strverscmp-tests:
+  # Code from module thread:
+  # Code from module threadlib:
+  gl_THREADLIB_EARLY
+  # Code from module unistd:
+  # Code from module unistd-tests:
+  # Code from module unsetenv:
+  # Code from module unsetenv-tests:
   # Code from module verify:
   # Code from module verify-tests:
   # Code from module warn-on-use:
-  # Code from module wchar:
+  # Code from module yield:
 ])
 
 # This macro should be invoked from ./configure.ac, in the section
@@ -122,8 +149,6 @@ AC_DEFUN([lgl_INIT],
   gl_FUNC_STRVERSCMP
   gl_STRING_MODULE_INDICATOR([strverscmp])
   # Code from module warn-on-use:
-  # Code from module wchar:
-  gl_WCHAR_H
   # End of code from modules
   m4_ifval(lgl_LIBSOURCES_LIST, [
     m4_syscmd([test ! -d ]m4_defn([lgl_LIBSOURCES_DIR])[ ||
@@ -170,10 +195,38 @@ changequote([, ])dnl
   AC_SUBST([lgltests_WITNESS])
   gl_module_indicator_condition=$lgltests_WITNESS
   m4_pushdef([gl_MODULE_INDICATOR_CONDITION], [$gl_module_indicator_condition])
+  gl_FUNC_ALLOCA
   gt_LOCALE_FR
   gt_LOCALE_TR_UTF8
+  gl_ENVIRON
+  gl_UNISTD_MODULE_INDICATOR([environ])
+  gl_LOCALE_H
+  AC_CHECK_FUNCS_ONCE([newlocale])
+  gl_LOCALENAME
+  AC_CHECK_FUNCS_ONCE([newlocale])
+  gl_LOCK
+  gl_FUNC_MALLOC_POSIX
+  gl_STDLIB_MODULE_INDICATOR([malloc-posix])
+  gl_MALLOCA
+  gl_FUNC_PUTENV
+  gl_STDLIB_MODULE_INDICATOR([putenv])
+  gl_FUNC_SETENV
+  gl_STDLIB_MODULE_INDICATOR([setenv])
+  gl_FUNC_SETLOCALE
+  gl_LOCALE_MODULE_INDICATOR([setlocale])
+  gt_LOCALE_FR
+  gt_LOCALE_FR_UTF8
+  gt_LOCALE_JA
+  gt_LOCALE_ZH_CN
   gt_TYPE_WCHAR_T
   gt_TYPE_WINT_T
+  gl_STDLIB_H
+  gl_THREAD
+  gl_THREADLIB
+  gl_UNISTD_H
+  gl_FUNC_UNSETENV
+  gl_STDLIB_MODULE_INDICATOR([unsetenv])
+  gl_YIELD
   m4_popdef([gl_MODULE_INDICATOR_CONDITION])
   m4_ifval(lgltests_LIBSOURCES_LIST, [
     m4_syscmd([test ! -d ]m4_defn([lgltests_LIBSOURCES_DIR])[ ||
@@ -290,50 +343,102 @@ AC_DEFUN([lgl_FILE_LIST], [
   lib/striconv.h
   lib/string.in.h
   lib/strverscmp.c
-  lib/wchar.in.h
   m4/00gnulib.m4
+  m4/alloca.m4
   m4/codeset.m4
+  m4/eealloc.m4
+  m4/environ.m4
   m4/extensions.m4
   m4/gnulib-common.m4
   m4/iconv.m4
   m4/iconv_h.m4
   m4/iconv_open.m4
   m4/include_next.m4
+  m4/intlmacosx.m4
+  m4/lcmessage.m4
   m4/ld-output-def.m4
   m4/ld-version-script.m4
   m4/lib-ld.m4
   m4/lib-link.m4
   m4/lib-prefix.m4
   m4/locale-fr.m4
+  m4/locale-ja.m4
   m4/locale-tr.m4
+  m4/locale-zh.m4
+  m4/locale_h.m4
+  m4/localename.m4
+  m4/lock.m4
   m4/longlong.m4
+  m4/malloc.m4
+  m4/malloca.m4
   m4/multiarch.m4
+  m4/putenv.m4
+  m4/setenv.m4
+  m4/setlocale.m4
   m4/stdbool.m4
   m4/stddef_h.m4
   m4/stdint.m4
+  m4/stdlib_h.m4
   m4/string_h.m4
   m4/strverscmp.m4
+  m4/thread.m4
+  m4/threadlib.m4
+  m4/unistd_h.m4
   m4/visibility.m4
   m4/warn-on-use.m4
-  m4/wchar_h.m4
   m4/wchar_t.m4
   m4/wint_t.m4
+  m4/yield.m4
   tests/init.sh
   tests/macros.h
   tests/signature.h
+  tests/test-alloca-opt.c
   tests/test-c-ctype.c
   tests/test-c-strcase.sh
   tests/test-c-strcasecmp.c
   tests/test-c-strncasecmp.c
+  tests/test-environ.c
   tests/test-iconv.c
+  tests/test-locale.c
+  tests/test-localename.c
+  tests/test-lock.c
+  tests/test-malloca.c
+  tests/test-setenv.c
+  tests/test-setlocale1.c
+  tests/test-setlocale1.sh
+  tests/test-setlocale2.c
+  tests/test-setlocale2.sh
   tests/test-stdbool.c
   tests/test-stddef.c
   tests/test-stdint.c
+  tests/test-stdlib.c
   tests/test-striconv.c
   tests/test-strverscmp.c
+  tests/test-sys_wait.h
+  tests/test-unistd.c
+  tests/test-unsetenv.c
   tests/test-verify.c
   tests/test-verify.sh
-  tests=lib/dummy.c
+  tests=lib/alloca.in.h
+  tests=lib/glthread/lock.c
+  tests=lib/glthread/lock.h
+  tests=lib/glthread/thread.c
+  tests=lib/glthread/thread.h
+  tests=lib/glthread/threadlib.c
+  tests=lib/glthread/yield.h
   tests=lib/intprops.h
+  tests=lib/locale.in.h
+  tests=lib/localename.c
+  tests=lib/localename.h
+  tests=lib/malloc.c
+  tests=lib/malloca.c
+  tests=lib/malloca.h
+  tests=lib/malloca.valgrind
+  tests=lib/putenv.c
+  tests=lib/setenv.c
+  tests=lib/setlocale.c
+  tests=lib/stdlib.in.h
+  tests=lib/unistd.in.h
+  tests=lib/unsetenv.c
   tests=lib/verify.h
 ])
