@@ -19,15 +19,15 @@ dnl You should have received a copy of the GNU General Public License
 dnl along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 AC_PREREQ(2.61)
-AC_INIT([GNU Libidn], [1.20], [bug-libidn@gnu.org])
-AC_COPYRIGHT([Copyright (c) 2002-2010 Simon Josefsson <simon@josefsson.org>.])
+AC_INIT([GNU Libidn], [1.21], [bug-libidn@gnu.org])
+AC_COPYRIGHT([Copyright (c) 2002-2011 Simon Josefsson <simon@josefsson.org>.])
 
 # Library code modified:                              REVISION++
 # Interfaces changed/added/removed:   CURRENT++       REVISION=0
 # Interfaces added:                             AGE++
 # Interfaces removed:                           AGE=0
 AC_SUBST(LT_CURRENT, 17)
-AC_SUBST(LT_REVISION, 3)
+AC_SUBST(LT_REVISION, 4)
 AC_SUBST(LT_AGE, 6)
 
 # For DEF file.
