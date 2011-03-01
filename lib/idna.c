@@ -1,5 +1,5 @@
 /* idna.c --- Convert to or from IDN strings.
- * Copyright (C) 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010
+ * Copyright (C) 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011
  * Simon Josefsson
  *
  * This file is part of GNU Libidn.
@@ -322,10 +322,12 @@ idna_to_unicode_internal (char *utf8in,
 
   /* 3. Verify that the sequence begins with the ACE prefix, and save a
    * copy of the sequence.
+   * ... The ToASCII and ToUnicode operations MUST recognize the ACE
+   prefix in a case-insensitive manner.
    */
 
 step3:
-  if (memcmp (IDNA_ACE_PREFIX, utf8in, strlen (IDNA_ACE_PREFIX)) != 0)
+  if (c_strncasecmp (utf8in, IDNA_ACE_PREFIX, strlen (IDNA_ACE_PREFIX)) != 0)
     {
       free (utf8in);
       return IDNA_NO_ACE_PREFIX;

@@ -1,5 +1,5 @@
 ## Process this file with automake to produce Makefile.in
-# Copyright (C) 2002, 2003, 2004, 2006, 2007, 2008, 2009, 2010 Simon Josefsson
+# Copyright (C) 2002, 2003, 2004, 2006, 2007, 2008, 2009, 2010, 2011 Simon Josefsson
 #
 # This file is part of GNU Libidn.
 #
@@ -25,8 +25,8 @@ LDADD = libutils.a ../lib/libidn.la
 check_LIBRARIES = libutils.a
 libutils_a_SOURCES = utils.h utils.c
 
-ctests = tst_stringprep tst_punycode tst_idna tst_idna2 tst_nfkc	\
-	tst_pr29 tst_strerror tst_toutf8 tst_symbols
+ctests = tst_stringprep tst_punycode tst_idna tst_idna2 tst_idna3	\
+	tst_nfkc tst_pr29 tst_strerror tst_toutf8 tst_symbols
 if TLD
 ctests += tst_tld
 endif

@@ -4,6 +4,14 @@ See the end for copying conditions.
 
 * Version 1.20 (unreleased) [?]
 
+** libidn: Fix bug in ToUnicode to compare 'xn--' case-insensitively.
+The problem is typically noticed when an upper ACE case string is
+converted to Unicode.  Before, this would return the input rather than
+converting the ACE form to Unicode.  Reported by Stepan Golosunov
+<stepan@golosunov.pp.ru>.
+
+** tests: Added self-test tst_idna3 to catch any regression of problem above.
+
 ** Update gnulib files and translations.
 
 ** API and ABI is backwards compatible with the previous version.
