@@ -1,3 +1,5 @@
 ^COPYING.LIB
+^csharp/libidn.suo
+^csharp/libidn_PPC.suo
 ^doc/fdl-1.3.texi
 ^doc/specifications/

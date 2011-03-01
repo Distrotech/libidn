@@ -4224,5 +4224,4 @@ public class RFC3454
     new char[] { '\uFFD2', '\uFFD7' },
     new char[] { '\uFFDA', '\uFFDC' },
   };
-
 }
