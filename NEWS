@@ -2,7 +2,7 @@ Libidn NEWS -- History of user-visible changes.                 -*- outline -*-
 Copyright (C) 2002-2011 Simon Josefsson
 See the end for copying conditions.
 
-* Version 1.21 (unreleased) [?]
+* Version 1.21 (released 2011-04-24) [stable]
 
 ** build/gettext: Demand gettext >= 0.18.1 in order to get newer M4 files.
 The old M4 files associated with 0.17 caused problems on Solaris,
