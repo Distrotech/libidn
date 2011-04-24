@@ -4,6 +4,8 @@ See the end for copying conditions.
 
 * Version 1.21 (unreleased) [?]
 
+** build: Improve MinGW cross-compile makefile, see win32/libidn4win.mk.
+
 ** build: Visual Studio files fixed to define LIBIDN_BUILDING.
 Tiny patch from Waqas Hussain <waqas20@gmail.com>.
 
