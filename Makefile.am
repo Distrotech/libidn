@@ -39,7 +39,7 @@ EXTRA_DIST += FAQ libc/README libc/getaddrinfo-idn.txt libc/example.c	\
 EXTRA_DIST += win32/libidn.sln win32/libidn.vcproj			\
 	win32/include/unistd.h win32/include/idn-int.h			\
 	win32/include/stdbool.h win32/include/ac-stdint.h		\
-	win32/include/config.h
+	win32/include/config.h win32/libidn4win.mk
 
 pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = libidn.pc
