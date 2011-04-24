@@ -1,5 +1,5 @@
 To: help-libidn@gnu.org, info-gnu@gnu.org
-Subject: Libidn 1.20 released
+Subject: Libidn 1.21 released
 <#part sign=pgpmime>
 GNU Libidn is a fully documented implementation of the Stringprep,
 Punycode and IDNA specifications.  Libidn's purpose is to encode and
@@ -9,22 +9,17 @@ version 2.1 or later.
 
 Noteworthy changes since the last release (from NEWS file):
 
-* Version 1.20 (released 2011-03-01) [stable]
+* Version 1.21 (released 2011-04-24) [stable]
 
-** libidn: Fix bug in ToUnicode to compare 'xn--' case-insensitively.
-The problem is typically noticed when an upper ACE case string is
-converted to Unicode.  Before, this would return the input rather than
-converting the ACE form to Unicode.  Reported by Stepan Golosunov
-<stepan@golosunov.pp.ru> in <http://bugs.debian.org/610617>.
+** build/gettext: Demand gettext >= 0.18.1 in order to get newer M4 files.
+The old M4 files associated with 0.17 caused problems on Solaris,
+hopefully now fixed.  Reported by Dagobert Michelsen <dam@opencsw.org>
+in <http://thread.gmane.org/gmane.comp.lib.gnulib.bugs/25522>.
 
-** tests: Added self-test tst_idna3 to catch any regression of problem above.
+** build: Improve MinGW cross-compile makefile, see win32/libidn4win.mk.
 
-** idn: Only print copyright and license blurb when used interactively.
-Reported by "Andrew O. Shadoura" <bugzilla@tut.by> and Roman Mamedov
-<rm@romanrm.ru> in <http://bugs.debian.org/615947> and
-<http://bugs.debian.org/615949> respectively.
-
-** Update gnulib files and translations.
+** build: Visual Studio files fixed to define LIBIDN_BUILDING.
+Tiny patch from Waqas Hussain <waqas20@gmail.com>.
 
 ** API and ABI is backwards compatible with the previous version.
 
@@ -84,12 +79,49 @@ invited to join our help-libidn mailing list, see:
 <http://lists.gnu.org/mailman/listinfo/help-libidn>.
 
 Here are the compressed sources (3.2MB):
-  ftp://ftp.gnu.org/gnu/libidn/libidn-1.20.tar.gz
-  http://ftp.gnu.org/gnu/libidn/libidn-1.20.tar.gz
+  ftp://ftp.gnu.org/gnu/libidn/libidn-1.21.tar.gz
+  http://ftp.gnu.org/gnu/libidn/libidn-1.21.tar.gz
 
 Here are GPG detached signatures:
-  ftp://ftp.gnu.org/gnu/libidn/libidn-1.20.tar.gz.sig
-  http://ftp.gnu.org/gnu/libidn/libidn-1.20.tar.gz.sig
+  ftp://ftp.gnu.org/gnu/libidn/libidn-1.21.tar.gz.sig
+  http://ftp.gnu.org/gnu/libidn/libidn-1.21.tar.gz.sig
+
+Here are the SHA-1 and SHA-224 signatures:
+
+991d5d4e24118d7672d53ed692a8a6ab87212f8f  libidn-1.21.tar.gz
+
+869fbfb08f55a6350bf83217176ba3f927eda7fb20348133162e818c  libidn-1.21.tar.gz
+
+We also provide Windows binaries built using MinGW-w64 with the build
+script win32/libidn4win.mk, for 32-bit and 64-bit x86 architecures:
+
+  ftp://ftp.gnu.org/gnu/libidn/libidn-1.21-win32.zip
+  ftp://ftp.gnu.org/gnu/libidn/libidn-1.21-win32.zip.sig
+  ftp://ftp.gnu.org/gnu/libidn/libidn-1.21-win64.zip
+  ftp://ftp.gnu.org/gnu/libidn/libidn-1.21-win64.zip.sig
+
+Here are the SHA-1 and SHA-224 signatures:
+
+be2a73cc60ae4b539fd3e658e21ba985824d1f02  libidn-1.21-win32.zip
+
+6f39fe3fedf27774945b0fece60921a0e147f95e72284c81543aaa82  libidn-1.21-win32.zip
+
+11fbcd142e824babc9088009dbfca71e3f4fbe2b  libidn-1.21-win64.zip
+
+b0f5bcd7a306a6f8a87a68baf8603deefe71e1197fc46cffcfb05ef8  libidn-1.21-win64.zip
+
+The software is cryptographically signed by the author using an
+OpenPGP key identified by the following information:
+
+pub   1280R/B565716F 2002-05-05 [expires: 2012-01-24]
+      Key fingerprint = 0424 D4EE 81A0 E3D1 19C6  F835 EDA2 1E94 B565 716F
+uid                  Simon Josefsson <simon@josefsson.org>
+uid                  Simon Josefsson <jas@extundo.com>
+sub   1280R/4D5D40AE 2002-05-05 [expires: 2012-01-24]
+
+The key is available from:
+  http://josefsson.org/key.txt
+  dns:b565716f.josefsson.org?TYPE=CERT
 
 Here are the build reports for various platforms:
   http://autobuild.josefsson.org/libidn/
@@ -100,25 +132,6 @@ Daily builds of the package are available from:
 For code coverage and cyclomatic code complexity charts:
   http://www.gnu.org/software/libidn/coverage/
   http://www.gnu.org/software/libidn/cyclo/cyclo-libidn.html
-
-The software is cryptographically signed by the author using an
-OpenPGP key identified by the following information:
-
-pub   1280R/B565716F 2002-05-05 [expires: 2011-03-30]
-      Key fingerprint = 0424 D4EE 81A0 E3D1 19C6  F835 EDA2 1E94 B565 716F
-uid                  Simon Josefsson <jas@extundo.com>
-uid                  Simon Josefsson <simon@josefsson.org>
-sub   1280R/4D5D40AE 2002-05-05 [expires: 2011-03-30]
-
-The key is available from:
-  http://josefsson.org/key.txt
-  dns:b565716f.josefsson.org?TYPE=CERT
-
-Here are the SHA-1 and SHA-224 signatures:
-
-2518486487c275b9d6f133b4688318b951af1580  libidn-1.20.tar.gz
-
-cfa4e765869da22ffa238b3442c992fc779a42d1539fb94896539131  libidn-1.20.tar.gz
 
 Happy hacking,
 Simon
