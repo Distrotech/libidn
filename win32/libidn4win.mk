@@ -50,6 +50,6 @@ doit:
 	cd root && \
 	zip -r ../../$(distdir)-win$(ARCH).zip *
 
-upload: libidn4win
-	build-aux/gnupload --to ftp.gnu.org:$(PACKAGE) $(distdir)-win32.zip $(distdir)-win64.zip
+upload:
+	../build-aux/gnupload --to ftp.gnu.org:$(PACKAGE) $(distdir)-win32.zip $(distdir)-win64.zip
 	cp $(distdir)-win32.zip $(distdir)-win32.zip.sig $(distdir)-win64.zip $(distdir)-win64.zip.sig ../../releases/$(PACKAGE)/
