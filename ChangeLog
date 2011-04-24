@@ -1,3 +1,72 @@
+2011-04-24  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Version 1.21.
+
+2011-04-24  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS, configure.ac: Demand newer gettext in order to get newer M4
+	files.  Reported by Dagobert Michelsen <dam@opencsw.org> in
+	<http://thread.gmane.org/gmane.comp.lib.gnulib.bugs/25522>.
+
+2011-04-24  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS, win32/libidn4win.mk: libidn4win.mk: Add license and
+	generalize it.
+
+2011-04-24  Simon Josefsson <simon@josefsson.org>
+
+	* .gitignore, .x-sc_avoid_if_before_free, .x-sc_bindtextdomain,
+	.x-sc_cast_of_alloca_return_value, .x-sc_error_message_uppercase,
+	.x-sc_file_system, .x-sc_makefile_at_at_check,
+	.x-sc_makefile_check, .x-sc_prohibit_atoi_atof,
+	.x-sc_prohibit_empty_lines_at_EOF, .x-sc_space_tab,
+	.x-sc_texinfo_acronym, .x-sc_the_the, COPYING.LIB, README,
+	README-alpha, build-aux/gendocs.sh,
+	build-aux/useless-if-before-free, cfg.mk, doc/gendocs_template,
+	gl/Makefile.am, gl/m4/alloca.m4, gl/m4/errno_h.m4,
+	gl/m4/fcntl_h.m4, gl/m4/gnulib-common.m4, gl/m4/open.m4,
+	gl/m4/stdarg.m4, gl/m4/stdbool.m4, gl/m4/stddef_h.m4,
+	gl/m4/stdio_h.m4, gl/m4/string_h.m4, gl/m4/unistd_h.m4,
+	gl/m4/valgrind-tests.m4, gl/string.in.h, gl/unistd.in.h,
+	gltests/Makefile.am, gltests/fcntl.in.h, gltests/malloc.c,
+	gltests/malloca.c, gltests/open.c, gltests/setenv.c,
+	gltests/stdio.in.h, gltests/stdlib.in.h, gltests/sys_stat.in.h,
+	gltests/test-ignore-value.c, gltests/test-open.h, gltests/verify.h,
+	lib/Makefile.am, lib/gl/Makefile.am, lib/gl/m4/alloca.m4,
+	lib/gl/m4/gnulib-common.m4, lib/gl/m4/gnulib-comp.m4,
+	lib/gl/m4/iconv_h.m4, lib/gl/m4/stdbool.m4, lib/gl/m4/stddef_h.m4,
+	lib/gl/m4/stdint.m4, lib/gl/m4/string_h.m4, lib/gl/m4/unistd_h.m4,
+	lib/gl/m4/wchar_h.m4, lib/gl/string.in.h, lib/gltests/Makefile.am,
+	lib/gltests/malloc.c, lib/gltests/malloca.c, lib/gltests/setenv.c,
+	lib/gltests/stdlib.in.h, lib/gltests/unistd.in.h,
+	lib/gltests/verify.h, lib/gltests/wchar.in.h, lib/stringprep.h,
+	libidn.pc.in, maint.mk, src/Makefile.am, tests/Makefile.am: Update
+	gnulib files and fix syntax check warnings.
+
+2011-03-21  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS, THANKS, win32/libidn.vcproj: Define LIBIDN_BUILDING.  Tiny patch from Waqas Hussain <waqas20@gmail.com>.
+
+2011-03-05  Simon Josefsson <simon@josefsson.org>
+
+	* win32/libidn4win.mk: Add.
+
+2011-03-01  Simon Josefsson <simon@josefsson.org>
+
+	* doc/announce.txt: Update for 1.20.
+
+2011-03-01  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS, configure.ac: Bump versions.
+
+2011-03-01  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Fix release type.
+
+2011-03-01  Simon Josefsson <simon@josefsson.org>
+
+	* ChangeLog: Generated.
+
 2011-03-01  Simon Josefsson <simon@josefsson.org>
 
 	* NEWS: Version 1.20.
