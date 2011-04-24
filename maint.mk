@@ -33,7 +33,7 @@ GZIP_ENV = '--no-name --best $(gzip_rsyncable)'
 
 GIT = git
 VC = $(GIT)
-VC-tag = git tag -s -m '$(VERSION)' -u '$(gpg_key_ID)'
+VC-tag = git tag -s -m '$(VERSION)' 'v$(VERSION)' -u '$(gpg_key_ID)'
 
 VC_LIST = $(build_aux)/vc-list-files -C $(srcdir)
 
@@ -57,11 +57,13 @@ endif
 # In order to be able to consistently filter "."-relative names,
 # (i.e., with no $(srcdir) prefix), this definition is careful to
 # remove any $(srcdir) prefix, and to restore what it removes.
+_sc_excl = \
+  $(if $(exclude_file_name_regexp--$@),$(exclude_file_name_regexp--$@),^$$)
 VC_LIST_EXCEPT = \
   $(VC_LIST) | sed 's|^$(_dot_escaped_srcdir)/||' \
 	| if test -f $(srcdir)/.x-$@; then grep -vEf $(srcdir)/.x-$@; \
 	  else grep -Ev -e "$${VC_LIST_EXCEPT_DEFAULT-ChangeLog}"; fi \
-	| grep -Ev -e '$(VC_LIST_ALWAYS_EXCLUDE_REGEX)' \
+	| grep -Ev -e '($(VC_LIST_ALWAYS_EXCLUDE_REGEX)|$(_sc_excl))' \
 	$(_prepend_srcdir_prefix)
 
 ifeq ($(origin prev_version_file), undefined)
@@ -196,6 +198,16 @@ syntax-check: $(local-check)
 #  halt
 #
 #     Message to display before to halting execution.
+#
+# Finally, you may exempt files based on an ERE matching file names.
+# For example, to exempt from the sc_space_tab check all files with the
+# .diff suffix, set this Make variable:
+#
+# exclude_file_name_regexp--sc_space_tab = \.diff$
+#
+# Note that while this functionality is mostly inherited via VC_LIST_EXCEPT,
+# when filtering by name via in_files, we explicitly filter out matching
+# names here as well.
 
 # By default, _sc_search_regexp does not ignore case.
 export ignore_case =
@@ -233,7 +245,8 @@ define _sc_search_regexp
 									\
    : Filter by file name;						\
    if test -n "$$in_files"; then					\
-     files=$$(find $(srcdir) | grep -E "$$in_files");			\
+     files=$$(find $(srcdir) | grep -E "$$in_files"			\
+              | grep -Ev '$(exclude_file_name_regexp--$@)');		\
    else									\
      files=$$($(VC_LIST_EXCEPT));					\
      if test -n "$$in_vc_files"; then					\
@@ -659,7 +672,7 @@ sc_two_space_separator_in_usage:
 sc_unmarked_diagnostics:
 	@grep -nE							\
 	    '\<error *\([^"]*"[^"]*[a-z]{3}' $$($(VC_LIST_EXCEPT))	\
-	  | grep -v '_''(' &&						\
+	  | grep -Ev '(_|ngettext ?)\(' &&				\
 	  { echo '$(ME): found unmarked diagnostic(s)' 1>&2;		\
 	    exit 1; } || :
 
@@ -810,8 +823,8 @@ require_exactly_one_NL_at_EOF_ =					\
   END { exit defined $$fail }
 sc_prohibit_empty_lines_at_EOF:
 	@perl -le '$(require_exactly_one_NL_at_EOF_)' $$($(VC_LIST_EXCEPT)) \
-          || { echo '$(ME): empty line(s) or no newline at EOF'		\
-		1>&2; exit 1; } || :;					\
+	  || { echo '$(ME): empty line(s) or no newline at EOF'		\
+		1>&2; exit 1; } || :
 
 # Make sure we don't use st_blocks.  Use ST_NBLOCKS instead.
 # This is a bit of a kludge, since it prevents use of the string
@@ -826,6 +839,31 @@ sc_prohibit_stat_st_blocks:
 sc_prohibit_S_IS_definition:
 	@prohibit='^ *# *define  *S_IS'					\
 	halt='do not define S_IS* macros; include <sys/stat.h>'		\
+	  $(_sc_search_regexp)
+
+prohibit_doubled_word_RE_ ?= \
+  /\b(then?|[iao]n|i[fst]|but|f?or|at|and|[dt]o)\s+\1\b/gims
+prohibit_doubled_word_ =						\
+    -e 'while ($(prohibit_doubled_word_RE_))'				\
+    -e '  {'								\
+    -e '    $$n = ($$` =~ tr/\n/\n/ + 1);'				\
+    -e '    ($$v = $$&) =~ s/\n/\\n/g;'					\
+    -e '    print "$$ARGV:$$n:$$v\n";'					\
+    -e '  }'
+
+# Define this to a regular expression that matches
+# any filename:dd:match lines you want to ignore.
+# The default is to ignore no matches.
+ignore_doubled_word_match_RE_ ?= ^$$
+
+sc_prohibit_doubled_word:
+	@perl -n -0777 $(prohibit_doubled_word_) $$($(VC_LIST_EXCEPT))	\
+	  | grep -vE '$(ignore_doubled_word_match_RE_)'			\
+	  | grep . && { echo '$(ME): doubled words' 1>&2; exit 1; } || :
+
+sc_prohibit_can_not:
+	@prohibit='\<can[ ]not\>'					\
+	halt='use "cannot", not "can'' not"'				\
 	  $(_sc_search_regexp)
 
 _ptm1 = use "test C1 && test C2", not "test C1 -''a C2"
@@ -942,13 +980,13 @@ fix_po_file_diag = \
 apply the above patch\n'
 
 # Verify that all source files using _() are listed in po/POTFILES.in.
-po_file = po/POTFILES.in
+po_file ?= $(srcdir)/po/POTFILES.in
 sc_po_check:
 	@if test -f $(po_file); then					\
 	  grep -E -v '^(#|$$)' $(po_file)				\
 	    | grep -v '^src/false\.c$$' | sort > $@-1;			\
 	  files=;							\
-	  for file in $$($(VC_LIST_EXCEPT)) lib/*.[ch]; do		\
+	  for file in $$($(VC_LIST_EXCEPT)) $(srcdir)/lib/*.[ch]; do	\
 	    test -r $$file || continue;					\
 	    case $$file in						\
 	      *.m4|*.mk) continue ;;					\
@@ -963,7 +1001,7 @@ sc_po_check:
 	    files="$$files $$file";					\
 	  done;								\
 	  grep -E -l '\b(N?_|gettext *)\([^)"]*("|$$)' $$files		\
-	    | sort -u > $@-2;						\
+	    | sed 's|^$(_dot_escaped_srcdir)/||' | sort -u > $@-2;	\
 	  diff -u -L $(po_file) -L $(po_file) $@-1 $@-2			\
 	    || { printf '$(ME): '$(fix_po_file_diag) 1>&2; exit 1; };	\
 	  rm -f $@-1 $@-2;						\

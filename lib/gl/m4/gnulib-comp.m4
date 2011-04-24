@@ -88,6 +88,7 @@ AC_DEFUN([lgl_EARLY],
   # Code from module verify:
   # Code from module verify-tests:
   # Code from module warn-on-use:
+  # Code from module wchar:
   # Code from module yield:
 ])
 
@@ -226,6 +227,7 @@ changequote([, ])dnl
   gl_UNISTD_H
   gl_FUNC_UNSETENV
   gl_STDLIB_MODULE_INDICATOR([unsetenv])
+  gl_WCHAR_H
   gl_YIELD
   m4_popdef([gl_MODULE_INDICATOR_CONDITION])
   m4_ifval(lgltests_LIBSOURCES_LIST, [
@@ -386,6 +388,7 @@ AC_DEFUN([lgl_FILE_LIST], [
   m4/unistd_h.m4
   m4/visibility.m4
   m4/warn-on-use.m4
+  m4/wchar_h.m4
   m4/wchar_t.m4
   m4/wint_t.m4
   m4/yield.m4
@@ -441,4 +444,5 @@ AC_DEFUN([lgl_FILE_LIST], [
   tests=lib/unistd.in.h
   tests=lib/unsetenv.c
   tests=lib/verify.h
+  tests=lib/wchar.in.h
 ])

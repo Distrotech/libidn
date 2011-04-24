@@ -31,7 +31,7 @@ if TLD
 ctests += tst_tld
 endif
 
-TESTS = $(ctests)	
+TESTS = $(ctests)
 check_PROGRAMS = $(ctests)
 
 TESTS_ENVIRONMENT = $(VALGRIND)

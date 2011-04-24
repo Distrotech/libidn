@@ -19,6 +19,7 @@
 
 AM_CFLAGS = $(WERROR_CFLAGS) $(WARN_CFLAGS)
 AM_CPPFLAGS = -I$(top_srcdir)/lib -I../lib -I$(top_srcdir)/gl -I../gl
+AM_CPPFLAGS += -DLOCALEDIR=\"$(localedir)\"
 
 dist_lisp_DATA = punycode.el idna.el
 
@@ -27,7 +28,6 @@ idn_SOURCES = idn.c
 idn_LDADD = libidn_cmd.la ../lib/libidn.la ../gl/libgnu.la $(LTLIBINTL)
 
 localedir = $(datadir)/locale
-DEFS = -DLOCALEDIR=\"$(localedir)\" @DEFS@
 
 idn.c: $(BUILT_SOURCES)
 
