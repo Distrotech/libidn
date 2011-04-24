@@ -4,6 +4,11 @@ See the end for copying conditions.
 
 * Version 1.21 (unreleased) [?]
 
+** build/gettext: Demand gettext >= 0.18.1 in order to get newer M4 files.
+The old M4 files associated with 0.17 caused problems on Solaris,
+hopefully now fixed.  Reported by Dagobert Michelsen <dam@opencsw.org>
+in <http://thread.gmane.org/gmane.comp.lib.gnulib.bugs/25522>.
+
 ** build: Improve MinGW cross-compile makefile, see win32/libidn4win.mk.
 
 ** build: Visual Studio files fixed to define LIBIDN_BUILDING.
