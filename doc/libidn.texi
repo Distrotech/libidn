@@ -501,6 +501,14 @@ more information.  Here, @code{IMPL} is @code{pnet} or @code{mono},
 indicating whether the PNET @command{cscc} compiler or the Mono
 @command{mcs} compiler should be used, respectively.
 
+@item --disable-valgrind-tests
+Disable running the self-checks under Valgrind
+(@url{http://valgrind.org/}).  Normally Valgrind does not cause
+problems and can detect some severe memory errors.  If you are getting
+errors from Valgrind that are caused by the compiler or libc (possibly
+as a result of special optimization flags), you may use this option to
+disable the use of Valgrind.
+
 @end table
 
 For the complete list, refer to the output from @code{configure
