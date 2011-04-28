@@ -4,6 +4,9 @@ See the end for copying conditions.
 
 * Version 1.22 (unreleased) [?]
 
+** libidn: Add -liconv as static library requirement in libidn.pc, for MinGW.
+Reported by Volker Grabsch <vog@notjusthosting.com>.
+
 ** build: Really distribute win32/libidn4win.mk.
 
 ** API and ABI is backwards compatible with the previous version.
