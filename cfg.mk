@@ -59,18 +59,17 @@ update-po: refresh-po
 bootstrap: autoreconf
 	./configure $(CFGFLAGS)
 
-web-coverage:
+# Coverage
+
+coverage-web:
 	rm -fv `find $(htmldir)/coverage -type f | grep -v CVS`
 	cp -rv $(COVERAGE_OUT)/* $(htmldir)/coverage/
 
-upload-web-coverage:
+coverage-web-upload:
 	cd $(htmldir) && \
 		cvs commit -m "Update." coverage
 
-W32ROOT ?= $(HOME)/gnutls4win/inst
-
-mingw32: autoreconf
-	./configure --enable-gtk-doc --host=i586-mingw32msvc --build=`build-aux/config.guess` --prefix=$(W32ROOT)
+# Release
 
 ChangeLog:
 	git2cl > ChangeLog
