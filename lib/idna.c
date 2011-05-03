@@ -508,7 +508,10 @@ idna_to_ascii_4z (const uint32_t * input, char **output, int flags)
 	{
 	  rc = idna_to_ascii_4i (start, (size_t) (end - start), buf, flags);
 	  if (rc != IDNA_SUCCESS)
-	    return rc;
+	    {
+	      free (out);
+	      return rc;
+	    }
 	}
 
       if (out)

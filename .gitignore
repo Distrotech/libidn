@@ -82,7 +82,9 @@ doc/reference/html-build.stamp
 doc/reference/html.stamp
 doc/reference/html/
 doc/reference/libidn-decl-list.txt
+doc/reference/libidn-decl-list.txt.bak
 doc/reference/libidn-decl.txt
+doc/reference/libidn-decl.txt.bak
 doc/reference/libidn-overrides.txt
 doc/reference/libidn-sections.txt
 doc/reference/libidn-undeclared.txt
@@ -385,6 +387,7 @@ libidn-*.tar.gz.sig
 libidn.pc
 libtool
 m4/codeset.m4
+m4/fcntl-o.m4
 m4/gettext.m4
 m4/glibc2.m4
 m4/glibc21.m4
@@ -413,6 +416,7 @@ m4/printf-posix.m4
 m4/progtest.m4
 m4/size_max.m4
 m4/stdint_h.m4
+m4/threadlib.m4
 m4/uintmax_t.m4
 m4/visibility.m4
 m4/wchar_t.m4
@@ -460,6 +464,8 @@ tests/tst_idna2
 tests/tst_idna2.o
 tests/tst_idna3
 tests/tst_idna3.o
+tests/tst_idna4
+tests/tst_idna4.o
 tests/tst_nfkc
 tests/tst_nfkc.o
 tests/tst_pr29
