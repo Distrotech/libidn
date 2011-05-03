@@ -29,7 +29,7 @@ local-checks-to-skip = sc_prohibit_strcmp sc_prohibit_have_config_h	\
 	sc_prohibit_HAVE_MBRTOWC sc_program_name sc_trailing_blank	\
 	sc_GPL_version sc_immutable_NEWS
 VC_LIST_ALWAYS_EXCLUDE_REGEX = \
-	^(gtk-doc.make|m4/pkg.m4|doc/specifications|contrib/doxygen/Doxyfile|doc/fdl-1.3.texi|csharp/libidn.*suo|(lib/)?(gl|gltests|build-aux)/)
+	^(maint.mk|gtk-doc.make|m4/pkg.m4|doc/specifications|contrib/doxygen/Doxyfile|doc/fdl-1.3.texi|csharp/libidn.*suo|(lib/)?(gl|gltests|build-aux)/)
 update-copyright-env = UPDATE_COPYRIGHT_HOLDER="Simon Josefsson"
 
 # Explicit syntax-check exceptions.

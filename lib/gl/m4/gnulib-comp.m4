@@ -106,50 +106,27 @@ AC_DEFUN([lgl_INIT],
   m4_pushdef([lgl_LIBSOURCES_DIR], [])
   gl_COMMON
   gl_source_base='lib/gl'
-  # Code from module arg-nonnull:
-  # Code from module c++defs:
-  # Code from module c-ctype:
-  # Code from module c-strcase:
-  # Code from module extensions:
-  # Code from module gettext-h:
-  AC_SUBST([LIBINTL])
-  AC_SUBST([LTLIBINTL])
-  # Code from module gperf:
-  # Code from module havelib:
-  # Code from module iconv:
-  AM_ICONV
-  m4_ifdef([gl_ICONV_MODULE_INDICATOR],
-    [gl_ICONV_MODULE_INDICATOR([iconv])])
-  # Code from module iconv-h:
-  gl_ICONV_H
-  # Code from module iconv_open:
-  gl_FUNC_ICONV_OPEN
-  # Code from module include_next:
-  # Code from module lib-msvc-compat:
-  gl_LD_OUTPUT_DEF
-  # Code from module lib-symbol-versions:
-  gl_LD_VERSION_SCRIPT
-  # Code from module lib-symbol-visibility:
-  gl_VISIBILITY
-  # Code from module multiarch:
-  gl_MULTIARCH
-  # Code from module stdbool:
-  AM_STDBOOL_H
-  # Code from module stddef:
-  gl_STDDEF_H
-  # Code from module stdint:
-  gl_STDINT_H
-  # Code from module striconv:
-  if test $gl_cond_libtool = false; then
-    gl_ltlibdeps="$gl_ltlibdeps $LTLIBICONV"
-    gl_libdeps="$gl_libdeps $LIBICONV"
-  fi
-  # Code from module string:
-  gl_HEADER_STRING_H
-  # Code from module strverscmp:
-  gl_FUNC_STRVERSCMP
-  gl_STRING_MODULE_INDICATOR([strverscmp])
-  # Code from module warn-on-use:
+AC_SUBST([LIBINTL])
+AC_SUBST([LTLIBINTL])
+AM_ICONV
+m4_ifdef([gl_ICONV_MODULE_INDICATOR],
+  [gl_ICONV_MODULE_INDICATOR([iconv])])
+gl_ICONV_H
+gl_FUNC_ICONV_OPEN
+gl_LD_OUTPUT_DEF
+gl_LD_VERSION_SCRIPT
+gl_VISIBILITY
+gl_MULTIARCH
+AM_STDBOOL_H
+gl_STDDEF_H
+gl_STDINT_H
+if test $gl_cond_libtool = false; then
+  gl_ltlibdeps="$gl_ltlibdeps $LTLIBICONV"
+  gl_libdeps="$gl_libdeps $LIBICONV"
+fi
+gl_HEADER_STRING_H
+gl_FUNC_STRVERSCMP
+gl_STRING_MODULE_INDICATOR([strverscmp])
   # End of code from modules
   m4_ifval(lgl_LIBSOURCES_LIST, [
     m4_syscmd([test ! -d ]m4_defn([lgl_LIBSOURCES_DIR])[ ||
@@ -196,39 +173,39 @@ changequote([, ])dnl
   AC_SUBST([lgltests_WITNESS])
   gl_module_indicator_condition=$lgltests_WITNESS
   m4_pushdef([gl_MODULE_INDICATOR_CONDITION], [$gl_module_indicator_condition])
-  gl_FUNC_ALLOCA
-  gt_LOCALE_FR
-  gt_LOCALE_TR_UTF8
-  gl_ENVIRON
-  gl_UNISTD_MODULE_INDICATOR([environ])
-  gl_LOCALE_H
-  AC_CHECK_FUNCS_ONCE([newlocale])
-  gl_LOCALENAME
-  AC_CHECK_FUNCS_ONCE([newlocale])
-  gl_LOCK
-  gl_FUNC_MALLOC_POSIX
-  gl_STDLIB_MODULE_INDICATOR([malloc-posix])
-  gl_MALLOCA
-  gl_FUNC_PUTENV
-  gl_STDLIB_MODULE_INDICATOR([putenv])
-  gl_FUNC_SETENV
-  gl_STDLIB_MODULE_INDICATOR([setenv])
-  gl_FUNC_SETLOCALE
-  gl_LOCALE_MODULE_INDICATOR([setlocale])
-  gt_LOCALE_FR
-  gt_LOCALE_FR_UTF8
-  gt_LOCALE_JA
-  gt_LOCALE_ZH_CN
-  gt_TYPE_WCHAR_T
-  gt_TYPE_WINT_T
-  gl_STDLIB_H
-  gl_THREAD
-  gl_THREADLIB
-  gl_UNISTD_H
-  gl_FUNC_UNSETENV
-  gl_STDLIB_MODULE_INDICATOR([unsetenv])
-  gl_WCHAR_H
-  gl_YIELD
+gl_FUNC_ALLOCA
+gt_LOCALE_FR
+gt_LOCALE_TR_UTF8
+gl_ENVIRON
+gl_UNISTD_MODULE_INDICATOR([environ])
+gl_LOCALE_H
+AC_CHECK_FUNCS_ONCE([newlocale])
+gl_LOCALENAME
+AC_CHECK_FUNCS_ONCE([newlocale])
+gl_LOCK
+gl_FUNC_MALLOC_POSIX
+gl_STDLIB_MODULE_INDICATOR([malloc-posix])
+gl_MALLOCA
+gl_FUNC_PUTENV
+gl_STDLIB_MODULE_INDICATOR([putenv])
+gl_FUNC_SETENV
+gl_STDLIB_MODULE_INDICATOR([setenv])
+gl_FUNC_SETLOCALE
+gl_LOCALE_MODULE_INDICATOR([setlocale])
+gt_LOCALE_FR
+gt_LOCALE_FR_UTF8
+gt_LOCALE_JA
+gt_LOCALE_ZH_CN
+gt_TYPE_WCHAR_T
+gt_TYPE_WINT_T
+gl_STDLIB_H
+gl_THREAD
+gl_THREADLIB
+gl_UNISTD_H
+gl_FUNC_UNSETENV
+gl_STDLIB_MODULE_INDICATOR([unsetenv])
+gl_WCHAR_H
+gl_YIELD
   m4_popdef([gl_MODULE_INDICATOR_CONDITION])
   m4_ifval(lgltests_LIBSOURCES_LIST, [
     m4_syscmd([test ! -d ]m4_defn([lgltests_LIBSOURCES_DIR])[ ||
