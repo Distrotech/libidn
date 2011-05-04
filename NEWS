@@ -7,7 +7,7 @@ See the end for copying conditions.
 ** libidn: Add -liconv as static library requirement in libidn.pc, for MinGW.
 Reported by Volker Grabsch <vog@notjusthosting.com>.
 
-** libidn: Fix memory leak when idna_to_ascii_4i fails.
+** libidn: Fix memory leak in idna_to_ascii_4z when idna_to_ascii_4i fails.
 Reported by and tiny patch from Olga Limburg <olimburg@gmail.com>.
 
 ** build: Really distribute win32/libidn4win.mk.
