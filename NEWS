@@ -2,7 +2,7 @@ Libidn NEWS -- History of user-visible changes.                 -*- outline -*-
 Copyright (C) 2002-2011 Simon Josefsson
 See the end for copying conditions.
 
-* Version 1.22 (unreleased) [?]
+* Version 1.22 (released 2011-05-04) [stable]
 
 ** libidn: Add -liconv as static library requirement in libidn.pc, for MinGW.
 Reported by Volker Grabsch <vog@notjusthosting.com>.
