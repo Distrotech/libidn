@@ -1,3 +1,63 @@
+2011-05-04  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Version 1.22.
+
+2011-05-04  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS, cfg.mk, lib/idna.c, lib/nfkc.c: dev: Ran clang-analyze on
+	the code.  Fixed some dead assignments/initializations.
+
+2011-05-04  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Doc fix.
+
+2011-05-03  Simon Josefsson <simon@josefsson.org>
+
+	* .gitignore, NEWS, THANKS, lib/idna.c, lib/stringprep.h,
+	tests/Makefile.am, tests/tst_idna4.c: libidn: Fix memory leak when
+	idna_to_ascii_4i fails.  Reported by and tiny patch from Olga Limburg <olimburg@gmail.com>.
+
+2011-05-03  Simon Josefsson <simon@josefsson.org>
+
+	* build-aux/vc-list-files, cfg.mk, gl/m4/dup2.m4,
+	gl/m4/gnulib-comp.m4, gl/m4/manywarnings.m4, gl/m4/stdio_h.m4,
+	gltests/stdlib.in.h, lib/gl/m4/gnulib-comp.m4,
+	lib/gltests/stdlib.in.h, maint.mk: Update gnulib files.
+
+2011-05-01  Simon Josefsson <simon@josefsson.org>
+
+	* cfg.mk: Improve coverage rule names.  Drop mingw rules (see
+	win32/libidn4win.mk).
+
+2011-04-28  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS, THANKS, libidn.pc.in: libidn: Add -liconv as static library
+	requirement in libidn.pc, for MinGW.  Reported by Volker Grabsch <vog@notjusthosting.com>.
+
+2011-04-25  Simon Josefsson <simon@josefsson.org>
+
+	* THANKS, doc/libidn.texi: Document --disable-valgrind-tests.  Suggested by Guido Trentalancia <guido@trentalancia.com>.
+
+2011-04-24  Simon Josefsson <simon@josefsson.org>
+
+	* doc/announce.txt: Update for 1.21.
+
+2011-04-24  Simon Josefsson <simon@josefsson.org>
+
+	* win32/libidn4win.mk: Fix.
+
+2011-04-24  Simon Josefsson <simon@josefsson.org>
+
+	* Makefile.am, NEWS: build: Really distribute win32/libidn4win.mk.
+
+2011-04-24  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS, configure.ac: Bump version.
+
+2011-04-24  Simon Josefsson <simon@josefsson.org>
+
+	* ChangeLog: Generated.
+
 2011-04-24  Simon Josefsson <simon@josefsson.org>
 
 	* NEWS: Version 1.21.
