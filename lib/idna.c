@@ -461,7 +461,7 @@ int
 idna_to_ascii_4z (const uint32_t * input, char **output, int flags)
 {
   const uint32_t *start = input;
-  const uint32_t *end = input;
+  const uint32_t *end;
   char buf[64];
   char *out = NULL;
   int rc;
@@ -624,12 +624,11 @@ int
 idna_to_unicode_4z4z (const uint32_t * input, uint32_t ** output, int flags)
 {
   const uint32_t *start = input;
-  const uint32_t *end = input;
+  const uint32_t *end;
   uint32_t *buf;
   size_t buflen;
   uint32_t *out = NULL;
   size_t outlen = 0;
-  int rc;
 
   *output = NULL;
 
@@ -645,9 +644,9 @@ idna_to_unicode_4z4z (const uint32_t * input, uint32_t ** output, int flags)
       if (!buf)
 	return IDNA_MALLOC_ERROR;
 
-      rc = idna_to_unicode_44i (start, (size_t) (end - start),
-				buf, &buflen, flags);
-      /* don't check rc as per specification! */
+      /* don't check return code as per specification! */
+      idna_to_unicode_44i (start, (size_t) (end - start),
+			   buf, &buflen, flags);
 
       if (out)
 	{

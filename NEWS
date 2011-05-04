@@ -10,6 +10,9 @@ Reported by Volker Grabsch <vog@notjusthosting.com>.
 ** libidn: Fix memory leak in idna_to_ascii_4z when idna_to_ascii_4i fails.
 Reported by and tiny patch from Olga Limburg <olimburg@gmail.com>.
 
+** libidn: Ran clang-analyze on the code.
+Fixed some dead assignments/initializations.
+
 ** build: Really distribute win32/libidn4win.mk.
 
 ** API and ABI is backwards compatible with the previous version.

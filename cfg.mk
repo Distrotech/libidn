@@ -69,6 +69,20 @@ coverage-web-upload:
 	cd $(htmldir) && \
 		cvs commit -m "Update." coverage
 
+# Clang analyzis.
+clang:
+	make clean
+	scan-build ./configure
+	rm -rf scan.tmp
+	scan-build -o scan.tmp make
+clang-web:
+	rm -fv `find $(htmldir)/clang-analyzer -type f | grep -v CVS`
+	cp -rv scan.tmp/*/* $(htmldir)/clang-analyzer/
+clang-web-upload:
+	cd $(htmldir) && \
+		cvs add clang-analyzer/*.html || true && \
+		cvs commit -m "Update." clang-analyzer
+
 # Release
 
 ChangeLog:
