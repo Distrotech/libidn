@@ -92,7 +92,7 @@ ChangeLog:
 tag = $(PACKAGE)-`echo $(VERSION) | sed 's/\./-/g'`
 htmldir = ../www-$(PACKAGE)
 
-release: prepare upload web upload-web
+release: syntax-check update-po prepare upload web upload-web
 
 prepare:
 	! git tag -l $(tag) | grep $(PACKAGE) > /dev/null
