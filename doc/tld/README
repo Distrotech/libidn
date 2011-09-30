@@ -14,7 +14,7 @@ install a file you only need to remove lib/tlds.c and type 'make' and
 it will be incorporated in the library.
 
 Experimental tables for various TLDs can be found at
-<http://tldchk.berlios.de>.
+<https://github.com/gnuthor/tldchk>.
 
 The format for the files are as follows.  Empty lines or those
 starting with '#' are ignored.  It is highly recommended to discuss

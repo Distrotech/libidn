@@ -1244,7 +1244,7 @@ step provided by the IETF standards.
 The TLD functionality rely on up-to-date tables.  The latest version
 of Libidn aim to provide these, but tables with unclear copying
 conditions, or generally experimental tables, are not included.  Some
-such tables can be found at @url{http://tldchk.berlios.de}.
+such tables can be found at @url{https://github.com/gnuthor/tldchk}.
 
 @section Header file @code{tld.h}
 
