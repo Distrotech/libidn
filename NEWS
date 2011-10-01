@@ -4,6 +4,9 @@ See the end for copying conditions.
 
 * Version 1.23 (unreleased) [?]
 
+** doc: Update link to experimental TLD tables.
+The new link is <https://github.com/gnuthor/tldchk>.
+
 ** Update translations.
 
 ** API and ABI is backwards compatible with the previous version.
