@@ -4,6 +4,9 @@ See the end for copying conditions.
 
 * Version 1.23 (unreleased) [?]
 
+** idn-free.h: Protect prototypes with 'extern "C"' marker.
+Reported by Bittner Ede <bittner.ede@euronetrt.hu>.
+
 ** doc: Update link to experimental TLD tables.
 The new link is <https://github.com/gnuthor/tldchk>.
 

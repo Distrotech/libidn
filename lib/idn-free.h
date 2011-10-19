@@ -36,6 +36,11 @@
 #  endif
 # endif
 
+# ifdef __cplusplus
+extern "C"
+{
+# endif
+
 /* I don't recommend using this interface in general.  Use `free'.
  *
  * I'm told Microsoft Windows may use one set of `malloc' and `free'
@@ -55,5 +60,9 @@
  */
 
 extern void IDNAPI idn_free (void *ptr);
+
+# ifdef __cplusplus
+}
+# endif
 
 #endif /* IDN_FREE_H */
