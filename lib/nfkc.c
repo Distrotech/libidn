@@ -980,8 +980,7 @@ stringprep_utf8_to_ucs4 (const char *str, ssize_t len, size_t * items_written)
  *
  * Return value: a pointer to a newly allocated UTF-8 string.
  *               This value must be deallocated by the caller.
- *               If an error occurs, %NULL will be returned and @error
- *               set.
+ *               If an error occurs, %NULL will be returned.
  **/
 char *
 stringprep_ucs4_to_utf8 (const uint32_t * str, ssize_t len,
