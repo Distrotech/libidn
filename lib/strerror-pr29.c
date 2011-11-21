@@ -41,7 +41,7 @@
  *   non-zero values, for logical comparison purposes.
  * PR29_PROBLEM: A problem sequence was encountered.
  * PR29_STRINGPREP_ERROR: The character set conversion failed (only
- *   for pr29_8() and pr29_8z()).
+ *   for pr29_8z()).
  *
  * Return value: Returns a pointer to a statically allocated string
  *   containing a description of the error with the return code @rc.

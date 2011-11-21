@@ -18,11 +18,11 @@ DOC_MODULE=$(PACKAGE)
 # The top-level SGML file. You can change this if you want to.
 DOC_MAIN_SGML_FILE=$(DOC_MODULE)-docs.sgml
 
-# Directories containing the source code, relative to $(srcdir).
+# Directories containing the source code.
 # gtk-doc will search all .c and .h files beneath these paths
 # for inline comments documenting functions and macros.
-# e.g. DOC_SOURCE_DIR=../../../gtk ../../../gdk
-DOC_SOURCE_DIR=../../lib
+# e.g. DOC_SOURCE_DIR=$(top_srcdir)/gtk $(top_srcdir)/gdk
+DOC_SOURCE_DIR=$(top_srcdir)/lib
 
 # Extra options to pass to gtkdoc-scangobj. Not normally needed.
 SCANGOBJ_OPTIONS=
@@ -32,8 +32,8 @@ SCANGOBJ_OPTIONS=
 SCAN_OPTIONS=--ignore-decorators=IDNAPI
 
 # Extra options to supply to gtkdoc-mkdb.
-# e.g. MKDB_OPTIONS=--sgml-mode --output-format=xml
-MKDB_OPTIONS=--sgml-mode --output-format=xml
+# e.g. MKDB_OPTIONS=--xml-mode --output-format=xml
+MKDB_OPTIONS=--xml-mode --output-format=xml
 
 # Extra options to supply to gtkdoc-mktmpl
 # e.g. MKTMPL_OPTIONS=--only-section-tmpl
@@ -56,9 +56,9 @@ CFILE_GLOB=$(top_srcdir)/lib/*.c
 # e.g. EXTRA_HFILES=$(top_srcdir}/contrib/extra.h
 EXTRA_HFILES=
 
-# Header files to ignore when scanning. Use base file name, no paths
-# e.g. IGNORE_HFILES=gtkdebug.h gtkintl.h
-IGNORE_HFILES=gunibreak.h gunicomp.h gunidecomp.h idn-int.h gl
+# Header files or dirs to ignore when scanning. Use base file/dir names
+# e.g. IGNORE_HFILES=gtkdebug.h gtkintl.h private_code
+IGNORE_HFILES=gunibreak.h gunicomp.h gunidecomp.h idn-int.h gl gltests
 
 # Images to copy into HTML directory.
 # e.g. HTML_IMAGES=$(top_srcdir)/gtk/stock-icons/stock_about_24.png
@@ -93,8 +93,13 @@ EXTRA_DIST +=
 # for --rebuild-sections in $(SCAN_OPTIONS) e.g. $(DOC_MODULE)-sections.txt
 #DISTCLEANFILES +=
 
-# Comment this out if you want your docs-status tested during 'make check'
+# Comment this out if you want 'make check' to test you doc status
+# and run some sanity checks
 if ENABLE_GTK_DOC
-#TESTS_ENVIRONMENT = cd $(srcsrc) &&
+TESTS_ENVIRONMENT = cd $(srcdir) && \
+  DOC_MODULE=$(DOC_MODULE) DOC_MAIN_SGML_FILE=$(DOC_MAIN_SGML_FILE) \
+  SRCDIR=$(abs_srcdir) BUILDDIR=$(abs_builddir)
 #TESTS = $(GTKDOC_CHECK)
 endif
+
+-include $(top_srcdir)/git.mk

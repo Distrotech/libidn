@@ -158,14 +158,13 @@ fi
 
 AC_CONFIG_FILES([
   Makefile
-  libidn.pc
-  pom.xml
-  csharp/Makefile
   contrib/doxygen/Doxyfile
+  csharp/Makefile
   doc/Makefile
   doc/cyclo/Makefile
   doc/java/Makefile
   doc/reference/Makefile
+  doc/reference/version.xml
   doc/specifications/Makefile
   doc/tld/Makefile
   examples/Makefile
@@ -179,7 +178,9 @@ AC_CONFIG_FILES([
   lib/Makefile
   lib/gl/Makefile
   lib/gltests/Makefile
+  libidn.pc
   po/Makefile.in
+  pom.xml
   src/Makefile
   tests/Makefile
 ])

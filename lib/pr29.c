@@ -1326,7 +1326,7 @@ pr29_8z (const char *in)
  *   non-zero values, for logical comparison purposes.
  * @PR29_PROBLEM: A problem sequence was encountered.
  * @PR29_STRINGPREP_ERROR: The character set conversion failed (only
- *   for pr29_8() and pr29_8z()).
+ *   for pr29_8z()).
  *
  * Enumerated return codes for pr29_4(), pr29_4z(), pr29_8z().  The
  * value 0 is guaranteed to always correspond to success.
