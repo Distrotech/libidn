@@ -164,13 +164,19 @@ tarball:
 	rm -f ChangeLog
 	$(MAKE) ChangeLog distcheck
 
+binaries:
+	cd win32 && make -f libidn4win.mk libidn4win VERSION=$(VERSION)
+
+binaries-upload:
+	cd win32 && make -f libidn4win.mk upload VERSION=$(VERSION)
+
 source:
 	git commit -m Generated. ChangeLog
 	git tag -u b565716f! -m $(VERSION) $(tag)
 
-release-check: syntax-check update-po tarball gendoc-copy gtkdoc-copy coverage coverage-copy clang clang-copy cyclo-copy doxygen-copy
+release-check: syntax-check update-po tarball binaries gendoc-copy gtkdoc-copy coverage-my coverage-copy clang clang-copy cyclo-copy javadoc-copy doxygen-copy
 
-release-upload-www: gendoc-upload gtkdoc-upload coverage-upload clang-upload cyclo-copy doxygen-upload
+release-upload-www: gendoc-upload gtkdoc-upload coverage-upload clang-upload cyclo-copy javadoc-copy doxygen-upload
 
 release-upload-ftp:
 	git push
@@ -178,4 +184,4 @@ release-upload-ftp:
 	build-aux/gnupload --to ftp.gnu.org:$(PACKAGE) $(distdir).tar.gz
 	cp $(distdir).tar.gz $(distdir).tar.gz.sig ../releases/$(PACKAGE)/
 
-release: release-check release-upload-www source release-upload-ftp libtasn14win-upload
+release: release-check release-upload-www source release-upload-ftp binaries-upload
