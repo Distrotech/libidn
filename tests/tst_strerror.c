@@ -127,7 +127,7 @@ doit (void)
 	    break;
 	  }
 	if (debug)
-	  printf ("idna %d: %s\n", i, p);
+	  printf ("idna %ld: %s\n", i, p);
 	last_p = p;
       }
   }
@@ -142,7 +142,7 @@ doit (void)
 	if (p == last_p)
 	  break;
 	if (debug)
-	  printf ("pr29 %d: %s\n", i, p);
+	  printf ("pr29 %ld: %s\n", i, p);
 	last_p = p;
       }
   }
@@ -157,7 +157,7 @@ doit (void)
 	if (p == last_p)
 	  break;
 	if (debug)
-	  printf ("punycode %d: %s\n", i, p);
+	  printf ("punycode %ld: %s\n", i, p);
 	last_p = p;
       }
   }
@@ -184,7 +184,7 @@ doit (void)
 	    break;
 	  }
 	if (debug)
-	  printf ("stringprep %d: %s\n", i, p);
+	  printf ("stringprep %ld: %s\n", i, p);
 	last_p = p;
       }
   }
@@ -199,7 +199,7 @@ doit (void)
 	if (p == last_p)
 	  break;
 	if (debug)
-	  printf ("tld %d: %s\n", i, p);
+	  printf ("tld %ld: %s\n", i, p);
 	last_p = p;
       }
   }

@@ -92,7 +92,7 @@ doit (void)
   for (i = 0; i < sizeof (tv) / sizeof (tv[0]); i++)
     {
       if (debug)
-	printf ("PR29 entry %d: %s\n", i, tv[i].name);
+	printf ("PR29 entry %ld: %s\n", i, tv[i].name);
 
       if (debug)
 	{
@@ -103,7 +103,7 @@ doit (void)
       rc = pr29_4 (tv[i].in, tv[i].inlen);
       if (rc != tv[i].rc)
 	{
-	  fail ("PR29 entry %d failed (expected %d): %d\n", i, tv[i].rc, rc);
+	  fail ("PR29 entry %ld failed (expected %d): %d\n", i, tv[i].rc, rc);
 	  if (debug)
 	    printf ("FATAL\n");
 	  continue;
@@ -112,7 +112,7 @@ doit (void)
       rc = pr29_4z (tv[i].in);
       if (rc != tv[i].rc)
 	{
-	  fail ("PR29 entry %d failed (expected %d): %d\n", i, tv[i].rc, rc);
+	  fail ("PR29 entry %ld failed (expected %d): %d\n", i, tv[i].rc, rc);
 	  if (debug)
 	    printf ("FATAL\n");
 	  continue;
@@ -125,7 +125,7 @@ doit (void)
 	p = stringprep_ucs4_to_utf8 (tv[i].in, (ssize_t) tv[i].inlen,
 				     &items_read, &items_written);
 	if (p == NULL)
-	  fail ("FAIL: stringprep_ucs4_to_utf8(tv[%d]) == NULL\n", i);
+	  fail ("FAIL: stringprep_ucs4_to_utf8(tv[%ld]) == NULL\n", i);
 	if (debug)
 	  hexprint (p, strlen (p));
 
@@ -133,7 +133,8 @@ doit (void)
 	free (p);
 	if (rc != tv[i].rc)
 	  {
-	    fail ("PR29 entry %d failed (expected %d): %d\n", i, tv[i].rc, rc);
+	    fail ("PR29 entry %ld failed (expected %d): %d\n",
+		  i, tv[i].rc, rc);
 	    if (debug)
 	      printf ("FATAL\n");
 	    continue;

@@ -52,7 +52,7 @@ main (void)
   fflush (stdout);
   fgets (buf, BUFSIZ, stdin);
 
-  printf ("Before locale2utf8 (length %d): ", strlen (buf));
+  printf ("Before locale2utf8 (length %ld): ", strlen (buf));
   for (i = 0; i < strlen (buf); i++)
     printf ("%02x ", buf[i] & 0xFF);
   printf ("\n");
@@ -66,7 +66,7 @@ main (void)
   else
     printf ("Could not convert string to UTF-8, continuing anyway...\n");
 
-  printf ("Before stringprep (length %d): ", strlen (buf));
+  printf ("Before stringprep (length %ld): ", strlen (buf));
   for (i = 0; i < strlen (buf); i++)
     printf ("%02x ", buf[i] & 0xFF);
   printf ("\n");
@@ -76,7 +76,7 @@ main (void)
     printf ("Stringprep failed (%d): %s\n", rc, stringprep_strerror (rc));
   else
     {
-      printf ("After stringprep (length %d): ", strlen (buf));
+      printf ("After stringprep (length %ld): ", strlen (buf));
       for (i = 0; i < strlen (buf); i++)
 	printf ("%02x ", buf[i] & 0xFF);
       printf ("\n");

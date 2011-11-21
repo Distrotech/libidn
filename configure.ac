@@ -150,8 +150,6 @@ if test "$gl_gcc_warnings" = yes; then
     gl_WARN_ADD([$w])
   done
 
-  gl_WARN_ADD([-Wno-format])
-  gl_WARN_ADD([-Wno-missing-field-initializers])
   gl_WARN_ADD([-fdiagnostics-show-option])
 fi
 

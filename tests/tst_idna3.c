@@ -65,7 +65,7 @@ doit (void)
     {
       rc = idna_to_unicode_8z8z (idna[i].in, &out, 0);
       if (rc != IDNA_SUCCESS)
-	fail ("IDNA3[%d] failed %d\n", i, rc);
+	fail ("IDNA3[%ld] failed %d\n", i, rc);
 
       if (debug && rc == IDNA_SUCCESS)
 	{
@@ -75,9 +75,9 @@ doit (void)
 	}
 
       if (strcmp (out, idna[i].out) != 0)
-	fail ("IDNA3[%d] failed\n", i);
+	fail ("IDNA3[%ld] failed\n", i);
       else if (debug)
-	printf ("IDNA3[%d] success\n", i);
+	printf ("IDNA3[%ld] success\n", i);
 
       if (out)
 	idn_free (out);
