@@ -1,7 +1,6 @@
 dnl Process this file with autoconf to produce a configure script.
 
-dnl Copyright (C) 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010,
-dnl 2011 Simon Josefsson
+dnl Copyright (C) 2002-2011 Simon Josefsson
 dnl
 dnl This file is part of GNU Libidn.
 dnl
@@ -21,6 +20,11 @@ dnl along with this program.  If not, see <http://www.gnu.org/licenses/>.
 AC_PREREQ(2.61)
 AC_INIT([GNU Libidn], [1.23], [bug-libidn@gnu.org])
 AC_COPYRIGHT([Copyright (c) 2002-2011 Simon Josefsson <simon@josefsson.org>.])
+AC_CONFIG_AUX_DIR([build-aux])
+AC_CONFIG_MACRO_DIR([m4])
+AC_CONFIG_HEADERS(config.h)
+AM_INIT_AUTOMAKE([1.10 -Wall -Werror -Wno-override])
+AM_SILENT_RULES([yes])
 
 # Library code modified:                              REVISION++
 # Interfaces changed/added/removed:   CURRENT++       REVISION=0
@@ -30,18 +34,13 @@ AC_SUBST(LT_CURRENT, 17)
 AC_SUBST(LT_REVISION, 6)
 AC_SUBST(LT_AGE, 6)
 
-# For DEF file.
-DLL_VERSION=`expr ${LT_CURRENT} - ${LT_AGE}`
-AC_SUBST(DLL_VERSION)
-
-AC_CONFIG_AUX_DIR([build-aux])
-AC_CONFIG_MACRO_DIR([m4])
-AM_INIT_AUTOMAKE([1.10 -Wall -Werror -Wno-override])
-AC_CONFIG_HEADERS(config.h)
-
 AC_PROG_CC
 gl_EARLY
 lgl_EARLY
+
+# For DEF file.
+DLL_VERSION=`expr ${LT_CURRENT} - ${LT_AGE}`
+AC_SUBST(DLL_VERSION)
 
 # We can't replace this with LT_INIT([win32-dll]) yet.  For example,
 # the Ubuntu 8.04 LTS is still shipping a libtool version that doesn't
