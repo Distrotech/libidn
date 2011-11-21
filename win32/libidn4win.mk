@@ -34,17 +34,17 @@ libidn4win64:
 	$(MAKE) -f libidn4win.mk doit ARCH=64 HOST=x86_64-w64-mingw32
 
 doit:
-	rm -rf tmp && mkdir tmp && cd tmp && \
+	rm -rf tmp$(ARCH) && mkdir tmp$(ARCH) && cd tmp$(ARCH) && \
 	cp ../../libiconv-1.13.1.tar.gz . || wget ftp://ftp.gnu.org/gnu/libiconv/libiconv-1.13.1.tar.gz && \
 	tar xfa libiconv-1.13.1.tar.gz && \
 	cd libiconv-1.13.1 && \
-	./configure --host=$(HOST) --build=x86_64-unknown-linux-gnu --prefix=$(PWD)/tmp/root && \
+	./configure --host=$(HOST) --build=x86_64-unknown-linux-gnu --prefix=$(PWD)/tmp$(ARCH)/root && \
 	make install && \
 	cd .. && \
 	cp ../../$(TGZ) . || wget $(URL) && \
 	tar xfa $(TGZ) && \
 	cd $(distdir) && \
-	./configure --host=$(HOST) --build=x86_64-unknown-linux-gnu --prefix=$(PWD)/tmp/root CPPFLAGS=-I$(PWD)/tmp/root/include && \
+	./configure --host=$(HOST) --build=x86_64-unknown-linux-gnu --prefix=$(PWD)/tmp$(ARCH)/root CPPFLAGS=-I$(PWD)/tmp$(ARCH)/root/include && \
 	make $(CHECK) install && \
 	cd .. && \
 	cd root && \
