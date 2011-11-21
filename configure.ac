@@ -143,6 +143,8 @@ if test "$gl_gcc_warnings" = yes; then
   nw="$nw -Wmissing-noreturn"       # Too many warnings for now
   nw="$nw -Wunreachable-code"       # Too many false positives
   nw="$nw -Wlogical-op"             # Too many false positives
+  nw="$nw -Wsuggest-attribute=pure" # Is it worth using attributes?
+  nw="$nw -Wsuggest-attribute=const" # Is it worth using attributes?
 
   gl_MANYWARN_ALL_GCC([ws])
   gl_MANYWARN_COMPLEMENT(ws, [$ws], [$nw])
