@@ -1,5 +1,5 @@
 ## Process this file with automake to produce Makefile.in
-# Copyright (C) 2008, 2009, 2010, 2011 Simon Josefsson.
+# Copyright (C) 2008-2011 Simon Josefsson.
 #
 # This file is part of GNU Libidn.
 #
@@ -18,13 +18,16 @@
 
 EXTRA_DIST = cyclo-$(PACKAGE).html
 
+vcurl = "http://git.savannah.gnu.org/gitweb/?p=$(PACKAGE).git;a=blob;f=lib/%FILENAME%;hb=HEAD"
+
 cyclo-$(PACKAGE).html:
-	$(PMCCABE) ${top_srcdir}/lib/*.[ch] \
+	(cd ${top_srcdir}/lib && \
+		$(PMCCABE) *.[ch] \
 		| sort -nr \
-		| $(AWK) -f ${top_srcdir}/build-aux/pmccabe2html \
-			-v lang=html -v name="$(PACKAGE_NAME)" \
-			-v vcurl="http://git.savannah.gnu.org/gitweb/?p=$(PACKAGE).git;a=blob;f=%FILENAME%;hb=HEAD" \
+		| LANG=C $(AWK) -f ${abs_top_srcdir}/build-aux/pmccabe2html \
+			-v lang=html -v name="$(PACKAGE_STRING)" \
+			-v vcurl=$(vcurl) \
 			-v url="http://www.gnu.org/software/$(PACKAGE)/" \
-                       -v css=${top_srcdir}/build-aux/pmccabe.css \
-			> $@-tmp
-	mv $@-tmp $@
+			-v css=${abs_top_srcdir}/build-aux/pmccabe.css) \
+			> tmp
+	mv tmp $@
