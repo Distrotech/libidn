@@ -1,4 +1,4 @@
-# Copyright (C) 2006, 2007, 2008, 2009, 2010, 2011 Simon Josefsson
+# Copyright (C) 2006-2011 Simon Josefsson
 #
 # This file is part of GNU Libidn.
 #
@@ -59,71 +59,123 @@ update-po: refresh-po
 bootstrap: autoreconf
 	./configure $(CFGFLAGS)
 
-# Coverage
+review-diff:
+	git diff `git describe --abbrev=0`.. \
+	| grep -v -e ^index -e '^diff --git' \
+	| filterdiff -p 1 -x 'build-aux/*' -x 'gl/*' -x 'gltests/*' -x 'lib/gl/*' -x 'lib/gltests/*' -x 'po/*' -x 'maint.mk' -x '.gitignore' -x '.x-sc*' -x ChangeLog -x GNUmakefile \
+	| less
 
-coverage-web:
+# Release
+
+htmldir = ../www-$(PACKAGE)
+
+coverage-my:
+	ln -s . lib/gl/unistr/unistr
+	ln -s . lib/gltests/glthread/glthread
+	ln -s . lib/gltests/unistr/unistr
+	$(MAKE) coverage WERROR_CFLAGS=
+
+coverage-copy:
 	rm -fv `find $(htmldir)/coverage -type f | grep -v CVS`
 	cp -rv $(COVERAGE_OUT)/* $(htmldir)/coverage/
 
-coverage-web-upload:
-	cd $(htmldir) && \
-		cvs commit -m "Update." coverage
+coverage-upload:
+	cd $(htmldir) && cvs commit -m "Update." coverage
 
-# Clang analyzis.
 clang:
 	make clean
 	scan-build ./configure
 	rm -rf scan.tmp
 	scan-build -o scan.tmp make
-clang-web:
+
+clang-copy:
 	rm -fv `find $(htmldir)/clang-analyzer -type f | grep -v CVS`
+	mkdir -p $(htmldir)/clang-analyzer/
 	cp -rv scan.tmp/*/* $(htmldir)/clang-analyzer/
-clang-web-upload:
+
+clang-upload:
 	cd $(htmldir) && \
-		cvs add clang-analyzer/*.html || true && \
+		cvs add clang-analyzer || true && \
+		cvs add clang-analyzer/*.css clang-analyzer/*.js \
+			clang-analyzer/*.html || true && \
 		cvs commit -m "Update." clang-analyzer
 
-# Release
+cyclo-copy:
+	cp -v doc/cyclo/cyclo-$(PACKAGE).html $(htmldir)/cyclo/index.html
+
+cyclo-upload:
+	cd $(htmldir) && cvs commit -m "Update." cyclo/index.html
+
+gendoc-copy:
+	cd doc && env MAKEINFO="makeinfo -I ../examples" \
+		      TEXI2DVI="texi2dvi -I ../examples" \
+		$(SHELL) ../build-aux/gendocs.sh \
+		--html "--css-include=texinfo.css" \
+		-o ../$(htmldir)/manual/ $(PACKAGE) "$(PACKAGE_NAME)"
+
+gendoc-upload:
+	cd $(htmldir) && \
+		cvs add manual || true && \
+		cvs add manual/html_node || true && \
+		cvs add -kb manual/*.gz manual/*.pdf || true && \
+		cvs add manual/*.txt manual/*.html \
+			manual/html_node/*.html || true && \
+		cvs commit -m "Update." manual/
+
+gtkdoc-copy:
+	mkdir -p $(htmldir)/reference/
+	cp -v doc/reference/$(PACKAGE).pdf \
+		doc/reference/html/*.html \
+		doc/reference/html/*.png \
+		doc/reference/html/*.devhelp \
+		doc/reference/html/*.css \
+		$(htmldir)/reference/
+
+gtkdoc-upload:
+	cd $(htmldir) && \
+		cvs add reference || true && \
+		cvs add -kb reference/*.png reference/*.pdf || true && \
+		cvs add reference/*.html reference/*.css \
+			reference/*.devhelp || true && \
+		cvs commit -m "Update." reference/
+
+javadoc-copy:
+	cp -rv doc/java/* $(htmldir)/javadoc/
+
+javadoc-upload:
+	cd $(htmldir) && \
+		cvs commit -m "Update." javadoc/
+
+doxygen-copy:
+	cd contrib/doxygen && doxygen && cd ../.. && cp -v contrib/doxygen/html/* $(htmldir)/doxygen/ && cd contrib/doxygen/latex && make refman.pdf && cd ../../../ && cp contrib/doxygen/latex/refman.pdf $(htmldir)/doxygen/$(PACKAGE).pdf
+
+doxygen-upload:
+	cd $(htmldir) && \
+		cvs commit -m "Update." doxygen/
 
 ChangeLog:
 	git2cl > ChangeLog
 	cat .clcopying >> ChangeLog
 
 tag = $(PACKAGE)-`echo $(VERSION) | sed 's/\./-/g'`
-htmldir = ../www-$(PACKAGE)
 
-release: syntax-check update-po prepare upload web upload-web
-
-prepare:
+tarball:
 	! git tag -l $(tag) | grep $(PACKAGE) > /dev/null
 	rm -f ChangeLog
 	$(MAKE) ChangeLog distcheck
+
+source:
 	git commit -m Generated. ChangeLog
 	git tag -u b565716f! -m $(VERSION) $(tag)
 
-upload:
+release-check: syntax-check update-po tarball gendoc-copy gtkdoc-copy coverage coverage-copy clang clang-copy cyclo-copy doxygen-copy
+
+release-upload-www: gendoc-upload gtkdoc-upload coverage-upload clang-upload cyclo-copy doxygen-upload
+
+release-upload-ftp:
 	git push
 	git push --tags
 	build-aux/gnupload --to ftp.gnu.org:$(PACKAGE) $(distdir).tar.gz
 	cp $(distdir).tar.gz $(distdir).tar.gz.sig ../releases/$(PACKAGE)/
 
-web:
-	cd doc && env MAKEINFO="makeinfo -I ../examples" \
-		      TEXI2DVI="texi2dvi -I ../examples" \
-		../build-aux/gendocs.sh --html "--css-include=texinfo.css" \
-		-o ../$(htmldir)/manual/ $(PACKAGE) "$(PACKAGE_NAME)"
-	cd contrib/doxygen && doxygen && cd ../.. && cp -v contrib/doxygen/html/* $(htmldir)/doxygen/ && cd contrib/doxygen/latex && make refman.pdf && cd ../../../ && cp contrib/doxygen/latex/refman.pdf $(htmldir)/doxygen/$(PACKAGE).pdf
-	cp -v doc/reference/$(PACKAGE).pdf doc/reference/html/*.html doc/reference/html/*.png doc/reference/html/*.devhelp doc/reference/html/*.css $(htmldir)/reference/
-	cp -rv doc/java/* $(htmldir)/javadoc/
-	cp -v doc/cyclo/cyclo-$(PACKAGE).html $(htmldir)/cyclo/
-
-upload-web:
-	cd $(htmldir) && \
-		cvs commit -m "Update." \
-			manual/ javadoc/ reference/ doxygen/ cyclo/
-
-review-diff:
-	git diff `git describe --abbrev=0`.. \
-	| grep -v -e ^index -e '^diff --git' \
-	| filterdiff -p 1 -x 'build-aux/*' -x 'gl/*' -x 'gltests/*' -x 'lib/gl/*' -x 'lib/gltests/*' -x 'po/*' -x 'maint.mk' -x '.gitignore' -x '.x-sc*' -x ChangeLog -x GNUmakefile \
-	| less
+release: release-check release-upload-www source release-upload-ftp libtasn14win-upload
