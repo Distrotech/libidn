@@ -10,7 +10,9 @@ Reported by Bittner Ede <bittner.ede@euronetrt.hu>.
 ** doc: Update link to experimental TLD tables.
 The new link is <https://github.com/gnuthor/tldchk>.
 
-** Update translations.
+** Update gnulib files and translations.
+
+** QA: Improved cyclo output.  Update GTK-DOC files.  Various bugfixes.
 
 ** API and ABI is backwards compatible with the previous version.
 
