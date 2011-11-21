@@ -39,6 +39,8 @@ AC_CONFIG_MACRO_DIR([m4])
 AM_INIT_AUTOMAKE([1.10 -Wall -Werror -Wno-override])
 AC_CONFIG_HEADERS(config.h)
 
+AC_PROG_CC
+gl_EARLY
 lgl_EARLY
 
 # We can't replace this with LT_INIT([win32-dll]) yet.  For example,
@@ -48,8 +50,6 @@ AC_LIBTOOL_WIN32_DLL
 AC_PROG_LIBTOOL
 
 # Checks for programs.
-AC_PROG_CC
-gl_EARLY
 AM_MISSING_PROG(PERL, perl, $missing_dir)
 AM_MISSING_PROG(HELP2MAN, help2man, $missing_dir)
 AM_GNU_GETTEXT(external)

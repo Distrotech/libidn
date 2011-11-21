@@ -34,7 +34,7 @@
 #else
 /* Normal invocation convention.  */
 
-#ifndef _GL_SYS_STAT_H
+#ifndef _@GUARD_PREFIX@_SYS_STAT_H
 
 /* Get nlink_t.  */
 #include <sys/types.h>
@@ -45,8 +45,8 @@
 /* The include_next requires a split double-inclusion guard.  */
 #@INCLUDE_NEXT@ @NEXT_SYS_STAT_H@
 
-#ifndef _GL_SYS_STAT_H
-#define _GL_SYS_STAT_H
+#ifndef _@GUARD_PREFIX@_SYS_STAT_H
+#define _@GUARD_PREFIX@_SYS_STAT_H
 
 /* The definitions of _GL_FUNCDECL_RPL etc. are copied here.  */
 
@@ -55,10 +55,17 @@
 /* The definition of _GL_WARN_ON_USE is copied here.  */
 
 /* Before doing "#define mkdir rpl_mkdir" below, we need to include all
-   headers that may declare mkdir().  */
+   headers that may declare mkdir().  Native Windows platforms declare mkdir
+   in <io.h> and/or <direct.h>, not in <unistd.h>.  */
 #if (defined _WIN32 || defined __WIN32__) && ! defined __CYGWIN__
 # include <io.h>     /* mingw32, mingw64 */
-# include <direct.h> /* mingw64 */
+# include <direct.h> /* mingw64, MSVC 9 */
+#endif
+
+#ifndef S_IFIFO
+# ifdef _S_IFIFO
+#  define S_IFIFO _S_IFIFO
+# endif
 #endif
 
 #ifndef S_IFMT
@@ -312,16 +319,25 @@ _GL_WARN_ON_USE (fchmodat, "fchmodat is not portable - "
 #endif
 
 
-#if @REPLACE_FSTAT@
-# if !(defined __cplusplus && defined GNULIB_NAMESPACE)
-#  define fstat rpl_fstat
-# endif
+#if @GNULIB_FSTAT@
+# if @REPLACE_FSTAT@
+#  if !(defined __cplusplus && defined GNULIB_NAMESPACE)
+#   undef fstat
+#   define fstat rpl_fstat
+#  endif
 _GL_FUNCDECL_RPL (fstat, int, (int fd, struct stat *buf) _GL_ARG_NONNULL ((2)));
 _GL_CXXALIAS_RPL (fstat, int, (int fd, struct stat *buf));
-#else
+# else
 _GL_CXXALIAS_SYS (fstat, int, (int fd, struct stat *buf));
-#endif
+# endif
 _GL_CXXALIASWARN (fstat);
+#elif defined GNULIB_POSIXCHECK
+# undef fstat
+# if HAVE_RAW_DECL_FSTAT
+_GL_WARN_ON_USE (fstat, "fstat has portability problems - "
+                 "use gnulib module fstat for portability");
+# endif
+#endif
 
 
 #if @GNULIB_FSTATAT@
@@ -653,6 +669,6 @@ _GL_WARN_ON_USE (utimensat, "utimensat is not portable - "
 #endif
 
 
-#endif /* _GL_SYS_STAT_H */
-#endif /* _GL_SYS_STAT_H */
+#endif /* _@GUARD_PREFIX@_SYS_STAT_H */
+#endif /* _@GUARD_PREFIX@_SYS_STAT_H */
 #endif

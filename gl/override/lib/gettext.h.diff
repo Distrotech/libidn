@@ -1,6 +1,6 @@
---- gl/gettext.h.orig	2009-12-16 00:49:54.000000000 +0100
-+++ gl/gettext.h	2009-12-16 00:51:20.000000000 +0100
-@@ -101,179 +101,4 @@
+--- gl/gettext.h.orig	2011-11-21 08:50:51.209333824 +0100
++++ gl/gettext.h	2011-11-21 08:51:15.829676476 +0100
+@@ -108,179 +108,4 @@
     initializer for static 'char[]' or 'const char[]' variables.  */
  #define gettext_noop(String) String
  
@@ -81,7 +81,7 @@
 -#include <string.h>
 -
 -#define _LIBGETTEXT_HAVE_VARIABLE_SIZE_ARRAYS \
--  (((__GNUC__ >= 3 || __GNUG__ >= 2) && !__STRICT_ANSI__) \
+-  (((__GNUC__ >= 3 || __GNUG__ >= 2) && !defined __STRICT_ANSI__) \
 -   /* || __STDC_VERSION__ >= 199901L */ )
 -
 -#if !_LIBGETTEXT_HAVE_VARIABLE_SIZE_ARRAYS
