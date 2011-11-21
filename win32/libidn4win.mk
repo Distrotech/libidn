@@ -28,7 +28,7 @@ all:
 libidn4win: libidn4win32 libidn4win64
 
 libidn4win32:
-	$(MAKE) -f libidn4win.mk doit ARCH=32 HOST=i686-w64-mingw32
+	$(MAKE) -f libidn4win.mk doit ARCH=32 HOST=i686-w64-mingw32 CHECK=check
 
 libidn4win64:
 	$(MAKE) -f libidn4win.mk doit ARCH=64 HOST=x86_64-w64-mingw32
@@ -45,7 +45,8 @@ doit:
 	tar xfa $(TGZ) && \
 	cd $(distdir) && \
 	./configure --host=$(HOST) --build=x86_64-unknown-linux-gnu --prefix=$(PWD)/tmp$(ARCH)/root CPPFLAGS=-I$(PWD)/tmp$(ARCH)/root/include && \
-	make $(CHECK) install && \
+	make install && \
+	make -C tests $(CHECK) && \
 	cd .. && \
 	cd root && \
 	zip -r ../../$(distdir)-win$(ARCH).zip *
