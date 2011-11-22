@@ -18,6 +18,7 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 # 02110-1301, USA.
 
+CSHARPEXEC = $(SHELL) $(top_builddir)/csharpexec.sh
 CSHARPCOMP = $(SHELL) $(top_builddir)/csharpcomp.sh
 CSHARPCOMPFLAGS =
 
@@ -73,7 +74,7 @@ GenerateTables.exe: $(SOURCES_GENERATE)
 
 RFC3454.cs CombiningClass.cs DecompositionKeys.cs DecompositionMappings.cs Composition.cs: $(GEN_SOURCES)
 	make GenerateTables.exe
-	./GenerateTables.exe
+	$(CSHARPEXEC) ./GenerateTables.exe
 
 install-dll-dir:
 	$(mkinstalldirs) $(DESTDIR)$(libdir)

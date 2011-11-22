@@ -105,14 +105,17 @@ AC_MSG_CHECKING([if implementation in Java should be built])
 AC_MSG_RESULT($enable_java)
 
 # Check for C#
-AM_CONDITIONAL(CSHARP, test -n "$HAVE_CSHARPCOMP")
-AC_MSG_CHECKING([[if implementation in C# should be built]])
 if test -n "$HAVE_CSHARPCOMP"; then
+  gt_CSHARPEXEC
+fi
+AC_MSG_CHECKING([[if implementation in C# should be built]])
+if test -n "$HAVE_CSHARPCOMP" && test -n "$HAVE_CSHARPEXEC"; then
   enable_csharp=yes
 else
   enable_csharp=no
 fi
 AC_MSG_RESULT($enable_csharp)
+AM_CONDITIONAL(CSHARP, test "$enable_csharp" = yes)
 
 sj_UPDATE_HEADER_VERSION([$srcdir/lib/stringprep.h])
 

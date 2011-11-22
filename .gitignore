@@ -37,6 +37,7 @@ csharp/RFC3454.cs
 csharp/UnicodeData.txt
 csharp/rfc3454.txt
 csharpcomp.sh
+csharpexec.sh
 doc/Makefile
 doc/Makefile.gdoc
 doc/Makefile.in

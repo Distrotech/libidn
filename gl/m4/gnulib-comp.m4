@@ -47,6 +47,7 @@ AC_DEFUN([gl_EARLY],
   # Code from module close:
   # Code from module close-tests:
   # Code from module csharpcomp-script:
+  # Code from module csharpexec-script:
   # Code from module dosname:
   # Code from module dup2:
   # Code from module dup2-tests:
@@ -174,6 +175,8 @@ AC_DEFUN([gl_INIT],
   gl_source_base='gl'
 AC_REQUIRE([gt_CSHARPCOMP])
 AC_CONFIG_FILES([csharpcomp.sh:build-aux/csharpcomp.sh.in])
+# You need to invoke gt_CSHARPEXEC yourself, possibly with arguments.
+AC_CONFIG_FILES([csharpexec.sh:build-aux/csharpexec.sh.in])
 gl_HEADER_ERRNO_H
 gl_ERROR
 if test $ac_cv_lib_error_at_line = no; then
@@ -477,6 +480,7 @@ AC_DEFUN([gltests_LIBSOURCES], [
 # gnulib-tool and may be removed by future gnulib-tool invocations.
 AC_DEFUN([gl_FILE_LIST], [
   build-aux/csharpcomp.sh.in
+  build-aux/csharpexec.sh.in
   build-aux/gendocs.sh
   build-aux/gnupload
   build-aux/pmccabe.css
@@ -523,6 +527,7 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/close.m4
   m4/csharp.m4
   m4/csharpcomp.m4
+  m4/csharpexec.m4
   m4/dup2.m4
   m4/eealloc.m4
   m4/environ.m4
