@@ -69,6 +69,9 @@ review-diff:
 
 htmldir = ../www-$(PACKAGE)
 
+i18n:
+	-$(MAKE) update-po
+
 coverage-my:
 	ln -s . lib/gl/unistr/unistr
 	ln -s . lib/gltests/glthread/glthread
@@ -174,7 +177,7 @@ source:
 	git commit -m Generated. ChangeLog
 	git tag -u b565716f! -m $(VERSION) $(tag)
 
-release-check: syntax-check update-po tarball binaries gendoc-copy gtkdoc-copy coverage-my coverage-copy clang clang-copy cyclo-copy javadoc-copy doxygen-copy
+release-check: syntax-check i18n tarball binaries gendoc-copy gtkdoc-copy coverage-my coverage-copy clang clang-copy cyclo-copy javadoc-copy doxygen-copy
 
 release-upload-www: gendoc-upload gtkdoc-upload coverage-upload clang-upload cyclo-copy javadoc-copy doxygen-upload
 
