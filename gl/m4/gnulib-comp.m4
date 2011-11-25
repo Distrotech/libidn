@@ -145,7 +145,6 @@ AC_DEFUN([gl_EARLY],
   # Code from module unsetenv:
   # Code from module unsetenv-tests:
   # Code from module update-copyright:
-  # Code from module update-copyright-tests:
   # Code from module useless-if-before-free:
   # Code from module valgrind-tests:
   # Code from module vc-list-files:
@@ -381,8 +380,6 @@ if test $HAVE_UNSETENV = 0 || test $REPLACE_UNSETENV = 1; then
   gl_PREREQ_UNSETENV
 fi
 gl_STDLIB_MODULE_INDICATOR([unsetenv])
-abs_aux_dir=`cd "$ac_aux_dir"; pwd`
-AC_SUBST([abs_aux_dir])
 gl_VALGRIND_TESTS
 abs_aux_dir=`cd "$ac_aux_dir"; pwd`
 AC_SUBST([abs_aux_dir])
@@ -621,7 +618,6 @@ AC_DEFUN([gl_FILE_LIST], [
   tests/test-symlink.c
   tests/test-symlink.h
   tests/test-unsetenv.c
-  tests/test-update-copyright.sh
   tests/test-vc-list-files-cvs.sh
   tests/test-vc-list-files-git.sh
   tests/test-verify.c

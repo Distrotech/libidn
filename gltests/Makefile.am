@@ -1056,14 +1056,6 @@ EXTRA_DIST += test-unsetenv.c signature.h macros.h
 
 ## end   gnulib module unsetenv-tests
 
-## begin gnulib module update-copyright-tests
-
-TESTS += test-update-copyright.sh
-TESTS_ENVIRONMENT += abs_aux_dir='$(abs_aux_dir)'
-EXTRA_DIST += test-update-copyright.sh
-
-## end   gnulib module update-copyright-tests
-
 ## begin gnulib module vc-list-files-tests
 
 TESTS += test-vc-list-files-git.sh
