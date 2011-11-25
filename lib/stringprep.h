@@ -36,7 +36,7 @@
 # endif
 
 # include <stddef.h>		/* size_t */
-# include <unistd.h>		/* ssize_t */
+# include <sys/types.h>		/* ssize_t */
 # include <idn-int.h>		/* uint32_t */
 
 # ifdef __cplusplus

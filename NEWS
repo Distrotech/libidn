@@ -4,6 +4,9 @@ See the end for copying conditions.
 
 * Version 1.23 (unreleased) [?]
 
+** stringprep.h: Now #include's sys/types.h instead of unistd.h for ssize_t.
+Some systems (e.g., Mingw with MSVC 9) does not have unistd.h.
+
 ** idn-free.h: Protect prototypes with 'extern "C"' marker.
 Reported by Bittner Ede <bittner.ede@euronetrt.hu>.
 
