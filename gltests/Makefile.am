@@ -96,6 +96,15 @@ libtests_a_SOURCES += binary-io.h
 
 ## end   gnulib module binary-io
 
+## begin gnulib module binary-io-tests
+
+TESTS += test-binary-io.sh
+check_PROGRAMS += test-binary-io
+
+EXTRA_DIST += test-binary-io.sh test-binary-io.c macros.h
+
+## end   gnulib module binary-io-tests
+
 ## begin gnulib module close
 
 

@@ -43,6 +43,7 @@ AC_DEFUN([gl_EARLY],
   # Code from module autobuild:
   AB_INIT
   # Code from module binary-io:
+  # Code from module binary-io-tests:
   # Code from module close:
   # Code from module close-tests:
   # Code from module csharpcomp-script:
@@ -587,6 +588,8 @@ AC_DEFUN([gl_FILE_LIST], [
   tests/macros.h
   tests/signature.h
   tests/test-alloca-opt.c
+  tests/test-binary-io.c
+  tests/test-binary-io.sh
   tests/test-close.c
   tests/test-dup2.c
   tests/test-environ.c
