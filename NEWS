@@ -4,6 +4,9 @@ See the end for copying conditions.
 
 * Version 1.24 (unreleased) [?]
 
+** build: Fix parallel Windows builds.
+Reported by René Berber <r.berber@computer.org>.
+
 ** Update gnulib files.
 
 ** API and ABI is backwards compatible with the previous version.
