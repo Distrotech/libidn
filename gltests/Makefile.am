@@ -997,6 +997,19 @@ EXTRA_DIST += sys_stat.in.h
 
 ## end   gnulib module sys_stat
 
+## begin gnulib module test-framework-sh
+
+EXTRA_DIST += init.sh
+
+## end   gnulib module test-framework-sh
+
+## begin gnulib module test-framework-sh-tests
+
+TESTS += test-init.sh
+EXTRA_DIST += test-init.sh
+
+## end   gnulib module test-framework-sh-tests
+
 ## begin gnulib module time
 
 BUILT_SOURCES += time.h
@@ -1061,7 +1074,7 @@ EXTRA_DIST += test-unsetenv.c signature.h macros.h
 TESTS += test-vc-list-files-git.sh
 TESTS += test-vc-list-files-cvs.sh
 TESTS_ENVIRONMENT += abs_aux_dir='$(abs_aux_dir)'
-EXTRA_DIST += test-vc-list-files-git.sh test-vc-list-files-cvs.sh init.sh
+EXTRA_DIST += test-vc-list-files-git.sh test-vc-list-files-cvs.sh
 
 ## end   gnulib module vc-list-files-tests
 
@@ -1070,7 +1083,7 @@ EXTRA_DIST += test-vc-list-files-git.sh test-vc-list-files-cvs.sh init.sh
 TESTS_ENVIRONMENT += MAKE='$(MAKE)'
 TESTS += test-verify test-verify.sh
 check_PROGRAMS += test-verify
-EXTRA_DIST += test-verify.c test-verify.sh init.sh
+EXTRA_DIST += test-verify.c test-verify.sh
 
 ## end   gnulib module verify-tests
 

@@ -100,6 +100,8 @@ AC_DEFUN([lgl_EARLY],
   # Code from module string:
   # Code from module strverscmp:
   # Code from module strverscmp-tests:
+  # Code from module test-framework-sh:
+  # Code from module test-framework-sh-tests:
   # Code from module thread:
   # Code from module thread-tests:
   # Code from module threadlib:
@@ -459,6 +461,7 @@ AC_DEFUN([lgl_FILE_LIST], [
   tests/test-c-strncasecmp.c
   tests/test-environ.c
   tests/test-iconv.c
+  tests/test-init.sh
   tests/test-intprops.c
   tests/test-inttypes.c
   tests/test-locale.c

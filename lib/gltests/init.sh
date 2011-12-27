@@ -242,13 +242,13 @@ compare_dev_null_ ()
 
   if test "x$1" = x/dev/null; then
     test -s "$2" || return 0
-    { emit_diff_u_header_ "$@"; sed 's/^/+/' -- "$2"; } >&2
+    emit_diff_u_header_ "$@"; sed 's/^/+/' -- "$2"
     return 1
   fi
 
   if test "x$2" = x/dev/null; then
     test -s "$1" || return 0
-    { emit_diff_u_header_ "$@"; sed 's/^/-/' -- "$1"; } >&2
+    emit_diff_u_header_ "$@"; sed 's/^/-/' -- "$1"
     return 1
   fi
 
@@ -304,11 +304,17 @@ fi
 # Otherwise, propagate $? to caller: any diffs have already been printed.
 compare ()
 {
-  compare_dev_null_ "$@"
-  case $? in
-    0|1) return $?;;
-    *) compare_ "$@";;
-  esac
+  # This looks like it can be factored to use a simple "case $?"
+  # after unchecked compare_dev_null_ invocation, but that would
+  # fail in a "set -e" environment.
+  if compare_dev_null_ "$@"; then
+    return 0
+  else
+    case $? in
+      1) return 1;;
+      *) compare_ "$@";;
+    esac
+  fi
 }
 
 # An arbitrary prefix to help distinguish test directories.
@@ -521,7 +527,7 @@ mktempd_ ()
   esac
 
   # First, try to use mktemp.
-  d=`unset TMPDIR; mktemp -d -t -p "$destdir_" "$template_" 2>/dev/null` \
+  d=`unset TMPDIR; { mktemp -d -t -p "$destdir_" "$template_"; } 2>/dev/null` \
     || fail=1
 
   # The resulting name must be in the specified directory.

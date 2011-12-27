@@ -140,6 +140,8 @@ AC_DEFUN([gl_EARLY],
   # Code from module symlink:
   # Code from module symlink-tests:
   # Code from module sys_stat:
+  # Code from module test-framework-sh:
+  # Code from module test-framework-sh-tests:
   # Code from module time:
   # Code from module unistd:
   # Code from module unsetenv:
@@ -605,6 +607,7 @@ AC_DEFUN([gl_FILE_LIST], [
   tests/test-getopt.h
   tests/test-getopt_long.h
   tests/test-ignore-value.c
+  tests/test-init.sh
   tests/test-intprops.c
   tests/test-inttypes.c
   tests/test-lstat.c
