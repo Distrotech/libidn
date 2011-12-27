@@ -74,7 +74,8 @@ if HAVE_LD_OUTPUT_DEF
 libidn_la_LDFLAGS += -Wl,--output-def,libidn-$(DLL_VERSION).def
 defexecdir = $(bindir)
 defexec_DATA = libidn-$(DLL_VERSION).def
-DISTCLEANFILES += $(defexec_DATA)
+CLEANFILES = $(defexec_DATA)
+libidn-$(DLL_VERSION).def: libidn.la
 endif
 
 SPEC = $(top_srcdir)/doc/specifications
