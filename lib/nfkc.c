@@ -1,6 +1,5 @@
 /* nfkc.c --- Unicode normalization utilities.
- * Copyright (C) 2002, 2003, 2004, 2006, 2007, 2008, 2009, 2010, 2011
- * Simon Josefsson
+ * Copyright (C) 2002-2011 Simon Josefsson
  *
  * This file is part of GNU Libidn.
  *
@@ -21,20 +20,13 @@
  */
 
 #ifdef HAVE_CONFIG_H
-# include "config.h"
+#include "config.h"
 #endif
 
 #include <stdlib.h>
 #include <string.h>
 
 #include "stringprep.h"
-
-/* This file contains functions from GLIB, including gutf8.c and
- * gunidecomp.c, all licensed under LGPL and copyright hold by:
- *
- *  Copyright (C) 1999, 2000 Tom Tromey
- *  Copyright 2000 Red Hat, Inc.
- */
 
 /* Hacks to make syncing with GLIB code easier. */
 #define gboolean int
@@ -51,26 +43,66 @@
 #define gssize ssize_t
 #define g_malloc malloc
 #define g_free free
-#define g_new(struct_type, n_structs)					\
-  ((struct_type *) g_malloc (((gsize) sizeof (struct_type)) * ((gsize) (n_structs))))
-#  if defined (__GNUC__) && !defined (__STRICT_ANSI__) && !defined (__cplusplus)
-#    define G_STMT_START	(void)(
-#    define G_STMT_END		)
-#  else
-#    if (defined (sun) || defined (__sun__))
-#      define G_STMT_START	if (1)
-#      define G_STMT_END	else (void)0
-#    else
-#      define G_STMT_START	do
-#      define G_STMT_END	while (0)
-#    endif
-#  endif
-#define g_return_val_if_fail(expr,val)		G_STMT_START{ (void)0; }G_STMT_END
+#define g_return_val_if_fail(expr,val)	{		\
+    if (!(expr))					\
+      return (val);					\
+  }
+
+/* Code from GLIB gmacros.h starts here. */
+
+/* GLIB - Library of useful routines for C programming
+ * Copyright (C) 1995-1997  Peter Mattis, Spencer Kimball and Josh MacDonald
+ *
+ * This library is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 2 of the License, or (at your option) any later version.
+ *
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.	 See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this library; if not, write to the
+ * Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+ * Boston, MA 02111-1307, USA.
+ */
+
+#ifndef	FALSE
+#define	FALSE	(0)
+#endif
+
+#ifndef	TRUE
+#define	TRUE	(!FALSE)
+#endif
+
 #define G_N_ELEMENTS(arr)		(sizeof (arr) / sizeof ((arr)[0]))
-#define TRUE 1
-#define FALSE 0
+
+#define G_UNLIKELY(expr) (expr)
 
 /* Code from GLIB gunicode.h starts here. */
+
+/* gunicode.h - Unicode manipulation functions
+ *
+ *  Copyright (C) 1999, 2000 Tom Tromey
+ *  Copyright 2000, 2005 Red Hat, Inc.
+ *
+ * The Gnome Library is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public License as
+ * published by the Free Software Foundation; either version 2 of the
+ * License, or (at your option) any later version.
+ *
+ * The Gnome Library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with the Gnome Library; see the file COPYING.LIB.  If not,
+ * write to the Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+ *   Boston, MA 02111-1307, USA.
+ */
 
 typedef enum
 {
@@ -85,7 +117,30 @@ typedef enum
 }
 GNormalizeMode;
 
+#define g_utf8_next_char(p) ((p) + g_utf8_skip[*(const guchar *)(p)])
+
 /* Code from GLIB gutf8.c starts here. */
+
+/* gutf8.c - Operations on UTF-8 strings.
+ *
+ * Copyright (C) 1999 Tom Tromey
+ * Copyright (C) 2000 Red Hat, Inc.
+ *
+ * This library is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 2 of the License, or (at your option) any later version.
+ *
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.	 See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this library; if not, write to the
+ * Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+ * Boston, MA 02111-1307, USA.
+ */
 
 #define UTF8_COMPUTE(Char, Mask, Len)		\
   if (Char < 128)				\
@@ -128,18 +183,17 @@ GNormalizeMode;
      ((Char) < 0x200000 ? 4 :			\
       ((Char) < 0x4000000 ? 5 : 6)))))
 
-
-#define UTF8_GET(Result, Chars, Count, Mask, Len)	\
-  (Result) = (Chars)[0] & (Mask);			\
-  for ((Count) = 1; (Count) < (Len); ++(Count))		\
-    {							\
-      if (((Chars)[(Count)] & 0xc0) != 0x80)		\
-	{						\
-	  (Result) = -1;				\
-	  break;					\
-	}						\
-      (Result) <<= 6;					\
-      (Result) |= ((Chars)[(Count)] & 0x3f);		\
+#define UTF8_GET(Result, Chars, Count, Mask, Len)			      \
+  (Result) = (Chars)[0] & (Mask);					      \
+  for ((Count) = 1; (Count) < (Len); ++(Count))				      \
+    {									      \
+      if (((Chars)[(Count)] & 0xc0) != 0x80)				      \
+	{								      \
+	  (Result) = -1;						      \
+	  break;							      \
+	}								      \
+      (Result) <<= 6;							      \
+      (Result) |= ((Chars)[(Count)] & 0x3f);				      \
     }
 
 static const gchar utf8_skip_data[256] = {
@@ -161,19 +215,18 @@ static const gchar utf8_skip_data[256] = {
   5, 5, 5, 6, 6, 1, 1
 };
 
-static const gchar *const g_utf8_skip = utf8_skip_data;
-
-#define g_utf8_next_char(p) ((p) + g_utf8_skip[*(const guchar *)(p)])
+const gchar *const g_utf8_skip = utf8_skip_data;
 
 /*
  * g_utf8_strlen:
- * @p: pointer to the start of a UTF-8 encoded string.
+ * @p: pointer to the start of a UTF-8 encoded string
  * @max: the maximum number of bytes to examine. If @max
  *       is less than 0, then the string is assumed to be
  *       nul-terminated. If @max is 0, @p will not be examined and
  *       may be %NULL.
  *
- * Returns the length of the string in characters.
+ * Computes the length of the string in characters, not including
+ * the terminating nul character.
  *
  * Return value: the length of the string in characters
  **/
@@ -208,7 +261,7 @@ g_utf8_strlen (const gchar * p, gssize max)
       /* only do the last len increment if we got a complete
        * char (don't count partial chars)
        */
-      if (p - start == max)
+      if (p - start <= max)
 	++len;
     }
 
@@ -244,7 +297,7 @@ g_utf8_get_char (const gchar * p)
 
 /*
  * g_unichar_to_utf8:
- * @c: a ISO10646 character code
+ * @c: a Unicode character code
  * @outbuf: output buffer, must have at least 6 bytes of space.
  *       If %NULL, the length will be computed and returned
  *       and nothing will be written to @outbuf.
@@ -256,8 +309,10 @@ g_utf8_get_char (const gchar * p)
 static int
 g_unichar_to_utf8 (gunichar c, gchar * outbuf)
 {
+  /* If this gets modified, also update the copy in g_string_insert_unichar() */
   guint len = 0;
   int first;
+  int i;
 
   if (c < 0x80)
     {
@@ -292,7 +347,6 @@ g_unichar_to_utf8 (gunichar c, gchar * outbuf)
 
   if (outbuf)
     {
-      guint i;
       for (i = len - 1; i > 0; --i)
 	{
 	  outbuf[i] = (c & 0x3f) | 0x80;
@@ -307,15 +361,16 @@ g_unichar_to_utf8 (gunichar c, gchar * outbuf)
 /*
  * g_utf8_to_ucs4_fast:
  * @str: a UTF-8 encoded string
- * @len: the maximum length of @str to use. If @len < 0, then
- *       the string is nul-terminated.
+ * @len: the maximum length of @str to use, in bytes. If @len < 0,
+ *       then the string is nul-terminated.
  * @items_written: location to store the number of characters in the
  *                 result, or %NULL.
  *
  * Convert a string from UTF-8 to a 32-bit fixed width
  * representation as UCS-4, assuming valid UTF-8 input.
  * This function is roughly twice as fast as g_utf8_to_ucs4()
- * but does no error checking on the input.
+ * but does no error checking on the input. A trailing 0 character
+ * will be added to the string after the converted text.
  *
  * Return value: a pointer to a newly allocated UCS-4 string.
  *               This value must be freed with g_free().
@@ -323,9 +378,8 @@ g_unichar_to_utf8 (gunichar c, gchar * outbuf)
 static gunichar *
 g_utf8_to_ucs4_fast (const gchar * str, glong len, glong * items_written)
 {
-  gint j, charlen;
   gunichar *result;
-  gint n_chars, i;
+  gsize n_chars, i;
   const gchar *p;
 
   g_return_val_if_fail (str != NULL, NULL);
@@ -349,56 +403,44 @@ g_utf8_to_ucs4_fast (const gchar * str, glong len, glong * items_written)
 	}
     }
 
-  result = g_new (gunichar, n_chars + 1);
+  result = g_malloc (sizeof (gunichar) * (n_chars + 1));
   if (!result)
     return NULL;
 
   p = str;
   for (i = 0; i < n_chars; i++)
     {
-      gunichar wc = ((const unsigned char *) p)[0];
+      gunichar wc = (guchar) * p++;
 
       if (wc < 0x80)
 	{
 	  result[i] = wc;
-	  p++;
 	}
       else
 	{
-	  if (wc < 0xe0)
+	  gunichar mask = 0x40;
+
+	  if (G_UNLIKELY ((wc & mask) == 0))
 	    {
-	      charlen = 2;
-	      wc &= 0x1f;
-	    }
-	  else if (wc < 0xf0)
-	    {
-	      charlen = 3;
-	      wc &= 0x0f;
-	    }
-	  else if (wc < 0xf8)
-	    {
-	      charlen = 4;
-	      wc &= 0x07;
-	    }
-	  else if (wc < 0xfc)
-	    {
-	      charlen = 5;
-	      wc &= 0x03;
-	    }
-	  else
-	    {
-	      charlen = 6;
-	      wc &= 0x01;
+	      /* It's an out-of-sequence 10xxxxxxx byte.
+	       * Rather than making an ugly hash of this and the next byte
+	       * and overrunning the buffer, it's more useful to treat it
+	       * with a replacement character */
+	      result[i] = 0xfffd;
+	      continue;
 	    }
 
-	  for (j = 1; j < charlen; j++)
+	  do
 	    {
 	      wc <<= 6;
-	      wc |= ((const unsigned char *) p)[j] & 0x3f;
+	      wc |= (guchar) (*p++) & 0x3f;
+	      mask <<= 5;
 	    }
+	  while ((wc & mask) != 0);
+
+	  wc &= mask - 1;
 
 	  result[i] = wc;
-	  p += charlen;
 	}
     }
   result[i] = 0;
@@ -412,13 +454,13 @@ g_utf8_to_ucs4_fast (const gchar * str, glong len, glong * items_written)
 /*
  * g_ucs4_to_utf8:
  * @str: a UCS-4 encoded string
- * @len: the maximum length of @str to use. If @len < 0, then
- *       the string is terminated with a 0 character.
- * @items_read: location to store number of characters read read, or %NULL.
+ * @len: the maximum length (number of characters) of @str to use.
+ *       If @len < 0, then the string is nul-terminated.
+ * @items_read: location to store number of characters read, or %NULL.
  * @items_written: location to store number of bytes written or %NULL.
  *                 The value here stored does not include the trailing 0
  *                 byte.
- * @error: location to store the error occuring, or %NULL to ignore
+ * @error: location to store the error occurring, or %NULL to ignore
  *         errors. Any of the errors in #GConvertError other than
  *         %G_CONVERT_ERROR_NO_CONVERSION may occur.
  *
@@ -428,7 +470,9 @@ g_utf8_to_ucs4_fast (const gchar * str, glong len, glong * items_written)
  * Return value: a pointer to a newly allocated UTF-8 string.
  *               This value must be freed with g_free(). If an
  *               error occurs, %NULL will be returned and
- *               @error set.
+ *               @error set. In that case, @items_read will be
+ *               set to the position of the first invalid input
+ *               character.
  **/
 static gchar *
 g_ucs4_to_utf8 (const gunichar * str,
@@ -447,12 +491,7 @@ g_ucs4_to_utf8 (const gunichar * str,
 	break;
 
       if (str[i] >= 0x80000000)
-	{
-	  if (items_read)
-	    *items_read = i;
-
-	  goto err_out;
-	}
+	goto err_out;
 
       result_length += UTF8_LENGTH (str[i]);
     }
@@ -480,24 +519,45 @@ err_out:
 
 /* Code from GLIB gunidecomp.c starts here. */
 
+/* decomp.c - Character decomposition.
+ *
+ *  Copyright (C) 1999, 2000 Tom Tromey
+ *  Copyright 2000 Red Hat, Inc.
+ *
+ * The Gnome Library is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public License as
+ * published by the Free Software Foundation; either version 2 of the
+ * License, or (at your option) any later version.
+ *
+ * The Gnome Library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with the Gnome Library; see the file COPYING.LIB.  If not,
+ * write to the Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+ *   Boston, MA 02111-1307, USA.
+ */
+
 #include "gunidecomp.h"
 #include "gunicomp.h"
 
-#define CC_PART1(Page, Char) \
-  ((combining_class_table_part1[Page] >= G_UNICODE_MAX_TABLE_INDEX) \
-   ? (combining_class_table_part1[Page] - G_UNICODE_MAX_TABLE_INDEX) \
+#define CC_PART1(Page, Char)						\
+  ((combining_class_table_part1[Page] >= G_UNICODE_MAX_TABLE_INDEX)	\
+   ? (combining_class_table_part1[Page] - G_UNICODE_MAX_TABLE_INDEX)	\
    : (cclass_data[combining_class_table_part1[Page]][Char]))
 
-#define CC_PART2(Page, Char) \
-  ((combining_class_table_part2[Page] >= G_UNICODE_MAX_TABLE_INDEX) \
-   ? (combining_class_table_part2[Page] - G_UNICODE_MAX_TABLE_INDEX) \
+#define CC_PART2(Page, Char)						\
+  ((combining_class_table_part2[Page] >= G_UNICODE_MAX_TABLE_INDEX)	\
+   ? (combining_class_table_part2[Page] - G_UNICODE_MAX_TABLE_INDEX)	\
    : (cclass_data[combining_class_table_part2[Page]][Char]))
 
-#define COMBINING_CLASS(Char) \
-  (((Char) <= G_UNICODE_LAST_CHAR_PART1) \
-   ? CC_PART1 ((Char) >> 8, (Char) & 0xff) \
-   : (((Char) >= 0xe0000 && (Char) <= G_UNICODE_LAST_CHAR) \
-      ? CC_PART2 (((Char) - 0xe0000) >> 8, (Char) & 0xff) \
+#define COMBINING_CLASS(Char)					\
+  (((Char) <= G_UNICODE_LAST_CHAR_PART1)			\
+   ? CC_PART1 ((Char) >> 8, (Char) & 0xff)			\
+   : (((Char) >= 0xe0000 && (Char) <= G_UNICODE_LAST_CHAR)	\
+      ? CC_PART2 (((Char) - 0xe0000) >> 8, (Char) & 0xff)	\
       : 0))
 
 /* constants for hangul syllable [de]composition */
@@ -566,35 +626,22 @@ static void
 decompose_hangul (gunichar s, gunichar * r, gsize * result_len)
 {
   gint SIndex = s - SBase;
+  gint TIndex = SIndex % TCount;
 
-  /* not a hangul syllable */
-  if (SIndex < 0 || SIndex >= SCount)
+  if (r)
+    {
+      r[0] = LBase + SIndex / NCount;
+      r[1] = VBase + (SIndex % NCount) / TCount;
+    }
+
+  if (TIndex)
     {
       if (r)
-	r[0] = s;
-      *result_len = 1;
+	r[2] = TBase + TIndex;
+      *result_len = 3;
     }
   else
-    {
-      gunichar L = LBase + SIndex / NCount;
-      gunichar V = VBase + (SIndex % NCount) / TCount;
-      gunichar T = TBase + SIndex % TCount;
-
-      if (r)
-	{
-	  r[0] = L;
-	  r[1] = V;
-	}
-
-      if (T != TBase)
-	{
-	  if (r)
-	    r[2] = T;
-	  *result_len = 3;
-	}
-      else
-	*result_len = 2;
-    }
+    *result_len = 2;
 }
 
 /* returns a pointer to a null-terminated UTF-8 string */
@@ -656,7 +703,7 @@ combine_hangul (gunichar a, gunichar b, gunichar * result)
       return TRUE;
     }
   else if (0 <= SIndex && SIndex < SCount && (SIndex % TCount) == 0
-	   && 0 <= TIndex && TIndex <= TCount)
+	   && 0 < TIndex && TIndex < TCount)
     {
       *result = a + TIndex;
       return TRUE;
@@ -665,13 +712,13 @@ combine_hangul (gunichar a, gunichar b, gunichar * result)
   return FALSE;
 }
 
-#define CI(Page, Char) \
-  ((compose_table[Page] >= G_UNICODE_MAX_TABLE_INDEX) \
-   ? (compose_table[Page] - G_UNICODE_MAX_TABLE_INDEX) \
+#define CI(Page, Char)					\
+  ((compose_table[Page] >= G_UNICODE_MAX_TABLE_INDEX)	\
+   ? (compose_table[Page] - G_UNICODE_MAX_TABLE_INDEX)	\
    : (compose_data[compose_table[Page]][Char]))
 
-#define COMPOSE_INDEX(Char) \
-     ((((Char) >> 8) > (COMPOSE_TABLE_LAST)) ? 0 : CI((Char) >> 8, (Char) & 0xff))
+#define COMPOSE_INDEX(Char)						\
+  (((Char >> 8) > (COMPOSE_TABLE_LAST)) ? 0 : CI((Char) >> 8, (Char) & 0xff))
 
 static gboolean
 combine (gunichar a, gunichar b, gunichar * result)
@@ -745,7 +792,7 @@ _g_utf8_normalize_wc (const gchar * str, gssize max_len, GNormalizeMode mode)
       const gchar *decomp;
       gunichar wc = g_utf8_get_char (p);
 
-      if (wc >= 0xac00 && wc <= 0xd7af)
+      if (wc >= SBase && wc < SBase + SCount)
 	{
 	  gsize result_len;
 	  decompose_hangul (wc, NULL, &result_len);
@@ -764,7 +811,7 @@ _g_utf8_normalize_wc (const gchar * str, gssize max_len, GNormalizeMode mode)
       p = g_utf8_next_char (p);
     }
 
-  wc_buffer = g_new (gunichar, n_wc + 1);
+  wc_buffer = g_malloc (sizeof (gunichar) * (n_wc + 1));
   if (!wc_buffer)
     return NULL;
 
@@ -778,7 +825,7 @@ _g_utf8_normalize_wc (const gchar * str, gssize max_len, GNormalizeMode mode)
       int cc;
       gsize old_n_wc = n_wc;
 
-      if (wc >= 0xac00 && wc <= 0xd7af)
+      if (wc >= SBase && wc < SBase + SCount)
 	{
 	  gsize result_len;
 	  decompose_hangul (wc, wc_buffer + n_wc, &result_len);
@@ -814,8 +861,11 @@ _g_utf8_normalize_wc (const gchar * str, gssize max_len, GNormalizeMode mode)
     }
 
   if (n_wc > 0)
-    g_unicode_canonical_ordering (wc_buffer + last_start,
-				  n_wc - last_start);
+    {
+      g_unicode_canonical_ordering (wc_buffer + last_start,
+				    n_wc - last_start);
+      last_start = n_wc;
+    }
 
   wc_buffer[n_wc] = 0;
 
@@ -870,9 +920,10 @@ _g_utf8_normalize_wc (const gchar * str, gssize max_len, GNormalizeMode mode)
  * Converts a string into canonical form, standardizing
  * such issues as whether a character with an accent
  * is represented as a base character and combining
- * accent or as a single precomposed character. You
- * should generally call g_utf8_normalize() before
- * comparing two Unicode strings.
+ * accent or as a single precomposed character. The
+ * string has to be valid UTF-8, otherwise %NULL is
+ * returned. You should generally call g_utf8_normalize()
+ * before comparing two Unicode strings.
  *
  * The normalization mode %G_NORMALIZE_DEFAULT only
  * standardizes differences that do not affect the
@@ -883,8 +934,6 @@ _g_utf8_normalize_wc (const gchar * str, gssize max_len, GNormalizeMode mode)
  * (in this case DIGIT THREE). Formatting information
  * may be lost but for most text operations such
  * characters should be considered the same.
- * For example, g_utf8_collate() normalizes
- * with %G_NORMALIZE_ALL as its first step.
  *
  * %G_NORMALIZE_DEFAULT_COMPOSE and %G_NORMALIZE_ALL_COMPOSE
  * are like %G_NORMALIZE_DEFAULT and %G_NORMALIZE_ALL,
@@ -895,7 +944,8 @@ _g_utf8_normalize_wc (const gchar * str, gssize max_len, GNormalizeMode mode)
  * less capable Unicode handling.
  *
  * Return value: a newly allocated string, that is the
- *   normalized form of @str.
+ *   normalized form of @str, or %NULL if @str is not
+ *   valid UTF-8.
  **/
 static gchar *
 g_utf8_normalize (const gchar * str, gssize len, GNormalizeMode mode)

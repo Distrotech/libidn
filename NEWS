@@ -7,6 +7,8 @@ See the end for copying conditions.
 ** build: Fix parallel Windows builds.
 Reported by René Berber <r.berber@computer.org>.
 
+** Sync glib NFKC code and improve copyright/license statements.
+
 ** Update gnulib files and translations.
 
 ** API and ABI is backwards compatible with the previous version.
