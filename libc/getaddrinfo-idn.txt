@@ -1,5 +1,5 @@
 Libidn getaddrinfo-idn.txt -- Proposal for IDN support in POSIX getaddrinfo.
-Copyright (C) 2003, 2004, 2010, 2011 Simon Josefsson
+Copyright (C) 2003-2012 Simon Josefsson
 See the end for copying conditions.
 
 Background

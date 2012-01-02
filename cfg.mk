@@ -1,4 +1,4 @@
-# Copyright (C) 2006-2011 Simon Josefsson
+# Copyright (C) 2006-2012 Simon Josefsson
 #
 # This file is part of GNU Libidn.
 #
@@ -29,8 +29,8 @@ local-checks-to-skip = sc_prohibit_strcmp sc_prohibit_have_config_h	\
 	sc_prohibit_HAVE_MBRTOWC sc_program_name sc_trailing_blank	\
 	sc_GPL_version sc_immutable_NEWS
 VC_LIST_ALWAYS_EXCLUDE_REGEX = \
-	^(maint.mk|gtk-doc.make|m4/pkg.m4|doc/specifications|contrib/doxygen/Doxyfile|doc/fdl-1.3.texi|csharp/libidn.*suo|(lib/)?(gl|gltests|build-aux)/)
-update-copyright-env = UPDATE_COPYRIGHT_HOLDER="Simon Josefsson"
+	^(GNUmakefile|maint.mk|gtk-doc.make|m4/pkg.m4|doc/specifications|contrib/doxygen/Doxyfile|doc/fdl-1.3.texi|csharp/libidn.*suo|(lib/)?(gl|gltests|build-aux)/)
+update-copyright-env = UPDATE_COPYRIGHT_HOLDER="Simon Josefsson" UPDATE_COPYRIGHT_USE_INTERVALS=1
 
 # Explicit syntax-check exceptions.
 exclude_file_name_regexp--sc_bindtextdomain = ^examples/|libc/|tests/

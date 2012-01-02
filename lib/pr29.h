@@ -1,6 +1,5 @@
 /* pr29.h --- Detect strings which are non-idempotent under NFKC.
- * Copyright (C) 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011 Simon
- * Josefsson.
+ * Copyright (C) 2004-2012 Simon Josefsson.
  *
  * This file is part of GNU Libidn.
  *
