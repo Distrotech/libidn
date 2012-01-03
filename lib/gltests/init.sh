@@ -1,6 +1,6 @@
 # source this file; set up for tests
 
-# Copyright (C) 2009-2011 Free Software Foundation, Inc.
+# Copyright (C) 2009-2012 Free Software Foundation, Inc.
 
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -242,13 +242,13 @@ compare_dev_null_ ()
 
   if test "x$1" = x/dev/null; then
     test -s "$2" || return 0
-    emit_diff_u_header_ "$@"; sed 's/^/+/' -- "$2"
+    emit_diff_u_header_ "$@"; sed 's/^/+/' "$2"
     return 1
   fi
 
   if test "x$2" = x/dev/null; then
     test -s "$1" || return 0
-    emit_diff_u_header_ "$@"; sed 's/^/-/' -- "$1"
+    emit_diff_u_header_ "$@"; sed 's/^/-/' "$1"
     return 1
   fi
 

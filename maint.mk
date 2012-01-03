@@ -2,7 +2,7 @@
 # This Makefile fragment tries to be general-purpose enough to be
 # used by many projects via the gnulib maintainer-makefile module.
 
-## Copyright (C) 2001-2011 Free Software Foundation, Inc.
+## Copyright (C) 2001-2012 Free Software Foundation, Inc.
 ##
 ## This program is free software: you can redistribute it and/or modify
 ## it under the terms of the GNU General Public License as published by
@@ -220,15 +220,6 @@ define _sc_say_and_exit
    dummy=; : so we do not need a semicolon before each use;		\
    { printf '%s\n' "$(ME): $$msg" 1>&2; exit 1; };
 endef
-
-# _sc_search_regexp used to be named _prohibit_regexp.  However,
-# upgrading to the new definition and leaving the old name undefined
-# would usually convert each custom rule using $(_prohibit_regexp)
-# (usually defined in cfg.mk) into a no-op.  This definition ensures
-# that people know right away if they're still using the old name.
-# FIXME: remove in 2012.
-_prohibit_regexp = \
-  $(error '*** you need to s/_prohibit_regexp/_sc_search_regexp/, and adapt')
 
 define _sc_search_regexp
    dummy=; : so we do not need a semicolon before each use;		\

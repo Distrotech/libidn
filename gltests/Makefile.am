@@ -1,6 +1,6 @@
 ## DO NOT EDIT! GENERATED AUTOMATICALLY!
 ## Process this file with automake to produce Makefile.in.
-# Copyright (C) 2002-2011 Free Software Foundation, Inc.
+# Copyright (C) 2002-2012 Free Software Foundation, Inc.
 #
 # This file is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -997,15 +997,10 @@ EXTRA_DIST += sys_stat.in.h
 
 ## end   gnulib module sys_stat
 
-## begin gnulib module test-framework-sh
-
-EXTRA_DIST += init.sh
-
-## end   gnulib module test-framework-sh
-
 ## begin gnulib module test-framework-sh-tests
 
 TESTS += test-init.sh
+EXTRA_DIST += init.sh
 EXTRA_DIST += test-init.sh
 
 ## end   gnulib module test-framework-sh-tests
