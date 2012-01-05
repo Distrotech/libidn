@@ -515,7 +515,8 @@ idna_to_ascii_4z (const uint32_t * input, char **output, int flags)
 
       if (out)
 	{
-	  char *newp = realloc (out, strlen (out) + 1 + strlen (buf) + 1);
+	  size_t l = strlen (out) + 1 + strlen (buf) + 1;
+	  char *newp = realloc (out, l);
 	  if (!newp)
 	    {
 	      free (out);
@@ -527,7 +528,8 @@ idna_to_ascii_4z (const uint32_t * input, char **output, int flags)
 	}
       else
 	{
-	  out = (char *) malloc (strlen (buf) + 1);
+	  size_t l = strlen (buf) + 1;
+	  out = (char *) malloc (l);
 	  if (!out)
 	    return IDNA_MALLOC_ERROR;
 	  strcpy (out, buf);
