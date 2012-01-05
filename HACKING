@@ -1,4 +1,4 @@
-Libidn README-alpha -- Information for developers.              -*- outline -*-
+Libidn HACKING -- Information for contributors.                 -*- outline -*-
 Copyright (C) 2009-2012 Simon Josefsson
 See the end for copying conditions.
 
@@ -34,10 +34,10 @@ system, and the instructions for installing them differ.  Here are
 some hints:
 
 gNewSense/Debian/Ubuntu:
-sudo apt-get install make git-core autoconf automake libtool gettext cvs
-sudo apt-get install texinfo texlive texlive-generic-recommended texlive-extra-utils
-sudo apt-get install help2man gtk-doc-tools valgrind gengetopt
-sudo apt-get install gcj gjdoc transfig mono-mcs binfmt-support gperf
+apt-get install make git-core autoconf automake libtool gettext cvs
+apt-get install texinfo texlive texlive-generic-recommended texlive-extra-utils
+apt-get install help2man gtk-doc-tools valgrind gengetopt
+apt-get install gcj-jdk gjdoc transfig mono-mcs binfmt-support gperf
 
 To download the version controlled sources:
 
