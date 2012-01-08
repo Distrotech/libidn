@@ -41,7 +41,6 @@ gl_MODULES([
   getopt-gnu
   gnupload
   gpl-3.0
-  lgpl-2.1
   maintainer-makefile
   manywarnings
   pmccabe2html

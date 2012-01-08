@@ -81,7 +81,7 @@ Appendices
 
 * PR29 discussion::             Implementation aspects of the PR29 flaw.
 * On Label Separators::         Discussions of a flaw in the IDNA spec.
-* Copying Information::		License text covering the Libidn library.
+* Copying Information::		License texts.
 
 Indices
 
@@ -96,11 +96,10 @@ Indices
 
 GNU Libidn is a fully documented implementation of the Stringprep,
 Punycode and IDNA specifications.  Libidn's purpose is to encode and
-decode internationalized domain names.  The native C, C# and Java
-libraries are available under the GNU Lesser General Public License
-version 2.1 or later (@pxref{GNU LGPL}).
+decode internationalized domain name strings.  There are native C, C#
+and Java libraries.
 
-The library contains a generic Stringprep implementation.  Profiles
+The C library contains a generic Stringprep implementation.  Profiles
 for Nameprep, iSCSI, SASL, XMPP and Kerberos V5 are included.
 Punycode and ASCII Compatible Encoding (ACE) via IDNA are supported.
 A mechanism to define Top-Level Domain (TLD) specific validation
@@ -132,8 +131,7 @@ C++, Emacs Lisp, Python and Java.  A native Java and C# port is
 included.
 
 Also included is a command line tool, several self tests, code
-examples, and more, all licensed under the GNU General Public License
-version 3.0 or later (@pxref{GNU GPL}).
+examples, and more.
 
 @menu
 * Getting Started::
@@ -176,9 +174,8 @@ doing a similar job.
 
 @table @asis
 @item It's Free Software
-Anybody can use, modify, and redistribute it under the terms of the
-GNU Lesser General Public License version 2.1 or later (@pxref{GNU
-LGPL}).
+Anybody can use, modify, and redistribute it under the terms of a free
+software license.
 
 @item It's thread-safe
 No global state is kept in the library.  All functions are re-entrant.
@@ -1543,8 +1540,8 @@ xn--rksmrgs-5wao1o.se
 jas@@latte:~$
 @end example
 
-Reading input from command line, and disabling copyright and license
-information:
+Reading input from command line, and disable printing copyright and
+license information:
 
 @example
 jas@@latte:~$ idn --quiet r@"aksm@"org@aa{}s.se bl@aa{}b@ae{}rgr@o{}d.no
@@ -2152,8 +2149,6 @@ recommended way to work around this problem.
 
 @menu
 * GNU Free Documentation License::   License for copying this manual.
-* GNU LGPL::                         License for copying the library.
-* GNU GPL::                          License for copying the programs.
 @end menu
 
 @node GNU Free Documentation License
@@ -2162,20 +2157,6 @@ recommended way to work around this problem.
 @cindex FDL, GNU Free Documentation License
 
 @include fdl-1.3.texi
-
-@node GNU LGPL
-@appendixsec GNU Lesser General Public License
-@cindex LGPL, GNU Lesser General Public License
-@cindex License, GNU LGPL
-
-@include lgpl-2.1.texi
-
-@node GNU GPL
-@appendixsec GNU General Public License
-@cindex GPL, GNU General Public License
-@cindex License, GNU GPL
-
-@include gpl-3.0.texi
 
 @node Function and Variable Index
 @unnumbered Function and Variable Index

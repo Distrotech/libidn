@@ -22,8 +22,7 @@
 GNU Libidn is a fully documented implementation of the Stringprep,
 Punycode and IDNA specifications.  Libidn's purpose is to encode and
 decode internationalized domain names.  The native C, C# and Java
-libraries are available under the GNU Lesser General Public License
-version 2.1 or later.
+libraries are available under a dual-license GPLv2+ or LGPLv3+.
     </para>
 
     <para>

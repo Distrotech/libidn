@@ -4,18 +4,10 @@ See the end for copying conditions.
 
 Libidn is a package for internationalized string handling based on the
 Stringprep, Punycode, IDNA and TLD specifications.  Libidn is a GNU
-project.
+project.  See the file COPYING for licensing information.
 
 Read INSTALL for installation instructions, and doc/libidn.* for the
 manual in various formats (including Info, HTML, PostScript, and PDF).
-
-The C library (libidn.a), C# library (Libidn.dll) and Java library
-(libidn-*.jar) are licensed under the GNU Lesser General Public
-License version 2.1 or later.  See the file COPYING.LIB.
-
-The command line tool, self tests, examples, and other auxilliary
-files, are licensed under the GNU General Public License version 3.0
-or later.  See the file COPYING.
 
 Libidn will not be stable without your help.  Report bugs, proof read
 the manual, or make a monetary donation.

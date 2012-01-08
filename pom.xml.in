@@ -13,7 +13,7 @@
   <inceptionYear>2002</inceptionYear>
   <licenses>
     <license>
-      <name>GNU Lesser General Public License version 2.1 or later</name>
+      <name>GNU Lesser General Public License version 3.0 or later</name>
       <url>http://www.gnu.org/licenses/licenses.html</url>
       <distribution>repo</distribution>
     </license>
