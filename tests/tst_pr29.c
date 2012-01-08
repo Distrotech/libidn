@@ -97,12 +97,24 @@ doit (void)
   for (i = 0; i < sizeof (tv) / sizeof (tv[0]); i++)
     {
       if (debug)
-	printf ("PR29 entry %ld: %s\n", i, tv[i].name);
-
-      if (debug)
 	{
+	  uint32_t *p, *q;
+
+	  printf ("PR29 entry %ld: %s\n", i, tv[i].name);
+
 	  printf ("in:\n");
 	  ucs4print (tv[i].in, tv[i].inlen);
+
+	  printf ("nfkc:\n");
+	  p = stringprep_ucs4_nfkc_normalize (tv[i].in, tv[i].inlen);
+	  ucs4print (p, -1);
+
+	  printf ("second nfkc:\n");
+	  q = stringprep_ucs4_nfkc_normalize (p, -1);
+	  ucs4print (q, -1);
+
+	  free (p);
+	  free (q);
 	}
 
       rc = pr29_4 (tv[i].in, tv[i].inlen);
@@ -147,6 +159,11 @@ doit (void)
       }
 
       if (debug)
-	printf ("OK\n");
+	{
+	  if (tv[i].rc != PR29_SUCCESS)
+	    printf ("EXPECTED FAIL\n");
+	  else
+	    printf ("OK\n");
+	}
     }
 }
