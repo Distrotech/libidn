@@ -89,7 +89,6 @@ AC_DEFUN([gl_EARLY],
   # Code from module inttypes-tests:
   # Code from module largefile:
   AC_REQUIRE([AC_SYS_LARGEFILE])
-  # Code from module lgpl-2.1:
   # Code from module lstat:
   # Code from module lstat-tests:
   # Code from module maintainer-makefile:
@@ -500,7 +499,6 @@ AC_DEFUN([gl_FILE_LIST], [
   doc/fdl-1.3.texi
   doc/gendocs_template
   doc/gpl-3.0.texi
-  doc/lgpl-2.1.texi
   lib/errno.in.h
   lib/error.c
   lib/error.h

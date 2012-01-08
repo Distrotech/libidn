@@ -56,6 +56,8 @@
 # error "This file assumes that 'int' has exactly 32 bits. Please report your platform and compiler to <bug-gnulib@gnu.org>."
 #endif
 
+/* The definitions of _GL_FUNCDECL_RPL etc. are copied here.  */
+
 /* The definition of _GL_ARG_NONNULL is copied here.  */
 
 /* The definition of _GL_WARN_ON_USE is copied here.  */
@@ -1077,10 +1079,23 @@ _GL_WARN_ON_USE (imaxdiv, "imaxdiv is unportable - "
 #endif
 
 #if @GNULIB_STRTOIMAX@
-# if !@HAVE_DECL_STRTOIMAX@
-#  undef strtoimax
-extern intmax_t strtoimax (const char *, char **, int) _GL_ARG_NONNULL ((1));
+# if @REPLACE_STRTOIMAX@
+#  if !(defined __cplusplus && defined GNULIB_NAMESPACE)
+#   undef strtoimax
+#   define strtoimax rpl_strtoimax
+#  endif
+_GL_FUNCDECL_RPL (strtoimax, intmax_t,
+                  (const char *, char **, int) _GL_ARG_NONNULL ((1)));
+_GL_CXXALIAS_RPL (strtoimax, intmax_t, (const char *, char **, int));
+# else
+#  if !@HAVE_DECL_STRTOIMAX@
+#   undef strtoimax
+_GL_FUNCDECL_SYS (strtoimax, intmax_t,
+                  (const char *, char **, int) _GL_ARG_NONNULL ((1)));
+#  endif
+_GL_CXXALIAS_SYS (strtoimax, intmax_t, (const char *, char **, int));
 # endif
+_GL_CXXALIASWARN (strtoimax);
 #elif defined GNULIB_POSIXCHECK
 # undef strtoimax
 # if HAVE_RAW_DECL_STRTOIMAX
@@ -1092,8 +1107,11 @@ _GL_WARN_ON_USE (strtoimax, "strtoimax is unportable - "
 #if @GNULIB_STRTOUMAX@
 # if !@HAVE_DECL_STRTOUMAX@
 #  undef strtoumax
-extern uintmax_t strtoumax (const char *, char **, int) _GL_ARG_NONNULL ((1));
+_GL_FUNCDECL_SYS (strtoumax, uintmax_t,
+                  (const char *, char **, int) _GL_ARG_NONNULL ((1)));
 # endif
+_GL_CXXALIAS_SYS (strtoumax, uintmax_t, (const char *, char **, int));
+_GL_CXXALIASWARN (strtoumax);
 #elif defined GNULIB_POSIXCHECK
 # undef strtoumax
 # if HAVE_RAW_DECL_STRTOUMAX
