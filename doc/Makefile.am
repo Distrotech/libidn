@@ -25,8 +25,10 @@ EXTRA_DIST = gdoc libidn.html libidn.ps libidn.pdf texinfo.css	\
 	components.fig
 
 info_TEXINFOS = libidn.texi
-libidn_TEXINFOS = fdl-1.3.texi gpl-3.0.texi lgpl-2.1.texi $(gdoc_TEXINFOS) \
-	libidn-components.eps libidn-components.png libidn-components.pdf
+libidn_TEXINFOS = fdl-1.3.texi
+libidn_TEXINFOS += $(gdoc_TEXINFOS)
+libidn_TEXINFOS += libidn-components.eps libidn-components.png	\
+			libidn-components.pdf
 
 imagesdir = $(infodir)
 images_DATA = libidn-components.png
@@ -72,6 +74,6 @@ GDOC_MAN_PREFIX = man/
 GDOC_MAN_EXTRA_ARGS = -module $(PACKAGE) -sourceversion $(VERSION) \
 	-bugsto $(PACKAGE_BUGREPORT) -pkg-name "$(PACKAGE_NAME)" \
 	-includefuncprefix -seeinfo $(PACKAGE) \
-	-copyright "2002-2011 Simon Josefsson" \
+	-copyright "2002-2012 Simon Josefsson" \
 	-verbatimcopying
 include $(srcdir)/Makefile.gdoci
