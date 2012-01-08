@@ -224,7 +224,7 @@ extern "C"
 
   extern IDNAPI char *stringprep_utf8_nfkc_normalize (const char *str,
 						      ssize_t len);
-  extern IDNAPI uint32_t *stringprep_ucs4_nfkc_normalize (uint32_t * str,
+  extern IDNAPI uint32_t *stringprep_ucs4_nfkc_normalize (const uint32_t * str,
 							  ssize_t len);
 
   extern IDNAPI const char *stringprep_locale_charset (void);
