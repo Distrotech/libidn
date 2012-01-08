@@ -52,7 +52,7 @@ static const struct tv tv[] = {
    PR29_PROBLEM},
   {
    "Instability Example",
-   3,
+   4,
    {0x1100, 0x0300, 0x1161, 0x0323, 0},
    PR29_PROBLEM},
   {
