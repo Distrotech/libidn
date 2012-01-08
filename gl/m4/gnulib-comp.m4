@@ -78,7 +78,6 @@ AC_DEFUN([gl_EARLY],
   # Code from module gettext-h:
   # Code from module gnumakefile:
   # Code from module gnupload:
-  # Code from module gpl-3.0:
   # Code from module ignore-value:
   # Code from module ignore-value-tests:
   # Code from module include_next:
@@ -498,7 +497,6 @@ AC_DEFUN([gl_FILE_LIST], [
   build-aux/vc-list-files
   doc/fdl-1.3.texi
   doc/gendocs_template
-  doc/gpl-3.0.texi
   lib/errno.in.h
   lib/error.c
   lib/error.h
