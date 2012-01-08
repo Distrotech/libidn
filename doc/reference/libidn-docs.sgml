@@ -21,12 +21,12 @@
     <para>
 GNU Libidn is a fully documented implementation of the Stringprep,
 Punycode and IDNA specifications.  Libidn's purpose is to encode and
-decode internationalized domain names.  The native C, C# and Java
-libraries are available under a dual-license GPLv2+ or LGPLv3+.
+decode internationalized domain name strings.  There are native C, C#
+and Java libraries.
     </para>
 
     <para>
-The library contains a generic Stringprep implementation.  Profiles
+The C library contains a generic Stringprep implementation.  Profiles
 for Nameprep, iSCSI, SASL, XMPP and Kerberos V5 are included.
 Punycode and ASCII Compatible Encoding (ACE) via IDNA are supported.
 A mechanism to define Top-Level Domain (TLD) specific validation
@@ -66,9 +66,7 @@ included.
 
     <para>
 Also included is a command line tool, several self tests, code
-examples, and more, all licensed under the GNU General Public License
-version 3.0 or later.
-    </para>
+examples, and more.
 
     <para>
       The internal layout of the library, and how your application
