@@ -9,6 +9,10 @@ See the end for copying conditions.
 ** build: Fix parallel Windows builds.
 Reported by René Berber <r.berber@computer.org>.
 
+** libidn: Fix potential infloop in pr29 code.
+Reported by Jon Nelson <jnelson@jamponi.net> in
+<http://lists.gnu.org/archive/html/help-libidn/2012-01/msg00008.html>.
+
 ** Sync glib NFKC code and improve copyright/license statements.
 
 ** Update gnulib files and translations.

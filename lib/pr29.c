@@ -1264,7 +1264,7 @@ pr29_4 (const uint32_t * in, size_t len)
     if ((row = first_column (in[i])) > 0)
       for (j = i + 1; j < len; j++)
 	if (combinationclass (in[j]))
-	  for (k = j + 1; k < len; j++)
+	  for (k = j + 1; k < len; k++)
 	    if (in_last_column_row (in[k], row))
 	      return PR29_PROBLEM;
 
