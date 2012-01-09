@@ -67,6 +67,7 @@ included.
     <para>
 Also included is a command line tool, several self tests, code
 examples, and more.
+    </para>
 
     <para>
       The internal layout of the library, and how your application
