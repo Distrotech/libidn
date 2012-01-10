@@ -1,37 +1,52 @@
 To: help-libidn@gnu.org, info-gnu@gnu.org
-Subject: Libidn 1.23 released
+Subject: Libidn 1.24 released
 <#part sign=pgpmime>
 GNU Libidn is a fully documented implementation of the Stringprep,
 Punycode and IDNA specifications.  Libidn's purpose is to encode and
-decode internationalized domain names.  The native C, C# and Java
-libraries are available under the GNU Lesser General Public License
-version 2.1 or later.
+decode internationalized domain name strings.  There are native C, C#
+and Java libraries.
 
 Noteworthy changes since the last release (from NEWS file):
 
-* Version 1.23 (released 2011-11-25) [stable]
+* Version 1.24 (released 2012-01-10) [stable]
 
-** stringprep.h: Now #include's sys/types.h instead of unistd.h for ssize_t.
-Some systems (e.g., Mingw with MSVC 9) does not have unistd.h.
+** Libraries are re-licensed from LGPLv2+ to dual-GPLv2+|LGPLv3+.
 
-** idn-free.h: Protect prototypes with 'extern "C"' marker.
-Reported by Bittner Ede <bittner.ede@euronetrt.hu>.
+** build: Fix parallel Windows builds.
+Reported by René Berber <r.berber@computer.org>.
 
-** doc: Update link to experimental TLD tables.
-The new link is <https://github.com/gnuthor/tldchk>.
+** libidn: Fix potential infloop in pr29 code.
+Reported by Jon Nelson <jnelson@jamponi.net> in
+<http://lists.gnu.org/archive/html/help-libidn/2012-01/msg00008.html>.
+
+** libidn: Add 'const' keyword to 'stringprep_ucs4_nfkc_normalize' function.
+
+** Sync glib NFKC code and improve copyright/license statements.
 
 ** Update gnulib files and translations.
 
-** QA: Improved cyclo output.  Update GTK-DOC files.  Various bugfixes.
-
 ** API and ABI is backwards compatible with the previous version.
 
-The library contains a generic Stringprep implementation.  Profiles
+The C library contains a generic Stringprep implementation.  Profiles
 for Nameprep, iSCSI, SASL, XMPP and Kerberos V5 are included.
 Punycode and ASCII Compatible Encoding (ACE) via IDNA are supported.
 A mechanism to define Top-Level Domain (TLD) specific validation
 tables, and to compare strings against those tables, is included.
 Default tables for some TLDs are also included.
+
+The Stringprep API consists of two main functions, one for converting
+data from the system's native representation into UTF-8, and one
+function to perform the Stringprep processing.  Adding a new
+Stringprep profile for your application within the API is
+straightforward.  The Punycode API consists of one encoding function
+and one decoding function.  The IDNA API consists of the ToASCII and
+ToUnicode functions, as well as an high-level interface for converting
+entire domain names to and from the ACE encoded form.  The TLD API
+consists of one set of functions to extract the TLD name from a domain
+string, one set of functions to locate the proper TLD table to use
+based on the TLD name, and core functions to validate a string against
+a TLD table, and some utility wrappers to perform all the steps in one
+call.
 
 Libidn is developed for the GNU/Linux system, but runs on over 20 Unix
 platforms (including Solaris, IRIX, AIX, and Tru64) and Windows.  The
@@ -40,8 +55,7 @@ C++, Emacs Lisp, Python and Java.  A native Java and C# port is
 included.
 
 Also included is a command line tool, several self tests, code
-examples, and more, all licensed under the GNU General Public License
-version 3.0 or later.
+examples, and more.
 
 Improving Libidn is costly, but you can help!  We are looking for
 organizations that find Libidn useful and wish to contribute back.
@@ -81,43 +95,42 @@ If you need help to use Libidn, or want to help others, you are
 invited to join our help-libidn mailing list, see:
   https://lists.gnu.org/mailman/listinfo/help-libidn
 
-Here are the compressed sources (3.4MB):
-  ftp://ftp.gnu.org/gnu/libidn/libidn-1.23.tar.gz
-  http://ftp.gnu.org/gnu/libidn/libidn-1.23.tar.gz
+Here are the compressed sources (3.2MB):
+  ftp://ftp.gnu.org/gnu/libidn/libidn-1.24.tar.gz
+  http://ftp.gnu.org/gnu/libidn/libidn-1.24.tar.gz
 
 Here are GPG detached signatures:
-  ftp://ftp.gnu.org/gnu/libidn/libidn-1.23.tar.gz.sig
-  http://ftp.gnu.org/gnu/libidn/libidn-1.23.tar.gz.sig
+  ftp://ftp.gnu.org/gnu/libidn/libidn-1.24.tar.gz.sig
+  http://ftp.gnu.org/gnu/libidn/libidn-1.24.tar.gz.sig
 
 Here are the SHA-1 and SHA-224 signatures:
 
-98b00aeb8240a7a6e02f338edd6ef08adbc31a34  libidn-1.23.tar.gz
-e05b3b0046b3071383899d42bf664643c0350f4cdcfc390efdf66d44  libidn-1.23.tar.gz
+4251c108966375ede4df15d76a1bd9a4440f44ee  libidn-1.24.tar.gz
+71599952df85af90915310a6a7660edac062965e83c01fe3ca0cfa4e  libidn-1.24.tar.gz
 
 We also provide Windows binaries built using MinGW-w64 with the build
 script win32/libidn4win.mk, for 32-bit and 64-bit x86 architecures:
 
-  ftp://ftp.gnu.org/gnu/libidn/libidn-1.23-win32.zip
-  ftp://ftp.gnu.org/gnu/libidn/libidn-1.23-win32.zip.sig
-  ftp://ftp.gnu.org/gnu/libidn/libidn-1.23-win64.zip
-  ftp://ftp.gnu.org/gnu/libidn/libidn-1.23-win64.zip.sig
+  ftp://ftp.gnu.org/gnu/libidn/libidn-1.24-win32.zip
+  ftp://ftp.gnu.org/gnu/libidn/libidn-1.24-win32.zip.sig
+  ftp://ftp.gnu.org/gnu/libidn/libidn-1.24-win64.zip
+  ftp://ftp.gnu.org/gnu/libidn/libidn-1.24-win64.zip.sig
 
 Here are the SHA-1 and SHA-224 signatures:
 
-09ccba4c157a9fcc0787ad52a94361c87ecd07b7  libidn-1.23-win32.zip
-2b9d98e866a3bee1fccd8cc192ed1cbff139c9a35bbf7cd76ff11060  libidn-1.23-win32.zip
+994ffd7059ecc6a758fa9fc1b5735279d29bcca1  libidn-1.24-win32.zip
+a276074ae3c9b234375b94a8b639a0c45020cc01bfa98079a74c1cf0  libidn-1.24-win32.zip
 
-192f8c7190636780f6c55f8794c7a510f4b659cc  libidn-1.23-win64.zip
-9ae404347ffd562b969112ad3ca3c0190a6f953215f544611b031cc1  libidn-1.23-win64.zip
+d22700214317f3ee9be7cec4a3fe6c31c135d3fa  libidn-1.24-win64.zip
+c144d02490709aaba114226bd120d33f97dd7eac21c38aef5c3f8e7e  libidn-1.24-win64.zip
 
-The software is cryptographically signed by the author using an
-OpenPGP key identified by the following information:
+The software is cryptographically signed by the author using an OpenPGP
+key identified by the following information:
 
-pub   1280R/B565716F 2002-05-05 [expires: 2012-01-24]
+pub   1280R/B565716F 2002-05-05 [expires: 2013-05-10]
       Key fingerprint = 0424 D4EE 81A0 E3D1 19C6  F835 EDA2 1E94 B565 716F
 uid                  Simon Josefsson <simon@josefsson.org>
-uid                  Simon Josefsson <jas@extundo.com>
-sub   1280R/4D5D40AE 2002-05-05 [expires: 2012-01-24]
+sub   1280R/4D5D40AE 2002-05-05 [expires: 2013-05-10]
 
 The key is available from:
   http://josefsson.org/key.txt
