@@ -2,7 +2,7 @@ Libidn NEWS -- History of user-visible changes.                 -*- outline -*-
 Copyright (C) 2002-2012 Simon Josefsson
 See the end for copying conditions.
 
-* Version 1.24 (unreleased) [?]
+* Version 1.24 (released 2012-01-10) [stable]
 
 ** Libraries are re-licensed from LGPLv2+ to dual-GPLv2+|LGPLv3+.
 
