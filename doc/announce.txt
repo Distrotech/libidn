@@ -1,5 +1,5 @@
 To: help-libidn@gnu.org, info-gnu@gnu.org
-Subject: Libidn 1.22 released
+Subject: Libidn 1.23 released
 <#part sign=pgpmime>
 GNU Libidn is a fully documented implementation of the Stringprep,
 Punycode and IDNA specifications.  Libidn's purpose is to encode and
@@ -9,18 +9,20 @@ version 2.1 or later.
 
 Noteworthy changes since the last release (from NEWS file):
 
-* Version 1.22 (released 2011-05-04) [stable]
+* Version 1.23 (released 2011-11-25) [stable]
 
-** libidn: Add -liconv as static library requirement in libidn.pc, for MinGW.
-Reported by Volker Grabsch <vog@notjusthosting.com>.
+** stringprep.h: Now #include's sys/types.h instead of unistd.h for ssize_t.
+Some systems (e.g., Mingw with MSVC 9) does not have unistd.h.
 
-** libidn: Fix memory leak in idna_to_ascii_4z when idna_to_ascii_4i fails.
-Reported by and tiny patch from Olga Limburg <olimburg@gmail.com>.
+** idn-free.h: Protect prototypes with 'extern "C"' marker.
+Reported by Bittner Ede <bittner.ede@euronetrt.hu>.
 
-** libidn: Ran clang-analyze on the code.
-Fixed some dead assignments/initializations.
+** doc: Update link to experimental TLD tables.
+The new link is <https://github.com/gnuthor/tldchk>.
 
-** build: Really distribute win32/libidn4win.mk.
+** Update gnulib files and translations.
+
+** QA: Improved cyclo output.  Update GTK-DOC files.  Various bugfixes.
 
 ** API and ABI is backwards compatible with the previous version.
 
@@ -53,60 +55,60 @@ maintenance.  We are always looking for interesting development
 projects.  See http://josefsson.org/ for more details.
 
 The project page of the library is available at:
-  http://www.gnu.org/software/libidn/
+  https://www.gnu.org/software/libidn/
 
 All manual formats are available from:
-  http://www.gnu.org/software/libidn/manual/
+  https://www.gnu.org/software/libidn/manual/
 
 Specifically, the following formats are available.
 
 The main manual:
-  http://www.gnu.org/software/libidn/manual/libidn.html - HTML format
-  http://www.gnu.org/software/libidn/manual/libidn.pdf - PDF format
+  https://www.gnu.org/software/libidn/manual/libidn.html - HTML format
+  https://www.gnu.org/software/libidn/manual/libidn.pdf - PDF format
 
 API Reference manual:
-  http://www.gnu.org/software/libidn/reference/ch01.html - GTK-DOC HTML
-  http://www.gnu.org/software/libidn/reference/libidn.pdf - GTK-DOC PDF
+  https://www.gnu.org/software/libidn/reference/intro.html - GTK-DOC HTML
+  https://www.gnu.org/software/libidn/reference/libidn.pdf - GTK-DOC PDF
 
 Doxygen documentation:
-  http://www.gnu.org/software/libidn/doxygen/index.html - HTML format
-  http://www.gnu.org/software/libidn/doxygen/libidn.pdf - PDF format
+  https://www.gnu.org/software/libidn/doxygen/index.html - HTML format
+  https://www.gnu.org/software/libidn/doxygen/libidn.pdf - PDF format
 
 JavaDoc output for the Java API:
-  http://www.gnu.org/software/libidn/javadoc/
+  https://www.gnu.org/software/libidn/javadoc/
 
 If you need help to use Libidn, or want to help others, you are
 invited to join our help-libidn mailing list, see:
-  http://lists.gnu.org/mailman/listinfo/help-libidn
+  https://lists.gnu.org/mailman/listinfo/help-libidn
 
-Here are the compressed sources (3.3MB):
-  ftp://ftp.gnu.org/gnu/libidn/libidn-1.22.tar.gz
-  http://ftp.gnu.org/gnu/libidn/libidn-1.22.tar.gz
+Here are the compressed sources (3.4MB):
+  ftp://ftp.gnu.org/gnu/libidn/libidn-1.23.tar.gz
+  http://ftp.gnu.org/gnu/libidn/libidn-1.23.tar.gz
 
 Here are GPG detached signatures:
-  ftp://ftp.gnu.org/gnu/libidn/libidn-1.22.tar.gz.sig
-  http://ftp.gnu.org/gnu/libidn/libidn-1.22.tar.gz.sig
+  ftp://ftp.gnu.org/gnu/libidn/libidn-1.23.tar.gz.sig
+  http://ftp.gnu.org/gnu/libidn/libidn-1.23.tar.gz.sig
 
 Here are the SHA-1 and SHA-224 signatures:
 
-8358e897c24d534438f6b5694c25e85889d860c3  libidn-1.22.tar.gz
-72a452464252655803331e744c7ea3b5a06f88cc33b2c310377fe040  libidn-1.22.tar.gz
+98b00aeb8240a7a6e02f338edd6ef08adbc31a34  libidn-1.23.tar.gz
+e05b3b0046b3071383899d42bf664643c0350f4cdcfc390efdf66d44  libidn-1.23.tar.gz
 
 We also provide Windows binaries built using MinGW-w64 with the build
 script win32/libidn4win.mk, for 32-bit and 64-bit x86 architecures:
 
-  ftp://ftp.gnu.org/gnu/libidn/libidn-1.22-win32.zip
-  ftp://ftp.gnu.org/gnu/libidn/libidn-1.22-win32.zip.sig
-  ftp://ftp.gnu.org/gnu/libidn/libidn-1.22-win64.zip
-  ftp://ftp.gnu.org/gnu/libidn/libidn-1.22-win64.zip.sig
+  ftp://ftp.gnu.org/gnu/libidn/libidn-1.23-win32.zip
+  ftp://ftp.gnu.org/gnu/libidn/libidn-1.23-win32.zip.sig
+  ftp://ftp.gnu.org/gnu/libidn/libidn-1.23-win64.zip
+  ftp://ftp.gnu.org/gnu/libidn/libidn-1.23-win64.zip.sig
 
 Here are the SHA-1 and SHA-224 signatures:
 
-eccd416edb3ce60573da5c8264df77b780d00a80  libidn-1.22-win32.zip
-57d64a348a2b3a8782e729ecad1f8e10d1b721ec1196e1ca0a8ca5d3  libidn-1.22-win32.zip
+09ccba4c157a9fcc0787ad52a94361c87ecd07b7  libidn-1.23-win32.zip
+2b9d98e866a3bee1fccd8cc192ed1cbff139c9a35bbf7cd76ff11060  libidn-1.23-win32.zip
 
-b7b138a1c146e64aa6d6047786766a849237732d  libidn-1.22-win64.zip
-ddaa613848bbdc37199dfa3c9b4c04f77db8d506427213f55cee4934  libidn-1.22-win64.zip
+192f8c7190636780f6c55f8794c7a510f4b659cc  libidn-1.23-win64.zip
+9ae404347ffd562b969112ad3ca3c0190a6f953215f544611b031cc1  libidn-1.23-win64.zip
 
 The software is cryptographically signed by the author using an
 OpenPGP key identified by the following information:
@@ -114,22 +116,17 @@ OpenPGP key identified by the following information:
 pub   1280R/B565716F 2002-05-05 [expires: 2012-01-24]
       Key fingerprint = 0424 D4EE 81A0 E3D1 19C6  F835 EDA2 1E94 B565 716F
 uid                  Simon Josefsson <simon@josefsson.org>
+uid                  Simon Josefsson <jas@extundo.com>
 sub   1280R/4D5D40AE 2002-05-05 [expires: 2012-01-24]
 
 The key is available from:
   http://josefsson.org/key.txt
   dns:b565716f.josefsson.org?TYPE=CERT
 
-Here are the build reports for various platforms:
-  http://autobuild.josefsson.org/libidn/
-
-Daily builds of the package are available from:
-  http://daily.josefsson.org/libidn/
-
 Code coverage, clang-analyzer output, and cyclomatic code complexity charts:
-  http://www.gnu.org/software/libidn/coverage/
-  http://www.gnu.org/software/libidn/clang-analyzer/
-  http://www.gnu.org/software/libidn/cyclo/cyclo-libidn.html
+  https://www.gnu.org/software/libidn/coverage/
+  https://www.gnu.org/software/libidn/clang-analyzer/
+  https://www.gnu.org/software/libidn/cyclo/
 
 Happy hacking,
 Simon
