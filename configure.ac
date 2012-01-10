@@ -18,8 +18,8 @@ dnl You should have received a copy of the GNU General Public License
 dnl along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 AC_PREREQ(2.61)
-AC_INIT([GNU Libidn], [1.24], [bug-libidn@gnu.org])
-AC_COPYRIGHT([Copyright (c) 2002-2011 Simon Josefsson <simon@josefsson.org>.])
+AC_INIT([GNU Libidn], [1.25], [bug-libidn@gnu.org])
+AC_COPYRIGHT([Copyright (c) 2002-2012 Simon Josefsson <simon@josefsson.org>.])
 AC_CONFIG_AUX_DIR([build-aux])
 AC_CONFIG_MACRO_DIR([m4])
 AC_CONFIG_HEADERS(config.h)
@@ -31,7 +31,7 @@ AM_SILENT_RULES([yes])
 # Interfaces added:                             AGE++
 # Interfaces removed:                           AGE=0
 AC_SUBST(LT_CURRENT, 17)
-AC_SUBST(LT_REVISION, 7)
+AC_SUBST(LT_REVISION, 8)
 AC_SUBST(LT_AGE, 6)
 
 AC_PROG_CC
