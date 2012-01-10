@@ -1,3 +1,383 @@
+2012-01-10  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Version 1.24.
+
+2012-01-09  Simon Josefsson <simon@josefsson.org>
+
+	* doc/reference/libidn-docs.sgml: Fix markup.
+
+2012-01-09  Simon Josefsson <simon@josefsson.org>
+
+	* doc/reference/libidn-docs.sgml: Sync intro texts.
+
+2012-01-09  Simon Josefsson <simon@josefsson.org>
+
+	* Makefile.am: Also dist COPYING* files.
+
+2012-01-09  Simon Josefsson <simon@josefsson.org>
+
+	* gl/Makefile.am, gl/m4/gnulib-cache.m4, gl/m4/gnulib-comp.m4,
+	lib/gltests/test-setlocale2.sh: Update gnulib files.
+
+2012-01-09  Simon Josefsson <simon@josefsson.org>
+
+	* tests/tst_pr29.c, tests/utils.c: tst_pr29: Print more debug info.
+
+2012-01-09  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS, lib/nfkc.c, lib/stringprep.h: libidn: Add 'const' keyword to
+	'stringprep_ucs4_nfkc_normalize' function.
+
+2012-01-08  Simon Josefsson <simon@josefsson.org>
+
+	* tests/tst_pr29.c: Fix typo.
+
+2012-01-08  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS, THANKS, lib/pr29.c, tests/tst_pr29.c: libidn: Fix potential
+	infloop in pr29 code.  Reported by Jon Nelson <jnelson@jamponi.net> in
+
+	<http://lists.gnu.org/archive/html/help-libidn/2012-01/msg00008.html>.
+
+2012-01-08  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS: Fix.
+
+2012-01-08  Simon Josefsson <simon@josefsson.org>
+
+	* doc/Makefile.am, doc/gpl-3.0.texi, doc/lgpl-3.0.texi: Cleanup
+	copyright info.
+
+2012-01-08  Simon Josefsson <simon@josefsson.org>
+
+	* GNUmakefile, build-aux/gnupload,
+	build-aux/useless-if-before-free, gl/Makefile.am, gl/error.c,
+	gl/error.h, gl/getopt.c, gl/getopt.in.h, gl/getopt1.c,
+	gl/getopt_int.h, gl/m4/alloca.m4, gl/m4/extensions.m4,
+	gl/m4/gnulib-cache.m4, gl/m4/gnulib-common.m4,
+	gl/m4/gnulib-comp.m4, gl/m4/include_next.m4, gl/m4/inttypes.m4,
+	gl/m4/longlong.m4, gl/m4/lstat.m4, gl/m4/time_h.m4,
+	gl/msvc-inval.h, gl/verify.h, gl/version-etc.h,
+	gltests/Makefile.am, gltests/fcntl.in.h, gltests/getcwd-lgpl.c,
+	gltests/init.sh, gltests/inttypes.in.h, gltests/lstat.c,
+	gltests/putenv.c, gltests/setenv.c, gltests/test-init.sh,
+	gltests/unsetenv.c, lib/gl/m4/alloca.m4, lib/gl/m4/extensions.m4,
+	lib/gl/m4/gnulib-common.m4, lib/gl/m4/include_next.m4,
+	lib/gl/m4/inttypes.m4, lib/gl/m4/ld-version-script.m4,
+	lib/gl/m4/longlong.m4, lib/gl/strverscmp.c,
+	lib/gltests/Makefile.am, lib/gltests/init.sh,
+	lib/gltests/inttypes.in.h, lib/gltests/putenv.c,
+	lib/gltests/setenv.c, lib/gltests/test-init.sh,
+	lib/gltests/unsetenv.c, lib/gltests/verify.h, maint.mk: Update
+	gnulib files.
+
+2012-01-08  Simon Josefsson <simon@josefsson.org>
+
+	* COPYING, COPYING.LESSERv2, COPYING.LESSERv3, COPYING.LIB,
+	COPYINGv2, COPYINGv3, NEWS, README, csharp/AssemblyInfo.cs,
+	csharp/IDNA.cs, csharp/IDNAException.cs, csharp/Makefile.am,
+	csharp/NFKC.cs, csharp/Punycode.cs, csharp/PunycodeException.cs,
+	csharp/Stringprep.cs, csharp/StringprepException.cs,
+	csharp/generate/AssemblyInfo.cs, csharp/generate/GenerateNFKC.cs,
+	csharp/generate/GenerateRFC3454.cs, csharp/generate/HashSet.cs,
+	csharp/generate/Program.cs, csharp/generate/Tokenizer.cs,
+	doc/lgpl-2.1.texi, doc/lgpl-3.0.texi, doc/libidn.texi,
+	doc/reference/libidn-docs.sgml, gl/m4/gnulib-cache.m4,
+	java/Makefile.am, java/gnu/Makefile.am, java/gnu/inet/Makefile.am,
+	java/gnu/inet/encoding/IDNA.java,
+	java/gnu/inet/encoding/IDNAException.java,
+	java/gnu/inet/encoding/Makefile.am,
+	java/gnu/inet/encoding/NFKC.java,
+	java/gnu/inet/encoding/Punycode.java,
+	java/gnu/inet/encoding/PunycodeException.java,
+	java/gnu/inet/encoding/Stringprep.java,
+	java/gnu/inet/encoding/StringprepException.java,
+	java/misc/GenerateNFKC.java, java/misc/GenerateRFC3454.java,
+	java/misc/Makefile.am, java/misc/TestIDNA.java,
+	java/misc/TestNFKC.java, lib/Makefile.am, lib/idn-free.c,
+	lib/idn-free.h, lib/idna.c, lib/idna.h, lib/libidn.map, lib/nfkc.c,
+	lib/pr29.c, lib/pr29.h, lib/profiles.c, lib/punycode.c,
+	lib/punycode.h, lib/strerror-idna.c, lib/strerror-pr29.c,
+	lib/strerror-punycode.c, lib/strerror-stringprep.c,
+	lib/strerror-tld.c, lib/stringprep.c, lib/stringprep.h, lib/tld.c,
+	lib/tld.h, lib/toutf8.c, lib/version.c, libc/example.c, pom.xml.in,
+	src/idn.c, win32/include/ac-stdint.h, win32/include/config.h,
+	win32/include/idn-int.h, win32/include/stdbool.h: Relicense
+	libraries from LGPLv2+ to dual-GPLv2+|LGPLv3+.
+
+2012-01-05  Simon Josefsson <simon@josefsson.org>
+
+	* lib/idna.c: Put strlen calls in its own line, to simplify valgrind
+	output analysis.
+
+2012-01-05  Simon Josefsson <simon@josefsson.org>
+
+	* gl/error.c, gl/msvc-inval.c, gl/msvc-nothrow.c, gltests/dup2.c,
+	gltests/stdio.in.h, gltests/test-dup2.c,
+	gltests/test-vc-list-files-cvs.sh, lib/gl/m4/locale-fr.m4,
+	lib/gl/m4/locale-ja.m4, lib/gl/m4/locale-tr.m4,
+	lib/gl/m4/locale-zh.m4, lib/gl/m4/threadlib.m4,
+	lib/gltests/glthread/lock.c, lib/gltests/glthread/lock.h,
+	lib/gltests/glthread/thread.c, lib/gltests/glthread/thread.h,
+	lib/gltests/glthread/yield.h, lib/gltests/localename.c,
+	lib/gltests/setlocale.c, lib/gltests/test-lock.c,
+	lib/gltests/test-thread_create.c: Update gnulib files.
+
+2012-01-05  Simon Josefsson <simon@josefsson.org>
+
+	* HACKING, Makefile.am, README-alpha: Rename README-alpha to HACKING
+	and include it in tarballs.
+
+2012-01-05  Simon Josefsson <simon@josefsson.org>
+
+	* configure.ac: Print whether libiconv was found.
+
+2012-01-03  Simon Josefsson <simon@josefsson.org>
+
+	* GNUmakefile, build-aux/config.rpath, build-aux/csharpcomp.sh.in,
+	build-aux/csharpexec.sh.in, build-aux/pmccabe2html,
+	build-aux/snippet/arg-nonnull.h, build-aux/snippet/c++defs.h,
+	build-aux/snippet/unused-parameter.h,
+	build-aux/snippet/warn-on-use.h, build-aux/update-copyright,
+	build-aux/useless-if-before-free, build-aux/vc-list-files,
+	gl/Makefile.am, gl/errno.in.h, gl/error.c, gl/error.h, gl/getopt.c,
+	gl/getopt.in.h, gl/getopt1.c, gl/getopt_int.h, gl/gettext.h,
+	gl/intprops.h, gl/m4/00gnulib.m4, gl/m4/alloca.m4,
+	gl/m4/autobuild.m4, gl/m4/close.m4, gl/m4/csharp.m4,
+	gl/m4/csharpcomp.m4, gl/m4/csharpexec.m4, gl/m4/dup2.m4,
+	gl/m4/eealloc.m4, gl/m4/environ.m4, gl/m4/errno_h.m4,
+	gl/m4/error.m4, gl/m4/extensions.m4, gl/m4/fcntl-o.m4,
+	gl/m4/fcntl_h.m4, gl/m4/fdopen.m4, gl/m4/fstat.m4, gl/m4/getcwd.m4,
+	gl/m4/getopt.m4, gl/m4/gnulib-cache.m4, gl/m4/gnulib-common.m4,
+	gl/m4/gnulib-comp.m4, gl/m4/gnulib-tool.m4, gl/m4/include_next.m4,
+	gl/m4/inttypes-pri.m4, gl/m4/inttypes.m4, gl/m4/largefile.m4,
+	gl/m4/longlong.m4, gl/m4/lstat.m4, gl/m4/malloc.m4,
+	gl/m4/malloca.m4, gl/m4/manywarnings.m4, gl/m4/mode_t.m4,
+	gl/m4/msvc-inval.m4, gl/m4/msvc-nothrow.m4, gl/m4/multiarch.m4,
+	gl/m4/nocrash.m4, gl/m4/open.m4, gl/m4/pathmax.m4, gl/m4/putenv.m4,
+	gl/m4/setenv.m4, gl/m4/ssize_t.m4, gl/m4/stat.m4, gl/m4/stdarg.m4,
+	gl/m4/stdbool.m4, gl/m4/stddef_h.m4, gl/m4/stdint.m4,
+	gl/m4/stdio_h.m4, gl/m4/stdlib_h.m4, gl/m4/strerror.m4,
+	gl/m4/string_h.m4, gl/m4/symlink.m4, gl/m4/sys_socket_h.m4,
+	gl/m4/sys_stat_h.m4, gl/m4/time_h.m4, gl/m4/unistd_h.m4,
+	gl/m4/valgrind-tests.m4, gl/m4/version-etc.m4,
+	gl/m4/warn-on-use.m4, gl/m4/warnings.m4, gl/m4/wchar_h.m4,
+	gl/m4/wchar_t.m4, gl/m4/wint_t.m4, gl/msvc-inval.c,
+	gl/msvc-inval.h, gl/msvc-nothrow.c, gl/msvc-nothrow.h,
+	gl/progname.c, gl/progname.h, gl/stdarg.in.h, gl/stddef.in.h,
+	gl/strerror-override.c, gl/strerror-override.h, gl/strerror.c,
+	gl/string.in.h, gl/unistd.in.h, gl/verify.h, gl/version-etc.c,
+	gl/version-etc.h, gltests/Makefile.am, gltests/alloca.in.h,
+	gltests/binary-io.h, gltests/close.c, gltests/dosname.h,
+	gltests/dup2.c, gltests/fcntl.in.h, gltests/fd-hook.c,
+	gltests/fd-hook.h, gltests/fdopen.c, gltests/fstat.c,
+	gltests/getcwd-lgpl.c, gltests/ignore-value.h, gltests/init.sh,
+	gltests/inttypes.in.h, gltests/lstat.c, gltests/macros.h,
+	gltests/malloc.c, gltests/malloca.c, gltests/malloca.h,
+	gltests/open.c, gltests/pathmax.h, gltests/putenv.c,
+	gltests/same-inode.h, gltests/setenv.c, gltests/signature.h,
+	gltests/stat.c, gltests/stdbool.in.h, gltests/stdint.in.h,
+	gltests/stdio.in.h, gltests/stdlib.in.h, gltests/symlink.c,
+	gltests/sys_stat.in.h, gltests/test-alloca-opt.c,
+	gltests/test-binary-io.c, gltests/test-close.c,
+	gltests/test-dup2.c, gltests/test-environ.c, gltests/test-errno.c,
+	gltests/test-fdopen.c, gltests/test-fgetc.c, gltests/test-fputc.c,
+	gltests/test-fread.c, gltests/test-fstat.c, gltests/test-fwrite.c,
+	gltests/test-getcwd-lgpl.c, gltests/test-getopt.c,
+	gltests/test-getopt.h, gltests/test-getopt_long.h,
+	gltests/test-ignore-value.c, gltests/test-init.sh,
+	gltests/test-intprops.c, gltests/test-inttypes.c,
+	gltests/test-lstat.c, gltests/test-lstat.h, gltests/test-malloca.c,
+	gltests/test-open.c, gltests/test-open.h, gltests/test-pathmax.c,
+	gltests/test-setenv.c, gltests/test-stat.c, gltests/test-stat.h,
+	gltests/test-stdbool.c, gltests/test-stddef.c,
+	gltests/test-stdint.c, gltests/test-stdio.c,
+	gltests/test-strerror.c, gltests/test-symlink.c,
+	gltests/test-symlink.h, gltests/test-unsetenv.c,
+	gltests/test-vc-list-files-cvs.sh,
+	gltests/test-vc-list-files-git.sh, gltests/test-verify.c,
+	gltests/test-version-etc.c, gltests/test-version-etc.sh,
+	gltests/time.in.h, gltests/unsetenv.c, gltests/version-etc-fsf.c,
+	gltests/wchar.in.h, lib/gl/Makefile.am, lib/gl/c-ctype.c,
+	lib/gl/c-ctype.h, lib/gl/c-strcase.h, lib/gl/c-strcasecmp.c,
+	lib/gl/c-strncasecmp.c, lib/gl/gettext.h, lib/gl/iconv.c,
+	lib/gl/iconv.in.h, lib/gl/iconv_close.c, lib/gl/iconv_open.c,
+	lib/gl/m4/00gnulib.m4, lib/gl/m4/alloca.m4, lib/gl/m4/codeset.m4,
+	lib/gl/m4/eealloc.m4, lib/gl/m4/environ.m4,
+	lib/gl/m4/extensions.m4, lib/gl/m4/gnulib-cache.m4,
+	lib/gl/m4/gnulib-common.m4, lib/gl/m4/gnulib-comp.m4,
+	lib/gl/m4/gnulib-tool.m4, lib/gl/m4/iconv.m4, lib/gl/m4/iconv_h.m4,
+	lib/gl/m4/iconv_open.m4, lib/gl/m4/include_next.m4,
+	lib/gl/m4/inline.m4, lib/gl/m4/intlmacosx.m4,
+	lib/gl/m4/inttypes-pri.m4, lib/gl/m4/inttypes.m4,
+	lib/gl/m4/lcmessage.m4, lib/gl/m4/ld-output-def.m4,
+	lib/gl/m4/ld-version-script.m4, lib/gl/m4/lib-ld.m4,
+	lib/gl/m4/lib-link.m4, lib/gl/m4/lib-prefix.m4,
+	lib/gl/m4/libunistring-base.m4, lib/gl/m4/locale-fr.m4,
+	lib/gl/m4/locale-ja.m4, lib/gl/m4/locale-tr.m4,
+	lib/gl/m4/locale-zh.m4, lib/gl/m4/locale_h.m4,
+	lib/gl/m4/localename.m4, lib/gl/m4/lock.m4, lib/gl/m4/longlong.m4,
+	lib/gl/m4/malloc.m4, lib/gl/m4/malloca.m4, lib/gl/m4/multiarch.m4,
+	lib/gl/m4/putenv.m4, lib/gl/m4/setenv.m4, lib/gl/m4/setlocale.m4,
+	lib/gl/m4/ssize_t.m4, lib/gl/m4/stdbool.m4, lib/gl/m4/stddef_h.m4,
+	lib/gl/m4/stdint.m4, lib/gl/m4/stdlib_h.m4, lib/gl/m4/string_h.m4,
+	lib/gl/m4/strverscmp.m4, lib/gl/m4/thread.m4,
+	lib/gl/m4/threadlib.m4, lib/gl/m4/unistd_h.m4,
+	lib/gl/m4/visibility.m4, lib/gl/m4/warn-on-use.m4,
+	lib/gl/m4/wchar_h.m4, lib/gl/m4/wchar_t.m4, lib/gl/m4/wint_t.m4,
+	lib/gl/m4/yield.m4, lib/gl/stdbool.in.h, lib/gl/stddef.in.h,
+	lib/gl/stdint.in.h, lib/gl/striconv.c, lib/gl/striconv.h,
+	lib/gl/string.in.h, lib/gl/strverscmp.c, lib/gl/unistr.in.h,
+	lib/gl/unistr/u8-mbtoucr.c, lib/gl/unistr/u8-uctomb-aux.c,
+	lib/gl/unistr/u8-uctomb.c, lib/gl/unitypes.in.h,
+	lib/gltests/Makefile.am, lib/gltests/alloca.in.h,
+	lib/gltests/glthread/lock.c, lib/gltests/glthread/lock.h,
+	lib/gltests/glthread/thread.c, lib/gltests/glthread/thread.h,
+	lib/gltests/glthread/threadlib.c, lib/gltests/glthread/yield.h,
+	lib/gltests/init.sh, lib/gltests/intprops.h,
+	lib/gltests/inttypes.in.h, lib/gltests/locale.in.h,
+	lib/gltests/localename.c, lib/gltests/localename.h,
+	lib/gltests/macros.h, lib/gltests/malloc.c, lib/gltests/malloca.c,
+	lib/gltests/malloca.h, lib/gltests/putenv.c, lib/gltests/setenv.c,
+	lib/gltests/setlocale.c, lib/gltests/signature.h,
+	lib/gltests/stdlib.in.h, lib/gltests/test-alloca-opt.c,
+	lib/gltests/test-c-ctype.c, lib/gltests/test-c-strcasecmp.c,
+	lib/gltests/test-c-strncasecmp.c, lib/gltests/test-environ.c,
+	lib/gltests/test-iconv.c, lib/gltests/test-init.sh,
+	lib/gltests/test-intprops.c, lib/gltests/test-inttypes.c,
+	lib/gltests/test-locale.c, lib/gltests/test-localename.c,
+	lib/gltests/test-lock.c, lib/gltests/test-malloca.c,
+	lib/gltests/test-setenv.c, lib/gltests/test-setlocale1.c,
+	lib/gltests/test-setlocale2.c, lib/gltests/test-stdbool.c,
+	lib/gltests/test-stddef.c, lib/gltests/test-stdint.c,
+	lib/gltests/test-stdlib.c, lib/gltests/test-striconv.c,
+	lib/gltests/test-strverscmp.c, lib/gltests/test-sys_wait.h,
+	lib/gltests/test-thread_create.c, lib/gltests/test-thread_self.c,
+	lib/gltests/test-unistd.c, lib/gltests/test-unsetenv.c,
+	lib/gltests/test-verify.c, lib/gltests/unistd.in.h,
+	lib/gltests/unistr/test-u8-mbtoucr.c,
+	lib/gltests/unistr/test-u8-uctomb.c, lib/gltests/unsetenv.c,
+	lib/gltests/verify.h, lib/gltests/wchar.in.h, maint.mk: Update
+	gnulib files.
+
+2012-01-02  Simon Josefsson <simon@josefsson.org>
+
+	* po/rw.po.in: Remove stale translation.
+
+2012-01-02  Simon Josefsson <simon@josefsson.org>
+
+	* cfg.mk, csharp/IDNA.cs, csharp/IDNAException.cs, csharp/NFKC.cs,
+	csharp/Punycode.cs, csharp/PunycodeException.cs,
+	csharp/Stringprep.cs, csharp/StringprepException.cs,
+	csharp/generate/AssemblyInfo.cs, csharp/generate/GenerateNFKC.cs,
+	csharp/generate/GenerateRFC3454.cs, csharp/generate/HashSet.cs,
+	csharp/generate/Program.cs, csharp/generate/Tokenizer.cs,
+	doc/gendocs_template, doc/tld/no.tld,
+	java/gnu/inet/encoding/IDNA.java,
+	java/gnu/inet/encoding/IDNAException.java,
+	java/gnu/inet/encoding/NFKC.java,
+	java/gnu/inet/encoding/Punycode.java,
+	java/gnu/inet/encoding/PunycodeException.java,
+	java/gnu/inet/encoding/Stringprep.java,
+	java/gnu/inet/encoding/StringprepException.java,
+	java/misc/GenerateNFKC.java, java/misc/GenerateRFC3454.java,
+	java/misc/TestIDNA.java, java/misc/TestNFKC.java, lib/Makefile.am,
+	lib/gen-tld-tables.pl, lib/tld.c, lib/tld.h,
+	win32/include/ac-stdint.h, win32/include/idn-int.h,
+	win32/include/stdbool.h: Update FSF copyright years.
+
+2012-01-02  Simon Josefsson <simon@josefsson.org>
+
+	* .clcopying, AUTHORS, ChangeLog, FAQ, Makefile.am, NEWS, README,
+	README-alpha, THANKS, TODO, cfg.mk, configure.ac, contrib/README,
+	contrib/doxygen/gdoc2doxygen, contrib/java/Makefile.am,
+	contrib/java/README, csharp/Makefile.am, doc/Makefile.am,
+	doc/Makefile.gdoci, doc/cyclo/Makefile.am, doc/gdoc,
+	doc/java/Makefile.am, doc/libidn.texi, doc/tld/Makefile.am,
+	doc/tld/README, doc/tld/fr.tld, examples/Makefile.am,
+	examples/README, examples/example.c, examples/example2.c,
+	examples/example3.c, examples/example4.c, examples/example5.c,
+	java/Makefile.am, java/gnu/inet/encoding/Makefile.am,
+	lib/Makefile.am, lib/gen-stringprep-tables.pl,
+	lib/gen-tld-tables.pl, lib/gen-unicode-tables.pl, lib/idn-free.c,
+	lib/idn-free.h, lib/idna.c, lib/idna.h, lib/libidn.map, lib/nfkc.c,
+	lib/pr29.c, lib/pr29.h, lib/profiles.c, lib/punycode.c,
+	lib/punycode.h, lib/strerror-idna.c, lib/strerror-pr29.c,
+	lib/strerror-punycode.c, lib/strerror-stringprep.c,
+	lib/strerror-tld.c, lib/stringprep.c, lib/stringprep.h, lib/tld.c,
+	lib/tld.h, lib/toutf8.c, lib/version.c, libc/README,
+	libc/example.c, libc/getaddrinfo-idn.txt, libidn.pc.in,
+	src/Makefile.am, src/idn.c, src/idn.ggo, src/idna.el,
+	src/punycode.el, tests/Makefile.am, tests/tst_idna.c,
+	tests/tst_idna2.c, tests/tst_idna3.c, tests/tst_idna4.c,
+	tests/tst_nfkc.c, tests/tst_pr29.c, tests/tst_punycode.c,
+	tests/tst_strerror.c, tests/tst_stringprep.c, tests/tst_symbols.c,
+	tests/tst_tld.c, tests/tst_toutf8.c, tests/utils.c, tests/utils.h,
+	win32/libidn4win.mk: Update copyright years.
+
+2011-12-27  Simon Josefsson <simon@josefsson.org>
+
+	* THANKS: Mention gnulib in THANKS.
+
+2011-12-27  Simon Josefsson <simon@josefsson.org>
+
+	* AUTHORS: Update key.
+
+2011-12-27  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS, lib/nfkc.c: Sync glib NFKC code and improve
+	copyright/license statements.
+
+2011-12-27  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS, po/it.po.in: Sync with TP.
+
+2011-12-27  Simon Josefsson <simon@josefsson.org>
+
+	* gl/Makefile.am, gl/m4/gnulib-comp.m4, gl/m4/inttypes.m4,
+	gl/m4/stdint.m4, gl/m4/unistd_h.m4, gl/unistd.in.h,
+	gltests/Makefile.am, gltests/init.sh, gltests/inttypes.in.h,
+	gltests/stdint.in.h, gltests/test-init.sh, gltests/test-inttypes.c,
+	gltests/test-stdint.c, lib/gl/m4/gnulib-comp.m4,
+	lib/gl/m4/inttypes.m4, lib/gl/m4/stdint.m4, lib/gl/m4/unistd_h.m4,
+	lib/gl/stdint.in.h, lib/gltests/Makefile.am, lib/gltests/init.sh,
+	lib/gltests/inttypes.in.h, lib/gltests/test-init.sh,
+	lib/gltests/test-inttypes.c, lib/gltests/test-stdint.c,
+	lib/gltests/unistd.in.h: Update gnulib files.
+
+2011-12-27  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS, THANKS: Give credit.
+
+2011-12-27  Simon Josefsson <simon@josefsson.org>
+
+	* lib/Makefile.am: Fix parallel MinGW-builds (no deps for
+	libidn-X.def).  Clean libidn-X.def.  Reported by René Berber <r.berber@computer.org>.
+
+2011-11-30  Simon Josefsson <simon@josefsson.org>
+
+	* gl/Makefile.am, gl/m4/gnulib-cache.m4, gl/m4/gnulib-comp.m4,
+	gl/m4/manywarnings.m4, gltests/Makefile.am,
+	gltests/test-binary-io.c, gltests/test-binary-io.sh, maint.mk: 
+	Update gnulib files.
+
+2011-11-28  Simon Josefsson <simon@josefsson.org>
+
+	* NEWS, configure.ac, lib/stringprep.h: Bump versions.
+
+2011-11-28  Simon Josefsson <simon@josefsson.org>
+
+	* gl/Makefile.am, gl/m4/dup2.m4, gl/m4/getcwd.m4, gl/m4/getopt.m4,
+	gl/m4/gnulib-comp.m4, gl/m4/unistd_h.m4, lib/gl/Makefile.am,
+	lib/gl/c-ctype.h, lib/gl/c-strcase.h, lib/gl/gnulib.mk,
+	lib/gl/m4/gnulib-cache.m4, lib/gl/m4/unistd_h.m4,
+	lib/gltests/Makefile.am, lib/gltests/gnulib.mk: Update gnulib files.
+	Drop unistd/getopt workaround.
+
+2011-11-25  Simon Josefsson <simon@josefsson.org>
+
+	* ChangeLog: Generated.
+
 2011-11-25  Simon Josefsson <simon@josefsson.org>
 
 	* cfg.mk: Fix release rule.
