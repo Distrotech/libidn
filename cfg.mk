@@ -179,7 +179,7 @@ source:
 
 release-check: syntax-check i18n tarball binaries gendoc-copy gtkdoc-copy coverage-my coverage-copy clang clang-copy cyclo-copy javadoc-copy doxygen-copy
 
-release-upload-www: gendoc-upload gtkdoc-upload coverage-upload clang-upload cyclo-copy javadoc-copy doxygen-upload
+release-upload-www: gendoc-upload gtkdoc-upload coverage-upload clang-upload cyclo-upload javadoc-upload doxygen-upload
 
 release-upload-ftp:
 	git push
