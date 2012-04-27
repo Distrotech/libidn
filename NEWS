@@ -12,6 +12,8 @@ Reported by Bartosz Brachaczek <b.brachaczek@gmail.com>.
 ** tests: Ship with a valgrind suppressions file for the strlen issue.
 See bottom of HACKING for discussion.
 
+** Update gnulib files and translations.
+
 ** API and ABI is backwards compatible with the previous version.
 
 * Version 1.24 (released 2012-01-10) [stable]
