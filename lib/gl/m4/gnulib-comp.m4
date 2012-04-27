@@ -100,6 +100,8 @@ AC_DEFUN([lgl_EARLY],
   # Code from module string:
   # Code from module strverscmp:
   # Code from module strverscmp-tests:
+  # Code from module sys_types:
+  # Code from module sys_types-tests:
   # Code from module test-framework-sh:
   # Code from module test-framework-sh-tests:
   # Code from module thread:
@@ -263,6 +265,8 @@ gt_TYPE_SSIZE_T
 gt_TYPE_WCHAR_T
 gt_TYPE_WINT_T
 gl_STDLIB_H
+gl_SYS_TYPES_H
+AC_PROG_MKDIR_P
 gl_THREAD
 gl_THREADLIB
 gl_UNISTD_H
@@ -442,6 +446,7 @@ AC_DEFUN([lgl_FILE_LIST], [
   m4/stdlib_h.m4
   m4/string_h.m4
   m4/strverscmp.m4
+  m4/sys_types_h.m4
   m4/thread.m4
   m4/threadlib.m4
   m4/unistd_h.m4
@@ -479,6 +484,7 @@ AC_DEFUN([lgl_FILE_LIST], [
   tests/test-stdlib.c
   tests/test-striconv.c
   tests/test-strverscmp.c
+  tests/test-sys_types.c
   tests/test-sys_wait.h
   tests/test-thread_create.c
   tests/test-thread_self.c
@@ -508,6 +514,7 @@ AC_DEFUN([lgl_FILE_LIST], [
   tests=lib/setenv.c
   tests=lib/setlocale.c
   tests=lib/stdlib.in.h
+  tests=lib/sys_types.in.h
   tests=lib/unistd.in.h
   tests=lib/unsetenv.c
   tests=lib/verify.h

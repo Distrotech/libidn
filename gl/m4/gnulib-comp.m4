@@ -138,6 +138,8 @@ AC_DEFUN([gl_EARLY],
   # Code from module symlink:
   # Code from module symlink-tests:
   # Code from module sys_stat:
+  # Code from module sys_types:
+  # Code from module sys_types-tests:
   # Code from module test-framework-sh:
   # Code from module test-framework-sh-tests:
   # Code from module time:
@@ -245,6 +247,8 @@ if test -n "$ERRNO_H" || test $REPLACE_STRERROR_0 = 1; then
   gl_PREREQ_SYS_H_WINSOCK2
 fi
 gl_HEADER_STRING_H
+gl_SYS_TYPES_H
+AC_PROG_MKDIR_P
 gl_UNISTD_H
 gl_VALGRIND_TESTS
 gl_VERSION_ETC
@@ -330,6 +334,7 @@ gl_UNISTD_MODULE_INDICATOR([getcwd])
 AC_REQUIRE([AC_C_INLINE])
 gl_INTTYPES_H
 gl_INTTYPES_INCOMPLETE
+AC_REQUIRE([gl_LARGEFILE])
 gl_FUNC_LSTAT
 if test $REPLACE_LSTAT = 1; then
   AC_LIBOBJ([lstat])
@@ -518,6 +523,7 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/strerror-override.h
   lib/strerror.c
   lib/string.in.h
+  lib/sys_types.in.h
   lib/unistd.in.h
   lib/verify.h
   lib/version-etc.c
@@ -573,6 +579,7 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/symlink.m4
   m4/sys_socket_h.m4
   m4/sys_stat_h.m4
+  m4/sys_types_h.m4
   m4/time_h.m4
   m4/unistd_h.m4
   m4/valgrind-tests.m4
@@ -622,6 +629,7 @@ AC_DEFUN([gl_FILE_LIST], [
   tests/test-strerror.c
   tests/test-symlink.c
   tests/test-symlink.h
+  tests/test-sys_types.c
   tests/test-unsetenv.c
   tests/test-vc-list-files-cvs.sh
   tests/test-vc-list-files-git.sh
