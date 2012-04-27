@@ -146,6 +146,7 @@ gl/libgnu.la
 gl/progname.lo
 gl/progname.o
 gl/string.h
+gl/sys/
 gl/unistd.h
 gl/version-etc.lo
 gl/version-etc.o
@@ -230,6 +231,8 @@ gltests/test-symlink
 gltests/test-symlink.o
 gltests/test-sys_stat
 gltests/test-sys_stat.o
+gltests/test-sys_types
+gltests/test-sys_types.o
 gltests/test-sys_wait
 gltests/test-sys_wait.o
 gltests/test-time
@@ -339,6 +342,7 @@ lib/gltests/locale.h
 lib/gltests/localename.o
 lib/gltests/malloca.o
 lib/gltests/stdlib.h
+lib/gltests/sys/
 lib/gltests/test-alloca-opt
 lib/gltests/test-alloca-opt.o
 lib/gltests/test-c-ctype
@@ -383,6 +387,8 @@ lib/gltests/test-string
 lib/gltests/test-string.o
 lib/gltests/test-strverscmp
 lib/gltests/test-strverscmp.o
+lib/gltests/test-sys_types
+lib/gltests/test-sys_types.o
 lib/gltests/test-thread_create
 lib/gltests/test-thread_create.o
 lib/gltests/test-thread_self
