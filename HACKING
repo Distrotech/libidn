@@ -61,6 +61,11 @@ in your ~/.valgrindrc:
 
 --suppressions=/path/to/libidn/tests/libidn.supp
 
+To prepare releases (see rules in cfg.mk) you need some additional
+tools:
+
+apt-get install pmccabe mingw-w64 wine clang lcov
+
 Happy hacking!
 
 ----------------------------------------------------------------------
