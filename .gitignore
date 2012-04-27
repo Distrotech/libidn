@@ -2,6 +2,7 @@
 *.gcno
 *~
 ABOUT-NLS
+ChangeLog
 INSTALL
 Makefile
 Makefile.in

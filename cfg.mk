@@ -46,6 +46,7 @@ autoreconf: doc/Makefile.gdoc
 		cp $$f `echo $$f | sed 's/.in//'`; \
 	done
 	mv build-aux/config.rpath build-aux/config.rpath-
+	touch ChangeLog
 	test -f ./configure || autoreconf --install
 	mv build-aux/config.rpath- build-aux/config.rpath
 
