@@ -50,7 +50,8 @@ main (void)
 
   printf ("Input domain encoded as `%s': ", stringprep_locale_charset ());
   fflush (stdout);
-  fgets (buf, BUFSIZ, stdin);
+  if (!fgets (buf, BUFSIZ, stdin))
+    perror ("fgets");
   buf[strlen (buf) - 1] = '\0';
 
   printf ("Read string (length %ld): ", strlen (buf));

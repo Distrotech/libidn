@@ -7,6 +7,8 @@ See the end for copying conditions.
 ** MSVC: Build fixes related to _GL_ATTRIBUTE_CONST and _GL_ATTRIBUTE_PURE.
 Reported by Bartosz Brachaczek <b.brachaczek@gmail.com>.
 
+** examples: Fix compiler warning about ignoring return value from fgets.
+
 ** tests: Ship with a valgrind suppressions file for the strlen issue.
 See bottom of HACKING for discussion.
 

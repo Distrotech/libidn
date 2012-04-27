@@ -184,7 +184,8 @@ main (int argc, char **argv)
 
       /* Read the Punycode input string and convert to ASCII: */
 
-      fgets (input, ace_max_length + 2, stdin);
+      if (!fgets (input, ace_max_length + 2, stdin))
+	fail (io_error);
       if (ferror (stdin))
 	fail (io_error);
       if (feof (stdin))

@@ -49,7 +49,9 @@ main (void)
 
   printf ("Input string encoded as `%s': ", stringprep_locale_charset ());
   fflush (stdout);
-  fgets (buf, BUFSIZ, stdin);
+  if (!fgets (buf, BUFSIZ, stdin))
+    perror ("fgets");
+  buf[strlen (buf) - 1] = '\0';
 
   printf ("Before locale2utf8 (length %ld): ", strlen (buf));
   for (i = 0; i < strlen (buf); i++)
