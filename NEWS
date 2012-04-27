@@ -7,6 +7,9 @@ See the end for copying conditions.
 ** MSVC: Build fixes related to _GL_ATTRIBUTE_CONST and _GL_ATTRIBUTE_PURE.
 Reported by Bartosz Brachaczek <b.brachaczek@gmail.com>.
 
+** tests: Ship with a valgrind suppressions file for the strlen issue.
+See bottom of HACKING for discussion.
+
 ** API and ABI is backwards compatible with the previous version.
 
 * Version 1.24 (released 2012-01-10) [stable]
