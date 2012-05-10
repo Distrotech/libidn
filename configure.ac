@@ -34,6 +34,10 @@ AC_SUBST(LT_CURRENT, 17)
 AC_SUBST(LT_REVISION, 8)
 AC_SUBST(LT_AGE, 6)
 
+# automake 1.12 seems to require this, but automake 1.11 doesn't recognize it
+m4_pattern_allow([AM_PROG_AR])
+AM_PROG_AR
+
 AC_PROG_CC
 gl_EARLY
 lgl_EARLY
