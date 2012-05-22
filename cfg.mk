@@ -183,9 +183,9 @@ release-check: syntax-check i18n tarball binaries gendoc-copy gtkdoc-copy covera
 release-upload-www: gendoc-upload gtkdoc-upload coverage-upload clang-upload cyclo-upload javadoc-upload doxygen-upload
 
 release-upload-ftp:
-	git push
-	git push --tags
 	build-aux/gnupload --to ftp.gnu.org:$(PACKAGE) $(distdir).tar.gz
 	cp $(distdir).tar.gz $(distdir).tar.gz.sig ../releases/$(PACKAGE)/
+	git push
+	git push --tags
 
 release: release-check release-upload-www source release-upload-ftp binaries-upload
