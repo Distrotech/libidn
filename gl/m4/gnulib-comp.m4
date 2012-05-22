@@ -252,7 +252,6 @@ AC_PROG_MKDIR_P
 gl_UNISTD_H
 gl_VALGRIND_TESTS
 gl_VERSION_ETC
-AC_SUBST([WARN_CFLAGS])
   # End of code from modules
   m4_ifval(gl_LIBSOURCES_LIST, [
     m4_syscmd([test ! -d ]m4_defn([gl_LIBSOURCES_DIR])[ ||
@@ -300,6 +299,7 @@ changequote([, ])dnl
   gl_module_indicator_condition=$gltests_WITNESS
   m4_pushdef([gl_MODULE_INDICATOR_CONDITION], [$gl_module_indicator_condition])
 gl_FUNC_ALLOCA
+AC_REQUIRE([AC_C_INLINE])
 gl_FUNC_CLOSE
 if test $REPLACE_CLOSE = 1; then
   AC_LIBOBJ([close])
@@ -562,6 +562,7 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/msvc-nothrow.m4
   m4/multiarch.m4
   m4/nocrash.m4
+  m4/off_t.m4
   m4/open.m4
   m4/pathmax.m4
   m4/putenv.m4

@@ -436,6 +436,7 @@ AC_DEFUN([lgl_FILE_LIST], [
   m4/malloc.m4
   m4/malloca.m4
   m4/multiarch.m4
+  m4/off_t.m4
   m4/putenv.m4
   m4/setenv.m4
   m4/setlocale.m4
