@@ -175,8 +175,7 @@ binaries-upload:
 	cd win32 && make -f libidn4win.mk upload VERSION=$(VERSION)
 
 source:
-	git commit -m Generated. ChangeLog
-	git tag -u b565716f! -m $(VERSION) $(tag)
+	git tag -u b565716f -m $(VERSION) $(tag)
 
 release-check: syntax-check i18n tarball binaries gendoc-copy gtkdoc-copy coverage-my coverage-copy clang clang-copy cyclo-copy javadoc-copy doxygen-copy
 
