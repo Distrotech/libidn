@@ -2,7 +2,7 @@ Libidn NEWS -- History of user-visible changes.                 -*- outline -*-
 Copyright (C) 2002-2012 Simon Josefsson
 See the end for copying conditions.
 
-* Version 1.25 (unreleased) [?]
+* Version 1.25 (released 2012-05-23) [stable]
 
 ** MSVC: Build fixes related to _GL_ATTRIBUTE_CONST and _GL_ATTRIBUTE_PURE.
 Reported by Bartosz Brachaczek <b.brachaczek@gmail.com>.
