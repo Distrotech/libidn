@@ -10,7 +10,7 @@ Reported by Bartosz Brachaczek <b.brachaczek@gmail.com>.
 ** examples: Fix compiler warning about ignoring return value from fgets.
 
 ** tests: Ship with a valgrind suppressions file for the strlen issue.
-See bottom of HACKING for discussion.
+See tests/libidn.supp and  bottom of HACKING for discussion.
 
 ** Update gnulib files and translations.
 
