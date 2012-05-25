@@ -207,10 +207,15 @@ doit (void)
   size_t i;
 
   if (!stringprep_check_version (STRINGPREP_VERSION))
-    fail ("stringprep_check_version(%s) failed\n", STRINGPREP_VERSION);
+    fail ("stringprep_check_version failed (header %s runtime %s)\n",
+	  STRINGPREP_VERSION, stringprep_check_version (NULL));
 
   if (!stringprep_check_version (NULL))
     fail ("stringprep_check_version(NULL) failed\n");
+
+  if (strcmp (stringprep_check_version (NULL), STRINGPREP_VERSION) != 0)
+    fail ("stringprep_check_version failure (header %s runtime %s)\n",
+	  STRINGPREP_VERSION, stringprep_check_version (NULL));
 
   if (stringprep_check_version ("100.100"))
     fail ("stringprep_check_version(\"100.100\") failed\n");
