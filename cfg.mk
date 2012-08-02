@@ -37,6 +37,7 @@ exclude_file_name_regexp--sc_bindtextdomain = ^examples/|libc/|tests/
 exclude_file_name_regexp--sc_prohibit_atoi_atof = ^examples/example2.c$$
 exclude_file_name_regexp--sc_copyright_check = ^doc/libidn.texi
 exclude_file_name_regexp--sc_useless_cpp_parens = ^lib/nfkc.c$$
+exclude_file_name_regexp--sc_prohibit_strncpy = ^src/idn.c$$
 
 doc/Makefile.gdoc:
 	printf "gdoc_MANS =\ngdoc_TEXINFOS =\n" > doc/Makefile.gdoc
