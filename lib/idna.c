@@ -154,6 +154,9 @@ idna_to_ascii_4i (const uint32_t * in, size_t inlen, char *out, int flags)
     src = stringprep_utf8_to_ucs4 (p, -1, NULL);
 
     free (p);
+
+    if (!src)
+      return IDNA_MALLOC_ERROR;
   }
 
 step3:

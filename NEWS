@@ -4,6 +4,9 @@ See the end for copying conditions.
 
 * Version 1.26 (unreleased) [stable]
 
+** libidn, idna_to_ascii: Propagate error on malloc failure.
+Reported by Sarat Chandra Addepalli <s.addepalli@samsung.com>.
+
 ** API and ABI is backwards compatible with the previous version.
 
 * Version 1.25 (released 2012-05-23) [stable]
