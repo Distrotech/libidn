@@ -1,160 +1,157 @@
-# Vietnamese Translation for LibIDN
-# Copyright © 2012 Free Software Foundation, Inc.
+# Translation of libidn to Croatian.
+# Copyright (C) 2012 Free Software Foundation, Inc.
 # This file is distributed under the same license as the libidn package.
-# Clytie Siddall <clytie@riverland.net.au>, 2005-2008.
-# Trần Ngọc Quân <vnwildman@gmail.com>, 2012.
 #
+# Tomislav Krznar <tomislav.krznar@gmail.com>, 2012.
 msgid ""
 msgstr ""
-"Project-Id-Version: libidn-1.25\n"
+"Project-Id-Version: libidn 1.25\n"
 "Report-Msgid-Bugs-To: bug-libidn@gnu.org\n"
 "POT-Creation-Date: 2012-05-23 10:37+0200\n"
-"PO-Revision-Date: 2012-05-26 08:08+0700\n"
-"Last-Translator: Trần Ngọc Quân <vnwildman@gmail.com>\n"
-"Language-Team: Vietnamese <translation-team-vi@lists.sourceforge.net>\n"
-"Language: \n"
+"PO-Revision-Date: 2012-07-05 23:17+0200\n"
+"Last-Translator: Tomislav Krznar <tomislav.krznar@gmail.com>\n"
+"Language-Team: Croatian <lokalizacija@linux.hr>\n"
+"Language: hr\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: LocFactoryEditor 1.7b3\n"
-"X-Poedit-Language: Vietnamese\n"
-"X-Poedit-Country: VIET NAM\n"
-"X-Poedit-SourceCharset: utf-8\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Lokalize 1.4\n"
 
 #: lib/strerror-idna.c:82 lib/strerror-pr29.c:66 lib/strerror-punycode.c:66
 #: lib/strerror-stringprep.c:86 lib/strerror-tld.c:68
 msgid "Success"
-msgstr "Thành công"
+msgstr "Uspjeh"
 
 #: lib/strerror-idna.c:86 lib/strerror-pr29.c:74
 msgid "String preparation failed"
-msgstr "Lỗi chuẩn bị chuỗi"
+msgstr "Priprema niza nije uspjela"
 
 #: lib/strerror-idna.c:90
+#, fuzzy
 msgid "Punycode failed"
-msgstr "Lỗi punycode (mã yếu đuối)"
+msgstr "Punycode nije uspio"
 
 #: lib/strerror-idna.c:94
 msgid "Non-digit/letter/hyphen in input"
-msgstr "Dữ liệu nhập chứa ký tự khác chữ số/chữ/dấu gạch nối"
+msgstr "Ne-broj/slovo/crtica u ulazu"
 
 #: lib/strerror-idna.c:98
 msgid "Forbidden leading or trailing minus sign (`-')"
-msgstr "Không cho phép dấu gạch nối (`-') đi trước hay theo sau"
+msgstr "Zabranjeni početni ili završni minus („-”)"
 
 #: lib/strerror-idna.c:102
 msgid "Output would be too large or too small"
-msgstr "Dữ liệu xuất sẽ quá lớn hay quá nhỏ"
+msgstr "Izlaz bi bio prevelik ili premalen"
 
 #: lib/strerror-idna.c:106
 msgid "Input does not start with ACE prefix (`xn--')"
-msgstr "Dữ liệu nhập không bắt đầu bằng tiền tố ACE (`xn--')"
+msgstr "Ulaz ne počinje s ACE prefiksom („xn--”)"
 
 #: lib/strerror-idna.c:110
 msgid "String not idempotent under ToASCII"
-msgstr "Chuỗi không tránh nhân lên dưới ToASCII"
+msgstr ""
 
 #: lib/strerror-idna.c:114
 msgid "Input already contain ACE prefix (`xn--')"
-msgstr "Dữ liệu nhập đã chứa tiền tố ACE (`xn--')"
+msgstr "Ulaz već sadrži ACE prefiks („xn--”)"
 
 #: lib/strerror-idna.c:118 lib/strerror-tld.c:84
 msgid "System iconv failed"
-msgstr "Lỗi iconv hệ thống"
+msgstr "iconv sustava nije uspio"
 
 #: lib/strerror-idna.c:122 lib/strerror-stringprep.c:130 lib/strerror-tld.c:80
 msgid "Cannot allocate memory"
-msgstr "Không thể cấp phát bộ nhớ"
+msgstr "Ne mogu alocirati memoriju"
 
 #: lib/strerror-idna.c:126
 msgid "System dlopen failed"
-msgstr "Lỗi dlopen hệ thống"
+msgstr "dlopen sustava nije uspio"
 
 #: lib/strerror-idna.c:130 lib/strerror-pr29.c:78 lib/strerror-punycode.c:82
 #: lib/strerror-stringprep.c:134 lib/strerror-tld.c:92
 msgid "Unknown error"
-msgstr "Lỗi không rõ"
+msgstr "Nepoznata greška"
 
 #: lib/strerror-pr29.c:70
 msgid "String not idempotent under Unicode NFKC normalization"
-msgstr "Chuỗi không phải tránh nhân lên dưới sự tiêu chuẩn hoá NFKC Unicode"
+msgstr ""
 
 #: lib/strerror-punycode.c:70
 msgid "Invalid input"
-msgstr "Dữ liệu nhập không hợp lệ"
+msgstr "Neispravan ulaz"
 
 #: lib/strerror-punycode.c:74 lib/strerror-stringprep.c:110
 msgid "Output would exceed the buffer space provided"
-msgstr "Dữ liệu xuất sẽ vượt quá sức chứa đệm đã cung cấp"
+msgstr "Izlaz bi prekoračio dostupan prostor međuspremnika"
 
 #: lib/strerror-punycode.c:78
 msgid "String size limit exceeded"
-msgstr "Giới hạn kích cỡ chuỗi bị vượt quá"
+msgstr "Prekoračeno ograničenje veličine niza"
 
 #: lib/strerror-stringprep.c:90
 msgid "Forbidden unassigned code points in input"
-msgstr "Dữ liệu nhập chứa mã điểm không được gán cấm"
+msgstr ""
 
 #: lib/strerror-stringprep.c:94
 msgid "Prohibited code points in input"
-msgstr "Dữ liệu nhập chứa điểm mã cấm"
+msgstr ""
 
 #: lib/strerror-stringprep.c:98
 msgid "Conflicting bidirectional properties in input"
-msgstr "Dữ liệu nhập chứa tài sản hai hướng xung đột"
+msgstr "Konfliktna dvosmjerna svojstva u ulazu"
 
 #: lib/strerror-stringprep.c:102
 msgid "Malformed bidirectional string"
-msgstr "Chuỗi hai hướng dạng sai"
+msgstr "Izobličen dvosmjerni niz"
 
 #: lib/strerror-stringprep.c:106
 msgid "Prohibited bidirectional code points in input"
-msgstr "Dữ liệu nhập chứa điểm mã hai hướng cấm"
+msgstr ""
 
 #: lib/strerror-stringprep.c:114
 msgid "Error in stringprep profile definition"
-msgstr "Lỗi trong lời định nghĩa hồ sơ stringprep (chuẩn bị chuỗi)"
+msgstr "Greška u stringprep definiciji profila"
 
 #: lib/strerror-stringprep.c:118
 msgid "Flag conflict with profile"
-msgstr "Cờ xung dột với hồ sơ"
+msgstr ""
 
 #: lib/strerror-stringprep.c:122
 msgid "Unknown profile"
-msgstr "Hồ sơ lạ"
+msgstr "Nepoznat profil"
 
 #: lib/strerror-stringprep.c:126
 msgid "Unicode normalization failed (internal error)"
-msgstr "Lỗi tiêu chuẩn hoá Unicode (lỗi nội bộ)"
+msgstr "Unicode normalizacija nije uspjela (interna greška)"
 
 #: lib/strerror-tld.c:72
 msgid "Code points prohibited by top-level domain"
-msgstr "Điểm mã bị cấm bởi miền cấp đầu"
+msgstr ""
 
 #: lib/strerror-tld.c:76
 msgid "Missing input"
-msgstr "Thiếu dữ liệu nhập"
+msgstr "Nedostaje ulaz"
 
 #: lib/strerror-tld.c:88
 msgid "No top-level domain found in input"
-msgstr "Không tìm thấy miền cấp đầu trong dữ liệu nhập"
+msgstr "Nije pronađena vršna domena u ulazu"
 
 #: src/idn.c:65
 #, c-format
 msgid "Try `%s --help' for more information.\n"
-msgstr "Thử lệnh \"%s --help\" để xem thêm thông tin.\n"
+msgstr "Pokušajte „%s --help” za više informacija.\n"
 
 #: src/idn.c:69
 #, c-format
 msgid "Usage: %s [OPTION]... [STRINGS]...\n"
-msgstr "Sử dụng: %s [TÙY_CHỌN]... [CHUỖI]...\n"
+msgstr "Uporaba: %s [OPCIJA]... [NIZOVI]...\n"
 
 #: src/idn.c:72
 msgid ""
 "Internationalized Domain Name (IDN) convert STRINGS, or standard input.\n"
 "\n"
-msgstr "Chuyển đổi các chuỗi sang IDN (tên miền đã quốc tế hoá), hoặc đầu vào tiêu chuẩn.\n"
+msgstr ""
 
 #: src/idn.c:76
 msgid ""
@@ -169,24 +166,14 @@ msgid ""
 "\n"
 "Mandatory arguments to long options are mandatory for short options too.\n"
 msgstr ""
-"Giao diện dòng lệnh với thư viện tên miền đã quốc tế hoá.\n"
-"\n"
-"Mọi chuỗi nên được mã hoá theo bộ ký tự đã thích trong miền địa phương\n"
-"của bạn. Hãy dùng tùy chọn \"--debug\" (gỡ lỗi) để tìm biết bộ ký tự nào.\n"
-"Bạn cũng có thể ghi đè lên bộ ký tự này bằng cách đặt biến môi trường\n"
-"CHARSET.\n"
-"\n"
-"Để xử lý một chuỗi bắt đầu với \"-\", v.d. \"-foo\", dùng \"--\" để ngụ ý kết thúc các tham số, như trong \"idn --quiet -a -- -foo\".\n"
-"\n"
-"Mọi đối số bắt buộc phải sử dụng với tùy chọn dài cũng bắt buộc với tùy chọn ngắn.\n"
 
 #: src/idn.c:88
 msgid ""
 "  -h, --help               Print help and exit\n"
 "  -V, --version            Print version and exit\n"
 msgstr ""
-"  -h, --help               In ra trợ giúp, rồi thoát\n"
-"  -V, --version            In ra số thứ tự phiên bản, rồi thoát\n"
+"  -h, --help               Ispiši pomoć i izađi\n"
+"  -V, --version            Ispiši inačicu i izađi\n"
 
 #: src/idn.c:92
 msgid ""
@@ -196,31 +183,22 @@ msgid ""
 "  -a, --idna-to-ascii      Convert to ACE according to IDNA (default mode)\n"
 "  -u, --idna-to-unicode    Convert from ACE according to IDNA\n"
 msgstr ""
-"  -s, --stringprep         Chuẩn bị chuỗi tùy theo hồ sơ nameprep\n"
-"  -d, --punycode-decode    Giải mã Punycode\n"
-"  -e, --punycode-encode    Mã hoá Punycode\n"
-"  -a, --idna-to-ascii      Chuyển đổi sang ACE tùy theo IDNA (chế độ mặc định)\n"
-"  -u, --idna-to-unicode    Chuyển đổi từ ACE tùy theo IDNA\n"
 
 #: src/idn.c:99
 msgid ""
 "      --allow-unassigned   Toggle IDNA AllowUnassigned flag (default off)\n"
 "      --usestd3asciirules  Toggle IDNA UseSTD3ASCIIRules flag (default off)\n"
 msgstr ""
-"      --allow-unassigned   Bật/tắt cờ IDNA AllowUnassigned (mặc định là tắt)\n"
-"      --usestd3asciirules  Bật/tắt cờ IDNA UseSTD3ASCIIRules (mặc định là tắt)\n"
 
 #: src/idn.c:103
 msgid ""
 "      --no-tld             Don't check string for TLD specific rules\n"
 "                             Only for --idna-to-ascii and --idna-to-unicode\n"
 msgstr ""
-"  -t, --no-tld              Không kiểm tra chuỗi cho quy tắc đặc trưng TLD\n"
-"                             Chỉ dành cho \"--idna-to-ascii\" và \"--idna-to-unicode\"\n"
 
 #: src/idn.c:107
 msgid "  -n, --nfkc               Normalize string according to Unicode v3.2 NFKC\n"
-msgstr "  -n, --nfkc               Tiêu chuẩn hoá chuỗi tùy theo Unicode v3.2 NFKC\n"
+msgstr "  -n, --nfkc               Normaliziraj niz u skladu s Unicode v3.2 NFKC\n"
 
 #: src/idn.c:110
 msgid ""
@@ -229,49 +207,43 @@ msgid ""
 "                             `iSCSI', `Nodeprep', `Resourceprep', \n"
 "                             `trace', `SASLprep'\n"
 msgstr ""
-"  -p, --profile=CHUỖI     Dùng hồ sơ stringprep đã ghi rõ thay vào đó\n"
-"                             Các hồ sơ stringprep hợp lệ: `Nameprep',\n"
-"                             `iSCSI', `Nodeprep', `Resourceprep', \n"
-"                             `trace', `SASLprep'\n"
 
 #: src/idn.c:116
 msgid ""
 "      --debug              Print debugging information\n"
 "      --quiet              Silent operation\n"
 msgstr ""
-"      --debug              In ra thông tin gỡ lỗi\n"
-"      --quiet              Không xuất thông điệp\n"
 
 #: src/idn.c:172
 #, c-format
 msgid "only one of -s, -e, -d, -a, -u or -n can be specified"
-msgstr "chỉ có thể chỉ ra một trong số các đối số -s, -e, -d, -a, -u hay -n"
+msgstr "smijete navesti samo jednu od opcija -s, -e, -d, -a, -u ili -n"
 
 #: src/idn.c:182
 #, c-format
 msgid "Charset `%s'.\n"
-msgstr "Bộ ký tự \"%s\".\n"
+msgstr "Skup znakova „%s”.\n"
 
 #: src/idn.c:187
 #, c-format
 msgid "Type each input string on a line by itself, terminated by a newline character.\n"
-msgstr "Gõ mỗi chuỗi nhập trên một đường riêng, kết thúc bằng ký tự dòng mới.\n"
+msgstr "Unesite svaki ulazni niz u zasebnom retku, završenom znakom novog retka.\n"
 
 #: src/idn.c:202
 #, c-format
 msgid "input error"
-msgstr "lỗi đầu vào"
+msgstr "ulazna greška"
 
 #: src/idn.c:212 src/idn.c:274 src/idn.c:357 src/idn.c:434 src/idn.c:515
 #, c-format
 msgid "could not convert from %s to UTF-8"
-msgstr "không thể chuyển đổi từ %s sang UTF-8"
+msgstr "ne mogu pretvoriti iz %s u UTF-8"
 
 #: src/idn.c:220 src/idn.c:245 src/idn.c:281 src/idn.c:498 src/idn.c:527
 #: src/idn.c:551
 #, c-format
 msgid "could not convert from UTF-8 to UCS-4"
-msgstr "không thể chuyển đổi từ UTF-8 sang UCS-4"
+msgstr "ne mogu pretvoriti iz UTF-8 u UCS-4"
 
 #: src/idn.c:237
 #, c-format
@@ -281,7 +253,7 @@ msgstr "stringprep_profile: %s"
 #: src/idn.c:260 src/idn.c:302 src/idn.c:345 src/idn.c:503 src/idn.c:564
 #, c-format
 msgid "could not convert from UTF-8 to %s"
-msgstr "không thể chuyển đổi từ UTF-8 sang %s"
+msgstr "ne mogu pretvoriti iz UTF-8 u %s"
 
 #: src/idn.c:295
 #, c-format
@@ -300,7 +272,7 @@ msgstr "punycode_decode: %s"
 #: src/idn.c:340 src/idn.c:364 src/idn.c:442
 #, c-format
 msgid "could not convert from UCS-4 to UTF-8"
-msgstr "không thể chuyển đổi từ UCS-4 sang UTF-8"
+msgstr "ne mogu pretvoriti iz UCS-4 u UTF-8"
 
 #: src/idn.c:381
 #, c-format
@@ -315,7 +287,7 @@ msgstr "idna_to_unicode_8z4z (TLD): %s"
 #: src/idn.c:409 src/idn.c:482
 #, c-format
 msgid "tld_check_4z (position %lu): %s"
-msgstr "tld_check_4z (vị trí %lu): %s"
+msgstr "tld_check_4z (položaj %lu): %s"
 
 #: src/idn.c:412 src/idn.c:488
 #, c-format
@@ -330,11 +302,4 @@ msgstr "idna_to_unicode_8z4z: %s"
 #: src/idn.c:540
 #, c-format
 msgid "could not do NFKC normalization"
-msgstr "không thể tiêu chuẩn hoá kiểu NFKC"
-
-#~ msgid ""
-#~ "\n"
-#~ "Report bugs to <%s>.\n"
-#~ msgstr ""
-#~ "\n"
-#~ "Thông báo lỗi cho <%s>.\n"
+msgstr "ne mogu izvršiti NFKC normalizaciju"
