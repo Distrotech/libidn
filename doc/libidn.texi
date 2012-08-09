@@ -535,11 +535,11 @@ such as Windows Mobile.  You need Visual Studio 2005 or later.
 First download and unpack the archive as described in the generic
 installation instructions (@pxref{Downloading and Installing}).  Don't
 run @code{./configure}.  Instead, start Visual Studio and open the
-project file @file{win32/libidn.sln} inside the Libidn directory.  You
+project file @file{windows/libidn.sln} inside the Libidn directory.  You
 should be able to build the project using Build Project.
 
-Output libraries will be written into the @code{win32/lib} (or
-@code{win32/lib/debug} for Debug versions) folder.
+Output libraries will be written into the @code{windows/lib} (or
+@code{windows/lib/debug} for Debug versions) folder.
 
 When working with Windows you may want to look into the special memory
 handling functions that may be needed (@pxref{Memory handling under

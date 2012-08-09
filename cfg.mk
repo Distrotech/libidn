@@ -170,10 +170,10 @@ tarball:
 	$(MAKE) ChangeLog distcheck
 
 binaries:
-	cd win32 && make -f libidn4win.mk libidn4win VERSION=$(VERSION)
+	cd windows && make -f libidn4win.mk libidn4win VERSION=$(VERSION)
 
 binaries-upload:
-	cd win32 && make -f libidn4win.mk upload VERSION=$(VERSION)
+	cd windows && make -f libidn4win.mk upload VERSION=$(VERSION)
 
 source:
 	git tag -u b565716f -m $(VERSION) $(tag)

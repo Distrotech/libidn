@@ -104,7 +104,7 @@ Here are the SHA-1 and SHA-224 signatures:
 99c62bb5fe91b3d04b6c8b1a1971c02ed9b383375f85644ad510e315  libidn-1.25.tar.gz
 
 We also provide Windows binaries built using MinGW-w64 with the build
-script win32/libidn4win.mk, for 32-bit and 64-bit x86 architecures:
+script windows/libidn4win.mk, for 32-bit and 64-bit x86 architecures:
 
   ftp://ftp.gnu.org/gnu/libidn/libidn-1.25-win32.zip
   ftp://ftp.gnu.org/gnu/libidn/libidn-1.25-win32.zip.sig
