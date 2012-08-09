@@ -354,7 +354,7 @@ sc_prohibit_strncpy:
 #      perl -pi -e 's/(^|[^.])\b(exit ?)\(0\)/$1$2(EXIT_SUCCESS)/'
 sc_prohibit_magic_number_exit:
 	@prohibit='(^|[^.])\<(usage|exit|error) ?\(-?[0-9]+[,)]'	\
-	exclude='error ?\(0,'						\
+	exclude='error ?\((0,|[^,]*)'					\
 	halt='use EXIT_* values rather than magic number'		\
 	  $(_sc_search_regexp)
 
@@ -1222,7 +1222,7 @@ sc_prohibit_path_max_allocation:
 
 sc_vulnerable_makefile_CVE-2009-4029:
 	@prohibit='perm -777 -exec chmod a\+rwx|chmod 777 \$$\(distdir\)' \
-	in_files=(^\|/)Makefile\\.in$$					\
+	in_files='(^|/)Makefile\.in$$'					\
 	halt=$$(printf '%s\n'						\
 	  'the above files are vulnerable; beware of running'		\
 	  '  "make dist*" rules, and upgrade to fixed automake'		\
@@ -1231,7 +1231,7 @@ sc_vulnerable_makefile_CVE-2009-4029:
 
 sc_vulnerable_makefile_CVE-2012-3386:
 	@prohibit='chmod a\+w \$$\(distdir\)'				\
-	in_files=(^\|/)Makefile\\.in$$					\
+	in_files='(^|/)Makefile\.in$$'					\
 	halt=$$(printf '%s\n'						\
 	  'the above files are vulnerable; beware of running'		\
 	  '  "make distcheck", and upgrade to fixed automake'		\
