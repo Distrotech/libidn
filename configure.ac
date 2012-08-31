@@ -174,10 +174,16 @@ AC_CONFIG_FILES([
   gl/Makefile
   gltests/Makefile
   java/Makefile
-  java/gnu/Makefile
-  java/gnu/inet/Makefile
-  java/gnu/inet/encoding/Makefile
-  java/misc/Makefile
+  java/src/Makefile
+  java/src/main/Makefile
+  java/src/main/java/Makefile
+  java/src/main/java/gnu/Makefile
+  java/src/main/java/gnu/inet/Makefile
+  java/src/main/java/gnu/inet/encoding/Makefile
+  java/src/util/Makefile
+  java/src/util/java/Makefile
+  java/src/test/Makefile
+  java/src/test/java/Makefile
   lib/Makefile
   lib/gl/Makefile
   lib/gltests/Makefile
