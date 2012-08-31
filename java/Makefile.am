@@ -16,7 +16,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-SUBDIRS = gnu . misc
+SUBDIRS = src
 
 EXTRA_DIST = LICENSE-2.0.txt
 
@@ -27,18 +27,19 @@ libidn_jardir = $(datadir)/java
 dist_libidn_jar_DATA = libidn-$(VERSION).jar
 
 libidn-$(VERSION).jar:
-	$(JAR) cf $@ gnu/inet/encoding/CombiningClass.class	\
-		gnu/inet/encoding/Composition.class		\
-		gnu/inet/encoding/DecompositionKeys.class	\
-		gnu/inet/encoding/DecompositionMappings.class	\
-		gnu/inet/encoding/IDNA.class			\
-		gnu/inet/encoding/IDNAException.class		\
-		gnu/inet/encoding/NFKC.class			\
-		gnu/inet/encoding/Punycode.class		\
-		gnu/inet/encoding/PunycodeException.class	\
-		gnu/inet/encoding/RFC3454.class			\
-		gnu/inet/encoding/Stringprep.class		\
-		gnu/inet/encoding/StringprepException.class
+	$(JAR) cf $@ \
+		-C $(builddir)/src/main/java gnu/inet/encoding/CombiningClass.class		\
+		-C $(builddir)/src/main/java gnu/inet/encoding/Composition.class		\
+		-C $(builddir)/src/main/java gnu/inet/encoding/DecompositionKeys.class		\
+		-C $(builddir)/src/main/java gnu/inet/encoding/DecompositionMappings.class	\
+		-C $(builddir)/src/main/java gnu/inet/encoding/IDNA.class			\
+		-C $(builddir)/src/main/java gnu/inet/encoding/IDNAException.class		\
+		-C $(builddir)/src/main/java gnu/inet/encoding/NFKC.class			\
+		-C $(builddir)/src/main/java gnu/inet/encoding/Punycode.class			\
+		-C $(builddir)/src/main/java gnu/inet/encoding/PunycodeException.class		\
+		-C $(builddir)/src/main/java gnu/inet/encoding/RFC3454.class			\
+		-C $(builddir)/src/main/java gnu/inet/encoding/Stringprep.class		\
+		-C $(builddir)/src/main/java gnu/inet/encoding/StringprepException.class
 
 INSTALL_TARGETS += install-jar
 install-jar:
@@ -48,10 +49,6 @@ install-jar:
 clean-local:
 	rm -f $(libidn_jar_DATA)
 
-# Invoked by ../doc/java/Makefile.
-.PHONY: javadoc
-javadoc:
-	cd $(srcdir) && $(GJDOC) -d $(top_builddir)/doc/java gnu/inet/encoding/*.java
 endif
 
 install-data-local: $(INSTALL_TARGETS)

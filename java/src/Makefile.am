@@ -16,20 +16,4 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-JAVAROOT = $(top_builddir)/java
-
-if JAVA
-dist_noinst_JAVA = \
-	CombiningClass.java		\
-	Composition.java		\
-	DecompositionKeys.java		\
-	DecompositionMappings.java	\
-	IDNA.java			\
-	IDNAException.java		\
-	NFKC.java			\
-	Punycode.java			\
-	PunycodeException.java		\
-	RFC3454.java			\
-	Stringprep.java			\
-	StringprepException.java
-endif
+SUBDIRS = main test util

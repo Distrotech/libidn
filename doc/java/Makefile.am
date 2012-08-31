@@ -37,8 +37,8 @@ EXTRA_DIST = $(HTML)
 
 all-local: $(HTML)
 
-$(HTML): $(top_srcdir)/java/gnu/inet/encoding/*.java
-	cd ../../java && make javadoc
+$(HTML): $(top_srcdir)/java/src/main/java/gnu/inet/encoding/*.java
+	cd ../../java/src/main/java && make javadoc
 
 clean-local:
 	rm -f $(HTML)

@@ -1,5 +1,5 @@
 ## Process this file with automake to produce Makefile.in
-# Copyright (C) 2004-2012  Free Software Foundation
+# Copyright (C) 2004-2012 Simon Josefsson
 #
 # This file is part of GNU Libidn.
 #
@@ -16,13 +16,14 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-JAVAROOT = $(top_builddir)/java/misc
-AM_JAVACFLAGS = -classpath $(top_builddir)/java/libidn-$(VERSION).jar:$(top_srcdir)/java/libidn-$(VERSION).jar
+SUBDIRS = gnu .
+INSTALL_TARGETS =
 
 if JAVA
-dist_noinst_JAVA = \
-	GenerateRFC3454.java \
-	GenerateNFKC.java \
-	TestIDNA.java \
-	TestNFKC.java
+
+# Invoked by ../doc/java/Makefile.
+.PHONY: javadoc
+javadoc:
+	cd $(srcdir) && $(GJDOC) -d $(top_builddir)/doc/java gnu/inet/encoding/*.java
 endif
+
