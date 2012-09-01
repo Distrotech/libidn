@@ -174,6 +174,7 @@ AC_CONFIG_FILES([
   gl/Makefile
   gltests/Makefile
   java/Makefile
+  java/pom.xml
   java/src/Makefile
   java/src/main/Makefile
   java/src/main/java/Makefile
@@ -189,7 +190,6 @@ AC_CONFIG_FILES([
   lib/gltests/Makefile
   libidn.pc
   po/Makefile.in
-  pom.xml
   src/Makefile
   tests/Makefile
 ])
