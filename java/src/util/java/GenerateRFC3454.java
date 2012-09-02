@@ -58,7 +58,7 @@ public class GenerateRFC3454
 
     public String next()
     {
-      StringBuffer s = new StringBuffer(Integer.toHexString(f));
+      StringBuilder s = new StringBuilder(Integer.toHexString(f));
       while (s.length() < 4) {
 	s.insert(0, '0');
       }
@@ -96,8 +96,8 @@ public class GenerateRFC3454
     int n = 0;
     
     String t = null;
-    StringBuffer o1 = null;
-    StringBuffer o2 = null;
+    StringBuilder o1 = null;
+    StringBuilder o2 = null;
     
     while (true) {
       String l = r.readLine();
@@ -117,8 +117,8 @@ public class GenerateRFC3454
       } else if (-1 != l.indexOf("----- Start Table ")) {
 	// Start of a table
 	t = l.substring(l.indexOf("Table")+6, l.lastIndexOf("-----")-1);
-	o1 = new StringBuffer();
-	o2 = new StringBuffer();
+	o1 = new StringBuilder();
+	o2 = new StringBuilder();
       } else if (-1 != l.indexOf("----- End Table ")) {
 	// End of a table
 	if ("A.1".equals(t)) {

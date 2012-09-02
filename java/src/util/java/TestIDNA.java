@@ -90,7 +90,7 @@ public class TestIDNA
       BufferedReader r = new BufferedReader(new FileReader(f));
       int state = STATE_SCAN;
 
-      StringBuffer input = new StringBuffer();
+      StringBuilder input = new StringBuilder();
       String out;
 
       while (true) {
@@ -103,7 +103,7 @@ public class TestIDNA
 	case STATE_SCAN:
 	  if (l.startsWith("input (length ")) {
 	    state = STATE_INPUT;
-	    input = new StringBuffer();
+	    input = new StringBuilder();
 	  }
 	  break;
 	case STATE_INPUT:

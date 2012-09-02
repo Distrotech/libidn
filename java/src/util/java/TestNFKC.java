@@ -47,7 +47,7 @@ public class TestNFKC
 
   static String[] split(String in, char sep)
   {
-    StringBuffer sb = new StringBuffer(in);
+    StringBuilder sb = new StringBuilder(in);
     int c = 0;
     for (int i = 0; i < sb.length(); i++) {
       if (sb.charAt(i) == sep) {
@@ -88,7 +88,7 @@ public class TestNFKC
 
   static String evalUnicode(String in)
   {
-    StringBuffer out = new StringBuffer();
+    StringBuilder out = new StringBuilder();
     String[] s = split(in, ' ');
     for (int i = 0; i < s.length; i++) {
       out.append((char) Integer.parseInt(s[i], 16));
@@ -98,7 +98,7 @@ public class TestNFKC
 
   static String toUnicode(String in)
   {
-    StringBuffer out = new StringBuffer();
+    StringBuilder out = new StringBuilder();
     for (int i = 0; i < in.length(); i++) {
       int c = in.charAt(i);
       out.append(Integer.toHexString(c));

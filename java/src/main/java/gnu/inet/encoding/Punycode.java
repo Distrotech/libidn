@@ -62,7 +62,7 @@ public class Punycode
     int n = INITIAL_N;
     int delta = 0;
     int bias = INITIAL_BIAS;
-    StringBuffer output = new StringBuffer();
+    StringBuilder output = new StringBuilder();
 
     // Copy all basic code points to the output
     int b = 0;
@@ -150,7 +150,7 @@ public class Punycode
     int n = INITIAL_N;
     int i = 0;
     int bias = INITIAL_BIAS;
-    StringBuffer output = new StringBuffer();
+    StringBuilder output = new StringBuilder();
 
     int d = input.lastIndexOf(DELIMITER);
     if (d > 0) {

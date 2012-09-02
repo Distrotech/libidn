@@ -51,7 +51,7 @@ public class GenerateNFKC
 
   static String[] split(String in, char sep)
   {
-    StringBuffer sb = new StringBuffer(in);
+    StringBuilder sb = new StringBuilder(in);
     int c = 0;
     for (int i = 0; i < sb.length(); i++) {
       if (sb.charAt(i) == sep) {
@@ -91,7 +91,7 @@ public class GenerateNFKC
 
   static String toJavaString(String in)
   {
-    StringBuffer out = new StringBuffer();
+    StringBuilder out = new StringBuilder();
     String[] chars = split(in, ' ');
     for (int i = 0; i < chars.length; i++) {
       if (chars[i].equals("005C")) {
@@ -108,7 +108,7 @@ public class GenerateNFKC
 
   static String decompose(String in, TreeMap mappings)
   {
-    StringBuffer out = new StringBuffer("");
+    StringBuilder out = new StringBuilder("");
     String[] c = split(in, ' ');
 
     for (int i = 0; i < c.length; i++) {
@@ -344,14 +344,14 @@ public class GenerateNFKC
       w.println("public class CombiningClass");
       w.println("{");
       w.println("  public final static int[][] c = new int[][] {");
-      StringBuffer index = new StringBuffer();
+      StringBuilder index = new StringBuilder();
 
       int count = 0;
       
       for (int i = 0; i < 256; i++) {
 	boolean empty = true;
 	
-	StringBuffer page = new StringBuffer();
+	StringBuilder page = new StringBuilder();
 	page.append("    { /* Page "+i+" */");
 	
 	for (int j = 0; j < 256; j++) {
@@ -547,13 +547,13 @@ public class GenerateNFKC
       w.println("  public final static int singleFirstStart = "+singleFirstStart+";");
       w.println("  public final static int singleSecondStart = "+singleSecondStart+";");
 
-      StringBuffer compositionPages = new StringBuffer();
+      StringBuilder compositionPages = new StringBuilder();
 
       w.println("  public final static int[] composePage = new int[] {");
       int pageCount = 0;
       for (int j = 0; j*256 < composeLookupMax+255; j++) {
 	boolean empty = true;
-	StringBuffer page = new StringBuffer();
+	StringBuilder page = new StringBuilder();
 	for (int k = 0; k < 256; k++) {
 	  if (k % 16 == 0) {
 	    page.append("\n      ");

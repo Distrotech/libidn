@@ -54,15 +54,15 @@ public class IDNA
   public static String toASCII(String input)
     throws IDNAException
   {
-    StringBuffer o = new StringBuffer();
-    StringBuffer h = new StringBuffer();
+    StringBuilder o = new StringBuilder();
+    StringBuilder h = new StringBuilder();
 
     for (int i = 0; i < input.length(); i++) {
       char c = input.charAt(i);
       if (c == '.' || c == '\u3002' || c == '\uff0e' || c == '\uff61') {
 	o.append(toASCII(h.toString(), false, true));
 	o.append('.');
-	h = new StringBuffer();
+	h = new StringBuilder();
       } else {
 	h.append(c);
       }
@@ -184,15 +184,15 @@ public class IDNA
    */
   public static String toUnicode(String input)
   {
-    StringBuffer o = new StringBuffer();
-    StringBuffer h = new StringBuffer();
+    StringBuilder o = new StringBuilder();
+    StringBuilder h = new StringBuilder();
 
     for (int i = 0; i < input.length(); i++) {
       char c = input.charAt(i);
       if (c == '.' || c == '\u3002' || c == '\uff0e' || c == '\uff61') {
 	o.append(toUnicode(h.toString(), false, true));
 	o.append(c);
-	h = new StringBuffer();
+	h = new StringBuilder();
       } else {
 	h.append(c);
       }
