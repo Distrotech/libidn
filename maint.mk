@@ -330,8 +330,8 @@ sc_prohibit_atoi_atof:
 sp_ = strcmp *\(.+\)
 sc_prohibit_strcmp:
 	@prohibit='! *strcmp *\(|\<$(sp_) *[!=]=|[!=]= *$(sp_)'		\
-	exclude=':# *define STRN?EQ\('					\
-	halt='$(ME): replace strcmp calls above with STREQ/STRNEQ'	\
+	exclude='# *define STRN?EQ\('					\
+	halt='replace strcmp calls above with STREQ/STRNEQ'		\
 	  $(_sc_search_regexp)
 
 # Really.  You don't want to use this function.
@@ -354,7 +354,7 @@ sc_prohibit_strncpy:
 #      perl -pi -e 's/(^|[^.])\b(exit ?)\(0\)/$1$2(EXIT_SUCCESS)/'
 sc_prohibit_magic_number_exit:
 	@prohibit='(^|[^.])\<(usage|exit|error) ?\(-?[0-9]+[,)]'	\
-	exclude='error ?\((0,|[^,]*)'					\
+	exclude='exit \(77\)|error ?\(((0|77),|[^,]*)'			\
 	halt='use EXIT_* values rather than magic number'		\
 	  $(_sc_search_regexp)
 
@@ -724,6 +724,7 @@ sc_require_test_exit_idiom:
 sc_trailing_blank:
 	@prohibit='[	 ]$$'						\
 	halt='found trailing blank(s)'					\
+	exclude='^Binary file .* matches$$'				\
 	  $(_sc_search_regexp)
 
 # Match lines like the following, but where there is only one space
@@ -744,7 +745,7 @@ _gl_translatable_diag_func_re ?= error
 sc_unmarked_diagnostics:
 	@prohibit='\<$(_gl_translatable_diag_func_re) *\([^"]*"[^"]*[a-z]{3}' \
 	exclude='(_|ngettext ?)\('					\
-	halt='$(ME): found unmarked diagnostic(s)'			\
+	halt='found unmarked diagnostic(s)'				\
 	  $(_sc_search_regexp)
 
 # Avoid useless parentheses like those in this example:
@@ -780,7 +781,7 @@ sc_prohibit_always_true_header_tests:
 
 sc_prohibit_defined_have_decl_tests:
 	@prohibit='#[	 ]*if(n?def|.*\<defined)\>[	 (]+HAVE_DECL_'	\
-	halt='$(ME): HAVE_DECL macros are always defined'		\
+	halt='HAVE_DECL macros are always defined'			\
 	  $(_sc_search_regexp)
 
 # ==================================================================
@@ -1020,7 +1021,7 @@ sc_redundant_const:
 sc_const_long_option:
 	@prohibit='^ *static.*struct option '				\
 	exclude='const struct option|struct option const'		\
-	halt='$(ME): add "const" to the above declarations'		\
+	halt='add "const" to the above declarations'			\
 	  $(_sc_search_regexp)
 
 NEWS_hash =								\
@@ -1123,7 +1124,7 @@ sc_po_check:
 # Sometimes it is useful to change the PATH environment variable
 # in Makefiles.  When doing so, it's better not to use the Unix-centric
 # path separator of ':', but rather the automake-provided '$(PATH_SEPARATOR)'.
-msg = '$(ME): Do not use ":" above; use $$(PATH_SEPARATOR) instead'
+msg = 'Do not use ":" above; use $$(PATH_SEPARATOR) instead'
 sc_makefile_path_separator_check:
 	@prohibit='PATH[=].*:'						\
 	in_vc_files='akefile|\.mk$$'					\
@@ -1216,7 +1217,7 @@ sc_Wundef_boolean:
 # not be constant, or might overflow a stack.  In general, use PATH_MAX as
 # a limit, not an array or alloca size.
 sc_prohibit_path_max_allocation:
-	@prohibit='(\balloca *\([^)]*|\[[^]]*)PATH_MAX'			\
+	@prohibit='(\balloca *\([^)]*|\[[^]]*)\bPATH_MAX'		\
 	halt='Avoid stack allocations of size PATH_MAX'			\
 	  $(_sc_search_regexp)
 
