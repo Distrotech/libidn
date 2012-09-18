@@ -872,7 +872,7 @@ _g_utf8_normalize_wc (const gchar * str, gssize max_len, GNormalizeMode mode)
     {
       g_unicode_canonical_ordering (wc_buffer + last_start,
 				    n_wc - last_start);
-      last_start = n_wc;
+      // dead assignment: last_start = n_wc;
     }
 
   wc_buffer[n_wc] = 0;
