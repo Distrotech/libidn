@@ -10,6 +10,8 @@ Reported by Sarat Chandra Addepalli <s.addepalli@samsung.com>.
 ** i18n: Added Croatian translation.  Updated Vietnamese translation.
 Thanks to Tomislav Krznar and Trần Ngọc Quân.
 
+** tests: Improve tld self-tests.
+
 ** API and ABI is backwards compatible with the previous version.
 
 * Version 1.25 (released 2012-05-23) [stable]
