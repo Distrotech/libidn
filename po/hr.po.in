@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: libidn 1.25\n"
 "Report-Msgid-Bugs-To: bug-libidn@gnu.org\n"
 "POT-Creation-Date: 2012-05-23 10:37+0200\n"
-"PO-Revision-Date: 2012-07-05 23:17+0200\n"
+"PO-Revision-Date: 2012-08-14 23:25+0200\n"
 "Last-Translator: Tomislav Krznar <tomislav.krznar@gmail.com>\n"
 "Language-Team: Croatian <lokalizacija@linux.hr>\n"
 "Language: hr\n"
@@ -28,7 +28,6 @@ msgid "String preparation failed"
 msgstr "Priprema niza nije uspjela"
 
 #: lib/strerror-idna.c:90
-#, fuzzy
 msgid "Punycode failed"
 msgstr "Punycode nije uspio"
 
@@ -50,7 +49,7 @@ msgstr "Ulaz ne počinje s ACE prefiksom („xn--”)"
 
 #: lib/strerror-idna.c:110
 msgid "String not idempotent under ToASCII"
-msgstr ""
+msgstr "Niz nije idempotentan prema ToASCII"
 
 #: lib/strerror-idna.c:114
 msgid "Input already contain ACE prefix (`xn--')"
@@ -75,7 +74,7 @@ msgstr "Nepoznata greška"
 
 #: lib/strerror-pr29.c:70
 msgid "String not idempotent under Unicode NFKC normalization"
-msgstr ""
+msgstr "Niz nije idempotentan prema Unicode NFKC normalizaciji"
 
 #: lib/strerror-punycode.c:70
 msgid "Invalid input"
@@ -91,11 +90,11 @@ msgstr "Prekoračeno ograničenje veličine niza"
 
 #: lib/strerror-stringprep.c:90
 msgid "Forbidden unassigned code points in input"
-msgstr ""
+msgstr "Zabranjene nedodijeljene kodne točke na ulazu"
 
 #: lib/strerror-stringprep.c:94
 msgid "Prohibited code points in input"
-msgstr ""
+msgstr "Zabranjene kodne točke na ulazu"
 
 #: lib/strerror-stringprep.c:98
 msgid "Conflicting bidirectional properties in input"
@@ -107,7 +106,7 @@ msgstr "Izobličen dvosmjerni niz"
 
 #: lib/strerror-stringprep.c:106
 msgid "Prohibited bidirectional code points in input"
-msgstr ""
+msgstr "Zabranjene dvosmjerne kodne točke na ulazu"
 
 #: lib/strerror-stringprep.c:114
 msgid "Error in stringprep profile definition"
@@ -115,7 +114,7 @@ msgstr "Greška u stringprep definiciji profila"
 
 #: lib/strerror-stringprep.c:118
 msgid "Flag conflict with profile"
-msgstr ""
+msgstr "Konflikt zastavice s profilom"
 
 #: lib/strerror-stringprep.c:122
 msgid "Unknown profile"
@@ -127,7 +126,7 @@ msgstr "Unicode normalizacija nije uspjela (interna greška)"
 
 #: lib/strerror-tld.c:72
 msgid "Code points prohibited by top-level domain"
-msgstr ""
+msgstr "Kodne točke zabranjene vršnom domenom"
 
 #: lib/strerror-tld.c:76
 msgid "Missing input"
@@ -213,6 +212,8 @@ msgid ""
 "      --debug              Print debugging information\n"
 "      --quiet              Silent operation\n"
 msgstr ""
+"      --debug              Ispiši informacije za debugiranje\n"
+"      --quiet              Rad bez ispisa\n"
 
 #: src/idn.c:172
 #, c-format
