@@ -54,7 +54,7 @@ main (void)
     perror ("fgets");
   buf[strlen (buf) - 1] = '\0';
 
-  printf ("Read string (length %ld): ", strlen (buf));
+  printf ("Read string (length %ld): ", (long int) strlen (buf));
   for (i = 0; i < strlen (buf); i++)
     printf ("%02x ", buf[i] & 0xFF);
   printf ("\n");
@@ -66,7 +66,7 @@ main (void)
       return EXIT_FAILURE;
     }
 
-  printf ("ACE label (length %ld): '%s'\n", strlen (p), p);
+  printf ("ACE label (length %ld): '%s'\n", (long int) strlen (p), p);
   for (i = 0; i < strlen (p); i++)
     printf ("%02x ", p[i] & 0xFF);
   printf ("\n");
