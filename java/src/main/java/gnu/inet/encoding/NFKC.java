@@ -63,7 +63,7 @@ public class NFKC
       }
     }
 
-    // Bring the stringbuffer into canonical order.
+    // Bring the StringBuilder into canonical order.
     canonicalOrdering(out);
 
     // Do the canonical composition.
@@ -155,7 +155,7 @@ public class NFKC
   }
 
   /**
-   * Rearranges characters in a stringbuffer in order to respect the
+   * Rearranges characters in a StringBuilder in order to respect the
    * canonical ordering properties.
    *
    * @param in The StringBuilder to rearrange.
