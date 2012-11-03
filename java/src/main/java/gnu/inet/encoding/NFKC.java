@@ -162,6 +162,10 @@ public class NFKC
    */
   static void canonicalOrdering(StringBuilder in)
   {
+    if (in.length() == 0) {
+      return;
+    }
+
     boolean isOrdered = false;
 
     while (!isOrdered) {

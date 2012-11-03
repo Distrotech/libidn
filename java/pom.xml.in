@@ -1,21 +1,31 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.gnu.inet</groupId>
   <artifactId>libidn</artifactId>
   <name>GNU IDN Library</name>
   <version>@VERSION@</version>
+
   <description>
     GNU Libidn is a fully documented implementation of the Stringprep,
     Punycode and IDNA specifications. Libidn's purpose is to encode
     and decode internationalized domain names.
   </description>
+
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.5</maven.compiler.source>
     <maven.compiler.target>1.5</maven.compiler.target>
+    <maven.compiler.showWarnings>true</maven.compiler.showWarnings>
+    <maven.compiler.showDeprecation>true</maven.compiler.showDeprecation>
   </properties>
+
   <url>http://www.gnu.org/software/libidn/</url>
+
   <inceptionYear>2002</inceptionYear>
+
   <licenses>
     <license>
       <name>GNU Lesser General Public License version 3.0 or later</name>
@@ -23,14 +33,26 @@
       <distribution>repo</distribution>
     </license>
   </licenses>
+
   <scm>
     <connection>scm:git:git://git.savannah.gnu.org/libidn.git</connection>
     <url>http://git.savannah.gnu.org/gitweb/?p=libidn.git</url>
   </scm>
+
   <organization>
     <name>GNU</name>
     <url>http://www.gnu.org/</url>
   </organization>
+
+  <dependencies>
+      <dependency>
+	  <groupId>junit</groupId>
+	  <artifactId>junit</artifactId>
+	  <version>4.10</version>
+	  <scope>test</scope>
+      </dependency>
+  </dependencies>
+
   <build>
     <plugins>
       <plugin>
@@ -39,5 +61,6 @@
         <version>2.5.1</version>
       </plugin>
     </plugins>
+
   </build>
 </project>
