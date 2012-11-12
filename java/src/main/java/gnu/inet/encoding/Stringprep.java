@@ -321,11 +321,12 @@ public class Stringprep
 
   static boolean contains(StringBuilder s, char[][] p)
   {
+    final int sLength = s.length();
     for (int i = 0; i < p.length; i++) {
       char[] r = p[i];
       if (1 == r.length) {
 	char c = r[0];
-	for (int j = 0; j < s.length(); j++) {
+	for (int j = 0; j < sLength; j++) {
 	  if (c == s.charAt(j)) {
 	    return true;
 	  }
@@ -333,8 +334,9 @@ public class Stringprep
       } else if (2 == r.length) {
 	char f = r[0];
 	char t = r[1];
-	for (int j = 0; j < s.length(); j++) {
-	  if (f <= s.charAt(j) && t >= s.charAt(j)) {
+	for (int j = 0; j < sLength; j++) {
+	  final char c = s.charAt(j);
+	  if (f <= c && t >= c) {
 	    return true;
 	  }
 	}
