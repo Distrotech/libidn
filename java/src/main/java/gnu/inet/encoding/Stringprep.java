@@ -78,7 +78,7 @@ public class Stringprep
       throw new NullPointerException();
     }
 
-    StringBuilder s = new StringBuilder(input);
+    StringBuffer s = new StringBuffer(input);
 
     if (!allowUnassigned && contains(s, RFC3454.A1)) {
       throw new StringprepException(StringprepException.CONTAINS_UNASSIGNED);
@@ -87,7 +87,7 @@ public class Stringprep
     filter(s, RFC3454.B1);
     map(s, RFC3454.B2search, RFC3454.B2replace);
 
-    s = new StringBuilder(NFKC.normalizeNFKC(s.toString()));
+    s = new StringBuffer(NFKC.normalizeNFKC(s.toString()));
     // B.3 is only needed if NFKC is not used, right?
     // map(s, RFC3454.B3search, RFC3454.B3replace);
 
@@ -172,7 +172,7 @@ public class Stringprep
       throw new NullPointerException();
     }
 
-    StringBuilder s = new StringBuilder(input);
+    StringBuffer s = new StringBuffer(input);
 
     if (!allowUnassigned && contains(s, RFC3454.A1)) {
       throw new StringprepException(StringprepException.CONTAINS_UNASSIGNED);
@@ -181,7 +181,7 @@ public class Stringprep
     filter(s, RFC3454.B1);
     map(s, RFC3454.B2search, RFC3454.B2replace);
 
-    s = new StringBuilder(NFKC.normalizeNFKC(s.toString()));
+    s = new StringBuffer(NFKC.normalizeNFKC(s.toString()));
     
     if (contains(s, RFC3454.C11) ||
 	contains(s, RFC3454.C12) ||
@@ -258,7 +258,7 @@ public class Stringprep
       throw new NullPointerException();
     }
 
-    StringBuilder s = new StringBuilder(input);
+    StringBuffer s = new StringBuffer(input);
     
     if (!allowUnassigned && contains(s, RFC3454.A1)) {
       throw new StringprepException(StringprepException.CONTAINS_UNASSIGNED);
@@ -266,7 +266,7 @@ public class Stringprep
 
     filter(s, RFC3454.B1);
     
-    s = new StringBuilder(NFKC.normalizeNFKC(s.toString()));
+    s = new StringBuffer(NFKC.normalizeNFKC(s.toString()));
     
     if (contains(s, RFC3454.C12) ||
 	contains(s, RFC3454.C21) ||
@@ -304,7 +304,7 @@ public class Stringprep
     return s.toString();
   }
 
-  static boolean contains(StringBuilder s, char[] p)
+  static boolean contains(StringBuffer s, char[] p)
   {
     for (int i = 0; i < p.length; i++) {
       char c = p[i];
@@ -317,7 +317,7 @@ public class Stringprep
     return false;
   }
 
-  static boolean contains(StringBuilder s, char[][] p)
+  static boolean contains(StringBuffer s, char[][] p)
   {
     for (int i = 0; i < p.length; i++) {
       char[] r = p[i];
@@ -360,7 +360,7 @@ public class Stringprep
     return false;
   }
 
-  static void filter(StringBuilder s, char[] f)
+  static void filter(StringBuffer s, char[] f)
   {
     for (int i = 0; i < f.length; i++) {
       char c = f[i];
@@ -376,7 +376,7 @@ public class Stringprep
     }
   }
 
-  static void filter(StringBuilder s, char[][] f)
+  static void filter(StringBuffer s, char[][] f)
   {
     for (int i = 0; i < f.length; i++) {
       char[] r = f[i];
@@ -408,7 +408,7 @@ public class Stringprep
     }
   }
 
-  static void map(StringBuilder s, char[] search, String[] replace)
+  static void map(StringBuffer s, char[] search, String[] replace)
   {
     for (int i = 0; i < search.length; i++) {
       char c = search[i];
