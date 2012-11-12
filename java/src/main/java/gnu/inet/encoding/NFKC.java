@@ -42,7 +42,7 @@ public class NFKC
    */
   public static String normalizeNFKC(String in)
   {
-    StringBuffer out = new StringBuffer();
+    StringBuilder out = new StringBuilder();
 
     for (int i = 0; i < in.length(); i++) {
       char code = in.charAt(i);
@@ -63,7 +63,7 @@ public class NFKC
       }
     }
 
-    // Bring the StringBuffer into canonical order.
+    // Bring the StringBuilder into canonical order.
     canonicalOrdering(out);
 
     // Do the canonical composition.
@@ -155,12 +155,12 @@ public class NFKC
   }
 
   /**
-   * Rearranges characters in a StringBuffer in order to respect the
+   * Rearranges characters in a StringBuilder in order to respect the
    * canonical ordering properties.
    *
-   * @param in The StringBuffer to rearrange.
+   * @param in The StringBuilder to rearrange.
    */
-  static void canonicalOrdering(StringBuffer in)
+  static void canonicalOrdering(StringBuilder in)
   {
     if (in.length() == 0) {
       return;
@@ -293,7 +293,7 @@ public class NFKC
     if (SIndex < 0 || SIndex >= SCount) {
       return String.valueOf(s);
     }
-    StringBuffer result = new StringBuffer();
+    StringBuilder result = new StringBuilder();
     int L = LBase + SIndex / NCount;
     int V = VBase + (SIndex % NCount) / TCount;
     int T = TBase + SIndex % TCount;
