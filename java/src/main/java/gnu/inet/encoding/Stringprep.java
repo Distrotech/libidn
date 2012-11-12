@@ -29,6 +29,8 @@
 
 package gnu.inet.encoding;
 
+import java.util.Arrays;
+
 /**
  * This class offers static methods for preparing internationalized
  * strings. It supports the following stringprep profiles:
@@ -410,20 +412,13 @@ public class Stringprep
 
   static void map(StringBuilder s, char[] search, String[] replace)
   {
-    for (int i = 0; i < search.length; i++) {
-      char c = search[i];
-
-      int j = 0;
-      while (j < s.length()) {
-	if (c == s.charAt(j)) {
-	  s.deleteCharAt(j);
-	  if (null != replace[i]) {
-	    s.insert(j, replace[i]);
-	    j += replace[i].length()-1;
-	  }
-	} else {
-	  j++;
-	}
+    for (int i = 0; i < s.length(); i++) {
+      char c = s.charAt(i);
+      int mapIndex = Arrays.binarySearch(search, c);
+      if (mapIndex >= 0) {
+	String replacement = replace[mapIndex];
+	s.replace(i, i + 1, replacement);
+	i += replacement.length() - 1;
       }
     }
   }
