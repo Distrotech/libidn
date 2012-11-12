@@ -46,11 +46,32 @@
 
   <dependencies>
       <dependency>
+          <groupId>com.google.code.findbugs</groupId>
+          <artifactId>annotations</artifactId>
+          <version>2.0.1</version>
+          <scope>provided</scope>
+      </dependency>
+
+      <dependency>
 	  <groupId>junit</groupId>
 	  <artifactId>junit</artifactId>
 	  <version>4.10</version>
 	  <scope>test</scope>
       </dependency>
+
+      <dependency>
+	  <groupId>com.google.guava</groupId>
+	  <artifactId>guava</artifactId>
+	  <version>13.0.1</version>
+	  <scope>test</scope>
+      </dependency>
+      <dependency>
+	  <groupId>com.google.caliper</groupId>
+	  <artifactId>caliper</artifactId>
+	  <version>0.5-rc1</version>
+	  <scope>test</scope>
+      </dependency>
+
   </dependencies>
 
   <build>
@@ -60,7 +81,34 @@
         <artifactId>maven-compiler-plugin</artifactId>
         <version>2.5.1</version>
       </plugin>
-    </plugins>
 
+      <plugin>
+	  <groupId>org.apache.maven.plugins</groupId>
+	  <artifactId>maven-surefire-plugin</artifactId>
+	  <version>2.12</version>
+	  <configuration>
+	      <groups>development</groups>
+	  </configuration>
+      </plugin>
+    </plugins>
   </build>
+
+  <profiles>
+      <profile>
+	  <id>caliper</id>
+	  <build>
+	      <plugins>
+		  <plugin>
+		      <artifactId>maven-surefire-plugin</artifactId>
+		      <configuration>
+			  <includes>
+			      <include>**/Caliper*.java</include>
+			  </includes>
+		      </configuration>
+		  </plugin>
+	      </plugins>
+	  </build>
+      </profile>
+  </profiles>
+
 </project>
