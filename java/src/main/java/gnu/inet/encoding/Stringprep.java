@@ -326,17 +326,25 @@ public class Stringprep
       char[] r = p[i];
       if (1 == r.length) {
 	char c = r[0];
+	boolean sAfterC = false;
 	for (int j = 0; j < sLength; j++) {
-	  if (c == s.charAt(j)) {
+	  char charAtJ = s.charAt(j);
+	  if (charAtJ == c) {
 	    return true;
 	  }
+	  if (charAtJ > c) {
+	    sAfterC = true;
+	  }
+	}
+	if (!sAfterC) {
+	  return false;
 	}
       } else if (2 == r.length) {
 	char f = r[0];
 	char t = r[1];
 	for (int j = 0; j < sLength; j++) {
-	  final char c = s.charAt(j);
-	  if (f <= c && t >= c) {
+	  final char charAtJ = s.charAt(j);
+	  if (f <= charAtJ && t >= charAtJ) {
 	    return true;
 	  }
 	}
