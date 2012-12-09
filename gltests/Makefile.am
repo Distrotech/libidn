@@ -92,7 +92,7 @@ EXTRA_DIST += test-alloca-opt.c
 
 ## begin gnulib module binary-io
 
-libtests_a_SOURCES += binary-io.h
+libtests_a_SOURCES += binary-io.h binary-io.c
 
 ## end   gnulib module binary-io
 
@@ -682,6 +682,7 @@ EXTRA_DIST += test-stdint.c
 ## begin gnulib module stdio
 
 BUILT_SOURCES += stdio.h
+libtests_a_SOURCES += stdio.c
 
 # We need the following in order to create <stdio.h> when the system
 # doesn't have one that works with the given compiler.
@@ -894,6 +895,7 @@ stdlib.h: stdlib.in.h $(top_builddir)/config.status $(CXXDEFS_H) \
 	      -e 's|@''REPLACE_MALLOC''@|$(REPLACE_MALLOC)|g' \
 	      -e 's|@''REPLACE_MBTOWC''@|$(REPLACE_MBTOWC)|g' \
 	      -e 's|@''REPLACE_MKSTEMP''@|$(REPLACE_MKSTEMP)|g' \
+	      -e 's|@''REPLACE_PTSNAME''@|$(REPLACE_PTSNAME)|g' \
 	      -e 's|@''REPLACE_PTSNAME_R''@|$(REPLACE_PTSNAME_R)|g' \
 	      -e 's|@''REPLACE_PUTENV''@|$(REPLACE_PUTENV)|g' \
 	      -e 's|@''REPLACE_RANDOM_R''@|$(REPLACE_RANDOM_R)|g' \

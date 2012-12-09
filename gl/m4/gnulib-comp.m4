@@ -58,6 +58,7 @@ AC_DEFUN([gl_EARLY],
   # Code from module error:
   # Code from module extensions:
   AC_REQUIRE([gl_USE_SYSTEM_EXTENSIONS])
+  # Code from module extern-inline:
   # Code from module fcntl-h:
   # Code from module fd-hook:
   # Code from module fdl-1.3:
@@ -187,6 +188,7 @@ AC_DEFUN([gl_INIT],
   m4_ifdef([AM_XGETTEXT_OPTION],
     [AM_][XGETTEXT_OPTION([--flag=error:3:c-format])
      AM_][XGETTEXT_OPTION([--flag=error_at_line:5:c-format])])
+  AC_REQUIRE([gl_EXTERN_INLINE])
   gl_FUNC_GETOPT_GNU
   if test $REPLACE_GETOPT = 1; then
     AC_LIBOBJ([getopt])
@@ -299,7 +301,6 @@ changequote([, ])dnl
   gl_module_indicator_condition=$gltests_WITNESS
   m4_pushdef([gl_MODULE_INDICATOR_CONDITION], [$gl_module_indicator_condition])
   gl_FUNC_ALLOCA
-  AC_REQUIRE([AC_C_INLINE])
   gl_FUNC_CLOSE
   if test $REPLACE_CLOSE = 1; then
     AC_LIBOBJ([close])
@@ -523,6 +524,7 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/strerror.c
   lib/string.in.h
   lib/sys_types.in.h
+  lib/unistd.c
   lib/unistd.in.h
   lib/verify.h
   lib/version-etc.c
@@ -540,6 +542,7 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/errno_h.m4
   m4/error.m4
   m4/extensions.m4
+  m4/extern-inline.m4
   m4/fcntl-o.m4
   m4/fcntl_h.m4
   m4/fdopen.m4
@@ -638,6 +641,7 @@ AC_DEFUN([gl_FILE_LIST], [
   tests/test-version-etc.c
   tests/test-version-etc.sh
   tests=lib/alloca.in.h
+  tests=lib/binary-io.c
   tests=lib/binary-io.h
   tests=lib/close.c
   tests=lib/dosname.h
@@ -663,6 +667,7 @@ AC_DEFUN([gl_FILE_LIST], [
   tests=lib/stat.c
   tests=lib/stdbool.in.h
   tests=lib/stdint.in.h
+  tests=lib/stdio.c
   tests=lib/stdio.in.h
   tests=lib/stdlib.in.h
   tests=lib/symlink.c

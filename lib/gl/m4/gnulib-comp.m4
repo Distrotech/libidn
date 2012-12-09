@@ -49,6 +49,7 @@ AC_DEFUN([lgl_EARLY],
   # Code from module environ-tests:
   # Code from module extensions:
   AC_REQUIRE([gl_USE_SYSTEM_EXTENSIONS])
+  # Code from module extern-inline:
   # Code from module gettext-h:
   # Code from module gperf:
   # Code from module havelib:
@@ -228,6 +229,7 @@ changequote([, ])dnl
   gt_LOCALE_TR_UTF8
   gl_ENVIRON
   gl_UNISTD_MODULE_INDICATOR([environ])
+  AC_REQUIRE([gl_EXTERN_INLINE])
   gl_INTTYPES_H
   gl_INTTYPES_INCOMPLETE
   gl_LOCALE_H
@@ -409,6 +411,7 @@ AC_DEFUN([lgl_FILE_LIST], [
   m4/eealloc.m4
   m4/environ.m4
   m4/extensions.m4
+  m4/extern-inline.m4
   m4/gnulib-common.m4
   m4/iconv.m4
   m4/iconv_h.m4
@@ -516,6 +519,7 @@ AC_DEFUN([lgl_FILE_LIST], [
   tests=lib/setlocale.c
   tests=lib/stdlib.in.h
   tests=lib/sys_types.in.h
+  tests=lib/unistd.c
   tests=lib/unistd.in.h
   tests=lib/unsetenv.c
   tests=lib/verify.h
