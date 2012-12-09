@@ -7,6 +7,8 @@ See the end for copying conditions.
 ** libidn, idna_to_ascii: Propagate error on malloc failure.
 Reported by Sarat Chandra Addepalli <s.addepalli@samsung.com>.
 
+** libidn, tld_get_4: Fix out of bounds read access violation.
+
 ** i18n: Added Croatian translation.  Updated Vietnamese translation.
 Thanks to Tomislav Krznar and Trần Ngọc Quân.
 
