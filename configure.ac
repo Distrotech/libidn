@@ -156,6 +156,7 @@ if test "$gl_gcc_warnings" = yes; then
   done
 
   gl_WARN_ADD([-fdiagnostics-show-option])
+  gl_WARN_ADD([-Wno-missing-field-initializers]) # Rely on missing field = 0.
 fi
 
 AC_CONFIG_FILES([
