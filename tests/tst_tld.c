@@ -28,6 +28,7 @@
 #include <string.h>
 
 #include <stringprep.h>
+#include <idn-free.h>
 #include <tld.h>
 
 #include "utils.h"
@@ -160,12 +161,14 @@ doit (void)
       fail ("FAIL: tld_get_4 (in, 6, &out) != TLD_OK: %d\n", rc);
     if (strcmp ("se", out) != 0)
       fail ("FAIL: tld_get_4 (in, 6, &out): %s\n", out);
+    idn_free (out);
 
     rc = tld_get_4z (in, &out);
     if (rc != TLD_SUCCESS)
       fail ("FAIL: tld_get_4z (in, &out) != TLD_OK: %d\n", rc);
     if (strcmp ("se", out) != 0)
       fail ("FAIL: tld_get_4z (in, &out): %s\n", out);
+    idn_free (out);
 
     p = "sjd.se";
     rc = tld_get_z (p, &out);
@@ -173,6 +176,7 @@ doit (void)
       fail ("FAIL: tld_get_z (\"%s\", &out) != TLD_OK: %d\n", p, rc);
     if (strcmp ("se", out) != 0)
       fail ("FAIL: tld_get_z (\"%s\", &out): %s\n", p, out);
+    idn_free (out);
 
     p = "foo.bar.baz.sjd.se";
     rc = tld_get_z (p, &out);
@@ -180,6 +184,7 @@ doit (void)
       fail ("FAIL: tld_get_z (\"%s\", &out) != TLD_OK: %d\n", p, rc);
     if (strcmp ("se", out) != 0)
       fail ("FAIL: tld_get_z (\"%s\", &out): %s\n", p, out);
+    idn_free (out);
 
     p = ".sjd.se";
     rc = tld_get_z (p, &out);
@@ -187,6 +192,7 @@ doit (void)
       fail ("FAIL: tld_get_z (\"%s\", &out) != TLD_OK: %d\n", p, rc);
     if (strcmp ("se", out) != 0)
       fail ("FAIL: tld_get_z (\"%s\", &out): %s\n", p, out);
+    idn_free (out);
 
     p = ".se";
     rc = tld_get_z (p, &out);
@@ -194,6 +200,7 @@ doit (void)
       fail ("FAIL: tld_get_z (\"%s\", &out) != TLD_OK: %d\n", p, rc);
     if (strcmp ("se", out) != 0)
       fail ("FAIL: tld_get_z (\"%s\", &out): %s\n", p, out);
+    idn_free (out);
   }
 
   for (i = 0; i < sizeof (tld) / sizeof (tld[0]); i++)
