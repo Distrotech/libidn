@@ -149,6 +149,8 @@ gl/progname.o
 gl/string.h
 gl/sys/
 gl/unistd.h
+gl/unistd.lo
+gl/unistd.o
 gl/version-etc.lo
 gl/version-etc.o
 gl/warn-on-use.h
@@ -157,6 +159,7 @@ gltests/Makefile
 gltests/Makefile.in
 gltests/alloca.h
 gltests/arg-nonnull.h
+gltests/binary-io.o
 gltests/c++defs.h
 gltests/fcntl.h
 gltests/fd-hook.o
@@ -164,6 +167,7 @@ gltests/inttypes.h
 gltests/libtests.a
 gltests/malloca.o
 gltests/stdio.h
+gltests/stdio.o
 gltests/stdlib.h
 gltests/sys/
 gltests/test-alloca-opt
@@ -404,6 +408,7 @@ lib/gltests/test-verify
 lib/gltests/test-wchar
 lib/gltests/test-wchar.o
 lib/gltests/unistd.h
+lib/gltests/unistd.o
 lib/gltests/unistr/.deps/
 lib/gltests/unistr/.dirstamp
 lib/gltests/unistr/test-u8-mbtoucr.o
