@@ -18,6 +18,8 @@
 
 SUBDIRS = gnu . misc
 
+EXTRA_DIST = LICENSE-2.0.txt
+
 INSTALL_TARGETS =
 
 if JAVA

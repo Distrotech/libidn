@@ -12,6 +12,9 @@ Reported by Sarat Chandra Addepalli <s.addepalli@samsung.com>.
 ** i18n: Added Croatian translation.  Updated Vietnamese translation.
 Thanks to Tomislav Krznar and Trần Ngọc Quân.
 
+** java: Permit usage by Apache projects.
+Thanks to Oliver Hitz and Angus Turner.
+
 ** tests: Improve tld self-tests.
 
 ** API and ABI is backwards compatible with the previous version.
