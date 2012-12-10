@@ -112,9 +112,8 @@ cyclo-upload:
 	cd $(htmldir) && cvs commit -m "Update." cyclo/index.html
 
 gendoc-copy:
-	cd doc && env MAKEINFO="makeinfo -I ../examples" \
-		      TEXI2DVI="texi2dvi -I ../examples" \
-		$(SHELL) ../build-aux/gendocs.sh \
+	cd doc && $(SHELL) ../build-aux/gendocs.sh -I ../examples -I . \
+		--email $(PACKAGE_BUGREPORT) \
 		--html "--css-include=texinfo.css" \
 		-o ../$(htmldir)/manual/ $(PACKAGE) "$(PACKAGE_NAME)"
 
