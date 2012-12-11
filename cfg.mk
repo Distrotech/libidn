@@ -121,7 +121,8 @@ gendoc-upload:
 	cd $(htmldir) && \
 		cvs add manual || true && \
 		cvs add manual/html_node || true && \
-		cvs add -kb manual/*.gz manual/*.pdf || true && \
+		cvs add -kb manual/*.gz manual/*.pdf \
+			manual/html_node/*.png || true && \
 		cvs add manual/*.txt manual/*.html \
 			manual/html_node/*.html || true && \
 		cvs commit -m "Update." manual/
@@ -155,6 +156,9 @@ doxygen-copy:
 
 doxygen-upload:
 	cd $(htmldir) && \
+		cvs add doxygen || true && \
+		cvs add -kb doxygen/*.png || true && \
+		cvs add doxygen/*.js doxygen/*.html || true && \
 		cvs commit -m "Update." doxygen/
 
 ChangeLog:
