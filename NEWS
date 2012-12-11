@@ -2,7 +2,7 @@ Libidn NEWS -- History of user-visible changes.                 -*- outline -*-
 Copyright (C) 2002-2012 Simon Josefsson
 See the end for copying conditions.
 
-* Version 1.26 (unreleased) [stable]
+* Version 1.26 (released 2012-12-11) [stable]
 
 ** libidn, idna_to_ascii: Propagate error on malloc failure.
 Reported by Sarat Chandra Addepalli <s.addepalli@samsung.com>.
