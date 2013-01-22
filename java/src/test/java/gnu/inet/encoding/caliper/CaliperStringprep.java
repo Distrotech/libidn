@@ -47,19 +47,22 @@ public class CaliperStringprep extends SimpleBenchmark
   public static void main(final String... args) {
     // Caliper:
     CaliperStringprep benchmark = new CaliperStringprep();
-//    benchmark.runCaliper();
+    benchmark.runCaliper();
 
     // Plain run, use with profiling
     // 100K -> 10s normal run
     // 1K -> minute(s)? with hprof times
+/*
     final int reps = 1000;
     try {
       benchmark.timeNodePrep3x(reps);
       benchmark.timeNamePrep3x(reps);
       benchmark.timeResourcePrep3x(reps);
+      benchmark.timeXMPPStringpreps3x(reps);
     } catch (StringprepException ex) {
       throw new IllegalStateException(ex);
     }
+*/
   }
 
   @Test
