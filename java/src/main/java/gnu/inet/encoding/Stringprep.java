@@ -209,8 +209,8 @@ public class Stringprep
     }
 
     // Bidi handling
-    boolean r = contains(s, RFC3454.D1);
-    boolean l = contains(s, RFC3454.D2);
+    boolean r = RANGE_D1.containsAnyCodePoint(s);
+    boolean l = RANGE_D2.containsAnyCodePoint(s);
 
     // RFC 3454, section 6, requirement 1: already handled above (table C.8)
 
@@ -221,8 +221,8 @@ public class Stringprep
     
     // RFC 3454, section 6, requirement 3
     if (r) {
-      if (!contains(s.charAt(0), RFC3454.D1) ||
-	  !contains(s.charAt(s.length() - 1), RFC3454.D1)) {
+      if (!RANGE_D1.contains(s.charAt(0)) ||
+	  !RANGE_D1.contains(s.charAt(s.length() - 1))) {
 	throw new StringprepException(StringprepException.BIDI_LTRAL);
       }
     }
@@ -287,7 +287,7 @@ public class Stringprep
 
     StringBuilder s = new StringBuilder(input);
     
-    if (!allowUnassigned && contains(s, RFC3454.A1)) {
+    if (!allowUnassigned && RANGE_A1.containsAnyCodePoint(s)) {
       throw new StringprepException(StringprepException.CONTAINS_UNASSIGNED);
     }
 
@@ -303,8 +303,8 @@ public class Stringprep
     }
     
     // Bidi handling
-    boolean r = contains(s, RFC3454.D1);
-    boolean l = contains(s, RFC3454.D2);
+    boolean r = RANGE_D1.containsAnyCodePoint(s);
+    boolean l = RANGE_D2.containsAnyCodePoint(s);
     
     // RFC 3454, section 6, requirement 1: already handled above (table C.8)
     
@@ -315,8 +315,8 @@ public class Stringprep
 
     // RFC 3454, section 6, requirement 3
     if (r) {
-      if (!contains(s.charAt(0), RFC3454.D1) ||
-	  !contains(s.charAt(s.length() - 1), RFC3454.D1)) {
+      if (!RANGE_D1.contains(s.charAt(0)) ||
+	  !RANGE_D1.contains(s.charAt(s.length() - 1))) {
 	throw new StringprepException(StringprepException.BIDI_LTRAL);
       }
     }
@@ -340,75 +340,6 @@ public class Stringprep
 		  .build();
 
 
-  static boolean contains(StringBuilder s, char[] p)
-  {
-    for (int i = 0; i < p.length; i++) {
-      char c = p[i];
-      for (int j = 0; j < s.length(); j++) {
-	if (c == s.charAt(j)) {
-	  return true;
-	}
-      }
-    }
-    return false;
-  }
-
-  // TODO Reduce StringBuilder.charAt(): 60% and length(): 13%
-  // TODO By pre-sorting chars of s, p and s can be iterated through in lockstep
-  // TODO Implement+use RangeSet.containsAnyCodePoint(CharSequence/String)
-  static boolean contains(StringBuilder s, char[][] p)
-  {
-    final int sLength = s.length();
-    for (int i = 0; i < p.length; i++) {
-      char[] r = p[i];
-      if (1 == r.length) {
-	char c = r[0];
-	boolean sAfterC = false;
-	for (int j = 0; j < sLength; j++) {
-	  char charAtJ = s.charAt(j);
-	  if (charAtJ == c) {
-	    return true;
-	  }
-	  if (charAtJ > c) {
-	    sAfterC = true;
-	  }
-	}
-	if (!sAfterC) {
-	  return false;
-	}
-      } else if (2 == r.length) {
-	char f = r[0];
-	char t = r[1];
-	for (int j = 0; j < sLength; j++) {
-	  final char charAtJ = s.charAt(j);
-	  if (f <= charAtJ && t >= charAtJ) {
-	    return true;
-	  }
-	}
-      }
-    }
-    return false;
-  }
-
-  static boolean contains(char c, char[][] p)
-  {
-    for (int i = 0; i < p.length; i++) {
-      char[] r = p[i];
-      if (1 == r.length) {
-	if (c == r[0]) {
-	  return true;
-	}
-      } else if (2 == r.length) {
-	char f = r[0];
-	char t = r[1];
-	if (f <= c && t >= c) {
-	  return true;
-	}
-      }
-    }
-    return false;
-  }
-
   static void filter(StringBuilder s, char[] f)
   {
     for (int i = 0; i < f.length; i++) {
@@ -420,38 +351,6 @@ public class Stringprep
 	  s.deleteCharAt(j);
 	} else {
 	  j++;
-	}
-      }
-    }
-  }
-
-  static void filter(StringBuilder s, char[][] f)
-  {
-    for (int i = 0; i < f.length; i++) {
-      char[] r = f[i];
-
-      if (1 == r.length) {
-	char c = r[0];
-
-	int j = 0;
-	while (j < s.length()) {
-	  if (c == s.charAt(j)) {
-	    s.deleteCharAt(j);
-	  } else {
-	    j++;
-	  }
-	}
-      } else if (2 == r.length) {
-	char from = r[0];
-	char to = r[1];
-
-	int j = 0;
-	while (j < s.length()) {
-	  if (from <= s.charAt(j) && to >= s.charAt(j)) {
-	    s.deleteCharAt(j);
-	  } else {
-	    j++;
-	  }
 	}
       }
     }
