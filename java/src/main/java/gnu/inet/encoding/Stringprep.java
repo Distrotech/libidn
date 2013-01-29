@@ -86,7 +86,7 @@ public class Stringprep
 
     StringBuilder s = new StringBuilder(input);
 
-    filter(s, RFC3454.B1);
+    filter(s, RANGE_B1);
     map(s, RFC3454.B2search, RFC3454.B2replace);
 
     s = new StringBuilder(NFKC.normalizeNFKC(s.toString()));
@@ -123,6 +123,10 @@ public class Stringprep
   private static final RangeSet RANGE_A1 =
 	  RangeSet.builder().addRanges(RFC3454.A1)
 	  		    .build();
+
+  private static final RangeSet RANGE_B1 =
+	  RangeSet.builder().addRanges(RFC3454.B1)
+		  .build();
 
   private static final RangeSet RANGE_D1 =
 	  RangeSet.builder().addRanges(RFC3454.D1)
@@ -199,7 +203,7 @@ public class Stringprep
 
     StringBuilder s = new StringBuilder(input);
 
-    filter(s, RFC3454.B1);
+    filter(s, RANGE_B1);
     map(s, RFC3454.B2search, RFC3454.B2replace);
 
     s = new StringBuilder(NFKC.normalizeNFKC(s.toString()));
@@ -291,7 +295,7 @@ public class Stringprep
       throw new StringprepException(StringprepException.CONTAINS_UNASSIGNED);
     }
 
-    filter(s, RFC3454.B1);
+    filter(s, RANGE_B1);
     
     s = new StringBuilder(NFKC.normalizeNFKC(s.toString()));
 
@@ -339,19 +343,13 @@ public class Stringprep
 		  .addRange(new RangeSet.Range(0xffff, 0x10ffff))
 		  .build();
 
-
-  static void filter(StringBuilder s, char[] f)
+  static void filter(StringBuilder s, RangeSet f)
   {
-    for (int i = 0; i < f.length; i++) {
-      char c = f[i];
-
-      int j = 0;
-      while (j < s.length()) {
-	if (c == s.charAt(j)) {
-	  s.deleteCharAt(j);
-	} else {
-	  j++;
-	}
+    for (int j = 0; j < s.length(); ) {
+      if (f.contains(s.charAt(j))) {
+	s.deleteCharAt(j);
+      } else {
+	j++;
       }
     }
   }
