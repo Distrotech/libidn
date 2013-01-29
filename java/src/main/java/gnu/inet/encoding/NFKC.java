@@ -42,9 +42,10 @@ public class NFKC
    */
   public static String normalizeNFKC(String in)
   {
-    StringBuilder out = new StringBuilder();
+    int len = in.length();
+    StringBuilder out = new StringBuilder(len);
 
-    for (int i = 0; i < in.length(); i++) {
+    for (int i = 0; i < len; i++) {
       char code = in.charAt(i);
 
       // In Unicode 3.0, Hangul was defined as the block from U+AC00
