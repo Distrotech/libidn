@@ -20,6 +20,8 @@ public final class RangeSet
 
   private final Range[] ranges;
 
+  private final Range mostSignificantGap;
+
   // TODO Store ranges with improved cache-locality, probably int[] with even/odd elements being first/last
   // possibly plus deltas either inline or separate
 
@@ -137,6 +139,37 @@ public final class RangeSet
 
   private RangeSet(final List<Range> ranges) {
     this.ranges = ranges.toArray(new Range[ranges.size()]);
+    this.mostSignificantGap = findMostSignificantGap(this.ranges);
+  }
+
+  /**
+   * Returns the most significant gap, or {@code null} if no important gap found.
+   * @param ranges ranges to search
+   * @return most significant gap, or {@code null} if no important gap found
+   */
+  private static Range findMostSignificantGap(final Range[] ranges)
+  {
+    if (ranges.length == 0) {
+      return new Range(0, Integer.MAX_VALUE);
+    }
+
+    final int aIdx =
+	    Arrays.binarySearch(ranges, new Range('a'), CONTAINS_COMPARATOR);
+    if (aIdx >= 0)
+    {
+      // 'a' in ranges, don't even attempt to exclude smartly
+      return null;
+    }
+
+    final int insertionPoint = -(aIdx + 1);
+    if (insertionPoint == 0) {
+      return new Range(0, ranges[0].first - 1);
+    }
+    if (insertionPoint == ranges.length) {
+      return new Range(ranges[ranges.length - 1].last + 1, Integer.MAX_VALUE);
+    }
+    return new Range(ranges[insertionPoint - 1].last + 1,
+	             ranges[insertionPoint].first - 1);
   }
 
   public static final class Builder {
@@ -231,6 +264,10 @@ public final class RangeSet
 
   public boolean contains(final int i)
   {
+    if (mostSignificantGap != null && mostSignificantGap.contains(i)) {
+      return false;
+    }
+
     final Range searchRange = new Range(i);
     int idx = Arrays.binarySearch(ranges, searchRange, CONTAINS_COMPARATOR);
     return idx >= 0;
@@ -257,11 +294,9 @@ public final class RangeSet
       i += Character.charCount(cp);
     }
 
-    // oftentimes the first entry in a range is way above plain ascii,
-    // then provide "fast path" to see miss here
-    // TODO Pre-compute a "most significant hole" containing a-z if possible
-    if (ranges.length > 0 && ranges[0].first > maxCodePoint)
-    {
+    if (mostSignificantGap != null
+	&& mostSignificantGap.contains(minCodePoint)
+	&& mostSignificantGap.contains(maxCodePoint)) {
       return false;
     }
 
