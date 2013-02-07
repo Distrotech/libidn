@@ -273,7 +273,6 @@ public final class RangeSet
     return idx >= 0;
   }
 
-  // TODO use this method from stringprep
   public boolean containsAnyCodePoint(final CharSequence text) {
     int len = text.length();
     if (len == 0)
@@ -303,9 +302,13 @@ public final class RangeSet
     // if found, returns the index, otherwise "-insertionPoint - 1"
     final int idxEnd =
 	    Arrays.binarySearch(ranges, new Range(maxCodePoint), CONTAINS_COMPARATOR);
-    // TODO search for start in "head" range only (likely small)
+    // search for start in "head" range only (likely small)
+    final int startFromIdx = 0;
+    final int startEndIdx = idxEnd >= 0 ? idxEnd + 1 : -(idxEnd + 1);
     final int idxStart =
-	    Arrays.binarySearch(ranges, new Range(minCodePoint), CONTAINS_COMPARATOR);
+	    Arrays.binarySearch(ranges, startFromIdx, startEndIdx,
+		    		new Range(minCodePoint), CONTAINS_COMPARATOR);
+
     // If whole range in text outside same non-contained range, won't be found
     // If whole range in text inside single contained range, must match
     if (idxStart == idxEnd)
