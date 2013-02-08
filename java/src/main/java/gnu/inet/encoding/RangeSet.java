@@ -274,7 +274,13 @@ public final class RangeSet
   }
 
   public boolean containsAnyCodePoint(final CharSequence text) {
-    int len = text.length();
+    final Range inputRange = createTextRange(text);
+    return containsAnyCodePoint(text, inputRange);
+  }
+
+  public boolean containsAnyCodePoint(final CharSequence text,
+				      final Range inputRange) {
+    final int len = text.length();
     if (len == 0)
     {
       return false;
@@ -283,31 +289,22 @@ public final class RangeSet
     // TODO pre-compile obj with search-sequence's min/max, usable in find/map/contains
     // TODO extract range-calc into protected method, reuse in [a-z]-like checks
     // TODO use do-while construction instead to avoid initial dummy-assignment
-    int minCodePoint = Integer.MAX_VALUE;
-    int maxCodePoint = Integer.MIN_VALUE;
-    for (int i = 0; i < len; )
-    {
-      final int cp = Character.codePointAt(text, i);
-      minCodePoint = Math.min(minCodePoint, cp);
-      maxCodePoint = Math.max(maxCodePoint, cp);
-      i += Character.charCount(cp);
-    }
 
     if (mostSignificantGap != null
-	&& mostSignificantGap.contains(minCodePoint)
-	&& mostSignificantGap.contains(maxCodePoint)) {
+	&& mostSignificantGap.contains(inputRange.first)
+	&& mostSignificantGap.contains(inputRange.last)) {
       return false;
     }
 
     // if found, returns the index, otherwise "-insertionPoint - 1"
     final int idxEnd =
-	    Arrays.binarySearch(ranges, new Range(maxCodePoint), CONTAINS_COMPARATOR);
+	    Arrays.binarySearch(ranges, new Range(inputRange.last), CONTAINS_COMPARATOR);
     // search for start in "head" range only (likely small)
     final int startFromIdx = 0;
     final int startEndIdx = idxEnd >= 0 ? idxEnd + 1 : -(idxEnd + 1);
     final int idxStart =
 	    Arrays.binarySearch(ranges, startFromIdx, startEndIdx,
-		    		new Range(minCodePoint), CONTAINS_COMPARATOR);
+		    		new Range(inputRange.first), CONTAINS_COMPARATOR);
 
     // If whole range in text outside same non-contained range, won't be found
     // If whole range in text inside single contained range, must match
@@ -337,6 +334,30 @@ public final class RangeSet
       }
     }
     return false;
+  }
+
+  /**
+   * Returns the range of the input or {@code all-inclusive range} if input is empty
+   * @param text input text
+   * @return range of input, or {@code all-inclusive} if empty input
+   */
+  public static Range createTextRange(final CharSequence text)
+  {
+    if (text.length() == 0) {
+      return new Range(Integer.MIN_VALUE, Integer.MAX_VALUE);
+    }
+
+    int minCodePoint = Integer.MAX_VALUE;
+    int maxCodePoint = Integer.MIN_VALUE;
+    int len2 = text.length();
+    for (int i = 0; i < len2; )
+    {
+      final int cp = Character.codePointAt(text, i);
+      minCodePoint = Math.min(minCodePoint, cp);
+      maxCodePoint = Math.max(maxCodePoint, cp);
+      i += Character.charCount(cp);
+    }
+    return new Range(minCodePoint, maxCodePoint);
   }
 
   @Override

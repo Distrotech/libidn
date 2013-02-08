@@ -80,7 +80,9 @@ public class Stringprep
       throw new NullPointerException();
     }
 
-    if (!allowUnassigned && RANGE_A1.containsAnyCodePoint(input)) {
+    final RangeSet.Range inputRange = RangeSet.createTextRange(input);
+    // TODO validate within no-op range, then return
+    if (!allowUnassigned && RANGE_A1.containsAnyCodePoint(input, inputRange)) {
       throw new StringprepException(StringprepException.CONTAINS_UNASSIGNED);
     }
 
@@ -90,17 +92,18 @@ public class Stringprep
     map(s, RFC3454.B2search, RFC3454.B2replace);
 
     s = new StringBuilder(NFKC.normalizeNFKC(s.toString()));
+    final RangeSet.Range normalizedRange = RangeSet.createTextRange(s);
     // B.3 is only needed if NFKC is not used, right?
     // map(s, RFC3454.B3search, RFC3454.B3replace);
-    if (RANGE_C3_to_C8_C12_C22.containsAnyCodePoint(s)) {
+    if (RANGE_C3_to_C8_C12_C22.containsAnyCodePoint(s, normalizedRange)) {
       // Table C.9 only contains code points > 0xFFFF which Java
       // doesn't handle
       throw new StringprepException(StringprepException.CONTAINS_PROHIBITED);
     }
 
     // Bidi handling
-    boolean r = RANGE_D1.containsAnyCodePoint(s);
-    boolean l = RANGE_D2.containsAnyCodePoint(s);
+    boolean r = RANGE_D1.containsAnyCodePoint(s, normalizedRange);
+    boolean l = RANGE_D2.containsAnyCodePoint(s, normalizedRange);
 
     // RFC 3454, section 6, requirement 1: already handled above (table C.8)
 
@@ -111,8 +114,8 @@ public class Stringprep
 
     // RFC 3454, section 6, requirement 3
     if (r) {
-      if (!RANGE_D1.containsAnyCodePoint(Character.toString(s.charAt(0))) ||
-	  !RANGE_D1.containsAnyCodePoint(Character.toString(s.charAt(s.length()-1)))) {
+      if (!RANGE_D1.contains(s.charAt(0)) ||
+	  !RANGE_D1.contains(s.charAt(s.length()-1))) {
 	throw new StringprepException(StringprepException.BIDI_LTRAL);
       }
     }
@@ -197,7 +200,9 @@ public class Stringprep
       throw new NullPointerException();
     }
 
-    if (!allowUnassigned && RANGE_A1.containsAnyCodePoint(input)) {
+    final RangeSet.Range inputRange = RangeSet.createTextRange(input);
+    // TODO validate within no-op range, then return
+    if (!allowUnassigned && RANGE_A1.containsAnyCodePoint(input, inputRange)) {
       throw new StringprepException(StringprepException.CONTAINS_UNASSIGNED);
     }
 
@@ -207,14 +212,15 @@ public class Stringprep
     map(s, RFC3454.B2search, RFC3454.B2replace);
 
     s = new StringBuilder(NFKC.normalizeNFKC(s.toString()));
-    if (RANGE_C3_TO_C8_C11_12_21_22_NP_PROHIB.containsAnyCodePoint(s))
+    final RangeSet.Range normalizedRange = RangeSet.createTextRange(s);
+    if (RANGE_C3_TO_C8_C11_12_21_22_NP_PROHIB.containsAnyCodePoint(s, normalizedRange))
     {
       throw new StringprepException(StringprepException.CONTAINS_PROHIBITED);
     }
 
     // Bidi handling
-    boolean r = RANGE_D1.containsAnyCodePoint(s);
-    boolean l = RANGE_D2.containsAnyCodePoint(s);
+    boolean r = RANGE_D1.containsAnyCodePoint(s, normalizedRange);
+    boolean l = RANGE_D2.containsAnyCodePoint(s, normalizedRange);
 
     // RFC 3454, section 6, requirement 1: already handled above (table C.8)
 
@@ -289,17 +295,20 @@ public class Stringprep
       throw new NullPointerException();
     }
 
-    StringBuilder s = new StringBuilder(input);
-    
-    if (!allowUnassigned && RANGE_A1.containsAnyCodePoint(s)) {
+    final RangeSet.Range inputRange = RangeSet.createTextRange(input);
+    // TODO validate within no-op range, then return
+    if (!allowUnassigned && RANGE_A1.containsAnyCodePoint(input)) {
       throw new StringprepException(StringprepException.CONTAINS_UNASSIGNED);
     }
+
+    StringBuilder s = new StringBuilder(input);
 
     filter(s, RANGE_B1);
     
     s = new StringBuilder(NFKC.normalizeNFKC(s.toString()));
+    final RangeSet.Range normalizedRange = RangeSet.createTextRange(s);
 
-    if (RANGE_C3_to_C8_C12_C21_C22.containsAnyCodePoint(s)) {
+    if (RANGE_C3_to_C8_C12_C21_C22.containsAnyCodePoint(s, normalizedRange)) {
       // Table C.9 only contains code points > 0xFFFF which Java
       // doesn't handle
 
@@ -307,8 +316,8 @@ public class Stringprep
     }
     
     // Bidi handling
-    boolean r = RANGE_D1.containsAnyCodePoint(s);
-    boolean l = RANGE_D2.containsAnyCodePoint(s);
+    boolean r = RANGE_D1.containsAnyCodePoint(s, normalizedRange);
+    boolean l = RANGE_D2.containsAnyCodePoint(s, normalizedRange);
     
     // RFC 3454, section 6, requirement 1: already handled above (table C.8)
     
