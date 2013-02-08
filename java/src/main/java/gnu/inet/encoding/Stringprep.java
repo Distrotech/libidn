@@ -43,6 +43,79 @@ import java.util.Arrays;
  */
 public class Stringprep
 {
+  private static final RangeSet RANGE_A1 =
+	  RangeSet.builder().addRanges(RFC3454.A1)
+		  .build();
+
+  private static final RangeSet RANGE_B1 =
+	  RangeSet.builder().addRanges(RFC3454.B1)
+		  .build();
+
+  private static final RangeSet RANGE_D1 =
+	  RangeSet.builder().addRanges(RFC3454.D1)
+		  .build();
+
+  private static final RangeSet RANGE_D2 =
+	  RangeSet.builder().addRanges(RFC3454.D2)
+		  .build();
+
+
+  private static final RangeSet RANGE_C3_to_C8_C12_C22 =
+	  RangeSet.builder().addRanges(RFC3454.C12)
+		  .addRanges(RFC3454.C22)
+		  .addRanges(RFC3454.C3)
+		  .addRanges(RFC3454.C4)
+		  .addRanges(RFC3454.C5)
+		  .addRanges(RFC3454.C6)
+		  .addRanges(RFC3454.C7)
+		  .addRanges(RFC3454.C8)
+		  // TODO Add C9 table now, proper unicode support now
+		  // Temporary rejection of all "unsupported" in java 1.4
+		  .addRange(new RangeSet.Range(0xffff, 0x10ffff))
+		  .build();
+
+  /**
+   * Characters prohibited by RFC3920 nodeprep that aren't defined as
+   * part of the RFC3454 tables.
+   */
+  private static final char [] RFC3920_NODEPREP_PROHIBIT = new char [] {
+	  '\u0022', '\u0026', '\'',     '\u002F',
+	  '\u003A', '\u003C', '\u003E', '\u0040'
+  };
+
+  private static final RangeSet RANGE_C3_TO_C8_C11_12_21_22_NP_PROHIB =
+	  RangeSet.builder().addRanges(RFC3454.C3)
+		  .addRanges(RFC3454.C4)
+		  .addRanges(RFC3454.C5)
+		  .addRanges(RFC3454.C6)
+		  .addRanges(RFC3454.C7)
+		  .addRanges(RFC3454.C8)
+		  .addRanges(RFC3454.C11)
+		  .addRanges(RFC3454.C12)
+		  .addRanges(RFC3454.C21)
+		  .addRanges(RFC3454.C22)
+		  .addRanges(RFC3920_NODEPREP_PROHIBIT)
+		  // TODO Add C9 table now, proper unicode support now
+		  // Temporary rejection of all "unsupported" in java 1.4
+		  .addRange(new RangeSet.Range(0xffff, 0x10ffff))
+		  .build();
+
+  private static final RangeSet RANGE_C3_to_C8_C12_C21_C22 =
+	  RangeSet.builder().addRanges(RFC3454.C12)
+		  .addRanges(RFC3454.C21)
+		  .addRanges(RFC3454.C22)
+		  .addRanges(RFC3454.C3)
+		  .addRanges(RFC3454.C4)
+		  .addRanges(RFC3454.C5)
+		  .addRanges(RFC3454.C6)
+		  .addRanges(RFC3454.C7)
+		  .addRanges(RFC3454.C8)
+		  // TODO Add C9 table now, proper unicode support now
+		  // Temporary rejection of all "unsupported" in java 1.4
+		  .addRange(new RangeSet.Range(0xffff, 0x10ffff))
+		  .build();
+
+
   /**
    * Preps a name according to the Stringprep profile defined in
    * RFC3491. Unassigned code points are not allowed.
@@ -81,7 +154,6 @@ public class Stringprep
     }
 
     final RangeSet.Range inputRange = RangeSet.createTextRange(input);
-    // TODO validate within no-op range, then return
     if (!allowUnassigned && RANGE_A1.containsAnyCodePoint(input, inputRange)) {
       throw new StringprepException(StringprepException.CONTAINS_UNASSIGNED);
     }
@@ -122,46 +194,6 @@ public class Stringprep
 
     return s.toString();
   }
-
-  private static final RangeSet RANGE_A1 =
-	  RangeSet.builder().addRanges(RFC3454.A1)
-	  		    .build();
-
-  private static final RangeSet RANGE_B1 =
-	  RangeSet.builder().addRanges(RFC3454.B1)
-		  .build();
-
-  private static final RangeSet RANGE_D1 =
-	  RangeSet.builder().addRanges(RFC3454.D1)
-		  .build();
-
-  private static final RangeSet RANGE_D2 =
-	  RangeSet.builder().addRanges(RFC3454.D2)
-		  .build();
-
-
-  private static final RangeSet RANGE_C3_to_C8_C12_C22 =
-	  RangeSet.builder().addRanges(RFC3454.C12)
-			    .addRanges(RFC3454.C22)
-			    .addRanges(RFC3454.C3)
-			    .addRanges(RFC3454.C4)
-			    .addRanges(RFC3454.C5)
-			    .addRanges(RFC3454.C6)
-			    .addRanges(RFC3454.C7)
-			    .addRanges(RFC3454.C8)
-			    // TODO Add C9 table now, proper unicode support now
-			    // Temporary rejection of all "unsupported" in java 1.4
-		  	    .addRange(new RangeSet.Range(0xffff, 0x10ffff))
-	  	            .build();
-
-  /**
-   * Characters prohibited by RFC3920 nodeprep that aren't defined as
-   * part of the RFC3454 tables.
-   */
-  private static final char [] RFC3920_NODEPREP_PROHIBIT = new char [] {
-    '\u0022', '\u0026', '\'',     '\u002F',
-    '\u003A', '\u003C', '\u003E', '\u0040'
-  };
 
   /**
    * Preps a node name according to the Stringprep profile defined in
@@ -239,23 +271,6 @@ public class Stringprep
     
     return s.toString();
   }
-
-  private static final RangeSet RANGE_C3_TO_C8_C11_12_21_22_NP_PROHIB =
-	  RangeSet.builder().addRanges(RFC3454.C3)
-			    .addRanges(RFC3454.C4)
-			    .addRanges(RFC3454.C5)
-			    .addRanges(RFC3454.C6)
-			    .addRanges(RFC3454.C7)
-			    .addRanges(RFC3454.C8)
-			    .addRanges(RFC3454.C11)
-			    .addRanges(RFC3454.C12)
-			    .addRanges(RFC3454.C21)
-			    .addRanges(RFC3454.C22)
-		    	    .addRanges(RFC3920_NODEPREP_PROHIBIT)
-			    // TODO Add C9 table now, proper unicode support now
-			    // Temporary rejection of all "unsupported" in java 1.4
-	  		    .addRange(new RangeSet.Range(0xffff, 0x10ffff))
-		  	    .build();
 
 
   /**
@@ -336,21 +351,6 @@ public class Stringprep
     
     return s.toString();
   }
-
-  private static final RangeSet RANGE_C3_to_C8_C12_C21_C22 =
-	  RangeSet.builder().addRanges(RFC3454.C12)
-		  .addRanges(RFC3454.C21)
-		  .addRanges(RFC3454.C22)
-		  .addRanges(RFC3454.C3)
-		  .addRanges(RFC3454.C4)
-		  .addRanges(RFC3454.C5)
-		  .addRanges(RFC3454.C6)
-		  .addRanges(RFC3454.C7)
-		  .addRanges(RFC3454.C8)
-		  // TODO Add C9 table now, proper unicode support now
-		  // Temporary rejection of all "unsupported" in java 1.4
-		  .addRange(new RangeSet.Range(0xffff, 0x10ffff))
-		  .build();
 
   static void filter(StringBuilder s, RangeSet f)
   {

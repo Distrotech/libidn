@@ -23,7 +23,6 @@ public final class RangeSet
   private final Range mostSignificantGap;
 
   // TODO Store ranges with improved cache-locality, probably int[] with even/odd elements being first/last
-  // possibly plus deltas either inline or separate
 
   public static final class Range implements Comparable<Range>
   {
@@ -115,9 +114,7 @@ public final class RangeSet
     @Override
     public int hashCode()
     {
-      int result = first;
-      result = 31 * result + last;
-      return result;
+      return 31 * first + last;
     }
   }
 
@@ -286,10 +283,6 @@ public final class RangeSet
       return false;
     }
 
-    // TODO pre-compile obj with search-sequence's min/max, usable in find/map/contains
-    // TODO extract range-calc into protected method, reuse in [a-z]-like checks
-    // TODO use do-while construction instead to avoid initial dummy-assignment
-
     if (mostSignificantGap != null
 	&& mostSignificantGap.contains(inputRange.first)
 	&& mostSignificantGap.contains(inputRange.last)) {
@@ -343,14 +336,14 @@ public final class RangeSet
    */
   public static Range createTextRange(final CharSequence text)
   {
-    if (text.length() == 0) {
+    final int len = text.length();
+    if (len == 0) {
       return new Range(Integer.MIN_VALUE, Integer.MAX_VALUE);
     }
 
     int minCodePoint = Integer.MAX_VALUE;
     int maxCodePoint = Integer.MIN_VALUE;
-    int len2 = text.length();
-    for (int i = 0; i < len2; )
+    for (int i = 0; i < len; )
     {
       final int cp = Character.codePointAt(text, i);
       minCodePoint = Math.min(minCodePoint, cp);
@@ -365,6 +358,7 @@ public final class RangeSet
   {
     return "RangeSet{" +
 	    "ranges=" + Arrays.asList(ranges) +
+	    ", mostSignificantGap=" + mostSignificantGap +
 	    '}';
   }
 }
