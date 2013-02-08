@@ -66,6 +66,17 @@ public final class RangeSet
       return first <= i && i <= last;
     }
 
+    /**
+     * Checks if this range completely can contain the other range.
+     * @param other other range to verify
+     * @return {@code true} if other completely contained by this,
+     *         otherwise {@code false}
+     */
+    public boolean contains(final Range other)
+    {
+      return (this.first <= other.first) && (other.last <= this.last);
+    }
+
     @Override
     public String toString()
     {

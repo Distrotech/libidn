@@ -43,6 +43,19 @@ import java.util.Arrays;
  */
 public class Stringprep
 {
+  private static final RangeSet.Range[] NODEPREP_PASSTHROUGH_RANGES =
+	  new RangeSet.Range[] { new RangeSet.Range(0x5B, 0x7E),
+	  	 		 new RangeSet.Range(0x30, 0x39),
+	  			 new RangeSet.Range(0x28, 0x2E)};
+
+  private static final RangeSet.Range[] NAMEPREP_PASSTHROUGH_RANGES =
+	  new RangeSet.Range[] { new RangeSet.Range(0x5B, 0x7F),
+		  		 new RangeSet.Range(0x00, 0x40)};
+
+  private static final RangeSet.Range[] RESOURCEPREP_PASSTHROUGH_RANGES =
+	  new RangeSet.Range[] { new RangeSet.Range(0x20, 0x7E)};
+
+
   private static final RangeSet RANGE_A1 =
 	  RangeSet.builder().addRanges(RFC3454.A1)
 		  .build();
@@ -154,6 +167,9 @@ public class Stringprep
     }
 
     final RangeSet.Range inputRange = RangeSet.createTextRange(input);
+    if (onlyPassThrough(NAMEPREP_PASSTHROUGH_RANGES, inputRange)) {
+      return input;
+    }
     if (!allowUnassigned && RANGE_A1.containsAnyCodePoint(input, inputRange)) {
       throw new StringprepException(StringprepException.CONTAINS_UNASSIGNED);
     }
@@ -233,7 +249,9 @@ public class Stringprep
     }
 
     final RangeSet.Range inputRange = RangeSet.createTextRange(input);
-    // TODO validate within no-op range, then return
+    if (onlyPassThrough(NODEPREP_PASSTHROUGH_RANGES, inputRange)) {
+      return input;
+    }
     if (!allowUnassigned && RANGE_A1.containsAnyCodePoint(input, inputRange)) {
       throw new StringprepException(StringprepException.CONTAINS_UNASSIGNED);
     }
@@ -271,7 +289,6 @@ public class Stringprep
     
     return s.toString();
   }
-
 
   /**
    * Preps a resource name according to the Stringprep profile defined
@@ -311,7 +328,9 @@ public class Stringprep
     }
 
     final RangeSet.Range inputRange = RangeSet.createTextRange(input);
-    // TODO validate within no-op range, then return
+    if (onlyPassThrough(RESOURCEPREP_PASSTHROUGH_RANGES, inputRange)) {
+      return input;
+    }
     if (!allowUnassigned && RANGE_A1.containsAnyCodePoint(input)) {
       throw new StringprepException(StringprepException.CONTAINS_UNASSIGNED);
     }
@@ -350,6 +369,16 @@ public class Stringprep
     }
     
     return s.toString();
+  }
+
+  private static boolean onlyPassThrough(final RangeSet.Range[] passThroughs,
+				  	 final RangeSet.Range inputRange) {
+    for (final RangeSet.Range passThrough : passThroughs) {
+      if (passThrough.contains(inputRange)) {
+	return true;
+      }
+    }
+    return false;
   }
 
   static void filter(StringBuilder s, RangeSet f)
