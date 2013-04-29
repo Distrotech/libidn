@@ -1,7 +1,7 @@
 package gnu.inet.encoding;
 
 import com.google.common.collect.ImmutableList;
-import junit.framework.Assert;
+import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.List;
