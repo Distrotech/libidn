@@ -1,5 +1,5 @@
-/* Copyright (C) 2004-2012 Free Software Foundation, Inc.
-   Author: Oliver Hitz
+/* Copyright (C) 2013 Free Software Foundation, Inc.
+   Author: Stefan Larsson
 
    This file is part of GNU Libidn.
 
@@ -26,6 +26,7 @@
    You should have received copies of the GNU General Public License and
    the GNU Lesser General Public License along with this program.  If
    not, see <http://www.gnu.org/licenses/>. */
+
 package gnu.inet.encoding.caliper;
 
 import com.google.caliper.Runner;
@@ -65,6 +66,22 @@ public class CaliperStringprep extends SimpleBenchmark
 */
   }
 
+  /**
+   * This test case is just a means of allowing to start caliper tests
+   * automatically from a build.
+   *
+   * In order to make nice graphs of performance changes over time,
+   * you can use jenkins/hudson together with caliper-ci, see
+   * Docs: https://code.google.com/p/caliper-ci/
+   * Source: https://github.com/jenkinsci/caliper-ci-plugin
+   *
+   * Create a jenkins project using maven to build this software.
+   * Use these as maven goals: "-P caliper -U clean verify".
+   * Set "POM" (hidden behind Advanced button) to "java/pom.xml"
+   * Add the "Publish Caliper microbenchmark results" post-build action.
+   * In the caliper-ci post-build action, set
+   * "JSON result files" to "java/*.caliper.json".
+   */
   @Test
   @Category(CaliperStringprep.class)
   public void runCaliper() {
