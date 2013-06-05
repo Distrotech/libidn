@@ -4,6 +4,9 @@ See the end for copying conditions.
 
 * Version 1.28 (unreleased) [stable]
 
+** idn: Don't crash when string conversion from UTF-8 to locale fails.
+Reported by Jeffrey Frey <frey@udel.edu>.
+
 ** API and ABI is backwards compatible with the previous version.
 
 * Version 1.27 (released 2013-06-05) [stable]
