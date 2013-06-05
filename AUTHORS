@@ -11,6 +11,9 @@ Contributed TLD support.
 Oliver Hitz <oliver@net-track.ch>
 Contributed Java implementation.
 
+Stefan Larsson <stefan@larsson.nu>
+Optimized Java implementation.  Added Maven support.
+
 Alexander Gnauck <gnauck@ag-software.de>
 Contributed C# port.
 
