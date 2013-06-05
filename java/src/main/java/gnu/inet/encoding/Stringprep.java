@@ -45,12 +45,12 @@ public class Stringprep
 {
   private static final RangeSet.Range[] NODEPREP_PASSTHROUGH_RANGES =
 	  new RangeSet.Range[] { new RangeSet.Range(0x5B, 0x7E),
-	  	 		 new RangeSet.Range(0x30, 0x39),
-	  			 new RangeSet.Range(0x28, 0x2E)};
+				 new RangeSet.Range(0x30, 0x39),
+				 new RangeSet.Range(0x28, 0x2E)};
 
   private static final RangeSet.Range[] NAMEPREP_PASSTHROUGH_RANGES =
 	  new RangeSet.Range[] { new RangeSet.Range(0x5B, 0x7F),
-		  		 new RangeSet.Range(0x00, 0x40)};
+				 new RangeSet.Range(0x00, 0x40)};
 
   private static final RangeSet.Range[] RESOURCEPREP_PASSTHROUGH_RANGES =
 	  new RangeSet.Range[] { new RangeSet.Range(0x20, 0x7E)};
@@ -278,7 +278,7 @@ public class Stringprep
     if (r && l) {
       throw new	StringprepException(StringprepException.BIDI_BOTHRAL);
     }
-    
+
     // RFC 3454, section 6, requirement 3
     if (r) {
       if (!RANGE_D1.contains(s.charAt(0)) ||
@@ -286,7 +286,7 @@ public class Stringprep
 	throw new StringprepException(StringprepException.BIDI_LTRAL);
       }
     }
-    
+
     return s.toString();
   }
 
@@ -338,7 +338,7 @@ public class Stringprep
     StringBuilder s = new StringBuilder(input);
 
     filter(s, RANGE_B1);
-    
+
     s = new StringBuilder(NFKC.normalizeNFKC(s.toString()));
     final RangeSet.Range normalizedRange = RangeSet.createTextRange(s);
 
@@ -348,13 +348,13 @@ public class Stringprep
 
       throw new StringprepException(StringprepException.CONTAINS_PROHIBITED);
     }
-    
+
     // Bidi handling
     boolean r = RANGE_D1.containsAnyCodePoint(s, normalizedRange);
     boolean l = RANGE_D2.containsAnyCodePoint(s, normalizedRange);
-    
+
     // RFC 3454, section 6, requirement 1: already handled above (table C.8)
-    
+
     // RFC 3454, section 6, requirement 2
     if (r && l) {
       throw new	StringprepException(StringprepException.BIDI_BOTHRAL);
@@ -367,12 +367,12 @@ public class Stringprep
 	throw new StringprepException(StringprepException.BIDI_LTRAL);
       }
     }
-    
+
     return s.toString();
   }
 
   private static boolean onlyPassThrough(final RangeSet.Range[] passThroughs,
-				  	 final RangeSet.Range inputRange) {
+					 final RangeSet.Range inputRange) {
     for (final RangeSet.Range passThrough : passThroughs) {
       if (passThrough.contains(inputRange)) {
 	return true;

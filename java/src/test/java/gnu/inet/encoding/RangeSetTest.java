@@ -61,9 +61,9 @@ public class RangeSetTest
     rangeSet = builder.build();
 
     Assert.assertTrue("single-number range set contains number",
-	    	      rangeSet.contains(42));
+		      rangeSet.contains(42));
     Assert.assertFalse("single-number range set misses other number",
-	    	       rangeSet.contains(17));
+		       rangeSet.contains(17));
   }
 
   @Test
@@ -157,7 +157,7 @@ public class RangeSetTest
 	    RangeSet.Builder.mergeRanges(
 		    ImmutableList.<RangeSet.Range>of(range1, range2));
     Assert.assertEquals("adjacent merged ranges",
-	    		ImmutableList.of(new RangeSet.Range(1, 4)), merged);
+			ImmutableList.of(new RangeSet.Range(1, 4)), merged);
   }
 
   @Test
@@ -182,7 +182,7 @@ public class RangeSetTest
     final List<RangeSet.Range> merged =
 	    RangeSet.Builder.mergeRanges(
 		    ImmutableList.<RangeSet.Range>of(range1, range2,
-			    			     range3, range4));
+						     range3, range4));
     Assert.assertEquals("multiple ranges merged to one",
 	    ImmutableList.of(new RangeSet.Range(1, 8)), merged);
   }

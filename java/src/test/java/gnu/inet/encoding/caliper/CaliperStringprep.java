@@ -87,9 +87,9 @@ public class CaliperStringprep extends SimpleBenchmark
   public void runCaliper() {
     new Runner().run(ObjectArrays.concat(
 	    new String[] {"--saveResults", "CaliperStringprep.caliper.json",
-	    		  "-JBiasedLocking=-XX:BiasedLockingStartupDelay=0",
-	    		  "-JServer=-server",
-	    		  "-JAggressiveOpts=-XX:+AggressiveOpts"},
+			  "-JBiasedLocking=-XX:BiasedLockingStartupDelay=0",
+			  "-JServer=-server",
+			  "-JAggressiveOpts=-XX:+AggressiveOpts"},
 	    CaliperStringprep.class.getName()));
   }
 

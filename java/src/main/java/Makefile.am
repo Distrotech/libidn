@@ -24,6 +24,6 @@ if JAVA
 # Invoked by ../doc/java/Makefile.
 .PHONY: javadoc
 javadoc:
-	cd $(srcdir) && $(GJDOC) -d $(top_builddir)/doc/java gnu/inet/encoding/*.java
+	cd $(srcdir) && \
+		$(GJDOC) -d $(top_builddir)/doc/java gnu/inet/encoding/*.java
 endif
-

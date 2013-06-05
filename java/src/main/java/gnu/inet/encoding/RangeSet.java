@@ -79,7 +79,7 @@ public final class RangeSet
       if (firstRange.first > lastRange.first)
       {
 	throw new IllegalArgumentException(firstRange + " starts later than "
-				           + lastRange);
+					   + lastRange);
       }
 
       if (lastRange.first - firstRange.last > 1)
@@ -110,7 +110,7 @@ public final class RangeSet
     public String toString()
     {
       return "[" + Integer.toHexString(first).toUpperCase(Locale.ENGLISH) + ","
-	         + Integer.toHexString(last).toUpperCase(Locale.ENGLISH) + ']';
+	  + Integer.toHexString(last).toUpperCase(Locale.ENGLISH) + ']';
     }
 
     //@Override
@@ -206,7 +206,7 @@ public final class RangeSet
       return new Range(ranges[ranges.length - 1].last + 1, Integer.MAX_VALUE);
     }
     return new Range(ranges[insertionPoint - 1].last + 1,
-	             ranges[insertionPoint].first - 1);
+		     ranges[insertionPoint].first - 1);
   }
 
   public static final class Builder {
@@ -230,7 +230,7 @@ public final class RangeSet
 	  this.ranges.add(new Range(range[0], range[1]));
 	} else {
 	  throw new IllegalArgumentException("Unexpected range len:"
-		  			     + range.length);
+					     + range.length);
 	}
       }
       return this;
@@ -337,7 +337,7 @@ public final class RangeSet
     final int startEndIdx = idxEnd >= 0 ? idxEnd + 1 : -(idxEnd + 1);
     final int idxStart =
 	    Arrays.binarySearch(ranges, startFromIdx, startEndIdx,
-		    		new Range(inputRange.first), CONTAINS_COMPARATOR);
+				new Range(inputRange.first), CONTAINS_COMPARATOR);
 
     // If whole range in text outside same non-contained range, won't be found
     // If whole range in text inside single contained range, must match
