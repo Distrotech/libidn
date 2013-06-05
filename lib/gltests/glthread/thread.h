@@ -1,5 +1,5 @@
 /* Creating and controlling threads.
-   Copyright (C) 2005-2012 Free Software Foundation, Inc.
+   Copyright (C) 2005-2013 Free Software Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -120,7 +120,13 @@ extern int glthread_in_use (void);
    address of a function in libpthread that we don't use.  */
 
 #  pragma weak pthread_create
+
+#  ifdef __clang__
+  /* Without this, clang complains that pthread_sigmask is never declared.  */
+#   include <signal.h>
+#  endif
 #  pragma weak pthread_sigmask
+
 #  pragma weak pthread_join
 #  ifndef pthread_self
 #   pragma weak pthread_self

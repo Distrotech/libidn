@@ -1,5 +1,5 @@
 # DO NOT EDIT! GENERATED AUTOMATICALLY!
-# Copyright (C) 2002-2012 Free Software Foundation, Inc.
+# Copyright (C) 2002-2013 Free Software Foundation, Inc.
 #
 # This file is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -73,6 +73,8 @@ AC_DEFUN([gl_EARLY],
   # Code from module gendocs:
   # Code from module getcwd-lgpl:
   # Code from module getcwd-lgpl-tests:
+  # Code from module getdtablesize:
+  # Code from module getdtablesize-tests:
   # Code from module getopt-gnu:
   # Code from module getopt-posix:
   # Code from module getopt-posix-tests:
@@ -332,6 +334,12 @@ changequote([, ])dnl
     AC_LIBOBJ([getcwd-lgpl])
   fi
   gl_UNISTD_MODULE_INDICATOR([getcwd])
+  gl_FUNC_GETDTABLESIZE
+  if test $HAVE_GETDTABLESIZE = 0; then
+    AC_LIBOBJ([getdtablesize])
+    gl_PREREQ_GETDTABLESIZE
+  fi
+  gl_UNISTD_MODULE_INDICATOR([getdtablesize])
   gl_INTTYPES_H
   gl_INTTYPES_INCOMPLETE
   AC_REQUIRE([gl_LARGEFILE])
@@ -358,6 +366,7 @@ changequote([, ])dnl
   gl_FUNC_PUTENV
   if test $REPLACE_PUTENV = 1; then
     AC_LIBOBJ([putenv])
+    gl_PREREQ_PUTENV
   fi
   gl_STDLIB_MODULE_INDICATOR([putenv])
   gl_FUNC_SETENV
@@ -373,8 +382,8 @@ changequote([, ])dnl
   gl_SYS_STAT_MODULE_INDICATOR([stat])
   AM_STDBOOL_H
   gl_STDINT_H
-  gt_TYPE_WCHAR_T
-  gt_TYPE_WINT_T
+  AC_REQUIRE([gt_TYPE_WCHAR_T])
+  AC_REQUIRE([gt_TYPE_WINT_T])
   gl_STDIO_H
   gl_STDLIB_H
   gl_FUNC_SYMLINK
@@ -548,6 +557,7 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/fdopen.m4
   m4/fstat.m4
   m4/getcwd.m4
+  m4/getdtablesize.m4
   m4/getopt.m4
   m4/gnulib-common.m4
   m4/include_next.m4
@@ -609,6 +619,7 @@ AC_DEFUN([gl_FILE_LIST], [
   tests/test-fstat.c
   tests/test-fwrite.c
   tests/test-getcwd-lgpl.c
+  tests/test-getdtablesize.c
   tests/test-getopt.c
   tests/test-getopt.h
   tests/test-getopt_long.h
@@ -652,6 +663,7 @@ AC_DEFUN([gl_FILE_LIST], [
   tests=lib/fdopen.c
   tests=lib/fstat.c
   tests=lib/getcwd-lgpl.c
+  tests=lib/getdtablesize.c
   tests=lib/ignore-value.h
   tests=lib/inttypes.in.h
   tests=lib/lstat.c
@@ -667,7 +679,6 @@ AC_DEFUN([gl_FILE_LIST], [
   tests=lib/stat.c
   tests=lib/stdbool.in.h
   tests=lib/stdint.in.h
-  tests=lib/stdio.c
   tests=lib/stdio.in.h
   tests=lib/stdlib.in.h
   tests=lib/symlink.c
