@@ -4,6 +4,12 @@ See the end for copying conditions.
 
 * Version 1.27 (unreleased) [stable]
 
+** Java library can be built using Maven.  Speed improvements.
+Thanks to several patches from Stefan Larsson.  Testing indicate 70-90
+times faster node/name/resource-prep.
+
+** Update gnulib files and translations.
+
 ** API and ABI is backwards compatible with the previous version.
 
 * Version 1.26 (released 2012-12-11) [stable]
