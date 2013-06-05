@@ -1,5 +1,5 @@
 To: help-libidn@gnu.org, info-gnu@gnu.org
-Subject: Libidn 1.25 released
+Subject: Libidn 1.26 released
 <#part sign=pgpmime>
 GNU Libidn is a fully documented implementation of the Stringprep,
 Punycode and IDNA specifications.  Libidn's purpose is to encode and
@@ -8,17 +8,20 @@ and Java libraries.
 
 Noteworthy changes since the last release (from NEWS file):
 
-* Version 1.25 (released 2012-05-23) [stable]
+* Version 1.26 (released 2012-12-11) [stable]
 
-** MSVC: Build fixes related to _GL_ATTRIBUTE_CONST and _GL_ATTRIBUTE_PURE.
-Reported by Bartosz Brachaczek <b.brachaczek@gmail.com>.
+** libidn, idna_to_ascii: Propagate error on malloc failure.
+Reported by Sarat Chandra Addepalli <s.addepalli@samsung.com>.
 
-** examples: Fix compiler warning about ignoring return value from fgets.
+** libidn, tld_get_4: Fix out of bounds read access violation.
 
-** tests: Ship with a valgrind suppressions file for the strlen issue.
-See tests/libidn.supp and  bottom of HACKING for discussion.
+** i18n: Added Croatian translation.  Updated Vietnamese translation.
+Thanks to Tomislav Krznar and Trần Ngọc Quân.
 
-** Update gnulib files and translations.
+** java: Permit usage by Apache projects.
+Thanks to Oliver Hitz and Angus Turner.
+
+** tests: Improve tld self-tests.
 
 ** API and ABI is backwards compatible with the previous version.
 
@@ -90,34 +93,34 @@ If you need help to use Libidn, or want to help others, you are
 invited to join our help-libidn mailing list, see:
   https://lists.gnu.org/mailman/listinfo/help-libidn
 
-Here are the compressed sources (3.2MB):
-  ftp://ftp.gnu.org/gnu/libidn/libidn-1.25.tar.gz
-  http://ftp.gnu.org/gnu/libidn/libidn-1.25.tar.gz
+Here are the compressed sources (3.3MB):
+  ftp://ftp.gnu.org/gnu/libidn/libidn-1.26.tar.gz
+  http://ftp.gnu.org/gnu/libidn/libidn-1.26.tar.gz
 
 Here are GPG detached signatures:
-  ftp://ftp.gnu.org/gnu/libidn/libidn-1.25.tar.gz.sig
-  http://ftp.gnu.org/gnu/libidn/libidn-1.25.tar.gz.sig
+  ftp://ftp.gnu.org/gnu/libidn/libidn-1.26.tar.gz.sig
+  http://ftp.gnu.org/gnu/libidn/libidn-1.26.tar.gz.sig
 
 Here are the SHA-1 and SHA-224 signatures:
 
-92e64fd5a6428bda6ade2c3cde475b76455cd7dd  libidn-1.25.tar.gz
-99c62bb5fe91b3d04b6c8b1a1971c02ed9b383375f85644ad510e315  libidn-1.25.tar.gz
+b1cb40646a96dadbfc41d060d23dfb382eec1128  libidn-1.26.tar.gz
+415440efbe97f87e1a0f33fd42bec25a8197922c9d1d8e3c20585b17  libidn-1.26.tar.gz
 
 We also provide Windows binaries built using MinGW-w64 with the build
 script windows/libidn4win.mk, for 32-bit and 64-bit x86 architecures:
 
-  ftp://ftp.gnu.org/gnu/libidn/libidn-1.25-win32.zip
-  ftp://ftp.gnu.org/gnu/libidn/libidn-1.25-win32.zip.sig
-  ftp://ftp.gnu.org/gnu/libidn/libidn-1.25-win64.zip
-  ftp://ftp.gnu.org/gnu/libidn/libidn-1.25-win64.zip.sig
+  ftp://ftp.gnu.org/gnu/libidn/libidn-1.26-win32.zip
+  ftp://ftp.gnu.org/gnu/libidn/libidn-1.26-win32.zip.sig
+  ftp://ftp.gnu.org/gnu/libidn/libidn-1.26-win64.zip
+  ftp://ftp.gnu.org/gnu/libidn/libidn-1.26-win64.zip.sig
 
 Here are the SHA-1 and SHA-224 signatures:
 
-c2a736922059891ee8f99de9298b9cecda395a0b  libidn-1.25-win32.zip
-10f61aff34f2fbe6c04b142def549cce4636db4e9df261397fc27f13  libidn-1.25-win32.zip
+aca7f2f7bb8832cfbef96dd5af4e293bd3c475c9  libidn-1.26-win32.zip
+fd8d06defc9de9b549ad6c39e14d906bd8cc490ce110421f8b0dfc64  libidn-1.26-win32.zip
 
-a0201ce2305ac9e38d9849dab6eac075d5eaaca1  libidn-1.25-win64.zip
-520d8e841c6f378422b2c667d4fdbf856d16b50b1b750522f74b44d3  libidn-1.25-win64.zip
+c883f0dae9cb4cea658615f2e411c554435312f4  libidn-1.26-win64.zip
+ad83ecb5b32f6fb1bd664378db09d94390ec2df0285f98860ed8aeac  libidn-1.26-win64.zip
 
 The software is cryptographically signed by the author using an OpenPGP
 key identified by the following information:
