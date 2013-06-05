@@ -1,5 +1,5 @@
 /* toutf8.c --- Convert strings from system locale into UTF-8.
-   Copyright (C) 2002-2012 Simon Josefsson
+   Copyright (C) 2002-2013 Simon Josefsson
 
    This file is part of GNU Libidn.
 

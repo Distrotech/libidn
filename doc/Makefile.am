@@ -1,5 +1,5 @@
 ## Process this file with automake to produce Makefile.in
-# Copyright (C) 2002-2012 Simon Josefsson.
+# Copyright (C) 2002-2013 Simon Josefsson.
 #
 # This file is part of GNU Libidn.
 #
@@ -75,6 +75,6 @@ GDOC_MAN_PREFIX = man/
 GDOC_MAN_EXTRA_ARGS = -module $(PACKAGE) -sourceversion $(VERSION) \
 	-bugsto $(PACKAGE_BUGREPORT) -pkg-name "$(PACKAGE_NAME)" \
 	-includefuncprefix -seeinfo $(PACKAGE) \
-	-copyright "2002-2012 Simon Josefsson" \
+	-copyright "2002-2013 Simon Josefsson" \
 	-verbatimcopying
 include $(srcdir)/gdoc.mk

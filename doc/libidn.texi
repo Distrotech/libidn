@@ -14,7 +14,7 @@
 This manual is last updated @value{UPDATED} for version
 @value{VERSION} of GNU Libidn.
 
-Copyright @copyright{} 2002-2012 Simon Josefsson.
+Copyright @copyright{} 2002-2013 Simon Josefsson.
 
 @quotation
 Permission is granted to copy, distribute and/or modify this document

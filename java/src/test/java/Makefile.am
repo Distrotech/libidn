@@ -1,5 +1,5 @@
 ## Process this file with automake to produce Makefile.in
-# Copyright (C) 2004-2012  Free Software Foundation
+# Copyright (C) 2004-2013 Free Software Foundation, Inc.
 #
 # This file is part of GNU Libidn.
 #

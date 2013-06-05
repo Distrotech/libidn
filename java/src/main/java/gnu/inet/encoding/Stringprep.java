@@ -1,4 +1,4 @@
-/* Copyright (C) 2004-2012 Free Software Foundation, Inc.
+/* Copyright (C) 2004-2013 Free Software Foundation, Inc.
    Author: Oliver Hitz
 
    This file is part of GNU Libidn.

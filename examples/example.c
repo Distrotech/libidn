@@ -1,5 +1,5 @@
 /* example.c --- Example code showing how to use stringprep().
- * Copyright (C) 2002-2012 Simon Josefsson
+ * Copyright (C) 2002-2013 Simon Josefsson
  *
  * This file is part of GNU Libidn.
  *

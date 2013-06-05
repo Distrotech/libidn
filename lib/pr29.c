@@ -1,5 +1,5 @@
 /* pr29.h --- Detect strings that are non-idempotent under NFKC in Unicode 3.2.
-   Copyright (C) 2004-2012 Simon Josefsson
+   Copyright (C) 2004-2013 Simon Josefsson
 
    This file is part of GNU Libidn.
 

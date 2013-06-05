@@ -1,5 +1,5 @@
 /* tst_strerror.c --- Self tests for *_strerror().
- * Copyright (C) 2004-2012 Simon Josefsson
+ * Copyright (C) 2004-2013 Simon Josefsson
  *
  * This file is part of GNU Libidn.
  *
