@@ -2,7 +2,7 @@ Libidn NEWS -- History of user-visible changes.                 -*- outline -*-
 Copyright (C) 2002-2013 Simon Josefsson
 See the end for copying conditions.
 
-* Version 1.27 (unreleased) [stable]
+* Version 1.27 (released 2013-06-05) [stable]
 
 ** Java library can be built using Maven.  Speed improvements.
 Thanks to several patches from Stefan Larsson.  Testing indicate 70-90
