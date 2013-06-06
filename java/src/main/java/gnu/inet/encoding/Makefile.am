@@ -29,6 +29,7 @@ dist_noinst_JAVA = \
 	NFKC.java			\
 	Punycode.java			\
 	PunycodeException.java		\
+	RangeSet.java			\
 	RFC3454.java			\
 	Stringprep.java			\
 	StringprepException.java
