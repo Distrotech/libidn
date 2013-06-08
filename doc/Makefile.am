@@ -21,26 +21,26 @@ if ENABLE_GTK_DOC
 SUBDIRS += . reference
 endif
 
-EXTRA_DIST = gdoc libidn.html libidn.ps libidn.pdf texinfo.css	\
-	components.fig
+EXTRA_DIST = gdoc libidn.html libidn.ps libidn.pdf texinfo.css
+#	components.fig
 
 info_TEXINFOS = libidn.texi
 libidn_TEXINFOS = fdl-1.3.texi
 libidn_TEXINFOS += $(gdoc_TEXINFOS)
-libidn_TEXINFOS += libidn-components.eps libidn-components.png	\
-			libidn-components.pdf
+#libidn_TEXINFOS += libidn-components.eps libidn-components.png	\
+#			libidn-components.pdf
 
 imagesdir = $(infodir)
-images_DATA = libidn-components.png
+#images_DATA = libidn-components.png
 
-libidn-components.eps: components.fig
-	fig2dev -L eps $< $@
+#libidn-components.eps: components.fig
+#	fig2dev -L eps $< $@
 
-libidn-components.png: components.fig
-	fig2dev -L png $< $@
+#libidn-components.png: components.fig
+#	fig2dev -L png $< $@
 
-libidn-components.pdf: components.fig
-	fig2dev -L pdf $< $@
+#libidn-components.pdf: components.fig
+#	fig2dev -L pdf $< $@
 
 AM_MAKEINFOFLAGS = -I $(top_builddir)/doc -I $(top_srcdir)/examples
 TEXI2DVI = texi2dvi $(AM_MAKEINFOFLAGS)

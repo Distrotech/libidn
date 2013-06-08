@@ -1,0 +1,229 @@
+# Japanese messages for libidn.
+# Copyright (C) 2006 Free Software Foundation, Inc.
+# This file is distributed under the same license as the libidn package.
+# GOTO Masanori <gotom@debian.or.jp>, 2006.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: libidn 0.5.16\n"
+"Report-Msgid-Bugs-To: bug-libidn@gnu.org\n"
+"POT-Creation-Date: 2005-05-06 01:52+0200\n"
+"PO-Revision-Date: 2006-03-21 11:20+0900\n"
+"Last-Translator: GOTO Masanori <gotom@debian.or.jp>\n"
+"Language-Team: Japanese <translation-team-ja@lists.sourceforge.net>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=EUC-JP\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: lib/strerror-idna.c:70 lib/strerror-pr29.c:54 lib/strerror-punycode.c:54
+#: lib/strerror-stringprep.c:74 lib/strerror-tld.c:56
+msgid "Success"
+msgstr "成功"
+
+#: lib/strerror-idna.c:74 lib/strerror-pr29.c:62
+msgid "String preparation failed"
+msgstr "文字列準備中で失敗"
+
+#: lib/strerror-idna.c:78
+msgid "Punycode failed"
+msgstr "Punycode操作中で失敗"
+
+#: lib/strerror-idna.c:82
+msgid "Non-digit/letter/hyphen in input"
+msgstr "入力中に数値/文字/ハイフン以外が存在"
+
+#: lib/strerror-idna.c:86
+msgid "Forbidden leading or trailing minus sign (`-')"
+msgstr "先頭または末尾にあるマイナス記号(`-')は許されていません"
+
+#: lib/strerror-idna.c:90
+msgid "Output would be too large or too small"
+msgstr "出力は大きすぎるか小さすぎる"
+
+#: lib/strerror-idna.c:94
+msgid "Input does not start with ACE prefix (`xn--')"
+msgstr "入力はACE接頭辞(`xn--')で始まっていません"
+
+#: lib/strerror-idna.c:98
+msgid "String not idempotent under ToASCII"
+msgstr "ToASCII操作による出力文字列は等しくありません"
+
+#: lib/strerror-idna.c:102
+msgid "Input already contain ACE prefix (`xn--')"
+msgstr "入力は既にACE接頭辞(`xn--')を含んでいます"
+
+#: lib/strerror-idna.c:106 lib/strerror-tld.c:72
+msgid "System iconv failed"
+msgstr "システム関数iconvで失敗"
+
+#: lib/strerror-idna.c:110 lib/strerror-stringprep.c:118 lib/strerror-tld.c:68
+msgid "Cannot allocate memory"
+msgstr "メモリ確保に失敗"
+
+#: lib/strerror-idna.c:114
+msgid "System dlopen failed"
+msgstr "システム関数dlopenで失敗"
+
+#: lib/strerror-idna.c:118 lib/strerror-pr29.c:66 lib/strerror-punycode.c:70
+#: lib/strerror-stringprep.c:122 lib/strerror-tld.c:80
+msgid "Unknown error"
+msgstr "未知のエラー"
+
+#: lib/strerror-pr29.c:58
+msgid "String not idempotent under Unicode NFKC normalization"
+msgstr "UnicodeのNFKC正規化による出力文字列は等しくありません"
+
+#: lib/strerror-punycode.c:58
+msgid "Invalid input"
+msgstr "不正な入力"
+
+#: lib/strerror-punycode.c:62 lib/strerror-stringprep.c:98
+msgid "Output would exceed the buffer space provided"
+msgstr "出力は与えられたバッファ空間に収まりません"
+
+#: lib/strerror-punycode.c:66
+msgid "String size limit exceeded"
+msgstr "文字列長の限界を越えました"
+
+#: lib/strerror-stringprep.c:78
+msgid "Forbidden unassigned code points in input"
+msgstr "許されていない未割当てのコードポイントが入力にあります"
+
+#: lib/strerror-stringprep.c:82
+msgid "Prohibited code points in input"
+msgstr "禁止コードポイントが入力にあります"
+
+#: lib/strerror-stringprep.c:86
+msgid "Conflicting bidirectional properties in input"
+msgstr "双方向(bidirectional)性が入力中で衝突しています"
+
+#: lib/strerror-stringprep.c:90
+msgid "Malformed bidirectional string"
+msgstr "不正な双方向(bidirectional)文字列"
+
+#: lib/strerror-stringprep.c:94
+msgid "Prohibited bidirectional code points in input"
+msgstr "禁止双方向(bidirectional)コードポイントが入力にあります"
+
+#: lib/strerror-stringprep.c:102
+msgid "Error in stringprep profile definition"
+msgstr "stringprepプロファイル定義でエラー"
+
+#: lib/strerror-stringprep.c:106
+msgid "Flag conflict with profile"
+msgstr "フラグがプロファイルと衝突しています"
+
+#: lib/strerror-stringprep.c:110
+msgid "Unknown profile"
+msgstr "未知のプロファイル"
+
+#: lib/strerror-stringprep.c:114
+msgid "Unicode normalization failed (internal error)"
+msgstr "Unicode正規化に失敗(内部エラー)"
+
+#: lib/strerror-tld.c:60
+msgid "Code points prohibited by top-level domain"
+msgstr "トップレベルドメインによって禁止されたコードポイント"
+
+#: lib/strerror-tld.c:64
+msgid "Missing input"
+msgstr "入力がありません"
+
+#: lib/strerror-tld.c:76
+msgid "No top-level domain found in input"
+msgstr "トップレベルドメインが入力中に発見できません"
+
+#: src/idn.c:89
+msgid "Only one of -s, -e, -d, -a or -u can be specified."
+msgstr "-s, -e, -d, -a, -uのいずれか1つだけが指定できます."
+
+#: src/idn.c:98
+#, c-format
+msgid "Charset `%s'.\n"
+msgstr "文字セット`%s'.\n"
+
+#: src/idn.c:101
+#, c-format
+msgid "Type each input string on a line by itself, terminated by a newline character.\n"
+msgstr "改行文字で終端された入力文字列を1行ずつタイプしてください.\n"
+
+#: src/idn.c:116
+msgid "Input error"
+msgstr "入力エラー"
+
+#: src/idn.c:126 src/idn.c:186 src/idn.c:267 src/idn.c:341
+#, c-format
+msgid "Could not convert from %s to UTF-8."
+msgstr "%sからUTF-8に変換できませんでした."
+
+#: src/idn.c:134 src/idn.c:158 src/idn.c:193 src/idn.c:402
+msgid "Could not convert from UTF-8 to UCS-4."
+msgstr "UTF-8からUCS-4に変換できませんでした."
+
+#: src/idn.c:141 src/idn.c:199 src/idn.c:280 src/idn.c:356
+#, c-format
+msgid "input[%d] = U+%04x\n"
+msgstr "入力[%d] = U+%04x\n"
+
+#: src/idn.c:150
+#, c-format
+msgid "stringprep_profile: %s"
+msgstr "stringprep_profile: %s"
+
+#: src/idn.c:165 src/idn.c:242 src/idn.c:329 src/idn.c:374
+#, c-format
+msgid "output[%d] = U+%04x\n"
+msgstr "出力[%d] = U+%04x\n"
+
+#: src/idn.c:172 src/idn.c:213 src/idn.c:255 src/idn.c:407
+#, c-format
+msgid "Could not convert from UTF-8 to %s."
+msgstr "UTF-8から%sに変換できませんでした."
+
+#: src/idn.c:206
+#, c-format
+msgid "punycode_encode: %s"
+msgstr "punycode_encode: %s"
+
+#: src/idn.c:228
+msgid "malloc"
+msgstr "malloc"
+
+#: src/idn.c:234
+#, c-format
+msgid "punycode_decode: %s"
+msgstr "punycode_decode: %s"
+
+#: src/idn.c:250 src/idn.c:274 src/idn.c:349
+msgid "Could not convert from UCS-4 to UTF-8."
+msgstr "UCS-4からUTF-8に変換できませんでした."
+
+#: src/idn.c:290
+#, c-format
+msgid "idna_to_ascii_4z: %s"
+msgstr "idna_to_ascii_4z: %s"
+
+#: src/idn.c:304
+#, c-format
+msgid "idna_to_unicode_8z4z (TLD): %s"
+msgstr "idna_to_unicode_8z4z (TLD): %s"
+
+#: src/idn.c:311
+#, c-format
+msgid "tld[%d] = U+%04x\n"
+msgstr "tld[%d] = U+%04x\n"
+
+#: src/idn.c:317 src/idn.c:386
+#, c-format
+msgid "tld_check_4z (position %d): %s"
+msgstr "tld_check_4z (位置 %d): %s"
+
+#: src/idn.c:320 src/idn.c:392
+#, c-format
+msgid "tld_check_4z: %s"
+msgstr "tld_check_4z: %s"
+
+#: src/idn.c:367
+#, c-format
+msgid "idna_to_unicode_8z4z: %s"
+msgstr "idna_to_unicode_8z4z: %s"
