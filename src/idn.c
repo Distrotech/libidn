@@ -499,7 +499,7 @@ main (int argc, char *argv[])
 
 	  p = stringprep_utf8_to_locale (r);
 	  free (r);
-	  if (!r)
+	  if (!p)
 	    error (EXIT_FAILURE, 0, _("could not convert from UTF-8 to %s"),
 		   stringprep_locale_charset ());
 

@@ -552,5 +552,6 @@ tests/tst_toutf8
 tests/tst_toutf8.o
 tests/utils.o
 windows/libidn-*-win??.zip
+windows/libidn-*-win??.zip.sig
 windows/tmp32
 windows/tmp64
