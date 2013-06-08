@@ -712,6 +712,38 @@ AC_MSG_RESULT([$_am_result])
 rm -f confinc confmf
 ])
 
+# Copyright (C) 1999-2013 Free Software Foundation, Inc.
+#
+# This file is free software; the Free Software Foundation
+# gives unlimited permission to copy and/or distribute it,
+# with or without modifications, as long as this notice is preserved.
+
+# AM_PROG_CC_C_O
+# --------------
+# Like AC_PROG_CC_C_O, but changed for automake.
+AC_DEFUN([AM_PROG_CC_C_O],
+[AC_REQUIRE([AC_PROG_CC_C_O])dnl
+AC_REQUIRE([AM_AUX_DIR_EXPAND])dnl
+AC_REQUIRE_AUX_FILE([compile])dnl
+# FIXME: we rely on the cache variable name because
+# there is no other way.
+set dummy $CC
+am_cc=`echo $[2] | sed ['s/[^a-zA-Z0-9_]/_/g;s/^[0-9]/_/']`
+eval am_t=\$ac_cv_prog_cc_${am_cc}_c_o
+if test "$am_t" != yes; then
+   # Losing compiler, so override with the script.
+   # FIXME: It is wrong to rewrite CC.
+   # But if we don't then we get into trouble of one sort or another.
+   # A longer-term fix would be to have automake use am__CC in this case,
+   # and then we could set am__CC="\$(top_srcdir)/compile \$(CC)"
+   CC="$am_aux_dir/compile $CC"
+fi
+dnl Make sure AC_PROG_CC is never called again, or it will override our
+dnl setting of CC.
+m4_define([AC_PROG_CC],
+          [m4_fatal([AC_PROG_CC cannot be called after AM_PROG_CC_C_O])])
+])
+
 # Fake the existence of programs that GNU maintainers use.  -*- Autoconf -*-
 
 # Copyright (C) 1997-2013 Free Software Foundation, Inc.
@@ -1065,16 +1097,98 @@ AC_SUBST([am__tar])
 AC_SUBST([am__untar])
 ]) # _AM_PROG_TAR
 
+m4_include([lib/gl/m4/gnulib-comp.m4])
+m4_include([lib/gl/m4/iconv_h.m4])
+m4_include([lib/gl/m4/iconv_open.m4])
+m4_include([lib/gl/m4/inline.m4])
+m4_include([lib/gl/m4/ld-output-def.m4])
+m4_include([lib/gl/m4/ld-version-script.m4])
+m4_include([lib/gl/m4/libunistring-base.m4])
+m4_include([lib/gl/m4/locale-fr.m4])
+m4_include([lib/gl/m4/locale-ja.m4])
+m4_include([lib/gl/m4/locale-tr.m4])
+m4_include([lib/gl/m4/locale-zh.m4])
+m4_include([lib/gl/m4/locale_h.m4])
+m4_include([lib/gl/m4/localename.m4])
+m4_include([lib/gl/m4/setlocale.m4])
+m4_include([lib/gl/m4/strverscmp.m4])
+m4_include([lib/gl/m4/thread.m4])
+m4_include([lib/gl/m4/yield.m4])
+m4_include([gl/m4/00gnulib.m4])
+m4_include([gl/m4/alloca.m4])
+m4_include([gl/m4/autobuild.m4])
+m4_include([gl/m4/close.m4])
+m4_include([gl/m4/csharp.m4])
+m4_include([gl/m4/csharpcomp.m4])
+m4_include([gl/m4/csharpexec.m4])
+m4_include([gl/m4/dup2.m4])
+m4_include([gl/m4/eealloc.m4])
+m4_include([gl/m4/environ.m4])
+m4_include([gl/m4/errno_h.m4])
+m4_include([gl/m4/error.m4])
+m4_include([gl/m4/extensions.m4])
+m4_include([gl/m4/extern-inline.m4])
+m4_include([gl/m4/fcntl_h.m4])
+m4_include([gl/m4/fdopen.m4])
+m4_include([gl/m4/fstat.m4])
+m4_include([gl/m4/getcwd.m4])
+m4_include([gl/m4/getdtablesize.m4])
+m4_include([gl/m4/getopt.m4])
+m4_include([gl/m4/gnulib-common.m4])
+m4_include([gl/m4/gnulib-comp.m4])
+m4_include([gl/m4/include_next.m4])
+m4_include([gl/m4/inttypes.m4])
+m4_include([gl/m4/largefile.m4])
+m4_include([gl/m4/lstat.m4])
+m4_include([gl/m4/malloc.m4])
+m4_include([gl/m4/malloca.m4])
+m4_include([gl/m4/manywarnings.m4])
+m4_include([gl/m4/mode_t.m4])
+m4_include([gl/m4/msvc-inval.m4])
+m4_include([gl/m4/msvc-nothrow.m4])
+m4_include([gl/m4/multiarch.m4])
+m4_include([gl/m4/nocrash.m4])
+m4_include([gl/m4/off_t.m4])
+m4_include([gl/m4/open.m4])
+m4_include([gl/m4/pathmax.m4])
+m4_include([gl/m4/putenv.m4])
+m4_include([gl/m4/setenv.m4])
+m4_include([gl/m4/ssize_t.m4])
+m4_include([gl/m4/stat.m4])
+m4_include([gl/m4/stdarg.m4])
+m4_include([gl/m4/stdbool.m4])
+m4_include([gl/m4/stddef_h.m4])
+m4_include([gl/m4/stdint.m4])
+m4_include([gl/m4/stdio_h.m4])
+m4_include([gl/m4/stdlib_h.m4])
+m4_include([gl/m4/strerror.m4])
+m4_include([gl/m4/string_h.m4])
+m4_include([gl/m4/symlink.m4])
+m4_include([gl/m4/sys_socket_h.m4])
+m4_include([gl/m4/sys_stat_h.m4])
+m4_include([gl/m4/sys_types_h.m4])
+m4_include([gl/m4/time_h.m4])
+m4_include([gl/m4/unistd_h.m4])
+m4_include([gl/m4/valgrind-tests.m4])
+m4_include([gl/m4/version-etc.m4])
+m4_include([gl/m4/warn-on-use.m4])
+m4_include([gl/m4/warnings.m4])
+m4_include([gl/m4/wchar_h.m4])
 m4_include([m4/ac_prog_jar.m4])
 m4_include([m4/codeset.m4])
+m4_include([m4/fcntl-o.m4])
 m4_include([m4/gettext.m4])
 m4_include([m4/gtk-doc.m4])
 m4_include([m4/iconv.m4])
 m4_include([m4/intlmacosx.m4])
+m4_include([m4/inttypes-pri.m4])
+m4_include([m4/lcmessage.m4])
 m4_include([m4/lib-ld.m4])
 m4_include([m4/lib-link.m4])
 m4_include([m4/lib-prefix.m4])
 m4_include([m4/libtool.m4])
+m4_include([m4/lock.m4])
+m4_include([m4/longlong.m4])
 m4_include([m4/ltoptions.m4])
 m4_include([m4/ltsugar.m4])
 m4_include([m4/ltversion.m4])
@@ -1083,4 +1197,8 @@ m4_include([m4/nls.m4])
 m4_include([m4/pkg.m4])
 m4_include([m4/po.m4])
 m4_include([m4/progtest.m4])
+m4_include([m4/threadlib.m4])
 m4_include([m4/update-header-version.m4])
+m4_include([m4/visibility.m4])
+m4_include([m4/wchar_t.m4])
+m4_include([m4/wint_t.m4])
