@@ -44,6 +44,7 @@ AC_SUBST(DLL_VERSION)
 # We can't replace this with LT_INIT([win32-dll]) yet.  For example,
 # the Ubuntu 8.04 LTS is still shipping a libtool version that doesn't
 # have it.
+AM_PROG_AR
 AC_LIBTOOL_WIN32_DLL
 AC_PROG_LIBTOOL
 
