@@ -45,6 +45,7 @@ AC_SUBST(DLL_VERSION)
 # the Ubuntu 8.04 LTS is still shipping a libtool version that doesn't
 # have it.
 AC_LIBTOOL_WIN32_DLL
+m4_ifdef([AM_PROG_AR], [AM_PROG_AR])
 AC_PROG_LIBTOOL
 
 # Checks for programs.
