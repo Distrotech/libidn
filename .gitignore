@@ -1,5 +1,7 @@
 *.gcda
 *.gcno
+*.log
+*.trs
 *~
 ABOUT-NLS
 ChangeLog
@@ -8,6 +10,7 @@ Makefile
 Makefile.in
 aclocal.m4
 autom4te.cache/
+build-aux/ar-lib
 build-aux/compile
 build-aux/config.guess
 build-aux/config.sub
@@ -16,6 +19,7 @@ build-aux/install-sh
 build-aux/ltmain.sh
 build-aux/mdate-sh
 build-aux/missing
+build-aux/test-driver
 build-aux/texinfo.tex
 config.h
 config.h.in
@@ -198,6 +202,8 @@ gltests/test-fwrite
 gltests/test-fwrite.o
 gltests/test-getcwd-lgpl
 gltests/test-getcwd-lgpl.o
+gltests/test-getdtablesize
+gltests/test-getdtablesize.o
 gltests/test-getopt
 gltests/test-getopt.o
 gltests/test-ignore-value
