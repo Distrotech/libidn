@@ -47,7 +47,15 @@ libidn-$(VERSION).jar:
 		-C $(builddir)/src/main/java \
 			gnu/inet/encoding/PunycodeException.class	\
 		-C $(builddir)/src/main/java \
+			gnu/inet/encoding/RangeSet\$$1.class		\
+		-C $(builddir)/src/main/java \
+			gnu/inet/encoding/RangeSet\$$Builder.class	\
+		-C $(builddir)/src/main/java \
 			gnu/inet/encoding/RangeSet.class		\
+		-C $(builddir)/src/main/java \
+			gnu/inet/encoding/RangeSet\$$Range.class	\
+		-C $(builddir)/src/main/java \
+			gnu/inet/encoding/RangeSet\$$RangeContainsComparator.class \
 		-C $(builddir)/src/main/java \
 			gnu/inet/encoding/RFC3454.class			\
 		-C $(builddir)/src/main/java \
