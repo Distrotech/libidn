@@ -66,15 +66,15 @@ public class TestIDNA
 
       if (args.length == 2) {
       if (args[0].equals("-u")) {
-	try {
 	  System.out.println("Input: "+args[1]);
 	  System.out.println("Output: "+IDNA.toUnicode(args[1]));
-	} catch (IDNAException e) {
-	  System.out.println(e);
-	}
       } else if (args[0].equals("-a")) {
-	System.out.println("Input: "+args[1]);
-	System.out.println("Output: "+IDNA.toASCII(args[1]));
+	  try {
+	      System.out.println("Input: "+args[1]);
+	      System.out.println("Output: "+IDNA.toASCII(args[1]));
+	  } catch (IDNAException e) {
+	      System.out.println(e);
+	  }
       } else {
 	usage();
       }
