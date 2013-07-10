@@ -2,7 +2,7 @@ Libidn NEWS -- History of user-visible changes.                 -*- outline -*-
 Copyright (C) 2002-2013 Simon Josefsson
 See the end for copying conditions.
 
-* Version 1.28 (unreleased) [stable]
+* Version 1.28 (released 2013-07-10) [stable]
 
 ** idn: Don't crash when string conversion from UTF-8 to locale fails.
 Reported by Jeffrey Frey <frey@udel.edu>.
