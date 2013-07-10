@@ -7,7 +7,9 @@ See the end for copying conditions.
 ** idn: Don't crash when string conversion from UTF-8 to locale fails.
 Reported by Jeffrey Frey <frey@udel.edu>.
 
-** Fix java build failures.
+** java: Fix build failures.
+
+** java: TestIDNA -a and -u logic was reversed, now fixed.
 
 ** API and ABI is backwards compatible with the previous version.
 
