@@ -1745,8 +1745,10 @@ pending.
 
 The Java library, if Libidn has been built with Java support
 (@pxref{Downloading and Installing}), will be placed in
-@file{java/libidn-@value{VERSION}.jar}.  The source code is located in
-@file{java/gnu/inet/encoding/}.
+@file{java/libidn-@value{VERSION}.jar}.  The source code is below
+@file{java/} in Maven directory layout, and there is a Maven
+@file{pom.xml} build script as well.  Source code files are in
+@file{java/src/main/java/gnu/inet/encoding/}.
 
 @section Overview
 
@@ -1764,9 +1766,9 @@ gnu.inet.encoding.IDNA.toUnicode("xn--blds-6qa.xn--zg-xka");
 
 @section Miscellaneous Programs
 
-The @file{misc/} directory contains several programs that are related
-to the Java part of GNU Libidn, but that don't need to be included in
-the main source tree.
+The @file{java/src/util/java/} directory contains several programs that
+are related to the Java part of GNU Libidn, but that don't need to be
+included in the main source tree or the JAR file.
 
 @subsection GenerateRFC3454
 
@@ -1815,10 +1817,10 @@ The test vectors can be found at the Libidn homepage,
 To test the transformation manually, use:
 
 @example
-$ java -cp .:../libidn.jar TestIDNA -a <string to test>
+$ java -cp .:/usr/share/java/libidn.jar TestIDNA -a <string to test>
 Input: <string to test>
 Output: <toASCII(string to test)>
-$ java -cp .:../libidn.jar TestIDNA -u <string to test>
+$ java -cp .:/usr/share/java/libidn.jar TestIDNA -u <string to test>
 Input: <string to test>
 Output: <toUnicode(string to test)>
 @end example
@@ -1826,7 +1828,7 @@ Output: <toUnicode(string to test)>
 To test against draft-josefsson-idn-test-vectors.html, use:
 
 @example
-$ java -cp .:../libidn.jar TestIDNA -t
+$ java -cp .:/usr/share/java/libidn/libidn.jar TestIDNA -t
 No errors detected!
 @end example
 
@@ -1838,7 +1840,7 @@ or against the NormalizationTest.txt file from the Unicode data files.
 To test the normalization manually, use:
 
 @example
-$ java -cp .:../libidn.jar TestNFKC <string to test>
+$ java -cp .:/usr/share/java/libidn.jar TestNFKC <string to test>
 Input: <string to test>
 Output: <nfkc version of the string to test>
 @end example
@@ -1846,7 +1848,7 @@ Output: <nfkc version of the string to test>
 To test against NormalizationTest.txt:
 
 @example
-$ java -cp .:../libidn.jar TestNFKC
+$ java -cp .:/usr/share/java/libidn.jar TestNFKC
 No errors detected!
 @end example
 
