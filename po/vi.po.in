@@ -1,26 +1,24 @@
 # Vietnamese Translation for LibIDN
-# Copyright © 2012 Free Software Foundation, Inc.
+# Copyright © 2013 Free Software Foundation, Inc.
 # This file is distributed under the same license as the libidn package.
 # Clytie Siddall <clytie@riverland.net.au>, 2005-2008.
-# Trần Ngọc Quân <vnwildman@gmail.com>, 2012.
+# Trần Ngọc Quân <vnwildman@gmail.com>, 2012-2013.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: libidn-1.25\n"
+"Project-Id-Version: libidn-1.27\n"
 "Report-Msgid-Bugs-To: bug-libidn@gnu.org\n"
-"POT-Creation-Date: 2012-05-23 10:37+0200\n"
-"PO-Revision-Date: 2012-05-26 08:08+0700\n"
+"POT-Creation-Date: 2013-06-05 21:59+0200\n"
+"PO-Revision-Date: 2013-06-10 09:07+0700\n"
 "Last-Translator: Trần Ngọc Quân <vnwildman@gmail.com>\n"
 "Language-Team: Vietnamese <translation-team-vi@lists.sourceforge.net>\n"
-"Language: \n"
+"Language: vi_VN\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: LocFactoryEditor 1.7b3\n"
-"X-Poedit-Language: Vietnamese\n"
-"X-Poedit-Country: VIET NAM\n"
-"X-Poedit-SourceCharset: utf-8\n"
+"X-Generator: Poedit 1.5.5\n"
+"X-Poedit-SourceCharset: UTF-8\n"
 
 #: lib/strerror-idna.c:82 lib/strerror-pr29.c:66 lib/strerror-punycode.c:66
 #: lib/strerror-stringprep.c:86 lib/strerror-tld.c:68
@@ -29,11 +27,11 @@ msgstr "Thành công"
 
 #: lib/strerror-idna.c:86 lib/strerror-pr29.c:74
 msgid "String preparation failed"
-msgstr "Lỗi chuẩn bị chuỗi"
+msgstr "Chuẩn bị chuỗi gặp lỗi"
 
 #: lib/strerror-idna.c:90
 msgid "Punycode failed"
-msgstr "Lỗi punycode (mã yếu đuối)"
+msgstr "punycode (mã yếu đuối) gặp lỗi"
 
 #: lib/strerror-idna.c:94
 msgid "Non-digit/letter/hyphen in input"
@@ -57,7 +55,7 @@ msgstr "Chuỗi không tránh nhân lên dưới ToASCII"
 
 #: lib/strerror-idna.c:114
 msgid "Input already contain ACE prefix (`xn--')"
-msgstr "Dữ liệu nhập đã chứa tiền tố ACE (`xn--')"
+msgstr "Dữ liệu nhập đã sẵn chứa tiền tố ACE (`xn--')"
 
 #: lib/strerror-idna.c:118 lib/strerror-tld.c:84
 msgid "System iconv failed"
@@ -78,7 +76,7 @@ msgstr "Lỗi không rõ"
 
 #: lib/strerror-pr29.c:70
 msgid "String not idempotent under Unicode NFKC normalization"
-msgstr "Chuỗi không phải tránh nhân lên dưới sự tiêu chuẩn hoá NFKC Unicode"
+msgstr "Chuỗi không không thay đổi giá trị (sau khi tự nó nhân lên) dưới sự tiêu chuẩn hoá NFKC Unicode"
 
 #: lib/strerror-punycode.c:70
 msgid "Invalid input"
@@ -86,7 +84,7 @@ msgstr "Dữ liệu nhập không hợp lệ"
 
 #: lib/strerror-punycode.c:74 lib/strerror-stringprep.c:110
 msgid "Output would exceed the buffer space provided"
-msgstr "Dữ liệu xuất sẽ vượt quá sức chứa đệm đã cung cấp"
+msgstr "Dữ liệu xuất sẽ vượt quá dung lượng bộ nhớ đệm đã cung cấp"
 
 #: lib/strerror-punycode.c:78
 msgid "String size limit exceeded"
@@ -94,7 +92,7 @@ msgstr "Giới hạn kích cỡ chuỗi bị vượt quá"
 
 #: lib/strerror-stringprep.c:90
 msgid "Forbidden unassigned code points in input"
-msgstr "Dữ liệu nhập chứa mã điểm không được gán cấm"
+msgstr "Cấm gán điểm mã trong dữ liệu nhập"
 
 #: lib/strerror-stringprep.c:94
 msgid "Prohibited code points in input"
@@ -106,7 +104,7 @@ msgstr "Dữ liệu nhập chứa tài sản hai hướng xung đột"
 
 #: lib/strerror-stringprep.c:102
 msgid "Malformed bidirectional string"
-msgstr "Chuỗi hai hướng dạng sai"
+msgstr "Chuỗi thuận nghịch có dạng sai"
 
 #: lib/strerror-stringprep.c:106
 msgid "Prohibited bidirectional code points in input"
@@ -114,7 +112,7 @@ msgstr "Dữ liệu nhập chứa điểm mã hai hướng cấm"
 
 #: lib/strerror-stringprep.c:114
 msgid "Error in stringprep profile definition"
-msgstr "Lỗi trong lời định nghĩa hồ sơ stringprep (chuẩn bị chuỗi)"
+msgstr "Lỗi trong định nghĩa hồ sơ stringprep (chuẩn bị chuỗi)"
 
 #: lib/strerror-stringprep.c:118
 msgid "Flag conflict with profile"
@@ -143,18 +141,18 @@ msgstr "Không tìm thấy miền cấp đầu trong dữ liệu nhập"
 #: src/idn.c:65
 #, c-format
 msgid "Try `%s --help' for more information.\n"
-msgstr "Thử lệnh \"%s --help\" để xem thêm thông tin.\n"
+msgstr "Thử lệnh `%s --help' để xem thêm thông tin.\n"
 
 #: src/idn.c:69
 #, c-format
 msgid "Usage: %s [OPTION]... [STRINGS]...\n"
-msgstr "Sử dụng: %s [TÙY_CHỌN]... [CHUỖI]...\n"
+msgstr "Cách dùng: %s [TÙY_CHỌN]... [CHUỖI]...\n"
 
 #: src/idn.c:72
 msgid ""
 "Internationalized Domain Name (IDN) convert STRINGS, or standard input.\n"
 "\n"
-msgstr "Chuyển đổi các chuỗi sang IDN (tên miền đã quốc tế hoá), hoặc đầu vào tiêu chuẩn.\n"
+msgstr "Chuyển đổi các CHUỖI sang IDN (tên miền đã quốc tế hoá), hay đầu vào tiêu chuẩn.\n"
 
 #: src/idn.c:76
 msgid ""
@@ -176,17 +174,18 @@ msgstr ""
 "Bạn cũng có thể ghi đè lên bộ ký tự này bằng cách đặt biến môi trường\n"
 "CHARSET.\n"
 "\n"
-"Để xử lý một chuỗi bắt đầu với \"-\", v.d. \"-foo\", dùng \"--\" để ngụ ý kết thúc các tham số, như trong \"idn --quiet -a -- -foo\".\n"
+"Để xử lý một chuỗi bắt đầu với \"-\", v.d. \"-foo\", dùng \"--\" để\n"
+"để ra tín hiệu kết thúc đối số, như trong \"idn --quiet -a -- -foo\".\n"
 "\n"
-"Mọi đối số bắt buộc phải sử dụng với tùy chọn dài cũng bắt buộc với tùy chọn ngắn.\n"
+"Mọi đối số bắt buộc phải sử dụng với tùy chọn dài thì cũng cũng bắt buộc với tùy chọn ngắn.\n"
 
 #: src/idn.c:88
 msgid ""
 "  -h, --help               Print help and exit\n"
 "  -V, --version            Print version and exit\n"
 msgstr ""
-"  -h, --help               In ra trợ giúp, rồi thoát\n"
-"  -V, --version            In ra số thứ tự phiên bản, rồi thoát\n"
+"  -h, --help               In ra trợ giúp rồi thoát\n"
+"  -V, --version            In ra số thứ tự phiên bản rồi thoát\n"
 
 #: src/idn.c:92
 msgid ""
@@ -215,8 +214,8 @@ msgid ""
 "      --no-tld             Don't check string for TLD specific rules\n"
 "                             Only for --idna-to-ascii and --idna-to-unicode\n"
 msgstr ""
-"  -t, --no-tld              Không kiểm tra chuỗi cho quy tắc đặc trưng TLD\n"
-"                             Chỉ dành cho \"--idna-to-ascii\" và \"--idna-to-unicode\"\n"
+"  -t, --no-tld             Không kiểm tra chuỗi cho quy tắc đặc trưng TLD\n"
+"                            Chỉ dành cho \"--idna-to-ascii\" và \"--idna-to-unicode\"\n"
 
 #: src/idn.c:107
 msgid "  -n, --nfkc               Normalize string according to Unicode v3.2 NFKC\n"
@@ -229,7 +228,7 @@ msgid ""
 "                             `iSCSI', `Nodeprep', `Resourceprep', \n"
 "                             `trace', `SASLprep'\n"
 msgstr ""
-"  -p, --profile=CHUỖI     Dùng hồ sơ stringprep đã ghi rõ thay vào đó\n"
+"  -p, --profile=CHUỖI      Dùng hồ sơ stringprep đã chỉ định thay vào đó\n"
 "                             Các hồ sơ stringprep hợp lệ: `Nameprep',\n"
 "                             `iSCSI', `Nodeprep', `Resourceprep', \n"
 "                             `trace', `SASLprep'\n"
