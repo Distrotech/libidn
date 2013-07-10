@@ -68,13 +68,13 @@ public class TestIDNA
       if (args[0].equals("-u")) {
 	try {
 	  System.out.println("Input: "+args[1]);
-	  System.out.println("Output: "+IDNA.toASCII(args[1]));
+	  System.out.println("Output: "+IDNA.toUnicode(args[1]));
 	} catch (IDNAException e) {
 	  System.out.println(e);
 	}
       } else if (args[0].equals("-a")) {
 	System.out.println("Input: "+args[1]);
-	System.out.println("Output: "+IDNA.toUnicode(args[1]));
+	System.out.println("Output: "+IDNA.toASCII(args[1]));
       } else {
 	usage();
       }
@@ -111,7 +111,7 @@ public class TestIDNA
 	    // Empty line (before "out:")
 	  } else if (l.startsWith("out: ")) {
 	    out = l.substring(5).trim();
-	    
+
 	    try {
 	      String ascii = IDNA.toASCII(input.toString());
 	      if (ascii.equals(out)) {
@@ -126,7 +126,7 @@ public class TestIDNA
 	    } catch (IDNAException e) {
 	      System.out.println(" exception thrown ("+e+")");
 	    }
-	    
+
 	    state = STATE_SCAN;
 	  } else {
 	    StringTokenizer tok = new StringTokenizer(l.trim(), " ");
@@ -143,7 +143,7 @@ public class TestIDNA
 	  break;
 	}
       }
-      
+
       System.out.println("No errors detected!");
     } else {
       usage();
