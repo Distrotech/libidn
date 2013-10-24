@@ -44,7 +44,7 @@ doit:
 	cp ../../$(TGZ) . || wget $(URL) && \
 	tar xfa $(TGZ) && \
 	cd $(distdir) && \
-	./configure --host=$(HOST) --build=x86_64-unknown-linux-gnu --prefix=$(PWD)/tmp$(ARCH)/root CPPFLAGS=-I$(PWD)/tmp$(ARCH)/root/include && \
+	./configure --host=$(HOST) --build=x86_64-unknown-linux-gnu --prefix=$(PWD)/tmp$(ARCH)/root CPPFLAGS=-I$(PWD)/tmp$(ARCH)/root/include --disable-csharp && \
 	make install && \
 	make -C tests $(CHECK) && \
 	cd .. && \
