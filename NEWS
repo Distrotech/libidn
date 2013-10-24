@@ -4,6 +4,9 @@ See the end for copying conditions.
 
 * Version 1.29 (unreleased) [stable]
 
+** libidn: Mark internal variable "g_utf8_skip" as static.
+Reported by Thomas Dineen <tdineen@ix.netcom.com>.
+
 ** idn: Flush stdout to simplify for tools that buffer too heavily.
 Tiny patch from Hugh Daschbach <hugh@ccss.com>.
 

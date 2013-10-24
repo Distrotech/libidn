@@ -223,7 +223,7 @@ static const gchar utf8_skip_data[256] = {
   5, 5, 5, 6, 6, 1, 1
 };
 
-const gchar *const g_utf8_skip = utf8_skip_data;
+static const gchar *const g_utf8_skip = utf8_skip_data;
 
 /*
  * g_utf8_strlen:
