@@ -568,6 +568,8 @@ main (int argc, char *argv[])
 
 	  free (p);
 	}
+
+      fflush (stdout);
     }
   while (!feof (stdin) && !ferror (stdin) && (args_info.inputs_num == 0 ||
 					      cmdn < args_info.inputs_num));
