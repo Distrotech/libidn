@@ -35,9 +35,9 @@ libidn4win64:
 
 doit:
 	rm -rf tmp$(ARCH) && mkdir tmp$(ARCH) && cd tmp$(ARCH) && \
-	cp ../../libiconv-1.13.1.tar.gz . || wget ftp://ftp.gnu.org/gnu/libiconv/libiconv-1.13.1.tar.gz && \
-	tar xfa libiconv-1.13.1.tar.gz && \
-	cd libiconv-1.13.1 && \
+	cp ../../libiconv-1.14.tar.gz . || wget ftp://ftp.gnu.org/gnu/libiconv/libiconv-1.14.tar.gz && \
+	tar xfa libiconv-1.14.tar.gz && \
+	cd libiconv-1.14 && \
 	./configure --host=$(HOST) --build=x86_64-unknown-linux-gnu --prefix=$(PWD)/tmp$(ARCH)/root && \
 	make install && \
 	cd .. && \
