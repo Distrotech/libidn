@@ -139,6 +139,7 @@ AC_DEFUN([lgl_INIT],
   m4_pushdef([lgl_LIBSOURCES_DIR], [])
   gl_COMMON
   gl_source_base='lib/gl'
+  AC_REQUIRE([gl_EXTERN_INLINE])
   AC_SUBST([LIBINTL])
   AC_SUBST([LTLIBINTL])
   AM_ICONV
@@ -229,7 +230,6 @@ changequote([, ])dnl
   gt_LOCALE_TR_UTF8
   gl_ENVIRON
   gl_UNISTD_MODULE_INDICATOR([environ])
-  AC_REQUIRE([gl_EXTERN_INLINE])
   gl_INTTYPES_H
   gl_INTTYPES_INCOMPLETE
   gl_LOCALE_H

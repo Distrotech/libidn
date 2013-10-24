@@ -10,6 +10,8 @@ Reported by Thomas Dineen <tdineen@ix.netcom.com>.
 ** idn: Flush stdout to simplify for tools that buffer too heavily.
 Tiny patch from Hugh Daschbach <hugh@ccss.com>.
 
+** Update gnulib files.
+
 ** API and ABI is backwards compatible with the previous version.
 
 * Version 1.28 (released 2013-07-10) [stable]
