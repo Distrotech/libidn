@@ -371,6 +371,7 @@ lib/gl/libgnu.la
 lib/gl/striconv.lo
 lib/gl/striconv.o
 lib/gl/string.h
+lib/gl/sys/
 lib/gl/unistr.h
 lib/gl/unistr/.deps/
 lib/gl/unistr/.dirstamp
