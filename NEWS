@@ -2,7 +2,7 @@ Libidn NEWS -- History of user-visible changes.                 -*- outline -*-
 Copyright (C) 2002-2014 Simon Josefsson
 See the end for copying conditions.
 
-* Version 1.29 (unreleased) [stable]
+* Version 1.29 (released 2014-08-10) [stable]
 
 ** libidn: Mark internal variable "g_utf8_skip" as static.
 Reported by Thomas Dineen <tdineen@ix.netcom.com>.
