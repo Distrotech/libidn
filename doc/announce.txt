@@ -1,5 +1,5 @@
 To: help-libidn@gnu.org, info-gnu@gnu.org
-Subject: Libidn 1.27 released
+Subject: Libidn 1.29 released
 <#part sign=pgpmime>
 GNU Libidn is a fully documented implementation of the Stringprep,
 Punycode and IDNA specifications.  Libidn's purpose is to encode and
@@ -8,13 +8,18 @@ and Java libraries.
 
 Noteworthy changes since the last release (from NEWS file):
 
-* Version 1.27 (released 2013-06-05) [stable]
+* Version 1.29 (released 2014-08-10) [stable]
 
-** Java library can be built using Maven.  Speed improvements.
-Thanks to several patches from Stefan Larsson.  Testing indicate 70-90
-times faster node/name/resource-prep.
+** libidn: Mark internal variable "g_utf8_skip" as static.
+Reported by Thomas Dineen <tdineen@ix.netcom.com>.
 
-** Update gnulib files and translations.
+** idn: Flush stdout to simplify for tools that buffer too heavily.
+Tiny patch from Hugh Daschbach <hugh@ccss.com>.
+
+** i18n: Added Brazilian Portuguese translation.
+Thanks to Rafael Ferreira.
+
+** Update gnulib files.
 
 ** API and ABI is backwards compatible with the previous version.
 
@@ -86,49 +91,49 @@ If you need help to use Libidn, or want to help others, you are
 invited to join our help-libidn mailing list, see:
   https://lists.gnu.org/mailman/listinfo/help-libidn
 
-Here are the compressed sources (3.3MB):
-  ftp://ftp.gnu.org/gnu/libidn/libidn-1.27.tar.gz
-  http://ftp.gnu.org/gnu/libidn/libidn-1.27.tar.gz
+Here are the compressed sources (3.4MB):
+  ftp://ftp.gnu.org/gnu/libidn/libidn-1.29.tar.gz
+  http://ftp.gnu.org/gnu/libidn/libidn-1.29.tar.gz
 
 Here are GPG detached signatures:
-  ftp://ftp.gnu.org/gnu/libidn/libidn-1.27.tar.gz.sig
-  http://ftp.gnu.org/gnu/libidn/libidn-1.27.tar.gz.sig
+  ftp://ftp.gnu.org/gnu/libidn/libidn-1.29.tar.gz.sig
+  http://ftp.gnu.org/gnu/libidn/libidn-1.29.tar.gz.sig
 
 Here are the SHA-1 and SHA-224 signatures:
 
-67364d0cc331f2ea93f09a1b436dc606db16ad4d  libidn-1.27.tar.gz
-2ec8e020380f180bda6ba482716b7d619963de1b27e2fb680fb5857e  libidn-1.27.tar.gz
+e0959eec9a03fd8053379b0aeab447c546c05ab2  libidn-1.29.tar.gz
+fb82747dbbf9b36f703ed27293317d818d7e851d4f5773dedf3efa4db32a7c7c  libidn-1.29.tar.gz
 
 We also provide Windows binaries built using MinGW-w64 with the build
 script windows/libidn4win.mk, for 32-bit and 64-bit x86 architecures:
 
-  ftp://ftp.gnu.org/gnu/libidn/libidn-1.27-win32.zip
-  ftp://ftp.gnu.org/gnu/libidn/libidn-1.27-win32.zip.sig
-  ftp://ftp.gnu.org/gnu/libidn/libidn-1.27-win64.zip
-  ftp://ftp.gnu.org/gnu/libidn/libidn-1.27-win64.zip.sig
+  ftp://ftp.gnu.org/gnu/libidn/libidn-1.29-win32.zip
+  ftp://ftp.gnu.org/gnu/libidn/libidn-1.29-win32.zip.sig
+  ftp://ftp.gnu.org/gnu/libidn/libidn-1.29-win64.zip
+  ftp://ftp.gnu.org/gnu/libidn/libidn-1.29-win64.zip.sig
 
 Here are the SHA-1 and SHA-224 signatures:
 
-08fd62bf76bbf14a6e5801d070d5aa8d0ca56d9c  libidn-1.27-win32.zip
-fbc1910de2a92cccc03608b4ca11bf507cc9a17ad028be6697ce9862  libidn-1.27-win32.zip
+ece31e774ad39bebcac407273e995ba6f3a11bca  libidn-1.29-win32.zip
+2ef64330f8104a07dda246a2fd30860824decffa  libidn-1.29-win64.zip
 
-c1951e094d18b1eb7ae01271feb96c7cdb2f3568  libidn-1.27-win64.zip
-6c18c694e99e69abc031c919f8beb51b96248ee4ca967c0e09358edc  libidn-1.27-win64.zip
+4039d0b4a6c554020040f1672a301738d99a4af456b53a2efb56c9473c8d918d  libidn-1.29-win32.zip
+b8229a5efd496cae86c3f6ee354f9037dae90ddd99b19eafa997b24146ea6f73  libidn-1.29-win64.zip
 
 The software is cryptographically signed by the author using an OpenPGP
 key identified by the following information:
 
-pub   1280R/B565716F 2002-05-05 [expires: 2014-05-11]
-      Key fingerprint = 0424 D4EE 81A0 E3D1 19C6  F835 EDA2 1E94 B565 716F
+pub   3744R/54265E8C 2014-06-22
+      Key fingerprint = 9AA9 BDB1 1BB1 B99A 2128  5A33 0664 A769 5426 5E8C
 uid                  Simon Josefsson <simon@josefsson.org>
-sub   2048R/105E722E 2012-03-13 [expires: 2013-07-26]
-sub   2048R/728AB82C 2012-03-13 [expires: 2013-07-26]
-sub   2048R/9394F626 2012-03-13 [expires: 2013-07-26]
-sub   1280R/4D5D40AE 2002-05-05 [expires: 2014-05-11]
 
 The key is available from:
-  http://josefsson.org/key.txt
-  dns:b565716f.josefsson.org?TYPE=CERT
+  http://josefsson.org/54265e8c.txt
+
+Previous versions were signed using my old OpenPGP key, if you trusted
+it you can use the following key transition document to gain trust in my
+new key:
+  https://josefsson.org/key-transition-2014-06-22.txt
 
 Code coverage, clang-analyzer output, and cyclomatic code complexity charts:
   https://www.gnu.org/software/libidn/coverage/
