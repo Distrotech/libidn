@@ -10,6 +10,9 @@ Reported by Thomas Dineen <tdineen@ix.netcom.com>.
 ** idn: Flush stdout to simplify for tools that buffer too heavily.
 Tiny patch from Hugh Daschbach <hugh@ccss.com>.
 
+** i18n: Added Brazilian Portuguese translation.
+Thanks to Rafael Ferreira.
+
 ** Update gnulib files.
 
 ** API and ABI is backwards compatible with the previous version.
