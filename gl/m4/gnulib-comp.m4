@@ -1,5 +1,5 @@
 # DO NOT EDIT! GENERATED AUTOMATICALLY!
-# Copyright (C) 2002-2013 Free Software Foundation, Inc.
+# Copyright (C) 2002-2014 Free Software Foundation, Inc.
 #
 # This file is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -38,6 +38,7 @@ AC_DEFUN([gl_EARLY],
   m4_pattern_allow([^gl_LIBOBJS$])dnl a variable
   m4_pattern_allow([^gl_LTLIBOBJS$])dnl a variable
   AC_REQUIRE([gl_PROG_AR_RANLIB])
+  # Code from module absolute-header:
   # Code from module alloca-opt:
   # Code from module alloca-opt-tests:
   # Code from module autobuild:
@@ -65,19 +66,8 @@ AC_DEFUN([gl_EARLY],
   # Code from module fdopen:
   # Code from module fdopen-tests:
   # Code from module fgetc-tests:
-  # Code from module float:
-  # Code from module float-tests:
-  # Code from module fpieee:
-  AC_REQUIRE([gl_FP_IEEE])
-  # Code from module fpucw:
   # Code from module fputc-tests:
   # Code from module fread-tests:
-  # Code from module frexp-nolibm:
-  # Code from module frexp-nolibm-tests:
-  # Code from module frexpl-nolibm:
-  # Code from module frexpl-nolibm-tests:
-  # Code from module fseterr:
-  # Code from module fseterr-tests:
   # Code from module fstat:
   # Code from module fstat-tests:
   # Code from module fwrite-tests:
@@ -89,8 +79,9 @@ AC_DEFUN([gl_EARLY],
   # Code from module getopt-gnu:
   # Code from module getopt-posix:
   # Code from module getopt-posix-tests:
-  # Code from module getpagesize:
   # Code from module gettext-h:
+  # Code from module gettimeofday:
+  # Code from module gettimeofday-tests:
   # Code from module gnumakefile:
   # Code from module gnupload:
   # Code from module ignore-value:
@@ -101,12 +92,6 @@ AC_DEFUN([gl_EARLY],
   # Code from module inttypes:
   # Code from module inttypes-incomplete:
   # Code from module inttypes-tests:
-  # Code from module isnand-nolibm:
-  # Code from module isnand-nolibm-tests:
-  # Code from module isnanf-nolibm:
-  # Code from module isnanf-nolibm-tests:
-  # Code from module isnanl-nolibm:
-  # Code from module isnanl-nolibm-tests:
   # Code from module largefile:
   AC_REQUIRE([AC_SYS_LARGEFILE])
   # Code from module lstat:
@@ -116,10 +101,6 @@ AC_DEFUN([gl_EARLY],
   # Code from module malloca:
   # Code from module malloca-tests:
   # Code from module manywarnings:
-  # Code from module math:
-  # Code from module math-tests:
-  # Code from module memchr:
-  # Code from module memchr-tests:
   # Code from module msvc-inval:
   # Code from module msvc-nothrow:
   # Code from module multiarch:
@@ -129,19 +110,11 @@ AC_DEFUN([gl_EARLY],
   # Code from module pathmax:
   # Code from module pathmax-tests:
   # Code from module pmccabe2html:
-  # Code from module printf-frexp:
-  # Code from module printf-frexp-tests:
-  # Code from module printf-frexpl:
-  # Code from module printf-frexpl-tests:
-  # Code from module printf-safe:
   # Code from module progname:
   # Code from module putenv:
   # Code from module same-inode:
   # Code from module setenv:
   # Code from module setenv-tests:
-  # Code from module signbit:
-  # Code from module signbit-tests:
-  # Code from module size_max:
   # Code from module snippet/_Noreturn:
   # Code from module snippet/arg-nonnull:
   # Code from module snippet/c++defs:
@@ -171,6 +144,8 @@ AC_DEFUN([gl_EARLY],
   # Code from module symlink:
   # Code from module symlink-tests:
   # Code from module sys_stat:
+  # Code from module sys_time:
+  # Code from module sys_time-tests:
   # Code from module sys_types:
   # Code from module sys_types-tests:
   # Code from module test-framework-sh:
@@ -182,8 +157,6 @@ AC_DEFUN([gl_EARLY],
   # Code from module update-copyright:
   # Code from module useless-if-before-free:
   # Code from module valgrind-tests:
-  # Code from module vasnprintf:
-  # Code from module vasnprintf-tests:
   # Code from module vc-list-files:
   # Code from module vc-list-files-tests:
   # Code from module verify:
@@ -191,11 +164,8 @@ AC_DEFUN([gl_EARLY],
   # Code from module version-etc:
   # Code from module version-etc-fsf:
   # Code from module version-etc-tests:
-  # Code from module vfprintf-posix:
-  # Code from module vfprintf-posix-tests:
   # Code from module warnings:
   # Code from module wchar:
-  # Code from module xsize:
 ])
 
 # This macro should be invoked from ./configure.ac, in the section
@@ -212,7 +182,6 @@ AC_DEFUN([gl_INIT],
   m4_pushdef([gl_LIBSOURCES_DIR], [])
   gl_COMMON
   gl_source_base='gl'
-  gl_FUNC_ALLOCA
   AC_REQUIRE([gt_CSHARPCOMP])
   AC_CONFIG_FILES([csharpcomp.sh:build-aux/csharpcomp.sh.in])
   # You need to invoke gt_CSHARPEXEC yourself, possibly with arguments.
@@ -227,27 +196,6 @@ AC_DEFUN([gl_INIT],
     [AM_][XGETTEXT_OPTION([--flag=error:3:c-format])
      AM_][XGETTEXT_OPTION([--flag=error_at_line:5:c-format])])
   AC_REQUIRE([gl_EXTERN_INLINE])
-  gl_FLOAT_H
-  if test $REPLACE_FLOAT_LDBL = 1; then
-    AC_LIBOBJ([float])
-  fi
-  if test $REPLACE_ITOLD = 1; then
-    AC_LIBOBJ([itold])
-  fi
-  gl_FUNC_FREXP_NO_LIBM
-  if test $gl_func_frexp_no_libm != yes; then
-    AC_LIBOBJ([frexp])
-  fi
-  gl_MATH_MODULE_INDICATOR([frexp])
-  gl_FUNC_FREXPL_NO_LIBM
-  if test $HAVE_DECL_FREXPL = 0 || test $gl_func_frexpl_no_libm = no; then
-    AC_LIBOBJ([frexpl])
-  fi
-  gl_MATH_MODULE_INDICATOR([frexpl])
-  gl_FUNC_FSETERR
-  if test $ac_cv_func___fseterr = no; then
-    AC_LIBOBJ([fseterr])
-  fi
   gl_FUNC_GETOPT_GNU
   if test $REPLACE_GETOPT = 1; then
     AC_LIBOBJ([getopt])
@@ -279,30 +227,9 @@ AC_DEFUN([gl_INIT],
           m4_defn([m4_PACKAGE_VERSION])), [1], [],
         [AC_CONFIG_LINKS([$GNUmakefile:$GNUmakefile], [],
           [GNUmakefile=$GNUmakefile])])
-  gl_FUNC_ISNAND_NO_LIBM
-  if test $gl_func_isnand_no_libm != yes; then
-    AC_LIBOBJ([isnand])
-    gl_PREREQ_ISNAND
-  fi
-  gl_FUNC_ISNANF_NO_LIBM
-  if test $gl_func_isnanf_no_libm != yes; then
-    AC_LIBOBJ([isnanf])
-    gl_PREREQ_ISNANF
-  fi
-  gl_FUNC_ISNANL_NO_LIBM
-  if test $gl_func_isnanl_no_libm != yes; then
-    AC_LIBOBJ([isnanl])
-    gl_PREREQ_ISNANL
-  fi
   AC_CONFIG_COMMANDS_PRE([m4_ifdef([AH_HEADER],
     [AC_SUBST([CONFIG_INCLUDE], m4_defn([AH_HEADER]))])])
-  gl_MATH_H
-  gl_FUNC_MEMCHR
-  if test $HAVE_MEMCHR = 0 || test $REPLACE_MEMCHR = 1; then
-    AC_LIBOBJ([memchr])
-    gl_PREREQ_MEMCHR
-  fi
-  gl_STRING_MODULE_INDICATOR([memchr])
+  AC_REQUIRE([AC_PROG_SED])
   gl_MSVC_INVAL
   if test $HAVE_MSVC_INVALID_PARAMETER_HANDLER = 1; then
     AC_LIBOBJ([msvc-inval])
@@ -311,25 +238,12 @@ AC_DEFUN([gl_INIT],
   if test $HAVE_MSVC_INVALID_PARAMETER_HANDLER = 1; then
     AC_LIBOBJ([msvc-nothrow])
   fi
-  gl_MULTIARCH
   AC_PATH_PROG([PMCCABE], [pmccabe], [false])
-  gl_FUNC_PRINTF_FREXP
-  gl_FUNC_PRINTF_FREXPL
-  m4_divert_text([INIT_PREPARE], [gl_printf_safe=yes])
   AC_CHECK_DECLS([program_invocation_name], [], [], [#include <errno.h>])
   AC_CHECK_DECLS([program_invocation_short_name], [], [], [#include <errno.h>])
-  gl_SIGNBIT
-  if test $REPLACE_SIGNBIT = 1; then
-    AC_LIBOBJ([signbitf])
-    AC_LIBOBJ([signbitd])
-    AC_LIBOBJ([signbitl])
-  fi
-  gl_MATH_MODULE_INDICATOR([signbit])
-  gl_SIZE_MAX
   gt_TYPE_SSIZE_T
   gl_STDARG_H
   gl_STDDEF_H
-  gl_STDINT_H
   gl_STDIO_H
   gl_FUNC_STRERROR
   if test $REPLACE_STRERROR = 1; then
@@ -348,12 +262,7 @@ AC_DEFUN([gl_INIT],
   AC_PROG_MKDIR_P
   gl_UNISTD_H
   gl_VALGRIND_TESTS
-  gl_FUNC_VASNPRINTF
   gl_VERSION_ETC
-  gl_FUNC_VFPRINTF_POSIX
-  gl_STDIO_MODULE_INDICATOR([vfprintf-posix])
-  gl_WCHAR_H
-  gl_XSIZE
   # End of code from modules
   m4_ifval(gl_LIBSOURCES_LIST, [
     m4_syscmd([test ! -d ]m4_defn([gl_LIBSOURCES_DIR])[ ||
@@ -400,6 +309,7 @@ changequote([, ])dnl
   AC_SUBST([gltests_WITNESS])
   gl_module_indicator_condition=$gltests_WITNESS
   m4_pushdef([gl_MODULE_INDICATOR_CONDITION], [$gl_module_indicator_condition])
+  gl_FUNC_ALLOCA
   gl_FUNC_CLOSE
   if test $REPLACE_CLOSE = 1; then
     AC_LIBOBJ([close])
@@ -437,17 +347,14 @@ changequote([, ])dnl
     gl_PREREQ_GETDTABLESIZE
   fi
   gl_UNISTD_MODULE_INDICATOR([getdtablesize])
-  gl_FUNC_GETPAGESIZE
-  if test $REPLACE_GETPAGESIZE = 1; then
-    AC_LIBOBJ([getpagesize])
+  gl_FUNC_GETTIMEOFDAY
+  if test $HAVE_GETTIMEOFDAY = 0 || test $REPLACE_GETTIMEOFDAY = 1; then
+    AC_LIBOBJ([gettimeofday])
+    gl_PREREQ_GETTIMEOFDAY
   fi
-  gl_UNISTD_MODULE_INDICATOR([getpagesize])
+  gl_SYS_TIME_MODULE_INDICATOR([gettimeofday])
   gl_INTTYPES_H
   gl_INTTYPES_INCOMPLETE
-  gl_DOUBLE_EXPONENT_LOCATION
-  gl_FLOAT_EXPONENT_LOCATION
-  gl_LONG_DOUBLE_EXPONENT_LOCATION
-  AC_REQUIRE([gl_LONG_DOUBLE_VS_DOUBLE])
   AC_REQUIRE([gl_LARGEFILE])
   gl_FUNC_LSTAT
   if test $REPLACE_LSTAT = 1; then
@@ -461,10 +368,7 @@ changequote([, ])dnl
   fi
   gl_STDLIB_MODULE_INDICATOR([malloc-posix])
   gl_MALLOCA
-  dnl Check for prerequisites for memory fence checks.
-  gl_FUNC_MMAP_ANON
-  AC_CHECK_HEADERS_ONCE([sys/mman.h])
-  AC_CHECK_FUNCS_ONCE([mprotect])
+  gl_MULTIARCH
   gl_FUNC_OPEN
   if test $REPLACE_OPEN = 1; then
     AC_LIBOBJ([open])
@@ -483,9 +387,6 @@ changequote([, ])dnl
     AC_LIBOBJ([setenv])
   fi
   gl_STDLIB_MODULE_INDICATOR([setenv])
-  AC_REQUIRE([gl_FLOAT_EXPONENT_LOCATION])
-  AC_REQUIRE([gl_DOUBLE_EXPONENT_LOCATION])
-  AC_REQUIRE([gl_LONG_DOUBLE_EXPONENT_LOCATION])
   gl_FUNC_STAT
   if test $REPLACE_STAT = 1; then
     AC_LIBOBJ([stat])
@@ -493,6 +394,7 @@ changequote([, ])dnl
   fi
   gl_SYS_STAT_MODULE_INDICATOR([stat])
   AM_STDBOOL_H
+  gl_STDINT_H
   AC_REQUIRE([gt_TYPE_WCHAR_T])
   AC_REQUIRE([gt_TYPE_WINT_T])
   gl_STDLIB_H
@@ -502,6 +404,8 @@ changequote([, ])dnl
   fi
   gl_UNISTD_MODULE_INDICATOR([symlink])
   gl_HEADER_SYS_STAT_H
+  AC_PROG_MKDIR_P
+  gl_HEADER_SYS_TIME_H
   AC_PROG_MKDIR_P
   gl_HEADER_TIME_H
   gl_FUNC_UNSETENV
@@ -513,6 +417,7 @@ changequote([, ])dnl
   gl_VALGRIND_TESTS
   abs_aux_dir=`cd "$ac_aux_dir"; pwd`
   AC_SUBST([abs_aux_dir])
+  gl_WCHAR_H
   m4_popdef([gl_MODULE_INDICATOR_CONDITION])
   m4_ifval(gltests_LIBSOURCES_LIST, [
     m4_syscmd([test ! -d ]m4_defn([gltests_LIBSOURCES_DIR])[ ||
@@ -620,59 +525,23 @@ AC_DEFUN([gl_FILE_LIST], [
   build-aux/vc-list-files
   doc/fdl-1.3.texi
   doc/gendocs_template
-  lib/alloca.in.h
-  lib/asnprintf.c
   lib/errno.in.h
   lib/error.c
   lib/error.h
-  lib/float+.h
-  lib/float.c
-  lib/float.in.h
-  lib/fpucw.h
-  lib/frexp.c
-  lib/frexpl.c
-  lib/fseterr.c
-  lib/fseterr.h
   lib/getopt.c
   lib/getopt.in.h
   lib/getopt1.c
   lib/getopt_int.h
   lib/gettext.h
   lib/intprops.h
-  lib/isnan.c
-  lib/isnand-nolibm.h
-  lib/isnand.c
-  lib/isnanf-nolibm.h
-  lib/isnanf.c
-  lib/isnanl-nolibm.h
-  lib/isnanl.c
-  lib/itold.c
-  lib/math.c
-  lib/math.in.h
-  lib/memchr.c
-  lib/memchr.valgrind
   lib/msvc-inval.c
   lib/msvc-inval.h
   lib/msvc-nothrow.c
   lib/msvc-nothrow.h
-  lib/printf-args.c
-  lib/printf-args.h
-  lib/printf-frexp.c
-  lib/printf-frexp.h
-  lib/printf-frexpl.c
-  lib/printf-frexpl.h
-  lib/printf-parse.c
-  lib/printf-parse.h
   lib/progname.c
   lib/progname.h
-  lib/signbitd.c
-  lib/signbitf.c
-  lib/signbitl.c
-  lib/size_max.h
   lib/stdarg.in.h
   lib/stddef.in.h
-  lib/stdint.in.h
-  lib/stdio-impl.h
   lib/stdio.in.h
   lib/strerror-override.c
   lib/strerror-override.h
@@ -681,16 +550,11 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/sys_types.in.h
   lib/unistd.c
   lib/unistd.in.h
-  lib/vasnprintf.c
-  lib/vasnprintf.h
   lib/verify.h
   lib/version-etc.c
   lib/version-etc.h
-  lib/vfprintf.c
-  lib/wchar.in.h
-  lib/xsize.c
-  lib/xsize.h
   m4/00gnulib.m4
+  m4/absolute-header.m4
   m4/alloca.m4
   m4/autobuild.m4
   m4/close.m4
@@ -702,43 +566,26 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/environ.m4
   m4/errno_h.m4
   m4/error.m4
-  m4/exponentd.m4
-  m4/exponentf.m4
-  m4/exponentl.m4
   m4/extensions.m4
   m4/extern-inline.m4
   m4/fcntl-o.m4
   m4/fcntl_h.m4
   m4/fdopen.m4
-  m4/float_h.m4
-  m4/fpieee.m4
-  m4/frexp.m4
-  m4/frexpl.m4
-  m4/fseterr.m4
   m4/fstat.m4
   m4/getcwd.m4
   m4/getdtablesize.m4
   m4/getopt.m4
-  m4/getpagesize.m4
+  m4/gettimeofday.m4
   m4/gnulib-common.m4
   m4/include_next.m4
-  m4/intmax_t.m4
   m4/inttypes-pri.m4
   m4/inttypes.m4
-  m4/inttypes_h.m4
-  m4/isnand.m4
-  m4/isnanf.m4
-  m4/isnanl.m4
   m4/largefile.m4
-  m4/ldexpl.m4
   m4/longlong.m4
   m4/lstat.m4
   m4/malloc.m4
   m4/malloca.m4
   m4/manywarnings.m4
-  m4/math_h.m4
-  m4/memchr.m4
-  m4/mmap-anon.m4
   m4/mode_t.m4
   m4/msvc-inval.m4
   m4/msvc-nothrow.m4
@@ -747,20 +594,14 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/off_t.m4
   m4/open.m4
   m4/pathmax.m4
-  m4/printf-frexp.m4
-  m4/printf-frexpl.m4
-  m4/printf.m4
   m4/putenv.m4
   m4/setenv.m4
-  m4/signbit.m4
-  m4/size_max.m4
   m4/ssize_t.m4
   m4/stat.m4
   m4/stdarg.m4
   m4/stdbool.m4
   m4/stddef_h.m4
   m4/stdint.m4
-  m4/stdint_h.m4
   m4/stdio_h.m4
   m4/stdlib_h.m4
   m4/strerror.m4
@@ -768,26 +609,19 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/symlink.m4
   m4/sys_socket_h.m4
   m4/sys_stat_h.m4
+  m4/sys_time_h.m4
   m4/sys_types_h.m4
   m4/time_h.m4
   m4/unistd_h.m4
   m4/valgrind-tests.m4
-  m4/vasnprintf.m4
   m4/version-etc.m4
-  m4/vfprintf-posix.m4
   m4/warn-on-use.m4
   m4/warnings.m4
   m4/wchar_h.m4
   m4/wchar_t.m4
   m4/wint_t.m4
-  m4/xsize.m4
-  tests/infinity.h
   tests/init.sh
   tests/macros.h
-  tests/minus-zero.h
-  tests/nan.h
-  tests/randomd.c
-  tests/randoml.c
   tests/signature.h
   tests/test-alloca-opt.c
   tests/test-binary-io.c
@@ -798,14 +632,8 @@ AC_DEFUN([gl_FILE_LIST], [
   tests/test-errno.c
   tests/test-fdopen.c
   tests/test-fgetc.c
-  tests/test-float.c
-  tests/test-fprintf-posix.h
   tests/test-fputc.c
   tests/test-fread.c
-  tests/test-frexp.c
-  tests/test-frexp.h
-  tests/test-frexpl.c
-  tests/test-fseterr.c
   tests/test-fstat.c
   tests/test-fwrite.c
   tests/test-getcwd-lgpl.c
@@ -813,29 +641,18 @@ AC_DEFUN([gl_FILE_LIST], [
   tests/test-getopt.c
   tests/test-getopt.h
   tests/test-getopt_long.h
+  tests/test-gettimeofday.c
   tests/test-ignore-value.c
   tests/test-init.sh
   tests/test-intprops.c
   tests/test-inttypes.c
-  tests/test-isnand-nolibm.c
-  tests/test-isnand.h
-  tests/test-isnanf-nolibm.c
-  tests/test-isnanf.h
-  tests/test-isnanl-nolibm.c
-  tests/test-isnanl.h
   tests/test-lstat.c
   tests/test-lstat.h
   tests/test-malloca.c
-  tests/test-math.c
-  tests/test-memchr.c
   tests/test-open.c
   tests/test-open.h
   tests/test-pathmax.c
-  tests/test-printf-frexp.c
-  tests/test-printf-frexpl.c
-  tests/test-printf-posix.output
   tests/test-setenv.c
-  tests/test-signbit.c
   tests/test-stat.c
   tests/test-stat.h
   tests/test-stdbool.c
@@ -845,18 +662,16 @@ AC_DEFUN([gl_FILE_LIST], [
   tests/test-strerror.c
   tests/test-symlink.c
   tests/test-symlink.h
+  tests/test-sys_time.c
   tests/test-sys_types.c
   tests/test-unsetenv.c
-  tests/test-vasnprintf.c
   tests/test-vc-list-files-cvs.sh
   tests/test-vc-list-files-git.sh
   tests/test-verify.c
   tests/test-verify.sh
   tests/test-version-etc.c
   tests/test-version-etc.sh
-  tests/test-vfprintf-posix.c
-  tests/test-vfprintf-posix.sh
-  tests/zerosize-ptr.h
+  tests=lib/alloca.in.h
   tests=lib/binary-io.c
   tests=lib/binary-io.h
   tests=lib/close.c
@@ -869,7 +684,7 @@ AC_DEFUN([gl_FILE_LIST], [
   tests=lib/fstat.c
   tests=lib/getcwd-lgpl.c
   tests=lib/getdtablesize.c
-  tests=lib/getpagesize.c
+  tests=lib/gettimeofday.c
   tests=lib/ignore-value.h
   tests=lib/inttypes.in.h
   tests=lib/lstat.c
@@ -884,12 +699,15 @@ AC_DEFUN([gl_FILE_LIST], [
   tests=lib/setenv.c
   tests=lib/stat.c
   tests=lib/stdbool.in.h
+  tests=lib/stdint.in.h
   tests=lib/stdlib.in.h
   tests=lib/symlink.c
   tests=lib/sys_stat.in.h
+  tests=lib/sys_time.in.h
   tests=lib/time.in.h
   tests=lib/unsetenv.c
   tests=lib/version-etc-fsf.c
+  tests=lib/wchar.in.h
   top/GNUmakefile
   top/maint.mk
 ])

@@ -1,5 +1,5 @@
 # DO NOT EDIT! GENERATED AUTOMATICALLY!
-# Copyright (C) 2002-2013 Free Software Foundation, Inc.
+# Copyright (C) 2002-2014 Free Software Foundation, Inc.
 #
 # This file is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -39,6 +39,7 @@ AC_DEFUN([lgl_EARLY],
   m4_pattern_allow([^gl_LTLIBOBJS$])dnl a variable
   AC_REQUIRE([gl_PROG_AR_RANLIB])
   AC_REQUIRE([AM_PROG_CC_C_O])
+  # Code from module absolute-header:
   # Code from module alloca-opt:
   # Code from module alloca-opt-tests:
   # Code from module c-ctype:
@@ -159,6 +160,7 @@ AC_DEFUN([lgl_INIT],
   gl_LD_VERSION_SCRIPT
   gl_VISIBILITY
   gl_MULTIARCH
+  gt_TYPE_SSIZE_T
   AM_STDBOOL_H
   gl_STDDEF_H
   gl_STDINT_H
@@ -173,6 +175,8 @@ AC_DEFUN([lgl_INIT],
     gl_PREREQ_STRVERSCMP
   fi
   gl_STRING_MODULE_INDICATOR([strverscmp])
+  gl_SYS_TYPES_H
+  AC_PROG_MKDIR_P
   gl_LIBUNISTRING_LIBHEADER([0.9.2], [unistr.h])
   gl_MODULE_INDICATOR([unistr/u8-mbtoucr])
   gl_LIBUNISTRING_MODULE([0.9], [unistr/u8-mbtoucr])
@@ -265,12 +269,9 @@ changequote([, ])dnl
   gt_LOCALE_FR_UTF8
   gt_LOCALE_JA
   gt_LOCALE_ZH_CN
-  gt_TYPE_SSIZE_T
   AC_REQUIRE([gt_TYPE_WCHAR_T])
   AC_REQUIRE([gt_TYPE_WINT_T])
   gl_STDLIB_H
-  gl_SYS_TYPES_H
-  AC_PROG_MKDIR_P
   gl_THREAD
   gl_THREADLIB
   gl_UNISTD_H
@@ -402,12 +403,14 @@ AC_DEFUN([lgl_FILE_LIST], [
   lib/striconv.h
   lib/string.in.h
   lib/strverscmp.c
+  lib/sys_types.in.h
   lib/unistr.in.h
   lib/unistr/u8-mbtoucr.c
   lib/unistr/u8-uctomb-aux.c
   lib/unistr/u8-uctomb.c
   lib/unitypes.in.h
   m4/00gnulib.m4
+  m4/absolute-header.m4
   m4/alloca.m4
   m4/codeset.m4
   m4/eealloc.m4
@@ -520,7 +523,6 @@ AC_DEFUN([lgl_FILE_LIST], [
   tests=lib/setenv.c
   tests=lib/setlocale.c
   tests=lib/stdlib.in.h
-  tests=lib/sys_types.in.h
   tests=lib/unistd.c
   tests=lib/unistd.in.h
   tests=lib/unsetenv.c
