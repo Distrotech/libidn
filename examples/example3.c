@@ -1,5 +1,5 @@
 /* example3.c --- Example ToASCII() code showing how to use Libidn.
- * Copyright (C) 2002-2013 Simon Josefsson
+ * Copyright (C) 2002-2014 Simon Josefsson
  *
  * This file is part of GNU Libidn.
  *

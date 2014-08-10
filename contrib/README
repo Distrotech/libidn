@@ -1,5 +1,5 @@
 Libidn contrib/README -- Notes for the contrib/ subdirectory.
-Copyright (C) 2003-2013 Simon Josefsson
+Copyright (C) 2003-2014 Simon Josefsson
 See the end for copying conditions.
 
 The idn-python/ sub-directory contains a Python interface for Libidn,
