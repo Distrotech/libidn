@@ -2,7 +2,7 @@
 # This Makefile fragment tries to be general-purpose enough to be
 # used by many projects via the gnulib maintainer-makefile module.
 
-## Copyright (C) 2001-2014 Free Software Foundation, Inc.
+## Copyright (C) 2001-2015 Free Software Foundation, Inc.
 ##
 ## This program is free software: you can redistribute it and/or modify
 ## it under the terms of the GNU General Public License as published by
@@ -996,6 +996,14 @@ sc_prohibit_undesirable_word_seq:
 	  | grep -vE '$(ignore_undesirable_word_sequence_RE_)' | grep .	\
 	  && { echo '$(ME): undesirable word sequence' >&2; exit 1; } || :
 
+# Except for shell files and for loops, double semicolon is probably a mistake
+sc_prohibit_double_semicolon:
+	@prohibit='; *;[	{} \]*(/[/*]|$$)'			\
+	in_vc_files='\.[chly]$$'					\
+	exclude='\bfor *\(.*\)'						\
+	halt="Double semicolon detected"				\
+	  $(_sc_search_regexp)
+
 _ptm1 = use "test C1 && test C2", not "test C1 -''a C2"
 _ptm2 = use "test C1 || test C2", not "test C1 -''o C2"
 # Using test's -a and -o operators is not portable.
@@ -1640,14 +1648,14 @@ _gl_tight_scope: $(bin_PROGRAMS)
 	  perl -lne							\
 	     '$(_gl_TS_function_match) and print "^$$1\$$"' $$hdr;	\
 	) | sort -u > $$t;						\
-	nm -e $(_gl_TS_obj_files)|$(SED) -n 's/.* T //p'|grep -Ev -f $$t \
+	nm -g $(_gl_TS_obj_files)|$(SED) -n 's/.* T //p'|grep -Ev -f $$t \
 	  && { echo the above functions should have static scope >&2;	\
 	       exit 1; } || : ;						\
 	( printf '^%s$$\n' '__.*' $(_gl_TS_unmarked_extern_vars);	\
 	  perl -lne '$(_gl_TS_var_match) and print "^$$1\$$"'		\
 		$$hdr $(_gl_TS_other_headers)				\
 	) | sort -u > $$t;						\
-	nm -e $(_gl_TS_obj_files) | $(SED) -n 's/.* [BCDGRS] //p'	\
+	nm -g $(_gl_TS_obj_files) | $(SED) -n 's/.* [BCDGRS] //p'	\
             | sort -u | grep -Ev -f $$t					\
 	  && { echo the above variables should have static scope >&2;	\
 	       exit 1; } || :

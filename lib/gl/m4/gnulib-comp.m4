@@ -1,5 +1,5 @@
 # DO NOT EDIT! GENERATED AUTOMATICALLY!
-# Copyright (C) 2002-2014 Free Software Foundation, Inc.
+# Copyright (C) 2002-2015 Free Software Foundation, Inc.
 #
 # This file is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -65,6 +65,8 @@ AC_DEFUN([lgl_EARLY],
   # Code from module inttypes:
   # Code from module inttypes-incomplete:
   # Code from module inttypes-tests:
+  # Code from module langinfo:
+  # Code from module langinfo-tests:
   # Code from module lib-msvc-compat:
   # Code from module lib-symbol-versions:
   # Code from module lib-symbol-visibility:
@@ -89,6 +91,8 @@ AC_DEFUN([lgl_EARLY],
   # Code from module snippet/unused-parameter:
   # Code from module snippet/warn-on-use:
   # Code from module ssize_t:
+  # Code from module stdalign:
+  # Code from module stdalign-tests:
   # Code from module stdbool:
   # Code from module stdbool-tests:
   # Code from module stddef:
@@ -177,12 +181,12 @@ AC_DEFUN([lgl_INIT],
   gl_STRING_MODULE_INDICATOR([strverscmp])
   gl_SYS_TYPES_H
   AC_PROG_MKDIR_P
-  gl_LIBUNISTRING_LIBHEADER([0.9.2], [unistr.h])
+  gl_LIBUNISTRING_LIBHEADER([0.9.4], [unistr.h])
   gl_MODULE_INDICATOR([unistr/u8-mbtoucr])
   gl_LIBUNISTRING_MODULE([0.9], [unistr/u8-mbtoucr])
   gl_MODULE_INDICATOR([unistr/u8-uctomb])
   gl_LIBUNISTRING_MODULE([0.9], [unistr/u8-uctomb])
-  gl_LIBUNISTRING_LIBHEADER([0.9], [unitypes.h])
+  gl_LIBUNISTRING_LIBHEADER([0.9.4], [unitypes.h])
   # End of code from modules
   m4_ifval(lgl_LIBSOURCES_LIST, [
     m4_syscmd([test ! -d ]m4_defn([lgl_LIBSOURCES_DIR])[ ||
@@ -236,6 +240,7 @@ changequote([, ])dnl
   gl_UNISTD_MODULE_INDICATOR([environ])
   gl_INTTYPES_H
   gl_INTTYPES_INCOMPLETE
+  gl_LANGINFO_H
   gl_LOCALE_H
   AC_CHECK_FUNCS_ONCE([newlocale])
   gl_LOCALENAME
@@ -269,6 +274,7 @@ changequote([, ])dnl
   gt_LOCALE_FR_UTF8
   gt_LOCALE_JA
   gt_LOCALE_ZH_CN
+  gl_STDALIGN_H
   AC_REQUIRE([gt_TYPE_WCHAR_T])
   AC_REQUIRE([gt_TYPE_WINT_T])
   gl_STDLIB_H
@@ -426,6 +432,7 @@ AC_DEFUN([lgl_FILE_LIST], [
   m4/intlmacosx.m4
   m4/inttypes-pri.m4
   m4/inttypes.m4
+  m4/langinfo_h.m4
   m4/lcmessage.m4
   m4/ld-output-def.m4
   m4/ld-version-script.m4
@@ -449,6 +456,7 @@ AC_DEFUN([lgl_FILE_LIST], [
   m4/setenv.m4
   m4/setlocale.m4
   m4/ssize_t.m4
+  m4/stdalign.m4
   m4/stdbool.m4
   m4/stddef_h.m4
   m4/stdint.m4
@@ -478,6 +486,7 @@ AC_DEFUN([lgl_FILE_LIST], [
   tests/test-init.sh
   tests/test-intprops.c
   tests/test-inttypes.c
+  tests/test-langinfo.c
   tests/test-locale.c
   tests/test-localename.c
   tests/test-lock.c
@@ -487,6 +496,7 @@ AC_DEFUN([lgl_FILE_LIST], [
   tests/test-setlocale1.sh
   tests/test-setlocale2.c
   tests/test-setlocale2.sh
+  tests/test-stdalign.c
   tests/test-stdbool.c
   tests/test-stddef.c
   tests/test-stdint.c
@@ -512,6 +522,7 @@ AC_DEFUN([lgl_FILE_LIST], [
   tests=lib/glthread/yield.h
   tests=lib/intprops.h
   tests=lib/inttypes.in.h
+  tests=lib/langinfo.in.h
   tests=lib/locale.in.h
   tests=lib/localename.c
   tests=lib/localename.h
@@ -522,6 +533,7 @@ AC_DEFUN([lgl_FILE_LIST], [
   tests=lib/putenv.c
   tests=lib/setenv.c
   tests=lib/setlocale.c
+  tests=lib/stdalign.in.h
   tests=lib/stdlib.in.h
   tests=lib/unistd.c
   tests=lib/unistd.in.h

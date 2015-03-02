@@ -1,5 +1,5 @@
 # DO NOT EDIT! GENERATED AUTOMATICALLY!
-# Copyright (C) 2002-2014 Free Software Foundation, Inc.
+# Copyright (C) 2002-2015 Free Software Foundation, Inc.
 #
 # This file is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -122,6 +122,8 @@ AC_DEFUN([gl_EARLY],
   # Code from module ssize_t:
   # Code from module stat:
   # Code from module stat-tests:
+  # Code from module stdalign:
+  # Code from module stdalign-tests:
   # Code from module stdarg:
   dnl Some compilers (e.g., AIX 5.3 cc) need to be in c99 mode
   dnl for the builtin va_copy to work.  With Autoconf 2.60 or later,
@@ -393,6 +395,7 @@ changequote([, ])dnl
     gl_PREREQ_STAT
   fi
   gl_SYS_STAT_MODULE_INDICATOR([stat])
+  gl_STDALIGN_H
   AM_STDBOOL_H
   gl_STDINT_H
   AC_REQUIRE([gt_TYPE_WCHAR_T])
@@ -525,6 +528,7 @@ AC_DEFUN([gl_FILE_LIST], [
   build-aux/vc-list-files
   doc/fdl-1.3.texi
   doc/gendocs_template
+  doc/gendocs_template_min
   lib/errno.in.h
   lib/error.c
   lib/error.h
@@ -598,6 +602,7 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/setenv.m4
   m4/ssize_t.m4
   m4/stat.m4
+  m4/stdalign.m4
   m4/stdarg.m4
   m4/stdbool.m4
   m4/stddef_h.m4
@@ -655,6 +660,7 @@ AC_DEFUN([gl_FILE_LIST], [
   tests/test-setenv.c
   tests/test-stat.c
   tests/test-stat.h
+  tests/test-stdalign.c
   tests/test-stdbool.c
   tests/test-stddef.c
   tests/test-stdint.c
@@ -698,6 +704,7 @@ AC_DEFUN([gl_FILE_LIST], [
   tests=lib/same-inode.h
   tests=lib/setenv.c
   tests=lib/stat.c
+  tests=lib/stdalign.in.h
   tests=lib/stdbool.in.h
   tests=lib/stdint.in.h
   tests=lib/stdlib.in.h
