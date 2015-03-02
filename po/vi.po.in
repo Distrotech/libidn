@@ -1,18 +1,19 @@
 # Vietnamese Translation for LibIDN
-# Copyright © 2013 Free Software Foundation, Inc.
+# Bản dịch tiếng Việt dành cho libidn.
+# Copyright © 2014 Free Software Foundation, Inc.
 # This file is distributed under the same license as the libidn package.
 # Clytie Siddall <clytie@riverland.net.au>, 2005-2008.
-# Trần Ngọc Quân <vnwildman@gmail.com>, 2012-2013.
+# Trần Ngọc Quân <vnwildman@gmail.com>, 2012-2014.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: libidn-1.27\n"
+"Project-Id-Version: libidn-1.29\n"
 "Report-Msgid-Bugs-To: bug-libidn@gnu.org\n"
-"POT-Creation-Date: 2013-06-05 21:59+0200\n"
-"PO-Revision-Date: 2013-06-10 09:07+0700\n"
+"POT-Creation-Date: 2014-08-10 22:50+0200\n"
+"PO-Revision-Date: 2014-08-12 07:59+0700\n"
 "Last-Translator: Trần Ngọc Quân <vnwildman@gmail.com>\n"
 "Language-Team: Vietnamese <translation-team-vi@lists.sourceforge.net>\n"
-"Language: vi_VN\n"
+"Language: vi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -31,15 +32,15 @@ msgstr "Chuẩn bị chuỗi gặp lỗi"
 
 #: lib/strerror-idna.c:90
 msgid "Punycode failed"
-msgstr "punycode (mã yếu đuối) gặp lỗi"
+msgstr "Punycode (mã yếu đuối) gặp lỗi"
 
 #: lib/strerror-idna.c:94
 msgid "Non-digit/letter/hyphen in input"
-msgstr "Dữ liệu nhập chứa ký tự khác chữ số/chữ/dấu gạch nối"
+msgstr "Dữ liệu nhập chứa ký tự không phải là chữ số/chữ/dấu gạch nối"
 
 #: lib/strerror-idna.c:98
 msgid "Forbidden leading or trailing minus sign (`-')"
-msgstr "Không cho phép dấu gạch nối (`-') đi trước hay theo sau"
+msgstr "Không cho phép dấu gạch nối (“-”) đi trước hay theo sau"
 
 #: lib/strerror-idna.c:102
 msgid "Output would be too large or too small"
@@ -47,7 +48,7 @@ msgstr "Dữ liệu xuất sẽ quá lớn hay quá nhỏ"
 
 #: lib/strerror-idna.c:106
 msgid "Input does not start with ACE prefix (`xn--')"
-msgstr "Dữ liệu nhập không bắt đầu bằng tiền tố ACE (`xn--')"
+msgstr "Dữ liệu nhập không bắt đầu bằng tiền tố ACE (“xn--”)"
 
 #: lib/strerror-idna.c:110
 msgid "String not idempotent under ToASCII"
@@ -55,7 +56,7 @@ msgstr "Chuỗi không tránh nhân lên dưới ToASCII"
 
 #: lib/strerror-idna.c:114
 msgid "Input already contain ACE prefix (`xn--')"
-msgstr "Dữ liệu nhập đã sẵn chứa tiền tố ACE (`xn--')"
+msgstr "Dữ liệu nhập đã sẵn chứa tiền tố ACE (“xn--”)"
 
 #: lib/strerror-idna.c:118 lib/strerror-tld.c:84
 msgid "System iconv failed"
@@ -141,7 +142,7 @@ msgstr "Không tìm thấy miền cấp đầu trong dữ liệu nhập"
 #: src/idn.c:65
 #, c-format
 msgid "Try `%s --help' for more information.\n"
-msgstr "Thử lệnh `%s --help' để xem thêm thông tin.\n"
+msgstr "Thử lệnh “%s --help” để xem thêm thông tin.\n"
 
 #: src/idn.c:69
 #, c-format
@@ -214,8 +215,8 @@ msgid ""
 "      --no-tld             Don't check string for TLD specific rules\n"
 "                             Only for --idna-to-ascii and --idna-to-unicode\n"
 msgstr ""
-"  -t, --no-tld             Không kiểm tra chuỗi cho quy tắc đặc trưng TLD\n"
-"                            Chỉ dành cho \"--idna-to-ascii\" và \"--idna-to-unicode\"\n"
+"  -t, --no-tld             Không kiểm tra chuỗi cho quy tắc đặc tả TLD\n"
+"                            Chỉ dành cho --idna-to-ascii và --idna-to-unicode\"\n"
 
 #: src/idn.c:107
 msgid "  -n, --nfkc               Normalize string according to Unicode v3.2 NFKC\n"
@@ -229,9 +230,9 @@ msgid ""
 "                             `trace', `SASLprep'\n"
 msgstr ""
 "  -p, --profile=CHUỖI      Dùng hồ sơ stringprep đã chỉ định thay vào đó\n"
-"                             Các hồ sơ stringprep hợp lệ: `Nameprep',\n"
-"                             `iSCSI', `Nodeprep', `Resourceprep', \n"
-"                             `trace', `SASLprep'\n"
+"                             Các hồ sơ stringprep hợp lệ: “Nameprep”,\n"
+"                             “iSCSI”, “Nodeprep”, “Resourceprep”, \n"
+"                             “trace”, “SASLprep”\n"
 
 #: src/idn.c:116
 msgid ""
@@ -239,7 +240,7 @@ msgid ""
 "      --quiet              Silent operation\n"
 msgstr ""
 "      --debug              In ra thông tin gỡ lỗi\n"
-"      --quiet              Không xuất thông điệp\n"
+"      --quiet              Thực hiện ở chế độ im lặng\n"
 
 #: src/idn.c:172
 #, c-format
@@ -288,6 +289,7 @@ msgid "punycode_encode: %s"
 msgstr "punycode_encode: %s"
 
 #: src/idn.c:317
+#, c-format
 msgid "malloc"
 msgstr "malloc"
 

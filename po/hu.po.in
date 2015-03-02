@@ -1,158 +1,157 @@
-# Brazilian Portuguese translation for libidn.
+# Hungarian translation for libidn.
 # Copyright (C) 2014 Free Software Foundation, Inc.
-# Copyright (C) 2014 Simon Josefsson
 # This file is distributed under the same license as the libidn package.
-# Rafael Ferreira <rafael.f.f1@gmail.com>, 2014.
 #
+# Balázs Úr <urbalazs@gmail.com>, 2014.
 msgid ""
 msgstr ""
-"Project-Id-Version: libidn 1.27\n"
+"Project-Id-Version: libidn 1.29\n"
 "Report-Msgid-Bugs-To: bug-libidn@gnu.org\n"
-"POT-Creation-Date: 2013-06-05 21:59+0200\n"
-"PO-Revision-Date: 2014-02-04 23:46-0300\n"
-"Last-Translator: Rafael Ferreira <rafael.f.f1@gmail.com>\n"
-"Language-Team: Brazilian Portuguese <ldpbr-translation@lists.sourceforge.net>\n"
-"Language: pt_BR\n"
+"POT-Creation-Date: 2014-08-10 22:50+0200\n"
+"PO-Revision-Date: 2014-08-31 15:46+0200\n"
+"Last-Translator: Balázs Úr <urbalazs@gmail.com>\n"
+"Language-Team: Hungarian <translation-team-hu@lists.sourceforge.net>\n"
+"Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 1.6.3\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Lokalize 1.5\n"
 
 #: lib/strerror-idna.c:82 lib/strerror-pr29.c:66 lib/strerror-punycode.c:66
 #: lib/strerror-stringprep.c:86 lib/strerror-tld.c:68
 msgid "Success"
-msgstr "Sucesso"
+msgstr "Sikerült"
 
 #: lib/strerror-idna.c:86 lib/strerror-pr29.c:74
 msgid "String preparation failed"
-msgstr "Preparação de string falhou"
+msgstr "A szöveg előkészítés sikertelen."
 
 #: lib/strerror-idna.c:90
 msgid "Punycode failed"
-msgstr "Punycode falhou"
+msgstr "Punycode sikertelen"
 
 #: lib/strerror-idna.c:94
 msgid "Non-digit/letter/hyphen in input"
-msgstr "Não-dígito/letra/hífen na entrada"
+msgstr "Nem szám/betű/kötőjel a bemeneten"
 
 #: lib/strerror-idna.c:98
 msgid "Forbidden leading or trailing minus sign (`-')"
-msgstr "Sinal de menus proibido no início ou ao final (\"-\")"
+msgstr "Tiltott kezdő vagy befejező mínusz jel („-”)"
 
 #: lib/strerror-idna.c:102
 msgid "Output would be too large or too small"
-msgstr "Saída seria grande demais ou pequena demais"
+msgstr "A kimenet túl nagy vagy túl kicsi lenne"
 
 #: lib/strerror-idna.c:106
 msgid "Input does not start with ACE prefix (`xn--')"
-msgstr "Entrada não inicia com prefixo ACE (\"xn--\")"
+msgstr "A bemenet nem ACE előtaggal („xn--”) kezdődik"
 
 #: lib/strerror-idna.c:110
 msgid "String not idempotent under ToASCII"
-msgstr "String não idempotente sob ToASCII"
+msgstr "A szöveg nem idempotens a ToASCII alatt"
 
 #: lib/strerror-idna.c:114
 msgid "Input already contain ACE prefix (`xn--')"
-msgstr "Entrada já contém prefixo ACE (\"xn--\")"
+msgstr "A bemenet már tartalmaz ACE előtagot („xn--”)"
 
 #: lib/strerror-idna.c:118 lib/strerror-tld.c:84
 msgid "System iconv failed"
-msgstr "iconv do sistema falhou"
+msgstr "Rendszer iconv sikertelen"
 
 #: lib/strerror-idna.c:122 lib/strerror-stringprep.c:130 lib/strerror-tld.c:80
 msgid "Cannot allocate memory"
-msgstr "Não foi possível alocar memória"
+msgstr "Nem lehet memóriát lefoglalni"
 
 #: lib/strerror-idna.c:126
 msgid "System dlopen failed"
-msgstr "dlopen de sistema falhou"
+msgstr "Rendszer dlopen sikertelen"
 
 #: lib/strerror-idna.c:130 lib/strerror-pr29.c:78 lib/strerror-punycode.c:82
 #: lib/strerror-stringprep.c:134 lib/strerror-tld.c:92
 msgid "Unknown error"
-msgstr "Erro desconhecido"
+msgstr "Ismeretlen hiba"
 
 #: lib/strerror-pr29.c:70
 msgid "String not idempotent under Unicode NFKC normalization"
-msgstr "String não idempotente sob normalização Unicode NFKC"
+msgstr "A szöveg nem idempotens a Unicode NFKC normalizálás alatt"
 
 #: lib/strerror-punycode.c:70
 msgid "Invalid input"
-msgstr "Entrada inválida"
+msgstr "Érvénytelen bemenet"
 
 #: lib/strerror-punycode.c:74 lib/strerror-stringprep.c:110
 msgid "Output would exceed the buffer space provided"
-msgstr "Saída excederia o espaço de buffer fornecido"
+msgstr "A kimenet túllépné a megadott pufferméretet"
 
 #: lib/strerror-punycode.c:78
 msgid "String size limit exceeded"
-msgstr "Limite do tamanho da string excedido"
+msgstr "A szövegméret korlát elérve"
 
 #: lib/strerror-stringprep.c:90
 msgid "Forbidden unassigned code points in input"
-msgstr "Pontos de código não-atribuídos proibidos na entrada"
+msgstr "Tiltott nem hozzárendelt kódpontok a bemeneten"
 
 #: lib/strerror-stringprep.c:94
 msgid "Prohibited code points in input"
-msgstr "Pontos de código proibidos na entrada"
+msgstr "Tiltott kódpontok a bemeneten"
 
 #: lib/strerror-stringprep.c:98
 msgid "Conflicting bidirectional properties in input"
-msgstr "Propriedades bidirecionais conflitando na entrada"
+msgstr "Ütköző kétirányú tulajdonságok a bemeneten"
 
 #: lib/strerror-stringprep.c:102
 msgid "Malformed bidirectional string"
-msgstr "String bidirecional malformada "
+msgstr "Helytelenül formázott kétirányú szöveg"
 
 #: lib/strerror-stringprep.c:106
 msgid "Prohibited bidirectional code points in input"
-msgstr "Pontos de código bidirecionais proibidos na entrada"
+msgstr "Tiltott kétirányú kódpontok a bemeneten"
 
 #: lib/strerror-stringprep.c:114
 msgid "Error in stringprep profile definition"
-msgstr "Erro ma definição de perfil de stringprep"
+msgstr "Hiba a stringprep profil definícióban"
 
 #: lib/strerror-stringprep.c:118
 msgid "Flag conflict with profile"
-msgstr "Opção conflita com o perfil"
+msgstr "Jelzőütközés a profillal"
 
 #: lib/strerror-stringprep.c:122
 msgid "Unknown profile"
-msgstr "Perfil desconhecido"
+msgstr "Ismeretlen profil"
 
 #: lib/strerror-stringprep.c:126
 msgid "Unicode normalization failed (internal error)"
-msgstr "Normalização de unicode falhou (erro interno)"
+msgstr "Unicode normalizálás sikertelen (belső hiba)"
 
 #: lib/strerror-tld.c:72
 msgid "Code points prohibited by top-level domain"
-msgstr "Pontos de código proibidos pelo domínio de topo"
+msgstr "A felsőszintű tartomány tiltja a kódpontokat"
 
 #: lib/strerror-tld.c:76
 msgid "Missing input"
-msgstr "Entrada faltando"
+msgstr "Hiányzó bemenet"
 
 #: lib/strerror-tld.c:88
 msgid "No top-level domain found in input"
-msgstr "Nenhum domínio de topo encontrado na entrada"
+msgstr "Nem található felsőszintű tartomány a bemeneten"
 
 #: src/idn.c:65
 #, c-format
 msgid "Try `%s --help' for more information.\n"
-msgstr "Tente \"%s --help\" para mais informações.\n"
+msgstr "További információkért próbálja a(z) „%s --help” parancsot.\n"
 
 #: src/idn.c:69
 #, c-format
 msgid "Usage: %s [OPTION]... [STRINGS]...\n"
-msgstr "Uso: %s [OPÇÃO]... [STRINGS]...\n"
+msgstr "Használat: %s [KAPCSOLÓ]… [SZÖVEGEK]…\n"
 
 #: src/idn.c:72
 msgid ""
 "Internationalized Domain Name (IDN) convert STRINGS, or standard input.\n"
 "\n"
 msgstr ""
-"Nome de domínio internacionalizado (IDN) para conversão de STRINGS ou entrada padrão.\n"
+"Internationalized Domain Name (IDN) átalakított SZÖVEGEK vagy szabványos bemenet.\n"
 "\n"
 
 #: src/idn.c:76
@@ -168,26 +167,26 @@ msgid ""
 "\n"
 "Mandatory arguments to long options are mandatory for short options too.\n"
 msgstr ""
-"Interface de linha de comando para a biblioteca de nome de domínio\n"
-"internacionalizado.\n"
+"Parancssoros felület a nemzetközivé tett tartománynév könyvtárhoz.\n"
 "\n"
-"Espera-se que todas as strings estejam codificados no conjunto de caracteres\n"
-"preferidos usado pelo seu locale. Use \"--debug\" para descobrir qual é esse\n"
-"conjunto de caracteres. Você pode sobrescrever o conjunto de caracteres usado\n"
-"definindo a variável de ambiente CHARSET.\n"
+"Minden szöveg a területi beállítás szerint előnyben részesített\n"
+"karakterkészlet használatával kódolva várt. Használja a „--debug”\n"
+"kapcsolót annak kiderítésére, hogy melyik ez a karakterkészlet.\n"
+"Felülbírálhatja a CHARSET környezeti változó beállításban használt\n"
+"karakterkészletet.\n"
 "\n"
-"Para processar string que inicie com \"-\", por exemplo \"-foo\", use \"--\"\n"
-"para sinal no fim de parâmetros, como em \"idn --quiet -a -- -foo\".\n"
+"Egy „-” kezdetű szöveg feldolgozásához, például „-izé”, használja a „--”\n"
+"jelet a paraméterek végének jelzéséhez, úgymint „idn --quiet -a -- -izé”.\n"
 "\n"
-"Argumentos obrigatórios para opções longas são também são para as curtas.\n"
+"A hosszú kapcsolók kötelező argumentumai a rövid kapcsolóknál is kötelezőek.\n"
 
 #: src/idn.c:88
 msgid ""
 "  -h, --help               Print help and exit\n"
 "  -V, --version            Print version and exit\n"
 msgstr ""
-"  -h, --help               Mostra ajuda e sai\n"
-"  -V, --version            Mostra versão e sai\n"
+"  -h, --help               Súgó kiírása és kilépés\n"
+"  -V, --version            Verzió kiírása és kilépés\n"
 
 #: src/idn.c:92
 msgid ""
@@ -197,31 +196,31 @@ msgid ""
 "  -a, --idna-to-ascii      Convert to ACE according to IDNA (default mode)\n"
 "  -u, --idna-to-unicode    Convert from ACE according to IDNA\n"
 msgstr ""
-"  -s, --stringprep         Prepara string de acordo com o perfil nameprep\n"
-"  -d, --punycode-decode    Decodifica Punycode\n"
-"  -e, --punycode-encode    Codifica Punycode\n"
-"  -a, --idna-to-ascii      Converte para ACE de acordo com IDNA (padrão)\n"
-"  -u, --idna-to-unicode    Converte de ACE de acordo com IDNA\n"
+"  -s, --stringprep         Szöveg előkészítése a nameprep profil szerint\n"
+"  -d, --punycode-decode    Punycode dekódolása\n"
+"  -e, --punycode-encode    Punycode kódolása\n"
+"  -a, --idna-to-ascii      Átalakítás ACE-re az IDNA szerint (alap mód)\n"
+"  -u, --idna-to-unicode    Átalakítás ACE-ről az IDNA szerint\n"
 
 #: src/idn.c:99
 msgid ""
 "      --allow-unassigned   Toggle IDNA AllowUnassigned flag (default off)\n"
 "      --usestd3asciirules  Toggle IDNA UseSTD3ASCIIRules flag (default off)\n"
 msgstr ""
-"      --allow-unassigned   Ativa opção IDNA AllowUnassigned (padrão é off)\n"
-"      --usestd3asciirules  Ativa opção IDNA UseSTD3ASCIIRules (padrão é off)\n"
+"      --allow-unassigned   IDNA AllowUnassigned jelző váltása (alap: off)\n"
+"      --usestd3asciirules  IDNA UseSTD3ASCIIRules jelző váltása (alap: off)\n"
 
 #: src/idn.c:103
 msgid ""
 "      --no-tld             Don't check string for TLD specific rules\n"
 "                             Only for --idna-to-ascii and --idna-to-unicode\n"
 msgstr ""
-"      --no-tld             Não verifica string por regras específicas de TLD\n"
-"                             Apenas por --idna-to-ascii e --idna-to-unicode\n"
+"      --no-tld             Ne ellenőrizzen szöveget TLD specifikus szabályokhoz\n"
+"                             Csak --idna-to-ascii és --idna-to-unicode esetén\n"
 
 #: src/idn.c:107
 msgid "  -n, --nfkc               Normalize string according to Unicode v3.2 NFKC\n"
-msgstr "  -n, --nfkc               Normaliza string de acordo com Unicode v3.2 NFKC\n"
+msgstr "  -n, --nfkc               Szöveg normalizálása a Unicode v3.2 NFKC szerint\n"
 
 #: src/idn.c:110
 msgid ""
@@ -230,49 +229,49 @@ msgid ""
 "                             `iSCSI', `Nodeprep', `Resourceprep', \n"
 "                             `trace', `SASLprep'\n"
 msgstr ""
-"  -p, --profile=STRING     Usa o perfil de stringprep especificado\n"
-"                             Perfis stringprep válidos: \"Nameprep\",\n"
-"                             \"iSCSI\", \"Nodeprep\", \"Resourceprep\", \n"
-"                             \"trace\", \"SASLprep\"\n"
+"  -p, --profile=SZÖVEG     Inkább a megadott stringprep profil használata\n"
+"                             Érvényes stringprep profilok: „Nameprep”,\n"
+"                             „iSCSI”, „Nodeprep”, „Resourceprep”, \n"
+"                             „trace”, „SASLprep”\n"
 
 #: src/idn.c:116
 msgid ""
 "      --debug              Print debugging information\n"
 "      --quiet              Silent operation\n"
 msgstr ""
-"      --debug              Mostra informações de depuração\n"
-"      --quiet              Operação silenciosa\n"
+"      --debug              Hibakeresési információk kiírása\n"
+"      --quiet              Csendes működés\n"
 
 #: src/idn.c:172
 #, c-format
 msgid "only one of -s, -e, -d, -a, -u or -n can be specified"
-msgstr "apenas um entre -s, -e, -d, -a, -u ou -n pode ser especificado"
+msgstr "csak a következők egyike adható meg: -s, -e, -d, -a, -u vagy -n"
 
 #: src/idn.c:182
 #, c-format
 msgid "Charset `%s'.\n"
-msgstr "Codificação de caracteres \"%s\".\n"
+msgstr "Karakterkészlet: „%s”.\n"
 
 #: src/idn.c:187
 #, c-format
 msgid "Type each input string on a line by itself, terminated by a newline character.\n"
-msgstr "Digite cada string de entrada em uma linha, terminada por um caractere de linha nova.\n"
+msgstr "Minden bemeneti szöveget önmagával egy sorba gépeljen be, egy új sor karakterrel lezárva.\n"
 
 #: src/idn.c:202
 #, c-format
 msgid "input error"
-msgstr "erro na entrada"
+msgstr "bemeneti hiba"
 
 #: src/idn.c:212 src/idn.c:274 src/idn.c:357 src/idn.c:434 src/idn.c:515
 #, c-format
 msgid "could not convert from %s to UTF-8"
-msgstr "não foi possível converter de %s para UTF-8"
+msgstr "nem lehet átalakítani: %s -> UTF-8"
 
 #: src/idn.c:220 src/idn.c:245 src/idn.c:281 src/idn.c:498 src/idn.c:527
 #: src/idn.c:551
 #, c-format
 msgid "could not convert from UTF-8 to UCS-4"
-msgstr "não foi possível converter de UTF-8 para UCS-4"
+msgstr "nem lehet átalakítani: UTF-8 -> UCS-4"
 
 #: src/idn.c:237
 #, c-format
@@ -282,7 +281,7 @@ msgstr "stringprep_profile: %s"
 #: src/idn.c:260 src/idn.c:302 src/idn.c:345 src/idn.c:503 src/idn.c:564
 #, c-format
 msgid "could not convert from UTF-8 to %s"
-msgstr "não foi possível converter de UTF-8 para %s"
+msgstr "nem lehet átalakítani: UTF-8 -> %s"
 
 #: src/idn.c:295
 #, c-format
@@ -290,6 +289,7 @@ msgid "punycode_encode: %s"
 msgstr "punycode_encode: %s"
 
 #: src/idn.c:317
+#, c-format
 msgid "malloc"
 msgstr "malloc"
 
@@ -301,7 +301,7 @@ msgstr "punycode_decode: %s"
 #: src/idn.c:340 src/idn.c:364 src/idn.c:442
 #, c-format
 msgid "could not convert from UCS-4 to UTF-8"
-msgstr "não foi possível converter de UCS-4 para UTF-8"
+msgstr "nem lehet átalakítani: UCS-4 -> UTF-8"
 
 #: src/idn.c:381
 #, c-format
@@ -316,7 +316,7 @@ msgstr "idna_to_unicode_8z4z (TLD): %s"
 #: src/idn.c:409 src/idn.c:482
 #, c-format
 msgid "tld_check_4z (position %lu): %s"
-msgstr "tld_check_4z (posição %lu): %s"
+msgstr "tld_check_4z (%lu. pozíció): %s"
 
 #: src/idn.c:412 src/idn.c:488
 #, c-format
@@ -331,4 +331,4 @@ msgstr "idna_to_unicode_8z4z: %s"
 #: src/idn.c:540
 #, c-format
 msgid "could not do NFKC normalization"
-msgstr "não foi possível fazer normalização NFKC"
+msgstr "nem lehet NFKC normalizálást végrehajtani"
