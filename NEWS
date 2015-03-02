@@ -2,7 +2,7 @@ Libidn NEWS -- History of user-visible changes.                 -*- outline -*-
 Copyright (C) 2002-2015 Simon Josefsson
 See the end for copying conditions.
 
-* Version 1.30 (unreleased) [stable]
+* Version 1.30 (released 2015-03-02) [stable]
 
 ** libidn: The punycode.{c,h} files were re-imported from RFC 3492bis.
 A comment explaining the origin and what was changed was added.
