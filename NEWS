@@ -7,6 +7,10 @@ See the end for copying conditions.
 ** libidn: The punycode.{c,h} files were re-imported from RFC 3492bis.
 A comment explaining the origin and what was changed was added.
 
+** Bump gettext to 0.19.3.
+
+** Use LT_INIT instead of AC_LIBTOOL_WIN32_DLL.
+
 ** API and ABI is backwards compatible with the previous version.
 
 * Version 1.29 (released 2014-08-10) [stable]

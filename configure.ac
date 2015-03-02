@@ -41,10 +41,7 @@ lgl_EARLY
 DLL_VERSION=`expr ${LT_CURRENT} - ${LT_AGE}`
 AC_SUBST(DLL_VERSION)
 
-# We can't replace this with LT_INIT([win32-dll]) yet.  For example,
-# the Ubuntu 8.04 LTS is still shipping a libtool version that doesn't
-# have it.
-AC_LIBTOOL_WIN32_DLL
+LT_INIT([win32-dll])
 m4_ifdef([AM_PROG_AR], [AM_PROG_AR])
 AC_PROG_LIBTOOL
 
@@ -52,7 +49,7 @@ AC_PROG_LIBTOOL
 AM_MISSING_PROG(PERL, perl, $missing_dir)
 AM_MISSING_PROG(HELP2MAN, help2man, $missing_dir)
 AM_GNU_GETTEXT(external)
-AM_GNU_GETTEXT_VERSION(0.18.3)
+AM_GNU_GETTEXT_VERSION(0.19.3)
 AM_ICONV
 AM_PATH_LISPDIR
 
