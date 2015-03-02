@@ -27,6 +27,7 @@ config.log
 config.status
 configure
 contrib/doxygen/Doxyfile
+contrib/doxygen/doxygen_sqlite3.db
 contrib/doxygen/html/
 contrib/doxygen/latex/
 csharp/CombiningClass.cs
