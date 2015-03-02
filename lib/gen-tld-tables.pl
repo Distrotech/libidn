@@ -2,7 +2,7 @@
 
 # Author: Thomas Jacob, Internet24.de
 
-# Copyright (C) 2004-2014 Simon Josefsson.
+# Copyright (C) 2004-2015 Simon Josefsson.
 # Copyright (C) 2004-2014 Free Software Foundation, Inc.
 #
 # This program is free software: you can redistribute it and/or modify

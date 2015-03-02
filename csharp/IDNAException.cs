@@ -1,5 +1,5 @@
 /// <summary>
-/// Copyright (C) 2004-2014 Free Software Foundation, Inc.
+/// Copyright (C) 2004-2015 Free Software Foundation, Inc.
 ///
 /// Author: Alexander Gnauck AG-Software, mailto:gnauck@ag-software.de
 ///

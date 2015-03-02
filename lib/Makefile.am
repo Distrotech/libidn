@@ -1,5 +1,5 @@
 ## Process this file with automake to produce Makefile.in
-# Copyright (C) 2002-2014 Simon Josefsson.
+# Copyright (C) 2002-2015 Simon Josefsson.
 # Copyright (C) 2004, 2010-2014 Free Software Foundation, Inc.
 #
 # This file is part of GNU Libidn.

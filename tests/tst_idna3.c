@@ -1,5 +1,5 @@
 /* tst_idna3.c --- Self tests for upper-case XN-- regression.
- * Copyright (C) 2011-2014 Simon Josefsson
+ * Copyright (C) 2011-2015 Simon Josefsson
  *
  * This file is part of GNU Libidn.
  *

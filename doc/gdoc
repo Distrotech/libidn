@@ -3,7 +3,7 @@ eval '(exit $?0)' && eval 'exec perl -S "$0" ${1+"$@"}'
     if 0;
 # Generate documentation from source code.
 
-## Copyright (c) 2002-2014 Simon Josefsson
+## Copyright (c) 2002-2015 Simon Josefsson
 ##                    added -texinfo, -listfunc, -pkg-name
 ##                    man page revamp
 ##                    various improvements
