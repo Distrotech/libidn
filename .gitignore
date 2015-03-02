@@ -170,6 +170,7 @@ gl/printf-parse.lo
 gl/printf-parse.o
 gl/progname.lo
 gl/progname.o
+gl/stddef.h
 gl/stdio.h
 gl/string.h
 gl/sys/
@@ -244,6 +245,8 @@ gltests/test-getdtablesize
 gltests/test-getdtablesize.o
 gltests/test-getopt
 gltests/test-getopt.o
+gltests/test-gettimeofday
+gltests/test-gettimeofday.o
 gltests/test-ignore-value
 gltests/test-ignore-value.o
 gltests/test-intprops
@@ -278,6 +281,8 @@ gltests/test-signbit
 gltests/test-signbit.o
 gltests/test-stat
 gltests/test-stat.o
+gltests/test-stdalign
+gltests/test-stdalign.o
 gltests/test-stdbool
 gltests/test-stdbool.o
 gltests/test-stddef
@@ -296,6 +301,8 @@ gltests/test-symlink
 gltests/test-symlink.o
 gltests/test-sys_stat
 gltests/test-sys_stat.o
+gltests/test-sys_time
+gltests/test-sys_time.o
 gltests/test-sys_types
 gltests/test-sys_types.o
 gltests/test-sys_wait
@@ -368,6 +375,7 @@ lib/gl/iconv_open-irix.h
 lib/gl/iconv_open-osf.h
 lib/gl/iconv_open-solaris.h
 lib/gl/libgnu.la
+lib/gl/stddef.h
 lib/gl/striconv.lo
 lib/gl/striconv.o
 lib/gl/string.h
@@ -401,6 +409,7 @@ lib/gltests/glthread/lock.o
 lib/gltests/glthread/thread.o
 lib/gltests/glthread/threadlib.o
 lib/gltests/inttypes.h
+lib/gltests/langinfo.h
 lib/gltests/libtests.a
 lib/gltests/locale.h
 lib/gltests/localename.o
@@ -423,6 +432,8 @@ lib/gltests/test-intprops
 lib/gltests/test-intprops.o
 lib/gltests/test-inttypes
 lib/gltests/test-inttypes.o
+lib/gltests/test-langinfo
+lib/gltests/test-langinfo.o
 lib/gltests/test-locale
 lib/gltests/test-locale.o
 lib/gltests/test-localename
@@ -437,6 +448,8 @@ lib/gltests/test-setlocale1
 lib/gltests/test-setlocale1.o
 lib/gltests/test-setlocale2
 lib/gltests/test-setlocale2.o
+lib/gltests/test-stdalign
+lib/gltests/test-stdalign.o
 lib/gltests/test-stdbool
 lib/gltests/test-stdbool.o
 lib/gltests/test-stddef
@@ -519,6 +532,7 @@ libidn-*.tar.gz.sig
 libidn.pc
 libtool
 m4/codeset.m4
+m4/extern-inline.m4
 m4/fcntl-o.m4
 m4/gettext.m4
 m4/glibc2.m4
