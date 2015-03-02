@@ -1,5 +1,5 @@
 /* punycode.h --- Declarations for punycode functions.
-   Copyright (C) 2002-2014 Simon Josefsson
+   Copyright (C) 2002-2015 Simon Josefsson
 
    This file is part of GNU Libidn.
 
@@ -28,8 +28,29 @@
    not, see <http://www.gnu.org/licenses/>. */
 
 /*
- * This file contains content derived from RFC 3492bis written by Adam
- * M. Costello.
+ * This file is derived from RFC 3492bis written by Adam M. Costello,
+ * downloaded from http://www.nicemice.net/idn/punycode-spec.gz on
+ * 2015-03-02 with SHA1 a966a8017f6be579d74a50a226accc7607c40133, a
+ * copy of which is stored in the GNU Libidn version controlled
+ * repository under doc/specification/punycode-spec.gz.
+ *
+ * The changes compared to Adam's file include: re-indentation, adding
+ * the license boilerplate and this comment, adding the #ifndef
+ * PUNYCODE_H and IDNAPI blocks, changing the return code of
+ * punycode_encode and punycode_decode from enum to int, simplifying
+ * the definition of punycode_uint by #include'ing idn-int.h and using
+ * uint32_t instead of limit.h-based code, adding Punycode_status and
+ * punycode_strerror, adding 'extern IDNAPI' declarations to function
+ * prototypes, and mentioning variable names in function prototypes.
+ *
+ * Adam's file contains the following:
+ *
+ * punycode-sample.c 2.0.0 (2004-Mar-21-Sun)
+ * http://www.nicemice.net/idn/
+ * Adam M. Costello
+ * http://www.nicemice.net/amc/
+ *
+ * This is ANSI C code (C89) implementing Punycode 1.0.x.
  *
  * Disclaimer and license: Regarding this entire document or any
  * portion of it (including the pseudocode and C code), the author
@@ -40,32 +61,6 @@
  * provided that redistributed derivative works do not contain
  * misleading author or version information.  Derivative works need
  * not be licensed under similar terms.
- *
- * Copyright (C) The Internet Society (2003).  All Rights Reserved.
- *
- * This document and translations of it may be copied and furnished to
- * others, and derivative works that comment on or otherwise explain it
- * or assist in its implementation may be prepared, copied, published
- * and distributed, in whole or in part, without restriction of any
- * kind, provided that the above copyright notice and this paragraph are
- * included on all such copies and derivative works.  However, this
- * document itself may not be modified in any way, such as by removing
- * the copyright notice or references to the Internet Society or other
- * Internet organizations, except as needed for the purpose of
- * developing Internet standards in which case the procedures for
- * copyrights defined in the Internet Standards process must be
- * followed, or as required to translate it into languages other than
- * English.
- *
- * The limited permissions granted above are perpetual and will not be
- * revoked by the Internet Society or its successors or assigns.
- *
- * This document and the information contained herein is provided on an
- * "AS IS" basis and THE INTERNET SOCIETY AND THE INTERNET ENGINEERING
- * TASK FORCE DISCLAIMS ALL WARRANTIES, EXPRESS OR IMPLIED, INCLUDING
- * BUT NOT LIMITED TO ANY WARRANTY THAT THE USE OF THE INFORMATION
- * HEREIN WILL NOT INFRINGE ANY RIGHTS OR ANY IMPLIED WARRANTIES OF
- * MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE.
  */
 
 #ifndef PUNYCODE_H
@@ -87,6 +82,9 @@
 extern "C"
 {
 #endif
+
+/************************************************************/
+/* Public interface (would normally go in its own .h file): */
 
 #include <stddef.h>		/* size_t */
 #include <idn-int.h>		/* uint32_t */
@@ -110,7 +108,9 @@ extern "C"
   extern IDNAPI const char *punycode_strerror (Punycode_status rc);
 
 /* punycode_uint needs to be unsigned and needs to be */
-/* at least 26 bits wide.                             */
+/* at least 26 bits wide.  The particular type can be */
+/* specified by defining PUNYCODE_UINT, otherwise a   */
+/* suitable type will be chosen automatically.        */
 
   typedef uint32_t punycode_uint;
 
@@ -131,7 +131,7 @@ extern "C"
 
         input
             An array of code points.  They are presumed to be Unicode
-            code points, but that is not strictly REQUIRED.  The
+            code points, but that is not strictly necessary.  The
             array contains code points, not code units.  UTF-16 uses
             code units D800 through DFFF to refer to code points
             10000..10FFFF.  The code points D800..DFFF do not occur in
