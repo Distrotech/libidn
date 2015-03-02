@@ -11,6 +11,9 @@ A comment explaining the origin and what was changed was added.
 
 ** Use LT_INIT instead of AC_LIBTOOL_WIN32_DLL.
 
+** i18n: Added Hungarian translation.  Updated some other languages.
+Thanks to Balázs Úr.
+
 ** API and ABI is backwards compatible with the previous version.
 
 * Version 1.29 (released 2014-08-10) [stable]
